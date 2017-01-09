@@ -8,10 +8,12 @@ namespace Caterer_DB.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
+
 
         public ActionResult About()
         {

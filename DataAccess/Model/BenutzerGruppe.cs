@@ -1,0 +1,22 @@
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DataAccess.Model
+{
+    [Table("BenutzerGruppen")]
+    public class BenutzerGruppe
+    {
+        [Key]
+        public int NutzerGruppeID { get; set; }
+        [Required]
+        public string Bezeichnung { get; set; }
+        [Required]
+        public bool Löschbar { get; set; }
+        
+        public bool IstGelöscht { get; set; }
+        [Required]
+        public virtual RechteGruppe RechteGruppe { get; set; }
+    }
+}
+
