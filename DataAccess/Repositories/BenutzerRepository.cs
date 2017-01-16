@@ -10,7 +10,7 @@ namespace DataAccess.Repositories
 {
     public class BenutzerRepository
     {
-        public DbContext DB = new DbContext();
+        public CatererContext DB = new CatererContext();
 
 
 

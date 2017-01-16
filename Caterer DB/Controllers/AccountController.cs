@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Caterer_DB.Models;
+using DataAccess.Model;
 
 namespace Caterer_DB.Controllers
 {

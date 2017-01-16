@@ -12,16 +12,16 @@ using EntityFramework.DynamicFilters;
 
 namespace DataAccess.Context
     {
-    public class DbContext : IdentityDbContext<ApplicationUser>, IDbContext
+    public class CatererContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
-        public DbContext() : base("LocalConnectionString") { }
+        public CatererContext() : base("CatererConnectionString") { }
         public virtual DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
         public virtual DbSet<Recht> Recht { get; set; }
         public virtual DbSet<RechteGruppe> RechteGruppe { get; set; }
         public virtual DbSet<Benutzer> Benutzer { get; set; }
-        public static DbContext Create()
+        public static CatererContext Create()
         {
-            return new DbContext();
+            return new CatererContext();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
