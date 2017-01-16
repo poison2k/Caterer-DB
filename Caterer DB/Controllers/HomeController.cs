@@ -28,5 +28,19 @@ namespace Caterer_DB.Controllers
 
             return View();
         }
+
+        public ActionResult AGB()
+        {
+            ViewBag.Message = "Allgemeine Geschäftsbedingungen";
+
+            return View();
+        }
+
+        public ActionResult Datenschutz()
+        {
+            ViewBag.Message = "Ihre Daten sind bei uns sicher!";
+
+            return View();
+        }
     }
 }
