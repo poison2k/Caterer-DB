@@ -237,7 +237,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomDesignBootstrap.css" />
+    <Content Include="Content\Images\Logo_AG.png" />
     <Content Include="Content\Images\Logo_AG_Wasserzeichen.png" />
+    <Content Include="Content\Images\Logo_DGE.png" />
     <Content Include="Content\Images\Logo_Ministerium.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
