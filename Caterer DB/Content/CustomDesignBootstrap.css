@@ -1,5 +1,6 @@
-﻿.btn-info {
-  color: #f00;
-  background-color: #4cff00;
-  border-color: #065df8;
+﻿
+.mybg {
+background-image:  url(../Content/Images/Logo_AG_Wasserzeichen.png);
+background-repeat:no-repeat;
+background-size: cover;
 }
