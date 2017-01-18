@@ -9,33 +9,73 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="navbar  navbar-fixed-top">
+        <div class="row" style="background-color: rgb(255, 255, 255)">
+            <div class="col-md-10">
+
+                <img class="img-responsive " width="300" src="~/Content/Images/Logo_AG.png" />
+
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("AGB", "AGB", "Home")</li>
-                    <li>@Html.ActionLink("Datenschutzbestimmungen", "Datenschutz", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="col-md-2">
+                
+                    <img class="img-responsive " style="padding-top: 20px;margin-left: 30px;"  width="100" src="~/Content/Images/Logo_DGE.png" />
+                
+               
+            </div>
+        </div>
+        <div class="navbar-default">
+
+
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Start", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav"></ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <div class="spacer">
+            &nbsp;
+        </div>
+        <div class="mybg">
+            @RenderBody()
+        </div>
+
+
+
+
+
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <img class="img-responsive" src="~/Content/Images/Logo_Ministerium.png" />
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <ul class="navbar nav nav-justified">
+                        <li>@Html.ActionLink("AGB", "AGB", "Home")</li>
+                        <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home")</li>
+                        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Impressum", "Contact", "Home")</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
         </footer>
     </div>
 
