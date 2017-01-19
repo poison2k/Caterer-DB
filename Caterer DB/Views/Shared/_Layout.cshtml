@@ -6,26 +6,25 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @section Scripts{
+        $('#topnavbar').affix({
+        offset: {
+        top: $('#banner').height()
+        }
+        });
+    }
 </head>
 <body>
-    <div class="navbar  navbar-fixed-top">
-        <div class="row" style="background-color: rgb(255, 255, 255)">
-            <div class="col-md-10">
-
-                <img class="img-responsive " width="300" src="~/Content/Images/Logo_AG.png" />
-
-            </div>
-            <div class="col-md-2">
-                
-                    <img class="img-responsive " style="padding-top: 20px;margin-left: 30px;"  width="100" src="~/Content/Images/Logo_DGE.png" />
-                
-               
+   
+    <div class="navbar  navbar-fixed-top" id="topnavbar">
+        <div class="container" id="banner">
+            <div class="row">
+                <img class="img-responsive" src="~/Content/Images/banner.png" />
             </div>
         </div>
         <div class="navbar-default">
-
-
+            
+           
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -57,7 +56,6 @@
         <hr />
         <footer>
             <div class="row">
-
                 <div class="col-md-4">
                     <img class="img-responsive" src="~/Content/Images/Logo_Ministerium.png" />
                 </div>
@@ -78,7 +76,7 @@
             </div>
         </footer>
     </div>
-
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
