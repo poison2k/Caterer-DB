@@ -17,7 +17,7 @@ namespace Caterer_DB
         protected void Application_Start()
         {
 #if DEBUG
-            Database.SetInitializer(new ContextInitializerCreateAlwaysWithExampleData());
+            Database.SetInitializer(new ContextInitializerCreateAlwaysMitBeispieldaten());
 
 #else
 
