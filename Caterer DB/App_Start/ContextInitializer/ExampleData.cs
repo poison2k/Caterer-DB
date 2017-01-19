@@ -25,15 +25,41 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
             ApplicationUser caterer = db.Users.Add(new ApplicationUser {
                 
-                UserName = "caterer@test.de",
                 Email = "caterer@test.de",
+                EmailConfirmed = true,
                 PasswordHash = "ANhg2qq6hnMpsu9b1IYyv9KwbviJ+JHdFqlJsCc2/GkhyJFZQ8vDewv+l8C2MC2/8A==",
-                SecurityStamp = "67b2359a-4bb7-4818-844f-e5893d6ba80f"
+                SecurityStamp = "67b2359a-4bb7-4818-844f-e5893d6ba80f",
+                PhoneNumber = "04131 - 15 1111",
+                PhoneNumberConfirmed = true,
+                AccessFailedCount = 0,
+                UserName = "caterer@test.de"
             });
 
-            db.SaveChanges();
-                     
-            
+            ApplicationUser mitarbeiter = db.Users.Add(new ApplicationUser
+            {
+
+                Email = "mitarbeiter@test.de",
+                EmailConfirmed = true,
+                PasswordHash = "ANhg2qq6hnMpsu9b1IYyv9KwbviJ+JHdFqlJsCc2/GkhyJFZQ8vDewv+l8C2MC2/8A==",
+                SecurityStamp = "67b2359a-4bb7-4818-844f-e5893d6ba80f",
+                PhoneNumber = "04131 - 15 2222",
+                PhoneNumberConfirmed = true,
+                AccessFailedCount = 0,
+                UserName = "mitarbeiter@test.de"
+            });
+
+            ApplicationUser admin = db.Users.Add(new ApplicationUser
+            {
+
+                Email = "administrator@test.de",
+                EmailConfirmed = true,
+                PasswordHash = "ANhg2qq6hnMpsu9b1IYyv9KwbviJ+JHdFqlJsCc2/GkhyJFZQ8vDewv+l8C2MC2/8A==",
+                SecurityStamp = "67b2359a-4bb7-4818-844f-e5893d6ba80f",
+                PhoneNumber = "04131 - 15 3333",
+                PhoneNumberConfirmed = true,
+                AccessFailedCount = 0,
+                UserName = "administrator@test.de"
+            });
         }
     }
 }
