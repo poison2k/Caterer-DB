@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\CatererContext.cs" />
-    <Compile Include="Interfaces\IDbContext.cs" />
+    <Compile Include="Interfaces\ICatererContext.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Benutzer.cs" />
     <Compile Include="Model\BenutzerGruppe.cs" />

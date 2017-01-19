@@ -12,13 +12,14 @@ using EntityFramework.DynamicFilters;
 
 namespace DataAccess.Context
     {
-    public class CatererContext : IdentityDbContext<ApplicationUser>, IDbContext
+    public class CatererContext : IdentityDbContext<ApplicationUser>, ICatererContext
     {
         public CatererContext() : base("CatererConnectionString") { }
         public virtual DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
         public virtual DbSet<Recht> Recht { get; set; }
         public virtual DbSet<RechteGruppe> RechteGruppe { get; set; }
         public virtual DbSet<Benutzer> Benutzer { get; set; }
+
         public static CatererContext Create()
         {
             return new CatererContext();
