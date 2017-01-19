@@ -1,6 +1,13 @@
-﻿@{
-    ViewBag.Title = "Login";
+﻿@using Caterer_DB.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
 }
+
+
+
+
+
 
 <br />
 <br />
@@ -15,42 +22,57 @@
     </div>
 </div>
 <br />
-<div class="col-md-4"></div>
-<div class="col-md-4">
-    <div class="form-group">
-        <div class="input-group input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <div class="icon-addon addon-sm">
-                <input type="text" placeholder="E-Mail" class="form-control" id="Email">
+<section id="loginForm">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="input-group input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <div class="icon-addon addon-sm">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<br />
-<br />
-<div class="col-md-4"></div>
-<div class="col-md-4">
-    <div class="form-group">
-        <div class="input-group input-group ">
-            <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
-            <div class="icon-addon addon-sm">
-                <input type="text" placeholder="Passwort" class="form-control" id="Passwort">
+        <br />
+        <br />
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="input-group input-group ">
+                    <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
+                    <div class="icon-addon addon-sm">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
         </div>
+
+
+    <div class="col-md-4"></div>
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div type="button" class="col-md-2 text-center"><input type="submit" value="Anmelden" class="btn btn-primary btn-block btn-xs" /></div>
+      
+
+        <div class="col-md-5"></div>
     </div>
-</div>
-<div class="col-md-4"></div>
-<br />
-<br />
-<br />
-<div class="row">
-    <div class="col-md-5"></div>
-    <div type="button" class="col-md-2 text-center"><button class="btn btn-primary btn-block btn-xs">Anmelden</button></div>
-    <div class="col-md-5"></div>
-</div>
+    }
+</section>
 
 
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
 
@@ -77,9 +99,9 @@
                     ViewBag.Title = "Log in";
                 }
 
-                <h2>@ViewBag.Title.</h2>*@
+                <h2>@ViewBag.Title.</h2>
 
-            @*<div class="row">
+            <div class="row">
                     <div class="col-md-8">
                         <section id="loginForm">
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
