@@ -58,7 +58,7 @@ background-color: rgb(102,204,204);
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration-line:underline;
-  background-color: rgb(255,255,255);
+  background-color: transparent;
 }
 
 .btn-primary {
@@ -83,4 +83,9 @@ background-color: rgb(102,204,204);
    
     background-color: transparent;
     border: 0px;
+}
+
+a {
+    color: rgb(34, 151, 189);
+    text-decoration: none;
 }
