@@ -79,3 +79,8 @@ background-color: rgb(102,204,204);
   box-shadow:0 8px 16px 0 rgba(0,0,0,0.8);
   border-width:1px;
 }
+.input-group-addon {
+   
+    background-color: transparent;
+    border: 0px;
+}
