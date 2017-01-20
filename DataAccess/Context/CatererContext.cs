@@ -11,14 +11,22 @@ using System.Configuration;
 using EntityFramework.DynamicFilters;
 
 namespace DataAccess.Context
-    {
-    public class CatererContext : IdentityDbContext<ApplicationUser>, IDbContext
+{
+    public class CatererContext : IdentityDbContext<ApplicationUser>, ICatererContext
     {
         public CatererContext() : base("CatererConnectionString") { }
         public virtual DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
         public virtual DbSet<Recht> Recht { get; set; }
         public virtual DbSet<RechteGruppe> RechteGruppe { get; set; }
         public virtual DbSet<Benutzer> Benutzer { get; set; }
+        //public virtual DbSet<IdentityUser> user { get; set; }
+        //public virtual DbSet<ApplicationUser> role { get; set; }
+        //public virtual DbSet<IdentityRole> userrole { get; set; }
+        //public virtual DbSet<IdentityUserClaim> userclaim { get; set; }
+        //public virtual DbSet<IdentityUserLogin> userlogin { get; set; }
+
+
+
         public static CatererContext Create()
         {
             return new CatererContext();
@@ -27,6 +35,13 @@ namespace DataAccess.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityUser>().ToTable("user");
+            modelBuilder.Entity<ApplicationUser>().ToTable("user");
+
+            modelBuilder.Entity<IdentityRole>().ToTable("role");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("userrole");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("userclaim");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("userlogin");
         }
 
         private static string ConnectionStringErmitteln()

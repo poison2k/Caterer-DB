@@ -44,9 +44,9 @@ namespace Caterer_DB.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
+            container.RegisterType<ICatererContext, CatererContext>(new PerResolveLifetimeManager());
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
             container.RegisterType<UserManager<ApplicationUser>>();
-            container.RegisterType<CatererContext, CatererContext>();
             container.RegisterType<ApplicationUserManager>();
             container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<IAuthenticationManager>(new InjectionFactory(o => HttpContext.Current.GetOwinContext().Authentication));

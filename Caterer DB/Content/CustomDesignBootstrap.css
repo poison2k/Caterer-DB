@@ -1,31 +1,25 @@
 ﻿
+
 .mybg {
     background-image: url(../Content/Images/Logo_AG_Wasserzeichen.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
-    
-.navbar-fixed-top {
-    width: 970px;
-    height: 800px;
-    left: 20%;
-    border-width: 1px 1px 1px 1px;
-    
-}
 
-.navbar-right {
-    margin-right: 182px;
-}
 
-.footer-images img {
-    vertical-align: bottom;
-    border: 0;
+#topnavbar {
+    margin: 0;
+}
+#topnavbar.affix {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 
 .spacer {
     width: 100%;
-    height: 110px;
+    height: 119px;
 }
 
 /*Generelle Styles*/
