@@ -5,6 +5,16 @@
 <br />
 <br />
 <br />
+
+@if (Request.IsAuthenticated)
+{
+
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <h2>Willkommen @User.Identity.Name</h2>
+        </div>
+    </div>
+}
 <br />
 <div class="row">
     <div class="col-md-3"></div>
@@ -12,22 +22,26 @@
     <div class="col-md-3"></div>
 </div>
 <br />
-<div class="row">
-    <div class="col-md-5"></div>
-    <div class="col-md-2">
-        @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-xs", id = "loginLink" })
-    </div>
-    <div class="col-md-5"></div>
-</div>
-<br />
-<div class="row">
-    <div class="col-md-5"></div>
-    <div class="col-md-2">
-        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-xs", id = "registerLink" })
-    </div>
-    <div class="col-md-5"></div>
-</div>
+@if (!Request.IsAuthenticated)
+            {
 
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-xs", id = "loginLink" })
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-xs", id = "registerLink" })
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+}
 
 <br />
 <br />
