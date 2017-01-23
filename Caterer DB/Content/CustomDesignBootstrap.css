@@ -1,9 +1,10 @@
 ﻿
 
 .mybg {
-    background-image: url(../Content/Images/Logo_AG_Wasserzeichen.png);
-    background-repeat: no-repeat;
+    background-image: url(../Content/Images/Logo_AG_Wasserzeichen.png) ;
+    background-repeat: no-repeat ;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 
@@ -133,7 +134,9 @@ h6,
 .well-lg {
     padding: 24px;
     border-radius: 6px;
-    background-color: rgba(164, 212, 145, 1);
+    background-color: rgba(164, 212, 145,  0.6);
+    border-color: rgba(160,200,140,1);
+  
 }
 
 
