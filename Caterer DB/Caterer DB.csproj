@@ -243,11 +243,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomDesignBootstrap.css" />
+    <Content Include="Content\Images\Arnold.JPG" />
     <Content Include="Content\Images\banner.png" />
     <Content Include="Content\Images\Logo_AG.png" />
     <Content Include="Content\Images\Logo_AG_Wasserzeichen.png" />
     <Content Include="Content\Images\Logo_DGE.png" />
     <Content Include="Content\Images\Logo_Ministerium.png" />
+    <Content Include="Content\Images\reif.jpg" />
+    <Content Include="Content\Images\Stephainski.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

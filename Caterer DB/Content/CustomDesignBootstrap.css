@@ -1,9 +1,10 @@
 ﻿
 
 .mybg {
-    background-image: url(../Content/Images/Logo_AG_Wasserzeichen.png);
-    background-repeat: no-repeat;
+    background-image: url(../Content/Images/Logo_AG_Wasserzeichen.png) ;
+    background-repeat: no-repeat ;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 
@@ -15,7 +16,6 @@
     top: 0;
     width: 100%;
 }
-
 
 .spacer {
     width: 100%;
@@ -128,3 +128,34 @@ h6,
   color: rgb(35,32,31);
 }
 /*-------------------------------------------------*/
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: rgba(102,204,204,0.2);
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: rgba(102,204,204,0.2);
+}
+/*-------------------------------------------------*/
+
+
+
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+}
+
+/*Kontaktseite grüne Kästen*/
+.well-lg {
+    padding: 24px;
+    border-radius: 6px;
+    background-color: rgba(164, 212, 145,  0.6);
+    border-color: rgba(160,200,140,1);
+  
+}
+
