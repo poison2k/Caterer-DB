@@ -128,3 +128,15 @@ h6,
   color: rgb(35,32,31);
 }
 /*-------------------------------------------------*/
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: rgba(102,204,204,0.2);
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: rgba(102,204,204,0.2);
+}
