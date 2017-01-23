@@ -128,3 +128,20 @@ h6,
   color: rgb(35,32,31);
 }
 /*-------------------------------------------------*/
+
+
+
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+}
+
+/*Kontaktseite grüne Kästen*/
+.well-lg {
+    padding: 24px;
+    border-radius: 6px;
+    background-color: rgba(164, 212, 145, 1);
+}
+
+
