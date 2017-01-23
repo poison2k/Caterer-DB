@@ -105,8 +105,8 @@ body {
   line-height: 1;
   color: #555;
   text-align: center;
-  background-color: #eee;
-  border: 1px solid #555;
+  background-color: transparent;
+  border: 0px;
   border-radius: 4px;
 }
 /* Loginseite - Überschrift */
