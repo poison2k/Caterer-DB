@@ -129,14 +129,6 @@ h6,
 }
 /*-------------------------------------------------*/
 
-
-
-
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
-    background-color: #e7e7e7;
-}
-
 /*Kontaktseite grüne Kästen*/
 .well-lg {
     padding: 24px;
