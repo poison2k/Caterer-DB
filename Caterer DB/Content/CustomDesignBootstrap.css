@@ -129,6 +129,27 @@ h6,
   color: rgb(35,32,31);
 }
 /*-------------------------------------------------*/
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: rgba(102,204,204,0.2);
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: rgba(102,204,204,0.2);
+}
+/*-------------------------------------------------*/
+
+
+
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+}
 
 /*Kontaktseite grüne Kästen*/
 .well-lg {
@@ -138,5 +159,4 @@ h6,
     border-color: rgba(160,200,140,1);
   
 }
-
 
