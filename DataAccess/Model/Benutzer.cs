@@ -28,6 +28,8 @@ namespace DataAccess.Model
 
         public string Plz { get; set; }                 
 
-        public string Ort { get; set; }                 
+        public string Ort { get; set; }     
+        
+        public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }            
     }
 }

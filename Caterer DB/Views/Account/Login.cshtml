@@ -31,7 +31,7 @@
            
             <div class="form-group">
                 <div class="input-group input-group">
-                    <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-user"></i></span>
+                    <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-user "></i></span>
                     <div class="icon-addon addon">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder="Benutzername" })
                     </div>
@@ -39,7 +39,10 @@
 
 
                 </div>
-                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                <div class="text-center">
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+               
             </div>
         </div>
         <br />
@@ -55,11 +58,13 @@
                        
                     </div>
                 </div>
-                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="text-center">
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
 
 
-            </div>
+                </div>
         </div>
     
     <br />
