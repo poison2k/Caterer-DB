@@ -26,35 +26,42 @@
     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="col-md-4 col-md-offset-4">
+           
             <div class="form-group">
                 <div class="input-group input-group">
                     <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-user"></i></span>
                     <div class="icon-addon addon">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder="Benutzername" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
+                  
+
+
                 </div>
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </div>
         </div>
         <br />
         <br />
         <br />
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+       
+        <div class="col-md-4 col-md-offset-4">
             <div class="form-group">
                 <div class="input-group input-group">
                     <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-lock"></i></span>
                     <div class="icon-addon addon-sm">                      
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Passwort" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                       
                     </div>
                 </div>
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
             </div>
         </div>
-    <div class="col-md-4"></div>
+    
     <br />
     <br />
     <br />

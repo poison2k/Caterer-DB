@@ -14,6 +14,10 @@ namespace DataAccess.Context
 {
     public class CatererContext : IdentityDbContext<ApplicationUser>, ICatererContext
     {
+
+
+        
+
         public CatererContext() : base("CatererConnectionString") { }
         public virtual DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
         public virtual DbSet<Recht> Recht { get; set; }

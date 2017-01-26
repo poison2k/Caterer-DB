@@ -1,26 +1,29 @@
-﻿using DataAccess.Context;
+﻿using DataAccess.Interfaces;
 using DataAccess.Model;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class BenutzerRepository
+    public class BenutzerRepository : IBenutzerRepository
     {
-        public CatererContext DB = new CatererContext();
+        protected ICatererContext Db { get; }
 
+        protected BenutzerRepository(ICatererContext db)
+        {
+            Db = db;
+        }
 
+        public Benutzer SearchUserById(int id) {
 
-        public Benutzer SucheBenutzerNachID(int Id) {
+            return Db.Benutzer.Where(x => x.BenutzerId == id).SingleOrDefault();
 
+        }
 
-            return DB.Benutzer.Where(x => x.BenutzerId == Id).SingleOrDefault();
+        public Benutzer SearchUserByEMail(string eMail)
+        {
 
+            return Db.Benutzer.Where(x => x.Mail == eMail).SingleOrDefault();
 
-            
         }
 
     }
