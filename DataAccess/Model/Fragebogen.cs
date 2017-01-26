@@ -14,8 +14,6 @@ namespace DataAccess.Model
         [Required]
         public Benutzer Benutzer { get; set; }
         [Required]
-        public Frage Frage { get; set; }
-        [Required]
         public Antwort Antwort { get; set; }
     }
 }

@@ -10,7 +10,6 @@ namespace DataAccess.Interfaces
     public interface IFragebogenRepository
     {
         Fragebogen SearchFragenbogenById(int id);
-        List<Fragebogen> SearchFragebogenByFrage(Frage frage);
         List<Fragebogen> SearchFragebogenByBenutzer(Benutzer benutzer);
         List<Fragebogen> SearchFragebogenByAntwort(Antwort antwort);
     }
