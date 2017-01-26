@@ -11,5 +11,9 @@ namespace DataAccess.Interfaces
     {
         Benutzer SearchUserById(int id);
         Benutzer SearchUserByEMail(string eMail);
+        List<Benutzer> SearchUserByCity(string city);
+        List<Benutzer> SearchUserByPostcode(string postcode);
+        List<Benutzer> SearchUserBySurname(string surname);
+        
     }
 }
