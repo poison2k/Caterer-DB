@@ -22,11 +22,7 @@ namespace DataAccess.Repositories
             return Db.Fragebogen.Where(x => x.FragebogenId == id).SingleOrDefault();
         }
 
-        public List<Fragebogen> SearchFragebogenByAntwort(Antwort antwort)
-        {
-            return Db.Fragebogen.Where(x => x.Antwort == antwort).ToList();
-        }
-
+     
         public List<Fragebogen> SearchFragebogenByBenutzer(Benutzer benutzer)
         {
             return Db.Fragebogen.Where(x => x.Benutzer == benutzer).ToList();
