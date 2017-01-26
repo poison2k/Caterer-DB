@@ -11,6 +11,7 @@ namespace DataAccess.Interfaces
     {
         Fragebogen SearchFragenbogenById(int id);
         List<Fragebogen> SearchFragebogenByBenutzer(Benutzer benutzer);
-       
+        List<Fragebogen> SearchFragebogenByAntwort(Antwort antwort);
+
     }
 }

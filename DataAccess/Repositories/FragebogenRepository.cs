@@ -27,5 +27,10 @@ namespace DataAccess.Repositories
         {
             return Db.Fragebogen.Where(x => x.Benutzer == benutzer).ToList();
         }
+
+        public List<Fragebogen> SearchFragebogenByAntwort(Antwort antwort)
+        {
+            return Db.Fragebogen.Where(x => x.Antwort == antwort).ToList();
+        }
     }
 }
