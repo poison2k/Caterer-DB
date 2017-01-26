@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Tests", "DataAccess.Test\DataAccess.Tests.csproj", "{1B874CA4-6BC2-48E6-9708-AB0D5A53035E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTests", "SeleniumTests\SeleniumTests.csproj", "{30958EEF-817B-4FCB-A60C-224D94730EC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{1B874CA4-6BC2-48E6-9708-AB0D5A53035E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B874CA4-6BC2-48E6-9708-AB0D5A53035E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B874CA4-6BC2-48E6-9708-AB0D5A53035E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30958EEF-817B-4FCB-A60C-224D94730EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30958EEF-817B-4FCB-A60C-224D94730EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30958EEF-817B-4FCB-A60C-224D94730EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30958EEF-817B-4FCB-A60C-224D94730EC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +72,6 @@ Global
 		{E0CE96CF-2177-4EE1-8FBD-0FF9315DD6CD} = {10A0A7B5-D27A-4447-A2A1-F18DE5F00F4D}
 		{D76526D2-9BE6-499E-8D76-3BE5E413B22A} = {70E63205-EF66-4A93-BB24-23DD476A6C88}
 		{1B874CA4-6BC2-48E6-9708-AB0D5A53035E} = {D68F582C-1593-4CA3-9C16-0D7E4A09AF03}
+		{30958EEF-817B-4FCB-A60C-224D94730EC6} = {D68F582C-1593-4CA3-9C16-0D7E4A09AF03}
 	EndGlobalSection
 EndGlobal
