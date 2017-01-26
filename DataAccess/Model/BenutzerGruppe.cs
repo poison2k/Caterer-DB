@@ -13,10 +13,12 @@ namespace DataAccess.Model
         public string Bezeichnung { get; set; }
         [Required]
         public bool Löschbar { get; set; }
-        
+
         public bool IstGelöscht { get; set; }
         [Required]
         public virtual RechteGruppe RechteGruppe { get; set; }
+
+        public virtual List<Benutzer> Benutzer {get ;set; }
     }
 }
 
