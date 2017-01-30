@@ -11,6 +11,9 @@
 <div>
     <h4>Benutzer</h4>
     <hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Anrede)
@@ -78,8 +81,7 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |

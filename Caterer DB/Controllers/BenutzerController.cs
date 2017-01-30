@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using DataAccess.Context;
-using DataAccess.Model;
+﻿using Business.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
-using Business.Services;
-using Business.Interfaces;
+using System;
+using System.Net;
+using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
@@ -19,11 +11,12 @@ namespace Caterer_DB.Controllers
     {
         //private CatererContext db = new CatererContext();
         private BenutzerViewModelService BenutzerViewModelService = new BenutzerViewModelService();
+
         private IBenutzerService BenutzerService { get; set; }
 
         public BenutzerController(IBenutzerService benutzerService)
         {
-            BenutzerService = benutzerService; 
+            BenutzerService = benutzerService;
         }
 
         // GET: Benutzer
@@ -41,7 +34,7 @@ namespace Caterer_DB.Controllers
             }
 
             DetailsBenutzerViewModel detailsBenutzerViewModel =
-                BenutzerViewModelService.MapBenutzer_DetailsBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_DetailsBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
 
             if (detailsBenutzerViewModel == null)
             {
@@ -57,7 +50,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Benutzer/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -65,8 +58,8 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.AddBenutzer(BenutzerViewModelService.MapCreateBenutzerViewModel_Benutzer(createBenutzerViewModel));
-                
+                BenutzerService.AddBenutzer(BenutzerViewModelService.Map_CreateBenutzerViewModel_Benutzer(createBenutzerViewModel));
+
                 return RedirectToAction("Index");
             }
 
@@ -81,9 +74,9 @@ namespace Caterer_DB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            EditBenutzerViewModel editBenutzerViewModel = 
-                BenutzerViewModelService.MapBenutzer_EditBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
-            
+            EditBenutzerViewModel editBenutzerViewModel =
+                BenutzerViewModelService.Map_Benutzer_EditBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+
             if (editBenutzerViewModel == null)
             {
                 return HttpNotFound();
@@ -92,7 +85,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Benutzer/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -100,8 +93,8 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.EditBenutzer(BenutzerViewModelService.MapEditBenutzerViewModel_Benutzer(editBenutzerViewModel));
-               
+                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel));
+
                 return RedirectToAction("Index");
             }
             return View(editBenutzerViewModel);
@@ -116,7 +109,7 @@ namespace Caterer_DB.Controllers
             }
 
             DeleteBenutzerViewModel deleteBenutzerViewModel =
-                BenutzerViewModelService.MapBenutzer_DeleteBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_DeleteBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
 
             if (deleteBenutzerViewModel == null)
             {
@@ -128,13 +121,11 @@ namespace Caterer_DB.Controllers
         // POST: Benutzer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(DeleteBenutzerViewModel deleteBenutzerViewModel)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            BenutzerService.RemoveBenutzer(BenutzerViewModelService.MapDeleteBenutzerViewModel_Benutzer(deleteBenutzerViewModel));
-            
+            BenutzerService.RemoveBenutzer(Convert.ToInt32(id));
+
             return RedirectToAction("Index");
         }
-
-       
     }
 }

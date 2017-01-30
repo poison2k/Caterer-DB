@@ -14,7 +14,7 @@ namespace Business.Interfaces
         List<Benutzer> FindAllBenutzers();
         void AddBenutzer(Benutzer benutzer);
         void EditBenutzer(Benutzer benutzer);
-        void RemoveBenutzer(Benutzer benutzer);
+        void RemoveBenutzer(int id);
 
     }
 }

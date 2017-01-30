@@ -1,4 +1,5 @@
-﻿using DataAccess.Model;
+﻿using AutoMapper;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,110 +11,55 @@ namespace Caterer_DB.Models.ViewModelServices
     {
 
 
-        public Benutzer MapCreateBenutzerViewModel_Benutzer(CreateBenutzerViewModel createBenutzerViewModel)
+
+        private IMapper Mapper { get; set; }
+
+
+        public BenutzerViewModelService()
         {
-            return new Benutzer()
+
+            var config = new MapperConfiguration(cfg =>
             {
-                Nachname = createBenutzerViewModel.Nachname,
-                Vorname = createBenutzerViewModel.Vorname,
-                Mail = createBenutzerViewModel.Mail,
-                Strasse = createBenutzerViewModel.Strasse,
-                Plz = createBenutzerViewModel.Plz,
-                Telefon = createBenutzerViewModel.Telefon,
-                Anrede = createBenutzerViewModel.Anrede,
-                BenutzerGruppen = createBenutzerViewModel.BenutzerGruppen,
-                Ort = createBenutzerViewModel.Ort
+                cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
+                cfg.CreateMap<Benutzer, CreateBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, CreateBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, EditBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, DeleteBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, DetailsBenutzerViewModel>().ReverseMap();
+            });
 
-            };
-
+            Mapper = config.CreateMapper();
 
         }
 
-        public Benutzer MapEditBenutzerViewModel_Benutzer(EditBenutzerViewModel editBenutzerViewModel)
+        public Benutzer Map_CreateBenutzerViewModel_Benutzer(CreateBenutzerViewModel createBenutzerViewModel)
         {
-            return new Benutzer()
-            {
-                BenutzerId = editBenutzerViewModel.BenutzerId,
-                Nachname = editBenutzerViewModel.Nachname,
-                Vorname = editBenutzerViewModel.Vorname,
-                Mail = editBenutzerViewModel.Mail,
-                Strasse = editBenutzerViewModel.Strasse,
-                Plz = editBenutzerViewModel.Plz,
-                Telefon = editBenutzerViewModel.Telefon,
-                Anrede = editBenutzerViewModel.Anrede,
-                BenutzerGruppen = editBenutzerViewModel.BenutzerGruppen,
-                Ort = editBenutzerViewModel.Ort
-
-            };
+            return Mapper.Map<Benutzer>(createBenutzerViewModel);
         }
 
-        public EditBenutzerViewModel MapBenutzer_EditBenutzerViewModel(Benutzer benutzer)
+        public Benutzer Map_EditBenutzerViewModel_Benutzer(EditBenutzerViewModel editBenutzerViewModel)
         {
-            return new EditBenutzerViewModel()
-            {
-                BenutzerId = benutzer.BenutzerId,
-                Nachname = benutzer.Nachname,
-                Vorname = benutzer.Vorname,
-                Mail = benutzer.Mail,
-                Strasse = benutzer.Strasse,
-                Plz = benutzer.Plz,
-                Telefon = benutzer.Telefon,
-                Anrede = benutzer.Anrede,
-                BenutzerGruppen = benutzer.BenutzerGruppen,
-                Ort = benutzer.Ort
-            };
+            return Mapper.Map<Benutzer>(editBenutzerViewModel);
         }
 
-        public DetailsBenutzerViewModel MapBenutzer_DetailsBenutzerViewModel(Benutzer benutzer)
+        public EditBenutzerViewModel Map_Benutzer_EditBenutzerViewModel(Benutzer benutzer)
         {
-            return new DetailsBenutzerViewModel()
-            {
-                BenutzerId = benutzer.BenutzerId,
-                Nachname = benutzer.Nachname,
-                Vorname = benutzer.Vorname,
-                Mail = benutzer.Mail,
-                Strasse = benutzer.Strasse,
-                Plz = benutzer.Plz,
-                Telefon = benutzer.Telefon,
-                Anrede = benutzer.Anrede,
-                BenutzerGruppen = benutzer.BenutzerGruppen,
-                Ort = benutzer.Ort
-            };
+            return Mapper.Map<EditBenutzerViewModel>(benutzer);
         }
 
-        public Benutzer MapDeleteBenutzerViewModel_Benutzer(DeleteBenutzerViewModel deleteBenutzerViewModel)
+        public DetailsBenutzerViewModel Map_Benutzer_DetailsBenutzerViewModel(Benutzer benutzer)
         {
-            return new Benutzer()
-            {
-                BenutzerId = deleteBenutzerViewModel.BenutzerId,
-                Nachname = deleteBenutzerViewModel.Nachname,
-                Vorname = deleteBenutzerViewModel.Vorname,
-                Mail = deleteBenutzerViewModel.Mail,
-                Strasse = deleteBenutzerViewModel.Strasse,
-                Plz = deleteBenutzerViewModel.Plz,
-                Telefon = deleteBenutzerViewModel.Telefon,
-                Anrede = deleteBenutzerViewModel.Anrede,
-                BenutzerGruppen = deleteBenutzerViewModel.BenutzerGruppen,
-                Ort = deleteBenutzerViewModel.Ort
-
-            };
+            return Mapper.Map<DetailsBenutzerViewModel>(benutzer);
         }
 
-        public DeleteBenutzerViewModel MapBenutzer_DeleteBenutzerViewModel(Benutzer benutzer)
+        public Benutzer Map_DeleteBenutzerViewModel_Benutzer(DeleteBenutzerViewModel deleteBenutzerViewModel)
         {
-            return new DeleteBenutzerViewModel()
-            {
-                BenutzerId = benutzer.BenutzerId,
-                Nachname = benutzer.Nachname,
-                Vorname = benutzer.Vorname,
-                Mail = benutzer.Mail,
-                Strasse = benutzer.Strasse,
-                Plz = benutzer.Plz,
-                Telefon = benutzer.Telefon,
-                Anrede = benutzer.Anrede,
-                BenutzerGruppen = benutzer.BenutzerGruppen,
-                Ort = benutzer.Ort
-            };
+            return Mapper.Map<Benutzer>(deleteBenutzerViewModel);
+        }
+
+        public DeleteBenutzerViewModel Map_Benutzer_DeleteBenutzerViewModel(Benutzer benutzer)
+        {
+            return Mapper.Map<DeleteBenutzerViewModel>(benutzer);
         }
 
     }
