@@ -7,12 +7,12 @@
 
         
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
+            <li class="dropdown", id="DropdownLogout">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
+                    <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
                    
                 </ul>
             </li>
@@ -36,7 +36,7 @@ else
 {
    
     <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <li class="dropdown", id="DropdownLogin">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
             </a>
