@@ -65,7 +65,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Test_Login.cs" />
+    <Compile Include="Tests Chrome.cs" />
+    <Compile Include="Tests Edge.cs" />
+    <Compile Include="Tests Firefox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
