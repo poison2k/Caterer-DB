@@ -40,7 +40,8 @@ namespace Business.Services
 
         public void RemoveBenutzer(Benutzer benutzer)
         {
-            BenutzerRepository.RemoveUser(benutzer);
+            
+            BenutzerRepository.RemoveUser(BenutzerRepository.SearchUserById(benutzer.BenutzerId));
         }
     }
 }

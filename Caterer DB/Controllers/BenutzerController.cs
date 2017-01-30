@@ -39,12 +39,15 @@ namespace Caterer_DB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Benutzer benutzer = BenutzerService.SearchUserById(Convert.ToInt32(id));
-            if (benutzer == null)
+
+            DetailsBenutzerViewModel detailsBenutzerViewModel =
+                BenutzerViewModelService.MapBenutzer_DetailsBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+
+            if (detailsBenutzerViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(benutzer);
+            return View(detailsBenutzerViewModel);
         }
 
         // GET: Benutzer/Create
@@ -77,12 +80,15 @@ namespace Caterer_DB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Benutzer benutzer = BenutzerService.SearchUserById(Convert.ToInt32(id));
-            if (benutzer == null)
+
+            EditBenutzerViewModel editBenutzerViewModel = 
+                BenutzerViewModelService.MapBenutzer_EditBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+            
+            if (editBenutzerViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(benutzer);
+            return View(editBenutzerViewModel);
         }
 
         // POST: Benutzer/Edit/5
@@ -90,15 +96,15 @@ namespace Caterer_DB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BenutzerId,Anrede,Vorname,Nachname,Telefon,Mail,Strasse,Plz,Ort")] Benutzer benutzer)
+        public ActionResult Edit(EditBenutzerViewModel editBenutzerViewModel)
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.EditBenutzer(benutzer);
+                BenutzerService.EditBenutzer(BenutzerViewModelService.MapEditBenutzerViewModel_Benutzer(editBenutzerViewModel));
                
                 return RedirectToAction("Index");
             }
-            return View(benutzer);
+            return View(editBenutzerViewModel);
         }
 
         // GET: Benutzer/Delete/5
@@ -108,21 +114,23 @@ namespace Caterer_DB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Benutzer benutzer = BenutzerService.SearchUserById(Convert.ToInt32(id));
-            if (benutzer == null)
+
+            DeleteBenutzerViewModel deleteBenutzerViewModel =
+                BenutzerViewModelService.MapBenutzer_DeleteBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+
+            if (deleteBenutzerViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(benutzer);
+            return View(deleteBenutzerViewModel);
         }
 
         // POST: Benutzer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(DeleteBenutzerViewModel deleteBenutzerViewModel)
         {
-            Benutzer benutzer = BenutzerService.SearchUserById(Convert.ToInt32(id));
-            BenutzerService.RemoveBenutzer(benutzer);
+            BenutzerService.RemoveBenutzer(BenutzerViewModelService.MapDeleteBenutzerViewModel_Benutzer(deleteBenutzerViewModel));
             
             return RedirectToAction("Index");
         }
