@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Caterer_DB.Controllers;
 using Microsoft.Owin.Security;
 using System.Web;
+using DataAccess.Repositories;
+using Business.Services;
+using Business.Interfaces;
 
 namespace Caterer_DB.App_Start
 {
@@ -50,7 +53,8 @@ namespace Caterer_DB.App_Start
             container.RegisterType<ApplicationUserManager>();
             container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<IAuthenticationManager>(new InjectionFactory(o => HttpContext.Current.GetOwinContext().Authentication));
-            container.RegisterType<IBenutzerRepository, IBenutzerRepository>();
+            container.RegisterType<IBenutzerRepository, BenutzerRepository>();
+            container.RegisterType<IBenutzerService, BenutzerService>();
         }
     }
 }

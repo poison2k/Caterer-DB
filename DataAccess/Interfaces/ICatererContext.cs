@@ -5,8 +5,9 @@ using System.Data.Entity.Infrastructure;
 
 namespace DataAccess.Interfaces
 {
-    public interface ICatererContext : IObjectContextAdapter
-    {
+    public interface ICatererContext : IObjectContextAdapter {
+
+        int SaveChanges();
 
         DbSet Set(Type entityType);
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
@@ -20,6 +21,7 @@ namespace DataAccess.Interfaces
         DbSet<Antwort> Antwort { get; set; }
         DbSet<Fragebogen> Fragebogen { get; set; }
 
+        void SetModified(object objekt);
 
     }
 }

@@ -2,7 +2,7 @@
 using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+
 
 namespace DataAccess.Repositories
 {
@@ -10,12 +10,13 @@ namespace DataAccess.Repositories
     {
         protected ICatererContext Db { get; }
 
-        protected BenutzerRepository(ICatererContext db)
+        public BenutzerRepository(ICatererContext db)
         {
             Db = db;
         }
 
-        public Benutzer SearchUserById(int id) {
+        public Benutzer SearchUserById(int id)
+        {
 
             return Db.Benutzer.Where(x => x.BenutzerId == id).SingleOrDefault();
 
@@ -48,6 +49,33 @@ namespace DataAccess.Repositories
             return Db.Benutzer.Where(x => x.Nachname == surname).ToList();
 
         }
-        
+
+        public List<Benutzer> SearchUser()
+        {
+
+            return Db.Benutzer.ToList();
+
+        }
+
+        public void AddUser(Benutzer benutzer)
+        {
+            Db.Benutzer.Add(benutzer);
+            Db.SaveChanges();
+
+        }
+
+        public void EditUser(Benutzer benutzer)
+        {
+            Db.SetModified(benutzer);
+            Db.SaveChanges();
+        }
+
+        public void RemoveUser(Benutzer benutzer)
+        {
+            Db.Benutzer.Remove(benutzer);
+            Db.SaveChanges();
+
+        }
+
     }
 }

@@ -16,7 +16,6 @@ namespace DataAccess.Context
     {
 
 
-        
 
         public CatererContext() : base("CatererConnectionString") { }
         public virtual DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
@@ -76,8 +75,15 @@ namespace DataAccess.Context
         {
             this.EnableFilter(name);
         }
+
+       
+        public void SetModified(object objekt)
+        {
+            Entry(objekt).State = EntityState.Modified;
+        }
     }
 }
+
 
 
 

@@ -229,13 +229,16 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BenutzerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BenutzerViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModelServices\BenutzerViewModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -310,9 +313,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\AGB.cshtml" />
     <Content Include="Views\Home\Datenschutz.cshtml" />
+    <Content Include="Views\Benutzer\Create.cshtml" />
+    <Content Include="Views\Benutzer\Delete.cshtml" />
+    <Content Include="Views\Benutzer\Details.cshtml" />
+    <Content Include="Views\Benutzer\Edit.cshtml" />
+    <Content Include="Views\Benutzer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Interfaces\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +331,10 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{EFDBBFFD-513C-496D-B639-EDF3531EC796}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{E0CE96CF-2177-4EE1-8FBD-0FF9315DD6CD}</Project>
       <Name>DataAccess</Name>

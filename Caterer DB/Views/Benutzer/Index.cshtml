@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DataAccess.Model.Benutzer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Anrede)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vorname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nachname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Strasse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ort)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anrede)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vorname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nachname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Strasse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ort)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BenutzerId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BenutzerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BenutzerId })
+        </td>
+    </tr>
+}
+
+</table>
