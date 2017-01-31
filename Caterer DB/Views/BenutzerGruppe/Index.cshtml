@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DataAccess.Model.BenutzerGruppe>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bezeichnung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Löschbar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IstGelöscht)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bezeichnung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Löschbar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IstGelöscht)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NutzerGruppeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NutzerGruppeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NutzerGruppeID })
+        </td>
+    </tr>
+}
+
+</table>
