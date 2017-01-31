@@ -72,7 +72,7 @@ namespace DataAccess.Repositories
 
         public void RemoveUser(Benutzer benutzer)
         {
-            Db.Benutzer.Remove(benutzer);
+            Db.Set<Benutzer>().Remove(benutzer);
             Db.SaveChanges();
 
         }
