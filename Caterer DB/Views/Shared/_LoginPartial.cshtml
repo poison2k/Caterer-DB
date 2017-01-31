@@ -18,15 +18,15 @@
             </li>
 
 
-            <li class="dropdown">
+            <li class="dropdown", id="DropdownServiceLogin">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class='glyphicon glyphicon-info-sign'></i><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("AGB", "AGB", "Home")</li>
-                    <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Impressum", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("AGB", "AGB", "Home", new { id = "DropdownAGBLogin" })</li>
+                    <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home", new { id = "DropdownDatenschutzLogin" })</li>
+                    <li>@Html.ActionLink("Kontakt", "Contact", "Home", new { id = "DropdownKontaktLogin" })</li>
+                    <li>@Html.ActionLink("Impressum", "Contact", "Home", new { id = "DropdownImpressumLogin" })</li>
                 </ul>
             </li>
         </ul>
@@ -47,15 +47,15 @@ else
         </li>
        
         
-        <li class="dropdown">
+        <li class="dropdown", id="DropdownServiceLogout">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class='glyphicon glyphicon-info-sign'></i><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li>@Html.ActionLink("AGB", "AGB", "Home")</li>
-                <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home")</li>
-                <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Impressum", "Contact", "Home")</li>
+                <li>@Html.ActionLink("AGB", "AGB", "Home", new { id = "DropdownAGBLogout" })</li>
+                <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home", new { id = "DropdownDatenschutzLogout" })</li>
+                <li>@Html.ActionLink("Kontakt", "Contact", "Home", new { id = "DropdownKontaktLogout" })</li>
+                <li>@Html.ActionLink("Impressum", "Contact", "Home", new { id = "DropdownImpressumLogout" })</li>
             </ul>
         </li>
     </ul>
