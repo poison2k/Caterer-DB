@@ -41,6 +41,11 @@ namespace Caterer_DB.Controllers
             }
         }
 
+        public ViewResult Login(LoginViewModel loginViewModel, object model, object p)
+        {
+            throw new NotImplementedException();
+        }
+
         public ApplicationUserManager UserManager
         {
             get
