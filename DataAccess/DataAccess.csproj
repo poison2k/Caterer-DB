@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Context\CatererContext.cs" />
     <Compile Include="Interfaces\IAntwortRepository.cs" />
+    <Compile Include="Interfaces\IBenutzerGruppenRepository.cs" />
     <Compile Include="Interfaces\IBenutzerRepository.cs" />
     <Compile Include="Interfaces\ICatererContext.cs" />
     <Compile Include="Interfaces\IFragebogenRepository.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Model\Sparte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AntwortRepository.cs" />
+    <Compile Include="Repositories\BenutzerGruppeRepository.cs" />
     <Compile Include="Repositories\BenutzerRepository.cs" />
     <Compile Include="Repositories\FragebogenRepository.cs" />
     <Compile Include="Repositories\FrageRepository.cs" />

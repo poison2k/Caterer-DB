@@ -22,7 +22,6 @@ namespace Caterer_DB.Models.ViewModelServices
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
                 cfg.CreateMap<Benutzer, CreateBenutzerViewModel>().ReverseMap();
-                cfg.CreateMap<Benutzer, CreateBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, EditBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DeleteBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsBenutzerViewModel>().ReverseMap();

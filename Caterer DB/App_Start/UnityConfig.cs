@@ -55,6 +55,8 @@ namespace Caterer_DB.App_Start
             container.RegisterType<IAuthenticationManager>(new InjectionFactory(o => HttpContext.Current.GetOwinContext().Authentication));
             container.RegisterType<IBenutzerRepository, BenutzerRepository>();
             container.RegisterType<IBenutzerService, BenutzerService>();
+            container.RegisterType<IBenutzerGruppeService, BenutzerGruppeService>();
+            container.RegisterType<IBenutzerGruppeRepository, BenutzerGruppeRepository>();
         }
     }
 }

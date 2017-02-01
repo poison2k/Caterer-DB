@@ -235,14 +235,17 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BenutzerController.cs" />
+    <Compile Include="Controllers\BenutzerGruppeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BenutzerGruppeViewModel.cs" />
     <Compile Include="Models\BenutzerViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModelServices\BenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerViewModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -323,6 +326,11 @@
     <Content Include="Views\Benutzer\Details.cshtml" />
     <Content Include="Views\Benutzer\Edit.cshtml" />
     <Content Include="Views\Benutzer\Index.cshtml" />
+    <Content Include="Views\BenutzerGruppe\Create.cshtml" />
+    <Content Include="Views\BenutzerGruppe\Delete.cshtml" />
+    <Content Include="Views\BenutzerGruppe\Details.cshtml" />
+    <Content Include="Views\BenutzerGruppe\Edit.cshtml" />
+    <Content Include="Views\BenutzerGruppe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
