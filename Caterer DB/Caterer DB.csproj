@@ -238,17 +238,22 @@
     <Compile Include="Controllers\BenutzerController.cs" />
     <Compile Include="Controllers\BenutzerGruppeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RechtController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBenutzerViewModelService.cs" />
     <Compile Include="Interfaces\IFindCurrentUserService.cs" />
     <Compile Include="Interfaces\ILoginService.cs" />
+    <Compile Include="Interfaces\IRechtViewModelService.cs" />
     <Compile Include="Models\BenutzerGruppeViewModel.cs" />
     <Compile Include="Models\BenutzerViewModel.cs" />
+    <Compile Include="Interfaces\IBenutzerGruppeViewModelService.cs" />
+    <Compile Include="Models\RechtViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerViewModelService.cs" />
+    <Compile Include="Models\ViewModelServices\RechtViewModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\LoginResources1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -329,6 +334,11 @@
     <Content Include="Views\BenutzerGruppe\Details.cshtml" />
     <Content Include="Views\BenutzerGruppe\Edit.cshtml" />
     <Content Include="Views\BenutzerGruppe\Index.cshtml" />
+    <Content Include="Views\Recht\Create.cshtml" />
+    <Content Include="Views\Recht\Delete.cshtml" />
+    <Content Include="Views\Recht\Details.cshtml" />
+    <Content Include="Views\Recht\Edit.cshtml" />
+    <Content Include="Views\Recht\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Impressum.cshtml" />
   </ItemGroup>
