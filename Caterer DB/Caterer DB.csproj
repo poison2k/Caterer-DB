@@ -246,6 +246,7 @@
     <Compile Include="Interfaces\ILoginService.cs" />
     <Compile Include="Models\BenutzerGruppeViewModel.cs" />
     <Compile Include="Models\BenutzerViewModel.cs" />
+    <Compile Include="Interfaces\IBenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerViewModelService.cs" />
@@ -329,7 +330,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
