@@ -7,7 +7,7 @@ using System.Text;
 namespace SeleniumTests
 {
     [TestFixture]
-    public class TestLoginChrome
+    public class TestChrome
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;

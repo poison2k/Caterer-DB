@@ -7,7 +7,7 @@ using System.Text;
 namespace SeleniumTests
 {
     [TestFixture]
-    public class TestLoginFirefox
+    public class TestFirefox
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;

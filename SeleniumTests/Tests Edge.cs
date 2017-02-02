@@ -7,7 +7,7 @@ using System.Text;
 namespace SeleniumTests
 {
     [TestFixture]
-    public class TestLoginEdge
+    public class TestEdge
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
