@@ -14,6 +14,7 @@ using Business.Interfaces;
 using Caterer_DB.Interfaces;
 using Caterer_DB.Services;
 using Caterer_DB.Models.ViewModelServices;
+using Caterer_DB.Models.Interfaces;
 
 namespace Caterer_DB.App_Start
 {
@@ -56,6 +57,10 @@ namespace Caterer_DB.App_Start
             container.RegisterType<ILoginService, LoginService>();
             container.RegisterType<IFindCurrentUserService, FindCurrentUserService>();
             container.RegisterType<IBenutzerViewModelService, BenutzerViewModelService>();
+            container.RegisterType<IBenutzerGruppeViewModelService, BenutzerGruppeViewModelService>();
+            container.RegisterType<IRechtViewModelService, RechtViewModelService>();
+            container.RegisterType<IRechtService, RechtService>();
+            container.RegisterType<IRechtRepository, RechtRepository>();
 
         }
     }
