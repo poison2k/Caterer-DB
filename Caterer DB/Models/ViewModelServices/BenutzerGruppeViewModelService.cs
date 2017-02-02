@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Caterer_DB.Models.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
@@ -7,8 +8,9 @@ using System.Web;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
-    public class BenutzerGruppeViewModelService
+    public class BenutzerGruppeViewModelService : IBenutzerGruppeViewModelService
     {
+
         private IMapper Mapper { get; set; }
 
 

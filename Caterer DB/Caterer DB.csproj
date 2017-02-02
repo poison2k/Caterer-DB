@@ -244,6 +244,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BenutzerGruppeViewModel.cs" />
     <Compile Include="Models\BenutzerViewModel.cs" />
+    <Compile Include="Models\Interfaces\IBenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerViewModelService.cs" />
@@ -334,7 +335,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Interfaces\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
