@@ -11,6 +11,7 @@ using DataAccess.Interfaces;
 using DataAccess.Model;
 using Caterer_DB.Models;
 using Caterer_DB.Interfaces;
+using System.Web.Helpers;
 
 namespace Caterer_DB.Services
 {
@@ -34,12 +35,8 @@ namespace Caterer_DB.Services
         {
             try
             {
-                //Passwort nur geprüft, wenn die Applikation nicht im DEBUG-Modus gestartet wird
-#if !DEBUG
-                 SpeichereLdapNutzerInDb(kurzname, passwort);
-#endif
                 Benutzer user = LoginRepository.LadeNutzerMitEmail(email);
-                if (!(user.Passwort == passwort)) {
+                if (!(Crypto.VerifyHashedPassword(user.Passwort,passwort))) {
                     return LoginSuccessLevel.PasswortFalsch;
                 }
 

@@ -132,8 +132,11 @@
   <data name="DatenbankCode" xml:space="preserve">
     <value>Custom Error</value>
   </data>
+  <data name="EMailVorhanden" xml:space="preserve">
+    <value>E-Mail ist bereits registriert</value>
+  </data>
   <data name="PasswortBeschreibung" xml:space="preserve">
-    <value>Nutzername oder Passwort falsch</value>
+    <value>E-Mail oder Passwort falsch</value>
   </data>
   <data name="PasswortCode" xml:space="preserve">
     <value>Falsche Passwort</value>
@@ -145,7 +148,7 @@
     <value>Passwort vergessen?</value>
   </data>
   <data name="UnbekannterBeschreibung" xml:space="preserve">
-    <value>Unbekannter Fehler!</value>
+    <value>E-Mail oder Passwort falsch</value>
   </data>
   <data name="UnbekannterCode" xml:space="preserve">
     <value>UnknownError</value>

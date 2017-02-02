@@ -15,6 +15,6 @@ namespace Business.Interfaces
         void AddBenutzer(Benutzer benutzer);
         void EditBenutzer(Benutzer benutzer);
         void RemoveBenutzer(int id);
-
+        bool CheckEmailForRegistration(string mail);
     }
 }

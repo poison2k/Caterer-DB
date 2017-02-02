@@ -28,13 +28,6 @@ namespace Caterer_DB.Controllers
         }
 
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -55,6 +48,13 @@ namespace Caterer_DB.Controllers
 
             return View();
         }
-       
+
+        public ActionResult Impressum()
+        {
+            ViewBag.Message = "Impressum";
+
+            return View();
+        }
+
     }
 }

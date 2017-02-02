@@ -43,5 +43,17 @@ namespace Business.Services
             
             BenutzerRepository.RemoveUser(BenutzerRepository.SearchUserById(id));
         }
+
+        public bool CheckEmailForRegistration(string mail)
+        {
+            if (BenutzerRepository.SearchUserByEMail(mail) == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

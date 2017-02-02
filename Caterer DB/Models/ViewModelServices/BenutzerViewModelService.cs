@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
@@ -29,6 +30,7 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, DeleteBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, AnmeldenBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, RegisterBenutzerViewModel>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();
@@ -106,5 +108,11 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<DeleteBenutzerViewModel>(benutzer);
         }
 
+        public Benutzer Map_RegisterBenutzerViewModel_Benutzer(RegisterBenutzerViewModel registerBenutzerViewModel)
+        {
+            var benutzer =  Mapper.Map<Benutzer>(registerBenutzerViewModel);
+            benutzer.Passwort = Crypto.HashPassword(registerBenutzerViewModel.Passwort);
+            return benutzer;
+        }
     }
 }

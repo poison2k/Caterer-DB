@@ -85,12 +85,12 @@ namespace Caterer_DB.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name = "Nutzername : ")]
+        [Display(Name = "E-Mail")]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Passwort : ")]
+        [Display(Name = "Passwort")]
         public string Passwort { get; set; }
     }
 

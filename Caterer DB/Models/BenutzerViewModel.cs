@@ -6,6 +6,51 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 namespace Caterer_DB.Models
 {
+
+    public class RegisterBenutzerViewModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Mail { get; set; }
+
+       
+        [Required]
+        [StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Passwort")]
+        public string Passwort { get; set; }
+
+        [Required]
+        [DisplayName(@"Passwort Wiederholung")]
+        [DataType(DataType.Password)]
+        [Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
+        public string PasswortVerification { get; set; }
+
+        public string Anrede { get; set; }
+
+        [Required]
+        public string Vorname { get; set; }
+
+        [Required]
+        public string Nachname { get; set; }
+
+        [DisplayName(@"Telefon")]
+        public string Telefon { get; set; }
+
+       
+
+        public string Strasse { get; set; }
+
+        public string Plz { get; set; }
+
+        public string Ort { get; set; }
+
+       
+    }
+
+
+
+
     public class CreateBenutzerViewModel
     {
         [Key]

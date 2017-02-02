@@ -1,7 +1,9 @@
-﻿using Caterer_DB.Interfaces;
+﻿using Business.Interfaces;
+using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
@@ -10,10 +12,14 @@ namespace Caterer_DB.Controllers
     public class AccountController : BaseController
     {
         public ILoginService LoginService { get; set; }
+        public IBenutzerService BenutzerService { get; set; }
+        public IBenutzerViewModelService BenutzerViewModelService { get; set;}
 
-        public AccountController(ILoginService loginService)
+        public AccountController(ILoginService loginService, IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService)
         {
             LoginService = loginService;
+            BenutzerService = benutzerService;
+            BenutzerViewModelService = benutzerViewModelService;
         }
 
         //
@@ -24,6 +30,40 @@ namespace Caterer_DB.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
+
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Register(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+
+        // POST: Benutzer/Create
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterBenutzerViewModel registerBenutzerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                if ( BenutzerService.CheckEmailForRegistration( registerBenutzerViewModel.Mail))
+                {
+                    BenutzerService.AddBenutzer(BenutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(registerBenutzerViewModel));
+                }
+                else {
+                    ModelState.AddModelError("", LoginResources.EMailVorhanden);
+                    return View(registerBenutzerViewModel);
+                }
+                    return RedirectToAction("Index", "Home");
+            }
+
+            return View(registerBenutzerViewModel);
+        }
+
 
         //
         // POST: /Anmelde/Login

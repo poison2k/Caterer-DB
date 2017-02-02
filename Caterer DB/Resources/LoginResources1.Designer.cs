@@ -29,7 +29,7 @@ namespace Caterer_DB.Resources {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public LoginResources() {
+        internal LoginResources() {
         }
         
         /// <summary>
@@ -59,7 +59,7 @@ namespace Caterer_DB.Resources {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Nutzereintrag nicht vorhanden.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("BenutzerBeschreibung", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to User not Exist.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("BenutzerCode", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Bitte geben Sie einen Benutzernamen ein.
         /// </summary>
@@ -86,7 +86,7 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("BenutzerValidationMessage", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Benutzer konnte nicht aus Datenbank gelesen werden.
         /// </summary>
@@ -95,7 +95,7 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("DatenbankBeschreibung", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Custom Error.
         /// </summary>
@@ -104,16 +104,25 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("DatenbankCode", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Nutzername oder Passwort falsch.
+        ///   Looks up a localized string similar to E-Mail ist bereits registriert.
+        /// </summary>
+        public static string EMailVorhanden {
+            get {
+                return ResourceManager.GetString("EMailVorhanden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-Mail oder Passwort falsch.
         /// </summary>
         public static string PasswortBeschreibung {
             get {
                 return ResourceManager.GetString("PasswortBeschreibung", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Falsche Passwort.
         /// </summary>
@@ -122,7 +131,7 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("PasswortCode", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Bitte geben Sie ein Passwort ein.
         /// </summary>
@@ -131,7 +140,7 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("PasswortValidationMessage", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Passwort vergessen?.
         /// </summary>
@@ -140,16 +149,16 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("PasswortVergessen", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Unbekannter Fehler!.
+        ///   Looks up a localized string similar to E-Mail oder Passwort falsch.
         /// </summary>
         public static string UnbekannterBeschreibung {
             get {
                 return ResourceManager.GetString("UnbekannterBeschreibung", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to UnknownError.
         /// </summary>
@@ -158,7 +167,7 @@ namespace Caterer_DB.Resources {
                 return ResourceManager.GetString("UnbekannterCode", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Platzhalter.
         /// </summary>
