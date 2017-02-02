@@ -11,10 +11,10 @@ namespace DataAccess.Model
 
         public string Anrede { get; set; }
 
-        [Required]
+   
         public string Vorname { get; set; }
 
-        [Required]
+   
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon")]
@@ -27,6 +27,8 @@ namespace DataAccess.Model
         public string Plz { get; set; }
 
         public string Ort { get; set; }
+
+        public string Passwort { get; set; }
 
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
     }

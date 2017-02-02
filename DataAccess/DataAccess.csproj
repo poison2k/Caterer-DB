@@ -73,9 +73,9 @@
     <Compile Include="Interfaces\ICatererContext.cs" />
     <Compile Include="Interfaces\IFragebogenRepository.cs" />
     <Compile Include="Interfaces\IFrageRepository.cs" />
+    <Compile Include="Interfaces\ILoginRepository.cs" />
     <Compile Include="Interfaces\ISparteRepository.cs" />
     <Compile Include="Model\Antwort.cs" />
-    <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Benutzer.cs" />
     <Compile Include="Model\BenutzerGruppe.cs" />
     <Compile Include="Model\Frage.cs" />
@@ -89,6 +89,7 @@
     <Compile Include="Repositories\BenutzerRepository.cs" />
     <Compile Include="Repositories\FragebogenRepository.cs" />
     <Compile Include="Repositories\FrageRepository.cs" />
+    <Compile Include="Repositories\LoginRepository.cs" />
     <Compile Include="Repositories\SparteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
