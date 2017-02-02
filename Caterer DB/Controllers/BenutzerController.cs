@@ -1,4 +1,5 @@
 ﻿using Business.Interfaces;
+using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
 using System;
@@ -7,16 +8,18 @@ using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
-    public class BenutzerController : Controller
+    public class BenutzerController : BaseController
     {
         //private CatererContext db = new CatererContext();
-        private BenutzerViewModelService BenutzerViewModelService = new BenutzerViewModelService();
+        private IBenutzerViewModelService BenutzerViewModelService { get; set; }
 
         private IBenutzerService BenutzerService { get; set; }
 
-        public BenutzerController(IBenutzerService benutzerService)
+        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService)
         {
             BenutzerService = benutzerService;
+            BenutzerViewModelService = benutzerViewModelService;
+
         }
 
         // GET: Benutzer

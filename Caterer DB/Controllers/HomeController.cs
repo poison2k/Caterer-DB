@@ -1,17 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Caterer_DB.Interfaces;
 using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        [HttpGet]
-        public ActionResult Index()
+
+        public HomeController(IBenutzerViewModelService benutzerViewModelService)
         {
-            return View();
+            BenutzerViewModelService = benutzerViewModelService;
+           
+        }
+
+        private IBenutzerViewModelService BenutzerViewModelService { get; set; }
+
+
+
+        [HttpGet]
+        public ActionResult Index(string infobox = "")
+        {
+            
+            if (Request.IsAuthenticated)
+                return View( BenutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(User.BenutzerId, infobox));
+
+            return View( BenutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(-1, infobox));
+          
         }
 
 

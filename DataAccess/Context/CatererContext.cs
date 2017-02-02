@@ -1,23 +1,18 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataAccess.Interfaces;
 using DataAccess.Model;
-using DataAccess.Interfaces;
-using System.Data.Entity;
-using System.Configuration;
 using EntityFramework.DynamicFilters;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Configuration;
+using System.Data.Entity;
 
 namespace DataAccess.Context
 {
-    public class CatererContext : IdentityDbContext<ApplicationUser>, ICatererContext
+    public class CatererContext : DbContext, ICatererContext
     {
+        public CatererContext() : base("CatererConnectionString")
+        {
+        }
 
-
-
-        public CatererContext() : base("CatererConnectionString") { }
         public virtual DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
         public virtual DbSet<Recht> Recht { get; set; }
         public virtual DbSet<RechteGruppe> RechteGruppe { get; set; }
@@ -26,13 +21,6 @@ namespace DataAccess.Context
         public virtual DbSet<Frage> Frage { get; set; }
         public virtual DbSet<Antwort> Antwort { get; set; }
         public virtual DbSet<Fragebogen> Fragebogen { get; set; }
-        //public virtual DbSet<IdentityUser> user { get; set; }
-        //public virtual DbSet<ApplicationUser> role { get; set; }
-        //public virtual DbSet<IdentityRole> userrole { get; set; }
-        //public virtual DbSet<IdentityUserClaim> userclaim { get; set; }
-        //public virtual DbSet<IdentityUserLogin> userlogin { get; set; }
-
-
 
         public static CatererContext Create()
         {
@@ -42,13 +30,6 @@ namespace DataAccess.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<IdentityUser>().ToTable("user");
-            modelBuilder.Entity<ApplicationUser>().ToTable("user");
-
-            modelBuilder.Entity<IdentityRole>().ToTable("role");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("userrole");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("userclaim");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("userlogin");
         }
 
         private static string ConnectionStringErmitteln()
@@ -76,15 +57,9 @@ namespace DataAccess.Context
             this.EnableFilter(name);
         }
 
-       
         public void SetModified(object objekt)
         {
             Entry(objekt).State = EntityState.Modified;
         }
     }
 }
-
-
-
-
-

@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using Business.Interfaces;
+using Business.Services;
+using Caterer_DB.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
@@ -7,17 +10,17 @@ using System.Web;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
-    public class BenutzerViewModelService
+    public class BenutzerViewModelService : IBenutzerViewModelService
     {
 
 
 
         private IMapper Mapper { get; set; }
+        private IBenutzerService BenutzerService { get; set; }
 
-
-        public BenutzerViewModelService()
+        public BenutzerViewModelService(IBenutzerService benutzerService)
         {
-
+            BenutzerService = benutzerService;
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
@@ -25,11 +28,53 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, EditBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DeleteBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, AnmeldenBenutzerViewModel>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();
-
         }
+
+
+
+
+
+
+
+        public AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(Benutzer benutzer)
+        {
+            var anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
+            anmeldenBenutzerViewModel.AnmeldenModel = new LoginModel();
+
+            if (benutzer != null)
+            {
+                anmeldenBenutzerViewModel = Mapper.Map<AnmeldenBenutzerViewModel>(benutzer);
+            }
+
+            return anmeldenBenutzerViewModel;
+        }
+
+
+        public AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(int benutzerId = -1, string infobox = "")
+        {
+            var anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
+            anmeldenBenutzerViewModel.AnmeldenModel = new LoginModel();
+
+            if (infobox == "schliessen")
+                anmeldenBenutzerViewModel.Infobox = "verbergen";
+            else
+                anmeldenBenutzerViewModel.Infobox = "anzeigen";
+
+            Benutzer benutzer =  BenutzerService.SearchUserById(benutzerId);
+            if (benutzer != null)
+            {
+                anmeldenBenutzerViewModel = Mapper.Map(benutzer, anmeldenBenutzerViewModel);
+            }
+
+            return anmeldenBenutzerViewModel;
+        }
+
+
+
 
         public Benutzer Map_CreateBenutzerViewModel_Benutzer(CreateBenutzerViewModel createBenutzerViewModel)
         {

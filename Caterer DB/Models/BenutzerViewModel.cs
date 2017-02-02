@@ -121,4 +121,22 @@ namespace Caterer_DB.Models
 
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
     }
+
+    public class AnmeldenBenutzerViewModel
+    {
+        public string Anrede { get; set; }
+
+        public string Vorname { get; set; }
+
+        public string Nachname { get; set; }
+
+
+        public List<BenutzerGruppe> BenutzerGruppen { get; set; }
+
+        public LoginModel AnmeldenModel { get; set; }
+
+        public string Infobox { get; set; }
+
+        public List<string> FehlerListe { get; set; }
+    }
 }

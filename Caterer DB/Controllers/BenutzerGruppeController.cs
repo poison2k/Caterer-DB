@@ -7,7 +7,7 @@ using Caterer_DB.Models;
 
 namespace Caterer_DB.Controllers
 {
-    public class BenutzerGruppeController : Controller
+    public class BenutzerGruppeController : BaseController
     {
         private BenutzerGruppeViewModelService BenutzerGruppeViewModelService = new BenutzerGruppeViewModelService();
 
