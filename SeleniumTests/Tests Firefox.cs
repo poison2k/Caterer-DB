@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using System;
 using System.Text;
+using System.Threading;
 
 namespace SeleniumTests
 {
@@ -44,7 +45,8 @@ namespace SeleniumTests
         [SetUp]
         public void SetupTest()
         {
-
+            driver.Navigate().GoToUrl(baseURL);
+            Thread.Sleep(2000);
 
         }
 
@@ -70,16 +72,17 @@ namespace SeleniumTests
         public void LoginTest1()
         //T_U1-2_ALF_B_00 / T_U1-2_ALF_B_01
         {
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Willkommen"));
             Assert.AreEqual(baseURL, driver.Url.ToString());
 
@@ -94,17 +97,19 @@ namespace SeleniumTests
         {
             //Variante Dropdown
 
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
+            Thread.Sleep(3000);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("DropdownLogin")).Click();
             driver.FindElement(By.Id("loginLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Willkommen"));
             Assert.AreEqual(baseURL, driver.Url.ToString());
 
@@ -117,16 +122,16 @@ namespace SeleniumTests
         public void LoginTest_FalschesPW()
         //T_U1-2_ALF_B_05
         {
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys("Start#21");
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("error2"));
             Assert.AreEqual("E-Mail oder Passwort falsch", driver.FindElement(By.Id("error2")).Text);
 
@@ -136,16 +141,16 @@ namespace SeleniumTests
         public void LoginTest_FalscheEmail()
         //T_U1-2_ALF_B_06
         {
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.d");
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("error2"));
             Assert.AreEqual("E-Mail oder Passwort falsch", driver.FindElement(By.Id("error2")).Text);
 
@@ -155,15 +160,15 @@ namespace SeleniumTests
         public void LoginTest_OhnePW()
         //T_U1-2_ALF_B_07
         {
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("error1"));
             Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", driver.FindElement(By.Id("error1")).Text);
 
@@ -173,15 +178,15 @@ namespace SeleniumTests
         public void LoginTest_OhneEmail()
         //T_U1-2_ALF_B_08
         {
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email-error"));
             Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", driver.FindElement(By.Id("Email-error")).Text);
 
@@ -197,9 +202,9 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Knopf
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("Kontakt")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Ansprechp"));
             Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
 
@@ -209,10 +214,10 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Dropdown Logout
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("DropdownServiceLogout")).Click();
             driver.FindElement(By.Id("DropdownKontaktLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Ansprechp"));
             Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
 
@@ -222,20 +227,20 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Dropdown Login
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("DropdownServiceLogin"));
             driver.FindElement(By.Id("DropdownServiceLogin")).Click();
             driver.FindElement(By.Id("DropdownKontaktLogin")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Ansprechp"));
             Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
 
@@ -253,9 +258,9 @@ namespace SeleniumTests
         //T_U1-6_AL_B_01
         {
             //Variante Knopf
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("Datenschutz")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Datenschutzbest"));
             Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
 
@@ -265,10 +270,10 @@ namespace SeleniumTests
         public void DatenschutzAufruf2()
         {
             //Variante Dropdown Logout
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("DropdownServiceLogout")).Click();
             driver.FindElement(By.Id("DropdownDatenschutzLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Datenschutzbest"));
             Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
 
@@ -278,20 +283,20 @@ namespace SeleniumTests
         public void DatenschutzAufruf3()
         {
             //Variante Dropdown Login
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click(); ;
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("DropdownServiceLogin"));
             driver.FindElement(By.Id("DropdownServiceLogin")).Click();
             driver.FindElement(By.Id("DropdownDatenschutzLogin")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Datenschutzbest"));
             Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
 
@@ -309,9 +314,9 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Knopf
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("AGB")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
 
@@ -321,10 +326,10 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Dropdown Logout
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("DropdownServiceLogout")).Click();
             driver.FindElement(By.Id("DropdownAGBLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
 
@@ -334,20 +339,20 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Dropdown Login
-            driver.Navigate().GoToUrl(baseURL);
+            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("DropdownServiceLogin"));
             driver.FindElement(By.Id("DropdownServiceLogin")).Click();
             driver.FindElement(By.Id("DropdownAGBLogin")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
 
