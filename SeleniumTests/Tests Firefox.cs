@@ -1,9 +1,9 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Text;
-using System.Threading;
 
 namespace SeleniumTests
 {
@@ -13,18 +13,16 @@ namespace SeleniumTests
         private IWebDriver driver;
         private StringBuilder verificationErrors;
         private string baseURL;
-
+        private WebDriverWait wait;
 
         [OneTimeSetUp]
-        public void OneTimeSetUp() {
+        public void OneTimeSetUp()
+        {
             driver = new FirefoxDriver();
             baseURL = "http://localhost:60003/";
             verificationErrors = new StringBuilder();
-
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }
-
-     
-
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
@@ -40,30 +38,27 @@ namespace SeleniumTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
-
-
         [SetUp]
         public void SetupTest()
         {
             driver.Navigate().GoToUrl(baseURL);
-            Thread.Sleep(2000);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
+            driver.FindElement(By.Id("loginLinkbutton"));
 
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
-
 
         [TearDown]
         public void TeardownTest()
         {
-
-
         }
+
         ////Zwingt Selenium bis zu 10 Sekunden nach dem Element zu suchen!
         //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
         ////Sucht nach dem Element
         //driver.FindElement(By.Id("Willkommen"));
         ////Erwarteten Wert überprüfen
         //Assert.AreEqual(baseURL, driver.Url.ToString());
-
 
         ////Alternative Validierung
         //Assert.AreEqual("Willkommen caterer@test.de", driver.FindElement(By.Id("Willkommen")).Text);
@@ -72,7 +67,6 @@ namespace SeleniumTests
         public void LoginTest1()
         //T_U1-2_ALF_B_00 / T_U1-2_ALF_B_01
         {
-            //driver.Navigate().GoToUrl(baseURL);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -89,20 +83,20 @@ namespace SeleniumTests
             driver.FindElement(By.Id("DropdownLogout")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
-
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
+
         [Test]
         public void LoginTest2()
         //T_U1-2_ALF_B_00 / T_U1-2_ALF_B_01
         {
             //Variante Dropdown
-
-            //driver.Navigate().GoToUrl(baseURL);
-            Thread.Sleep(3000);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("DropdownLogin")).Click();
             driver.FindElement(By.Id("loginLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
             driver.FindElement(By.Id("Passwort")).Clear();
@@ -116,13 +110,17 @@ namespace SeleniumTests
             driver.FindElement(By.Id("DropdownLogout")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
+            driver.FindElement(By.Id("loginLinkbutton"));
 
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
+
         [Test]
         public void LoginTest_FalschesPW()
         //T_U1-2_ALF_B_05
         {
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
@@ -134,14 +132,12 @@ namespace SeleniumTests
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("error2"));
             Assert.AreEqual("E-Mail oder Passwort falsch", driver.FindElement(By.Id("error2")).Text);
-
-
         }
+
         [Test]
         public void LoginTest_FalscheEmail()
         //T_U1-2_ALF_B_06
         {
-            //driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Id("loginLinkbutton")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
@@ -153,14 +149,13 @@ namespace SeleniumTests
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("error2"));
             Assert.AreEqual("E-Mail oder Passwort falsch", driver.FindElement(By.Id("error2")).Text);
-
-
         }
+
         [Test]
         public void LoginTest_OhnePW()
         //T_U1-2_ALF_B_07
         {
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
@@ -171,14 +166,13 @@ namespace SeleniumTests
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("error1"));
             Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", driver.FindElement(By.Id("error1")).Text);
-
-
         }
+
         [Test]
         public void LoginTest_OhneEmail()
         //T_U1-2_ALF_B_08
         {
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
@@ -189,8 +183,6 @@ namespace SeleniumTests
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email-error"));
             Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", driver.FindElement(By.Id("Email-error")).Text);
-
-
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -202,32 +194,32 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Knopf
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Kontakt")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Ansprechp"));
             Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
-
         }
+
         [Test]
         public void KontaktAufruf2()
         //T_U1-4_AL_B_01
         {
             //Variante Dropdown Logout
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("DropdownServiceLogout")).Click();
             driver.FindElement(By.Id("DropdownKontaktLogout")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Ansprechp"));
             Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
-
         }
+
         [Test]
         public void KontaktAufruf3()
         //T_U1-4_AL_B_01
         {
             //Variante Dropdown Login
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
@@ -247,6 +239,10 @@ namespace SeleniumTests
             driver.FindElement(By.Id("DropdownLogout")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -258,32 +254,32 @@ namespace SeleniumTests
         //T_U1-6_AL_B_01
         {
             //Variante Knopf
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Datenschutz")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Datenschutzbest"));
             Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
-
         }
+
         [Test]
         //T_U1-6_AL_B_01
         public void DatenschutzAufruf2()
         {
             //Variante Dropdown Logout
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("DropdownServiceLogout")).Click();
             driver.FindElement(By.Id("DropdownDatenschutzLogout")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Datenschutzbest"));
             Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
-
         }
+
         [Test]
         //T_U1-6_AL_B_01
         public void DatenschutzAufruf3()
         {
             //Variante Dropdown Login
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
@@ -303,6 +299,10 @@ namespace SeleniumTests
             driver.FindElement(By.Id("DropdownLogout")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -314,32 +314,32 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Knopf
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("AGB")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
-
         }
+
         [Test]
         public void AGBAufruf2()
         //T_U1-7_AL_B_01
         {
             //Variante Dropdown Logout
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("DropdownServiceLogout")).Click();
             driver.FindElement(By.Id("DropdownAGBLogout")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
-
         }
+
         [Test]
         public void AGBAufruf3()
         //T_U1-7_AL_B_01
         {
             //Variante Dropdown Login
-            //driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton")).Click();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Email")).Clear();
@@ -359,11 +359,14 @@ namespace SeleniumTests
             driver.FindElement(By.Id("DropdownLogout")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     }
 }
