@@ -13,17 +13,20 @@ namespace SeleniumTests
         private StringBuilder verificationErrors;
         private string baseURL;
 
-        [SetUp]
-        public void SetupTest()
-        {
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp() {
             driver = new FirefoxDriver();
             baseURL = "http://localhost:60003/";
             verificationErrors = new StringBuilder();
+
         }
 
+     
 
-        [TearDown]
-        public void TeardownTest()
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
         {
             try
             {
@@ -36,6 +39,22 @@ namespace SeleniumTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
+
+
+        [SetUp]
+        public void SetupTest()
+        {
+
+
+        }
+
+
+        [TearDown]
+        public void TeardownTest()
+        {
+
+
+        }
         ////Zwingt Selenium bis zu 10 Sekunden nach dem Element zu suchen!
         //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
         ////Sucht nach dem Element
