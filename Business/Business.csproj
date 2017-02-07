@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="Interfaces\IBenutzerGruppeService.cs" />
     <Compile Include="Interfaces\IBenutzerService.cs" />
+    <Compile Include="Interfaces\IRechteGruppeService.cs" />
     <Compile Include="Interfaces\IRechtService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BenutzerGruppeService.cs" />
     <Compile Include="Services\BenutzerService.cs" />
+    <Compile Include="Services\RechteGruppeService.cs" />
     <Compile Include="Services\RechtService.cs" />
   </ItemGroup>
   <ItemGroup>

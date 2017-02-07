@@ -34,14 +34,14 @@ namespace Caterer_DB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            DetailsBenutzerGruppeViewModel detailsGruppeBenutzerViewModel =
+            DetailsBenutzerGruppeViewModel detailsBenutzerGruppeViewModel =
                 BenutzerGruppeViewModelService.Map_BenutzerGruppe_DetailsBenutzerGruppeViewModel(BenutzerGruppeService.SearchGroupById(Convert.ToInt32(id)));
 
-            if (detailsGruppeBenutzerViewModel == null)
+            if (detailsBenutzerGruppeViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(detailsGruppeBenutzerViewModel);
+            return View(detailsBenutzerGruppeViewModel);
         }
 
         // GET: BenutzerGruppe/Create

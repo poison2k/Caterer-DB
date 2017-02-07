@@ -49,18 +49,25 @@ namespace Caterer_DB.App_Start
         
             container.RegisterType<ICatererContext, CatererContext>(new PerResolveLifetimeManager());
           
-            container.RegisterType<IBenutzerRepository, BenutzerRepository>();
-            container.RegisterType<IBenutzerService, BenutzerService>();
-            container.RegisterType<IBenutzerGruppeService, BenutzerGruppeService>();
-            container.RegisterType<IBenutzerGruppeRepository, BenutzerGruppeRepository>();
             container.RegisterType<ILoginRepository, LoginRepository>();
             container.RegisterType<ILoginService, LoginService>();
             container.RegisterType<IFindCurrentUserService, FindCurrentUserService>();
+
+            container.RegisterType<IBenutzerRepository, BenutzerRepository>();
+            container.RegisterType<IBenutzerService, BenutzerService>();
             container.RegisterType<IBenutzerViewModelService, BenutzerViewModelService>();
+
+            container.RegisterType<IBenutzerGruppeService, BenutzerGruppeService>();
+            container.RegisterType<IBenutzerGruppeRepository, BenutzerGruppeRepository>();
             container.RegisterType<IBenutzerGruppeViewModelService, BenutzerGruppeViewModelService>();
+
             container.RegisterType<IRechtViewModelService, RechtViewModelService>();
             container.RegisterType<IRechtService, RechtService>();
             container.RegisterType<IRechtRepository, RechtRepository>();
+
+            container.RegisterType<IRechteGruppeViewModelService, RechteGruppeViewModelService>();
+            container.RegisterType<IRechteGruppeService, RechteGruppeService>();
+            container.RegisterType<IRechteGruppeRepository, RechteGruppeRepository>();
 
         }
     }
