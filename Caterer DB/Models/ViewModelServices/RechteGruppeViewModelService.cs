@@ -29,32 +29,32 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public RechteGruppe Map_CreateRechteGruppeViewModel_RechteGruppe(CreateRechteGruppeViewModel createRechteGruppeViewModel)
         {
-            throw new NotImplementedException();
-        }
-
-        public RechteGruppe Map_DeleteRechteGruppeViewModel_RechteGruppe(DeleteRechteGruppeViewModel deleteRechteGruppeViewModel)
-        {
-            throw new NotImplementedException();
+            return Mapper.Map<RechteGruppe>(createRechteGruppeViewModel);
         }
 
         public RechteGruppe Map_EditRechteGruppeViewModel_RechteGruppe(EditRechteGruppeViewModel editRechteGruppeViewModel)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<RechteGruppe>(editRechteGruppeViewModel);
         }
 
-        public DeleteRechteGruppeViewModel Map_RechteGruppe_DeleteRechteGruppeViewModel(RechteGruppe RechteGruppe)
+        public EditRechteGruppeViewModel Map_RechteGruppe_EditRechteGruppeViewModel(RechteGruppe rechteGruppe)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<EditRechteGruppeViewModel>(rechteGruppe);
         }
 
-        public DetailsRechteGruppeViewModel Map_RechteGruppe_DetailsRechteGruppeViewModel(RechteGruppe RechteGruppe)
+        public DetailsRechteGruppeViewModel Map_RechteGruppe_DetailsRechteGruppeViewModel(RechteGruppe rechteGruppe)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<DetailsRechteGruppeViewModel>(rechteGruppe);
         }
 
-        public EditRechteGruppeViewModel Map_RechteGruppe_EditRechteGruppeViewModel(RechteGruppe RechteGruppe)
+        public RechteGruppe Map_DeleteRechteGruppeViewModel_RechteGruppe(DeleteRechteGruppeViewModel deleteRechteGruppeViewModel)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<RechteGruppe>(deleteRechteGruppeViewModel);
+        }
+
+        public DeleteRechteGruppeViewModel Map_RechteGruppe_DeleteRechteGruppeViewModel(RechteGruppe rechteGruppe)
+        {
+            return Mapper.Map<DeleteRechteGruppeViewModel>(rechteGruppe);
         }
     }
 }
