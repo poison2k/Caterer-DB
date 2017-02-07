@@ -240,6 +240,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RechtController.cs" />
     <Compile Include="Controllers\RechteGruppeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IBenutzerViewModelService.cs" />
     <Compile Include="Interfaces\IFindCurrentUserService.cs" />
     <Compile Include="Interfaces\ILoginService.cs" />
