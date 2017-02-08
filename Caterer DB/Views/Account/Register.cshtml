@@ -58,8 +58,17 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Organisationsform, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Organisationsform, new { htmlAttributes = new { @class = "form-control", placeholder = "Organisationsform" } })
-                    @Html.ValidationMessageFor(model => model.Organisationsform, "", new { @class = "text-danger" })
+                    <div class="fieldContainer">
+                        <select class="form-control prefilled ng-untouched ng-pristine ng-valid">
+                            <option value="">Bitte wählen...</option>
+                            <option>Mensaverein</option>
+                            <option>Caterer</option>                           
+                            <option>Sonstiges:</option>
+                        </select>
+                        <div>
+                            @Html.ValidationMessageFor(model => model.Organisationsform, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -129,8 +138,20 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Lieferumkreis, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
+                    <div class="fieldContainer">                    
+                        <select class="form-control prefilled ng-untouched ng-pristine ng-valid">
+                            <option value="">Bitte wählen...</option>
+                            <option>Nur im eigenen Stadtgebiet</option>
+                            <option>Bis 30 km</option>
+                            <option>Bis 50 km</option>
+                            <option>Bis 50 - 100 km</option>
+                            <option>Deutschlandweit</option>
+                            <option>Sonstiges:</option>
+                        </select>
+                        <div>
+                            @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
             </div>
 
