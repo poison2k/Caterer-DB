@@ -68,11 +68,11 @@ namespace Caterer_DB
                         var db = new CatererContext();
 
                         var newUser = new UserModel(authTicket.Name, serializeModel.BenutzerId, new LoginService(new LoginRepository(db)));
-                        //newUser.BenutzerId = serializeModel.BenutzerId;
+                        newUser.BenutzerId = serializeModel.BenutzerId;
                         newUser.Vorname = serializeModel.Vorname;
                         newUser.Nachname = serializeModel.Nachname;
-                        //newUser.Gruppen = serializeModel.Gruppen;
-                        //newUser.Personalnummer = serializeModel.Personalnummer;
+                        newUser.Email = serializeModel.Email;
+                        newUser.NutzergruppenIds = serializeModel.NutzergruppenIds;
 
                         HttpContext.Current.User = newUser;
                     }

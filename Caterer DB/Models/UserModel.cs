@@ -103,5 +103,7 @@ namespace Caterer_DB.Models
         public string Nachname { get; set; }
 
         public string Email { get; set; }
+
+        public List<int> NutzergruppenIds { get; set; }
     }
 }

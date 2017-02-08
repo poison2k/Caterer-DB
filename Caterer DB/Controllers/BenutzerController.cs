@@ -88,8 +88,6 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Benutzer/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditBenutzerViewModel editBenutzerViewModel)
@@ -101,6 +99,39 @@ namespace Caterer_DB.Controllers
                 return RedirectToAction("Index");
             }
             return View(editBenutzerViewModel);
+        }
+
+
+        // GET: Benutzer/Mydata/5
+        public ActionResult MyData(int? id)
+        {
+            if (id == null || id != User.BenutzerId)
+            {
+                return View("~/Views/Shared/Error.cshtml");
+            }
+
+            MyDataBenutzerViewModel myDataBenutzerViewModel =
+                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+
+            if (myDataBenutzerViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(myDataBenutzerViewModel);
+        }
+
+        // POST: Benutzer/MyData/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MyData(MyDataBenutzerViewModel myDataBenutzerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
+
+                return RedirectToAction("Index");
+            }
+            return View(myDataBenutzerViewModel);
         }
 
         // GET: Benutzer/Delete/5

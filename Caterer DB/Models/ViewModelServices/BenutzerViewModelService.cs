@@ -1,21 +1,13 @@
 ﻿using AutoMapper;
 using Business.Interfaces;
-using Business.Services;
 using Caterer_DB.Interfaces;
 using DataAccess.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Helpers;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
     public class BenutzerViewModelService : IBenutzerViewModelService
     {
-
-
-
         private IMapper Mapper { get; set; }
         private IBenutzerService BenutzerService { get; set; }
 
@@ -31,16 +23,11 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, DetailsBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, AnmeldenBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, RegisterBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, MyDataBenutzerViewModel>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();
         }
-
-
-
-
-
-
 
         public AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(Benutzer benutzer)
         {
@@ -55,7 +42,6 @@ namespace Caterer_DB.Models.ViewModelServices
             return anmeldenBenutzerViewModel;
         }
 
-
         public AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(int benutzerId = -1, string infobox = "")
         {
             var anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
@@ -66,7 +52,7 @@ namespace Caterer_DB.Models.ViewModelServices
             else
                 anmeldenBenutzerViewModel.Infobox = "anzeigen";
 
-            Benutzer benutzer =  BenutzerService.SearchUserById(benutzerId);
+            Benutzer benutzer = BenutzerService.SearchUserById(benutzerId);
             if (benutzer != null)
             {
                 anmeldenBenutzerViewModel = Mapper.Map(benutzer, anmeldenBenutzerViewModel);
@@ -74,9 +60,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
             return anmeldenBenutzerViewModel;
         }
-
-
-
 
         public Benutzer Map_CreateBenutzerViewModel_Benutzer(CreateBenutzerViewModel createBenutzerViewModel)
         {
@@ -86,6 +69,16 @@ namespace Caterer_DB.Models.ViewModelServices
         public Benutzer Map_EditBenutzerViewModel_Benutzer(EditBenutzerViewModel editBenutzerViewModel)
         {
             return Mapper.Map<Benutzer>(editBenutzerViewModel);
+        }
+
+        public Benutzer Map_MyDataBenutzerViewModel_Benutzer(MyDataBenutzerViewModel myDataBenutzerViewModel)
+        {
+            return Mapper.Map<Benutzer>(myDataBenutzerViewModel);
+        }
+
+        public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer)
+        {
+            return Mapper.Map<MyDataBenutzerViewModel>(benutzer);
         }
 
         public EditBenutzerViewModel Map_Benutzer_EditBenutzerViewModel(Benutzer benutzer)
@@ -110,7 +103,7 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public Benutzer Map_RegisterBenutzerViewModel_Benutzer(RegisterBenutzerViewModel registerBenutzerViewModel)
         {
-            var benutzer =  Mapper.Map<Benutzer>(registerBenutzerViewModel);
+            var benutzer = Mapper.Map<Benutzer>(registerBenutzerViewModel);
             benutzer.Passwort = Crypto.HashPassword(registerBenutzerViewModel.Passwort);
             return benutzer;
         }
