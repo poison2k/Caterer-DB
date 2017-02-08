@@ -30,6 +30,10 @@ namespace DataAccess.Model
 
         public string Passwort { get; set; }
 
+        public string EMailVerificationCode { get; set; }
+
+        public bool IstEmailVerifiziert { get; set; }
+
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
     }
 }

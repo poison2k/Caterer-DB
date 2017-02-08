@@ -17,7 +17,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Mail = "caterer@test.de",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Mustermann",
-                Vorname = "Max"
+                Vorname = "Max",
+                IstEmailVerifiziert = true
             });
 
             Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer
@@ -25,7 +26,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Mail = "mitarbeiter@test.de",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Musterfrau",
-                Vorname = "Maxim"
+                Vorname = "Maxim",
+                IstEmailVerifiziert = true
             });
 
             Benutzer admin = db.Benutzer.Add(new Benutzer
@@ -33,7 +35,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Mail = "admin@test.de",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Müller",
-                Vorname = "Alex"
+                Vorname = "Alex",
+                IstEmailVerifiziert = true
             });
 
             db.SaveChanges();

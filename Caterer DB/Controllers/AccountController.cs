@@ -3,6 +3,7 @@ using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
+using System;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -40,6 +41,35 @@ namespace Caterer_DB.Controllers
             return View();
         }
 
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult RegisterSuccsessfull(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult RegisterComplete(string id ,string verify)
+        {
+            if (BenutzerService.VerifyRegistration(id, verify)) {
+                return View();
+            };
+            return View("~/Views/Shared/Error.cshtml");
+        }
+
+
+        [AllowAnonymous]
+        public ActionResult RegisterMailVerificationNotComplete()
+        {
+            
+            
+                return View();
+           
+            
+        }
+
 
         // POST: Benutzer/Create
         [HttpPost]
@@ -52,13 +82,13 @@ namespace Caterer_DB.Controllers
                 
                 if ( BenutzerService.CheckEmailForRegistration( registerBenutzerViewModel.Mail))
                 {
-                    BenutzerService.AddBenutzer(BenutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(registerBenutzerViewModel));
+                    BenutzerService.RegisterBenutzer(BenutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(registerBenutzerViewModel));
                 }
                 else {
                     ModelState.AddModelError("", LoginResources.EMailVorhanden);
                     return View(registerBenutzerViewModel);
                 }
-                    return RedirectToAction("Index", "Home");
+                return View("RegisterSuccsessfull");
             }
 
             return View(registerBenutzerViewModel);
@@ -78,6 +108,10 @@ namespace Caterer_DB.Controllers
                 LoginSuccessLevel anmeldeErfolg = LoginService.AnmeldePrüfung(model.Email, model.Passwort);
                 if (anmeldeErfolg == LoginSuccessLevel.Erfolgreich)
                 {
+                    if (!BenutzerService.SearchUserByEmail(model.Email).IstEmailVerifiziert) {
+                        LoginService.Abmelden();
+                        return RedirectToAction("RegisterMailVerificationNotComplete");
+                    }
                     return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
                 if (anmeldeErfolg == LoginSuccessLevel.BenutzerNichtGefunden)

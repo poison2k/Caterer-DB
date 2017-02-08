@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using Business.Interfaces;
 using Caterer_DB.Interfaces;
+using Common.Interfaces;
 using DataAccess.Model;
+using System;
+using System.Security.Cryptography;
 using System.Web.Helpers;
 
 namespace Caterer_DB.Models.ViewModelServices
@@ -9,10 +12,12 @@ namespace Caterer_DB.Models.ViewModelServices
     public class BenutzerViewModelService : IBenutzerViewModelService
     {
         private IMapper Mapper { get; set; }
+        private IMd5Hash MD5hash { get; set; }
         private IBenutzerService BenutzerService { get; set; }
 
-        public BenutzerViewModelService(IBenutzerService benutzerService)
+        public BenutzerViewModelService(IBenutzerService benutzerService, IMd5Hash md5Hash)
         {
+            MD5hash = md5Hash;
             BenutzerService = benutzerService;
             var config = new MapperConfiguration(cfg =>
             {
@@ -105,6 +110,7 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             var benutzer = Mapper.Map<Benutzer>(registerBenutzerViewModel);
             benutzer.Passwort = Crypto.HashPassword(registerBenutzerViewModel.Passwort);
+            benutzer.EMailVerificationCode= MD5hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname);
             return benutzer;
         }
     }
