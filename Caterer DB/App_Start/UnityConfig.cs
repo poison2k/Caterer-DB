@@ -15,6 +15,8 @@ using Caterer_DB.Interfaces;
 using Caterer_DB.Services;
 using Caterer_DB.Models.ViewModelServices;
 using Caterer_DB.Models.Interfaces;
+using Common.Interfaces;
+using Common.Services;
 
 namespace Caterer_DB.App_Start
 {
@@ -68,6 +70,9 @@ namespace Caterer_DB.App_Start
             container.RegisterType<IRechteGruppeViewModelService, RechteGruppeViewModelService>();
             container.RegisterType<IRechteGruppeService, RechteGruppeService>();
             container.RegisterType<IRechteGruppeRepository, RechteGruppeRepository>();
+
+            container.RegisterType<IMailService, MailService>();
+            container.RegisterType<IMd5Hash, MD5Hash>();
 
         }
     }

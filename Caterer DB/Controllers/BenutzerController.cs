@@ -129,7 +129,7 @@ namespace Caterer_DB.Controllers
             {
                 BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             return View(myDataBenutzerViewModel);
         }

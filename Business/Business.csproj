@@ -52,6 +52,10 @@
     <Compile Include="Services\RechtService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{D76526D2-9BE6-499E-8D76-3BE5E413B22A}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{e0ce96cf-2177-4ee1-8fbd-0ff9315dd6cd}</Project>
       <Name>DataAccess</Name>

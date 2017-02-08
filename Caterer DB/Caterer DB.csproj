@@ -238,6 +238,7 @@
     <Compile Include="Controllers\BenutzerController.cs" />
     <Compile Include="Controllers\BenutzerGruppeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\RechtController.cs" />
     <Compile Include="Controllers\RechteGruppeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -251,6 +252,7 @@
     <Compile Include="Models\BenutzerGruppeViewModel.cs" />
     <Compile Include="Models\BenutzerViewModel.cs" />
     <Compile Include="Interfaces\IBenutzerGruppeViewModelService.cs" />
+    <Compile Include="Models\MailViewModels.cs" />
     <Compile Include="Models\RechteGruppeViewModel.cs" />
     <Compile Include="Models\RechtViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -354,6 +356,10 @@
     <Content Include="Views\RechteGruppe\Edit.cshtml" />
     <Content Include="Views\RechteGruppe\Index.cshtml" />
     <Content Include="Views\Benutzer\MyData.cshtml" />
+    <Content Include="Views\Mail\Erstellen.cshtml" />
+    <Content Include="Views\Account\RegisterSuccsessfull.cshtml" />
+    <Content Include="Views\Account\RegisterComplete.cshtml" />
+    <Content Include="Views\Account\RegisterMailVerificationNotComplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,6 +375,10 @@
     <ProjectReference Include="..\Business\Business.csproj">
       <Project>{EFDBBFFD-513C-496D-B639-EDF3531EC796}</Project>
       <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{D76526D2-9BE6-499E-8D76-3BE5E413B22A}</Project>
+      <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{E0CE96CF-2177-4EE1-8FBD-0FF9315DD6CD}</Project>
