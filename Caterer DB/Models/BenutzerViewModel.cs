@@ -4,16 +4,18 @@ using DataAccess.Model;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
+
 namespace Caterer_DB.Models
 {
 
     public class RegisterBenutzerViewModel
     {
         [Required]
+        [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
 
-       
         [Required]
         [StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
         [DataType(DataType.Password)]
@@ -34,18 +36,40 @@ namespace Caterer_DB.Models
         [Required]
         public string Nachname { get; set; }
 
+        [Required]
+        public string Firmenname { get; set; }
+
+        [Required]
+        public string Organisationsform { get; set; }
+
+        [Required]
+        [DisplayName(@"Funktion des Ansprechpartners")]
+        public string FunktionAnsprechpartner { get; set; }
+
+        [Required]
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-       
+        [Required]
+        [DisplayName(@"Fax")]
+        public string Fax { get; set; }
 
-        public string Strasse { get; set; }
+        [Required]
+        public string Straße { get; set; }
 
-        public string Plz { get; set; }
+        [Required]
+        public string Postleitzahl { get; set; }
 
+        [Required]
         public string Ort { get; set; }
 
-       
+        [Required]
+        public string Internetadresse { get; set; }
+
+        [Required]
+        public string Lieferumkreis { get; set; }
+
+
     }
 
 
