@@ -77,7 +77,9 @@ namespace Caterer_DB.Services
                     BenutzerId = user.BenutzerId,
                     Vorname = user.Vorname,
                     Nachname = user.Nachname,
-                    Email = user.Mail
+                    Email = user.Mail,
+                    
+                    
                 };
 
                 string benutzerDaten = JsonConvert.SerializeObject(serializeModel);
