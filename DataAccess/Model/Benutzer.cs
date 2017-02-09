@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.Model
@@ -9,39 +8,37 @@ namespace DataAccess.Model
         [Key]
         public int BenutzerId { get; set; }
 
-
-        
+        //Firmendaten
         public string Firmenname { get; set; }
-
 
         public string Internetadresse { get; set; }
 
-       
         public string Lieferumkreis { get; set; }
 
-        
         public string Organisationsform { get; set; }
 
+        public string Telefon { get; set; }
+
+        public string Fax { get; set; }
+
+        public string Straße { get; set; }
+
+        public string Postleitzahl { get; set; }
+
+        public string Ort { get; set; }
+
+        //Ansprechpartner
         public string Anrede { get; set; }
 
-   
         public string Vorname { get; set; }
 
-   
         public string Nachname { get; set; }
 
         public string FunktionAnsprechpartner { get; set; }
 
-        [DisplayName(@"Telefon")]
-        public string Telefon { get; set; }
-
         public string Mail { get; set; }
 
-        public string Strasse { get; set; }
-
-        public string Plz { get; set; }
-
-        public string Ort { get; set; }
+        //Login
 
         public string Passwort { get; set; }
 

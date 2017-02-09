@@ -56,7 +56,7 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-        [Required]
+       
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
@@ -145,6 +145,17 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Organisationsformen { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
+
+        [Required]
+        [DisplayName(@"E-Mail")]
+        [EmailAddress]
+        public string Mail { get; set; }
+
         public string Anrede { get; set; }
 
         [Required]
@@ -153,18 +164,38 @@ namespace Caterer_DB.Models
         [Required]
         public string Nachname { get; set; }
 
+        [Required]
+        public string Firmenname { get; set; }
+
+        [Required]
+        public string Organisationsform { get; set; }
+
+        [Required]
+        [DisplayName(@"Funktion des Ansprechpartners")]
+        public string FunktionAnsprechpartner { get; set; }
+
+        [Required]
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
+       
+        [DisplayName(@"Fax")]
+        public string Fax { get; set; }
+
         [Required]
-        [EmailAddress]
-        public string Mail { get; set; }
+        public string Straße { get; set; }
 
-        public string Strasse { get; set; }
+        [Required]
+        public string Postleitzahl { get; set; }
 
-        public string Plz { get; set; }
-
+        [Required]
         public string Ort { get; set; }
+
+        [Required]
+        public string Internetadresse { get; set; }
+
+        [Required]
+        public string Lieferumkreis { get; set; }
 
     }
 

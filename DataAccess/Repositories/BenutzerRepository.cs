@@ -44,7 +44,7 @@ namespace DataAccess.Repositories
         public List<Benutzer> SearchUserByPostcode(string postcode)
         {
 
-            return Db.Benutzer.Where(x => x.Plz == postcode).ToList();
+            return Db.Benutzer.Where(x => x.Postleitzahl == postcode).ToList();
 
         }
 
