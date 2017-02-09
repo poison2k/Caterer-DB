@@ -4,7 +4,6 @@ using DataAccess.Model;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography;
 
 namespace Caterer_DB.Models
 {
@@ -27,6 +26,9 @@ namespace Caterer_DB.Models
         [DataType(DataType.Password)]
         [Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
         public string PasswortVerification { get; set; }
+
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
 
         public string Anrede { get; set; }
 

@@ -9,6 +9,19 @@ namespace DataAccess.Model
         [Key]
         public int BenutzerId { get; set; }
 
+
+        
+        public string Firmenname { get; set; }
+
+
+        public string Internetadresse { get; set; }
+
+       
+        public string Lieferumkreis { get; set; }
+
+        
+        public string Organisationsform { get; set; }
+
         public string Anrede { get; set; }
 
    
@@ -16,6 +29,8 @@ namespace DataAccess.Model
 
    
         public string Nachname { get; set; }
+
+        public string FunktionAnsprechpartner { get; set; }
 
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }

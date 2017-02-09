@@ -4,6 +4,7 @@ using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
 using System;
+using System.Collections.Generic;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -38,7 +39,16 @@ namespace Caterer_DB.Controllers
         public ActionResult Register(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            var registerBenutzerViewModel = new RegisterBenutzerViewModel();
+
+           registerBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Herr", Value = "Herr" },
+                                new SelectListItem { Text = "Frau", Value = "Frau" }
+                            }, "Value", "Text");
+
+            return View(registerBenutzerViewModel);
         }
 
         // GET: /Account/Register

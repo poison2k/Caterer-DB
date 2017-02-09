@@ -71,6 +71,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Anrede", Model.Anreden , new  { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                    @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Vorname, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
