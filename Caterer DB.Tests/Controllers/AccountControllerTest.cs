@@ -47,8 +47,7 @@ namespace Caterer_DB.Tests.Controllers
             Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
-
-
+        
         [TestMethod]
         public void LoginURLTest()
         {
@@ -86,23 +85,21 @@ namespace Caterer_DB.Tests.Controllers
             Assert.IsNotNull(result);
            
         }
-
-
-
-
-
+        
         private static HttpContext CreateHttpContext(bool userLoggedIn)
+            //Act
         {
             var httpContext = new HttpContext(
                 new HttpRequest(string.Empty, "http://sample.com", string.Empty),
                 new HttpResponse(new StringWriter())
             )
+            
             {
                 User = userLoggedIn
                     ? new GenericPrincipal(new GenericIdentity("userName"), new string[0])
                     : new GenericPrincipal(new GenericIdentity(string.Empty), new string[0])
             };
-
+            //Assert
             return httpContext;
         }
     }
