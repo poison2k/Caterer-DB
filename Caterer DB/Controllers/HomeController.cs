@@ -1,26 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Caterer_DB.Interfaces;
 using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+
+        public HomeController(IBenutzerViewModelService benutzerViewModelService)
+        {
+            BenutzerViewModelService = benutzerViewModelService;
+           
+        }
+
+        private IBenutzerViewModelService BenutzerViewModelService { get; set; }
+
+
+
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string infobox = "")
         {
-            return View();
+            
+            if (Request.IsAuthenticated)
+                return View( BenutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(User.BenutzerId, infobox));
+
+            return View( BenutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(-1, infobox));
+          
         }
 
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
 
         public ActionResult Contact()
         {
@@ -42,6 +48,13 @@ namespace Caterer_DB.Controllers
 
             return View();
         }
-       
+
+        public ActionResult Impressum()
+        {
+            ViewBag.Message = "Impressum";
+
+            return View();
+        }
+
     }
 }

@@ -1,0 +1,35 @@
+﻿@using Caterer_DB.Models
+@model DetailsRechteGruppeViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RechteGruppe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bezeichnung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bezeichnung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Löschbar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Löschbar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RechteVerwaltungsGruppeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

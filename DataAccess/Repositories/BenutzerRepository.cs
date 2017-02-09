@@ -2,7 +2,7 @@
 using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
-
+using System;
 
 namespace DataAccess.Repositories
 {
@@ -20,6 +20,11 @@ namespace DataAccess.Repositories
 
             return Db.Benutzer.Where(x => x.BenutzerId == id).SingleOrDefault();
 
+        }
+
+        public Benutzer SearchUserByEmailVerify(string verify)
+        {
+            return Db.Benutzer.Where(x => x.EMailVerificationCode == verify).SingleOrDefault();
         }
 
         public Benutzer SearchUserByEMail(string eMail)
@@ -77,5 +82,6 @@ namespace DataAccess.Repositories
 
         }
 
+    
     }
 }

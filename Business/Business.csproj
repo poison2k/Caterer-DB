@@ -43,11 +43,19 @@
   <ItemGroup>
     <Compile Include="Interfaces\IBenutzerGruppeService.cs" />
     <Compile Include="Interfaces\IBenutzerService.cs" />
+    <Compile Include="Interfaces\IRechteGruppeService.cs" />
+    <Compile Include="Interfaces\IRechtService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BenutzerGruppeService.cs" />
     <Compile Include="Services\BenutzerService.cs" />
+    <Compile Include="Services\RechteGruppeService.cs" />
+    <Compile Include="Services\RechtService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{D76526D2-9BE6-499E-8D76-3BE5E413B22A}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{e0ce96cf-2177-4ee1-8fbd-0ff9315dd6cd}</Project>
       <Name>DataAccess</Name>

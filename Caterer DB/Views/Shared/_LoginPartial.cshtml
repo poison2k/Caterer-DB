@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
+﻿
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -13,6 +13,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
+                    <li>@Html.ActionLink("Meine Details", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
                    
                 </ul>
             </li>
@@ -23,10 +24,10 @@
                     <i class='glyphicon glyphicon-info-sign'></i><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("AGB", "AGB", "Home", new { id = "DropdownAGBLogin" })</li>
-                    <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home", new { id = "DropdownDatenschutzLogin" })</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home", new { id = "DropdownKontaktLogin" })</li>
-                    <li>@Html.ActionLink("Impressum", "Contact", "Home", new { id = "DropdownImpressumLogin" })</li>
+                    <li>@Html.ActionLink("AGB", "AGB", "Home", new { id = "DropdownAGBLogin" }, null)</li>
+                    <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home", new { id = "DropdownDatenschutzLogin" }, null)</li>
+                    <li>@Html.ActionLink("Kontakt", "Contact", "Home", new { id = "DropdownKontaktLogin" }, null)</li>
+                    <li>@Html.ActionLink("Impressum", "Impressum", "Home", new { id = "DropdownImpressumLogin" }, null)</li>
                 </ul>
             </li>
         </ul>
@@ -41,7 +42,7 @@ else
                 <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLinkhead" })</li>
                 <li>@Html.ActionLink("Registrieren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
             </ul>
         </li>
@@ -52,10 +53,10 @@ else
                 <i class='glyphicon glyphicon-info-sign'></i><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li>@Html.ActionLink("AGB", "AGB", "Home", new { id = "DropdownAGBLogout" })</li>
-                <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home", new { id = "DropdownDatenschutzLogout" })</li>
-                <li>@Html.ActionLink("Kontakt", "Contact", "Home", new { id = "DropdownKontaktLogout" })</li>
-                <li>@Html.ActionLink("Impressum", "Contact", "Home", new { id = "DropdownImpressumLogout" })</li>
+                <li>@Html.ActionLink("AGB", "AGB", "Home", new { id = "DropdownAGBLogout" }, null)</li>
+                <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home", new { id = "DropdownDatenschutzLogout" }, null)</li>
+                <li>@Html.ActionLink("Kontakt", "Contact", "Home", new { id = "DropdownKontaktLogout" }, null)</li>
+                <li>@Html.ActionLink("Impressum", "Impressum", "Home", new { id = "DropdownImpressumLogout" }, null)</li>
             </ul>
         </li>
     </ul>

@@ -4,18 +4,21 @@ using System.Web.Mvc;
 using Caterer_DB.Models.ViewModelServices;
 using Business.Interfaces;
 using Caterer_DB.Models;
+using Caterer_DB.Models.Interfaces;
 
 namespace Caterer_DB.Controllers
 {
-    public class BenutzerGruppeController : Controller
+    public class BenutzerGruppeController : BaseController
     {
-        private BenutzerGruppeViewModelService BenutzerGruppeViewModelService = new BenutzerGruppeViewModelService();
+        
+        private IBenutzerGruppeViewModelService BenutzerGruppeViewModelService { get; set; }
 
         private IBenutzerGruppeService BenutzerGruppeService { get; set; }
 
-        public BenutzerGruppeController(IBenutzerGruppeService benutzerGruppeService)
+        public BenutzerGruppeController(IBenutzerGruppeService benutzerGruppeService, IBenutzerGruppeViewModelService benutzerGruppeViewModelService)
         {
             BenutzerGruppeService = benutzerGruppeService;
+            BenutzerGruppeViewModelService = benutzerGruppeViewModelService;
         }
         // GET: BenutzerGruppe
         public ActionResult Index()
@@ -31,14 +34,14 @@ namespace Caterer_DB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            DetailsBenutzerGruppeViewModel detailsGruppeBenutzerViewModel =
+            DetailsBenutzerGruppeViewModel detailsBenutzerGruppeViewModel =
                 BenutzerGruppeViewModelService.Map_BenutzerGruppe_DetailsBenutzerGruppeViewModel(BenutzerGruppeService.SearchGroupById(Convert.ToInt32(id)));
 
-            if (detailsGruppeBenutzerViewModel == null)
+            if (detailsBenutzerGruppeViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(detailsGruppeBenutzerViewModel);
+            return View(detailsBenutzerGruppeViewModel);
         }
 
         // GET: BenutzerGruppe/Create
