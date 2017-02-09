@@ -48,6 +48,28 @@ namespace Caterer_DB.Controllers
                                 new SelectListItem { Text = "Frau", Value = "Frau" }
                             }, "Value", "Text");
 
+            registerBenutzerViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Nur im eigenen Stadtgebiet", Value = "Nur im eigenen Stadtgebiet" },
+                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
+                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
+                                new SelectListItem { Text = "Bis 50 - 100 km", Value = "Bis 50 - 100 km" },
+                                new SelectListItem { Text = "Deutschlandweit", Value = "Deutschlandweit" },
+                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
+                            }, "Value", "Text");
+
+
+
+
+            registerBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
+                                new SelectListItem { Text = "Caterer", Value = "Caterer" },
+                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
+                            }, "Value", "Text");
+
             return View(registerBenutzerViewModel);
         }
 

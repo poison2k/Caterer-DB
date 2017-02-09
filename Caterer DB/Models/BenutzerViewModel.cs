@@ -30,6 +30,10 @@ namespace Caterer_DB.Models
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
 
+        public IEnumerable<System.Web.Mvc.SelectListItem> Organisationsformen { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
+
         public string Anrede { get; set; }
 
         [Required]
