@@ -4,8 +4,10 @@ using Caterer_DB.Interfaces;
 using Common.Interfaces;
 using DataAccess.Model;
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Web.Helpers;
+using System.Web.Mvc;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
@@ -110,8 +112,51 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             var benutzer = Mapper.Map<Benutzer>(registerBenutzerViewModel);
             benutzer.Passwort = Crypto.HashPassword(registerBenutzerViewModel.Passwort);
-            benutzer.EMailVerificationCode= MD5hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname);
+            benutzer.EMailVerificationCode = MD5hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname);
             return benutzer;
+        }
+
+        public RegisterBenutzerViewModel CreateNewRegisterBenutzerViewModel()
+        {
+            var registerBenutzerViewModel = new RegisterBenutzerViewModel();
+
+            registerBenutzerViewModel = AddListsToRegisterViewModel(registerBenutzerViewModel);
+            return registerBenutzerViewModel;
+        }
+
+
+        public RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel)
+        {
+            registerBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Herr", Value = "Herr" },
+                                new SelectListItem { Text = "Frau", Value = "Frau" }
+                            }, "Value", "Text");
+
+            registerBenutzerViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Nur im eigenen Stadtgebiet", Value = "Nur im eigenen Stadtgebiet" },
+                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
+                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
+                                new SelectListItem { Text = "Bis 50 - 100 km", Value = "Bis 50 - 100 km" },
+                                new SelectListItem { Text = "Deutschlandweit", Value = "Deutschlandweit" },
+                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
+                            }, "Value", "Text");
+
+
+
+
+            registerBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
+                                new SelectListItem { Text = "Caterer", Value = "Caterer" },
+                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
+                            }, "Value", "Text");
+            return registerBenutzerViewModel;
+
         }
     }
 }

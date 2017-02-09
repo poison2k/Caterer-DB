@@ -18,5 +18,8 @@ namespace Caterer_DB.Interfaces
         MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer);
         DetailsBenutzerViewModel Map_Benutzer_DetailsBenutzerViewModel(Benutzer benutzer);
         DeleteBenutzerViewModel Map_Benutzer_DeleteBenutzerViewModel(Benutzer benutzer);
+        RegisterBenutzerViewModel CreateNewRegisterBenutzerViewModel();
+
+        RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel);
     }
 }

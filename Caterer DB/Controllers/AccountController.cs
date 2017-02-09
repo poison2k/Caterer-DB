@@ -3,9 +3,6 @@ using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
-using System;
-using System.Collections.Generic;
-using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
@@ -39,38 +36,8 @@ namespace Caterer_DB.Controllers
         public ActionResult Register(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            var registerBenutzerViewModel = new RegisterBenutzerViewModel();
-
-           registerBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Herr", Value = "Herr" },
-                                new SelectListItem { Text = "Frau", Value = "Frau" }
-                            }, "Value", "Text");
-
-            registerBenutzerViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Nur im eigenen Stadtgebiet", Value = "Nur im eigenen Stadtgebiet" },
-                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
-                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
-                                new SelectListItem { Text = "Bis 50 - 100 km", Value = "Bis 50 - 100 km" },
-                                new SelectListItem { Text = "Deutschlandweit", Value = "Deutschlandweit" },
-                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
-                            }, "Value", "Text");
-
-
-
-
-            registerBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
-                                new SelectListItem { Text = "Caterer", Value = "Caterer" },
-                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
-                            }, "Value", "Text");
-
-            return View(registerBenutzerViewModel);
+            ;
+            return View(BenutzerViewModelService.CreateNewRegisterBenutzerViewModel());
         }
 
         // GET: /Account/Register
@@ -118,7 +85,7 @@ namespace Caterer_DB.Controllers
                 }
                 else {
                     ModelState.AddModelError("", LoginResources.EMailVorhanden);
-                    return View(registerBenutzerViewModel);
+                    return View(BenutzerViewModelService.AddListsToRegisterViewModel( registerBenutzerViewModel));
                 }
                 return View("RegisterSuccsessfull");
             }
