@@ -27,6 +27,15 @@ namespace Caterer_DB.Controllers
             return View(erstelleMailViewModel);
         }
 
+
+        //ToDo Dies ist nur ein Test-Controller, zur Überprüfung der Mail-Funktionalität
+        public ActionResult KaisSpielwiese()
+        {
+            
+
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Erstellen(CreateMailViewModel createMailViewModel)
         {

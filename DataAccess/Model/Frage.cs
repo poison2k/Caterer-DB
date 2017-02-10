@@ -13,7 +13,7 @@ namespace DataAccess.Model
         public int FrageId { get; set; }
         [Required]
         public string Bezeichnung { get; set; }
-        [Required]
+        
         public Sparte Sparte { get; set; }
     }
 }

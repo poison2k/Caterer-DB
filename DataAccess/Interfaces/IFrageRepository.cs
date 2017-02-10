@@ -9,6 +9,11 @@ namespace DataAccess.Interfaces
 {
     public interface IFrageRepository
     {
+        void AddFrage(Frage frage);
+        void EditFrage(Frage frage);
+        void RemoveFrage(Frage frage);
+        
+        List<Frage> SearchFrage();
         Frage SearchFrageById(int id);
         List<Frage> SearchFrageBySparte(Sparte sparte);
     }

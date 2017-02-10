@@ -101,9 +101,9 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
-        public string Strasse { get; set; }
+        public string Straße { get; set; }
 
-        public string Plz { get; set; }
+        public string Postleitzahl { get; set; }
 
         public string Ort { get; set; }
 
@@ -130,9 +130,9 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
-        public string Strasse { get; set; }
+        public string Straße { get; set; }
 
-        public string Plz { get; set; }
+        public string Postleitzahl { get; set; }
 
         public string Ort { get; set; }
 
@@ -219,9 +219,9 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
-        public string Strasse { get; set; }
+        public string Straße { get; set; }
 
-        public string Plz { get; set; }
+        public string Postleitzahl { get; set; }
 
         public string Ort { get; set; }
 
@@ -248,9 +248,9 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
-        public string Strasse { get; set; }
+        public string Straße { get; set; }
 
-        public string Plz { get; set; }
+        public string Postleitzahl { get; set; }
 
         public string Ort { get; set; }
 

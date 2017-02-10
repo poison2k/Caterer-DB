@@ -19,23 +19,7 @@
 {
     @Html.AntiForgeryToken()
    
-    <div class="row">
-        <div class="col-md-6">
-            <ul class="list-unstyled list-inline " style="margin-left: -5px;">
-                <li>
-                    <button type="submit" id="btnSpeichern" name="btnConfig" value="Registrieren" class="btn btn-success">
-                        <i class="glyphicon glyphicon-save"></i> Registrieren
-                    </button>
-                </li>
-
-                <li>
-                    <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <hr />
+       
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
@@ -206,7 +190,7 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            "Ich akzeptiere die AGB."
+                            "Ich akzeptiere die <a href="http://localhost:60003/Home/AGB">AGB</a>."
                         </div>
                         <div class="col-md-3"></div>
                     </div>
@@ -215,6 +199,21 @@
                     
                     
                 </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled list-inline " style="margin-left: -5px;">
+                        <li>
+                            <button type="submit" id="btnSpeichern" name="btnConfig" value="Registrieren" class="btn btn-success">
+                                <i class="glyphicon glyphicon-save"></i> Registrieren
+                            </button>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             </div>
         </div>
 

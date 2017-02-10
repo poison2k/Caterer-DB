@@ -238,6 +238,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BenutzerController.cs" />
     <Compile Include="Controllers\BenutzerGruppeController.cs" />
+    <Compile Include="Controllers\FrageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\RechtController.cs" />
@@ -247,18 +248,21 @@
     </Compile>
     <Compile Include="Interfaces\IBenutzerViewModelService.cs" />
     <Compile Include="Interfaces\IFindCurrentUserService.cs" />
+    <Compile Include="Interfaces\IFrageViewModelService.cs" />
     <Compile Include="Interfaces\ILoginService.cs" />
     <Compile Include="Interfaces\IRechteGruppeViewModelService.cs" />
     <Compile Include="Interfaces\IRechtViewModelService.cs" />
     <Compile Include="Models\BenutzerGruppeViewModel.cs" />
     <Compile Include="Models\BenutzerViewModel.cs" />
     <Compile Include="Interfaces\IBenutzerGruppeViewModelService.cs" />
+    <Compile Include="Models\FrageViewModel.cs" />
     <Compile Include="Models\MailViewModels.cs" />
     <Compile Include="Models\RechteGruppeViewModel.cs" />
     <Compile Include="Models\RechtViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerViewModelService.cs" />
+    <Compile Include="Models\ViewModelServices\FrageViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\RechteGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\RechtViewModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -361,6 +365,11 @@
     <Content Include="Views\Account\RegisterSuccsessfull.cshtml" />
     <Content Include="Views\Account\RegisterComplete.cshtml" />
     <Content Include="Views\Account\RegisterMailVerificationNotComplete.cshtml" />
+    <Content Include="Views\Frage\Create.cshtml" />
+    <Content Include="Views\Frage\Delete.cshtml" />
+    <Content Include="Views\Frage\Details.cshtml" />
+    <Content Include="Views\Frage\Edit.cshtml" />
+    <Content Include="Views\Frage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
