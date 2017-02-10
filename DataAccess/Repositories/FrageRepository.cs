@@ -12,7 +12,7 @@ namespace DataAccess.Repositories
     {
         protected ICatererContext Db { get; }
         
-        protected FrageRepository(ICatererContext db)
+        public FrageRepository(ICatererContext db)
         {
             Db = db;
         }
@@ -25,6 +25,29 @@ namespace DataAccess.Repositories
         public List<Frage> SearchFrageBySparte(Sparte sparte)
         {
             return Db.Frage.Where(x => x.Sparte == sparte).ToList();
+        }
+
+        public void AddFrage(Frage frage)
+        {
+            Db.Frage.Add(frage);
+            Db.SaveChanges();
+        }
+
+        public void EditFrage(Frage frage)
+        {
+            Db.SetModified(frage);
+            Db.SaveChanges();
+        }
+
+        public void RemoveFrage(Frage frage)
+        {
+            Db.Set<Frage>().Remove(frage);
+            Db.SaveChanges();
+        }
+
+        public List<Frage> SearchFrage()
+        {
+            return Db.Frage.ToList();
         }
     }
 }
