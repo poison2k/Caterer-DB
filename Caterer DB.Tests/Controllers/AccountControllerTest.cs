@@ -1,46 +1,45 @@
 ﻿
 using Microsoft.Practices.Unity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Ploeh.AutoFixture;
 using Caterer_DB.Controllers;
 using System.Linq;
 using System.Web.Mvc;
 using UnityAutoMoq;
-using DataAccess.Model;
+
 using System.Web;
 using System.IO;
 using System.Security.Principal;
 using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
+
 using Caterer_DB.Models;
+using Caterer_DB.Interfaces;
+using Caterer_DB.Services;
+using NUnit.Framework;
 
 namespace Caterer_DB.Tests.Controllers
 {
-    [TestClass]
+   
+    [TestFixture]
     public class AccountControllerTest : TestBase
     {
         private Fixture Fixture { get; set; }
 
-        protected override ApplicationUser AktuellerNutzer
+        protected override UserModel AktuellerNutzer
         {
-            get
-            {
-                return new ApplicationUser()
-                {
-
-                };
-            }
+            get { return new UserModel("sebastianbuenck", 111111, Container.Resolve<ILoginService>()); }
         }
+
+     
 
         protected override UnityAutoMoqContainer RegisterTypes(UnityAutoMoqContainer container)
         {
-            container.RegisterType<AccountController>(new TransientLifetimeManager());
+            container.RegisterType<HomeController>(new TransientLifetimeManager());
 
             return container;
         }
 
-        [TestInitialize]
+        [OneTimeSetUp]
         public void TestInit()
         {
             Fixture = new Fixture();
@@ -48,12 +47,13 @@ namespace Caterer_DB.Tests.Controllers
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
         
-        [TestMethod]
+        [Test]
         public void LoginURLTest()
         {
 
             // Arrange
-            AccountController controller = new AccountController();
+            var controller = Container.Resolve<AccountController>();
+
 
             // Act
             ViewResult result = controller.Login(null) as ViewResult;
@@ -63,27 +63,26 @@ namespace Caterer_DB.Tests.Controllers
 
         }
 
-        [TestMethod]
+        [Test]
         public void LoginVorgangTest()
 
         {
 
             //Arrange
-            HttpContext.Current = CreateHttpContext(userLoggedIn: false);
             var accountController = Container.Resolve<AccountController>();
-            var userStore = new Mock<IUserStore<ApplicationUser>>();
-            var userManager = new Mock<ApplicationUserManager>(userStore.Object);
-            var authenticationManager = new Mock<IAuthenticationManager>();
-            var signInManager = new Mock<ApplicationSignInManager>(userManager.Object, authenticationManager.Object);
+            Mock<ILoginService> mockAnmeldeService = Container.GetMock<ILoginService>();
+            mockAnmeldeService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.Erfolgreich);
 
             //Act
-            var result = accountController.Login(Fixture.Build<LoginViewModel>().Create(), null).GetAwaiter().GetResult();
-            string ViewName = ((ViewResult)result).ViewName;
-
+            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+            string routeController = ((RedirectToRouteResult)result).RouteValues["Controller"].ToString();
+            string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
 
             //Assert
             Assert.IsNotNull(result);
-           
+            Assert.AreEqual("Home", routeController);
+            Assert.AreEqual("Index", routeAction);
+
         }
         
         private static HttpContext CreateHttpContext(bool userLoggedIn)

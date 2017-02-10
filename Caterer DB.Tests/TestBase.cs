@@ -1,4 +1,5 @@
-﻿using DataAccess.Model;
+﻿using Caterer_DB.Models;
+using DataAccess.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Caterer_DB.Tests
 
             protected UnityAutoMoqContainer Container { get; private set; }
 
-            protected abstract ApplicationUser AktuellerNutzer { get; }
+            protected abstract UserModel AktuellerNutzer { get; }
 
             [TestInitialize]
             public void setUpBase()
