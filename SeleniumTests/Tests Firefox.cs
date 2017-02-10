@@ -85,6 +85,7 @@ namespace SeleniumTests
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
+
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
