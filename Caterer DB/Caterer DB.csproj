@@ -360,6 +360,7 @@
     <Content Include="Views\Account\RegisterSuccsessfull.cshtml" />
     <Content Include="Views\Account\RegisterComplete.cshtml" />
     <Content Include="Views\Account\RegisterMailVerificationNotComplete.cshtml" />
+    <Content Include="Views\Mail\KaisSpielwiese.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
