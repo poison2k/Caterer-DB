@@ -13,14 +13,22 @@
     <div class="col-md-4"></div>
 </div>
 <br />
-<br />
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-   
-       
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center">
+            <h3>@Html.ValidationSummary(true, "", new { @class = "text-danger" })</h3>
+</div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <br />
 
 
     <div class="row">
@@ -31,19 +39,19 @@
                 <div class="row">
                     <div class="form-group col-md-4">
                         @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", placeholder = "E-Mail" } })
+                        @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group col-md-4">
                         @Html.LabelFor(model => model.Passwort, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Passwort, new { htmlAttributes = new { @class = "form-control", placeholder = "Passwort" } })
+                        @Html.EditorFor(model => model.Passwort, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Passwort, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group col-md-4">
                         @Html.LabelFor(model => model.PasswortVerification, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.PasswortVerification, new { htmlAttributes = new { @class = "form-control", placeholder = "Passwort wiederholen" } })
+                        @Html.EditorFor(model => model.PasswortVerification, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.PasswortVerification, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -59,7 +67,7 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         @Html.LabelFor(model => model.Firmenname, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Firmenname, new { htmlAttributes = new { @class = "form-control", placeholder = "Firmenname" } })
+                        @Html.EditorFor(model => model.Firmenname, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Firmenname, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-12">
@@ -190,7 +198,7 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            "Ich akzeptiere die <a href="http://localhost:60003/Home/AGB">AGB</a>."
+                            "Ich akzeptiere die <a href="http://localhost:60003/Home/AGB">AGBs</a>."
                         </div>
                         <div class="col-md-3"></div>
                     </div>
