@@ -12,7 +12,7 @@ namespace DataAccess.Repositories
     {
         protected ICatererContext Db { get; }
 
-        protected SparteRepository(ICatererContext db)
+        public SparteRepository(ICatererContext db)
         {
             Db = db;
         }
@@ -22,7 +22,30 @@ namespace DataAccess.Repositories
             return Db.Sparte.Where(x => x.SparteId == id).SingleOrDefault();
         }
 
-        public Sparte SearchUserByName(string name)
+        public void AddSparte(Sparte Sparte)
+        {
+            Db.Sparte.Add(Sparte);
+            Db.SaveChanges();
+        }
+
+        public void EditSparte(Sparte Sparte)
+        {
+            Db.SetModified(Sparte);
+            Db.SaveChanges();
+        }
+
+        public void RemoveSparte(Sparte Sparte)
+        {
+            Db.Set<Sparte>().Remove(Sparte);
+            Db.SaveChanges();
+        }
+
+        public List<Sparte> SearchSparte()
+        {
+            return Db.Sparte.ToList();
+        }
+
+        public Sparte SearchSparteByName(string name)
         {
             return Db.Sparte.Where(x => x.Bezeichnung == name).SingleOrDefault();
         }
