@@ -599,6 +599,8 @@ namespace SeleniumTests
             Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", driver.FindElement(By.Id("Ort-error")).Text);
 
             //Ansprechpartner
+            driver.FindElement(By.Id("Anrede-error"));
+            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", driver.FindElement(By.Id("Anrede-error")).Text);
             driver.FindElement(By.Id("Vorname-error"));
             Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", driver.FindElement(By.Id("Vorname-error")).Text);
             driver.FindElement(By.Id("Nachname-error"));
@@ -609,8 +611,8 @@ namespace SeleniumTests
             //Erreichbarkeit
             driver.FindElement(By.Id("Telefon-error"));
             Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", driver.FindElement(By.Id("Telefon-error")).Text);
-            driver.FindElement(By.Id("Internetadresse-error"));
-            Assert.AreEqual("Das Feld \"Internetadresse\" ist erforderlich.", driver.FindElement(By.Id("Internetadresse-error")).Text);
+            //driver.FindElement(By.Id("Internetadresse-error"));
+            //Assert.AreEqual("Das Feld \"Internetadresse\" ist erforderlich.", driver.FindElement(By.Id("Internetadresse-error")).Text);
 
             //Sonstiges
             driver.FindElement(By.Id("Lieferumkreis-error"));
