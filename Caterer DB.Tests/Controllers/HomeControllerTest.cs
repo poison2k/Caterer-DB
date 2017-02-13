@@ -35,7 +35,7 @@ namespace Caterer_DB.Tests.Controllers
             MockBenutzerViewModelService = new Mock<IBenutzerViewModelService>().Object;
 
             var controller = new HomeController(MockBenutzerViewModelService);
-            FakeHttpContext.SetFakeContext(controller);
+            FakeHttpContext.SetFakeContext(controller, true);
             //Act
             ViewResult result = controller.Index() as ViewResult;
 

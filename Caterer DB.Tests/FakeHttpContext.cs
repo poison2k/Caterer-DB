@@ -8,10 +8,10 @@ namespace Caterer_DB.Tests
 {
     public static class FakeHttpContext
     {
-        public static void SetFakeContext(this Controller controller)
+        public static void SetFakeContext(this Controller controller,bool login)
         {
 
-            var httpContext = MakeFakeContext();
+            var httpContext = MakeFakeContext(login);
             ControllerContext context =
             new ControllerContext(
             new RequestContext(httpContext,
@@ -20,7 +20,7 @@ namespace Caterer_DB.Tests
         }
 
 
-        private static HttpContextBase MakeFakeContext()
+        private static HttpContextBase MakeFakeContext(bool login)
         {
             var context = new Mock<HttpContextBase>();
             var request = new Mock<HttpRequestBase>();
@@ -36,7 +36,7 @@ namespace Caterer_DB.Tests
             context.Setup(c => c.Server).Returns(server.Object);
             context.Setup(c => c.User).Returns(user.Object);
             user.Setup(c => c.Identity).Returns(identity.Object);
-            identity.Setup(i => i.IsAuthenticated).Returns(true);
+            identity.Setup(i => i.IsAuthenticated).Returns(login);
             identity.Setup(i => i.Name).Returns("admin");
 
             return context.Object;

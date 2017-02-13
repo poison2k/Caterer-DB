@@ -38,6 +38,12 @@ namespace Caterer_DB.Models.ViewModelServices
         public BenutzerGruppe Map_EditBenutzerGruppeViewModel_BenutzerGruppe(EditBenutzerGruppeViewModel editBenutzerGruppeViewModel)
         {
             return Mapper.Map<BenutzerGruppe>(editBenutzerGruppeViewModel);
+
+        }
+
+        public BenutzerGruppe Map_DeleteBenutzerGruppeViewModel_BenutzerGruppe(DeleteBenutzerGruppeViewModel deleteBenutzerGruppeViewModel)
+        {
+            return Mapper.Map<BenutzerGruppe>(deleteBenutzerGruppeViewModel);
         }
 
         public EditBenutzerGruppeViewModel Map_BenutzerGruppe_EditBenutzerGruppeViewModel(BenutzerGruppe benutzerGruppe)
@@ -50,10 +56,7 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<DetailsBenutzerGruppeViewModel>(benutzerGruppe);
         }
 
-        public BenutzerGruppe Map_DeleteBenutzerGruppeViewModel_BenutzerGruppe(DeleteBenutzerGruppeViewModel deleteBenutzerGruppeViewModel)
-        {
-            return Mapper.Map<BenutzerGruppe>(deleteBenutzerGruppeViewModel);
-        }
+
 
         public DeleteBenutzerGruppeViewModel Map_BenutzerGruppe_DeleteBenutzerGruppeViewModel(BenutzerGruppe benutzerGruppe)
         {

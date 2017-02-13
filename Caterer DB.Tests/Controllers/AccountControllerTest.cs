@@ -35,13 +35,13 @@ namespace Caterer_DB.Tests.Controllers
         }
 
         [Test]
-        public void LoginURLTest()
+        public void Login_HTTPGet_Test()
         {
             //Arrange
             var controller = new AccountController(MockLoginService ,MockBenutzerService, MockBenutzerViewModelService);
             
             //Act
-            ViewResult result = controller.Login(null) as ViewResult;
+            ActionResult result = controller.Login(null);
 
             //Assert
             Assert.IsNotNull(result);
@@ -50,7 +50,6 @@ namespace Caterer_DB.Tests.Controllers
 
         [Test]
         public void LoginVorgang_ErfolgriechVerifiziertTest()
-
         {
 
             //Arrange
@@ -65,7 +64,7 @@ namespace Caterer_DB.Tests.Controllers
             MockBenutzerService = mockBenutzerService.Object;
 
             var accountController = new AccountController(MockLoginService, MockBenutzerService, MockBenutzerViewModelService);
-            FakeHttpContext.SetFakeContext(accountController);
+            FakeHttpContext.SetFakeContext(accountController,true);
 
             //Act
             ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
