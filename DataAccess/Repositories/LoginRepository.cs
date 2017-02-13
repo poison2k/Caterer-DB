@@ -25,12 +25,12 @@ namespace DataAccess.Repositories
             return Db.Benutzer.Include(s => s.BenutzerGruppen).SingleOrDefault(nutzer => nutzer.Mail.ToLower() == email.ToLower());
         }
 
-        public List<editBenutzerGruppeViewModel> GruppenFürBenutzer(int benutzerId)
+        public List<BenutzerGruppe> GruppenFürBenutzer(int benutzerId)
         {
             return Db.Benutzer.Include(s => s.BenutzerGruppen).Single(s => s.BenutzerId == benutzerId).BenutzerGruppen;
         }
 
-        public RechteGruppe RechteVerwaltungsGruppeFürNutzergruppe(editBenutzerGruppeViewModel benutzerGruppe)
+        public RechteGruppe RechteVerwaltungsGruppeFürNutzergruppe(BenutzerGruppe benutzerGruppe)
         {
             return Db.BenutzerGruppe.Include(s => s.RechteGruppe).Single(s => s.NutzerGruppeID == benutzerGruppe.NutzerGruppeID).RechteGruppe;
         }

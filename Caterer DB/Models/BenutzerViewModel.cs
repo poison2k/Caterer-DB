@@ -108,7 +108,7 @@ namespace Caterer_DB.Models
 
         public string Ort { get; set; }
 
-        public virtual List<editBenutzerGruppeViewModel> BenutzerGruppen { get; set; }
+        public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
     }
 
     public class EditBenutzerViewModel
@@ -138,7 +138,7 @@ namespace Caterer_DB.Models
 
         public string Ort { get; set; }
 
-        public virtual List<editBenutzerGruppeViewModel> BenutzerGruppen { get; set; }
+        public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
     }
 
 
@@ -228,7 +228,7 @@ namespace Caterer_DB.Models
 
         public string Ort { get; set; }
 
-        public virtual List<editBenutzerGruppeViewModel> BenutzerGruppen { get; set; }
+        public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
     }
 
     public class DeleteBenutzerViewModel
@@ -258,7 +258,7 @@ namespace Caterer_DB.Models
 
         public string Ort { get; set; }
 
-        public virtual List<editBenutzerGruppeViewModel> BenutzerGruppen { get; set; }
+        public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
     }
 
     public class AnmeldenBenutzerViewModel
@@ -271,7 +271,7 @@ namespace Caterer_DB.Models
         public string Nachname { get; set; }
 
 
-        public List<editBenutzerGruppeViewModel> BenutzerGruppen { get; set; }
+        public List<BenutzerGruppe> BenutzerGruppen { get; set; }
 
         public LoginModel AnmeldenModel { get; set; }
 

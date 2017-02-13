@@ -18,9 +18,9 @@ namespace DataAccess.Interfaces
 
             Benutzer LadeNutzerMitEmail(string kurzname);
 
-            List<editBenutzerGruppeViewModel> GruppenFürBenutzer(int benutzerId);
+            List<BenutzerGruppe> GruppenFürBenutzer(int benutzerId);
 
-            RechteGruppe RechteVerwaltungsGruppeFürNutzergruppe(editBenutzerGruppeViewModel benutzerGruppe);
+            RechteGruppe RechteVerwaltungsGruppeFürNutzergruppe(BenutzerGruppe benutzerGruppe);
         }
     
 }

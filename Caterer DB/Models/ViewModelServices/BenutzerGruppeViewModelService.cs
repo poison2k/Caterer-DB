@@ -20,45 +20,45 @@ namespace Caterer_DB.Models.ViewModelServices
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
-                cfg.CreateMap<editBenutzerGruppeViewModel, CreateBenutzerGruppeViewModel>().ReverseMap();
-                cfg.CreateMap<editBenutzerGruppeViewModel, EditBenutzerGruppeViewModel>().ReverseMap();
-                cfg.CreateMap<editBenutzerGruppeViewModel, DeleteBenutzerGruppeViewModel>().ReverseMap();
-                cfg.CreateMap<editBenutzerGruppeViewModel, DetailsBenutzerGruppeViewModel>().ReverseMap();
+                cfg.CreateMap<BenutzerGruppe, CreateBenutzerGruppeViewModel>().ReverseMap();
+                cfg.CreateMap<BenutzerGruppe, EditBenutzerGruppeViewModel>().ReverseMap();
+                cfg.CreateMap<BenutzerGruppe, DeleteBenutzerGruppeViewModel>().ReverseMap();
+                cfg.CreateMap<BenutzerGruppe, DetailsBenutzerGruppeViewModel>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();
 
         }
 
-        public editBenutzerGruppeViewModel Map_CreateBenutzerGruppeViewModel_BenutzerGruppe(CreateBenutzerGruppeViewModel createBenutzerGruppeViewModel)
+        public BenutzerGruppe Map_CreateBenutzerGruppeViewModel_BenutzerGruppe(CreateBenutzerGruppeViewModel createBenutzerGruppeViewModel)
         {
-            return Mapper.Map<editBenutzerGruppeViewModel>(createBenutzerGruppeViewModel);
+            return Mapper.Map<BenutzerGruppe>(createBenutzerGruppeViewModel);
         }
 
-        public editBenutzerGruppeViewModel Map_EditBenutzerGruppeViewModel_BenutzerGruppe(EditBenutzerGruppeViewModel editBenutzerGruppeViewModel)
+        public BenutzerGruppe Map_EditBenutzerGruppeViewModel_BenutzerGruppe(EditBenutzerGruppeViewModel editBenutzerGruppeViewModel)
         {
-            return Mapper.Map<editBenutzerGruppeViewModel>(editBenutzerGruppeViewModel);
+            return Mapper.Map<BenutzerGruppe>(editBenutzerGruppeViewModel);
 
         }
 
-        public editBenutzerGruppeViewModel Map_DeleteBenutzerGruppeViewModel_BenutzerGruppe(DeleteBenutzerGruppeViewModel deleteBenutzerGruppeViewModel)
+        public BenutzerGruppe Map_DeleteBenutzerGruppeViewModel_BenutzerGruppe(DeleteBenutzerGruppeViewModel deleteBenutzerGruppeViewModel)
         {
-            return Mapper.Map<editBenutzerGruppeViewModel>(deleteBenutzerGruppeViewModel);
+            return Mapper.Map<BenutzerGruppe>(deleteBenutzerGruppeViewModel);
         }
 
-        public EditBenutzerGruppeViewModel Map_BenutzerGruppe_EditBenutzerGruppeViewModel(editBenutzerGruppeViewModel benutzerGruppe)
+        public EditBenutzerGruppeViewModel Map_BenutzerGruppe_EditBenutzerGruppeViewModel(BenutzerGruppe benutzerGruppe)
         {
             return Mapper.Map<EditBenutzerGruppeViewModel>(benutzerGruppe);
         }
 
-        public DetailsBenutzerGruppeViewModel Map_BenutzerGruppe_DetailsBenutzerGruppeViewModel(editBenutzerGruppeViewModel benutzerGruppe)
+        public DetailsBenutzerGruppeViewModel Map_BenutzerGruppe_DetailsBenutzerGruppeViewModel(BenutzerGruppe benutzerGruppe)
         {
             return Mapper.Map<DetailsBenutzerGruppeViewModel>(benutzerGruppe);
         }
 
 
 
-        public DeleteBenutzerGruppeViewModel Map_BenutzerGruppe_DeleteBenutzerGruppeViewModel(editBenutzerGruppeViewModel benutzerGruppe)
+        public DeleteBenutzerGruppeViewModel Map_BenutzerGruppe_DeleteBenutzerGruppeViewModel(BenutzerGruppe benutzerGruppe)
         {
             return Mapper.Map<DeleteBenutzerGruppeViewModel>(benutzerGruppe);
         }

@@ -9,15 +9,15 @@ namespace DataAccess.Interfaces
 {
     public interface IBenutzerGruppeRepository
     {
-        void AddGroup(editBenutzerGruppeViewModel benutzerGruppe);
-        void EditGroup(editBenutzerGruppeViewModel benutzerGruppe);
-        void RemoveGroup(editBenutzerGruppeViewModel benutzerGruppe);
+        void AddGroup(BenutzerGruppe benutzerGruppe);
+        void EditGroup(BenutzerGruppe benutzerGruppe);
+        void RemoveGroup(BenutzerGruppe benutzerGruppe);
 
-        editBenutzerGruppeViewModel SearchGroupById(int id);
-        editBenutzerGruppeViewModel SearchGroupByBezeichnung(string bezeichnung);
+        BenutzerGruppe SearchGroupById(int id);
+        BenutzerGruppe SearchGroupByBezeichnung(string bezeichnung);
 
-        List<editBenutzerGruppeViewModel> SearchGroup();
-        List<editBenutzerGruppeViewModel> SearchGroupByRechteGruppe(RechteGruppe rechteGruppe);
-        List<editBenutzerGruppeViewModel> SearchGroupByBenutzer(Benutzer benutzer);
+        List<BenutzerGruppe> SearchGroup();
+        List<BenutzerGruppe> SearchGroupByRechteGruppe(RechteGruppe rechteGruppe);
+        List<BenutzerGruppe> SearchGroupByBenutzer(Benutzer benutzer);
     }
 }

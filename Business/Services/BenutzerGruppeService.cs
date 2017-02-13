@@ -19,17 +19,17 @@ namespace Business.Services
 
         }
 
-        public void AddBenutzerGruppe(editBenutzerGruppeViewModel benutzerGruppe)
+        public void AddBenutzerGruppe(BenutzerGruppe benutzerGruppe)
         {
             BenutzerGruppeRepository.AddGroup(benutzerGruppe);
         }
 
-        public void EditBenutzerGruppe(editBenutzerGruppeViewModel benutzerGruppe)
+        public void EditBenutzerGruppe(BenutzerGruppe benutzerGruppe)
         {
             BenutzerGruppeRepository.EditGroup(benutzerGruppe);
         }
 
-        public List<editBenutzerGruppeViewModel> FindAllGroups()
+        public List<BenutzerGruppe> FindAllGroups()
         {
             return BenutzerGruppeRepository.SearchGroup();
         }
@@ -39,7 +39,7 @@ namespace Business.Services
             BenutzerGruppeRepository.RemoveGroup(BenutzerGruppeRepository.SearchGroupById(id));
         }
 
-        public editBenutzerGruppeViewModel SearchGroupById(int id)
+        public BenutzerGruppe SearchGroupById(int id)
         {
             return BenutzerGruppeRepository.SearchGroupById(id);
         }

@@ -9,10 +9,10 @@ namespace Business.Interfaces
 {
     public interface IBenutzerGruppeService
     {
-        editBenutzerGruppeViewModel SearchGroupById(int id);
-        List<editBenutzerGruppeViewModel> FindAllGroups();
-        void AddBenutzerGruppe(editBenutzerGruppeViewModel benutzerGruppe);
-        void EditBenutzerGruppe(editBenutzerGruppeViewModel benutzerGruppe);
+        BenutzerGruppe SearchGroupById(int id);
+        List<BenutzerGruppe> FindAllGroups();
+        void AddBenutzerGruppe(BenutzerGruppe benutzerGruppe);
+        void EditBenutzerGruppe(BenutzerGruppe benutzerGruppe);
         void RemoveBenutzerGruppe(int id);
     }
 }

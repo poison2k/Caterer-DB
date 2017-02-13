@@ -31,7 +31,7 @@ namespace DataAccess.Interfaces
 
         int SaveChanges();
 
-        DbSet<editBenutzerGruppeViewModel> BenutzerGruppe { get; set; }
+        DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
         DbSet<Recht> Recht { get; set; }
         DbSet<RechteGruppe> RechteGruppe { get; set; }
         DbSet<Benutzer> Benutzer { get; set; }
