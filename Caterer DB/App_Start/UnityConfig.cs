@@ -75,6 +75,10 @@ namespace Caterer_DB.App_Start
             container.RegisterType<IFrageService, FrageService>();
             container.RegisterType<IFrageRepository, FrageRepository>();
 
+            container.RegisterType<ISparteViewModelService, SparteViewModelService>();
+            container.RegisterType<ISparteService, SparteService>();
+            container.RegisterType<ISparteRepository, SparteRepository>();
+
             container.RegisterType<IMailService, MailService>();
             container.RegisterType<IMd5Hash, MD5Hash>();
 

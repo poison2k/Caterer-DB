@@ -9,7 +9,12 @@ namespace DataAccess.Interfaces
 {
     public interface ISparteRepository
     {
+        void AddSparte(Sparte sparte);
+        void EditSparte(Sparte sparte);
+        void RemoveSparte(Sparte sparte);
+
+        List<Sparte> SearchSparte();
         Sparte SearchSparteById(int id);
-        Sparte SearchUserByName(string name);
+        Sparte SearchSparteByName(string name);
     }
 }
