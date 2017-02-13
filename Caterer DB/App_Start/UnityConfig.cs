@@ -79,6 +79,10 @@ namespace Caterer_DB.App_Start
             container.RegisterType<ISparteService, SparteService>();
             container.RegisterType<ISparteRepository, SparteRepository>();
 
+            container.RegisterType<IAntwortViewModelService, AntwortViewModelService>();
+            container.RegisterType<IAntwortService, AntwortService>();
+            container.RegisterType<IAntwortRepository, AntwortRepository>();
+
             container.RegisterType<IMailService, MailService>();
             container.RegisterType<IMd5Hash, MD5Hash>();
 

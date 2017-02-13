@@ -15,6 +15,7 @@
 <br />
 
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -27,9 +28,14 @@
 </div>
         <div class="col-md-4"></div>
     </div>
-
     <br />
-
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+            <p>Bitte füllen Sie die Formularfelder aus. Die mit einem "*" gekennzeichneten Felder sind Pflichtfelder.<p />
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 
     <div class="row">
         <div class="col-md-12">
@@ -38,19 +44,19 @@
                 <br />
                 <div class="row">
                     <div class="form-group col-md-4">
-                        @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
-                    </div>
+                        @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label" })*
+                            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+</div>
 
                     <div class="form-group col-md-4">
-                        @Html.LabelFor(model => model.Passwort, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Passwort, htmlAttributes: new { @class = "control-label" })*
                         @Html.EditorFor(model => model.Passwort, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Passwort, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group col-md-4">
-                        @Html.LabelFor(model => model.PasswortVerification, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.PasswortVerification, htmlAttributes: new { @class = "control-label" })*
                         @Html.EditorFor(model => model.PasswortVerification, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.PasswortVerification, "", new { @class = "text-danger" })
                     </div>
@@ -66,27 +72,27 @@
                 <br />
                 <div class="row">
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Firmenname, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Firmenname, htmlAttributes: new { @class = "control-label" })*
                         @Html.EditorFor(model => model.Firmenname, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Firmenname, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Organisationsform, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Organisationsform, htmlAttributes: new { @class = "control-label" })*
                         @Html.DropDownList("Organisationsform", Model.Organisationsformen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                         @Html.ValidationMessageFor(model => model.Organisationsform, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Straße, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Straße, htmlAttributes: new { @class = "control-label" })*
                         @Html.EditorFor(model => model.Straße, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Straße, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Postleitzahl, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Postleitzahl, htmlAttributes: new { @class = "control-label" })*
                         @Html.EditorFor(model => model.Postleitzahl, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Postleitzahl, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Ort, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Ort, htmlAttributes: new { @class = "control-label" })*
                         @Html.EditorFor(model => model.Ort, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Ort, "", new { @class = "text-danger" })
                     </div>
@@ -100,24 +106,24 @@
                 <div class="row">
 
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label " })*
                         @Html.DropDownList("Anrede", Model.Anreden, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                         @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Vorname, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Vorname, htmlAttributes: new { @class = "control-label " })*
                         @Html.EditorFor(model => model.Vorname, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Vorname, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Nachname, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Nachname, htmlAttributes: new { @class = "control-label " })*
                         @Html.EditorFor(model => model.Nachname, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Nachname, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.FunktionAnsprechpartner, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.FunktionAnsprechpartner, htmlAttributes: new { @class = "control-label " })*
                         @Html.EditorFor(model => model.FunktionAnsprechpartner, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.FunktionAnsprechpartner, "", new { @class = "text-danger" })
                     </div>
@@ -133,7 +139,7 @@
                 <br />
                 <div class="row">
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label " })*
                         @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
                     </div>
@@ -146,7 +152,7 @@
                     <div class="form-group col-md-12">
                         @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " })
                         @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
                     </div>
 
                 </div>
@@ -160,7 +166,7 @@
                 <div class="row">
 
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })*
                         @Html.DropDownList("Lieferumkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                         @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
                     </div>

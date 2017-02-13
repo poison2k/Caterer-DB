@@ -34,6 +34,7 @@ namespace Caterer_DB.Models
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -69,7 +70,6 @@ namespace Caterer_DB.Models
         [Required]
         public string Ort { get; set; }
 
-        [Required]
         public string Internetadresse { get; set; }
 
         [Required]
@@ -86,6 +86,7 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -115,6 +116,7 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -156,6 +158,7 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -191,7 +194,6 @@ namespace Caterer_DB.Models
         [Required]
         public string Ort { get; set; }
 
-        [Required]
         public string Internetadresse { get; set; }
 
         [Required]
@@ -204,6 +206,7 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -233,6 +236,7 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -259,6 +263,7 @@ namespace Caterer_DB.Models
 
     public class AnmeldenBenutzerViewModel
     {
+        [Required]
         public string Anrede { get; set; }
 
         public string Vorname { get; set; }
