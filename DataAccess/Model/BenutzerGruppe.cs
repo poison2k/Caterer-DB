@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DataAccess.Model
 {
     [Table("BenutzerGruppen")]
-    public class BenutzerGruppe
+    public class editBenutzerGruppeViewModel
     {
         [Key]
         public int NutzerGruppeID { get; set; }

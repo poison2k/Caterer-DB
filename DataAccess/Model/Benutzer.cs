@@ -46,6 +46,6 @@ namespace DataAccess.Model
 
         public bool IstEmailVerifiziert { get; set; }
 
-        public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
+        public virtual List<editBenutzerGruppeViewModel> BenutzerGruppen { get; set; }
     }
 }

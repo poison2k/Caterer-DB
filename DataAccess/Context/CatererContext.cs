@@ -13,7 +13,7 @@ namespace DataAccess.Context
         {
         }
 
-        public virtual DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
+        public virtual DbSet<editBenutzerGruppeViewModel> BenutzerGruppe { get; set; }
         public virtual DbSet<Recht> Recht { get; set; }
         public virtual DbSet<RechteGruppe> RechteGruppe { get; set; }
         public virtual DbSet<Benutzer> Benutzer { get; set; }

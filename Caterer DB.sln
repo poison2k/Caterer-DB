@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caterer DB", "Caterer DB\Caterer DB.csproj", "{E2591804-ABD7-49ED-8A30-F603A363A354}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caterer DB.Tests", "Caterer DB.Tests\Caterer DB.Tests.csproj", "{C32BFDF4-913D-4C08-B9FE-87877FCD82E8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D76526D2-9BE6-499E-8D76-3BE5E413B22A} = {D76526D2-9BE6-499E-8D76-3BE5E413B22A}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_Clients", "00_Clients", "{8094EF02-DB36-4029-9075-A4FC45DCCD29}"
 EndProject
