@@ -12,7 +12,7 @@ namespace DataAccess.Repositories
     {
         protected ICatererContext Db { get; }
 
-        protected AntwortRepository(ICatererContext db)
+        public AntwortRepository(ICatererContext db)
         {
             Db = db;
         }
@@ -20,6 +20,29 @@ namespace DataAccess.Repositories
         public Antwort SearchAntwortById(int id)
         {
             return Db.Antwort.Where(x => x.AntwortId == id).SingleOrDefault();
+        }
+        
+        public void AddAntwort(Antwort Antwort)
+        {
+            Db.Antwort.Add(Antwort);
+            Db.SaveChanges();
+        }
+
+        public void EditAntwort(Antwort Antwort)
+        {
+            Db.SetModified(Antwort);
+            Db.SaveChanges();
+        }
+
+        public void RemoveAntwort(Antwort Antwort)
+        {
+            Db.Set<Antwort>().Remove(Antwort);
+            Db.SaveChanges();
+        }
+
+        public List<Antwort> SearchAntwort()
+        {
+            return Db.Antwort.ToList();
         }
 
         public List<Antwort> SearchAntwortByFrage(Frage frage)
