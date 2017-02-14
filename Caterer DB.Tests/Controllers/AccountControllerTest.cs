@@ -29,6 +29,7 @@ namespace Caterer_DB.Tests.Controllers
             Fixture = new Fixture();
             Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
             MockBenutzerViewModelService = new Mock<IBenutzerViewModelService>().Object;
             MockLoginService = new Mock<ILoginService>().Object;
             MockBenutzerService = new Mock<IBenutzerService>().Object;
@@ -55,6 +56,7 @@ namespace Caterer_DB.Tests.Controllers
             //Arrange
             var benutzer = Fixture.Build<Benutzer>().WithAutoProperties().Create();
             benutzer.IstEmailVerifiziert = true;
+
             var mockLoginService = new Mock<ILoginService>();
             mockLoginService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.Erfolgreich);
             MockLoginService = mockLoginService.Object;

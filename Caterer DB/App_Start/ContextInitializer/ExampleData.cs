@@ -18,6 +18,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Mustermann",
                 Vorname = "Max",
+                EMailVerificationCode = "b",
                 IstEmailVerifiziert = true
             });
 
@@ -27,6 +28,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Musterfrau",
                 Vorname = "Maxim",
+                EMailVerificationCode = "a",
                 IstEmailVerifiziert = true
             });
 
@@ -36,6 +38,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Müller",
                 Vorname = "Alex",
+                EMailVerificationCode = "c",
                 IstEmailVerifiziert = true
             });
 

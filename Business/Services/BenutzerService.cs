@@ -45,7 +45,7 @@ namespace Business.Services
         public void RegisterBenutzer(Benutzer benutzer)
         {
             BenutzerRepository.AddUser(benutzer);
-            MailService.SendRegisterMail(benutzer.EMailVerificationCode,benutzer.Mail,benutzer.BenutzerId.ToString());
+            MailService.SendRegisterMail(benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void EditBenutzer(Benutzer benutzer)
@@ -55,7 +55,7 @@ namespace Business.Services
 
         public void RemoveBenutzer(int id)
         {
-            
+
             BenutzerRepository.RemoveUser(BenutzerRepository.SearchUserById(id));
         }
 
@@ -74,14 +74,18 @@ namespace Business.Services
         public bool VerifyRegistration(string id, string verify)
         {
             var benutzer = BenutzerRepository.SearchUserById(Convert.ToInt32(id));
-            if (benutzer.EMailVerificationCode == verify){
-                benutzer.IstEmailVerifiziert = true;
-                BenutzerRepository.EditUser(benutzer);
-                return true;
+            if (benutzer != null && verify != null)
+            {
+                if (benutzer?.EMailVerificationCode == verify)
+                {
+                    benutzer.IstEmailVerifiziert = true;
+                    BenutzerRepository.EditUser(benutzer);
+                    return true;
+                }
             }
             return false;
         }
 
-      
+
     }
 }
