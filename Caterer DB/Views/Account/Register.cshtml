@@ -180,18 +180,16 @@
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     @Html.CheckBoxFor(model => model.AGBs, new { @checked = "checked" })
-
-
                                 </span>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            "Meine Daten dürfen bei Beratungsfragen von der Vernetzungsstelle Niedersachsen weitergegeben werden."
-                            @Html.ValidationMessageFor(model => model.AGBs, "", new { @class = "text-danger" })
+                            <p>"Ich akzeptiere die Datenschutzbestimmungen."</p>
+                            @Html.ValidationMessageFor(model => model.Datenschutz, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-3"></div>
                     </div>
-                    <br />
+                
                     <div class="row">
                         <div class="col-md-2">
                             <div class="input-group">
@@ -201,15 +199,27 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            "Ich akzeptiere die <a id="RegAGB" href="/Home/AGB">AGBs</a>."
-                            @Html.ValidationMessageFor(model => model.Datenschutz, "", new { @class = "text-danger" })
+                            <p>"Ich akzeptiere die <a id="RegAGB" href="/Home/AGB">AGBs</a>."</p>
+                            @Html.ValidationMessageFor(model => model.AGBs, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-3"></div>
                     </div>
-
+                    
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    @Html.CheckBoxFor(model => model.WeitergabeVonDaten, new { @checked = "checked" })
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <p>"Meine Daten dürfen bei Beratungsfragen von der Vernetzungsstelle Niedersachsen weitergegeben werden."</p>
+                            @Html.ValidationMessageFor(model => model.WeitergabeVonDaten, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3"></div>
                     </div>
-
-
+                    </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -240,3 +250,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+
+"Meine Daten dürfen bei Beratungsfragen von der Vernetzungsstelle Niedersachsen weitergegeben werden."

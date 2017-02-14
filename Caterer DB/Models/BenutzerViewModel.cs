@@ -82,7 +82,7 @@ namespace Caterer_DB.Models
         public bool AGBs { get; set; }
 
         [Required]
-        [MustBeTrue(ErrorMessage = "Datenschutzbestoimmungen müssen zugestimmt werden")]
+        [MustBeTrue(ErrorMessage = "Datenschutzbestimmungen müssen zugestimmt werden")]
         public bool Datenschutz { get; set; }
 
         public bool WeitergabeVonDaten { get; set; }
