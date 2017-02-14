@@ -592,7 +592,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("Organisationsform-error"));
             Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", driver.FindElement(By.Id("Organisationsform-error")).Text);
             driver.FindElement(By.Id("Stra_e-error"));
-            Assert.AreEqual("Das Feld \"Straße\" ist erforderlich.", driver.FindElement(By.Id("Stra_e-error")).Text);
+            Assert.AreEqual("Das Feld \"Straße und Hausnummer\" ist erforderlich.", driver.FindElement(By.Id("Stra_e-error")).Text);
             driver.FindElement(By.Id("Postleitzahl-error"));
             Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", driver.FindElement(By.Id("Postleitzahl-error")).Text);
             driver.FindElement(By.Id("Ort-error"));
@@ -626,6 +626,378 @@ namespace SeleniumTests
             driver.FindElement(By.Id("loginLinkbutton"));
 
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+        }
+        [Test]
+        //T_U1-3_F05_B_001 
+        public void RegistrationsFehler2()
+        {
+            Boolean present;
+
+            //Variante Dropdown
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("registerLink")).Click();
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("RegSeite"));
+            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("btnSpeichern")).Click();
+
+            //Account
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("Mail-error"));
+            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", driver.FindElement(By.Id("Mail-error")).Text);
+            driver.FindElement(By.Id("Passwort-error"));
+            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", driver.FindElement(By.Id("Passwort-error")).Text);
+            driver.FindElement(By.Id("PasswortVerification-error"));
+            Assert.AreEqual("Das Feld \"Passwort Wiederholung\" ist erforderlich.", driver.FindElement(By.Id("PasswortVerification-error")).Text);
+
+            //Firma
+            driver.FindElement(By.Id("Firmenname-error"));
+            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", driver.FindElement(By.Id("Firmenname-error")).Text);
+            driver.FindElement(By.Id("Organisationsform-error"));
+            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", driver.FindElement(By.Id("Organisationsform-error")).Text);
+            driver.FindElement(By.Id("Stra_e-error"));
+            Assert.AreEqual("Das Feld \"Straße und Hausnummer\" ist erforderlich.", driver.FindElement(By.Id("Stra_e-error")).Text);
+            driver.FindElement(By.Id("Postleitzahl-error"));
+            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", driver.FindElement(By.Id("Postleitzahl-error")).Text);
+            driver.FindElement(By.Id("Ort-error"));
+            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", driver.FindElement(By.Id("Ort-error")).Text);
+
+            //Ansprechpartner
+            driver.FindElement(By.Id("Anrede-error"));
+            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", driver.FindElement(By.Id("Anrede-error")).Text);
+            driver.FindElement(By.Id("Vorname-error"));
+            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", driver.FindElement(By.Id("Vorname-error")).Text);
+            driver.FindElement(By.Id("Nachname-error"));
+            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", driver.FindElement(By.Id("Nachname-error")).Text);
+            driver.FindElement(By.Id("FunktionAnsprechpartner-error"));
+            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", driver.FindElement(By.Id("FunktionAnsprechpartner-error")).Text);
+
+            //Erreichbarkeit
+            driver.FindElement(By.Id("Telefon-error"));
+            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", driver.FindElement(By.Id("Telefon-error")).Text);
+
+            //Sonstiges
+            driver.FindElement(By.Id("Lieferumkreis-error"));
+            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", driver.FindElement(By.Id("Lieferumkreis-error")).Text);
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+
+
+            //Email befüllen
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("Mail")).Clear();
+            driver.FindElement(By.Id("Mail")).SendKeys("XXX@xxx.xx");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1));
+                driver.FindElement(By.Id("Mail-error"));
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Passwort befüllen
+            driver.FindElement(By.Id("Passwort")).Clear();
+            driver.FindElement(By.Id("Passwort")).SendKeys("12345678");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Passwort-error"));
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Passwort wiederholen befüllen
+            driver.FindElement(By.Id("PasswortVerification")).Clear();
+            driver.FindElement(By.Id("PasswortVerification")).SendKeys("12345678");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("PasswortVerification-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Firmenname befüllen
+            driver.FindElement(By.Id("Firmenname")).Clear();
+            driver.FindElement(By.Id("Firmenname")).SendKeys("Testfirma");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Firmenname-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Organisationsform wählen
+            driver.FindElement(By.Id("Organisationsform")).SendKeys("Caterer");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Organisationsform-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Straße befüllen
+            driver.FindElement(By.Id("Stra_e")).Clear();
+            driver.FindElement(By.Id("Stra_e")).SendKeys("Teststraße 0");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Stra_e-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //PLZ befüllen
+            driver.FindElement(By.Id("Postleitzahl")).Clear();
+            driver.FindElement(By.Id("Postleitzahl")).SendKeys("12345");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Postleitzahl-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Ort befüllen
+            driver.FindElement(By.Id("Ort")).Clear();
+            driver.FindElement(By.Id("Ort")).SendKeys("Testen");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Ort-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Anrede wählen
+            driver.FindElement(By.Id("Anrede")).SendKeys("Herr");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Anrede-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Vorname befüllen
+            driver.FindElement(By.Id("Vorname")).Clear();
+            driver.FindElement(By.Id("Vorname")).SendKeys("Test");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Vorname-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Nachname befüllen
+            driver.FindElement(By.Id("Nachname")).Clear();
+            driver.FindElement(By.Id("Nachname")).SendKeys("Teste");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Nachname-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //FunktionAnprechpartner befüllen
+            driver.FindElement(By.Id("FunktionAnsprechpartner")).Clear();
+            driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys("Tester");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("FunktionAnsprechpartner-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Telefon befüllen
+            driver.FindElement(By.Id("Telefon")).Clear();
+            driver.FindElement(By.Id("Telefon")).SendKeys("09876/54321");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Telefon-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+            //Umkreis wählen
+            driver.FindElement(By.Id("Lieferumkreis")).SendKeys("Bis 30 km");
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+                driver.FindElement(By.Id("Lieferumkreis-error")); ;
+                present = true;
+            }
+            catch (NoSuchElementException)
+            {
+                present = false;
+            }
+            Assert.AreEqual(false, present);
+
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("StartButton")).Click();
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+        }
+        [Test]
+        //T_U1-3_F08_B_001 
+        public void RegistrationsFehlerDoppelMail()
+        {
+
+            //Variante Dropdown
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("registerLink")).Click();
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("RegSeite"));
+            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+
+            //Email befüllen
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("Mail")).Clear();
+            driver.FindElement(By.Id("Mail")).SendKeys("Caterer@test.de");
+
+            //Passwort befüllen
+            driver.FindElement(By.Id("Passwort")).Clear();
+            driver.FindElement(By.Id("Passwort")).SendKeys("12345678");
+
+            //Passwort wiederholen befüllen
+            driver.FindElement(By.Id("PasswortVerification")).Clear();
+            driver.FindElement(By.Id("PasswortVerification")).SendKeys("12345678");
+
+            //Firmenname befüllen
+            driver.FindElement(By.Id("Firmenname")).Clear();
+            driver.FindElement(By.Id("Firmenname")).SendKeys("Testfirma");
+
+            //Organisationsform wählen
+            driver.FindElement(By.Id("Organisationsform")).SendKeys("Caterer");
+
+            //Straße befüllen
+            driver.FindElement(By.Id("Stra_e")).Clear();
+            driver.FindElement(By.Id("Stra_e")).SendKeys("Teststraße 0");
+  
+            //PLZ befüllen
+            driver.FindElement(By.Id("Postleitzahl")).Clear();
+            driver.FindElement(By.Id("Postleitzahl")).SendKeys("12345");
+
+            //Ort befüllen
+            driver.FindElement(By.Id("Ort")).Clear();
+            driver.FindElement(By.Id("Ort")).SendKeys("Testen");
+
+            //Anrede wählen
+            driver.FindElement(By.Id("Anrede")).SendKeys("Herr");
+
+            //Vorname befüllen
+            driver.FindElement(By.Id("Vorname")).Clear();
+            driver.FindElement(By.Id("Vorname")).SendKeys("Test");
+
+            //Nachname befüllen
+            driver.FindElement(By.Id("Nachname")).Clear();
+            driver.FindElement(By.Id("Nachname")).SendKeys("Teste");
+
+            //FunktionAnprechpartner befüllen
+            driver.FindElement(By.Id("FunktionAnsprechpartner")).Clear();
+            driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys("Tester");
+
+            //Telefon befüllen
+            driver.FindElement(By.Id("Telefon")).Clear();
+            driver.FindElement(By.Id("Telefon")).SendKeys("09876/54321");
+
+            //Umkreis wählen
+            driver.FindElement(By.Id("Lieferumkreis")).SendKeys("Bis 30 km");
+
+            //AGBs akzeptieren
+            driver.FindElement(By.Id("AGBs")).Click();
+            //AGBs akzeptieren
+            driver.FindElement(By.Id("Datenschutz")).Click();
+            //AGBs akzeptieren
+            driver.FindElement(By.Id("WeitergabeVonDaten")).Click();
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("btnSpeichern")).Click();
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("DoppelMail")).Click();
+
+            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            //driver.FindElement(By.Id("DoppelMal")).Click();
+
+            //Assert.AreEqual("E-Mail ist bereits registriert", driver.FindElement(By.Id("DoppelMail")).Text);
+
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("StartButton")).Click();
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
     }
 }
+
+
+//DoppelMail
