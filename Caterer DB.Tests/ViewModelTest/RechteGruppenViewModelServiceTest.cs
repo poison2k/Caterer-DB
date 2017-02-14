@@ -9,7 +9,7 @@ using System.Linq;
 
 
 
-namespace Caterer_DB.Tests.RechteViewModelServiceTest
+namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
 {
     [TestFixture]
     public class RechteGruppenViewModelTest
