@@ -18,8 +18,19 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Mustermann",
                 Vorname = "Max",
-                EMailVerificationCode = "b",
-                IstEmailVerifiziert = true
+                IstEmailVerifiziert = true,
+                Firmenname = "AllYouCanEat GmbH",
+                Internetadresse = "www.AYCE.de",
+                Lieferumkreis = "50km",
+                Organisationsform = "Vorhanden",
+                Telefon = "01234 - 56789",
+                Fax = "01234 - 99999",
+                Straße = "Holzweg 1",
+                Postleitzahl = "87654",
+                Ort = "Woodway",
+                Anrede = "Herr",
+                FunktionAnsprechpartner = "Chef",
+                EMailVerificationCode = ""
             });
 
             Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer
@@ -28,8 +39,19 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Musterfrau",
                 Vorname = "Maxim",
-                EMailVerificationCode = "a",
-                IstEmailVerifiziert = true
+                IstEmailVerifiziert = true,
+                Firmenname = "-",
+                Internetadresse = "-",
+                Lieferumkreis = "-",
+                Organisationsform = "-",
+                Telefon = "-",
+                Fax = "-",
+                Straße = "-",
+                Postleitzahl = "-",
+                Ort = "-",
+                Anrede = "-",
+                FunktionAnsprechpartner = "-",
+                EMailVerificationCode = "-"
             });
 
             Benutzer admin = db.Benutzer.Add(new Benutzer
@@ -38,8 +60,19 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Müller",
                 Vorname = "Alex",
-                EMailVerificationCode = "c",
-                IstEmailVerifiziert = true
+                IstEmailVerifiziert = true,
+                Firmenname = "-",
+                Internetadresse = "-",
+                Lieferumkreis = "-",
+                Organisationsform = "-",
+                Telefon = "-",
+                Fax = "-",
+                Straße = "-",
+                Postleitzahl = "-",
+                Ort = "-",
+                Anrede = "-",
+                FunktionAnsprechpartner = "-",
+                EMailVerificationCode = "-"
             });
 
             db.SaveChanges();
