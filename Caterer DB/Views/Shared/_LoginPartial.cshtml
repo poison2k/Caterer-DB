@@ -12,9 +12,8 @@
                     <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
-                    <li>@Html.ActionLink("Meine Details", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
-                   
+                    <li>@Html.ActionLink("Meine Daten", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
+                    <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>         
                 </ul>
             </li>
 
