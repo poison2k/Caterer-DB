@@ -77,11 +77,11 @@ namespace Caterer_DB.Models
         public string Lieferumkreis { get; set; }
 
         [Required]
-        [EnforceTrue(ErrorMessage = "test")]
+        [MustBeTrue(ErrorMessage = "Sie müssen die AGBs akzeptieren")]
         public bool AGBs { get; set; }
 
         [Required]
-        [Range(typeof(bool), "true", "true", ErrorMessage = "Sie müssen die Datenschutzbestimmungen Akzeptieren!")]
+        [MustBeTrue(ErrorMessage = "Datenschutzbestoimmungen müssen zugestimmt werden")]
         public bool Datenschutz { get; set; }
 
 

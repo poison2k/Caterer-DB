@@ -94,7 +94,7 @@ namespace Caterer_DB.Controllers
                 return View("RegisterSuccsessfull");
             }
 
-            return View(registerBenutzerViewModel);
+            return View(BenutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel));
         }
 
 
