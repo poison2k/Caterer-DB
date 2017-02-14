@@ -1,17 +1,11 @@
 ﻿using Caterer_DB.Models;
-using DataAccess.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityAutoMoq;
 
 namespace Caterer_DB.Tests
 {
-  
-        public abstract class TestBase
+
+    public abstract class TestBase
         {
             private bool registered;
 
@@ -31,13 +25,7 @@ namespace Caterer_DB.Tests
                 }
             }
 
-            /// <summary>
-            ///     Wird von der Oberklasse zu Begin einmal aufgerufen.
-            ///     AktuellerNutzer EffectiveDateingsRatingonHoldingsRatingipmentHoldingsRatinglStrenghtRatingsStatusCategoryalCategorynitamestärkeh über ein IFindeAktuellenNutzer Mock
-            ///     Registriert.
-            /// </summary>
-            /// <returns></returns>
-            protected abstract UnityAutoMoqContainer RegisterTypes(UnityAutoMoqContainer container);
+           protected abstract UnityAutoMoqContainer RegisterTypes(UnityAutoMoqContainer container);
         }
     
 }

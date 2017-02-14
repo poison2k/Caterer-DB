@@ -34,6 +34,7 @@ namespace Caterer_DB.Models
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -69,11 +70,16 @@ namespace Caterer_DB.Models
         [Required]
         public string Ort { get; set; }
 
-        [Required]
         public string Internetadresse { get; set; }
 
         [Required]
         public string Lieferumkreis { get; set; }
+
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Sie müssen den AGBs Zustimmen!")]
+        public bool AGBs { get; set; }
+
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Sie müssen die Datenschutzbestimmungen Akzeptieren!")]
+        public bool Datenschutz { get; set; }
 
 
     }
@@ -86,6 +92,7 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -115,6 +122,7 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -156,6 +164,7 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -191,7 +200,6 @@ namespace Caterer_DB.Models
         [Required]
         public string Ort { get; set; }
 
-        [Required]
         public string Internetadresse { get; set; }
 
         [Required]
@@ -204,6 +212,7 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -233,6 +242,7 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
+        [Required]
         public string Anrede { get; set; }
 
         [Required]
@@ -259,6 +269,7 @@ namespace Caterer_DB.Models
 
     public class AnmeldenBenutzerViewModel
     {
+        [Required]
         public string Anrede { get; set; }
 
         public string Vorname { get; set; }

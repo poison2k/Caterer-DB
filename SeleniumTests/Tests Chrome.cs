@@ -80,7 +80,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("Willkommen"));
             Assert.AreEqual(baseURL, driver.Url.ToString());
 
-            driver.FindElement(By.Id("DropdownLogout")).Click();
+            driver.FindElement(By.Id("DropdownLogin")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -108,7 +108,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("Willkommen"));
             Assert.AreEqual(baseURL, driver.Url.ToString());
 
-            driver.FindElement(By.Id("DropdownLogout")).Click();
+            driver.FindElement(By.Id("DropdownLogin")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
@@ -237,7 +237,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("Ansprechp"));
             Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
 
-            driver.FindElement(By.Id("DropdownLogout")).Click();
+            driver.FindElement(By.Id("DropdownLogin")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -297,7 +297,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("Datenschutzbest"));
             Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
 
-            driver.FindElement(By.Id("DropdownLogout")).Click();
+            driver.FindElement(By.Id("DropdownLogin")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -357,7 +357,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
 
-            driver.FindElement(By.Id("DropdownLogout")).Click();
+            driver.FindElement(By.Id("DropdownLogin")).Click();
             driver.FindElement(By.Id("Ausloggen")).Click();
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
