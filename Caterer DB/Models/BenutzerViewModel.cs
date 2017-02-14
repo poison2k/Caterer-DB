@@ -85,6 +85,7 @@ namespace Caterer_DB.Models
         [MustBeTrue(ErrorMessage = "Datenschutzbestoimmungen müssen zugestimmt werden")]
         public bool Datenschutz { get; set; }
 
+        public bool WeitergabeVonDaten { get; set; }
 
     }
 

@@ -47,5 +47,7 @@ namespace DataAccess.Model
         public bool IstEmailVerifiziert { get; set; }
 
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
+
+        public bool WeitergabeVonDaten { get; set; }
     }
 }
