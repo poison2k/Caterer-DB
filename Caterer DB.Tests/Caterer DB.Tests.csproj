@@ -186,7 +186,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Benutzergruppentest\BenutzerGruppenViewModelTest.cs" />
+    <Compile Include="ViewModelTest\BenutzerGruppenViewModelTest.cs" />
     <Compile Include="Controllers\AccountControllerTest.cs" />
     <Compile Include="FakeHttpContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
