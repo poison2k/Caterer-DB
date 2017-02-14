@@ -1,5 +1,6 @@
 ﻿
 
+using Caterer_DB.Services;
 using DataAccess.Model;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,9 +76,11 @@ namespace Caterer_DB.Models
         [Required]
         public string Lieferumkreis { get; set; }
 
-        [Range(typeof(bool), "true", "true", ErrorMessage = "Sie müssen den AGBs Zustimmen!")]
+        [Required]
+        [EnforceTrue(ErrorMessage = "test")]
         public bool AGBs { get; set; }
 
+        [Required]
         [Range(typeof(bool), "true", "true", ErrorMessage = "Sie müssen die Datenschutzbestimmungen Akzeptieren!")]
         public bool Datenschutz { get; set; }
 
