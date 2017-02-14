@@ -89,7 +89,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
         }
 
         [Test]
-        public void Map_BenutzerGruppeViewModel_EditBenutzerGruppe_Test()
+        public void Map_RechteGruppeViewModel_EditRechteGruppe_Test()
         {
             //Assert
             var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
@@ -109,7 +109,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
         }
 
         [Test]
-        public void Map_BenutzerGruppeViewModel_DetailsBenutzerGruppe_Test()
+        public void Map_RechteGruppeViewModel_DetailsRechteGruppe_Test()
         {
             //Assert
             var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
@@ -129,7 +129,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
         }
 
         [Test]
-        public void Map_BenutzerGruppeViewModel_DeleteBenutzerGruppe_Test()
+        public void Map_RechteGruppeViewModel_DeleteRechteGruppe_Test()
         {
             //Assert
             var rechteGruppe = Fixture.Build<RechteGruppe>().Create();

@@ -193,6 +193,7 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="ViewModelTest\RechteGruppenViewModelServiceTest.cs" />
+    <Compile Include="ViewModelTest\RechteViewModelServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config">
