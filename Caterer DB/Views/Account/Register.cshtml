@@ -7,12 +7,13 @@
 
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
+    <div id="RegSeite" class="col-md-4 text-center">
         <h3>Registrierung</h3>
     </div>
     <div class="col-md-4"></div>
 </div>
 <br />
+
 
 
 @using (Html.BeginForm())
@@ -27,10 +28,7 @@
 </div>
         <div class="col-md-4"></div>
     </div>
-
     <br />
-
-
     <div class="row">
         <div class="col-md-12">
             <div class="well well-lg">
@@ -39,9 +37,9 @@
                 <div class="row">
                     <div class="form-group col-md-4">
                         @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
-                    </div>
+                            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+</div>
 
                     <div class="form-group col-md-4">
                         @Html.LabelFor(model => model.Passwort, htmlAttributes: new { @class = "control-label" })
@@ -138,15 +136,15 @@
                         @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label " }) (optional)
                         @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " }) (optional)
                         @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
                     </div>
 
                 </div>
@@ -160,7 +158,7 @@
                 <div class="row">
 
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })*
                         @Html.DropDownList("Lieferumkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                         @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
                     </div>
@@ -198,7 +196,7 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            "Ich akzeptiere die <a href="http://localhost:60003/Home/AGB">AGBs</a>."
+                            "Ich akzeptiere die <a id="RegAGB" href="http://localhost:60003/Home/AGB">AGBs</a>."
                         </div>
                         <div class="col-md-3"></div>
                     </div>

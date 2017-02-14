@@ -30,7 +30,7 @@ namespace Caterer_DB.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Ihre Kontakt Seite";
 
             return View();
         }

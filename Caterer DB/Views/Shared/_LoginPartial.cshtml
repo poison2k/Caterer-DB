@@ -7,7 +7,7 @@
 
         
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown", id="DropdownLogout">
+            <li class="dropdown", id="DropdownLogin">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
                 </a>
@@ -37,13 +37,13 @@ else
 {
    
     <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown", id="DropdownLogin">
+        <li class="dropdown", id="DropdownLogout">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
                 <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLinkhead" })</li>
-                <li>@Html.ActionLink("Registrieren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Registrieren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLinkhead" })</li>
             </ul>
         </li>
        
