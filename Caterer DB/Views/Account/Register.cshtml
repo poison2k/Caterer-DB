@@ -222,14 +222,23 @@
                     </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <ul class="list-unstyled list-inline " style="margin-left: -5px;">
+                <div class="col-md-4">
+                    <ul class="list-unstyled list-inline "style="margin-left: -5px;">
                         <li>
                             <button type="submit" id="btnSpeichern" name="btnConfig" value="Registrieren" class="btn btn-success">
                                 <i class="glyphicon glyphicon-save"></i> Registrieren
                             </button>
                         </li>
-
+                        @*Button "Zurück", rechts neben "Registrieren"*@
+                        @*<li>
+                            <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                        </li>*@
+                    </ul>
+                </div>
+                <div class="col-md-4">                   
+                </div>
+                <div class="col-md-4 text-right">
+                    <ul class="list-unstyled list-inline">
                         <li>
                             <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                         </li>
@@ -251,6 +260,3 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-
-
-"Meine Daten dürfen bei Beratungsfragen von der Vernetzungsstelle Niedersachsen weitergegeben werden."

@@ -18,7 +18,7 @@ namespace Common.Services
             mailModel.UserName = "Hoersaal10@gmail.com";
             mailModel.Betreff = "Registrierung Caterer-DB";
             mailModel.Empfaenger = email;
-            mailModel.Inhalt = "http://localhost:60003/Account/RegisterComplete?verify="+verify+"&id="+id;
+            mailModel.Inhalt = "Sehr geehrter Nutzer,\r\n\nvielen Dank für Ihre Registrierung für den internen Bereich der Caterer Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsen.\r\nBitte schließen Sie Ihre Registrierung durch Anklicken des folgenden Links ab. Im Anschluss können Sie mit Ihren Anmeldedaten alle Funktionen des internen Bereichs nutzen. \r\n\n     http://localhost:60003/Account/RegisterComplete?verify=" + verify+"&id="+id+ "\r\n\nSie haben noch Fragen oder Anregungen? Bitte antworten Sie nicht direkt auf diese E-Mail - aus technischen Gründen können wir Ihre Anfrage leider nicht bearbeiten, wenn Sie die Reply-Funktion Ihres E-Mail-Programms wählen.\r\n\nNutzen Sie einfach unser Kontaktformular unter:\r\n\n http://localhost:60003/ \r\n\nWir wünschen Ihnen viel Erfolg!";
             SendMail(mailModel);
         }
 

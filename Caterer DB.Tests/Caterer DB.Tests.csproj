@@ -192,6 +192,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="TestBase.cs" />
+    <Compile Include="ViewModelTest\BenutzerViewModelServiceTest.cs" />
     <Compile Include="ViewModelTest\RechteGruppenViewModelServiceTest.cs" />
     <Compile Include="ViewModelTest\RechteViewModelServiceTest.cs" />
   </ItemGroup>
@@ -211,6 +212,10 @@
     <ProjectReference Include="..\Caterer DB\Caterer DB.csproj">
       <Project>{E2591804-ABD7-49ED-8A30-F603A363A354}</Project>
       <Name>Caterer DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{D76526D2-9BE6-499E-8D76-3BE5E413B22A}</Project>
+      <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{E0CE96CF-2177-4EE1-8FBD-0FF9315DD6CD}</Project>
