@@ -8,6 +8,36 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Caterer_DB.Models
 {
+    public class ForgottenPasswordRequestViewModel
+    {
+        [Required]
+        [DisplayName(@"E-Mail")]
+        [EmailAddress]
+        public string Mail { get; set; }
+    }
+
+    public class ForgottenPasswordCreateNewPasswordViewModel
+    {
+        [Key]
+        public int BenutzerId { get; set; }
+
+        [Required]
+        [DisplayName(@"E-Mail")]
+        [EmailAddress]
+        public string Mail { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Passwort")]
+        public string Passwort { get; set; }
+
+        [Required]
+        [DisplayName(@"Passwort Wiederholung")]
+        [DataType(DataType.Password)]
+        [Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
+        public string PasswortVerification { get; set; }
+    }
 
     public class RegisterBenutzerViewModel
     {
@@ -58,7 +88,7 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-       
+
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
@@ -88,8 +118,6 @@ namespace Caterer_DB.Models
         public bool WeitergabeVonDaten { get; set; }
 
     }
-
-
 
 
     public class CreateBenutzerViewModel
@@ -192,7 +220,7 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-       
+
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 

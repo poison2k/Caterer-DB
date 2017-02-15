@@ -7,19 +7,35 @@ namespace Common.Services
 {
     public class MailService : IMailService
     {
+        public void SendForgottenPasswordMail(string passwordVerificationCode, string mail, string id)
+        {
+            var mailModel = ConfigureMail();
+            mailModel.Betreff = "Passwort vergessen Caterer-DB";
+            mailModel.Empfaenger = mail;
+            mailModel.Inhalt = "http://localhost:60003/Account/PasswordChange?verify=" + passwordVerificationCode + "&id=" + id;
+            SendMail(mailModel);
+        }
 
         public void SendRegisterMail(string verify, string email, string id)
         {
+            var mailModel = ConfigureMail();
+            mailModel.Betreff = "Registrierung Caterer-DB";
+            mailModel.Empfaenger = email;
+            mailModel.Inhalt = "http://localhost:60003/Account/RegisterComplete?verify="+verify+"&id="+id;
+            SendMail(mailModel);
+        }
+
+        private MailModel ConfigureMail() {
             var mailModel = new MailModel();
+
             mailModel.SMTPSeverName = "smtp.gmail.com";
             mailModel.Port = 25;
             mailModel.Absender = "Hoersaal10@gmail.com";
             mailModel.Passwort = "HS10idgHSe!";
             mailModel.UserName = "Hoersaal10@gmail.com";
-            mailModel.Betreff = "Registrierung Caterer-DB";
-            mailModel.Empfaenger = email;
-            mailModel.Inhalt = "http://localhost:60003/Account/RegisterComplete?verify="+verify+"&id="+id;
-            SendMail(mailModel);
+
+            return mailModel;
+
         }
 
 

@@ -14,10 +14,13 @@ namespace Business.Services
 
         public IMailService MailService { get; set; }
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService)
+        public IMd5Hash MD5Hash { get; set; }
+
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IMd5Hash md5Hash)
         {
             BenutzerRepository = benutzerRepository;
             MailService = mailService;
+            MD5Hash = md5Hash;
 
         }
 
@@ -46,6 +49,15 @@ namespace Business.Services
         {
             BenutzerRepository.AddUser(benutzer);
             MailService.SendRegisterMail(benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+        }
+
+        public void ForgottenPasswordEmailForBenutzer(string Mail)
+        {
+            var benutzer = BenutzerRepository.SearchUserByEMail(Mail);
+            benutzer.PasswordVerificationCode = MD5Hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname + benutzer.Passwort);
+            benutzer.PasswortZeitstempel = DateTime.Now;
+            BenutzerRepository.EditUser(benutzer);
+            MailService.SendForgottenPasswordMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void EditBenutzer(Benutzer benutzer)
@@ -86,6 +98,25 @@ namespace Business.Services
             return false;
         }
 
+        public bool VerifyPasswordChange(string id, string verify)
+        {
+            var benutzer = BenutzerRepository.SearchUserById(Convert.ToInt32(id));
+            if (benutzer != null && verify != null)
+            {
+                TimeSpan ts = DateTime.Now - benutzer.PasswortZeitstempel;
+                if (benutzer?.PasswordVerificationCode == verify && ts.Minutes < 120 )
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        public void EditBenutzerPassword(Benutzer tempBenutzer)
+        {
+            var benutzer = BenutzerRepository.SearchUserById(tempBenutzer.BenutzerId);
+            benutzer.Passwort = tempBenutzer.Passwort;
+            BenutzerRepository.EditUser(benutzer);
+        }
     }
 }

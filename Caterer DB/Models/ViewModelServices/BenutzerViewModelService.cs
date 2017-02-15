@@ -5,7 +5,6 @@ using Common.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -31,6 +30,8 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, AnmeldenBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, RegisterBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, MyDataBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, ForgottenPasswordRequestViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, ForgottenPasswordCreateNewPasswordViewModel>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();
@@ -73,6 +74,19 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Benutzer>(createBenutzerViewModel);
         }
 
+        public Benutzer Map_ForgottenPasswordRequestViewModel_Benutzer(ForgottenPasswordRequestViewModel forgottenPasswordRequestViewModel)
+        {
+
+            return Mapper.Map<Benutzer>(forgottenPasswordRequestViewModel);
+        }
+
+        public Benutzer Map_ForgottenPasswordCreateNewPasswordViewModel_Benutzer(ForgottenPasswordCreateNewPasswordViewModel forgottenPasswordCreateNewPasswordViewModel)
+        {
+            var benutzer = Mapper.Map<Benutzer>(forgottenPasswordCreateNewPasswordViewModel);
+            benutzer.Passwort = Crypto.HashPassword(forgottenPasswordCreateNewPasswordViewModel.Passwort);
+            return benutzer;
+        }
+
         public Benutzer Map_EditBenutzerViewModel_Benutzer(EditBenutzerViewModel editBenutzerViewModel)
         {
             return Mapper.Map<Benutzer>(editBenutzerViewModel);
@@ -86,6 +100,24 @@ namespace Caterer_DB.Models.ViewModelServices
         public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer)
         {
             return Mapper.Map<MyDataBenutzerViewModel>(benutzer);
+        }
+
+        public ForgottenPasswordRequestViewModel Map_Benutzer_ForgottenPasswordRequestViewModel(Benutzer benutzer)
+        {
+            return Mapper.Map<ForgottenPasswordRequestViewModel>(benutzer);
+        }
+
+        public ForgottenPasswordCreateNewPasswordViewModel Map_Benutzer_ForgottenPasswordCreateNewPasswordViewModel(Benutzer benutzer)
+        {
+            return Mapper.Map<ForgottenPasswordCreateNewPasswordViewModel>(benutzer);
+        }
+
+        public ForgottenPasswordCreateNewPasswordViewModel Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(int id)
+        {
+
+            var benutzer = BenutzerService.SearchUserById(id);
+            benutzer.Passwort = "";
+            return Mapper.Map<ForgottenPasswordCreateNewPasswordViewModel>(benutzer);
         }
 
         public EditBenutzerViewModel Map_Benutzer_EditBenutzerViewModel(Benutzer benutzer)
@@ -124,7 +156,6 @@ namespace Caterer_DB.Models.ViewModelServices
             return registerBenutzerViewModel;
         }
 
-
         public RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel)
         {
             registerBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
@@ -145,9 +176,6 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
                             }, "Value", "Text");
 
-
-
-
             registerBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
@@ -156,7 +184,8 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
                             }, "Value", "Text");
             return registerBenutzerViewModel;
-
         }
+
+
     }
 }

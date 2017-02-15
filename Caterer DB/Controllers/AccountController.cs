@@ -3,6 +3,7 @@ using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
+using System;
 using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
@@ -12,7 +13,7 @@ namespace Caterer_DB.Controllers
     {
         public ILoginService LoginService { get; set; }
         public IBenutzerService BenutzerService { get; set; }
-        public IBenutzerViewModelService BenutzerViewModelService { get; set;}
+        public IBenutzerViewModelService BenutzerViewModelService { get; set; }
 
         public AccountController(ILoginService loginService, IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService)
         {
@@ -54,23 +55,100 @@ namespace Caterer_DB.Controllers
 
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult RegisterComplete(string id ,string verify)
+        public ActionResult RegisterComplete(string id, string verify)
         {
-            if (BenutzerService.VerifyRegistration(id, verify)) {
+            if (BenutzerService.VerifyRegistration(id, verify))
+            {
                 return View();
             };
             return View("~/Views/Shared/Error.cshtml");
         }
 
+        // GET: /Account/PasswordRequest
+        [AllowAnonymous]
+        public ActionResult PasswordRequest(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
 
+        // GET: /Account/PasswordChange
+        [AllowAnonymous]
+        public ActionResult PasswordChange(string id, string verify)
+        {
+            if (BenutzerService.VerifyPasswordChange(id, verify))
+            {
+               
+                return View(BenutzerViewModelService.Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(Convert.ToInt32(id)));
+            };
+            return View("~/Views/Shared/Error.cshtml");
+        }
+
+        // GET: /Account/PasswordRequestComplete
+        [AllowAnonymous]
+        public ActionResult PasswordRequestComplete()
+        {
+            return View();
+        }
+
+        // GET: /Account/PasswordChangeComplete
+        [AllowAnonymous]
+        public ActionResult PasswordChangeComplete()
+        {
+            return View();
+        }
+
+        // GET: /Account/RegisterMailVerificationNotComplete
         [AllowAnonymous]
         public ActionResult RegisterMailVerificationNotComplete()
         {
-            
-            
+            return View();
+        }
+
+
+
+        // Post: /Account/PasswordRequest
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult PasswordRequest(ForgottenPasswordRequestViewModel forgottenPasswordRequestViewModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (!BenutzerService.CheckEmailForRegistration(forgottenPasswordRequestViewModel.Mail))
+                {
+                    BenutzerService.ForgottenPasswordEmailForBenutzer(forgottenPasswordRequestViewModel.Mail);
+                    return View("PasswordRequestComplete");
+                }
+                else
+                {
+                    return View("PasswordRequestComplete");
+                }
+            }
+            return View();
+        }
+
+
+
+        // Post: /Account/PasswordChange
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult PasswordChange(ForgottenPasswordCreateNewPasswordViewModel forgottenPasswordCreateNewPasswordViewModel, string id, string verify)
+        {
+            if (BenutzerService.VerifyPasswordChange(id, verify))
+            {
+                if (ModelState.IsValid)
+                {
+                    var benutzer = BenutzerViewModelService.Map_ForgottenPasswordCreateNewPasswordViewModel_Benutzer(forgottenPasswordCreateNewPasswordViewModel);
+                    BenutzerService.EditBenutzerPassword(benutzer);
+                    return View("PasswordChangeComplete");
+                }
                 return View();
-           
-            
+            }
+            return View("~/Views/Shared/Error.cshtml");
+
         }
 
 
@@ -82,14 +160,15 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                if ( BenutzerService.CheckEmailForRegistration( registerBenutzerViewModel.Mail))
+
+                if (BenutzerService.CheckEmailForRegistration(registerBenutzerViewModel.Mail))
                 {
                     BenutzerService.RegisterBenutzer(BenutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(registerBenutzerViewModel));
                 }
-                else {
+                else
+                {
                     ModelState.AddModelError("", LoginResources.EMailVorhanden);
-                    return View(BenutzerViewModelService.AddListsToRegisterViewModel( registerBenutzerViewModel));
+                    return View(BenutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel));
                 }
                 return View("RegisterSuccsessfull");
             }
@@ -111,7 +190,8 @@ namespace Caterer_DB.Controllers
                 LoginSuccessLevel anmeldeErfolg = LoginService.AnmeldePrüfung(model.Email, model.Passwort);
                 if (anmeldeErfolg == LoginSuccessLevel.Erfolgreich)
                 {
-                    if (!BenutzerService.SearchUserByEmail(model.Email).IstEmailVerifiziert) {
+                    if (!BenutzerService.SearchUserByEmail(model.Email).IstEmailVerifiziert)
+                    {
                         LoginService.Abmelden();
                         return RedirectToAction("RegisterMailVerificationNotComplete");
                     }

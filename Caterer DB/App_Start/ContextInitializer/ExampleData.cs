@@ -30,7 +30,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Ort = "Woodway",
                 Anrede = "Herr",
                 FunktionAnsprechpartner = "Chef",
-                EMailVerificationCode = ""
+                EMailVerificationCode = "",
+                PasswortZeitstempel = System.DateTime.Now
             });
 
             Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer
@@ -51,7 +52,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Ort = "-",
                 Anrede = "-",
                 FunktionAnsprechpartner = "-",
-                EMailVerificationCode = "-"
+                EMailVerificationCode = "-",
+                PasswortZeitstempel = System.DateTime.Now
             });
 
             Benutzer admin = db.Benutzer.Add(new Benutzer
@@ -72,7 +74,30 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Ort = "-",
                 Anrede = "-",
                 FunktionAnsprechpartner = "-",
-                EMailVerificationCode = "-"
+                EMailVerificationCode = "-",
+                PasswortZeitstempel = System.DateTime.Now
+            });
+
+            Benutzer testuser = db.Benutzer.Add(new Benutzer
+            {
+                Mail = "poison2k@gmail.com",
+                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Nachname = "Bünck",
+                Vorname = "Sebastian",
+                IstEmailVerifiziert = true,
+                Firmenname = "AllYouCanEat GmbH",
+                Internetadresse = "www.AYCE.de",
+                Lieferumkreis = "50km",
+                Organisationsform = "Vorhanden",
+                Telefon = "01234 - 56789",
+                Fax = "01234 - 99999",
+                Straße = "Holzweg 1",
+                Postleitzahl = "87654",
+                Ort = "Woodway",
+                Anrede = "Herr",
+                FunktionAnsprechpartner = "Chef",
+                EMailVerificationCode = "",
+                PasswortZeitstempel = System.DateTime.Now
             });
 
             db.SaveChanges();

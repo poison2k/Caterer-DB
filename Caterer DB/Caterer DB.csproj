@@ -398,6 +398,10 @@
     <Content Include="Views\Antwort\Details.cshtml" />
     <Content Include="Views\Antwort\Edit.cshtml" />
     <Content Include="Views\Antwort\Index.cshtml" />
+    <Content Include="Views\Account\PasswordRequest.cshtml" />
+    <Content Include="Views\Account\PasswordRequestComplete.cshtml" />
+    <Content Include="Views\Account\PasswordChange.cshtml" />
+    <Content Include="Views\Account\PasswordChangeComplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

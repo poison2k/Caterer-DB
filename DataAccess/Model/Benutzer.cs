@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.Model
@@ -43,6 +44,10 @@ namespace DataAccess.Model
         public string Passwort { get; set; }
 
         public string EMailVerificationCode { get; set; }
+
+        public string PasswordVerificationCode { get; set; }
+
+        public DateTime PasswortZeitstempel { get; set; }
 
         public bool IstEmailVerifiziert { get; set; }
 
