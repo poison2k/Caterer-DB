@@ -179,12 +179,12 @@
                         <div class="col-md-2">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    @Html.CheckBoxFor(model => model.AGBs, new { @checked = "checked" })
+                                    @Html.CheckBoxFor(model => model.Datenschutz, new { @checked = "checked" })
                                 </span>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <p>"Ich akzeptiere die Datenschutzbestimmungen."</p>
+                            <p>"Ich akzeptiere die <a id="RegDatenschutz" href="/Home/Datenschutz">Datenschutzbestimmungen</a>."</p>
                             @Html.ValidationMessageFor(model => model.Datenschutz, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-3"></div>
@@ -194,7 +194,7 @@
                         <div class="col-md-2">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    @Html.CheckBoxFor(model => model.Datenschutz,new { @checked = "checked" })
+                                    @Html.CheckBoxFor(model => model.AGBs, new { @checked = "checked" })
                                 </span>
                             </div>
                         </div>
