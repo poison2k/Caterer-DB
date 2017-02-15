@@ -68,21 +68,16 @@ namespace SeleniumTests
         public void LoginTest1()
         //T_U1-2_ALF_B_00 / T_U1-2_ALF_B_01
         {
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
+            TestTools.ElementKlick("loginLinkbutton", driver);
+
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Willkommen"));
             Assert.AreEqual(baseURL, driver.Url.ToString());
 
-            driver.FindElement(By.Id("DropdownLogin")).Click();
-            driver.FindElement(By.Id("Ausloggen")).Click();
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -95,22 +90,18 @@ namespace SeleniumTests
         //T_U1-2_ALF_B_00 / T_U1-2_ALF_B_01
         {
             //Variante Dropdown
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("loginLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Willkommen"));
             Assert.AreEqual(baseURL, driver.Url.ToString());
 
-            driver.FindElement(By.Id("DropdownLogin")).Click();
-            driver.FindElement(By.Id("Ausloggen")).Click();
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -122,69 +113,39 @@ namespace SeleniumTests
         public void LoginTest_FalschesPW()
         //T_U1-2_ALF_B_05
         {
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("Start#21");
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
-
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("error2"));
-            Assert.AreEqual("E-Mail oder Passwort falsch", driver.FindElement(By.Id("error2")).Text);
+            TestTools.ElementKlick("loginLinkbutton", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#21", driver);
+            Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
         }
 
         [Test]
         public void LoginTest_FalscheEmail()
         //T_U1-2_ALF_B_06
         {
-            driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Email")).SendKeys("caterer@test.d");
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
+            TestTools.ElementKlick("loginLinkbutton", driver);
+            TestTools.LoginDatenEingeben("caterer@test.d", "Start#22", driver);
+            Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("error2"));
-            Assert.AreEqual("E-Mail oder Passwort falsch", driver.FindElement(By.Id("error2")).Text);
         }
 
         [Test]
         public void LoginTest_OhnePW()
         //T_U1-2_ALF_B_07
         {
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
+            TestTools.ElementKlick("loginLinkbutton", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "", driver);
+            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", TestTools.IDTextÜberprüfen("error1", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("error1"));
-            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", driver.FindElement(By.Id("error1")).Text);
         }
 
         [Test]
         public void LoginTest_OhneEmail()
         //T_U1-2_ALF_B_08
         {
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
+            TestTools.ElementKlick("loginLinkbutton", driver);
+            TestTools.LoginDatenEingeben("", "Start#22", driver);
+            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("Email-error", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email-error"));
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", driver.FindElement(By.Id("Email-error")).Text);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,11 +157,9 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Knopf
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Kontakt")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Ansprechp"));
-            Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
+            TestTools.ElementKlick("Kontakt", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+
         }
 
         [Test]
@@ -208,12 +167,9 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Dropdown Logout
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogout")).Click();
-            driver.FindElement(By.Id("DropdownKontaktLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Ansprechp"));
-            Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownKontaktLogout", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
         }
 
         [Test]
@@ -221,25 +177,16 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Dropdown Login
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
+            TestTools.ElementKlick("loginLinkbutton", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogin"));
-            driver.FindElement(By.Id("DropdownServiceLogin")).Click();
-            driver.FindElement(By.Id("DropdownKontaktLogin")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Ansprechp"));
-            Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
-            driver.FindElement(By.Id("DropdownLogin")).Click();
-            driver.FindElement(By.Id("Ausloggen")).Click();
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownKontaktLogin", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -256,11 +203,8 @@ namespace SeleniumTests
         //T_U1-6_AL_B_01
         {
             //Variante Knopf
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Datenschutz")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Datenschutzbest"));
-            Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
+            TestTools.ElementKlick("Datenschutz", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
         }
 
         [Test]
@@ -268,12 +212,9 @@ namespace SeleniumTests
         public void DatenschutzAufruf2()
         {
             //Variante Dropdown Logout
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogout")).Click();
-            driver.FindElement(By.Id("DropdownDatenschutzLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Datenschutzbest"));
-            Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownDatenschutzLogout", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
         }
 
         [Test]
@@ -281,26 +222,16 @@ namespace SeleniumTests
         public void DatenschutzAufruf3()
         {
             //Variante Dropdown Login
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("loginLinkbutton"));
-            driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click(); ;
+            TestTools.ElementKlick("loginLinkbutton", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogin"));
-            driver.FindElement(By.Id("DropdownServiceLogin")).Click();
-            driver.FindElement(By.Id("DropdownDatenschutzLogin")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Datenschutzbest"));
-            Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
-            driver.FindElement(By.Id("DropdownLogin")).Click();
-            driver.FindElement(By.Id("Ausloggen")).Click();
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownDatenschutzLogin", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -317,11 +248,9 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Knopf
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AGB")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
-            Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
+            TestTools.ElementKlick("AGB", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+
         }
 
         [Test]
@@ -329,12 +258,10 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Dropdown Logout
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogout")).Click();
-            driver.FindElement(By.Id("DropdownAGBLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
-            Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownAGBLogout", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+
         }
 
         [Test]
@@ -342,25 +269,16 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Dropdown Login
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("loginLinkbutton")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Email")).Clear();
-            driver.FindElement(By.Id("Email")).SendKeys("caterer@test.de");
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("Start#22");
-            driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
+            TestTools.ElementKlick("loginLinkbutton", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogin"));
-            driver.FindElement(By.Id("DropdownServiceLogin")).Click();
-            driver.FindElement(By.Id("DropdownAGBLogin")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
-            Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
-            driver.FindElement(By.Id("DropdownLogin")).Click();
-            driver.FindElement(By.Id("Ausloggen")).Click();
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownAGBLogin", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -381,30 +299,22 @@ namespace SeleniumTests
         public void RegistrationsAufruf1()
         {
             //Variante Button
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("registerLink")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("registerLink", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("StartButton")).Click();
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+
+            TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("StartButton"));
-            driver.FindElement(By.Id("StartButton")).Click();
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+
+           TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -417,96 +327,55 @@ namespace SeleniumTests
         public void RegistrationsSeitenLinks()
         {
             //Variante Links
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout"));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("registerLinkhead"));
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("registerLink", driver);
+
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //AGB
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AGB")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
-            Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
+            TestTools.ElementKlick("AGB", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Datenschutz
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Datenschutz")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Datenschutzbest"));
-            Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
+            TestTools.ElementKlick("Datenschutz", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Kontakt
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Kontakt")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Ansprechp"));
-            Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
+            TestTools.ElementKlick("Kontakt", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Impressum
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Impressum")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Impr"));
-            Assert.AreEqual("Impressum", driver.FindElement(By.Id("Impr")).Text);
+            TestTools.ElementKlick("Impressum", driver);
+            Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //AGBs bei Lesebestätigung
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegAGB")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
-            Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
+            TestTools.ElementKlick("RegAGB", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Datenschutz bei Lesebestätigung
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegDatenschutz")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Datenschutzbest"));
-            Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
+            TestTools.ElementKlick("RegDatenschutz", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("StartButton"));
-            driver.FindElement(By.Id("StartButton")).Click();
+           TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -518,72 +387,43 @@ namespace SeleniumTests
         public void RegistrationsDropdownLinks()
         {
             //Variante Dropdown
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout"));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("registerLinkhead"));
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //AGB
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogout")).Click();
-            driver.FindElement(By.Id("DropdownAGBLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AllgemGeschäftsbedingungen"));
-            Assert.AreEqual("Allgemeine Geschäftsbedingungen", driver.FindElement(By.Id("AllgemGeschäftsbedingungen")).Text);
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownAGBLogout", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Datenschutz
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogout")).Click();
-            driver.FindElement(By.Id("DropdownDatenschutzLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Datenschutzbest"));
-            Assert.AreEqual("Datenschutzbestimmungen", driver.FindElement(By.Id("Datenschutzbest")).Text);
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownDatenschutzLogout", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Kontakt
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogout")).Click();
-            driver.FindElement(By.Id("DropdownKontaktLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Ansprechp"));
-            Assert.AreEqual("Ansprechpartner", driver.FindElement(By.Id("Ansprechp")).Text);
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownKontaktLogout", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownLogout")).Click();
-            driver.FindElement(By.Id("registerLinkhead")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Impressum
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DropdownServiceLogout")).Click();
-            driver.FindElement(By.Id("DropdownImpressumLogout")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Impr"));
-            Assert.AreEqual("Impressum", driver.FindElement(By.Id("Impr")).Text);
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownImpressumLogout", driver);
+            Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("StartButton"));
-            driver.FindElement(By.Id("StartButton")).Click();
+           TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -594,59 +434,37 @@ namespace SeleniumTests
         //T_U1-3_F04_B_001 
         public void RegistrationsFehler()
         {
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("registerLink")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("registerLink", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("btnSpeichern"));
-            driver.FindElement(By.Id("btnSpeichern")).Click();
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+
+            TestTools.ElementKlick("btnSpeichern", driver);
 
             //Account
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Mail-error"));
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", driver.FindElement(By.Id("Mail-error")).Text);
-            driver.FindElement(By.Id("Passwort-error"));
-            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", driver.FindElement(By.Id("Passwort-error")).Text);
-            driver.FindElement(By.Id("PasswortVerification-error"));
-            Assert.AreEqual("Das Feld \"Passwort Wiederholung\" ist erforderlich.", driver.FindElement(By.Id("PasswortVerification-error")).Text);
+            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("Mail-error", driver));
+            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Passwort-error", driver));
+            Assert.AreEqual("Das Feld \"Passwort Wiederholung\" ist erforderlich.", TestTools.IDTextÜberprüfen("PasswortVerification-error", driver));
 
             //Firma
-            driver.FindElement(By.Id("Firmenname-error"));
-            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", driver.FindElement(By.Id("Firmenname-error")).Text);
-            driver.FindElement(By.Id("Organisationsform-error"));
-            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", driver.FindElement(By.Id("Organisationsform-error")).Text);
-            driver.FindElement(By.Id("Stra_e-error"));
-            Assert.AreEqual("Das Feld \"Straße und Hausnummer\" ist erforderlich.", driver.FindElement(By.Id("Stra_e-error")).Text);
-            driver.FindElement(By.Id("Postleitzahl-error"));
-            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", driver.FindElement(By.Id("Postleitzahl-error")).Text);
-            driver.FindElement(By.Id("Ort-error"));
-            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", driver.FindElement(By.Id("Ort-error")).Text);
+            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Firmenname-error", driver));
+            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
+            Assert.AreEqual("Das Feld \"Straße und Hausnummer\" ist erforderlich.", TestTools.IDTextÜberprüfen("Stra_e-error", driver));
+            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
+            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Ort-error", driver));
 
             //Ansprechpartner
-            driver.FindElement(By.Id("Anrede-error"));
-            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", driver.FindElement(By.Id("Anrede-error")).Text);
-            driver.FindElement(By.Id("Vorname-error"));
-            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", driver.FindElement(By.Id("Vorname-error")).Text);
-            driver.FindElement(By.Id("Nachname-error"));
-            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", driver.FindElement(By.Id("Nachname-error")).Text);
-            driver.FindElement(By.Id("FunktionAnsprechpartner-error"));
-            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", driver.FindElement(By.Id("FunktionAnsprechpartner-error")).Text);
+            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", TestTools.IDTextÜberprüfen("Anrede-error", driver));
+            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Vorname-error", driver));
+            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Nachname-error", driver));
+            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
 
             //Erreichbarkeit
-            driver.FindElement(By.Id("Telefon-error"));
-            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", driver.FindElement(By.Id("Telefon-error")).Text);
+            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", TestTools.IDTextÜberprüfen("Telefon-error", driver));
 
             //Sonstiges
-            driver.FindElement(By.Id("Lieferumkreis-error"));
-            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", driver.FindElement(By.Id("Lieferumkreis-error")).Text);
+            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
 
-
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("StartButton"));
-            driver.FindElement(By.Id("StartButton")).Click();
+           TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -659,61 +477,35 @@ namespace SeleniumTests
         public void RegistrationsFehler2()
         {
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("registerLink"));
-            driver.FindElement(By.Id("registerLink")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("registerLink", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("btnSpeichern")).Click();
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+
+            TestTools.ElementKlick("btnSpeichern", driver);
 
             //Account
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Mail-error"));
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", driver.FindElement(By.Id("Mail-error")).Text);
-            driver.FindElement(By.Id("Passwort-error"));
-            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", driver.FindElement(By.Id("Passwort-error")).Text);
-            driver.FindElement(By.Id("PasswortVerification-error"));
-            Assert.AreEqual("Das Feld \"Passwort Wiederholung\" ist erforderlich.", driver.FindElement(By.Id("PasswortVerification-error")).Text);
+            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("Mail-error", driver));
+            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Passwort-error", driver));
+            Assert.AreEqual("Das Feld \"Passwort Wiederholung\" ist erforderlich.", TestTools.IDTextÜberprüfen("PasswortVerification-error", driver));
 
             //Firma
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Firmenname-error"));
-            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", driver.FindElement(By.Id("Firmenname-error")).Text);
-            driver.FindElement(By.Id("Organisationsform-error"));
-            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", driver.FindElement(By.Id("Organisationsform-error")).Text);
-            driver.FindElement(By.Id("Stra_e-error"));
-            Assert.AreEqual("Das Feld \"Straße und Hausnummer\" ist erforderlich.", driver.FindElement(By.Id("Stra_e-error")).Text);
-            driver.FindElement(By.Id("Postleitzahl-error"));
-            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", driver.FindElement(By.Id("Postleitzahl-error")).Text);
-            driver.FindElement(By.Id("Ort-error"));
-            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", driver.FindElement(By.Id("Ort-error")).Text);
+            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Firmenname-error", driver));
+            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
+            Assert.AreEqual("Das Feld \"Straße und Hausnummer\" ist erforderlich.", TestTools.IDTextÜberprüfen("Stra_e-error", driver));
+            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
+            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Ort-error", driver));
 
             //Ansprechpartner
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Anrede-error"));
-            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", driver.FindElement(By.Id("Anrede-error")).Text);
-            driver.FindElement(By.Id("Vorname-error"));
-            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", driver.FindElement(By.Id("Vorname-error")).Text);
-            driver.FindElement(By.Id("Nachname-error"));
-            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", driver.FindElement(By.Id("Nachname-error")).Text);
-            driver.FindElement(By.Id("FunktionAnsprechpartner-error"));
-            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", driver.FindElement(By.Id("FunktionAnsprechpartner-error")).Text);
+            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", TestTools.IDTextÜberprüfen("Anrede-error", driver));
+            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Vorname-error", driver));
+            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Nachname-error", driver));
+            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
 
             //Erreichbarkeit
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Telefon-error"));
-            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", driver.FindElement(By.Id("Telefon-error")).Text);
+            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", TestTools.IDTextÜberprüfen("Telefon-error", driver));
 
             //Sonstiges
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Lieferumkreis-error"));
-            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", driver.FindElement(By.Id("Lieferumkreis-error")).Text);
-
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-
+            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -782,11 +574,8 @@ namespace SeleniumTests
             //Umkreis wählen
             driver.FindElement(By.Id("Lieferumkreis")).SendKeys("Bis 30 km");
             Assert.AreEqual(false, TestTools.FehlerID("Lieferumkreis-error",driver));
-
-
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("StartButton"));
-            driver.FindElement(By.Id("StartButton")).Click();
+            
+           TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -798,12 +587,9 @@ namespace SeleniumTests
         public void RegistrationsFehlerDoppelMail()
         {
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("registerLink"));
-            driver.FindElement(By.Id("registerLink")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("registerLink", driver);
+
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -860,25 +646,17 @@ namespace SeleniumTests
             driver.FindElement(By.Id("Lieferumkreis")).SendKeys("Bis 30 km");
 
             //AGBs akzeptieren
-            driver.FindElement(By.Id("AGBs")).Click();
+            TestTools.ElementKlick("AGBs", driver);
             //AGBs akzeptieren
-            driver.FindElement(By.Id("Datensch.")).Click();
+            TestTools.ElementKlick("Datensch.", driver);
             //AGBs akzeptieren
-            driver.FindElement(By.Id("WeitergabeVonDaten")).Click();
+            TestTools.ElementKlick("WeitergabeVonDaten", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("btnSpeichern"));
-            driver.FindElement(By.Id("btnSpeichern")).Click();
+            TestTools.ElementKlick("btnSpeichern", driver);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("VallidationSummary"));
-
-            Assert.AreEqual("E-Mail ist bereits registriert", driver.FindElement(By.Id("VallidationSummary")).Text);
-
-
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("StartButton"));
-            driver.FindElement(By.Id("StartButton")).Click();
+            Assert.AreEqual("E-Mail ist bereits registriert",TestTools.IDTextÜberprüfen("VallidationSummary", driver));
+            
+           TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -890,12 +668,9 @@ namespace SeleniumTests
         public void RegistrationsFehlerEinverständniss()
         {
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("registerLink"));
-            driver.FindElement(By.Id("registerLink")).Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegSeite"));
-            Assert.AreEqual("Registrierung", driver.FindElement(By.Id("RegSeite")).Text);
+            TestTools.ElementKlick("registerLink", driver);
+
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -958,42 +733,29 @@ namespace SeleniumTests
 
             //Umkreis wählen
             driver.FindElement(By.Id("Lieferumkreis")).SendKeys("Bis 30 km");
-            
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("btnSpeichern"));
-            driver.FindElement(By.Id("btnSpeichern")).Click();
+
+            TestTools.ElementKlick("btnSpeichern", driver);
 
             TestTools.FehlerID("xxx", driver,1);
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("DatenschutzValidation-error"));
-            Assert.AreEqual("Datenschutzbestimmungen müssen zugestimmt werden", driver.FindElement(By.Id("DatenschutzValidation-error")).Text);
-
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("AGBValidation-error"));
-            Assert.AreEqual("Sie müssen die AGBs akzeptieren", driver.FindElement(By.Id("AGBValidation-error")).Text);
+            Assert.AreEqual("Datenschutzbestimmungen müssen zugestimmt werden", TestTools.IDTextÜberprüfen("DatenschutzValidation-error", driver));
+            Assert.AreEqual("Sie müssen die AGBs akzeptieren", TestTools.IDTextÜberprüfen("AGBValidation-error", driver));
 
             //AGBs akzeptieren
-            driver.FindElement(By.Id("AGBs")).Click();
+            TestTools.ElementKlick("AGBs", driver);
             //AGBs akzeptieren
-            driver.FindElement(By.Id("Datensch.")).Click();
+            TestTools.ElementKlick("Datensch.", driver);
             //AGBs akzeptieren
-            driver.FindElement(By.Id("WeitergabeVonDaten")).Click();
+            TestTools.ElementKlick("WeitergabeVonDaten", driver);
 
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("btnSpeichern"));
-            driver.FindElement(By.Id("btnSpeichern")).Click();
+            TestTools.ElementKlick("btnSpeichern", driver);
 
             TestTools.FehlerID("xxx", driver, 1);
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("RegErfolg"));
-            Assert.AreEqual("Registrierung erfolgreich", driver.FindElement(By.Id("RegErfolg")).Text);
 
+            Assert.AreEqual("Registrierung erfolgreich", TestTools.IDTextÜberprüfen("RegErfolg",driver));
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("StartButton"));
-            driver.FindElement(By.Id("StartButton")).Click();
+           TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -1008,10 +770,6 @@ namespace SeleniumTests
 
 
 
-        //private void Testsub()
-        //{
 
-
-        //}
     }
 }
