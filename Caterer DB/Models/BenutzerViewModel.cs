@@ -2,6 +2,7 @@
 
 using Caterer_DB.Services;
 using DataAccess.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -237,6 +238,8 @@ namespace Caterer_DB.Models
 
         [Required]
         public string Lieferumkreis { get; set; }
+
+        public DateTime PasswortZeitstempel { get; set; }
 
     }
 

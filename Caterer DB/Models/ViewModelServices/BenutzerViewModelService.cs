@@ -99,7 +99,10 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer)
         {
-            return Mapper.Map<MyDataBenutzerViewModel>(benutzer);
+            var myDataBenutzerViewModel = Mapper.Map<MyDataBenutzerViewModel>(benutzer);
+
+            myDataBenutzerViewModel = AddListsToMyDataViewModel(myDataBenutzerViewModel);
+            return myDataBenutzerViewModel;
         }
 
         public ForgottenPasswordRequestViewModel Map_Benutzer_ForgottenPasswordRequestViewModel(Benutzer benutzer)
@@ -185,6 +188,39 @@ namespace Caterer_DB.Models.ViewModelServices
                             }, "Value", "Text");
             return registerBenutzerViewModel;
         }
+
+
+        public MyDataBenutzerViewModel AddListsToMyDataViewModel(MyDataBenutzerViewModel myDataBenutzerViewModel)
+        {
+            myDataBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Herr", Value = "Herr" },
+                                new SelectListItem { Text = "Frau", Value = "Frau" }
+                            }, "Value", "Text");
+
+            myDataBenutzerViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Nur im eigenen Stadtgebiet", Value = "Nur im eigenen Stadtgebiet" },
+                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
+                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
+                                new SelectListItem { Text = "Bis 50 - 100 km", Value = "Bis 50 - 100 km" },
+                                new SelectListItem { Text = "Deutschlandweit", Value = "Deutschlandweit" },
+                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
+                            }, "Value", "Text");
+
+            myDataBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
+                                new SelectListItem { Text = "Caterer", Value = "Caterer" },
+                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
+                            }, "Value", "Text");
+            return myDataBenutzerViewModel;
+        }
+
+       
 
 
     }

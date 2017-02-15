@@ -131,7 +131,7 @@ namespace Caterer_DB.Controllers
 
                 return RedirectToAction("Index","Home");
             }
-            return View(myDataBenutzerViewModel);
+            return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
         }
 
         // GET: Benutzer/Delete/5

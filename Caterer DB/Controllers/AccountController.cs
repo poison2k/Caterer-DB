@@ -45,7 +45,7 @@ namespace Caterer_DB.Controllers
             return View(BenutzerViewModelService.CreateNewRegisterBenutzerViewModel());
         }
 
-        // GET: /Account/Register
+        // GET: /Account/RegisterSuccsessfull
         [AllowAnonymous]
         public ActionResult RegisterSuccsessfull(string returnUrl)
         {
@@ -53,7 +53,7 @@ namespace Caterer_DB.Controllers
             return View();
         }
 
-        // GET: /Account/Register
+        // GET: /Account/RegisterComplete
         [AllowAnonymous]
         public ActionResult RegisterComplete(string id, string verify)
         {
@@ -152,7 +152,7 @@ namespace Caterer_DB.Controllers
         }
 
 
-        // POST: Benutzer/Create
+        // POST: Benutzer/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

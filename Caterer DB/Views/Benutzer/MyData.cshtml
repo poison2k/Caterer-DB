@@ -17,21 +17,17 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BenutzerId)
         @Html.HiddenFor(model => model.Mail)
+        @Html.HiddenFor(model => model.PasswortZeitstempel)
         <div class="row">
-            <div class="col-md-6">
-                <ul class="list-unstyled list-inline " style="margin-left: -5px;">
-                    <li>
-                        <button type="submit" id="btnSpeichern" name="btnConfig" value="Speichern" class="btn btn-primary">
-                            <i class="glyphicon glyphicon-save"></i> Speichern
-                        </button>
-                    </li>
-
-                    <li>
-                        <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-                    </li>
-                </ul>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-center">
+                <h3>@Html.ValidationSummary(true, "", new { @class = "text-danger", id = "VallidationSummary" })</h3>
             </div>
+            <div class="col-md-4"></div>
         </div>
+        <br />
+     
+
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -41,12 +37,12 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             @Html.LabelFor(model => model.Firmenname, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Firmenname, new { htmlAttributes = new { @class = "form-control", placeholder = "Firmenname" } })
+                            @Html.EditorFor(model => model.Firmenname, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Firmenname, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-12">
                             @Html.LabelFor(model => model.Organisationsform, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Organisationsform, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownList("Organisationsform", Model.Organisationsformen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                             @Html.ValidationMessageFor(model => model.Organisationsform, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-12">
@@ -75,7 +71,7 @@
 
                         <div class="form-group col-md-12">
                             @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label " })
-                            @Html.EditorFor(model => model.Anrede, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownList("Anrede", Model.Anreden, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                             @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })
                         </div>
 
@@ -112,15 +108,15 @@
                             @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-12">
-                            @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label " })
+                            @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label " }) (optional)
                             @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="form-group col-md-12">
-                            @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " })
+                            @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " }) (optional)
                             @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
+                            @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
                         </div>
 
                     </div>
@@ -129,13 +125,13 @@
 
             <div class="col-md-6">
                 <div class="well well-lg">
-                    <h4><i class="glyphicon glyphicon-earphone"></i> Sonstiges</h4>
+                    <h4><i class="glyphicon glyphicon-road"></i> Sonstiges</h4>
                     <br />
                     <div class="row">
 
                         <div class="form-group col-md-12">
                             @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })
-                            @Html.EditorFor(model => model.Lieferumkreis, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownList("Lieferumkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                             @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
                         </div>
 
@@ -143,8 +139,22 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="list-unstyled list-inline " style="margin-left: -5px;">
+                    <li>
+                        <button type="submit" id="btnSpeichern" name="btnConfig" value="Speichern" class="btn btn-success">
+                            <i class="glyphicon glyphicon-save"></i> Speichern
+                        </button>
+                    </li>
+                    @*Button "Zurück", rechts neben "Registrieren"*@
+                    <li>
+                        <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-        
 
 }
 
