@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4 text-center">
-            <h3>@Html.ValidationSummary(true, "", new { @class = "text-danger" })</h3>
+            <h3>@Html.ValidationSummary(true, "", new { @class = "text-danger", id="VallidationSummary" })</h3>
         </div>
         <div class="col-md-4"></div>
     </div>
@@ -179,12 +179,12 @@
                         <div class="col-md-2">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    @Html.CheckBoxFor(model => model.AGBs, new { @checked = "checked" })
+                                    @Html.CheckBoxFor(model => model.Datenschutz, new { @checked = "checked" })
                                 </span>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <p>"Ich akzeptiere die Datenschutzbestimmungen."</p>
+                            <p>"Ich akzeptiere die <a id="RegDatenschutz" href="/Home/Datenschutz">Datenschutzbestimmungen</a>."</p>
                             @Html.ValidationMessageFor(model => model.Datenschutz, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-3"></div>
@@ -194,7 +194,7 @@
                         <div class="col-md-2">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    @Html.CheckBoxFor(model => model.Datenschutz,new { @checked = "checked" })
+                                    @Html.CheckBoxFor(model => model.AGBs, new { @checked = "checked" })
                                 </span>
                             </div>
                         </div>
@@ -222,14 +222,23 @@
                     </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <ul class="list-unstyled list-inline " style="margin-left: -5px;">
+                <div class="col-md-4">
+                    <ul class="list-unstyled list-inline "style="margin-left: -5px;">
                         <li>
                             <button type="submit" id="btnSpeichern" name="btnConfig" value="Registrieren" class="btn btn-success">
                                 <i class="glyphicon glyphicon-save"></i> Registrieren
                             </button>
                         </li>
-
+                        @*Button "Zurück", rechts neben "Registrieren"*@
+                        @*<li>
+                            <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                        </li>*@
+                    </ul>
+                </div>
+                <div class="col-md-4">                   
+                </div>
+                <div class="col-md-4 text-right">
+                    <ul class="list-unstyled list-inline">
                         <li>
                             <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                         </li>
@@ -251,6 +260,3 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-
-
-"Meine Daten dürfen bei Beratungsfragen von der Vernetzungsstelle Niedersachsen weitergegeben werden."
