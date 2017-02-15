@@ -1,5 +1,8 @@
 ﻿using DataAccess.Context;
 using DataAccess.Model;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Caterer_DB.App_Start.ContextInitializer
 {
@@ -7,8 +10,58 @@ namespace Caterer_DB.App_Start.ContextInitializer
     {
         public static void CreateExampleData(CatererContext db)
         {
+            CreateRechteGruppenData(db);
+            CreateBenutzerGruppenData(db);
             CreateUserData(db);
         }
+
+
+        private static void CreateRechteGruppenData(CatererContext db) {
+            RechteGruppe AdminRechte = db.RechteGruppe.Add(new RechteGruppe {
+                Bezeichnung = "AdminRechte",
+                Rechte = new List<Recht>(){ new Recht() { Bezeichnung = "Testblock1", Beschreibung = "Zeigt Block 1 an " } }
+            });
+
+        
+            RechteGruppe CatererRechte = db.RechteGruppe.Add(new RechteGruppe
+            {
+                Bezeichnung = "CatererRechte",
+                Rechte = new List<Recht>() { new Recht() { Bezeichnung = "Testblock3", Beschreibung = "Zeigt Block 3 an " } }
+            });
+
+            RechteGruppe MitarbeiterRechte = db.RechteGruppe.Add(new RechteGruppe
+            {
+                Bezeichnung = "MitarbeiterRechte",
+                Rechte = new List<Recht>() { new Recht() { Bezeichnung = "Testblock2", Beschreibung= "Zeigt Block 2 an " } }
+            });
+
+            db.SaveChanges();
+        }
+
+
+        private static void CreateBenutzerGruppenData(CatererContext db) {
+
+            BenutzerGruppe Admin = db.BenutzerGruppe.Add(new BenutzerGruppe
+            {
+                Bezeichnung = "Administratoren",
+                RechteGruppe =  db.RechteGruppe.Single(x => x.Bezeichnung == "AdminRechte") 
+            });
+
+            BenutzerGruppe Mitarbeiter = db.BenutzerGruppe.Add(new BenutzerGruppe
+            {
+                Bezeichnung = "Mitarbeiter",
+                 RechteGruppe = db.RechteGruppe.Single(x => x.Bezeichnung == "MitarbeiterRechte")
+            });
+
+            BenutzerGruppe Caterer = db.BenutzerGruppe.Add(new BenutzerGruppe
+            {
+                Bezeichnung = "Caterer",
+                RechteGruppe = db.RechteGruppe.Single(x => x.Bezeichnung == "CatererRechte")
+            });
+
+            db.SaveChanges();
+        }
+
 
         private static void CreateUserData(CatererContext db)
         {
@@ -31,7 +84,9 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Anrede = "Herr",
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
-                PasswortZeitstempel = System.DateTime.Now
+                PasswortZeitstempel = System.DateTime.Now,
+                BenutzerGruppen = new List<BenutzerGruppe>() {db.BenutzerGruppe.Single(x => x.Bezeichnung == "Caterer")}
+                
             });
 
             Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer
@@ -53,7 +108,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Anrede = "-",
                 FunktionAnsprechpartner = "-",
                 EMailVerificationCode = "-",
-                PasswortZeitstempel = System.DateTime.Now
+                PasswortZeitstempel = System.DateTime.Now,
+                BenutzerGruppen = new  List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == "Mitarbeiter") }
             });
 
             Benutzer admin = db.Benutzer.Add(new Benutzer
@@ -75,7 +131,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Anrede = "-",
                 FunktionAnsprechpartner = "-",
                 EMailVerificationCode = "-",
-                PasswortZeitstempel = System.DateTime.Now
+                PasswortZeitstempel = System.DateTime.Now,
+                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == "Administratoren") }
             });
 
             Benutzer testuser = db.Benutzer.Add(new Benutzer
@@ -97,7 +154,9 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Anrede = "Herr",
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
-                PasswortZeitstempel = System.DateTime.Now
+                PasswortZeitstempel = System.DateTime.Now,
+                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == "Administratoren") }
+
             });
 
             db.SaveChanges();

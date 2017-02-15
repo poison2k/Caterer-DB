@@ -312,7 +312,6 @@ namespace Caterer_DB.Models
 
         public string Nachname { get; set; }
 
-
         public List<BenutzerGruppe> BenutzerGruppen { get; set; }
 
         public LoginModel AnmeldenModel { get; set; }

@@ -72,6 +72,7 @@ namespace Caterer_DB
                         newUser.Vorname = serializeModel.Vorname;
                         newUser.Nachname = serializeModel.Nachname;
                         newUser.Email = serializeModel.Email;
+                        
                         newUser.NutzergruppenIds = serializeModel.NutzergruppenIds;
 
                         HttpContext.Current.User = newUser;

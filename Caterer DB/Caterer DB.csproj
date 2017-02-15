@@ -287,6 +287,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\RechteResource.cs" />
     <Compile Include="Services\BaseViewPage.cs" />
     <Compile Include="Services\FindCurrentUserService.cs" />
     <Compile Include="Services\LoginService.cs" />
