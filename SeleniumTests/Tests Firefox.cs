@@ -575,7 +575,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("Lieferumkreis")).SendKeys("Bis 30 km");
             Assert.AreEqual(false, TestTools.FehlerID("Lieferumkreis-error",driver));
             
-           TestTools.ElementKlick("StartButton", driver);
+            TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -664,7 +664,7 @@ namespace SeleniumTests
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
         [Test]
-        //T_U1-3_F11_B_001 
+        //T_U1-3_F11_B_001 & T_U1-3_F06_B_001
         public void RegistrationsFehlerEinverständniss()
         {
 
@@ -755,7 +755,15 @@ namespace SeleniumTests
 
             Assert.AreEqual("Registrierung erfolgreich", TestTools.IDTextÜberprüfen("RegErfolg",driver));
 
-           TestTools.ElementKlick("StartButton", driver);
+            //Login mit korrekten Daten durchführen und testen der Fehlermeldung für fehlende Email-Verification
+            //T_U1-3_F06_B_001
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("projek10test@gmail.com", "12345678", driver);
+            Assert.AreEqual("Registrierung noch nicht abgeschlossen", TestTools.IDTextÜberprüfen("RegMailValidation-error", driver));
+
+
+            TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -763,6 +771,127 @@ namespace SeleniumTests
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
+        [Test]
+        public void PersDatenÄndern()
+        //T_C2-1_F01_B_001 
+        {
+            
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+
+
+            //Leeren aller Daten
+            TestTools.DatenEingeben("", "Firmenname",driver);
+            //TestTools.DatenEingeben("Bitte wählen...", "Organisationsform", driver);
+            new SelectElement(driver.FindElement(By.Id("Organisationsform"))).SelectByIndex(0);
+            TestTools.DatenEingeben("", "Stra_e", driver);
+            TestTools.DatenEingeben("", "Postleitzahl", driver);
+            TestTools.DatenEingeben("", "Ort", driver);
+            //TestTools.DatenEingeben("Bitte wählen...", "Anrede", driver);
+            new SelectElement(driver.FindElement(By.Id("Anrede"))).SelectByIndex(0);
+            TestTools.DatenEingeben("", "Vorname", driver);
+            TestTools.DatenEingeben("", "Nachname", driver);
+            TestTools.DatenEingeben("", "FunktionAnsprechpartner", driver);
+            TestTools.DatenEingeben("", "Telefon", driver);
+            TestTools.DatenEingeben("", "Fax", driver);
+            TestTools.DatenEingeben("", "Internetadresse", driver);
+            //TestTools.DatenEingeben("Bitte wählen...", "Lieferumkreis", driver);
+            new SelectElement(driver.FindElement(By.Id("Lieferumkreis"))).SelectByIndex(0);
+
+            TestTools.ElementKlick("btnSpeichern", driver);
+
+            //Fehlermeldungen überprüfen
+            //Firma
+            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Firmenname-error", driver));
+            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
+            Assert.AreEqual("Das Feld \"Straße\" ist erforderlich.", TestTools.IDTextÜberprüfen("Stra_e-error", driver));
+            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
+            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Ort-error", driver));
+
+            //Ansprechpartner
+            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", TestTools.IDTextÜberprüfen("Anrede-error", driver));
+            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Vorname-error", driver));
+            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Nachname-error", driver));
+            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
+
+            //Erreichbarkeit
+            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", TestTools.IDTextÜberprüfen("Telefon-error", driver));
+
+            //Sonstiges
+            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
+            
+            //Löschen unbestätigt abbrechen
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+
+            TestTools.FehlerID("xxx", driver, 1);
+
+            //Prüfen ob alte Daten vorhanden sind
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+            Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Organisationsform", driver));
+            Assert.AreEqual("Holzweg 1", TestTools.TextboxTextÜberprüfen("Stra_e", driver));
+            Assert.AreEqual("87654", TestTools.TextboxTextÜberprüfen("Postleitzahl", driver));
+            Assert.AreEqual("Woodway", TestTools.TextboxTextÜberprüfen("Ort", driver));
+            Assert.AreEqual("Herr", TestTools.TextboxTextÜberprüfen("Anrede", driver));
+            Assert.AreEqual("Max", TestTools.TextboxTextÜberprüfen("Vorname", driver));
+            Assert.AreEqual("Mustermann", TestTools.TextboxTextÜberprüfen("Nachname", driver));
+            Assert.AreEqual("Chef", TestTools.TextboxTextÜberprüfen("FunktionAnsprechpartner", driver));
+            Assert.AreEqual("01234 - 56789", TestTools.TextboxTextÜberprüfen("Telefon", driver));
+            Assert.AreEqual("01234 - 99999", TestTools.TextboxTextÜberprüfen("Fax", driver));
+            Assert.AreEqual("www.AYCE.de", TestTools.TextboxTextÜberprüfen("Internetadresse", driver));
+            Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
+
+            //Daten ändern
+            TestTools.DatenEingeben("Testfirma", "Firmenname", driver);
+            new SelectElement(driver.FindElement(By.Id("Organisationsform"))).SelectByIndex(1);
+            TestTools.DatenEingeben("Teststraße 0", "Stra_e", driver);
+            TestTools.DatenEingeben("12345", "Postleitzahl", driver);
+            TestTools.DatenEingeben("Testen", "Ort", driver);
+            new SelectElement(driver.FindElement(By.Id("Anrede"))).SelectByIndex(1);
+            TestTools.DatenEingeben("Test", "Vorname", driver);
+            TestTools.DatenEingeben("Teste", "Nachname", driver);
+            TestTools.DatenEingeben("Tester", "FunktionAnsprechpartner", driver);
+            TestTools.DatenEingeben("09876/54321", "Telefon", driver);
+            TestTools.DatenEingeben("09876/54321", "Fax", driver);
+            TestTools.DatenEingeben("www.test.test", "Internetadresse", driver);
+            new SelectElement(driver.FindElement(By.Id("Lieferumkreis"))).SelectByIndex(1);
+
+            TestTools.ElementKlick("btnSpeichern", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+
+            //Prüfen ob alte Daten geändert worden
+            Assert.AreEqual("Testfirma", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+            Assert.AreEqual("Mensaverein", TestTools.TextboxTextÜberprüfen("Organisationsform", driver));
+            Assert.AreEqual("Teststraße 0", TestTools.TextboxTextÜberprüfen("Stra_e", driver));
+            Assert.AreEqual("12345", TestTools.TextboxTextÜberprüfen("Postleitzahl", driver));
+            Assert.AreEqual("Testen", TestTools.TextboxTextÜberprüfen("Ort", driver));
+            Assert.AreEqual("Herr", TestTools.TextboxTextÜberprüfen("Anrede", driver));
+            Assert.AreEqual("Test", TestTools.TextboxTextÜberprüfen("Vorname", driver));
+            Assert.AreEqual("Teste", TestTools.TextboxTextÜberprüfen("Nachname", driver));
+            Assert.AreEqual("Tester", TestTools.TextboxTextÜberprüfen("FunktionAnsprechpartner", driver));
+            Assert.AreEqual("09876/54321", TestTools.TextboxTextÜberprüfen("Telefon", driver));
+            Assert.AreEqual("09876/54321", TestTools.TextboxTextÜberprüfen("Fax", driver));
+            Assert.AreEqual("www.test.test", TestTools.TextboxTextÜberprüfen("Internetadresse", driver));
+            Assert.AreEqual("Nur im eigenen Stadtgebiet", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+            
+            TestTools.FehlerID("xxx", driver, 1);
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+
+        }
 
 
 

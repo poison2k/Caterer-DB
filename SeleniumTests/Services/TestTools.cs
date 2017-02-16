@@ -33,14 +33,28 @@ namespace SeleniumTests.Services
         public static String IDTextÜberprüfen(string id, IWebDriver driver, Int16 zeit = 5)
         {
 
-            String Test = "";
+            String Text = "";
             {
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
                 driver.FindElement(By.Id(id));
-                Test = driver.FindElement(By.Id(id)).Text;
+                Text = driver.FindElement(By.Id(id)).Text;
 
             }
-            return Test;
+            return Text;
+
+        }
+
+        public static String TextboxTextÜberprüfen(string id, IWebDriver driver, Int16 zeit = 5)
+        {
+
+            String Text = "";
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
+                driver.FindElement(By.Id(id));
+                Text = driver.FindElement(By.Id(id)).GetAttribute("value");
+
+            }
+            return Text;
 
         }
 
@@ -59,6 +73,14 @@ namespace SeleniumTests.Services
             driver.FindElement(By.Id("Passwort")).Clear();
             driver.FindElement(By.Id("Passwort")).SendKeys(pw);
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
+        }
+
+        public static void DatenEingeben(String daten, string id, IWebDriver driver, Int16 zeit = 5)
+        {
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
+            driver.FindElement(By.Id(id)).Clear();
+            driver.FindElement(By.Id(id)).SendKeys(daten);
+
         }
 
 
