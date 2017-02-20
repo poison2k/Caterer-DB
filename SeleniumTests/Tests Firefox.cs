@@ -656,7 +656,7 @@ namespace SeleniumTests
 
             Assert.AreEqual("E-Mail ist bereits registriert",TestTools.IDTextÜberprüfen("VallidationSummary", driver));
             
-           TestTools.ElementKlick("StartButton", driver);
+            TestTools.ElementKlick("StartButton", driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
@@ -675,7 +675,7 @@ namespace SeleniumTests
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Mail")).Clear();
-            driver.FindElement(By.Id("Mail")).SendKeys("projek10test@gmail.com");
+            driver.FindElement(By.Id("Mail")).SendKeys("projek1test@gmail.com");
 
             //Passwort befüllen
             driver.FindElement(By.Id("Passwort")).Clear();
@@ -759,7 +759,7 @@ namespace SeleniumTests
             //T_U1-3_F06_B_001
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
-            TestTools.LoginDatenEingeben("projek10test@gmail.com", "12345678", driver);
+            TestTools.LoginDatenEingeben("projek1test@gmail.com", "12345678", driver);
             Assert.AreEqual("Registrierung noch nicht abgeschlossen", TestTools.IDTextÜberprüfen("RegMailValidation-error", driver));
 
 
@@ -832,7 +832,7 @@ namespace SeleniumTests
 
             //Prüfen ob alte Daten vorhanden sind
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
-            Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Organisationsform", driver));
+            //Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Organisationsform", driver));
             Assert.AreEqual("Holzweg 1", TestTools.TextboxTextÜberprüfen("Stra_e", driver));
             Assert.AreEqual("87654", TestTools.TextboxTextÜberprüfen("Postleitzahl", driver));
             Assert.AreEqual("Woodway", TestTools.TextboxTextÜberprüfen("Ort", driver));
@@ -843,7 +843,7 @@ namespace SeleniumTests
             Assert.AreEqual("01234 - 56789", TestTools.TextboxTextÜberprüfen("Telefon", driver));
             Assert.AreEqual("01234 - 99999", TestTools.TextboxTextÜberprüfen("Fax", driver));
             Assert.AreEqual("www.AYCE.de", TestTools.TextboxTextÜberprüfen("Internetadresse", driver));
-            Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
+            //Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
 
             //Daten ändern
             TestTools.DatenEingeben("Testfirma", "Firmenname", driver);
@@ -880,6 +880,22 @@ namespace SeleniumTests
             Assert.AreEqual("www.test.test", TestTools.TextboxTextÜberprüfen("Internetadresse", driver));
             Assert.AreEqual("Nur im eigenen Stadtgebiet", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
 
+            TestTools.FehlerID("xxx", driver, 1);
+
+            //Daten wieder auf Ursprung zurück setzen
+            TestTools.DatenEingeben("AllYouCanEat GmbH", "Firmenname", driver);
+            TestTools.DatenEingeben("Holzweg 1", "Stra_e", driver);
+            TestTools.DatenEingeben("87654", "Postleitzahl", driver);
+            TestTools.DatenEingeben("Woodway", "Ort", driver);
+            TestTools.DatenEingeben("Max", "Vorname", driver);
+            TestTools.DatenEingeben("Mustermann", "Nachname", driver);
+            TestTools.DatenEingeben("Chef", "FunktionAnsprechpartner", driver);
+            TestTools.DatenEingeben("01234 - 56789", "Telefon", driver);
+            TestTools.DatenEingeben("01234 - 99999", "Fax", driver);
+            TestTools.DatenEingeben("www.AYCE.de", "Internetadresse", driver);
+
+            TestTools.ElementKlick("btnSpeichern", driver);
+
             TestTools.ElementKlick("DropdownLogin", driver);
             TestTools.ElementKlick("Ausloggen", driver);
             
@@ -893,6 +909,124 @@ namespace SeleniumTests
 
         }
 
+        [Test]
+        public void PersDatenÄndern2()
+        //T_C2-1_F02_B_001 
+        {
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+
+            //Daten ändern über AGB Fußzeile abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("AGB", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über Datenschutzbestimmungen Fußzeile abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("Datenschutz", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über Kontakt Fußzeile abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("Kontakt", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über Impressum Fußzeile abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("Impressum", driver);
+            Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über AGB Dropdown abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownAGBLogin", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über Datenschutzbestimmungen Dropdown abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownDatenschutzLogin", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über Kontakt Dropdown abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownKontaktLogin", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über Impressum Dropdown abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownImpressumLogin", driver);
+            Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über Meine Daten abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            TestTools.FehlerID("xxx", driver, 1);
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über StartButton abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            driver.Navigate().GoToUrl(baseURL);
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+            //Daten ändern über Logout abbrechen
+            TestTools.DatenEingeben("Test", "Firmenname", driver);
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.FehlerID("xxx", driver, 1);
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+
+        }
 
 
 

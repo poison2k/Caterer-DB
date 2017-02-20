@@ -21,6 +21,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         private IMapper MockMapper { get; set; }
         private IMd5Hash MD5hash { get; set; }
         private IBenutzerService benutzerService { get; set; }
+        private IBenutzerService MockService { get; set; }
         private Fixture Fixture { get; set; }
 
         [OneTimeSetUp]
@@ -38,9 +39,8 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
-            //var anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
-            mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(benutzer);
+            mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
             MockMapper = mockMapper.Object;
 
             var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
@@ -50,7 +50,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
 
             //Assert 
 
-            Assert.AreEqual(anmeldenBenutzerViewModel.GetType(), result.GetType());
+            Assert.IsNotNull(anmeldenBenutzerViewModel.Nachname, result.Nachname);
         }
 
         [Test]
@@ -60,10 +60,11 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             benutzer = null;
-            //var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
-            var anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
+            var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
+            anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
+            anmeldenBenutzerViewModel.AnmeldenModel = new LoginModel();
             var mockMapper = new Mock<IMapper>();
-            mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(benutzer);
+            mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
             MockMapper = mockMapper.Object;
 
             var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
@@ -73,7 +74,35 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
 
             //Assert 
 
-            Assert.AreEqual(anmeldenBenutzerViewModel.GetType(), result.GetType());
+            Assert.IsNull(anmeldenBenutzerViewModel.Nachname, result.Nachname);
+        }
+
+        [Test]
+        public void IsNotNull_AnmeldenBenutzerViewModel_ID_Test()
+        {
+
+            //Assert
+            var benutzer = Fixture.Build<Benutzer>().Create();
+            var benutzerId = benutzer.BenutzerId;
+            var infobox = "schließen";
+            var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
+            MockMapper = mockMapper.Object;
+            var mocService = new Mock<IBenutzerService>();
+            mocService.Setup(s => s.SearchUserById(1)).Returns(benutzer);
+            MockService = mocService.Object;
+
+            
+
+            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+
+            //Act
+            var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzerId,infobox);
+
+            //Assert 
+
+            Assert.IsNotNull(anmeldenBenutzerViewModel.Nachname, result.Nachname);
         }
 
         [Test]
@@ -193,7 +222,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
 
             //Act
-            var result = benutzerViewModelService.Map_Benutzer_EditBenutzerViewModel(benutzer);
+            var result = benutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(benutzer);
 
             //Assert 
 
@@ -238,6 +267,66 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Assert 
 
             Assert.AreEqual(deleteBenutzerViewModel.GetType(), result.GetType());
+        }
+
+        [Test]
+        public void Map_RegisterBenutzerViewModel_Benutzer_Test()
+        {
+
+            //Assert
+            var benutzer = Fixture.Build<Benutzer>().Create();
+            var registerBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<RegisterBenutzerViewModel>())).Returns(benutzer);
+            MockMapper = mockMapper.Object;
+
+            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            
+            //Act
+            var result = benutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(registerBenutzerViewModel);
+
+            //Assert 
+
+            Assert.AreEqual(benutzer.GetType(), result.GetType());
+        }
+
+        [Test]
+        public void CreateNewRegisterBenutzerViewModel_Test()
+        {
+
+            //Assert
+            var benutzer = Fixture.Build<Benutzer>().Create();
+            var createNewRegisterBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<RegisterBenutzerViewModel>())).Returns(benutzer);
+            MockMapper = mockMapper.Object;
+
+            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+
+            //Act
+            var result = benutzerViewModelService.CreateNewRegisterBenutzerViewModel();
+
+            //Assert 
+
+            Assert.AreEqual(createNewRegisterBenutzerViewModel.GetType(), result.GetType());
+        }
+
+        [Test]
+        public void AddListsToRegisterViewModel_Test()
+        {
+
+            //Assert
+            var benutzer = Fixture.Build<Benutzer>().Create();
+            var registerBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
+
+            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+
+            //Act
+            var result = benutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel);
+
+            //Assert 
+
+            Assert.AreEqual(registerBenutzerViewModel.GetType(), result.GetType());
         }
     }
 }
