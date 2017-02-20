@@ -5,6 +5,7 @@ using DataAccess.Interfaces;
 using DataAccess.Repositories;
 using System.Collections.Generic;
 using Common.Interfaces;
+using AutoMapper;
 
 namespace Business.Services
 {
@@ -16,11 +17,26 @@ namespace Business.Services
 
         public IMd5Hash MD5Hash { get; set; }
 
+        private IMapper Mapper { get; set; }
+
+
         public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IMd5Hash md5Hash)
         {
             BenutzerRepository = benutzerRepository;
             MailService = mailService;
             MD5Hash = md5Hash;
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
+                cfg.CreateMap<List<BenutzerGruppe>, List<BenutzerGruppe>>();
+                cfg.CreateMap<Benutzer, Benutzer>()
+                    .ForMember(x => x.BenutzerGruppen, opt => opt.MapFrom(s => Mapper.Map<List<BenutzerGruppe>, List<BenutzerGruppe>>(s.BenutzerGruppen)))
+                    .ForAllMembers(opt => opt.Condition((source, destination, sourceMember, destMember) => (sourceMember != null)));
+
+            });
+
+            Mapper = config.CreateMapper();
 
         }
 
@@ -65,9 +81,12 @@ namespace Business.Services
             MailService.SendForgottenPasswordMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
-        public void EditBenutzer(Benutzer benutzer)
+        public void EditBenutzer(Benutzer editedBenutzer)
         {
-            BenutzerRepository.EditUser(benutzer);
+            var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
+
+            Mapper.Map(editedBenutzer,dbBenutzer);
+            BenutzerRepository.EditUser(dbBenutzer);
         }
 
         public void RemoveBenutzer(int id)

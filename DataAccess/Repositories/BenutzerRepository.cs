@@ -18,7 +18,7 @@ namespace DataAccess.Repositories
 
         public Benutzer SearchUserById(int id)
         {
-            return Db.Benutzer.Where(x => x.BenutzerId == id).SingleOrDefault();
+            return Db.Benutzer.Include(x =>x.BenutzerGruppen).Where(x => x.BenutzerId == id).SingleOrDefault();
 
         }
 

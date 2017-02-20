@@ -133,7 +133,7 @@ namespace Caterer_DB.Controllers
                 changedUser.Passwort = oldUser.Passwort;
                 changedUser.IstEmailVerifiziert = oldUser.IstEmailVerifiziert;
 
-                BenutzerService.EditBenutzer(changedUser);
+                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
 
                 return RedirectToAction("Index","Home");
             }
