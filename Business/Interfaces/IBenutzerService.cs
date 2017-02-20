@@ -6,6 +6,8 @@ namespace Business.Interfaces
     public interface IBenutzerService
     {
         Benutzer SearchUserById(int id);
+        Benutzer SearchUserByIdNoTracking(int id);
+        
 
         Benutzer SearchUserByEmail(string email);
 

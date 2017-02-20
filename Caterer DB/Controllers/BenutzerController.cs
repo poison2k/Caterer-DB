@@ -2,6 +2,7 @@
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
+using DataAccess.Model;
 using System;
 using System.Net;
 using System.Web.Mvc;
@@ -127,7 +128,12 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
+                Benutzer oldUser = BenutzerService.SearchUserByIdNoTracking(Convert.ToInt32(myDataBenutzerViewModel.BenutzerId));
+                Benutzer changedUser = BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel);
+                changedUser.Passwort = oldUser.Passwort;
+                changedUser.IstEmailVerifiziert = oldUser.IstEmailVerifiziert;
+
+                BenutzerService.EditBenutzer(changedUser);
 
                 return RedirectToAction("Index","Home");
             }

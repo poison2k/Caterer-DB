@@ -14,6 +14,7 @@ namespace DataAccess.Interfaces
         void RemoveUser(Benutzer benutzer);
 
         Benutzer SearchUserById(int id);
+        Benutzer SearchUserByIdNoTracking(int id);
         Benutzer SearchUserByEMail(string eMail);
         Benutzer SearchUserByEmailVerify(string verify);
 

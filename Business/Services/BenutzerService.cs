@@ -30,6 +30,11 @@ namespace Business.Services
             return BenutzerRepository.SearchUserById(id);
         }
 
+        public Benutzer SearchUserByIdNoTracking(int id)
+        {
+            return BenutzerRepository.SearchUserByIdNoTracking(id);
+        }
+
         public Benutzer SearchUserByEmail(string email)
         {
             return BenutzerRepository.SearchUserByEMail(email);

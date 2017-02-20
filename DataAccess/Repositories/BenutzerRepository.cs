@@ -3,6 +3,7 @@ using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Data.Entity;
 
 namespace DataAccess.Repositories
 {
@@ -17,8 +18,13 @@ namespace DataAccess.Repositories
 
         public Benutzer SearchUserById(int id)
         {
-
             return Db.Benutzer.Where(x => x.BenutzerId == id).SingleOrDefault();
+
+        }
+
+        public Benutzer SearchUserByIdNoTracking(int id)
+        {
+            return Db.Benutzer.AsNoTracking().Where(x => x.BenutzerId == id).SingleOrDefault();
 
         }
 
