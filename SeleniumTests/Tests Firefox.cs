@@ -771,6 +771,10 @@ namespace SeleniumTests
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [Test]
         public void PersDatenÄndern()
         //T_C2-1_F01_B_001 
@@ -1019,6 +1023,128 @@ namespace SeleniumTests
             TestTools.ElementKlick("Ausloggen", driver);
 
             TestTools.FehlerID("xxx", driver, 1);
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+
+        }
+        [Test]
+        public void PWVergessen1()
+        //T_C2-2_F02_B_001
+        {
+
+            //TestTools.ElementKlick("DropdownLogout", driver);
+            //TestTools.ElementKlick("loginLinkhead", driver);
+            //TestTools.ElementKlick("PWVergessen", driver);
+            //driver.FindElement(By.LinkText("Passwort vergessen")).Click();
+
+
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            
+            Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
+
+            //AGBs Fußzeile
+            TestTools.ElementKlick("AGB", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            //Datenschutzbestimmungen Fußzeile
+            TestTools.ElementKlick("Datenschutz", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            //Kontakt Fußzeile
+            TestTools.ElementKlick("Kontakt", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            //Impressum Fußzeile
+            TestTools.ElementKlick("Impressum", driver);
+            Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            //AGBs Dropdown
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownAGBLogout", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            //Datenschutzbestimmungen Dropdown
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownDatenschutzLogout", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            //Kontakt Dropdown
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownKontaktLogout", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            //Impressum Dropdown
+            TestTools.ElementKlick("DropdownServiceLogout", driver);
+            TestTools.ElementKlick("DropdownImpressumLogout", driver);
+            Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+
+            TestTools.FehlerID("xxx", driver, 1);
+
+            TestTools.ElementKlick("StartButton", driver);
+
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+
+        }
+
+        [Test]
+        public void PWVergessen2()
+        //T_C2-2_F03_B_001
+        {
+
+            //TestTools.ElementKlick("DropdownLogout", driver);
+            //TestTools.ElementKlick("loginLinkhead", driver);
+            //TestTools.ElementKlick("PWVergessen", driver);
+            //driver.FindElement(By.LinkText("Passwort vergessen")).Click();
+
+
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
+
+            //StartButton
+            TestTools.ElementKlick("StartButton", driver);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+
+            //AGBs Dropdown
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            Assert.AreEqual("Login", TestTools.IDTextÜberprüfen("LoginPage", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+            //Datenschutzbestimmungen Dropdown
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("registerLinkhead", driver);
+            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+
+           
+            TestTools.ElementKlick("StartButton", driver);
+
+            //driver.FindElement(By.Id("StartButton")).SendKeys("{BACK}");
+            driver.FindElement(By.Id("StartButton")).SendKeys(Keys.Backspace);
+            
+
+            TestTools.FehlerID("xxx", driver, 5);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
