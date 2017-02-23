@@ -86,3 +86,55 @@ namespace SeleniumTests.Services
 
     }
 }
+
+            ////AGBs Fußzeile
+            //TestTools.ElementKlick("AGB", driver);
+            //Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+
+            ////Datenschutzbestimmungen Fußzeile
+            //TestTools.ElementKlick("Datenschutz", driver);
+            //Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+
+            ////Kontakt Fußzeile
+            //TestTools.ElementKlick("Kontakt", driver);
+            //Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+
+            ////Impressum Fußzeile
+            //TestTools.ElementKlick("Impressum", driver);
+            //Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
+
+            ////AGBs Dropdown
+            //TestTools.ElementKlick("DropdownServiceLogout", driver);
+            //TestTools.ElementKlick("DropdownAGBLogout", driver);
+            //Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+
+            ////Datenschutzbestimmungen Dropdown
+            //TestTools.ElementKlick("DropdownServiceLogout", driver);
+            //TestTools.ElementKlick("DropdownDatenschutzLogout", driver);
+            //Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+
+            ////Kontakt Dropdown
+            //TestTools.ElementKlick("DropdownServiceLogout", driver);
+            //TestTools.ElementKlick("DropdownKontaktLogout", driver);
+            //Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+
+            ////Impressum Dropdown
+            //TestTools.ElementKlick("DropdownServiceLogout", driver);
+            //TestTools.ElementKlick("DropdownImpressumLogout", driver);
+            //Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
+
+            ////StartButton
+            //TestTools.ElementKlick("StartButton", driver);
+            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            //driver.FindElement(By.Id("loginLinkbutton"));
+            //Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+            ////Login Dropdown
+            //TestTools.ElementKlick("DropdownLogout", driver);
+            //TestTools.ElementKlick("loginLinkhead", driver);
+            //Assert.AreEqual("Login", TestTools.IDTextÜberprüfen("LoginPage", driver));
+
+            ////Registrierung Dropdown
+            //TestTools.ElementKlick("DropdownLogout", driver);
+            //TestTools.ElementKlick("registerLinkhead", driver);
+            //Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
