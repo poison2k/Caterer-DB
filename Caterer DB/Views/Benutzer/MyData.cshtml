@@ -150,7 +150,7 @@
             <div class="col-md-4">
                 <ul class="list-unstyled list-inline " style="margin-left: -5px;">
                     <li>
-                        <button type="submit" id="btnSpeichern" name="btnConfig" value="Speichern" class="btn btn-success">
+                        <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success">
                             <i class="glyphicon glyphicon-save"></i> Speichern
                         </button>
                     </li>
@@ -159,7 +159,33 @@
                         <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                     </li>
                     <li>
-                        <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-trash"></i> Löschen</a>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
+                            <i class="glyphicon glyphicon-trash"></i> Löschen
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteModal" role="dialog">
+                            <div class="modal-dialog modal-sm">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Löschen bestätigen</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Wollen Sie Ihren Account jetzt löschen?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success" id="btnModalDelete" name="btnModalDelete" value="Delete">Ja</button>
+                                        <button type="submit" class="btn btn-success" data-dismiss="modal" id="btnModalCancel" name="btnModalCancel" value="Cancel">Nein</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
                     </li>
                 </ul>
             </div>

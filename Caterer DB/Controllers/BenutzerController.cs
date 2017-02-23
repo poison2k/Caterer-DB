@@ -16,8 +16,11 @@ namespace Caterer_DB.Controllers
 
         private IBenutzerService BenutzerService { get; set; }
 
-        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService)
+        public ILoginService LoginService { get; set; }
+
+        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService, ILoginService loginService)
         {
+            LoginService = loginService;
             BenutzerService = benutzerService;
             BenutzerViewModelService = benutzerViewModelService;
 
@@ -128,14 +131,23 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                Benutzer oldUser = BenutzerService.SearchUserByIdNoTracking(Convert.ToInt32(myDataBenutzerViewModel.BenutzerId));
-                Benutzer changedUser = BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel);
-                changedUser.Passwort = oldUser.Passwort;
-                changedUser.IstEmailVerifiziert = oldUser.IstEmailVerifiziert;
-
+                if (Request.Form["btnSave"] != null)
+                { 
+                //Benutzer oldUser = BenutzerService.SearchUserByIdNoTracking(Convert.ToInt32(myDataBenutzerViewModel.BenutzerId));
+                //Benutzer changedUser = BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel);
+                //changedUser.Passwort = oldUser.Passwort;
+                //changedUser.IstEmailVerifiziert = oldUser.IstEmailVerifiziert;
+                
                 BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
 
-                return RedirectToAction("Index","Home");
+                }
+                else if(Request.Form["btnModalDelete"] != null)
+                {
+                    LoginService.Abmelden();
+                    BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel).BenutzerId);
+                }
+                return RedirectToAction("Index", "Home");
+
             }
             return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
         }
