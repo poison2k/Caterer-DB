@@ -287,7 +287,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
 
             //Assert 
 
-            Assert.AreEqual(benutzer.GetType(), result.GetType());
+            Assert.IsNotNull(benutzer.Nachname, result.Nachname);
         }
 
         [Test]
