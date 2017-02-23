@@ -241,6 +241,8 @@ namespace Caterer_DB.Models
 
         public DateTime PasswortZeitstempel { get; set; }
 
+        public bool IstEmailVerifiziert { get; set; }
+
     }
 
     public class DetailsBenutzerViewModel
