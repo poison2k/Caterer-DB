@@ -1,27 +1,41 @@
 ﻿
+@using Caterer_DB.Resources
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
-        
+
         <ul class="nav navbar-nav navbar-right">
             <li class="text-center">
-            <a style="vertical-align:middle">@Model.Vorname @Model.Nachname</a>           
+                <a style="vertical-align:middle">@User.Vorname @User.Nachname</a>
             </li>
-            <li class="dropdown", id="DropdownLogin">
+           
+            <li class="dropdown" , id="DropdownLogin">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li>@Html.ActionLink("Meine Daten", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
-                    <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>         
+                    <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
                 </ul>
             </li>
 
+            @if (User.HatDasRecht(RechteResource.EditConfig))
+            {
+                <li class="dropdown" , id="DropdownLogin">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class='glyphicon glyphicon-cog'></i><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Einstellungen", "Edit", "Config", null, new { id = "EinstellungenLink" })</li>
+                    </ul>
+                </li>
+            }
 
-            <li class="dropdown", id="DropdownServiceLogin">
+            <li class="dropdown" , id="DropdownServiceLogin">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class='glyphicon glyphicon-info-sign'></i><b class="caret"></b>
                 </a>
@@ -37,9 +51,9 @@
 }
 else
 {
-   
+
     <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown", id="DropdownLogout">
+        <li class="dropdown" , id="DropdownLogout">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
             </a>
@@ -48,9 +62,9 @@ else
                 <li>@Html.ActionLink("Registrieren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLinkhead" })</li>
             </ul>
         </li>
-       
-        
-        <li class="dropdown", id="DropdownServiceLogout">
+
+
+        <li class="dropdown" , id="DropdownServiceLogout">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class='glyphicon glyphicon-info-sign'></i><b class="caret"></b>
             </a>

@@ -73,6 +73,7 @@
     <Compile Include="Interfaces\IAntwortService.cs" />
     <Compile Include="Interfaces\IBenutzerGruppeService.cs" />
     <Compile Include="Interfaces\IBenutzerService.cs" />
+    <Compile Include="Interfaces\IConfigService.cs" />
     <Compile Include="Interfaces\IFrageService.cs" />
     <Compile Include="Interfaces\IRechteGruppeService.cs" />
     <Compile Include="Interfaces\IRechtService.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Services\AntwortService.cs" />
     <Compile Include="Services\BenutzerGruppeService.cs" />
     <Compile Include="Services\BenutzerService.cs" />
+    <Compile Include="Services\ConfigService.cs" />
     <Compile Include="Services\FrageService.cs" />
     <Compile Include="Services\RechteGruppeService.cs" />
     <Compile Include="Services\RechtService.cs" />

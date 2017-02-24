@@ -39,6 +39,7 @@ namespace DataAccess.Interfaces
         DbSet<Frage> Frage { get; set; }
         DbSet<Antwort> Antwort { get; set; }
         DbSet<Fragebogen> Fragebogen { get; set; }
+        DbSet<Config> Config { get; set; }
 
         void SetModified(object objekt);
     }

@@ -21,6 +21,8 @@ namespace DataAccess.Context
         public virtual DbSet<Frage> Frage { get; set; }
         public virtual DbSet<Antwort> Antwort { get; set; }
         public virtual DbSet<Fragebogen> Fragebogen { get; set; }
+        public virtual DbSet<Config> Config { get; set; }
+
 
         public static CatererContext Create()
         {

@@ -3,6 +3,7 @@ using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Caterer_DB.Resources;
 
 namespace Caterer_DB.App_Start.ContextInitializer
 {
@@ -13,26 +14,40 @@ namespace Caterer_DB.App_Start.ContextInitializer
             CreateRechteGruppenData(db);
             CreateBenutzerGruppenData(db);
             CreateUserData(db);
+            CreateConfig(db);
         }
 
+        private static void CreateConfig(CatererContext db) {
+
+            Config config = db.Config.Add(new Config {
+                   UserNameForSMTPServer = "Hoersaal10@gmail.com",
+                   PasswortForSMTPServer = "HS10idgHSe!",
+                   SmtpPort = 25,
+                   SmtpServer = "smtp.gmail.com"
+            });
+
+            db.SaveChanges();
+
+        }
 
         private static void CreateRechteGruppenData(CatererContext db) {
             RechteGruppe AdminRechte = db.RechteGruppe.Add(new RechteGruppe {
                 Bezeichnung = "AdminRechte",
-                Rechte = new List<Recht>(){ new Recht() { Bezeichnung = "Testblock1", Beschreibung = "Zeigt Block 1 an " } }
+                Rechte = new List<Recht>(){ new Recht() { Bezeichnung = RechteResource.TestBlock1, Beschreibung = "Zeigt Block 1 an " },
+                                            new Recht() { Bezeichnung = RechteResource.EditConfig, Beschreibung = "Einstellungen können bearbeitet werden" } }
             });
 
         
             RechteGruppe CatererRechte = db.RechteGruppe.Add(new RechteGruppe
             {
                 Bezeichnung = "CatererRechte",
-                Rechte = new List<Recht>() { new Recht() { Bezeichnung = "Testblock3", Beschreibung = "Zeigt Block 3 an " } }
+                Rechte = new List<Recht>() { new Recht() { Bezeichnung = RechteResource.TestBlock3, Beschreibung = "Zeigt Block 3 an " } }
             });
 
             RechteGruppe MitarbeiterRechte = db.RechteGruppe.Add(new RechteGruppe
             {
                 Bezeichnung = "MitarbeiterRechte",
-                Rechte = new List<Recht>() { new Recht() { Bezeichnung = "Testblock2", Beschreibung= "Zeigt Block 2 an " } }
+                Rechte = new List<Recht>() { new Recht() { Bezeichnung = RechteResource.TestBlock2, Beschreibung= "Zeigt Block 2 an " } }
             });
 
             db.SaveChanges();

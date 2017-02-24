@@ -1,0 +1,73 @@
+﻿@model Caterer_DB.Models.EditConfigViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Einstellungen</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="well well-lg">
+                <h4><i class="glyphicon glyphicon-envelope "></i> E-Mail Konfiguration</h4>
+                <br />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ConfigId)
+                <div class="row">
+
+
+
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.UserNameForSMTPServer, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.UserNameForSMTPServer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserNameForSMTPServer, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.PasswortForSMTPServer, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.PasswortForSMTPServer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PasswortForSMTPServer, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.SmtpServer, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.SmtpServer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SmtpServer, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.SmtpPort, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.SmtpPort, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SmtpPort, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <div class="form-group">
+                            <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success">
+                                <i class="glyphicon glyphicon-save"></i> Speichern
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+

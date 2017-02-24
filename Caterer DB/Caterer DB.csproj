@@ -247,6 +247,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BenutzerController.cs" />
     <Compile Include="Controllers\BenutzerGruppeController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\FrageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MailController.cs" />
@@ -258,6 +259,7 @@
     </Compile>
     <Compile Include="Interfaces\IAntwortViewModelService.cs" />
     <Compile Include="Interfaces\IBenutzerViewModelService.cs" />
+    <Compile Include="Interfaces\IConfigViewModelService.cs" />
     <Compile Include="Interfaces\IFindCurrentUserService.cs" />
     <Compile Include="Interfaces\IFrageViewModelService.cs" />
     <Compile Include="Interfaces\ILoginService.cs" />
@@ -268,6 +270,7 @@
     <Compile Include="Models\BenutzerGruppeViewModel.cs" />
     <Compile Include="Models\BenutzerViewModel.cs" />
     <Compile Include="Interfaces\IBenutzerGruppeViewModelService.cs" />
+    <Compile Include="Models\ConfigViewModel.cs" />
     <Compile Include="Models\FrageViewModel.cs" />
     <Compile Include="Models\MailViewModels.cs" />
     <Compile Include="Models\RechteGruppeViewModel.cs" />
@@ -277,6 +280,7 @@
     <Compile Include="Models\ViewModelServices\AntwortViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerViewModelService.cs" />
+    <Compile Include="Models\ViewModelServices\ConfigViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\FrageViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\RechteGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\RechtViewModelService.cs" />
@@ -403,10 +407,10 @@
     <Content Include="Views\Account\PasswordRequestComplete.cshtml" />
     <Content Include="Views\Account\PasswordChange.cshtml" />
     <Content Include="Views\Account\PasswordChangeComplete.cshtml" />
+    <Content Include="Views\Config\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
