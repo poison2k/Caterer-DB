@@ -2,7 +2,6 @@
 using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 using Caterer_DB.Resources;
 
 namespace Caterer_DB.App_Start.ContextInitializer
@@ -11,11 +10,30 @@ namespace Caterer_DB.App_Start.ContextInitializer
     {
         public static void CreateExampleData(CatererContext db)
         {
+            CreateRechte(db);
             CreateRechteGruppenData(db);
             CreateBenutzerGruppenData(db);
             CreateUserData(db);
             CreateConfig(db);
         }
+
+        private static void CreateRechte(CatererContext db)
+        {
+
+            db.Recht.AddRange(new List<Recht>()
+            {
+                new Recht() { Bezeichnung = RechteResource.TestBlock1, Beschreibung = "Zeigt Block 1 an " },
+                new Recht() { Bezeichnung = RechteResource.TestBlock2, Beschreibung = "Zeigt Block 2 an " },
+                new Recht() { Bezeichnung = RechteResource.TestBlock3, Beschreibung = "Zeigt Block 3 an " },
+                new Recht() { Bezeichnung = RechteResource.EditConfig, Beschreibung = "Einstellungen können bearbeitet werden" },
+                new Recht() { Bezeichnung = RechteResource.CreateMitarbeiter, Beschreibung = "Mitarbeiter können angelegt werden" },
+                new Recht() { Bezeichnung = RechteResource.IndexMitarbeiter, Beschreibung = "Anzeige aller Mitarbeiter" }
+
+            });
+            db.SaveChanges();
+
+        }
+
 
         private static void CreateConfig(CatererContext db) {
 
@@ -25,7 +43,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                    SmtpPort = 25,
                    SmtpServer = "smtp.gmail.com"
             });
-
             db.SaveChanges();
 
         }
@@ -33,21 +50,20 @@ namespace Caterer_DB.App_Start.ContextInitializer
         private static void CreateRechteGruppenData(CatererContext db) {
             RechteGruppe AdminRechte = db.RechteGruppe.Add(new RechteGruppe {
                 Bezeichnung = "AdminRechte",
-                Rechte = new List<Recht>(){ new Recht() { Bezeichnung = RechteResource.TestBlock1, Beschreibung = "Zeigt Block 1 an " },
-                                            new Recht() { Bezeichnung = RechteResource.EditConfig, Beschreibung = "Einstellungen können bearbeitet werden" } }
+                Rechte = db.Recht.ToList()
             });
 
         
             RechteGruppe CatererRechte = db.RechteGruppe.Add(new RechteGruppe
             {
                 Bezeichnung = "CatererRechte",
-                Rechte = new List<Recht>() { new Recht() { Bezeichnung = RechteResource.TestBlock3, Beschreibung = "Zeigt Block 3 an " } }
+                Rechte = new List<Recht>() { db.Recht.Single( x => x.Bezeichnung == RechteResource.TestBlock3 ) }
             });
 
             RechteGruppe MitarbeiterRechte = db.RechteGruppe.Add(new RechteGruppe
             {
                 Bezeichnung = "MitarbeiterRechte",
-                Rechte = new List<Recht>() { new Recht() { Bezeichnung = RechteResource.TestBlock2, Beschreibung= "Zeigt Block 2 an " } }
+                Rechte = new List<Recht>() { db.Recht.Single(x => x.Bezeichnung == RechteResource.TestBlock2) }
             });
 
             db.SaveChanges();
@@ -58,19 +74,19 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
             BenutzerGruppe Admin = db.BenutzerGruppe.Add(new BenutzerGruppe
             {
-                Bezeichnung = "Administratoren",
+                Bezeichnung = BenutzerGruppenResource.Administrator,
                 RechteGruppe =  db.RechteGruppe.Single(x => x.Bezeichnung == "AdminRechte") 
             });
 
             BenutzerGruppe Mitarbeiter = db.BenutzerGruppe.Add(new BenutzerGruppe
             {
-                Bezeichnung = "Mitarbeiter",
+                Bezeichnung = BenutzerGruppenResource.Mitarbeiter,
                  RechteGruppe = db.RechteGruppe.Single(x => x.Bezeichnung == "MitarbeiterRechte")
             });
 
             BenutzerGruppe Caterer = db.BenutzerGruppe.Add(new BenutzerGruppe
             {
-                Bezeichnung = "Caterer",
+                Bezeichnung = BenutzerGruppenResource.Caterer,
                 RechteGruppe = db.RechteGruppe.Single(x => x.Bezeichnung == "CatererRechte")
             });
 
@@ -100,7 +116,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
-                BenutzerGruppen = new List<BenutzerGruppe>() {db.BenutzerGruppe.Single(x => x.Bezeichnung == "Caterer")}
+                BenutzerGruppen = new List<BenutzerGruppe>() {db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer)}
                 
             });
 
@@ -124,7 +140,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "-",
                 EMailVerificationCode = "-",
                 PasswortZeitstempel = System.DateTime.Now,
-                BenutzerGruppen = new  List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == "Mitarbeiter") }
+                BenutzerGruppen = new  List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Mitarbeiter) }
             });
 
             Benutzer admin = db.Benutzer.Add(new Benutzer
@@ -147,7 +163,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "-",
                 EMailVerificationCode = "-",
                 PasswortZeitstempel = System.DateTime.Now,
-                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == "Administratoren") }
+                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
             });
 
             Benutzer testuser = db.Benutzer.Add(new Benutzer
@@ -170,7 +186,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
-                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == "Administratoren") }
+                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
 
             });
 

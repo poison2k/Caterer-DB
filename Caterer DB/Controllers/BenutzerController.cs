@@ -2,6 +2,8 @@
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
+using Caterer_DB.Resources;
+using Caterer_DB.Services;
 using DataAccess.Model;
 using System;
 using System.Net;
@@ -9,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
+    [Authorize]
     public class BenutzerController : BaseController
     {
         //private CatererContext db = new CatererContext();
@@ -27,9 +30,15 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer
-        public ActionResult Index()
+        [CustomAuthorize(Roles = RechteResource.IndexMitarbeiter)]
+        public ActionResult Index(string suche, int aktuelleSeite = 1, int seitenGrösse = 10)
         {
-            return View(BenutzerService.FindAllBenutzers());
+            return View(BenutzerViewModelService.GeneriereListViewModel(
+                 BenutzerService.FindAllMitarbeiterWithPaging(aktuelleSeite, seitenGrösse)
+                , BenutzerService.GetMitarbeiterCount()
+                , aktuelleSeite
+                , seitenGrösse));
+            
         }
 
         // GET: Benutzer/Details/5
@@ -51,26 +60,26 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer/Create
+        [CustomAuthorize(Roles = RechteResource.CreateMitarbeiter)]
         public ActionResult Create()
         {
-            return View();
+            return View(BenutzerViewModelService.CreateNewCreateMitarbeiterViewModel());
         }
 
         // POST: Benutzer/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateBenutzerViewModel createBenutzerViewModel)
+        [CustomAuthorize(Roles = RechteResource.CreateMitarbeiter)]
+        public ActionResult Create(CreateMitarbeiterViewModel createMitarbeiterViewModel)
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.AddBenutzer(BenutzerViewModelService.Map_CreateBenutzerViewModel_Benutzer(createBenutzerViewModel));
+                BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel),BenutzerGruppenResource.Mitarbeiter);
 
                 return RedirectToAction("Index");
             }
 
-            return View(createBenutzerViewModel);
+            return View(createMitarbeiterViewModel);
         }
 
         // GET: Benutzer/Edit/5

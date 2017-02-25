@@ -43,5 +43,10 @@ namespace Business.Services
         {
             return BenutzerGruppeRepository.SearchGroupById(id);
         }
+
+        public BenutzerGruppe SearchGroupByBezeichnung(string bezeichnung)
+        {
+            return BenutzerGruppeRepository.SearchGroupByBezeichnung(bezeichnung);
+        }
     }
 }

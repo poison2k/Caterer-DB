@@ -12,8 +12,11 @@ namespace Business.Interfaces
         Benutzer SearchUserByEmail(string email);
 
         List<Benutzer> FindAllBenutzers();
+        List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse);
 
         void AddBenutzer(Benutzer benutzer);
+        void AddMitarbeiter(Benutzer benutzer, string mitarbeiterGruppe);
+
         void RegisterBenutzer(Benutzer benutzer);
 
 
@@ -25,5 +28,7 @@ namespace Business.Interfaces
         bool VerifyRegistration(string id, string verify);
         bool VerifyPasswordChange(string id, string verify);
         void EditBenutzerPassword(Benutzer benutzer);
+        int GetMitarbeiterCount();
+
     }
 }

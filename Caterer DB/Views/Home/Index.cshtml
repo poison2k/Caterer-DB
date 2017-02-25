@@ -19,11 +19,11 @@
                 {
                     <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
                 }
-                @if (User.HatDasRecht(RechteResource.TestBlock3))
-                    {
+                else if(User.HatDasRecht(RechteResource.TestBlock3))
+                {
                     <h4 class="text-danger">Ich bin Mitglied der Gruppe Caterer</h4>
                 }
-                @if (User.HatDasRecht(RechteResource.TestBlock2))
+                else if (User.HatDasRecht(RechteResource.TestBlock2))
                 {
                     <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
                 }

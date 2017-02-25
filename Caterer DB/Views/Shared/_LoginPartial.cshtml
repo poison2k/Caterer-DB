@@ -12,7 +12,7 @@
             <li class="text-center">
                 <a style="vertical-align:middle">@User.Vorname @User.Nachname</a>
             </li>
-           
+
             <li class="dropdown" , id="DropdownLogin">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
@@ -23,14 +23,29 @@
                 </ul>
             </li>
 
-            @if (User.HatDasRecht(RechteResource.EditConfig))
+            @if (User.HatDasRecht(RechteResource.EditConfig) || User.HatDasRecht(RechteResource.CreateMitarbeiter) || User.HatDasRecht(RechteResource.IndexMitarbeiter))
             {
                 <li class="dropdown" , id="DropdownLogin">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class='glyphicon glyphicon-cog'></i><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Einstellungen", "Edit", "Config", null, new { id = "EinstellungenLink" })</li>
+                        @if (User.HatDasRecht(RechteResource.IndexMitarbeiter))
+                        {
+                            <li>@Html.ActionLink("Mitarbeiter anzeigen", "Index", "Benutzer", null, new { id = "EinstellungenLink" })</li>
+                        }
+                        @if (User.HatDasRecht(RechteResource.CreateMitarbeiter))
+                        {
+                            <li>@Html.ActionLink("Mitarbeiter hinzufügen", "Create", "Benutzer", null, new { id = "EinstellungenLink" })</li>
+                        }
+                        @if (User.HatDasRecht(RechteResource.CreateMitarbeiter) || User.HatDasRecht(RechteResource.IndexMitarbeiter))
+                        {
+                            <li class="divider"></li>
+                        }
+                        @if (User.HatDasRecht(RechteResource.EditConfig))
+                        {
+                            <li>@Html.ActionLink("Einstellungen", "Edit", "Config", null, new { id = "EinstellungenLink" })</li>
+                        }
                     </ul>
                 </li>
             }

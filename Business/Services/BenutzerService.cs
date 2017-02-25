@@ -13,6 +13,8 @@ namespace Business.Services
     {
         public IBenutzerRepository BenutzerRepository { get; set; }
 
+        public IBenutzerGruppeService BenutzerGruppeService { get; set; }
+
         public IMailService MailService { get; set; }
 
         public IMd5Hash MD5Hash { get; set; }
@@ -20,9 +22,10 @@ namespace Business.Services
         private IMapper Mapper { get; set; }
 
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IMd5Hash md5Hash)
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService,IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash)
         {
             BenutzerRepository = benutzerRepository;
+            BenutzerGruppeService = benutzerGruppeService;
             MailService = mailService;
             MD5Hash = md5Hash;
 
@@ -61,10 +64,36 @@ namespace Business.Services
             return BenutzerRepository.SearchUser();
         }
 
+        public List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse)
+        {
+            return BenutzerRepository.SearchAllMitarbeiterWithPaging(aktuelleSeite, seitenGroesse);
+        }
+
+
         public void AddBenutzer(Benutzer benutzer)
         {
             BenutzerRepository.AddUser(benutzer);
         }
+
+
+        public void AddMitarbeiter(Benutzer benutzer, string mitarbeiterGruppe)
+        {
+            benutzer.BenutzerGruppen = new List<BenutzerGruppe>() {BenutzerGruppeService.SearchGroupByBezeichnung(mitarbeiterGruppe)};
+            benutzer.IstEmailVerifiziert = true;
+            benutzer.PasswortZeitstempel = DateTime.Now;
+
+            BenutzerRepository.AddUser(benutzer);
+
+            benutzer = BenutzerRepository.SearchUserByEMail(benutzer.Mail);
+            benutzer.PasswordVerificationCode = MD5Hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname + benutzer.Passwort);
+            benutzer.PasswortZeitstempel = DateTime.Now;
+           
+            BenutzerRepository.EditUser(benutzer);
+
+            MailService.SendNewMitarbeiterMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+
+        }
+
 
         public void RegisterBenutzer(Benutzer benutzer)
         {
@@ -115,6 +144,7 @@ namespace Business.Services
                 if (benutzer?.EMailVerificationCode == verify)
                 {
                     benutzer.IstEmailVerifiziert = true;
+                    benutzer.EMailVerificationCode = "";
                     BenutzerRepository.EditUser(benutzer);
                     return true;
                 }
@@ -141,6 +171,11 @@ namespace Business.Services
             var benutzer = BenutzerRepository.SearchUserById(tempBenutzer.BenutzerId);
             benutzer.Passwort = tempBenutzer.Passwort;
             BenutzerRepository.EditUser(benutzer);
+        }
+
+        public int GetMitarbeiterCount()
+        {
+            return BenutzerRepository.GetMitarbeiterCount();
         }
     }
 }

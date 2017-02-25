@@ -68,6 +68,21 @@ namespace DataAccess.Repositories
 
         }
 
+        public List<Benutzer> SearchAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse)
+        {
+            var benutzerGruppe = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Mitarbeiter").Single();
+            var administratoren = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Administrator").Single();
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(benutzerGruppe) || x.BenutzerGruppen.Contains(administratoren)).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
+        }
+
+        public int GetMitarbeiterCount()
+        {
+            var mitarbeiter = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Mitarbeiter").Single();
+            var administratoren = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Administrator").Single();
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren)).Count();
+        }
+
+
         public void AddUser(Benutzer benutzer)
         {
             benutzer.PasswortZeitstempel = DateTime.Now;

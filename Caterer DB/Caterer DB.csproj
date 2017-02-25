@@ -154,6 +154,14 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -272,6 +280,7 @@
     <Compile Include="Interfaces\IBenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ConfigViewModel.cs" />
     <Compile Include="Models\FrageViewModel.cs" />
+    <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\MailViewModels.cs" />
     <Compile Include="Models\RechteGruppeViewModel.cs" />
     <Compile Include="Models\RechtViewModel.cs" />
@@ -291,6 +300,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\BenutzerGruppenResource.cs" />
     <Compile Include="Resources\RechteResource.cs" />
     <Compile Include="Services\BaseViewPage.cs" />
     <Compile Include="Services\FindCurrentUserService.cs" />
@@ -311,6 +321,7 @@
     <Content Include="Content\Images\Logo_Ministerium.png" />
     <Content Include="Content\Images\reif.jpg" />
     <Content Include="Content\Images\Stephainski.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap.min.css.map" />
@@ -408,6 +419,7 @@
     <Content Include="Views\Account\PasswordChange.cshtml" />
     <Content Include="Views\Account\PasswordChangeComplete.cshtml" />
     <Content Include="Views\Config\Edit.cshtml" />
+    <Content Include="Views\Benutzer\_ListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

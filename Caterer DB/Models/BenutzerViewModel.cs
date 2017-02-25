@@ -9,6 +9,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Caterer_DB.Models
 {
+    public class IndexBenutzerViewModel
+    {
+        [Key]
+        public int BenutzerId { get; set; }
+
+        public string Anrede { get; set; }
+
+        public string Vorname { get; set; }
+
+        public string Nachname { get; set; }
+
+        public string Telefon{ get; set; }
+    }
+
+
     public class ForgottenPasswordRequestViewModel
     {
         [Required]
@@ -121,13 +136,15 @@ namespace Caterer_DB.Models
     }
 
 
-    public class CreateBenutzerViewModel
+    public class CreateMitarbeiterViewModel
     {
         [Key]
         public int BenutzerId { get; set; }
 
         [Required]
         public string Anrede { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
 
         [Required]
         public string Vorname { get; set; }
@@ -142,13 +159,10 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
-        public string Straße { get; set; }
+        [Required]
+        [DisplayName(@"Funktion des Mitarbeiters")]
+        public string FunktionAnsprechpartner { get; set; }
 
-        public string Postleitzahl { get; set; }
-
-        public string Ort { get; set; }
-
-        public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
     }
 
     public class EditBenutzerViewModel

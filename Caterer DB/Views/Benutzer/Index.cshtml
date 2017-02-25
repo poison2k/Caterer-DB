@@ -1,75 +1,29 @@
-﻿@model IEnumerable<DataAccess.Model.Benutzer>
+﻿@model IEnumerable<Caterer_DB.Models.IndexBenutzerViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Anrede)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vorname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nachname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Straße)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Postleitzahl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ort)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Anrede)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vorname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nachname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Straße)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postleitzahl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ort)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BenutzerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BenutzerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BenutzerId })
-        </td>
-    </tr>
-}
-
-</table>
+@using (Html.BeginForm())
+{
+    <div style="margin-top: 15px"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <ul class="list-unstyled list-inline col-md-12" style="margin-left: -5px;">
+                        <li>
+                            <a id="btnMarkierungenErstellen" href="@Url.Action("Create", "Benutzer")" na name="btnErstellen" type="submit" class="btn btn-success">
+                                <i class="glyphicon glyphicon-plus"></i> Neuer Mitarbeiter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-top: 15px"></div>
+                <div class="row" id="BenutzerIndexPartial">
+                    @{Html.RenderPartial("_ListView", Model);}
+                </div>
+            </div>
+        </div>
+    </div>
+                        }

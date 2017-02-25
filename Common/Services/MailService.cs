@@ -7,12 +7,23 @@ namespace Common.Services
 {
     public class MailService : IMailService
     {
+
         public void SendForgottenPasswordMail(string passwordVerificationCode, string mail, string id)
         {
             var mailModel = ConfigureMail();
             mailModel.Betreff = "Passwort vergessen Caterer-DB";
             mailModel.Empfaenger = mail;
             mailModel.Inhalt = "http://localhost:60003/Account/PasswordChange?verify=" + passwordVerificationCode + "&id=" + id;
+            SendMail(mailModel);
+        }
+
+
+        public void SendNewMitarbeiterMail(string passwordVerificationCode, string mail, string id)
+        {
+            var mailModel = ConfigureMail();
+            mailModel.Betreff = "Sie wurden als neuer Mitarbeiter der Caterer-DB hinzugefügt";
+            mailModel.Empfaenger = mail;
+            mailModel.Inhalt = "Bitte folgen Sie dem folgenden Link und legen Sie ihr Passwort fest http://localhost:60003/Account/PasswordChange?verify=" + passwordVerificationCode + "&id=" + id;
             SendMail(mailModel);
         }
 
@@ -49,7 +60,7 @@ namespace Common.Services
                 mail.Body = mailModel.Inhalt;
 
                 SmtpClient smtpClient = new SmtpClient();
-                smtpClient.Port = 25;
+                smtpClient.Port = mailModel.Port;
                 smtpClient.EnableSsl = true;
                 smtpClient.Host = mailModel.SMTPSeverName;
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;

@@ -23,7 +23,7 @@ namespace Caterer_DB.Models.ViewModelServices
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
-                cfg.CreateMap<Benutzer, CreateBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, CreateMitarbeiterViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, EditBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DeleteBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsBenutzerViewModel>().ReverseMap();
@@ -32,6 +32,7 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, MyDataBenutzerViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, ForgottenPasswordRequestViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, ForgottenPasswordCreateNewPasswordViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, IndexBenutzerViewModel>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();
@@ -69,9 +70,9 @@ namespace Caterer_DB.Models.ViewModelServices
             return anmeldenBenutzerViewModel;
         }
 
-        public Benutzer Map_CreateBenutzerViewModel_Benutzer(CreateBenutzerViewModel createBenutzerViewModel)
-        {
-            return Mapper.Map<Benutzer>(createBenutzerViewModel);
+        public Benutzer Map_CreateMitarbeiterViewModel_Benutzer(CreateMitarbeiterViewModel createMitarbeiterViewModel)
+        { 
+            return Mapper.Map<Benutzer>(createMitarbeiterViewModel);
         }
 
         public Benutzer Map_ForgottenPasswordRequestViewModel_Benutzer(ForgottenPasswordRequestViewModel forgottenPasswordRequestViewModel)
@@ -84,6 +85,7 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             var benutzer = Mapper.Map<Benutzer>(forgottenPasswordCreateNewPasswordViewModel);
             benutzer.Passwort = Crypto.HashPassword(forgottenPasswordCreateNewPasswordViewModel.Passwort);
+            benutzer.PasswordVerificationCode = "";
             return benutzer;
         }
 
@@ -133,6 +135,16 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<DetailsBenutzerViewModel>(benutzer);
         }
 
+        public CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel()
+        {
+            return  AddListsToCreateViewModel(new CreateMitarbeiterViewModel()); 
+        }
+
+        public CreateMitarbeiterViewModel UpdateCreateMitarbeiterViewModel(CreateMitarbeiterViewModel createMitarbeiterViewModel)
+        {
+            return AddListsToCreateViewModel(createMitarbeiterViewModel);
+        }
+
         public Benutzer Map_DeleteBenutzerViewModel_Benutzer(DeleteBenutzerViewModel deleteBenutzerViewModel)
         {
             return Mapper.Map<Benutzer>(deleteBenutzerViewModel);
@@ -158,6 +170,37 @@ namespace Caterer_DB.Models.ViewModelServices
             registerBenutzerViewModel = AddListsToRegisterViewModel(registerBenutzerViewModel);
             return registerBenutzerViewModel;
         }
+
+
+        public ListViewModel<IndexBenutzerViewModel> GeneriereListViewModel(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10)
+        {
+            var listViewModel = new ListViewModel<IndexBenutzerViewModel>(gesamtAnzahlDatensätze, aktuelleSeite, seitenGröße);
+            foreach (var benutzer in benutzerListe)
+                listViewModel.Entitäten.Add(GeneriereIndexBenutzerViewModel(benutzer));
+
+            return listViewModel;
+        }
+
+
+        public IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer)
+        {
+            var indexBenutzerViewModel = Mapper.Map<IndexBenutzerViewModel>(benutzer);
+
+            return indexBenutzerViewModel;
+        }
+
+        public CreateMitarbeiterViewModel AddListsToCreateViewModel(CreateMitarbeiterViewModel createBenutzerViewModel) {
+            createBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Herr", Value = "Herr" },
+                                new SelectListItem { Text = "Frau", Value = "Frau" }
+                            }, "Value", "Text");
+
+            return createBenutzerViewModel;
+
+        }
+
 
         public RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel)
         {

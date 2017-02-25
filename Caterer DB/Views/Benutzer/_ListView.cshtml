@@ -1,0 +1,52 @@
+﻿@using PagedList.Mvc
+@using Caterer_DB.Models
+@model ListViewModel<IndexBenutzerViewModel>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">Mitarbeiter</div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Anrede)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Nachname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Vorname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon)
+                </th>
+               
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Entitäten)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Anrede)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nachname)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Vorname)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
+                   
+                    <td>
+                        <a class="btn btn-default" href="@Url.Action("Details", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    @if (Model.TotalItemCount > Model.PageSize)
+    {
+        var seitenAnzahl = Model.TotalItemCount / Model.PageSize + 1;
+
+        <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
+        <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
+            Seite @Model.PageNumber von @(seitenAnzahl)
+            @Html.PagedListPager(Model, aktuelleSeite => Url.Action("Index", new { aktuelleSeite, Model.PageSize, Sortierreihenfolge = ViewBag.AktuelleSortierung }))
+        </div>
+    }
+</div>
+
