@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "MyData";
 }
-
+<br />
 <div class="row">
     <div class="col-md-4"></div>
     <div id="RegSeite" class="col-md-4 text-center">
@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-4"></div>
 </div>
-<br />
+
 
 
 @using (Html.BeginForm())
@@ -152,16 +152,23 @@
                 <ul class="list-unstyled list-inline " style="margin-left: -5px;">
                     <li>
                         <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success">
-                            <i class="glyphicon glyphicon-save"></i> Speichern
+                            <i class="glyphicon glyphicon-ok"></i> Speichern
                         </button>
                     </li>
                     @*Button "Zurück", rechts neben "Registrieren"*@
                     <li>
                         <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                     </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-2">
+                <ul class="list-unstyled list-inline " style="margin-right: 0px;">
+
                     <li>
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
-                            <i class="glyphicon glyphicon-trash"></i> Löschen
+                            <i class="glyphicon glyphicon-trash"></i> Konto löschen
                         </button>
 
                         <!-- Modal -->
@@ -188,7 +195,8 @@
 
 
                     </li>
-                </ul>
+                    </ul>
+
             </div>
         </div>
 
