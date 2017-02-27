@@ -784,7 +784,7 @@ namespace SeleniumTests
             TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
 
             //Leeren aller Daten
@@ -829,7 +829,7 @@ namespace SeleniumTests
 
             //Löschen unbestätigt abbrechen
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
             TestTools.FehlerID("xxx", driver, 1);
 
@@ -866,7 +866,7 @@ namespace SeleniumTests
             TestTools.ElementKlick("btnSpeichern", driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
             //Prüfen ob alte Daten geändert worden
             Assert.AreEqual("Testfirma", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
@@ -922,14 +922,14 @@ namespace SeleniumTests
             TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
             //Daten ändern über AGB Fußzeile abbrechen
             TestTools.DatenEingeben("Test", "Firmenname", driver);
             TestTools.ElementKlick("AGB", driver);
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
             //Daten ändern über Datenschutzbestimmungen Fußzeile abbrechen
@@ -937,7 +937,7 @@ namespace SeleniumTests
             TestTools.ElementKlick("Datenschutz", driver);
             Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
             //Daten ändern über Kontakt Fußzeile abbrechen
@@ -945,7 +945,7 @@ namespace SeleniumTests
             TestTools.ElementKlick("Kontakt", driver);
             Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
             //Daten ändern über Impressum Fußzeile abbrechen
@@ -953,7 +953,7 @@ namespace SeleniumTests
             TestTools.ElementKlick("Impressum", driver);
             Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
             //Daten ändern über AGB Dropdown abbrechen
@@ -962,7 +962,7 @@ namespace SeleniumTests
             TestTools.ElementKlick("DropdownAGBLogin", driver);
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
             //Daten ändern über Datenschutzbestimmungen Dropdown abbrechen
@@ -971,7 +971,7 @@ namespace SeleniumTests
             TestTools.ElementKlick("DropdownDatenschutzLogin", driver);
             Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
             //Daten ändern über Kontakt Dropdown abbrechen
@@ -980,7 +980,7 @@ namespace SeleniumTests
             TestTools.ElementKlick("DropdownKontaktLogin", driver);
             Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
             //Daten ändern über Impressum Dropdown abbrechen
@@ -989,13 +989,13 @@ namespace SeleniumTests
             TestTools.ElementKlick("DropdownImpressumLogin", driver);
             Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
-            //Daten ändern über Meine Daten abbrechen
+            //Daten ändern über Eigene Daten abbrechen
             TestTools.DatenEingeben("Test", "Firmenname", driver);
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             TestTools.FehlerID("xxx", driver, 1);
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
@@ -1003,7 +1003,7 @@ namespace SeleniumTests
             TestTools.DatenEingeben("Test", "Firmenname", driver);
             driver.Navigate().GoToUrl(baseURL);
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
             //Daten ändern über Logout abbrechen
@@ -1014,7 +1014,7 @@ namespace SeleniumTests
             TestTools.ElementKlick("loginLinkhead", driver);
             TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
             TestTools.ElementKlick("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Meine Daten")).Click();
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
 
 
@@ -1161,7 +1161,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de","Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg",driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg",driver));
 
             //AGBs Fußzeile
             TestTools.ElementKlick("AGB", driver);
@@ -1170,7 +1170,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Datenschutzbestimmungen Fußzeile
             TestTools.ElementKlick("Datenschutz", driver);
@@ -1179,7 +1179,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Kontakt Fußzeile
             TestTools.ElementKlick("Kontakt", driver);
@@ -1188,7 +1188,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Impressum Fußzeile
             TestTools.ElementKlick("Impressum", driver);
@@ -1197,7 +1197,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //AGBs Dropdown
             TestTools.ElementKlick("DropdownServiceLogout", driver);
@@ -1207,7 +1207,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Datenschutzbestimmungen Dropdown
             TestTools.ElementKlick("DropdownServiceLogout", driver);
@@ -1217,7 +1217,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Kontakt Dropdown
             TestTools.ElementKlick("DropdownServiceLogout", driver);
@@ -1227,7 +1227,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Impressum Dropdown
             TestTools.ElementKlick("DropdownServiceLogout", driver);
@@ -1258,7 +1258,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //StartButton
             TestTools.ElementKlick("StartButton", driver);
@@ -1269,7 +1269,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Login Dropdown
             TestTools.ElementKlick("DropdownLogout", driver);
@@ -1279,7 +1279,7 @@ namespace SeleniumTests
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortanforderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Registrierung Dropdown
             TestTools.ElementKlick("DropdownLogout", driver);
@@ -1354,7 +1354,7 @@ namespace SeleniumTests
         //    TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
         //    TestTools.ElementKlick("DropdownLogin", driver);
-        //    driver.FindElement(By.LinkText("Meine Daten")).Click();
+        //    driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
 
 
