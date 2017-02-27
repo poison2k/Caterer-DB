@@ -18,8 +18,8 @@
                     <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("Meine Daten", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
-                    <li><a href="#">Mein Passwort ändern</a></li>
+                    <li>@Html.ActionLink("Eigene Daten", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
+                    <li><a href="#">Passwort ändern</a></li>
                     <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
                     
                 </ul>
