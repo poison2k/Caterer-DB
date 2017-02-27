@@ -90,7 +90,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
             MockMapper = mockMapper.Object;
             var mocService = new Mock<IBenutzerService>();
-            mocService.Setup(s => s.SearchUserById(1)).Returns(benutzer);
+            mocService.Setup(s => s.SearchUserById(It.IsAny<int>())).Returns(benutzer);
             MockService = mocService.Object;
 
             
