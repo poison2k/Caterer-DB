@@ -13,7 +13,7 @@ namespace Common.Services
             var mailModel = ConfigureMail();
             mailModel.Betreff = "Passwort vergessen Caterer-DB";
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = "http://localhost:60003/Account/PasswordChange?verify=" + passwordVerificationCode + "&id=" + id;
+            mailModel.Inhalt = "Sehr geehrter Nutzer,\r\n\nfalls Sie Ihr Passwort vergessen haben, können Sie sich mit Hilfe des folgenden Links ein neues Passwort vergeben. Bitte beachten Sie, dass der Link nur 2 Stunden gültig ist.Danach müssen Sie eine neue E-Mail anfordern.\r\n\n http://localhost:60003/Account/PasswordChange?verify=" + passwordVerificationCode + "&id=" + id + "\r\n\nWir wünschen Ihnen einen erfolgreichen Tag! \r\n\nIhr Team der Vernetzungsstelle für Schulverpflegung Niedersachsen";
             SendMail(mailModel);
         }
 
@@ -32,7 +32,7 @@ namespace Common.Services
             var mailModel = ConfigureMail();
             mailModel.Betreff = "Registrierung Caterer-DB";
             mailModel.Empfaenger = email;
-            mailModel.Inhalt = "Sehr geehrter Nutzer,\r\n\nvielen Dank für Ihre Registrierung für den internen Bereich der Caterer Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsen.\r\nBitte schließen Sie Ihre Registrierung durch Anklicken des folgenden Links ab. Im Anschluss können Sie mit Ihren Anmeldedaten alle Funktionen des internen Bereichs nutzen. \r\n\n http://localhost:60003/Account/RegisterComplete?verify=" + verify + "&id=" + id + "\r\n\nSie haben noch Fragen oder Anregungen? Bitte antworten Sie nicht direkt auf diese E-Mail - aus technischen Gründen können wir Ihre Anfrage leider nicht bearbeiten, wenn Sie die Reply-Funktion Ihres E-Mail-Programms wählen.\r\n\nNutzen Sie einfach unser Kontaktformular unter:\r\n\n http://localhost:60003/ \r\n\nWir wünschen Ihnen viel Erfolg!";
+            mailModel.Inhalt = "Sehr geehrter Nutzer,\r\n\nSie haben ein Benutzerkonto bei der Caterer Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsenangelegt. Eine gute Entscheidung! Nur so können Sie bei der Empfehlung von Verpflegungsanbietern für Schulen berücksichtigt werden.\r\n\nDamit Sie Ihr Konto nutzen können, fehlt nur noch ein Schritt:\r\nBestätigen Sie Ihre E-Mail Adresse.\r\nKlicken Sie dafür einfach auf den nach folgenden Link. \r\n\n http://localhost:60003/Account/RegisterComplete?verify=" + verify + "&id=" + id + "\r\n\nIm Anschluss können Sie mit Ihren Anmeldedaten alle Funktionen des internen Bereichs nutzen. \r\n\nWir wünschen Ihnen viel Erfolg!\r\n\nIhr Team der Vernetzungsstelle für Schulverpflegung Niedersachsen\r\n\n\n\nSie haben noch Fragen oder Anregungen? Bitte antworten Sie nicht direkt auf diese E-Mail - aus technischen Gründen können wir Ihre Anfrage leider nicht bearbeiten, wenn Sie die Reply-Funktion Ihres E-Mail-Programms wählen.\r\n\nNutzen Sie einfach die Kontaktmöglichkeiten unter:\r\n\n http://localhost:60003/";
             SendMail(mailModel);
         }
 
