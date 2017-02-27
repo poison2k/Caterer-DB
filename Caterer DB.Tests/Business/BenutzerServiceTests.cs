@@ -8,6 +8,8 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
 using Moq;
+using Caterer_DB.Models;
+using Caterer_DB.Models.ViewModelServices;
 
 namespace BusinessBenutzerServiceTest
 {
@@ -30,25 +32,7 @@ namespace BusinessBenutzerServiceTest
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
 
-        [Test]
-        public void BenutzerServiceTest()
-        {
-            //Assert
-            var benutzerGruppe = Fixture.Build<BenutzerGruppe>().Create();
-            var createBenutzerGruppeViewModel = Fixture.Build<CreateBenutzerGruppeViewModel>().Create();
-            var mockMapper = new Mock<IMapper>();
-            mockMapper.Setup(m => m.Map<BenutzerGruppe>(It.IsAny<CreateBenutzerGruppeViewModel>())).Returns(benutzerGruppe);
-            MockMapper = mockMapper.Object;
-
-            var benutzerGruppenViewModelService = new BenutzerGruppeViewModelService();
-
-            //Act
-            var result = benutzerGruppenViewModelService.Map_CreateBenutzerGruppeViewModel_BenutzerGruppe(createBenutzerGruppeViewModel);
-
-            //Assert 
-
-            Assert.AreEqual(benutzerGruppe.GetType(), result.GetType());
-        }
+      
 
         [Test]
         public void SearchUserByIdTest()
@@ -57,8 +41,8 @@ namespace BusinessBenutzerServiceTest
             var benutzer = Fixture.Build<Benutzer>().Create();
             var id = benutzer.BenutzerId;
             var mockBenutzerRepository = new Mock<IBenutzerRepository>();
-            mockBenutzerRepository.Setup(r => r.SearchUserById<>(It.IsAny<Benutzer>())).Returns(benutzer);
-            mockBenutzerRepository = mockBenutzerRepository.Object;
+            mockBenutzerRepository.Setup(r => r.SearchUserById(It.IsAny<int>())).Returns(benutzer);
+            MockBenutzerRepository = mockBenutzerRepository.Object;
 
         }
 
