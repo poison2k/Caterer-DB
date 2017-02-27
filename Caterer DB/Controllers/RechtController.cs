@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DataAccess.Context;
-using DataAccess.Model;
 using Caterer_DB.Interfaces;
 using Business.Interfaces;
 using Caterer_DB.Models;

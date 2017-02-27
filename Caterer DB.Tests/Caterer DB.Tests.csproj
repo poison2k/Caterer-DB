@@ -186,7 +186,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\BenutzerGruppeServiceTest.cs" />
     <Compile Include="Business\BenutzerServiceTests.cs" />
+    <Compile Include="Business\RechteGruppeServiceTests.cs" />
+    <Compile Include="Business\RechteServiceTests.cs" />
     <Compile Include="ViewModelTest\BenutzerGruppenViewModelTest.cs" />
     <Compile Include="Controllers\AccountControllerTest.cs" />
     <Compile Include="FakeHttpContext.cs" />
