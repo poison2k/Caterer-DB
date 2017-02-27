@@ -33,6 +33,7 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Roles = RechteResource.IndexMitarbeiter)]
         public ActionResult Index(string suche, int aktuelleSeite = 1, int seitenGrösse = 10)
         {
+
             return View(BenutzerViewModelService.GeneriereListViewModel(
                  BenutzerService.FindAllMitarbeiterWithPaging(aktuelleSeite, seitenGrösse)
                 , BenutzerService.GetMitarbeiterCount()
@@ -154,6 +155,8 @@ namespace Caterer_DB.Controllers
                 {
                     LoginService.Abmelden();
                     BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel).BenutzerId);
+                    TempData["AccountDeleted"] = true;
+
                 }
                 return RedirectToAction("Index", "Home");
 
