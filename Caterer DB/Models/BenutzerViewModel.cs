@@ -257,6 +257,8 @@ namespace Caterer_DB.Models
 
         public bool IstEmailVerifiziert { get; set; }
 
+        public bool WeitergabeVonDaten { get; set; }
+
     }
 
     public class DetailsBenutzerViewModel
