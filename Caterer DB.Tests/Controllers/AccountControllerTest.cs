@@ -80,6 +80,15 @@ namespace Caterer_DB.Tests.Controllers
 
         }
 
-       
+        [Test]
+        public void RegisterVorgang_Test()
+        {
+            //Arrange
+
+            //Act
+
+            //Assert
+
+        }
     }
 }
