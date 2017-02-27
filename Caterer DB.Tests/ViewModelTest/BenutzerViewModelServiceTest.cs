@@ -19,9 +19,8 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
     public class BenutzerViewModelTest
     {
         private IMapper MockMapper { get; set; }
-        private IMd5Hash MD5hash { get; set; }
-        private IBenutzerService benutzerService { get; set; }
-        private IBenutzerService MockService { get; set; }
+        private IMd5Hash MockMD5hash { get; set; }
+        private IBenutzerService MockBenutzerService { get; set; }
         private Fixture Fixture { get; set; }
 
         [OneTimeSetUp]
@@ -30,6 +29,10 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             Fixture = new Fixture();
             Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            MockMapper = new Mock<IMapper>().Object;
+            MockBenutzerService = new Mock<IBenutzerService>().Object;
+            MockMD5hash = new Mock<IMd5Hash>().Object;
         }
 
         [Test]
@@ -43,7 +46,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzer);
@@ -67,7 +70,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzer);
@@ -82,23 +85,17 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         {
 
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var benutzerId = benutzer.BenutzerId;
-            var infobox = "schließen";
             var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
             MockMapper = mockMapper.Object;
-            var mocService = new Mock<IBenutzerService>();
-            mocService.Setup(s => s.SearchUserById(It.IsAny<int>())).Returns(benutzer);
-            MockService = mocService.Object;
-
-            
-
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var mockBenutzerService = new Mock<IBenutzerService>();
+            mockBenutzerService.Setup(s => s.SearchUserById(It.IsAny<int>())).Returns(Fixture.Build<Benutzer>().Create());
+            MockBenutzerService = mockBenutzerService.Object;
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
-            var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzerId,infobox);
+            var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(1);
 
             //Assert 
 
@@ -116,7 +113,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<CreateMitarbeiterViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel);
@@ -137,7 +134,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<EditBenutzerViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel);
@@ -158,7 +155,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<MyDataBenutzerViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel);
@@ -179,7 +176,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<DeleteBenutzerViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.Map_DeleteBenutzerViewModel_Benutzer(deleteBenutzerViewModel);
@@ -199,7 +196,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<EditBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(editBenutzerViewModel);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.Map_Benutzer_EditBenutzerViewModel(benutzer);
@@ -219,7 +216,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<MyDataBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(myDataBenutzerViewModel);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(benutzer);
@@ -239,7 +236,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<DetailsBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(detailsBenutzerViewModel);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.Map_Benutzer_DetailsBenutzerViewModel(benutzer);
@@ -259,7 +256,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<DeleteBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(deleteBenutzerViewModel);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.Map_Benutzer_DeleteBenutzerViewModel(benutzer);
@@ -272,22 +269,24 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void Map_RegisterBenutzerViewModel_Benutzer_Test()
         {
-
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
             var registerBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
-            var mockMapper = new Mock<IMapper>();
-            mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<RegisterBenutzerViewModel>())).Returns(benutzer);
-            MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
-            
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<RegisterBenutzerViewModel>())).Returns(Fixture.Build<Benutzer>().Create());
+            MockMapper = mockMapper.Object;
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
+
+            var mockMD5Hash = new Mock<IMd5Hash>();
+            mockMD5Hash.Setup(x => x.CalculateMD5Hash(It.IsAny<string>())).Returns("");
+            MockMD5hash = mockMD5Hash.Object;
+
             //Act
-            var result = benutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(registerBenutzerViewModel);
+            var result = benutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(Fixture.Build<RegisterBenutzerViewModel>().Create());
 
             //Assert 
 
-            Assert.IsNotNull(benutzer.Nachname, result.Nachname);
+            Assert.IsNotNull(result.Nachname, result.Nachname);
         }
 
         [Test]
@@ -301,7 +300,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<RegisterBenutzerViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.CreateNewRegisterBenutzerViewModel();
@@ -319,7 +318,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             var benutzer = Fixture.Build<Benutzer>().Create();
             var registerBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
 
-            var benutzerViewModelService = new BenutzerViewModelService(benutzerService, MD5hash);
+            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
             var result = benutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel);
