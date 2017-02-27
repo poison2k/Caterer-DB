@@ -160,7 +160,6 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 if (BenutzerService.CheckEmailForRegistration(registerBenutzerViewModel.Mail))
                 {
                     BenutzerService.RegisterBenutzer(BenutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(registerBenutzerViewModel));
@@ -170,7 +169,7 @@ namespace Caterer_DB.Controllers
                     ModelState.AddModelError("", LoginResources.EMailVorhanden);
                     return View(BenutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel));
                 }
-                return View("RegisterSuccsessfull");
+                return RedirectToAction("RegisterSuccsessfull");
             }
 
             return View(BenutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel));

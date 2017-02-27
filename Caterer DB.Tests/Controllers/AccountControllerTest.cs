@@ -36,7 +36,7 @@ namespace Caterer_DB.Tests.Controllers
             mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(Fixture.Build<Benutzer>().Create());
             mockBenutzerService.Setup(x => x.VerifyRegistration(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             mockBenutzerService.Setup(x => x.VerifyPasswordChange(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            mockBenutzerService.Setup(x => x.CheckEmailForRegistration(Fixture.Build<ForgottenPasswordRequestViewModel>().Create().Mail)).Returns(false);
+            mockBenutzerService.Setup(x => x.CheckEmailForRegistration(It.IsAny<string>())).Returns(true);
             mockBenutzerService.Setup(x => x.RegisterBenutzer(Fixture.Build<Benutzer>().Create()));
             mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(Fixture.Build<Benutzer>().With(x => x.IstEmailVerifiziert, true).Create());
             MockBenutzerService = mockBenutzerService.Object;
@@ -117,7 +117,7 @@ namespace Caterer_DB.Tests.Controllers
             accountController.ControllerContext = new ControllerContext();
             
             //Act
-            ActionResult result = accountController.RegisterComplete("TestID", "TESTVerify");
+            ActionResult result = accountController.RegisterComplete("3", "TESTVerify");
             //Assert
             Assert.IsNotNull(result);
         }
@@ -128,7 +128,7 @@ namespace Caterer_DB.Tests.Controllers
             //Arrange
 
             //Act
-            ActionResult result = AccountController.PasswordChange("TestID", "TESTVerify");
+            ActionResult result = AccountController.PasswordChange("3", "TESTVerify");
             //Assert
             Assert.IsNotNull(result);
         }
@@ -185,7 +185,6 @@ namespace Caterer_DB.Tests.Controllers
         public void PasswordChange_HTTPPost_VerifyOK_ModelStateOk_Test()
         {
             //Arrange
-            FakeHttpContext.SetFakeContext(AccountController,true);
 
             //Act
             ActionResult result = AccountController.PasswordChange(Fixture.Build<ForgottenPasswordCreateNewPasswordViewModel>().Create(),"TestId","TestVerify");
@@ -205,7 +204,6 @@ namespace Caterer_DB.Tests.Controllers
             mockBenutzerService.Setup(x => x.VerifyPasswordChange(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
             mockBenutzerService.Setup(x => x.EditBenutzerPassword(It.IsAny<Benutzer>()));
             var newMockBenutzerService = mockBenutzerService.Object;
-            FakeHttpContext.SetFakeContext(AccountController, true);
             var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
             accountController.ControllerContext = new ControllerContext();
 
@@ -223,28 +221,73 @@ namespace Caterer_DB.Tests.Controllers
         public void PasswordChange_HTTPPost_VerifyOk_ModelStateFalse_Test()
         {
             //Arrange
-            FakeHttpContext.SetFakeContext(AccountController, true);
             var accountController = new AccountController(MockLoginService, MockBenutzerService, MockBenutzerViewModelService);
             accountController.ModelState.AddModelError("fakeError", "fakeError");
 
             //Act
-            ActionResult result = AccountController.PasswordChange(new ForgottenPasswordCreateNewPasswordViewModel(), "TestId", "TestVerify");
+            ActionResult result = accountController.PasswordChange(new ForgottenPasswordCreateNewPasswordViewModel(), "TestId", "TestVerify");
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void Register_HTTPPost_EMailCheckOK_ModelStateOk_Test()
+        {
+            //Arrange
+            
+            //Act
+            ActionResult result = AccountController.Register(Fixture.Build<RegisterBenutzerViewModel>().Create());
             string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual("", routeAction);
-           
+            Assert.AreEqual("RegisterSuccsessfull", routeAction);
 
         }
 
 
         [Test]
-        public void LoginVorgang_ErfolgriechVerifiziert_Test()
+        public void Register_HTTPPost_EMailCheckOK_ModelStateFalse_Test()
         {
             //Arrange
-            FakeHttpContext.SetFakeContext(AccountController,true);
+            var accountController = new AccountController(MockLoginService, MockBenutzerService, MockBenutzerViewModelService);
+            accountController.ModelState.AddModelError("fakeError", "fakeError");
 
+            //Act
+            ActionResult result = accountController.Register(Fixture.Build<RegisterBenutzerViewModel>().Create());
+
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(((ViewResult)result).Model);
+        }
+
+        [Test]
+        public void Register_HTTPPost_EMailCheckFalse_ModelStateOk_Test()
+        {
+            //Arrange
+            var mockBenutzerService = new Mock<IBenutzerService>();
+            mockBenutzerService.Setup(x => x.CheckEmailForRegistration(It.IsAny<string>())).Returns(false);
+            var newMockBenutzerService = mockBenutzerService.Object;
+            var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
+            accountController.ControllerContext = new ControllerContext();
+
+            //Act
+            ActionResult result = accountController.Register(Fixture.Build<RegisterBenutzerViewModel>().Create());
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(false, accountController.ModelState.IsValid);
+        }
+
+
+
+        [Test]
+        public void LoginVorgang_LoginSuccessLevel_Erfolgreich_ModelStateOK_Test()
+        {
+            //Arrange
+            
             //Act
             ActionResult result = AccountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
             string routeController = ((RedirectToRouteResult)result).RouteValues["Controller"].ToString();
@@ -257,6 +300,111 @@ namespace Caterer_DB.Tests.Controllers
 
         }
 
-       
+
+        [Test]
+        public void LoginVorgang_LoginSuccessLevel_Erfolgreich_ModelStateFalse_Test()
+        {
+            //Arrange
+            var accountController = new AccountController(MockLoginService, MockBenutzerService, MockBenutzerViewModelService);
+            accountController.ModelState.AddModelError("fakeError", "fakeError");
+
+            //Act
+            ActionResult result = AccountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(false, accountController.ModelState.IsValid);
+
+        }
+
+
+        [Test]
+        public void LoginVorgang_LoginSuccessLevel_BenutzerNichtGefunden_ModelStateOK_Test()
+        {
+            //Arrange
+            var newMockLoginService = new Mock<ILoginService>();
+            newMockLoginService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.BenutzerNichtGefunden);
+            var accountController = new AccountController(newMockLoginService.Object, MockBenutzerService, MockBenutzerViewModelService);
+            accountController.ControllerContext = new ControllerContext();
+
+            //Act
+            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+          
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(false, accountController.ModelState.IsValid);
+        }
+
+        [Test]
+        public void LoginVorgang_LoginSuccessLevel_PasswortFalsch_ModelStateOK_Test()
+        {
+            //Arrange
+            var newMockLoginService = new Mock<ILoginService>();
+            newMockLoginService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.PasswortFalsch);
+            var accountController = new AccountController(newMockLoginService.Object, MockBenutzerService, MockBenutzerViewModelService);
+            accountController.ControllerContext = new ControllerContext();
+            
+            //Act
+            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(false, accountController.ModelState.IsValid);
+        }
+
+        [Test]
+        public void LoginVorgang_LoginSuccessLevel_DatenbankFehler_ModelStateOK_Test()
+        {
+            //Arrange
+            var newMockLoginService = new Mock<ILoginService>();
+            newMockLoginService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.DatenbankFehler);
+            var accountController = new AccountController(newMockLoginService.Object, MockBenutzerService, MockBenutzerViewModelService);
+            accountController.ControllerContext = new ControllerContext();
+            
+
+            //Act
+            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(false, accountController.ModelState.IsValid);
+        }
+
+        [Test]
+        public void LoginVorgang_LoginSuccessLevel_Unbekannt_ModelStateOK_Test()
+        {
+            //Arrange
+            var newMockLoginService = new Mock<ILoginService>();
+            newMockLoginService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.Unbekannt);
+            var accountController = new AccountController(newMockLoginService.Object, MockBenutzerService, MockBenutzerViewModelService);
+            accountController.ControllerContext = new ControllerContext();
+            
+
+            //Act
+            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(false, accountController.ModelState.IsValid);
+        }
+
+        [Test]
+        public void LoginVorgang_LoginSuccessLevel_Erfolgreich_ModelStateOK_EmailNotVirifyed_Test()
+        {
+            //Arrange
+            var mockBenutzerService = new Mock<IBenutzerService>();
+            mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(Fixture.Build<Benutzer>().With(x => x.IstEmailVerifiziert, false).Create());
+            var newMockBenutzerService = mockBenutzerService.Object;
+            var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
+
+            //Act
+            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+            string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual("RegisterMailVerificationNotComplete", routeAction);
+
+        }
     }
 }
