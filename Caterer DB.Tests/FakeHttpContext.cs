@@ -35,6 +35,7 @@ namespace Caterer_DB.Tests
             context.Setup(c => c.Session).Returns(session.Object);
             context.Setup(c => c.Server).Returns(server.Object);
             context.Setup(c => c.User).Returns(user.Object);
+          
             user.Setup(c => c.Identity).Returns(identity.Object);
             identity.Setup(i => i.IsAuthenticated).Returns(login);
             identity.Setup(i => i.Name).Returns("admin");

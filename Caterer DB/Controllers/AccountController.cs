@@ -41,7 +41,7 @@ namespace Caterer_DB.Controllers
         public ActionResult Register(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            ;
+            
             return View(BenutzerViewModelService.CreateNewRegisterBenutzerViewModel());
         }
 
@@ -143,11 +143,11 @@ namespace Caterer_DB.Controllers
                 {
                     var benutzer = BenutzerViewModelService.Map_ForgottenPasswordCreateNewPasswordViewModel_Benutzer(forgottenPasswordCreateNewPasswordViewModel);
                     BenutzerService.EditBenutzerPassword(benutzer);
-                    return View("PasswordChangeComplete");
+                    return RedirectToAction("PasswordChangeComplete");
                 }
                 return View();
             }
-            return View("~/Views/Shared/Error.cshtml");
+            return  RedirectToAction("~/Views/Shared/Error.cshtml");
 
         }
 
