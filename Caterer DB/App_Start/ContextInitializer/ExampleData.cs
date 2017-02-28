@@ -105,7 +105,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 IstEmailVerifiziert = true,
                 Firmenname = "AllYouCanEat GmbH",
                 Internetadresse = "www.AYCE.de",
-                Lieferumkreis = "Deutschlandweit",
+                Lieferumkreis = "Bis 10 km",
                 Organisationsform = "Caterer",
                 Telefon = "01234 - 56789",
                 Fax = "01234 - 99999",
@@ -118,6 +118,30 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 PasswortZeitstempel = System.DateTime.Now,
                 BenutzerGruppen = new List<BenutzerGruppe>() {db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer)}
                 
+            });
+
+            Benutzer caterer1 = db.Benutzer.Add(new Benutzer
+            {
+                Mail = "caterer1@test.de",
+                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Nachname = "Mustermann",
+                Vorname = "Max",
+                IstEmailVerifiziert = true,
+                Firmenname = "AllYouCanEat GmbH",
+                Internetadresse = "www.AYCE.de",
+                Lieferumkreis = "Bis 10 km",
+                Organisationsform = "Caterer",
+                Telefon = "01234 - 56789",
+                Fax = "01234 - 99999",
+                Straße = "Holzweg 1",
+                Postleitzahl = "87654",
+                Ort = "Woodway",
+                Anrede = "Herr",
+                FunktionAnsprechpartner = "Chef",
+                EMailVerificationCode = "",
+                PasswortZeitstempel = System.DateTime.Now,
+                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+
             });
 
             Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer

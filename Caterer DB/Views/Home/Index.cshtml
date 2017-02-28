@@ -26,8 +26,16 @@
         </div>
     </div>
 }
-<br/>
-<br />
+
+@if (TempData["isPasswordChanged"] != null)
+{
+    <div class="row">
+        <div class="col-md-12" id="Passwort">
+            <div class="text-center" role="alert"><H3>Ihr Passwort wurde erfolgreich geändert!</H3></div>
+        </div>
+    </div>
+}
+
 @if (Request.IsAuthenticated)
 {
     
