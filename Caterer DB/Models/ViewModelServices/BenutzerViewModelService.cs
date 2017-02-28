@@ -214,12 +214,15 @@ namespace Caterer_DB.Models.ViewModelServices
             registerBenutzerViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Nur im eigenen Stadtgebiet", Value = "Nur im eigenen Stadtgebiet" },
+                                //new SelectListItem { Text = "Nur im eigenen Stadtgebiet", Value = "Nur im eigenen Stadtgebiet" },
+                                new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
+                                new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
                                 new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
+                                new SelectListItem { Text = "Bis 40 km", Value = "Bis 40 km" },
                                 new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
-                                new SelectListItem { Text = "Bis 50 - 100 km", Value = "Bis 50 - 100 km" },
-                                new SelectListItem { Text = "Deutschlandweit", Value = "Deutschlandweit" },
-                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
+                                new SelectListItem { Text = "100 km +", Value = "100 km +" },
+                                //new SelectListItem { Text = "Deutschlandweit", Value = "Deutschlandweit" },
+                                //new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
                             }, "Value", "Text");
 
             registerBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
@@ -227,7 +230,7 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
                                 new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
                                 new SelectListItem { Text = "Caterer", Value = "Caterer" },
-                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
+                                //new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
                             }, "Value", "Text");
             return registerBenutzerViewModel;
         }
@@ -244,13 +247,16 @@ namespace Caterer_DB.Models.ViewModelServices
 
             myDataBenutzerViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
                             {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Nur im eigenen Stadtgebiet", Value = "Nur im eigenen Stadtgebiet" },
+                               new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                //new SelectListItem { Text = "Nur im eigenen Stadtgebiet", Value = "Nur im eigenen Stadtgebiet" },
+                                new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
+                                new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
                                 new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
+                                new SelectListItem { Text = "Bis 40 km", Value = "Bis 40 km" },
                                 new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
-                                new SelectListItem { Text = "Bis 50 - 100 km", Value = "Bis 50 - 100 km" },
-                                new SelectListItem { Text = "Deutschlandweit", Value = "Deutschlandweit" },
-                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
+                                new SelectListItem { Text = "100 km +", Value = "100 km +" },
+                                //new SelectListItem { Text = "Deutschlandweit", Value = "Deutschlandweit" },
+                                //new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" },
                             }, "Value", "Text");
 
             myDataBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
@@ -258,7 +264,7 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
                                 new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
                                 new SelectListItem { Text = "Caterer", Value = "Caterer" },
-                                new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
+                                //new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
                             }, "Value", "Text");
             return myDataBenutzerViewModel;
         }

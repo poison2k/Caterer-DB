@@ -133,6 +133,7 @@ namespace Caterer_DB.Models
 
         public bool WeitergabeVonDaten { get; set; }
 
+        [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
 
     }
@@ -261,6 +262,7 @@ namespace Caterer_DB.Models
 
         public bool WeitergabeVonDaten { get; set; }
 
+        [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
 
     }
