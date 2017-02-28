@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-4"></div>
     <div id="RegSeite" class="col-md-4 text-center">
-        <h3>Meine Daten</h3>
+        <h3>Eigene Daten</h3>
     </div>
     <div class="col-md-4"></div>
 </div>
@@ -34,7 +34,7 @@
             <div class="col-md-4"></div>
         </div>
         <br />
-       
+
 
         <div class="row">
             <div class="col-md-6">
@@ -140,8 +140,9 @@
                             @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
                         </div>
                     </div>
-
+                    <br />
                 </div>
+
             </div>
             <div class="col-md-6">
                 <div class="well well-lg">
@@ -152,6 +153,14 @@
                             @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })
                             @Html.DropDownList("Lieferumkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                             @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-md-12">
+                            @Html.LabelFor(model => model.Sonstiges, htmlAttributes: new { @class = "control-label " })
+                            @Html.TextAreaFor(model => model.Sonstiges, new { rows = 6, columns = 40, @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Sonstiges, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>

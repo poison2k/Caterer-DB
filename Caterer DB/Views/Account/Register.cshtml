@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4 text-center">
-            <h3>@Html.ValidationSummary(true, "", new { @class = "text-danger", id="VallidationSummary" })</h3>
+            <h3>@Html.ValidationSummary(true, "", new { @class = "text-danger", id = "VallidationSummary" })</h3>
         </div>
         <div class="col-md-4"></div>
     </div>
@@ -146,8 +146,8 @@
                         @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
                     </div>
-
                 </div>
+                <br />
             </div>
         </div>
 
@@ -162,16 +162,13 @@
                         @Html.DropDownList("Lieferumkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                         @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
                     </div>
-
                 </div>
                 <div class="row">
-
                     <div class="form-group col-md-12">
                         @Html.LabelFor(model => model.Sonstiges, htmlAttributes: new { @class = "control-label " })
-                        @Html.TextAreaFor(model => model.Sonstiges, new { rows = 6, columns = 40 , @class="form-control"})
+                        @Html.TextAreaFor(model => model.Sonstiges, new { rows = 6, columns = 40, @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Sonstiges, "", new { @class = "text-danger" })
                     </div>
-
                 </div>
             </div>
         </div>
@@ -188,7 +185,7 @@
                         <div class="col-md-2">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    @Html.CheckBoxFor(model => model.Datenschutz, new { @checked = "checked", id="Datensch." })
+                                    @Html.CheckBoxFor(model => model.Datenschutz, new { @checked = "checked", id = "Datensch." })
                                 </span>
                             </div>
                         </div>
@@ -198,7 +195,7 @@
                         </div>
                         <div class="col-md-3"></div>
                     </div>
-                
+
                     <div class="row">
                         <div class="col-md-2">
                             <div class="input-group">
@@ -209,11 +206,11 @@
                         </div>
                         <div class="col-md-7">
                             <p>"Ich akzeptiere die <a id="RegAGB" href="/Home/AGB">AGBs</a>."</p>
-                            @Html.ValidationMessageFor(model => model.AGBs, "", new { @class = "text-danger", id="AGBValidation-error" })
+                            @Html.ValidationMessageFor(model => model.AGBs, "", new { @class = "text-danger", id = "AGBValidation-error" })
                         </div>
                         <div class="col-md-3"></div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-2">
                             <div class="input-group">
@@ -228,23 +225,23 @@
                         </div>
                         <div class="col-md-3"></div>
                     </div>
-                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <ul class="list-unstyled list-inline "style="margin-left: -5px;">
+                    <ul class="list-unstyled list-inline " style="margin-left: -5px;">
                         <li>
                             <button type="submit" id="btnSpeichern" name="btnConfig" value="Registrieren" class="btn btn-success">
                                 <i class="text-center"></i> Registrieren
                             </button>
                         </li>
-                       @*Button "Zurück", rechts neben "Registrieren"*@
-                       <li>
+                        @*Button "Zurück", rechts neben "Registrieren"*@
+                        <li>
                             <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                         </li>
                     </ul>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 
@@ -259,4 +256,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
