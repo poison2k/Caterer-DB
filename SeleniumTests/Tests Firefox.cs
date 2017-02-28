@@ -78,10 +78,8 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogin", driver);
             TestTools.ElementKlick("Ausloggen", driver);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
@@ -104,10 +102,8 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogin", driver);
             TestTools.ElementKlick("Ausloggen", driver);
-
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
@@ -203,10 +199,8 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogin", driver);
             TestTools.ElementKlick("Ausloggen", driver);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
@@ -254,10 +248,8 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogin", driver);
             TestTools.ElementKlick("Ausloggen", driver);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
@@ -307,10 +299,8 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogin", driver);
             TestTools.ElementKlick("Ausloggen", driver);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
         }
 
@@ -344,11 +334,9 @@ namespace SeleniumTests
 
             Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
-           TestTools.ElementKlick("StartButton", driver);
-
+            TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
         }
@@ -407,12 +395,11 @@ namespace SeleniumTests
             TestTools.ElementKlick("RegDatenschutz", driver);
             Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
 
-           TestTools.ElementKlick("StartButton", driver);
-
+            TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
         }
         [Test]
         //T_U1-3_F03_B_001 
@@ -457,12 +444,11 @@ namespace SeleniumTests
             TestTools.ElementKlick("DropdownImpressumLogout", driver);
             Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
 
-           TestTools.ElementKlick("StartButton", driver);
-
+            TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
         }
         [Test]
         //T_U1-3_F04_B_001 
@@ -500,11 +486,10 @@ namespace SeleniumTests
             //Sonstiges
             Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
 
-           TestTools.ElementKlick("StartButton", driver);
 
+            TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
         }
@@ -596,28 +581,28 @@ namespace SeleniumTests
             //Nachname befüllen
             driver.FindElement(By.Id("Nachname")).Clear();
             driver.FindElement(By.Id("Nachname")).SendKeys("Teste");
-            Assert.AreEqual(false, TestTools.FehlerID("Nachname-error",driver));
+            Assert.AreEqual(false, TestTools.FehlerID("Nachname-error", driver));
 
             //FunktionAnprechpartner befüllen
             driver.FindElement(By.Id("FunktionAnsprechpartner")).Clear();
             driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys("Tester");
-            Assert.AreEqual(false, TestTools.FehlerID("FunktionAnsprechpartner-error",driver));
+            Assert.AreEqual(false, TestTools.FehlerID("FunktionAnsprechpartner-error", driver));
 
             //Telefon befüllen
             driver.FindElement(By.Id("Telefon")).Clear();
             driver.FindElement(By.Id("Telefon")).SendKeys("09876/54321");
-            Assert.AreEqual(false, TestTools.FehlerID("Telefon-error",driver));
+            Assert.AreEqual(false, TestTools.FehlerID("Telefon-error", driver));
 
             //Umkreis wählen
             driver.FindElement(By.Id("Lieferumkreis")).SendKeys("Bis 30 km");
-            Assert.AreEqual(false, TestTools.FehlerID("Lieferumkreis-error",driver));
-            
-            TestTools.ElementKlick("StartButton", driver);
+            Assert.AreEqual(false, TestTools.FehlerID("Lieferumkreis-error", driver));
 
+
+            TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
         }
         [Test]
         //T_U1-3_F08_B_001 
@@ -692,14 +677,14 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("btnSpeichern", driver);
 
-            Assert.AreEqual("E-Mail ist bereits registriert",TestTools.IDTextÜberprüfen("VallidationSummary", driver));
-            
-            TestTools.ElementKlick("StartButton", driver);
+            Assert.AreEqual("E-Mail ist bereits registriert", TestTools.IDTextÜberprüfen("VallidationSummary", driver));
 
+
+            TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
         }
         [Test]
         //T_U1-3_F11_B_001 & T_U1-3_F06_B_001
@@ -775,7 +760,7 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("btnSpeichern", driver);
 
-            TestTools.FehlerID("xxx", driver,1);
+            TestTools.FehlerID("xxx", driver, 1);
 
             Assert.AreEqual("Datenschutzbestimmungen müssen zugestimmt werden", TestTools.IDTextÜberprüfen("DatenschutzValidation-error", driver));
             Assert.AreEqual("Sie müssen die AGBs akzeptieren", TestTools.IDTextÜberprüfen("AGBValidation-error", driver));
@@ -792,7 +777,7 @@ namespace SeleniumTests
 
             TestTools.FehlerID("xxx", driver, 1);
 
-            Assert.AreEqual("Registrierung erfolgreich", TestTools.IDTextÜberprüfen("RegErfolg",driver));
+            Assert.AreEqual("Registrierung erfolgreich", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Login mit korrekten Daten durchführen und testen der Fehlermeldung für fehlende Email-Verification
             //T_U1-3_F06_B_001
@@ -803,11 +788,10 @@ namespace SeleniumTests
 
 
             TestTools.ElementKlick("StartButton", driver);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -940,16 +924,13 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("btnSpeichern", driver);
 
+
             TestTools.ElementKlick("DropdownLogin", driver);
             TestTools.ElementKlick("Ausloggen", driver);
-
             TestTools.FehlerID("xxx", driver, 1);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
-
 
         }
 
@@ -1062,12 +1043,9 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogin", driver);
             TestTools.ElementKlick("Ausloggen", driver);
-
             TestTools.FehlerID("xxx", driver, 1);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
         }
@@ -1089,7 +1067,7 @@ namespace SeleniumTests
 
 
             driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
-            
+
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
 
             //AGBs Fußzeile
@@ -1136,13 +1114,9 @@ namespace SeleniumTests
             Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
 
 
-            TestTools.FehlerID("xxx", driver, 1);
-
             TestTools.ElementKlick("StartButton", driver);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
 
@@ -1183,11 +1157,8 @@ namespace SeleniumTests
 
 
             TestTools.ElementKlick("StartButton", driver);
-            TestTools.FehlerID("xxx", driver, 1);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
 
@@ -1204,9 +1175,9 @@ namespace SeleniumTests
 
             driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
-            TestTools.DatenEingeben("Test@test.de","Mail", driver);
+            TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg",driver));
+            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //AGBs Fußzeile
             TestTools.ElementKlick("AGB", driver);
@@ -1281,11 +1252,8 @@ namespace SeleniumTests
 
 
             TestTools.ElementKlick("StartButton", driver);
-            TestTools.FehlerID("xxx", driver, 1);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
 
@@ -1334,11 +1302,8 @@ namespace SeleniumTests
 
 
             TestTools.ElementKlick("StartButton", driver);
-            TestTools.FehlerID("xxx", driver, 1);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
 
@@ -1378,11 +1343,8 @@ namespace SeleniumTests
 
 
             TestTools.ElementKlick("StartButton", driver);
-            TestTools.FehlerID("xxx", driver, 1);
-
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
         }
@@ -1391,37 +1353,106 @@ namespace SeleniumTests
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        //[Test]
-        //public void DatenLöschen1()
-        ////T_C2-5_F01_B_001 
-        //{
+        [Test]
+        public void DatenLöschen1()
+        //T_C2-5_F02_B_001 
+        {
+            TestTools.LoginÜberprüfen(driver);
 
-        //    TestTools.ElementKlick("DropdownLogout", driver);
-        //    TestTools.ElementKlick("loginLinkhead", driver);
-        //    TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
-        //    TestTools.ElementKlick("DropdownLogin", driver);
-        //    driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
+            TestTools.ElementKlick("LöschenButton", driver);
+            TestTools.FehlerID("xxx", driver, 1);
+            Assert.AreEqual("Löschen bestätigen", TestTools.IDTextÜberprüfen("LöschenBest", driver));
 
+            TestTools.ElementKlick("btnModalCancel", driver);
+            TestTools.FehlerID("xxx", driver, 1);
+            Assert.AreEqual("Eigene Daten", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+            TestTools.FehlerID("xxx", driver, 1);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
+        }
 
-        //TestTools.ElementKlick("StartButton", driver);
-        //    TestTools.FehlerID("xxx", driver, 1);
+        [Test]
+        public void DatenLöschen2()
+        //T_C2-5_F03_B_001 
+        {
+            TestTools.LoginÜberprüfen(driver);
 
-        //    driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-        //    driver.FindElement(By.Id("loginLinkbutton"));
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
 
-        //    Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
-        //}
+            TestTools.ElementKlick("LöschenButton", driver);
+            TestTools.FehlerID("xxx", driver, 1);
+            Assert.AreEqual("Löschen bestätigen", TestTools.IDTextÜberprüfen("LöschenBest", driver));
 
+            TestTools.ElementKlick("LöschenCancel", driver);
+            TestTools.FehlerID("xxx", driver, 1);
+            Assert.AreEqual("Eigene Daten", TestTools.IDTextÜberprüfen("RegSeite", driver));
 
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+            TestTools.FehlerID("xxx", driver, 1);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
 
+        }
+
+        [Test]
+        public void DatenLöschen3()
+        //T_C2-5_F04_B_001 
+        {
+            TestTools.LoginÜberprüfen(driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+
+            TestTools.ElementKlick("LöschenButton", driver);
+            TestTools.FehlerID("xxx", driver, 1);
+            Assert.AreEqual("Löschen bestätigen", TestTools.IDTextÜberprüfen("LöschenBest", driver));
+
+            TestTools.ElementKlick("btnModalDelete", driver);
+            Assert.AreEqual("Ihr Account wurde erfolgreich gelöscht!", TestTools.IDTextÜberprüfen("Gelöscht", driver));
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+            TestTools.FehlerID("xxx", driver, 1);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////---SPRINT 3---//////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
 }
-}
-
-
-
-
