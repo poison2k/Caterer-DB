@@ -113,42 +113,5 @@ namespace BusinessBenutzerServiceTest
             //Assert
             Assert.IsNull(result);
         }
-
-        [Test]
-        public void FindAllMitarbeiterWithPagingTest()
-        {
-
-        }
-
-
-        [Test]
-        public void EditBenutzerTest()
-        {
-
-        }
-        
-        [Test]
-        public void CheckEmailForRegistrationTest()
-        {
-
-        }
-
-        [Test]
-        public void VerifyRegistrationTest()
-        {
-
-        }
-
-        [Test]
-        public void VerifyPasswordChangeTest()
-        {
-
-        }
-
-        [Test]
-        public void GetMitarbeiterCountTest()
-        {
-
-        }
     }
 }
