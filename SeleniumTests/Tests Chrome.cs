@@ -1438,9 +1438,8 @@ namespace SeleniumTests
             TestTools.LoginDatenEingeben("caterer1@test.de", "Start#22", driver);
             Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
 
-            TestTools.ElementKlick("DropdownLogin", driver);
-            TestTools.ElementKlick("Ausloggen", driver);
-            TestTools.FehlerID("xxx", driver, 1);
+
+            TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
             Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
