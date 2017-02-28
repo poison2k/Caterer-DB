@@ -66,6 +66,8 @@ namespace SeleniumTests
         public void LoginTest1()
         //T_U1-2_ALF_B_00 / T_U1-2_ALF_B_01
         {
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("loginLinkbutton", driver);
 
             TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
@@ -89,6 +91,8 @@ namespace SeleniumTests
         {
             //Variante Dropdown
 
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
 
@@ -111,6 +115,8 @@ namespace SeleniumTests
         public void LoginTest_FalschesPW()
         //T_U1-2_ALF_B_05
         {
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("loginLinkbutton", driver);
             TestTools.LoginDatenEingeben("caterer@test.de", "Start#21", driver);
             Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
@@ -120,6 +126,8 @@ namespace SeleniumTests
         public void LoginTest_FalscheEmail()
         //T_U1-2_ALF_B_06
         {
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("loginLinkbutton", driver);
             TestTools.LoginDatenEingeben("caterer@test.d", "Start#22", driver);
             Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
@@ -130,6 +138,8 @@ namespace SeleniumTests
         public void LoginTest_OhnePW()
         //T_U1-2_ALF_B_07
         {
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("loginLinkbutton", driver);
             TestTools.LoginDatenEingeben("caterer@test.de", "", driver);
             Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", TestTools.IDTextÜberprüfen("error1", driver));
@@ -140,6 +150,8 @@ namespace SeleniumTests
         public void LoginTest_OhneEmail()
         //T_U1-2_ALF_B_08
         {
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("loginLinkbutton", driver);
             TestTools.LoginDatenEingeben("", "Start#22", driver);
             Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("Email-error", driver));
@@ -155,6 +167,7 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Knopf
+            TestTools.LoginÜberprüfen(driver);
 
             TestTools.ElementKlick("Kontakt", driver);
             Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
@@ -166,6 +179,8 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Dropdown Logout
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("DropdownServiceLogout", driver);
             TestTools.ElementKlick("DropdownKontaktLogout", driver);
             Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
@@ -176,6 +191,8 @@ namespace SeleniumTests
         //T_U1-4_AL_B_01
         {
             //Variante Dropdown Login
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("loginLinkbutton", driver);
 
             TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
@@ -202,6 +219,8 @@ namespace SeleniumTests
         //T_U1-6_AL_B_01
         {
             //Variante Knopf
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("Datenschutz", driver);
             Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
         }
@@ -211,6 +230,8 @@ namespace SeleniumTests
         public void DatenschutzAufruf2()
         {
             //Variante Dropdown Logout
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("DropdownServiceLogout", driver);
             TestTools.ElementKlick("DropdownDatenschutzLogout", driver);
             Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
@@ -221,6 +242,8 @@ namespace SeleniumTests
         public void DatenschutzAufruf3()
         {
             //Variante Dropdown Login
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("loginLinkbutton", driver);
 
             TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
@@ -247,6 +270,8 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Knopf
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("AGB", driver);
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
 
@@ -257,6 +282,8 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Dropdown Logout
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("DropdownServiceLogout", driver);
             TestTools.ElementKlick("DropdownAGBLogout", driver);
             Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
@@ -268,6 +295,8 @@ namespace SeleniumTests
         //T_U1-7_AL_B_01
         {
             //Variante Dropdown Login
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("loginLinkbutton", driver);
 
             TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
@@ -298,6 +327,8 @@ namespace SeleniumTests
         public void RegistrationsAufruf1()
         {
             //Variante Button
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("registerLink", driver);
 
             Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
@@ -326,6 +357,8 @@ namespace SeleniumTests
         public void RegistrationsSeitenLinks()
         {
             //Variante Links
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("registerLink", driver);
 
             Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
@@ -386,6 +419,8 @@ namespace SeleniumTests
         public void RegistrationsDropdownLinks()
         {
             //Variante Dropdown
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
             Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
@@ -433,6 +468,8 @@ namespace SeleniumTests
         //T_U1-3_F04_B_001 
         public void RegistrationsFehler()
         {
+            TestTools.LoginÜberprüfen(driver);
+
             TestTools.ElementKlick("registerLink", driver);
 
             Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
@@ -475,6 +512,7 @@ namespace SeleniumTests
         //T_U1-3_F05_B_001 
         public void RegistrationsFehler2()
         {
+            TestTools.LoginÜberprüfen(driver);
 
             TestTools.ElementKlick("registerLink", driver);
 
@@ -585,6 +623,7 @@ namespace SeleniumTests
         //T_U1-3_F08_B_001 
         public void RegistrationsFehlerDoppelMail()
         {
+            TestTools.LoginÜberprüfen(driver);
 
             TestTools.ElementKlick("registerLink", driver);
 
@@ -666,6 +705,7 @@ namespace SeleniumTests
         //T_U1-3_F11_B_001 & T_U1-3_F06_B_001
         public void RegistrationsFehlerEinverständniss()
         {
+            TestTools.LoginÜberprüfen(driver);
 
             TestTools.ElementKlick("registerLink", driver);
 
@@ -778,6 +818,7 @@ namespace SeleniumTests
         public void PersDatenÄndern()
         //T_C2-1_F01_B_001 
         {
+            TestTools.LoginÜberprüfen(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
@@ -916,6 +957,7 @@ namespace SeleniumTests
         public void PersDatenÄndern2()
         //T_C2-1_F02_B_001 
         {
+            TestTools.LoginÜberprüfen(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
@@ -1038,6 +1080,7 @@ namespace SeleniumTests
         public void PWVergessen1()
         //T_C2-2_F02_B_001
         {
+            TestTools.LoginÜberprüfen(driver);
 
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);
@@ -1109,6 +1152,7 @@ namespace SeleniumTests
         public void PWVergessen2()
         //T_C2-2_F03_B_001
         {
+            TestTools.LoginÜberprüfen(driver);
 
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);
@@ -1152,6 +1196,7 @@ namespace SeleniumTests
         public void PWVergessen3()
         //T_C2-2_F04_B_001
         {
+            TestTools.LoginÜberprüfen(driver);
 
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);
@@ -1249,6 +1294,7 @@ namespace SeleniumTests
         public void PWVergessen5()
         //T_C2-2_F05_B_001
         {
+            TestTools.LoginÜberprüfen(driver);
 
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);
@@ -1301,6 +1347,7 @@ namespace SeleniumTests
         public void PWVergessen6()
         //T_C2-2_F11_B_001
         {
+            TestTools.LoginÜberprüfen(driver);
 
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);

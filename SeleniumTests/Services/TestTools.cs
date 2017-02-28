@@ -58,6 +58,23 @@ namespace SeleniumTests.Services
 
         }
 
+        public static void LoginÜberprüfen(IWebDriver driver)
+        {
+            
+
+            if (FehlerID("DropdownLogin", driver))
+            {
+                ElementKlick("DropdownLogin", driver);
+                ElementKlick("Ausloggen", driver);
+            }
+            else
+            {
+                
+            }
+
+
+        }
+
         public static void ElementKlick(string id, IWebDriver driver, Int16 zeit = 5)
         {
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
