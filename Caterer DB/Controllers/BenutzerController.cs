@@ -143,19 +143,15 @@ namespace Caterer_DB.Controllers
             {
                 if (Request.Form["btnSave"] != null)
                 { 
-                //Benutzer oldUser = BenutzerService.SearchUserByIdNoTracking(Convert.ToInt32(myDataBenutzerViewModel.BenutzerId));
-                //Benutzer changedUser = BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel);
-                //changedUser.Passwort = oldUser.Passwort;
-                //changedUser.IstEmailVerifiziert = oldUser.IstEmailVerifiziert;
-                
-                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
+                    BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
+                    TempData["isSaved"] = true;
 
                 }
                 else if(Request.Form["btnModalDelete"] != null)
                 {
                     LoginService.Abmelden();
                     BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel).BenutzerId);
-                    TempData["AccountDeleted"] = true;
+                    TempData["isAccountDeleted"] = true;
 
                 }
                 return RedirectToAction("Index", "Home");

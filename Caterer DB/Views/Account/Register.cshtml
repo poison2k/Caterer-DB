@@ -144,7 +144,7 @@
                     <div class="form-group col-md-12">
                         @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " }) (optional)
                         @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
-                        @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
                     </div>
 
                 </div>
@@ -161,6 +161,15 @@
                         @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })
                         @Html.DropDownList("Lieferumkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                         @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.Sonstiges, htmlAttributes: new { @class = "control-label " })
+                        @Html.TextAreaFor(model => model.Sonstiges, new { rows = 6, columns = 40 , @class="form-control"})
+                        @Html.ValidationMessageFor(model => model.Sonstiges, "", new { @class = "text-danger" })
                     </div>
 
                 </div>

@@ -20,7 +20,7 @@ namespace Caterer_DB.Models
 
         public string Nachname { get; set; }
 
-        public string Telefon{ get; set; }
+        public string Telefon { get; set; }
     }
 
 
@@ -132,6 +132,8 @@ namespace Caterer_DB.Models
         public bool Datenschutz { get; set; }
 
         public bool WeitergabeVonDaten { get; set; }
+
+        public string Sonstiges { get; set; }
 
     }
 
@@ -258,6 +260,8 @@ namespace Caterer_DB.Models
         public bool IstEmailVerifiziert { get; set; }
 
         public bool WeitergabeVonDaten { get; set; }
+
+        public string Sonstiges { get; set; }
 
     }
 
