@@ -906,7 +906,7 @@ namespace SeleniumTests
             Assert.AreEqual("09876/54321", TestTools.TextboxTextÜberprüfen("Telefon", driver));
             Assert.AreEqual("09876/54321", TestTools.TextboxTextÜberprüfen("Fax", driver));
             Assert.AreEqual("www.test.test", TestTools.TextboxTextÜberprüfen("Internetadresse", driver));
-            Assert.AreEqual("Nur im eigenen Stadtgebiet", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
+            Assert.AreEqual("Bis 10 km", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
 
             TestTools.FehlerID("xxx", driver, 1);
 
@@ -1414,14 +1414,14 @@ namespace SeleniumTests
         }
 
         [Test]
-        public void DatenLöschen3()
+        public void XXDatenLöschen3()
         //T_C2-5_F04_B_001 
         {
             TestTools.LoginÜberprüfen(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben("caterer1@test.de", "Start#22", driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
@@ -1435,7 +1435,7 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben("caterer1@test.de", "Start#22", driver);
             Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
             
             TestTools.ElementKlick("DropdownLogin", driver);
