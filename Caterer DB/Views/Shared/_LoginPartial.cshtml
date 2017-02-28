@@ -19,7 +19,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>@Html.ActionLink("Eigene Daten", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
-                    <li><a href="#">Passwort ändern</a></li>
+                    <li>@Html.ActionLink("Passwort ändern", "PasswordChange", "Account", new { Id = User.BenutzerId }, null)</li>
                     <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
                     
                 </ul>
