@@ -54,5 +54,7 @@ namespace DataAccess.Model
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
 
         public bool WeitergabeVonDaten { get; set; }
+
+        public string Sonstiges { get; set; }
     }
 }
