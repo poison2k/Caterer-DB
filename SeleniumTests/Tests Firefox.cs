@@ -1050,6 +1050,191 @@ namespace SeleniumTests
 
         }
 
+        [Test]
+        public void PWVÄndern()
+        //T_C2-1_F03_B_001
+        {
+            TestTools.LoginÜberprüfen(driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //AGBs Fußzeile
+            TestTools.ElementKlick("AGB", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //Datenschutzbestimmungen Fußzeile
+            TestTools.ElementKlick("Datenschutz", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //Kontakt Fußzeile
+            TestTools.ElementKlick("Kontakt", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //Impressum Fußzeile
+            TestTools.ElementKlick("Impressum", driver);
+            Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //AGBs Dropdown
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownAGBLogin", driver);
+            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //Datenschutzbestimmungen Dropdown
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownDatenschutzLogin", driver);
+            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //Kontakt Dropdown
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownKontaktLogin", driver);
+            Assert.AreEqual("Ansprechpartner", TestTools.IDTextÜberprüfen("Ansprechp", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //Impressum Dropdown
+            TestTools.ElementKlick("DropdownServiceLogin", driver);
+            TestTools.ElementKlick("DropdownImpressumLogin", driver);
+            Assert.AreEqual("Impressum", TestTools.IDTextÜberprüfen("Impr", driver));
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+
+            //StartButton
+            TestTools.ElementKlick("StartButton", driver);
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+
+            //Änderung durchführen
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+
+            TestTools.ElementKlick("DropdownLogout", driver);
+            TestTools.ElementKlick("loginLinkhead", driver);
+            TestTools.LoginDatenEingeben("caterer1@test.de", "Start#22", driver);
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            driver.FindElement(By.LinkText("Passwort ändern")).Click();
+            Assert.AreEqual("Neues Passwort", TestTools.IDTextÜberprüfen("PasswortChange", driver));
+            TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
+            TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.ElementKlick("Abschicken", driver);
+            Assert.AreEqual("Ihr Passwort wurde erfolgreich geändert!", TestTools.IDTextÜberprüfen("Passwort", driver));
+
+
+            TestTools.ElementKlick("DropdownLogin", driver);
+            TestTools.ElementKlick("Ausloggen", driver);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            driver.FindElement(By.Id("loginLinkbutton"));
+            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+
+
+        }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1421,7 +1606,7 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
-            TestTools.LoginDatenEingeben("caterer1@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben("caterer1@test.de", "ZZZZZZZZ", driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
@@ -1435,8 +1620,9 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
-            TestTools.LoginDatenEingeben("caterer1@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben("caterer1@test.de", "ZZZZZZZZ", driver);
             Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
+
 
             TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -1454,6 +1640,7 @@ namespace SeleniumTests
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 }
+
 
 
 
