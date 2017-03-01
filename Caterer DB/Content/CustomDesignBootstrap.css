@@ -1,23 +1,39 @@
 ﻿
 
-.mybg {
-    background-image: url(../Content/Images/HG50_kleiner.png);
-    background-size: 100%;
-   
-    background-repeat: no-repeat;
-   
-  
-   }
+.bg-white{
+    background: none no-repeat scroll 0 0 #fff;
+}
+
+.child-item {
+  position: relative;
+  left: 0%;
+  top: 0%;
+  transform: translate(-50%,-50%);
+      background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url(../Content/Images/HG50_kleiner.png);
+  width: 768px;
+  height: 574px;
+ 
+}
+
+.absolute-div {
+    position: fixed;
+    left: 50%;
+    top: 61%;
+
+}
 
 
 #topnavbar {
     margin: 0;
 }
-#topnavbar.affix {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
+
+    #topnavbar.affix {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
 
 .spacer {
     width: 100%;
@@ -26,90 +42,93 @@
 
 /*Generelle Styles*/
 body {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 14px;
-  line-height: 1.6; 
-  color: rgb(0,0,0);
-  background-color: rgb(255,255,255);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgb(0,0,0);
+    background-color: rgb(255,255,255);
 }
 /*-----------------------------------------------------*/
 /* Navigationsleiste - StartMenü */
 .navbar-brand {
-  float: left;
-  height: 50px;
-  padding: 15px 15px;
-  font-size: 16px;
-  line-height: 18px;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 16px;
+    line-height: 18px;
 }
+
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-   color: rgb(35,31,32);
-  background-color: rgba(102,204,204,0.2);
+    color: rgb(35,31,32);
+    background-color: rgba(102,204,204,0.2);
 }
 /*------------------------------------------------*/
 /* Navigationsleiste - Registrieren und Login */
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: rgb(35,31,32);
-  background-color: rgba(102,204,204,0.2);
-  text-decoration-line: none;
+    color: rgb(35,31,32);
+    background-color: rgba(102,204,204,0.2);
+    text-decoration-line: none;
 }
 /*------------------------------------------------*/
 /* Footer - Menüpunkte*/
 .nav > li > a:hover,
 .nav > li > a:focus {
-  text-decoration-line: underline;
-  background-color: transparent;
+    text-decoration-line: underline;
+    background-color: transparent;
 }
 /*----------------------------------*/
 /* Indexseite - Button Login und Registrieren */
 .btn-primary {
-  color: rgb(255,255,255);
-  background-color:rgb(77,147,208);
-  border-color: rgb(46,109,164);
-  box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);
-  border-width: 1px;
+    color: rgb(255,255,255);
+    background-color: rgb(77,147,208);
+    border-color: rgb(46,109,164);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-width: 1px;
 }
+
 .btn:hover,
 .btn:focus,
 .btn.focus {
-  color: rgb(255,255,255);
-  text-decoration:none;
-  background-color:rgb(46,109,164);
-  border-color: rgb(35,32,31);
-  box-shadow:0 8px 16px 0 rgba(0,0,0,0.8);
-  border-width:1px;
+    color: rgb(255,255,255);
+    text-decoration: none;
+    background-color: rgb(46,109,164);
+    border-color: rgb(35,32,31);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    border-width: 1px;
 }
 /*------------------------------------------------------*/
 /* Loginseite - input-Felder*/
 .form-control {
-  display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #555;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #555;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
 .input-group-addon {
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1;
-  color: black;
-  text-align: right;
-  background-color: transparent;
-  border: 0px;
-  border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: black;
+    text-align: right;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 4px;
 }
 /* Loginseite - Überschrift */
 h1,
@@ -124,37 +143,38 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-weight: 800;
-  line-height: 1.1;
-  color: rgb(35,32,31);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    line-height: 1.1;
+    color: rgb(35,32,31);
 }
 /*-------------------------------------------------*/
 /* Navigationsleiste - Dropdown-Menü angepasst*/
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  color: #555;
-  background-color: rgba(102,204,204,0.2);
+    color: #555;
+    background-color: rgba(102,204,204,0.2);
 }
+
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #262626;
-  text-decoration: none;
-  background-color: rgba(102,204,204,0.2);
+    color: #262626;
+    text-decoration: none;
+    background-color: rgba(102,204,204,0.2);
 }
 /*-------------------------------------------------*/
 /*Kontaktseite grüne Kästen*/
 .well-lg {
     padding: 24px;
     border-radius: 6px;
-    background-color: rgba(164, 212, 145,  0.6);
+    background-color: rgba(164, 212, 145, 0.6);
     border-color: rgba(160,200,140,1);
-
 }
+
 .well-sm {
-background-color: rgba(255, 255, 255, 0.4);
-border-color: rgba(0,0,0,0.4);
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(0,0,0,0.4);
 }
 
 
@@ -162,58 +182,61 @@ border-color: rgba(0,0,0,0.4);
 
 
 /*Einrücken der Fehlermeldung "E-Mail oder Passwort falsch" ohne Vorzeichen auf der LogIn-Seite*/
-ul { list-style: none;
-     padding-left: 0;
+ul {
+    list-style: none;
+    padding-left: 0;
 }
 
 /*Registrierseite - Buttons*/
 /*Registrieren-Button*/
 .btn-success {
-  color: rgb(255,255,255);
-  background-color: rgb(77,147,208);
-  border-color: rgb(46,109,164);
+    color: rgb(255,255,255);
+    background-color: rgb(77,147,208);
+    border-color: rgb(46,109,164);
 }
 
-.btn-success:hover {
-  color: rgb(255,255,255);
-  background-color: rgb(46,109,164);
-  border-color: rgb(35,32,31);
-}
+    .btn-success:hover {
+        color: rgb(255,255,255);
+        background-color: rgb(46,109,164);
+        border-color: rgb(35,32,31);
+    }
 
-.btn-success:active:hover,
-.btn-success.active:hover,
-.open > .dropdown-toggle.btn-success:hover,
-.btn-success:active:focus,
-.btn-success.active:focus,
-.open > .dropdown-toggle.btn-success:focus,
-.btn-success:active.focus,
-.btn-success.active.focus,
-.open > .dropdown-toggle.btn-success.focus {
-  color:#fff;
-  background-color: #204d74;
-  border-color: #122b40;
-}
+    .btn-success:active:hover,
+    .btn-success.active:hover,
+    .open > .dropdown-toggle.btn-success:hover,
+    .btn-success:active:focus,
+    .btn-success.active:focus,
+    .open > .dropdown-toggle.btn-success:focus,
+    .btn-success:active.focus,
+    .btn-success.active.focus,
+    .open > .dropdown-toggle.btn-success.focus {
+        color: #fff;
+        background-color: #204d74;
+        border-color: #122b40;
+    }
 /*Zurück-Button*/
 .btn-default {
-  color: rgb(255,255,255);
-  background-color: rgb(77,147,208);
-  border-color: rgb(46,109,164);
+    color: rgb(255,255,255);
+    background-color: rgb(77,147,208);
+    border-color: rgb(46,109,164);
 }
-.btn-default:hover {
-  color: rgb(255,255,255);
-  background-color: rgb(46,109,164);
-  border-color: rgb(35,32,31);
-}
-.btn-default:active:hover,
-.btn-default.active:hover,
-.open > .dropdown-toggle.btn-default:hover,
-.btn-default:active:focus,
-.btn-default.active:focus,
-.open > .dropdown-toggle.btn-default:focus,
-.btn-default:active.focus,
-.btn-default.active.focus,
-.open > .dropdown-toggle.btn-default.focus {
-  color: #fff;
-  background-color: #204d74;
-  border-color: #122b40;
-}
+
+    .btn-default:hover {
+        color: rgb(255,255,255);
+        background-color: rgb(46,109,164);
+        border-color: rgb(35,32,31);
+    }
+
+    .btn-default:active:hover,
+    .btn-default.active:hover,
+    .open > .dropdown-toggle.btn-default:hover,
+    .btn-default:active:focus,
+    .btn-default.active:focus,
+    .open > .dropdown-toggle.btn-default:focus,
+    .btn-default:active.focus,
+    .btn-default.active.focus,
+    .open > .dropdown-toggle.btn-default.focus {
+        color: #fff;
+        background-color: #204d74;
+        border-color: #122b40;
+    }
