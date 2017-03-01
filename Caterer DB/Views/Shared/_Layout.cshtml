@@ -15,7 +15,7 @@
     }
 </head>
 <body>
-   
+    
     <div class="navbar  navbar-fixed-top" id="topnavbar">
         <div class="container" id="banner">
             <div class="row">
@@ -23,8 +23,8 @@
             </div>
         </div>
         <div class="navbar-default">
-            
-           
+
+
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,13 +45,14 @@
         <div class="spacer">
             &nbsp;
         </div>
-       <div class="mybg img-responsive"> 
+       
+        <div class="mybg">
             @RenderBody()
-      </div> 
+        </div>
 
         <hr />
         <footer>
-            <div class="row">
+            <div class="row bg-white">
                 <div class="col-md-4">
                     <img class="center-block" src="~/Content/Images/Logo_Ministerium.png" />
                 </div>
@@ -72,7 +73,7 @@
             </div>
         </footer>
     </div>
-    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
