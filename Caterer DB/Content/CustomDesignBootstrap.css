@@ -1,11 +1,13 @@
 ﻿
 
 .mybg {
-    background-image: url(../Content/Images/Logo_AG_Wasserzeichen.png) ;
-    background-repeat: no-repeat ;
-    background-size: cover;
-    background-attachment: fixed;
-}
+    background-image: url(../Content/Images/HG50_kleiner.png);
+    background-size: 100%;
+   
+    background-repeat: no-repeat;
+   
+  
+   }
 
 
 #topnavbar {
