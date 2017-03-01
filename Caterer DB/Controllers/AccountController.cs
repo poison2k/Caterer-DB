@@ -136,22 +136,28 @@ namespace Caterer_DB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PasswordChange(ForgottenPasswordCreateNewPasswordViewModel forgottenPasswordCreateNewPasswordViewModel, string id, string verify)
         {
-            if (BenutzerService.VerifyPasswordChange(id, verify) || id.Contains(User.BenutzerId.ToString()))
+            if (BenutzerService.VerifyPasswordChange(id, verify))
             {
                 if (ModelState.IsValid)
                 {
                     var benutzer = BenutzerViewModelService.Map_ForgottenPasswordCreateNewPasswordViewModel_Benutzer(forgottenPasswordCreateNewPasswordViewModel);
                     BenutzerService.EditBenutzerPassword(benutzer);
-
-                    if (id.Contains(User.BenutzerId.ToString()) && verify == null)
-                    {
-                        TempData["isPasswordChanged"] = true;
-                        return RedirectToAction(nameof(HomeController.Index), "Home");
-                    }
-
                     return RedirectToAction("PasswordChangeComplete");
                 }
                 return View();
+            }
+            if(User != null){
+                if (User.BenutzerId.ToString() == id)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        var benutzer = BenutzerViewModelService.Map_ForgottenPasswordCreateNewPasswordViewModel_Benutzer(forgottenPasswordCreateNewPasswordViewModel);
+                        BenutzerService.EditBenutzerPassword(benutzer);
+                        TempData["isPasswordChanged"] = true;
+                        return RedirectToAction(nameof(HomeController.Index), "Home");
+                    }
+                    return View();
+                }
             }
             return  RedirectToAction("~/Views/Shared/Error.cshtml");
 
