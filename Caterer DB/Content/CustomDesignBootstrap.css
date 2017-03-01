@@ -4,25 +4,7 @@
     background: none no-repeat scroll 0 0 #fff;
 }
 
-.child-item {
-  position: relative;
-  left: 0%;
-  top: 0%;
-  transform: translate(-50%,-50%);
-      background-size: 100%;
-  background-repeat: no-repeat;
-  background-image: url(../Content/Images/HG50_kleiner.png);
-  width: 768px;
-  height: 574px;
- 
-}
 
-.absolute-div {
-    position: fixed;
-    left: 50%;
-    top: 61%;
-
-}
 
 
 #topnavbar {
