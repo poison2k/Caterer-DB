@@ -14,34 +14,35 @@
 <br />
 
 
-
-
-
 <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
-        <h3>Registrierung abgeschlossen</h3>
-        <div class="col-md-4"></div>
-    </div>
-</div>
-<br />
-<br />
+    <div class="col-md-offset-2 col-md-8">
+        <div class="well well-sm">
 
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
-        <p>Ihre Registrierung wurde erfolgreich abgeschlossen. Sie können sich nun einloggen.</p>
-        <div class="col-md-4"></div>
-    </div>
-</div>
-<br />
 
-<div class="row">
-    <div class="col-md-5"></div>
-    <div class="col-md-2">
-        @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-block", id = "loginLinkbutton" })
+            <div class="row">
+
+                <div class="col-md-8 col-md-offset- text-center">
+                    <h3>Registrierung abgeschlossen</h3>
+                </div>
+            </div>
+            <br />
+            <br />
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <p>Ihre Registrierung wurde erfolgreich abgeschlossen. Sie können sich nun einloggen.</p>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-block", id = "loginLinkbutton" })
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div class="col-md-5"></div>
 </div>
 <br />
 <br />

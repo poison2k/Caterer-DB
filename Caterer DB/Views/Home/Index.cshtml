@@ -12,8 +12,8 @@
 @if (TempData["isAccountDeleted"] != null)
 {
     <div class="row">
-        <div class="col-md-12" id="Gelöscht">
-            <div class="text-center" role="alert"><H3>Ihr Account wurde erfolgreich gelöscht!</H3></div>
+        <div class="col-md-12 " id="Gelöscht">
+            <div class="text-center alert alert-warning" role="alert"><H3>Ihr Account wurde erfolgreich gelöscht!</H3></div>
         </div>
     </div>
 }
@@ -22,7 +22,7 @@
 {
     <div class="row">
         <div class="col-md-12" id="Gespeichert">
-            <div class="text-center" role="alert"><H3>Ihre Daten wurden erfolgreich gespeichert!</H3></div>
+            <div class="text-center alert alert-warning" role="alert"><H3>Ihre Daten wurden erfolgreich gespeichert!</H3></div>
         </div>
     </div>
 }
@@ -31,34 +31,12 @@
 {
     <div class="row">
         <div class="col-md-12" id="Passwort">
-            <div class="text-center" role="alert"><H3>Ihr Passwort wurde erfolgreich geändert!</H3></div>
+            <div class="text-center alert alert-warning" role="alert"><H3>Ihr Passwort wurde erfolgreich geändert!</H3></div>
         </div>
     </div>
 }
 
-@if (Request.IsAuthenticated)
-{
 
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6" id="Willkommen">
-            <h2>Willkommen @Model.Vorname @Model.Nachname</h2>
-
-            @if (User.HatDasRecht(RechteResource.TestBlock1))
-                {
-                <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
-            }
-            else if (User.HatDasRecht(RechteResource.TestBlock3))
-            {
-                <h4 class="text-danger">Ich bin Mitglied der Gruppe Caterer</h4>
-            }
-            else if (User.HatDasRecht(RechteResource.TestBlock2))
-            {
-                <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
-            }
-
-        </div>
-    </div>
-}
 
 
 
@@ -67,8 +45,31 @@
 <br />
 <div class="row">
 
-    <div class="col-md-offset-3 col-md-6">
+    <div class="col-md-offset-2 col-md-8">
         <div class="well well-sm">
+            @if (Request.IsAuthenticated)
+            {
+
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10" id="Willkommen">
+                        <h2>Willkommen @Model.Vorname @Model.Nachname</h2>
+
+                        @if (User.HatDasRecht(RechteResource.TestBlock1))
+                {
+                            <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
+                        }
+                        else if (User.HatDasRecht(RechteResource.TestBlock3))
+                        {
+                            <h4 class="text-danger">Ich bin Mitglied der Gruppe Caterer</h4>
+                        }
+                        else if (User.HatDasRecht(RechteResource.TestBlock2))
+                        {
+                            <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
+                        }
+
+                    </div>
+                </div>
+            }
             <br />
             <div class="row">
                 <div class="col-md-1"></div>
