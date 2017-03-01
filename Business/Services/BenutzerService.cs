@@ -170,6 +170,7 @@ namespace Business.Services
         {
             var benutzer = BenutzerRepository.SearchUserById(tempBenutzer.BenutzerId);
             benutzer.Passwort = tempBenutzer.Passwort;
+            benutzer.PasswordVerificationCode = "";
             BenutzerRepository.EditUser(benutzer);
         }
 
