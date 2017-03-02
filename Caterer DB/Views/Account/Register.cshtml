@@ -33,7 +33,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="well well-sm">
+                    <div class="well well-lg">
                         <h4><i class="glyphicon glyphicon-education "></i> Account</h4>
                         <br />
                         <div class="row">
@@ -67,7 +67,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="well well-sm">
+                    <div class="well well-lg">
                         <h4><i class="glyphicon glyphicon-list "></i> Firma</h4>
                         <br />
                         <div class="row">
@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="well well-sm">
+                    <div class="well well-lg">
                         <h4><i class="glyphicon glyphicon-user "></i> Ansprechpartner</h4>
                         <br />
                         <div class="row">
@@ -145,18 +145,18 @@
                                     @Html.ValidationMessageFor(model => model.FunktionAnsprechpartner, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </div>
+                        </div>                     
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6">
-                    <div class="well well-sm">
+                    <div class="well well-lg">
                         <h4><i class="glyphicon glyphicon-earphone"></i> Erreichbarkeit</h4>
                         <br />
                         <div class="row">
-                            <<div class="col-md-12">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label " })
                                     @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
@@ -165,26 +165,24 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <div class="form-group col-md-12">
-                                        @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label " }) (optional)
-                                        @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
-                                    </div>
+                                    @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label " }) (optional)
+                                    @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " }) (optional)
                                         @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
                                     </div>
-                                </div>
-                            </div>
-                            <br />
+                                </div>                                                                     
                         </div>
+                        <br />
                     </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="well well-sm">
+                        <div class="well well-lg">
                             <h4><i class="glyphicon glyphicon-road"></i> Sonstiges</h4>
                             <br />
                             <div class="row">
@@ -210,7 +208,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="well well-sm">
+                        <div class="well well-lg">
                             <h4><i class="glyphicon glyphicon-lock"></i> Datenschutz</h4>
                             <br />
                             <div class="row">
