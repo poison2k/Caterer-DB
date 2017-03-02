@@ -5,91 +5,98 @@
 }
 
 
-<br />
-<br />
-<br />
+@*Hintergrundbild ohne Verblassen auf Startseite*@
+<body style="background-image:url(../Content/Images/Hg100_1024.png); 
+background-size: 1024px auto; 
+background-attachment: fixed ;
+background-repeat: no-repeat; 
+background-position:center">
+</body>
+    <br />
+    <br />
+    <br />
 
-@if (TempData["isAccountDeleted"] != null)
-{
-    <div class="row">
-        <div class="col-md-12 " id="Gelöscht">
-            <div class="text-center" role="alert"><H1>Ihr Account wurde erfolgreich gelöscht!</H1></div>
-        </div>
-    </div>
-}
-
-@if (TempData["isSaved"] != null)
-{
-    <div class="row">
-        <div class="col-md-12" id="Gespeichert">
-            <div class="text-center" role="alert"><H1>Ihre Daten wurden erfolgreich gespeichert!</H1></div>
-        </div>
-    </div>
-}
-
-@if (TempData["isPasswordChanged"] != null)
-{
-    <div class="row">
-        <div class="col-md-12" id="Passwort">
-            <div class="text-center" role="alert"><H1>Ihr Passwort wurde erfolgreich geändert!</H1></div>
-        </div>
-    </div>
-}
-
-
-
-
-
-<br />
-<br />
-<br />
-<div class="row">
-
-    <div class="col-md-offset-2 col-md-8">
-        <div class="well well-sm">
-            @if (Request.IsAuthenticated)
-            {
-
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-10" id="Willkommen">
-                        <h2>Willkommen @Model.Vorname @Model.Nachname</h2>
-
-                        @if (User.HatDasRecht(RechteResource.TestBlock1))
-                {
-                            <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
-                        }
-                        else if (User.HatDasRecht(RechteResource.TestBlock3))
-                        {
-                            <h4 class="text-danger">Ich bin Mitglied der Gruppe Caterer</h4>
-                        }
-                        else if (User.HatDasRecht(RechteResource.TestBlock2))
-                        {
-                            <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
-                        }
-
-                    </div>
-                </div>
-            }
-            <br />
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10 text-justify"><span style="color:black">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </span></div>
-
-                <div class="col-md-1"></div>
+    @if (TempData["isAccountDeleted"] != null)
+    {
+        <div class="row">
+            <div class="col-md-12 " id="Gelöscht">
+                <div class="text-center" role="alert"><H1>Ihr Account wurde erfolgreich gelöscht!</H1></div>
             </div>
-            <br />
-            <br />
-            @if (!Request.IsAuthenticated)
+        </div>
+    }
+
+    @if (TempData["isSaved"] != null)
+    {
+        <div class="row">
+            <div class="col-md-12" id="Gespeichert">
+                <div class="text-center" role="alert"><H1>Ihre Daten wurden erfolgreich gespeichert!</H1></div>
+            </div>
+        </div>
+    }
+
+    @if (TempData["isPasswordChanged"] != null)
+    {
+        <div class="row">
+            <div class="col-md-12" id="Passwort">
+                <div class="text-center" role="alert"><H1>Ihr Passwort wurde erfolgreich geändert!</H1></div>
+            </div>
+        </div>
+    }
+
+
+
+
+
+    <br />
+    <br />
+    <br />
+    <div class="row">
+
+        <div class="col-md-offset-2 col-md-8">
+            <div class="well well-sm">
+                @if (Request.IsAuthenticated)
+            {
+
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10" id="Willkommen">
+                            <h2>Willkommen @Model.Vorname @Model.Nachname</h2>
+
+                            @if (User.HatDasRecht(RechteResource.TestBlock1))
+                {
+                                <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
+                            }
+                            else if (User.HatDasRecht(RechteResource.TestBlock3))
+                            {
+                                <h4 class="text-danger">Ich bin Mitglied der Gruppe Caterer</h4>
+                            }
+                            else if (User.HatDasRecht(RechteResource.TestBlock2))
+                            {
+                                <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
+                            }
+
+                        </div>
+                    </div>
+                }
+                <br />
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 text-justify"><span style="color:black">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </span></div>
+
+                    <div class="col-md-1"></div>
+                </div>
+                <br />
+                <br />
+                @if (!Request.IsAuthenticated)
             {
 
 
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4 text-center">
-                        @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-block", id = "loginLinkbutton" })
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
+                            @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-block", id = "loginLinkbutton" })
+                        </div>
+                        <div class="col-md-4"></div>
                     </div>
-                    <div class="col-md-4"></div>
-                </div>
                     <br />
                     <div class="row">
                         <div class="col-md-4"></div>
@@ -100,17 +107,17 @@
                     </div>
 
 
-            }
-            <br />
+                }
+                <br />
+            </div>
         </div>
     </div>
-</div>
 
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
