@@ -4,7 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Services;
 using System;
-using System.Text;
+using System.Text; 
 
 namespace SeleniumTests
 {
@@ -14,6 +14,7 @@ namespace SeleniumTests
         private IWebDriver driver;
         private StringBuilder verificationErrors;
         private string baseURL;
+        private string PWRequestURL;
         private WebDriverWait wait;
 
         [OneTimeSetUp]
@@ -21,6 +22,7 @@ namespace SeleniumTests
         {
             driver = new ChromeDriver();
             baseURL = "http://localhost:60003/";
+            PWRequestURL = "http://localhost:60003/Account/PasswordRequest";
             verificationErrors = new StringBuilder();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }
@@ -46,7 +48,7 @@ namespace SeleniumTests
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
             driver.FindElement(By.Id("loginLinkbutton"));
 
-            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+            Assert.AreEqual(Services.Hinweise.Startseite, driver.Title);
         }
 
         [TearDown]
@@ -69,8 +71,8 @@ namespace SeleniumTests
             TestTools.TestStart(driver);
 
             TestTools.ElementKlick("loginLinkbutton", driver);
-            TestTools.DatenEingeben("caterer@test.de", "Email", driver);
-            TestTools.DatenEingeben("Start#22", "Passwort", driver);
+            TestTools.DatenEingeben(Services.LoginDaten.Name1, "Email", driver);
+            TestTools.DatenEingeben(Services.LoginDaten.PW1, "Passwort", driver);
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -88,7 +90,7 @@ namespace SeleniumTests
 
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Willkommen"));
@@ -103,9 +105,9 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#21", driver);
-            Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
-
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, "Start#21", driver);
+            Assert.AreEqual(Services.Fehlermeldung.LoginSeite_Email_PW_Fehler, TestTools.IDTextÜberprüfen("error2", driver));
+            
             TestTools.TestEnde(driver);
         }
 
@@ -115,8 +117,8 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.d", "Start#22", driver);
-            Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
+            TestTools.LoginDatenEingeben("caterer@test.d", Services.LoginDaten.PW1, driver);
+            Assert.AreEqual(Services.Fehlermeldung.LoginSeite_Email_PW_Fehler, TestTools.IDTextÜberprüfen("error2", driver));
 
             TestTools.TestEnde(driver);
 
@@ -129,9 +131,9 @@ namespace SeleniumTests
             TestTools.TestStart(driver);
 
             TestTools.ElementKlick("loginLinkbutton", driver);
-            TestTools.LoginDatenEingeben("caterer@test.de", "", driver);
-            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", TestTools.IDTextÜberprüfen("error1", driver));
-
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, "", driver);
+            Assert.AreEqual(Services.Fehlermeldung.PW_Erforderlich, TestTools.IDTextÜberprüfen("error1", driver));
+            
             TestTools.TestEnde(driver);
 
         }
@@ -142,8 +144,8 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("", "Start#22", driver);
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("Email-error", driver));
+            TestTools.LoginDatenEingeben("", Services.LoginDaten.PW1, driver);
+            Assert.AreEqual(Services.Fehlermeldung.Email_Erforderlich, TestTools.IDTextÜberprüfen("Email-error", driver));
 
             TestTools.TestEnde(driver);
 
@@ -185,7 +187,7 @@ namespace SeleniumTests
             //Variante Dropdown Login
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.KontaktDropdownLogin(driver);
 
@@ -227,7 +229,7 @@ namespace SeleniumTests
             //Variante Dropdown Login
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.DatenschutzDropdownLogin(driver);
 
@@ -271,7 +273,7 @@ namespace SeleniumTests
             //Variante Dropdown Login
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.AGBDropdownLogin(driver);
 
@@ -295,17 +297,17 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("registerLink", driver);
 
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
-
+            Assert.AreEqual(Services.Hinweise.Startseite, driver.Title);
+            
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
 
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             TestTools.TestEnde(driver);
 
@@ -318,47 +320,47 @@ namespace SeleniumTests
             TestTools.TestStart(driver);
 
             TestTools.ElementKlick("registerLink", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //AGB
             TestTools.AGBFußzeile(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Datenschutz
             TestTools.DatenschutzFußzeile(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Kontakt
             TestTools.KontaktFußzeile(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Impressum
             TestTools.ImpressumFußzeile(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //AGBs bei Lesebestätigung
             TestTools.ElementKlick("RegAGB", driver);
-            Assert.AreEqual("Allgemeine Geschäftsbedingungen", TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            Assert.AreEqual(Services.Hinweise.AGBseite, TestTools.IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Datenschutz bei Lesebestätigung
             TestTools.ElementKlick("RegDatenschutz", driver);
-            Assert.AreEqual("Datenschutzbestimmungen", TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
+            Assert.AreEqual(Services.Hinweise.Datenschutzseite, TestTools.IDTextÜberprüfen("Datenschutzbest", driver));
 
             TestTools.TestEnde(driver);
 
@@ -372,28 +374,28 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //AGB
             TestTools.AGBDropdownLogout(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Datenschutz
             TestTools.DatenschutzDropdownLogout(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Kontakt
             TestTools.KontaktDropdownLogout(driver);
 
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Impressum
             TestTools.ImpressumDropdownLogout(driver);
@@ -409,33 +411,33 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("registerLink", driver);
 
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             TestTools.ElementKlick("btnSpeichern", driver);
 
             //Account
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("Mail-error", driver));
-            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Passwort-error", driver));
-            Assert.AreEqual("Das Feld \"Passwort Wiederholung\" ist erforderlich.", TestTools.IDTextÜberprüfen("PasswortVerification-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Email_Erforderlich, TestTools.IDTextÜberprüfen("Mail-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.PW_Erforderlich, TestTools.IDTextÜberprüfen("Passwort-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.PW_Wiederholung_Erforderlich, TestTools.IDTextÜberprüfen("PasswortVerification-error", driver));
 
             //Firma
-            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Firmenname-error", driver));
-            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
-            Assert.AreEqual("Das Feld \"Straße und Hausnummer\" ist erforderlich.", TestTools.IDTextÜberprüfen("Stra_e-error", driver));
-            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
-            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Ort-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Firma_Erforderlich, TestTools.IDTextÜberprüfen("Firmenname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Organisation_Erforderlich, TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.IDTextÜberprüfen("Stra_e-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.PLZ_Erforderlich, TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Ort_Erforderlich, TestTools.IDTextÜberprüfen("Ort-error", driver));
 
             //Ansprechpartner
-            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", TestTools.IDTextÜberprüfen("Anrede-error", driver));
-            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Vorname-error", driver));
-            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Nachname-error", driver));
-            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Anrede_Erforderlich, TestTools.IDTextÜberprüfen("Anrede-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Vorname_Erforderlich, TestTools.IDTextÜberprüfen("Vorname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Nachname_Erforderlich, TestTools.IDTextÜberprüfen("Nachname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
 
             //Erreichbarkeit
-            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", TestTools.IDTextÜberprüfen("Telefon-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Telefon_Erforderlich, TestTools.IDTextÜberprüfen("Telefon-error", driver));
 
             //Sonstiges
-            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
 
             TestTools.TestEnde(driver);
 
@@ -448,33 +450,33 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("registerLink", driver);
 
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             TestTools.ElementKlick("btnSpeichern", driver);
 
             //Account
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("Mail-error", driver));
-            Assert.AreEqual("Das Feld \"Passwort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Passwort-error", driver));
-            Assert.AreEqual("Das Feld \"Passwort Wiederholung\" ist erforderlich.", TestTools.IDTextÜberprüfen("PasswortVerification-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Email_Erforderlich, TestTools.IDTextÜberprüfen("Mail-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.PW_Erforderlich, TestTools.IDTextÜberprüfen("Passwort-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.PW_Wiederholung_Erforderlich, TestTools.IDTextÜberprüfen("PasswortVerification-error", driver));
 
             //Firma
-            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Firmenname-error", driver));
-            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
-            Assert.AreEqual("Das Feld \"Straße und Hausnummer\" ist erforderlich.", TestTools.IDTextÜberprüfen("Stra_e-error", driver));
-            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
-            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Ort-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Firma_Erforderlich, TestTools.IDTextÜberprüfen("Firmenname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Organisation_Erforderlich, TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.IDTextÜberprüfen("Stra_e-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.PLZ_Erforderlich, TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Ort_Erforderlich, TestTools.IDTextÜberprüfen("Ort-error", driver));
 
             //Ansprechpartner
-            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", TestTools.IDTextÜberprüfen("Anrede-error", driver));
-            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Vorname-error", driver));
-            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Nachname-error", driver));
-            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Anrede_Erforderlich, TestTools.IDTextÜberprüfen("Anrede-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Vorname_Erforderlich, TestTools.IDTextÜberprüfen("Vorname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Nachname_Erforderlich, TestTools.IDTextÜberprüfen("Nachname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
 
             //Erreichbarkeit
-            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", TestTools.IDTextÜberprüfen("Telefon-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Telefon_Erforderlich, TestTools.IDTextÜberprüfen("Telefon-error", driver));
 
             //Sonstiges
-            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -494,7 +496,7 @@ namespace SeleniumTests
 
             //Firmenname befüllen
             driver.FindElement(By.Id("Firmenname")).Clear();
-            driver.FindElement(By.Id("Firmenname")).SendKeys("Testfirma");
+            driver.FindElement(By.Id("Firmenname")).SendKeys(Services.NutzerDaten.NutzerDaten_Firmenname);
             Assert.AreEqual(false, TestTools.FehlerID("Firmenname-error", driver));
 
             //Organisationsform wählen
@@ -503,17 +505,17 @@ namespace SeleniumTests
 
             //Straße befüllen
             driver.FindElement(By.Id("Stra_e")).Clear();
-            driver.FindElement(By.Id("Stra_e")).SendKeys("Teststraße 0");
+            driver.FindElement(By.Id("Stra_e")).SendKeys(Services.NutzerDaten.NutzerDaten_Straße_Nr);
             Assert.AreEqual(false, TestTools.FehlerID("Stra_e-error", driver));
 
             //PLZ befüllen
             driver.FindElement(By.Id("Postleitzahl")).Clear();
-            driver.FindElement(By.Id("Postleitzahl")).SendKeys("12345");
+            driver.FindElement(By.Id("Postleitzahl")).SendKeys(Services.NutzerDaten.NutzerDaten_PLZ);
             Assert.AreEqual(false, TestTools.FehlerID("Postleitzahl-error", driver));
 
             //Ort befüllen
             driver.FindElement(By.Id("Ort")).Clear();
-            driver.FindElement(By.Id("Ort")).SendKeys("Testen");
+            driver.FindElement(By.Id("Ort")).SendKeys(Services.NutzerDaten.NutzerDaten_Ort);
             Assert.AreEqual(false, TestTools.FehlerID("Ort-error", driver));
 
             //Anrede wählen
@@ -522,22 +524,22 @@ namespace SeleniumTests
 
             //Vorname befüllen
             driver.FindElement(By.Id("Vorname")).Clear();
-            driver.FindElement(By.Id("Vorname")).SendKeys("Test");
+            driver.FindElement(By.Id("Vorname")).SendKeys(Services.NutzerDaten.NutzerDaten_Vorname);
             Assert.AreEqual(false, TestTools.FehlerID("Vorname-error", driver));
 
             //Nachname befüllen
             driver.FindElement(By.Id("Nachname")).Clear();
-            driver.FindElement(By.Id("Nachname")).SendKeys("Teste");
+            driver.FindElement(By.Id("Nachname")).SendKeys(Services.NutzerDaten.NutzerDaten_Name);
             Assert.AreEqual(false, TestTools.FehlerID("Nachname-error", driver));
 
             //FunktionAnprechpartner befüllen
             driver.FindElement(By.Id("FunktionAnsprechpartner")).Clear();
-            driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys("Tester");
+            driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys(Services.NutzerDaten.NutzerDaten_Ansprechpartner);
             Assert.AreEqual(false, TestTools.FehlerID("FunktionAnsprechpartner-error", driver));
 
             //Telefon befüllen
             driver.FindElement(By.Id("Telefon")).Clear();
-            driver.FindElement(By.Id("Telefon")).SendKeys("09876/54321");
+            driver.FindElement(By.Id("Telefon")).SendKeys(Services.NutzerDaten.NutzerDaten_Telefon);
             Assert.AreEqual(false, TestTools.FehlerID("Telefon-error", driver));
 
             //Umkreis wählen
@@ -555,12 +557,12 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("registerLink", driver);
 
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Mail")).Clear();
-            driver.FindElement(By.Id("Mail")).SendKeys("Caterer@test.de");
+            driver.FindElement(By.Id("Mail")).SendKeys(Services.LoginDaten.Name1);
 
             //Passwort befüllen
             driver.FindElement(By.Id("Passwort")).Clear();
@@ -572,41 +574,41 @@ namespace SeleniumTests
 
             //Firmenname befüllen
             driver.FindElement(By.Id("Firmenname")).Clear();
-            driver.FindElement(By.Id("Firmenname")).SendKeys("Testfirma");
+            driver.FindElement(By.Id("Firmenname")).SendKeys(Services.NutzerDaten.NutzerDaten_Firmenname);
 
             //Organisationsform wählen
             driver.FindElement(By.Id("Organisationsform")).SendKeys("Caterer");
 
             //Straße befüllen
             driver.FindElement(By.Id("Stra_e")).Clear();
-            driver.FindElement(By.Id("Stra_e")).SendKeys("Teststraße 0");
+            driver.FindElement(By.Id("Stra_e")).SendKeys(Services.NutzerDaten.NutzerDaten_Straße_Nr);
 
             //PLZ befüllen
             driver.FindElement(By.Id("Postleitzahl")).Clear();
-            driver.FindElement(By.Id("Postleitzahl")).SendKeys("12345");
+            driver.FindElement(By.Id("Postleitzahl")).SendKeys(Services.NutzerDaten.NutzerDaten_PLZ);
 
             //Ort befüllen
             driver.FindElement(By.Id("Ort")).Clear();
-            driver.FindElement(By.Id("Ort")).SendKeys("Testen");
+            driver.FindElement(By.Id("Ort")).SendKeys(Services.NutzerDaten.NutzerDaten_Ort);
 
             //Anrede wählen
             driver.FindElement(By.Id("Anrede")).SendKeys("Herr");
 
             //Vorname befüllen
             driver.FindElement(By.Id("Vorname")).Clear();
-            driver.FindElement(By.Id("Vorname")).SendKeys("Test");
+            driver.FindElement(By.Id("Vorname")).SendKeys(Services.NutzerDaten.NutzerDaten_Vorname);
 
             //Nachname befüllen
             driver.FindElement(By.Id("Nachname")).Clear();
-            driver.FindElement(By.Id("Nachname")).SendKeys("Teste");
+            driver.FindElement(By.Id("Nachname")).SendKeys(Services.NutzerDaten.NutzerDaten_Name);
 
             //FunktionAnprechpartner befüllen
             driver.FindElement(By.Id("FunktionAnsprechpartner")).Clear();
-            driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys("Tester");
+            driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys(Services.NutzerDaten.NutzerDaten_Ansprechpartner);
 
             //Telefon befüllen
             driver.FindElement(By.Id("Telefon")).Clear();
-            driver.FindElement(By.Id("Telefon")).SendKeys("09876/54321");
+            driver.FindElement(By.Id("Telefon")).SendKeys(Services.NutzerDaten.NutzerDaten_Telefon);
 
             //Umkreis wählen
             driver.FindElement(By.Id("Lieferumkreis")).SendKeys("Bis 30 km");
@@ -620,7 +622,7 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("btnSpeichern", driver);
 
-            Assert.AreEqual("E-Mail ist bereits registriert", TestTools.IDTextÜberprüfen("VallidationSummary", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Email_Bereits_Vorhanden, TestTools.IDTextÜberprüfen("VallidationSummary", driver));
 
             TestTools.TestEnde(driver);
 
@@ -633,7 +635,7 @@ namespace SeleniumTests
 
             TestTools.ElementKlick("registerLink", driver);
 
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -650,45 +652,45 @@ namespace SeleniumTests
 
             //Firmenname befüllen
             driver.FindElement(By.Id("Firmenname")).Clear();
-            driver.FindElement(By.Id("Firmenname")).SendKeys("Testfirma");
+            driver.FindElement(By.Id("Firmenname")).SendKeys(Services.NutzerDaten.NutzerDaten_Firmenname);
 
             //Organisationsform wählen
             driver.FindElement(By.Id("Organisationsform")).SendKeys("Caterer");
 
             //Straße befüllen
             driver.FindElement(By.Id("Stra_e")).Clear();
-            driver.FindElement(By.Id("Stra_e")).SendKeys("Teststraße 0");
+            driver.FindElement(By.Id("Stra_e")).SendKeys(Services.NutzerDaten.NutzerDaten_Straße_Nr);
 
             //PLZ befüllen
             driver.FindElement(By.Id("Postleitzahl")).Clear();
-            driver.FindElement(By.Id("Postleitzahl")).SendKeys("12345");
+            driver.FindElement(By.Id("Postleitzahl")).SendKeys(Services.NutzerDaten.NutzerDaten_PLZ);
 
             //Ort befüllen
             driver.FindElement(By.Id("Ort")).Clear();
-            driver.FindElement(By.Id("Ort")).SendKeys("Testen");
+            driver.FindElement(By.Id("Ort")).SendKeys(Services.NutzerDaten.NutzerDaten_Ort);
 
             //Anrede wählen
             driver.FindElement(By.Id("Anrede")).SendKeys("Herr");
 
             //Vorname befüllen
             driver.FindElement(By.Id("Vorname")).Clear();
-            driver.FindElement(By.Id("Vorname")).SendKeys("Test");
+            driver.FindElement(By.Id("Vorname")).SendKeys(Services.NutzerDaten.NutzerDaten_Vorname);
 
             //Nachname befüllen
             driver.FindElement(By.Id("Nachname")).Clear();
-            driver.FindElement(By.Id("Nachname")).SendKeys("Teste");
+            driver.FindElement(By.Id("Nachname")).SendKeys(Services.NutzerDaten.NutzerDaten_Name);
 
             //FunktionAnprechpartner befüllen
             driver.FindElement(By.Id("FunktionAnsprechpartner")).Clear();
-            driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys("Tester");
+            driver.FindElement(By.Id("FunktionAnsprechpartner")).SendKeys(Services.NutzerDaten.NutzerDaten_Ansprechpartner);
 
             //Telefon befüllen
             driver.FindElement(By.Id("Telefon")).Clear();
-            driver.FindElement(By.Id("Telefon")).SendKeys("09876/54321");
+            driver.FindElement(By.Id("Telefon")).SendKeys(Services.NutzerDaten.NutzerDaten_Telefon);
 
             //Fax befüllen
             driver.FindElement(By.Id("Fax")).Clear();
-            driver.FindElement(By.Id("Fax")).SendKeys("09876/54321");
+            driver.FindElement(By.Id("Fax")).SendKeys(Services.NutzerDaten.NutzerDaten_Telefon);
 
             //Internetadresse befüllen
             driver.FindElement(By.Id("Internetadresse")).Clear();
@@ -701,8 +703,8 @@ namespace SeleniumTests
 
             TestTools.EineSekundeWarten(driver);
 
-            Assert.AreEqual("Datenschutzbestimmungen müssen zugestimmt werden", TestTools.IDTextÜberprüfen("DatenschutzValidation-error", driver));
-            Assert.AreEqual("Sie müssen die AGBs akzeptieren", TestTools.IDTextÜberprüfen("AGBValidation-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Datenschutzbestimmungen_Zustimmung, TestTools.IDTextÜberprüfen("DatenschutzValidation-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.AGB_Zustimmung, TestTools.IDTextÜberprüfen("AGBValidation-error", driver));
 
             //AGBs akzeptieren
             TestTools.ElementKlick("AGBs", driver);
@@ -721,7 +723,7 @@ namespace SeleniumTests
             //Login mit korrekten Daten durchführen und testen der Fehlermeldung für fehlende Email-Verification
             //T_U1-3_F06_B_001
             TestTools.LoginDatenEingeben("projek1test@gmail.com", "12345678", driver);
-            Assert.AreEqual("Registrierung noch nicht abgeschlossen", TestTools.IDTextÜberprüfen("RegMailValidation-error", driver));
+            Assert.AreEqual(Services.Hinweise.Reg_Email_Verifikation_Fehlt, TestTools.IDTextÜberprüfen("RegMailValidation-error", driver));
 
             TestTools.TestEnde(driver);
 
@@ -737,7 +739,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
@@ -745,12 +747,10 @@ namespace SeleniumTests
 
             //Leeren aller Daten
             TestTools.DatenEingeben("", "Firmenname", driver);
-            //TestTools.DatenEingeben("Bitte wählen...", "Organisationsform", driver);
             new SelectElement(driver.FindElement(By.Id("Organisationsform"))).SelectByIndex(0);
             TestTools.DatenEingeben("", "Stra_e", driver);
             TestTools.DatenEingeben("", "Postleitzahl", driver);
             TestTools.DatenEingeben("", "Ort", driver);
-            //TestTools.DatenEingeben("Bitte wählen...", "Anrede", driver);
             new SelectElement(driver.FindElement(By.Id("Anrede"))).SelectByIndex(0);
             TestTools.DatenEingeben("", "Vorname", driver);
             TestTools.DatenEingeben("", "Nachname", driver);
@@ -758,30 +758,29 @@ namespace SeleniumTests
             TestTools.DatenEingeben("", "Telefon", driver);
             TestTools.DatenEingeben("", "Fax", driver);
             TestTools.DatenEingeben("", "Internetadresse", driver);
-            //TestTools.DatenEingeben("Bitte wählen...", "Lieferumkreis", driver);
             new SelectElement(driver.FindElement(By.Id("Lieferumkreis"))).SelectByIndex(0);
 
             TestTools.ElementKlick("btnSpeichern", driver);
 
             //Fehlermeldungen überprüfen
             //Firma
-            Assert.AreEqual("Das Feld \"Firmenname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Firmenname-error", driver));
-            Assert.AreEqual("Das Feld \"Organisationsform\" ist erforderlich.", TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Firma_Erforderlich, TestTools.IDTextÜberprüfen("Firmenname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Organisation_Erforderlich, TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
             Assert.AreEqual("Das Feld \"Straße\" ist erforderlich.", TestTools.IDTextÜberprüfen("Stra_e-error", driver));
-            Assert.AreEqual("Das Feld \"Postleitzahl\" ist erforderlich.", TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
-            Assert.AreEqual("Das Feld \"Ort\" ist erforderlich.", TestTools.IDTextÜberprüfen("Ort-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.PLZ_Erforderlich, TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Ort_Erforderlich, TestTools.IDTextÜberprüfen("Ort-error", driver));
 
             //Ansprechpartner
-            Assert.AreEqual("Das Feld \"Anrede\" ist erforderlich.", TestTools.IDTextÜberprüfen("Anrede-error", driver));
-            Assert.AreEqual("Das Feld \"Vorname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Vorname-error", driver));
-            Assert.AreEqual("Das Feld \"Nachname\" ist erforderlich.", TestTools.IDTextÜberprüfen("Nachname-error", driver));
-            Assert.AreEqual("Das Feld \"Funktion des Ansprechpartners\" ist erforderlich.", TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Anrede_Erforderlich, TestTools.IDTextÜberprüfen("Anrede-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Vorname_Erforderlich, TestTools.IDTextÜberprüfen("Vorname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Nachname_Erforderlich, TestTools.IDTextÜberprüfen("Nachname-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.IDTextÜberprüfen("FunktionAnsprechpartner-error", driver));
 
             //Erreichbarkeit
-            Assert.AreEqual("Das Feld \"Telefon\" ist erforderlich.", TestTools.IDTextÜberprüfen("Telefon-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Telefon_Erforderlich, TestTools.IDTextÜberprüfen("Telefon-error", driver));
 
             //Sonstiges
-            Assert.AreEqual("Das Feld \"Lieferumkreis\" ist erforderlich.", TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.IDTextÜberprüfen("Lieferumkreis-error", driver));
 
             //Löschen unbestätigt abbrechen
             TestTools.ElementKlick("DropdownLogin", driver);
@@ -791,7 +790,6 @@ namespace SeleniumTests
 
             //Prüfen ob alte Daten vorhanden sind
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
-            //Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Organisationsform", driver));
             Assert.AreEqual("Holzweg 1", TestTools.TextboxTextÜberprüfen("Stra_e", driver));
             Assert.AreEqual("87654", TestTools.TextboxTextÜberprüfen("Postleitzahl", driver));
             Assert.AreEqual("Woodway", TestTools.TextboxTextÜberprüfen("Ort", driver));
@@ -801,22 +799,19 @@ namespace SeleniumTests
             Assert.AreEqual("Chef", TestTools.TextboxTextÜberprüfen("FunktionAnsprechpartner", driver));
             Assert.AreEqual("01234 - 56789", TestTools.TextboxTextÜberprüfen("Telefon", driver));
             Assert.AreEqual("01234 - 99999", TestTools.TextboxTextÜberprüfen("Fax", driver));
-            Assert.AreEqual("www.AYCE.de", TestTools.TextboxTextÜberprüfen("Internetadresse", driver));
-            //Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
 
             //Daten ändern
-            TestTools.DatenEingeben("Testfirma", "Firmenname", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_Firmenname, "Firmenname", driver);
             new SelectElement(driver.FindElement(By.Id("Organisationsform"))).SelectByIndex(1);
-            TestTools.DatenEingeben("Teststraße 0", "Stra_e", driver);
-            TestTools.DatenEingeben("12345", "Postleitzahl", driver);
-            TestTools.DatenEingeben("Testen", "Ort", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_Straße_Nr, "Stra_e", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_PLZ, "Postleitzahl", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_Ort, "Ort", driver);
             new SelectElement(driver.FindElement(By.Id("Anrede"))).SelectByIndex(1);
-            TestTools.DatenEingeben("Test", "Vorname", driver);
-            TestTools.DatenEingeben("Teste", "Nachname", driver);
-            TestTools.DatenEingeben("Tester", "FunktionAnsprechpartner", driver);
-            TestTools.DatenEingeben("09876/54321", "Telefon", driver);
-            TestTools.DatenEingeben("09876/54321", "Fax", driver);
-            TestTools.DatenEingeben("www.test.test", "Internetadresse", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_Vorname, "Vorname", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_Name, "Nachname", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_Ansprechpartner, "FunktionAnsprechpartner", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_Telefon, "Telefon", driver);
+            TestTools.DatenEingeben(Services.NutzerDaten.NutzerDaten_Telefon, "Fax", driver);
             new SelectElement(driver.FindElement(By.Id("Lieferumkreis"))).SelectByIndex(1);
 
             TestTools.ElementKlick("btnSpeichern", driver);
@@ -825,18 +820,17 @@ namespace SeleniumTests
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
             //Prüfen ob alte Daten geändert worden
-            Assert.AreEqual("Testfirma", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_Firmenname, TestTools.TextboxTextÜberprüfen("Firmenname", driver));
             Assert.AreEqual("Mensaverein", TestTools.TextboxTextÜberprüfen("Organisationsform", driver));
-            Assert.AreEqual("Teststraße 0", TestTools.TextboxTextÜberprüfen("Stra_e", driver));
-            Assert.AreEqual("12345", TestTools.TextboxTextÜberprüfen("Postleitzahl", driver));
-            Assert.AreEqual("Testen", TestTools.TextboxTextÜberprüfen("Ort", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_Straße_Nr, TestTools.TextboxTextÜberprüfen("Stra_e", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_PLZ, TestTools.TextboxTextÜberprüfen("Postleitzahl", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_Ort, TestTools.TextboxTextÜberprüfen("Ort", driver));
             Assert.AreEqual("Herr", TestTools.TextboxTextÜberprüfen("Anrede", driver));
-            Assert.AreEqual("Test", TestTools.TextboxTextÜberprüfen("Vorname", driver));
-            Assert.AreEqual("Teste", TestTools.TextboxTextÜberprüfen("Nachname", driver));
-            Assert.AreEqual("Tester", TestTools.TextboxTextÜberprüfen("FunktionAnsprechpartner", driver));
-            Assert.AreEqual("09876/54321", TestTools.TextboxTextÜberprüfen("Telefon", driver));
-            Assert.AreEqual("09876/54321", TestTools.TextboxTextÜberprüfen("Fax", driver));
-            Assert.AreEqual("www.test.test", TestTools.TextboxTextÜberprüfen("Internetadresse", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_Vorname, TestTools.TextboxTextÜberprüfen("Vorname", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_Name, TestTools.TextboxTextÜberprüfen("Nachname", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_Ansprechpartner, TestTools.TextboxTextÜberprüfen("FunktionAnsprechpartner", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_Telefon, TestTools.TextboxTextÜberprüfen("Telefon", driver));
+            Assert.AreEqual(Services.NutzerDaten.NutzerDaten_Telefon, TestTools.TextboxTextÜberprüfen("Fax", driver));
             Assert.AreEqual("Bis 10 km", TestTools.TextboxTextÜberprüfen("Lieferumkreis", driver));
 
             TestTools.EineSekundeWarten(driver);
@@ -851,7 +845,6 @@ namespace SeleniumTests
             TestTools.DatenEingeben("Chef", "FunktionAnsprechpartner", driver);
             TestTools.DatenEingeben("01234 - 56789", "Telefon", driver);
             TestTools.DatenEingeben("01234 - 99999", "Fax", driver);
-            TestTools.DatenEingeben("www.AYCE.de", "Internetadresse", driver);
 
             TestTools.ElementKlick("btnSpeichern", driver);
 
@@ -865,7 +858,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
@@ -943,7 +936,7 @@ namespace SeleniumTests
             //Daten ändern über Logout abbrechen
             TestTools.DatenEingeben("Test", "Firmenname", driver);
             TestTools.NutzerAusloggen(driver);
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.TextboxTextÜberprüfen("Firmenname", driver));
@@ -958,7 +951,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -970,7 +963,7 @@ namespace SeleniumTests
             TestTools.AGBFußzeile(driver);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -982,7 +975,7 @@ namespace SeleniumTests
             TestTools.DatenschutzFußzeile(driver);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -994,7 +987,7 @@ namespace SeleniumTests
             TestTools.KontaktFußzeile(driver);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -1006,7 +999,7 @@ namespace SeleniumTests
             TestTools.ImpressumFußzeile(driver);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -1018,7 +1011,7 @@ namespace SeleniumTests
             TestTools.AGBDropdownLogin(driver);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -1030,7 +1023,7 @@ namespace SeleniumTests
             TestTools.DatenschutzDropdownLogin(driver);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -1042,7 +1035,7 @@ namespace SeleniumTests
             TestTools.KontaktDropdownLogin(driver);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -1054,7 +1047,7 @@ namespace SeleniumTests
             TestTools.ImpressumDropdownLogin(driver);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -1064,15 +1057,15 @@ namespace SeleniumTests
 
             //StartButton
             TestTools.ElementKlick("StartButton", driver);
-            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
+            Assert.AreEqual(Services.Hinweise.Startseite, driver.Title);
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             //Änderung durchführen
             TestTools.NutzerAusloggen(driver);
 
-            TestTools.LoginDatenEingeben("caterer1@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben("caterer1@test.de", Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Passwort ändern")).Click();
@@ -1080,7 +1073,7 @@ namespace SeleniumTests
             TestTools.DatenEingeben("ZZZZZZZZ", "Passwort", driver);
             TestTools.DatenEingeben("ZZZZZZZZ", "PasswortVerification", driver);
             TestTools.ElementKlick("Abschicken", driver);
-            Assert.AreEqual("Ihr Passwort wurde erfolgreich geändert!", TestTools.IDTextÜberprüfen("Passwort", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Erfolgreich, TestTools.IDTextÜberprüfen("Passwort", driver));
 
             TestTools.TestEnde(driver);
 
@@ -1096,43 +1089,37 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            //TestTools.ElementKlick("DropdownLogout", driver);
-            //TestTools.ElementKlick("loginLinkhead", driver);
-            //TestTools.ElementKlick("PWVergessen", driver);
-            //driver.FindElement(By.LinkText("Passwort vergessen")).Click();
-
-
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
 
             //AGBs Fußzeile
             TestTools.AGBFußzeile(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //Datenschutzbestimmungen Fußzeile
             TestTools.DatenschutzFußzeile(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //Kontakt Fußzeile
             TestTools.KontaktFußzeile(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //Impressum Fußzeile
             TestTools.ImpressumFußzeile(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //AGBs Dropdown
             TestTools.AGBDropdownLogout(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //Datenschutzbestimmungen Dropdown
             TestTools.DatenschutzDropdownLogout(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //Kontakt Dropdown
             TestTools.KontaktDropdownLogout(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //Impressum Dropdown
             TestTools.ImpressumDropdownLogout(driver);
@@ -1147,12 +1134,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            //TestTools.ElementKlick("DropdownLogout", driver);
-            //TestTools.ElementKlick("loginLinkhead", driver);
-            //TestTools.ElementKlick("PWVergessen", driver);
-
-
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
 
@@ -1160,19 +1142,19 @@ namespace SeleniumTests
             TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            Assert.AreEqual(Services.Hinweise.Startseite, driver.Title);
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //Login Dropdown
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
             Assert.AreEqual("Login", TestTools.IDTextÜberprüfen("LoginPage", driver));
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
 
             //Registrierung Dropdown
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             TestTools.TestEnde(driver);
 
@@ -1183,71 +1165,67 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            //TestTools.ElementKlick("DropdownLogout", driver);
-            //TestTools.ElementKlick("loginLinkhead", driver);
-            //TestTools.ElementKlick("PWVergessen", driver);
-
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //AGBs Fußzeile
             TestTools.AGBFußzeile(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Datenschutzbestimmungen Fußzeile
             TestTools.DatenschutzFußzeile(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Kontakt Fußzeile
             TestTools.KontaktFußzeile(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Impressum Fußzeile
             TestTools.ImpressumFußzeile(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //AGBs Dropdown
             TestTools.AGBDropdownLogout(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Datenschutzbestimmungen Dropdown
             TestTools.DatenschutzDropdownLogout(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Kontakt Dropdown
             TestTools.KontaktDropdownLogout(driver);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Impressum Dropdown
             TestTools.ImpressumDropdownLogout(driver);
@@ -1261,41 +1239,37 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            //TestTools.ElementKlick("DropdownLogout", driver);
-            //TestTools.ElementKlick("loginLinkhead", driver);
-            //TestTools.ElementKlick("PWVergessen", driver);
-
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //StartButton
             TestTools.ElementKlick("StartButton", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
-            Assert.AreEqual("Startseite - My ASP.NET Application", driver.Title);
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            Assert.AreEqual(Services.Hinweise.Startseite, driver.Title);
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Login Dropdown
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("loginLinkhead", driver);
             Assert.AreEqual("Login", TestTools.IDTextÜberprüfen("LoginPage", driver));
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
             TestTools.DatenEingeben("Test@test.de", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
-            Assert.AreEqual("Bestätigung der Passwortänderung", TestTools.IDTextÜberprüfen("RegErfolg", driver));
+            Assert.AreEqual(Services.Hinweise.PW_Änderung_Bestätigung, TestTools.IDTextÜberprüfen("RegErfolg", driver));
 
             //Registrierung Dropdown
             TestTools.ElementKlick("DropdownLogout", driver);
             TestTools.ElementKlick("registerLinkhead", driver);
-            Assert.AreEqual("Registrierung", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Registrierungsseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             TestTools.TestEnde(driver);
 
@@ -1306,32 +1280,28 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            //TestTools.ElementKlick("DropdownLogout", driver);
-            //TestTools.ElementKlick("loginLinkhead", driver);
-            //TestTools.ElementKlick("PWVergessen", driver);
-
-            driver.Navigate().GoToUrl("http://localhost:60003/Account/PasswordRequest");
+            driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.TextboxTextÜberprüfen("Mail", driver));
 
             TestTools.DatenEingeben("", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("PWRecoveryFehler", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Email_Erforderlich, TestTools.IDTextÜberprüfen("PWRecoveryFehler", driver));
 
             TestTools.DatenEingeben("projekt10test", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("PWRecoveryFehler", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Email_Erforderlich, TestTools.IDTextÜberprüfen("PWRecoveryFehler", driver));
 
             TestTools.DatenEingeben("projekt10test@", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Das Feld \"E-Mail\" ist erforderlich.", TestTools.IDTextÜberprüfen("PWRecoveryFehler", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Email_Erforderlich, TestTools.IDTextÜberprüfen("PWRecoveryFehler", driver));
 
             TestTools.DatenEingeben("projekt10test@gmail", "Mail", driver);
             TestTools.ElementKlick("PWRecoveryAbschicken", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Das Feld E-Mail enthält keine gültige E-Mail-Adresse.", TestTools.IDTextÜberprüfen("PWRecoveryFehler", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Email_Ungültig, TestTools.IDTextÜberprüfen("PWRecoveryFehler", driver));
 
             TestTools.TestEnde(driver);
 
@@ -1347,18 +1317,18 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
             TestTools.ElementKlick("LöschenButton", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Löschen bestätigen", TestTools.IDTextÜberprüfen("LöschenBest", driver));
+            Assert.AreEqual(Services.Hinweise.Account_Löschen_Bestätigen, TestTools.IDTextÜberprüfen("LöschenBest", driver));
 
             TestTools.ElementKlick("btnModalCancel", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Eigene Daten", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Eigene_Datenseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             TestTools.TestEnde(driver);
 
@@ -1370,18 +1340,18 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer@test.de", "Start#22", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name1, Services.LoginDaten.PW1, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
             TestTools.ElementKlick("LöschenButton", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Löschen bestätigen", TestTools.IDTextÜberprüfen("LöschenBest", driver));
+            Assert.AreEqual(Services.Hinweise.Account_Löschen_Bestätigen, TestTools.IDTextÜberprüfen("LöschenBest", driver));
 
             TestTools.ElementKlick("LöschenCancel", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Eigene Daten", TestTools.IDTextÜberprüfen("RegSeite", driver));
+            Assert.AreEqual(Services.Hinweise.Eigene_Datenseite, TestTools.IDTextÜberprüfen("RegSeite", driver));
 
             TestTools.TestEnde(driver);
 
@@ -1393,20 +1363,20 @@ namespace SeleniumTests
         {
             TestTools.TestStart(driver);
 
-            TestTools.LoginDatenEingeben("caterer1@test.de", "ZZZZZZZZ", driver);
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name2, Services.LoginDaten.PW2, driver);
 
             TestTools.ElementKlick("DropdownLogin", driver);
             driver.FindElement(By.LinkText("Eigene Daten")).Click();
 
             TestTools.ElementKlick("LöschenButton", driver);
             TestTools.EineSekundeWarten(driver);
-            Assert.AreEqual("Löschen bestätigen", TestTools.IDTextÜberprüfen("LöschenBest", driver));
+            Assert.AreEqual(Services.Hinweise.Account_Löschen_Bestätigen, TestTools.IDTextÜberprüfen("LöschenBest", driver));
 
             TestTools.ElementKlick("btnModalDelete", driver);
-            Assert.AreEqual("Ihr Account wurde erfolgreich gelöscht!", TestTools.IDTextÜberprüfen("Gelöscht", driver));
+            Assert.AreEqual(Services.Hinweise.Account_Gelöscht, TestTools.IDTextÜberprüfen("Gelöscht", driver));
 
-            TestTools.LoginDatenEingeben("caterer1@test.de", "ZZZZZZZZ", driver);
-            Assert.AreEqual("E-Mail oder Passwort falsch", TestTools.IDTextÜberprüfen("error2", driver));
+            TestTools.LoginDatenEingeben(Services.LoginDaten.Name2, Services.LoginDaten.PW2, driver);
+            Assert.AreEqual(Services.Fehlermeldung.LoginSeite_Email_PW_Fehler, TestTools.IDTextÜberprüfen("error2", driver));
 
             TestTools.TestEnde(driver);
 

@@ -66,10 +66,28 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Services\Fehlermeldung.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fehlermeldung.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\LoginDaten.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginDaten.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\NutzerDaten.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NutzerDaten.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\TestTools.cs" />
+    <Compile Include="Services\Hinweise.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hinweise.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tests Chrome.cs" />
-    <Compile Include="Tests Edge.cs" />
-    <Compile Include="Tests Firefox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +95,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MicrosoftWebDriver.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Services\Hinweise.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Hinweise.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Fehlermeldung.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Fehlermeldung.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\LoginDaten.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginDaten.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\NutzerDaten.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NutzerDaten.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
