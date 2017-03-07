@@ -100,7 +100,7 @@ namespace SeleniumTests.Services
         }
 
         //Gibt mittels ObjektID, Daten in eine sichbare Textbox ein.
-        public static void DatenEingeben(String daten, string id, IWebDriver driver, Int16 zeit=5)
+        public static void DatenEingeben(string daten, string id, IWebDriver driver, int zeit=5)
         {
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
             driver.FindElement(By.Id(id)).Clear();

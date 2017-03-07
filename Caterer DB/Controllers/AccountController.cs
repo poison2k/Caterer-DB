@@ -235,7 +235,7 @@ namespace Caterer_DB.Controllers
         public ActionResult LogOff()
         {
             LoginService.Abmelden();
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
