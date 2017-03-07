@@ -14,7 +14,6 @@ namespace Caterer_DB.Controllers
     [Authorize]
     public class BenutzerController : BaseController
     {
-        //private CatererContext db = new CatererContext();
         private IBenutzerViewModelService BenutzerViewModelService { get; set; }
 
         private IBenutzerService BenutzerService { get; set; }

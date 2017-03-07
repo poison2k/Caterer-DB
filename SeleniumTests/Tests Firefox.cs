@@ -1146,7 +1146,7 @@ namespace SeleniumTests
         //T_C2-2_F03_B_001
         {
             TestTools.TestStart(driver);
-
+            //ToDo Löschen von auskommentierten Quellcode
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);
             //TestTools.ElementKlick("PWVergessen", driver);
@@ -1182,7 +1182,7 @@ namespace SeleniumTests
         //T_C2-2_F04_B_001
         {
             TestTools.TestStart(driver);
-
+            //ToDo Löschen von auskommentierten Quellcode
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);
             //TestTools.ElementKlick("PWVergessen", driver);
@@ -1260,7 +1260,7 @@ namespace SeleniumTests
         //T_C2-2_F05_B_001
         {
             TestTools.TestStart(driver);
-
+            //ToDo Löschen von auskommentierten Quellcode
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);
             //TestTools.ElementKlick("PWVergessen", driver);
@@ -1305,7 +1305,7 @@ namespace SeleniumTests
         //T_C2-2_F11_B_001
         {
             TestTools.TestStart(driver);
-
+            //ToDo Löschen von auskommentierten Quellcode
             //TestTools.ElementKlick("DropdownLogout", driver);
             //TestTools.ElementKlick("loginLinkhead", driver);
             //TestTools.ElementKlick("PWVergessen", driver);

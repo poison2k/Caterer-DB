@@ -70,13 +70,18 @@ namespace DataAccess.Repositories
 
         public List<Benutzer> SearchAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse)
         {
+            //ToDo BenutzerGruppen als Parameter übergeben
+            //Abfrage optimieren nur benötigte Daten abrufen
             var benutzerGruppe = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Mitarbeiter").Single();
             var administratoren = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Administrator").Single();
-            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(benutzerGruppe) || x.BenutzerGruppen.Contains(administratoren)).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
+            return Db.Benutzer.Include(y => y.BenutzerGruppen)
+                .ToList().Where(x => x.BenutzerGruppen.Contains(benutzerGruppe) || x.BenutzerGruppen.Contains(administratoren))
+                .Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
         }
 
         public int GetMitarbeiterCount()
         {
+            //Abfrage optimieren nur benötigte Daten abrufen
             var mitarbeiter = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Mitarbeiter").Single();
             var administratoren = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Administrator").Single();
             return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren)).Count();
