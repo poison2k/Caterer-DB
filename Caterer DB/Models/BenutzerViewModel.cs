@@ -243,6 +243,7 @@ namespace Caterer_DB.Models
         public string Fax { get; set; }
 
         [Required]
+        [DisplayName(@"Straße und Hausnummer")]
         public string Straße { get; set; }
 
         [Required]
