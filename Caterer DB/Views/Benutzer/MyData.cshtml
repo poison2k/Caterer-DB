@@ -1,5 +1,5 @@
 ﻿@model Caterer_DB.Models.MyDataBenutzerViewModel
-
+@using Caterer_DB.Resources
 @{
     ViewBag.Title = "MyData";
 }
@@ -22,7 +22,7 @@
 
 
 
-
+    
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.BenutzerId)
     @Html.HiddenFor(model => model.Mail)
@@ -247,32 +247,34 @@
                     <ul class="list-unstyled list-inline " style="margin-right: 0px;">
 
                         <li>
-                            <buttonc id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
+                            <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
                                 <i class="glyphicon glyphicon-trash"></i> Konto löschen
-                            </buttonc>
+                            </button>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="deleteModal" role="dialog">
-                                <div class="modal-dialog modal-sm">
 
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button id="LöschenCancel" type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 id="LöschenBest" class="modal-title">Löschen bestätigen</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Wollen Sie Ihren Account jetzt löschen?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-success" id="btnModalDelete" name="btnModalDelete" value="Delete">Ja</button>
-                                            <button type="submit" class="btn btn-success" data-dismiss="modal" id="btnModalCancel" name="btnModalCancel" value="Cancel">Nein</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button id="LöschenCancel" type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="LöschenBest" class="modal-title">Löschen bestätigen</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Wollen Sie Ihren Account jetzt löschen?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" id="btnModalDelete" name="btnModalDelete" value="Delete">Ja</button>
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" id="btnModalCancel" name="btnModalCancel" value="Cancel">Nein</button>
                 </div>
             </div>
         </div>
@@ -281,6 +283,6 @@
 }
 
 
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-            }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

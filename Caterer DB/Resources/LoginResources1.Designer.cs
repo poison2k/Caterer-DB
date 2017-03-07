@@ -61,6 +61,15 @@ namespace Caterer_DB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ansprechpartner.
+        /// </summary>
+        public static string Ansprechpartner {
+            get {
+                return ResourceManager.GetString("Ansprechpartner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nutzereintrag nicht vorhanden.
         /// </summary>
         public static string BenutzerBeschreibung {

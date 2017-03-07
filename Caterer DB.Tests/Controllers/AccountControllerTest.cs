@@ -142,6 +142,7 @@ namespace Caterer_DB.Tests.Controllers
             var newMockBenutzerService = mockBenutzerService.Object;
             var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
             accountController.ControllerContext = new ControllerContext();
+            FakeHttpContext.SetFakeContext(accountController, true);
             //Act
             ActionResult result = accountController.PasswordChange("TestID", "TESTVerify");
             //Assert
@@ -206,6 +207,7 @@ namespace Caterer_DB.Tests.Controllers
             var newMockBenutzerService = mockBenutzerService.Object;
             var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
             accountController.ControllerContext = new ControllerContext();
+            FakeHttpContext.SetFakeContext(accountController, true);
 
             //Act
             ActionResult result = accountController.PasswordChange(Fixture.Build<ForgottenPasswordCreateNewPasswordViewModel>().Create(), "TestId", "TestVerify");

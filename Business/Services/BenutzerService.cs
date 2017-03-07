@@ -2,7 +2,6 @@
 using System;
 using DataAccess.Model;
 using DataAccess.Interfaces;
-using DataAccess.Repositories;
 using System.Collections.Generic;
 using Common.Interfaces;
 using AutoMapper;

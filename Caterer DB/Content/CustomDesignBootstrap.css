@@ -3,11 +3,10 @@
 .mybg {
     background-image: url(../Content/Images/Hg30_1024.png);
     background-size: 1024px auto;
-    background-attachment: fixed ;
+    background-attachment: fixed;
     background-repeat: no-repeat;
-   background-position:center
-  
-   }
+    background-position: center;
+}
 
 #topnavbar {
     margin: 0;
@@ -64,12 +63,15 @@ body {
 }
 /*----------------------------------*/
 /* Indexseite - Button Login und Registrieren */
+.btn {
+ border-width: 1px;
+}
+
 .btn-primary {
     color: rgb(255,255,255);
     background-color: rgb(77,147,208);
     border-color: rgb(46,109,164);
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border-width: 1px;
 }
 
 .btn:hover,
@@ -80,7 +82,6 @@ body {
     background-color: rgb(46,109,164);
     border-color: rgb(35,32,31);
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
-    border-width: 1px;
 }
 /*------------------------------------------------------*/
 /* Loginseite - input-Felder*/
@@ -130,8 +131,7 @@ h6,
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: 800;
     line-height: 1.1;
-    color: rgb(0, 0, 0);  
-   
+    color: rgb(0, 0, 0);
 }
 
 }
@@ -160,11 +160,9 @@ h6,
 }
 
 .well-sm {
-background-color: rgba(255, 255, 255, 0.80);
-border-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.80);
+    border-color: rgb(255, 255, 255);
 }
-
-
 
 
 
