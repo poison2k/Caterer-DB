@@ -164,8 +164,6 @@ h6,
     border-color: rgb(255, 255, 255);
 }
 
-
-
 /*Einrücken der Fehlermeldung "E-Mail oder Passwort falsch" ohne Vorzeichen auf der LogIn-Seite*/
 ul {
     list-style: none;
@@ -225,3 +223,27 @@ ul {
         background-color: #204d74;
         border-color: #122b40;
     }
+
+
+    /*pageList Striped Hintergrund*/
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(217, 217, 217,1);
+}
+
+
+
+
+
+
+
+
+
+
+    /*Nicht löschen Sebastian...Das das ist ein Hilfsraster für die Schachteln*/
+    /*.row{
+    background-color: rgba(22, 163, 0, 0.5)
+}
+
+.col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1{
+    background-color: rgba(206, 0, 0, 0.5)
+}*/
