@@ -766,7 +766,7 @@ namespace SeleniumTests
             //Firma
             Assert.AreEqual(Services.Fehlermeldung.Firma_Erforderlich, TestTools.IDTextÜberprüfen("Firmenname-error", driver));
             Assert.AreEqual(Services.Fehlermeldung.Organisation_Erforderlich, TestTools.IDTextÜberprüfen("Organisationsform-error", driver));
-            Assert.AreEqual("Das Feld \"Straße\" ist erforderlich.", TestTools.IDTextÜberprüfen("Stra_e-error", driver));
+            Assert.AreEqual(Services.Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.IDTextÜberprüfen("Stra_e-error", driver));
             Assert.AreEqual(Services.Fehlermeldung.PLZ_Erforderlich, TestTools.IDTextÜberprüfen("Postleitzahl-error", driver));
             Assert.AreEqual(Services.Fehlermeldung.Ort_Erforderlich, TestTools.IDTextÜberprüfen("Ort-error", driver));
 
