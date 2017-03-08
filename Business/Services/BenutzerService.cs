@@ -68,16 +68,20 @@ namespace Business.Services
             return BenutzerRepository.SearchAllMitarbeiterWithPaging(aktuelleSeite, seitenGroesse);
         }
 
+        public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse)
+        {
+            return BenutzerRepository.SearchAllCatererWithPaging(aktuelleSeite, seitenGroesse);
+        }
+
 
         public void AddBenutzer(Benutzer benutzer)
         {
             BenutzerRepository.AddUser(benutzer);
         }
 
-
-        public void AddMitarbeiter(Benutzer benutzer, string mitarbeiterGruppe)
+        public void AddBenutzer(Benutzer benutzer, string gruppe)
         {
-            benutzer.BenutzerGruppen = new List<BenutzerGruppe>() {BenutzerGruppeService.SearchGroupByBezeichnung(mitarbeiterGruppe)};
+            benutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung(gruppe) };
             benutzer.IstEmailVerifiziert = true;
             benutzer.PasswortZeitstempel = DateTime.Now;
 
@@ -86,10 +90,23 @@ namespace Business.Services
             benutzer = BenutzerRepository.SearchUserByEMail(benutzer.Mail);
             benutzer.PasswordVerificationCode = MD5Hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname + benutzer.Passwort);
             benutzer.PasswortZeitstempel = DateTime.Now;
-           
+
             BenutzerRepository.EditUser(benutzer);
+        }
+
+        public void AddMitarbeiter(Benutzer benutzer, string gruppe)
+        {
+            AddBenutzer(benutzer, gruppe);
 
             MailService.SendNewMitarbeiterMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+
+        }
+
+        public void AddCaterer(Benutzer benutzer, string gruppe)
+        {
+            AddBenutzer(benutzer, gruppe);
+
+            MailService.SendNewCatererMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
 
         }
 
@@ -115,6 +132,13 @@ namespace Business.Services
 
             Mapper.Map(editedBenutzer,dbBenutzer);
             BenutzerRepository.EditUser(dbBenutzer);
+        }
+
+        public void RemoveCaterer(int id)
+        {
+            var benutzer = BenutzerRepository.SearchUserById(id);
+            MailService.SendRemoveCatererMail(benutzer.Mail);
+            BenutzerRepository.RemoveUser(BenutzerRepository.SearchUserById(id));
         }
 
         public void RemoveBenutzer(int id)
@@ -174,6 +198,11 @@ namespace Business.Services
         }
 
         public int GetMitarbeiterCount()
+        {
+            return BenutzerRepository.GetMitarbeiterCount();
+        }
+
+        public int GetCatererCount()
         {
             return BenutzerRepository.GetMitarbeiterCount();
         }

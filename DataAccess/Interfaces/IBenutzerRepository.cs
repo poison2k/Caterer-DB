@@ -23,8 +23,10 @@ namespace DataAccess.Interfaces
         List<Benutzer> SearchUserByPostcode(string postcode);
         List<Benutzer> SearchUserBySurname(string surname);
         List<Benutzer> SearchAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse);
+        List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse);
 
         int GetMitarbeiterCount();
+        int GetCatererCount();
 
 
     }

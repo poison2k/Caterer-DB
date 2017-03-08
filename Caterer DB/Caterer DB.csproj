@@ -438,6 +438,11 @@
     <Content Include="Views\Account\PasswordChangeComplete.cshtml" />
     <Content Include="Views\Config\Edit.cshtml" />
     <Content Include="Views\Benutzer\_ListView.cshtml" />
+    <Content Include="Views\Benutzer\_ListViewCaterer.cshtml" />
+    <Content Include="Views\Benutzer\IndexCaterer.cshtml" />
+    <Content Include="Views\Benutzer\CreateCaterer.cshtml" />
+    <Content Include="Views\Benutzer\EditCaterer.cshtml" />
+    <Content Include="Views\Benutzer\DetailsCaterer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

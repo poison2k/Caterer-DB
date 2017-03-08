@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Caterer_DB.Models.IndexCatererViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    
+        <div style="margin-top: 15px"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <ul class="list-unstyled list-inline col-md-12" style="margin-left: -5px;">
+                            <li>
+                                <a id="btnMarkierungenErstellen" href="@Url.Action("CreateCaterer", "Benutzer")" na name="btnErstellen" type="submit" class="btn btn-success">
+                                    <i class="glyphicon glyphicon-plus"></i> Neuer Caterer
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 15px"></div>
+                    <div class="row" id="BenutzerIndexPartial">
+                        @{Html.RenderPartial("_ListViewCaterer", Model);}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                            }

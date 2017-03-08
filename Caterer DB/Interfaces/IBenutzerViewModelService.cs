@@ -12,6 +12,7 @@ namespace Caterer_DB.Interfaces
 
        
         Benutzer Map_CreateMitarbeiterViewModel_Benutzer(CreateMitarbeiterViewModel createBenutzerViewModel);
+        Benutzer Map_CreateCatererViewModel_Benutzer(CreateCatererViewModel createCatererViewModel);
         Benutzer Map_EditBenutzerViewModel_Benutzer(EditBenutzerViewModel editBenutzerViewModel);
         Benutzer Map_MyDataBenutzerViewModel_Benutzer(MyDataBenutzerViewModel myDataBenutzerViewModel);
         Benutzer Map_DeleteBenutzerViewModel_Benutzer(DeleteBenutzerViewModel deleteBenutzerViewModel);
@@ -25,6 +26,7 @@ namespace Caterer_DB.Interfaces
         DetailsBenutzerViewModel Map_Benutzer_DetailsBenutzerViewModel(Benutzer benutzer);
         DeleteBenutzerViewModel Map_Benutzer_DeleteBenutzerViewModel(Benutzer benutzer);
         RegisterBenutzerViewModel CreateNewRegisterBenutzerViewModel();
+        DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer);
 
         CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel();
         CreateMitarbeiterViewModel UpdateCreateMitarbeiterViewModel(CreateMitarbeiterViewModel createMitarbeiterViewModel);
@@ -35,7 +37,11 @@ namespace Caterer_DB.Interfaces
 
         RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel);
         MyDataBenutzerViewModel AddListsToMyDataViewModel(MyDataBenutzerViewModel myDataBenutzerViewModel);
+        CreateCatererViewModel AddListsToCreateCatererViewModel(CreateCatererViewModel createCatererViewModel);
 
         ListViewModel<IndexBenutzerViewModel> GeneriereListViewModel(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10);
+        ListViewModel<IndexCatererViewModel> GeneriereListViewModelCaterer(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10);
+        IndexCatererViewModel GeneriereIndexCatererViewModel(Benutzer benutzer);
+        CreateCatererViewModel CreateNewCreateCatererViewModel();
     }
 }
