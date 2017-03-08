@@ -9,52 +9,9 @@ using System.Text;
 namespace SeleniumTests
 {
     [TestFixture]
-    public class TestChrome
+    public class TestChrome : TestInitialize
     {
-        private IWebDriver driver;
-        private StringBuilder verificationErrors;
-        private string baseURL;
-        private string PWRequestURL;
-        private WebDriverWait wait;
-
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
-        {
-            driver = new ChromeDriver();
-            baseURL = "http://localhost:60003/";
-            PWRequestURL = "http://localhost:60003/Account/PasswordRequest";
-            verificationErrors = new StringBuilder();
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
-        }
-
-        [OneTimeTearDown]
-        public void OneTimeTearDown()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
-            Assert.AreEqual("", verificationErrors.ToString());
-        }
-
-        [SetUp]
-        public void SetupTest()
-        {
-            driver.Navigate().GoToUrl(baseURL);
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
-            driver.FindElement(By.Id("loginLinkbutton"));
-
-            Assert.AreEqual(Services.Hinweise.Startseite, driver.Title);
-        }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-        }
+       
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

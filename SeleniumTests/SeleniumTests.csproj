@@ -87,6 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Hinweise.resx</DependentUpon>
     </Compile>
+    <Compile Include="TestInitialize.cs" />
     <Compile Include="Tests Chrome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
