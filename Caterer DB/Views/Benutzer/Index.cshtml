@@ -1,11 +1,24 @@
-﻿@model IEnumerable<Caterer_DB.Models.IndexBenutzerViewModel>
-
+﻿@using PagedList.Mvc
+@using Caterer_DB.Models
+@model ListViewModel<IndexBenutzerViewModel>
 @{
     ViewBag.Title = "Index";
 }
 
 @using (Html.BeginForm())
 {
+
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div id="MitarbeiterSeite" class="col-md-4 text-center">
+            <h1>Mitarbeiter</h1>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
     <div style="margin-top: 15px"></div>
     <div class="container">
         <div class="row">
@@ -21,9 +34,71 @@
                 </div>
                 <div style="margin-top: 15px"></div>
                 <div class="row" id="BenutzerIndexPartial">
-                    @{Html.RenderPartial("_ListView", Model);}
+
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Mitarbeiter</div>
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstOrDefault().Anrede)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstOrDefault().Nachname)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstOrDefault().Vorname)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon)
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model.Entitäten)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Anrede)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Nachname)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Vorname)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
+
+                                        <td>
+                                            <a class="btn btn-default" href="@Url.Action("Details", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                            <a class="btn btn-default" href="@Url.Action("Edit", "Benutzer", new {id = item.BenutzerId})" title="Bearbeiten"><i class="glyphicon glyphicon-wrench"></i></a>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+
+                        @if (Model.TotalItemCount > Model.PageSize)
+                        {
+                            var seitenAnzahl = Model.TotalItemCount / Model.PageSize + 1;
+
+                            <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
+                            <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
+                                Seite @Model.PageNumber von @(seitenAnzahl)
+                                @Html.PagedListPager(Model, aktuelleSeite => Url.Action("Index", new { aktuelleSeite, Model.PageSize, Sortierreihenfolge = ViewBag.AktuelleSortierung }))
+                            </div>
+                        }
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-                        }
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+}
