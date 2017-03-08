@@ -134,6 +134,14 @@ namespace Business.Services
             BenutzerRepository.EditUser(dbBenutzer);
         }
 
+        public void EditCaterer(Benutzer editedBenutzer)
+        {
+            var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
+            MailService.SendEditCatererMail(dbBenutzer.Mail);
+            Mapper.Map(editedBenutzer, dbBenutzer);
+            BenutzerRepository.EditUser(dbBenutzer);
+        }
+
         public void RemoveCaterer(int id)
         {
             var benutzer = BenutzerRepository.SearchUserById(id);

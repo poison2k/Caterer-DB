@@ -26,6 +26,15 @@ namespace Common.Services
             SendMail(mailModel);
         }
 
+        public void SendEditCatererMail(string mail)
+        {
+            var mailModel = ConfigureMail();
+            mailModel.Betreff = "Ihre Daten in der Caterer-DB wurden bearbeitet";
+            mailModel.Empfaenger = mail;
+            mailModel.Inhalt = "Ihre Daten wurden von uns aktualisiert.";
+            SendMail(mailModel);
+        }
+
 
         public void SendNewMitarbeiterMail(string passwordVerificationCode, string mail, string id)
         {

@@ -248,7 +248,7 @@ namespace Caterer_DB.Controllers
             {
                 if (Request.Form["btnSave"] != null)
                 {
-                    BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
+                    BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
                     TempData["isSaved"] = true;
 
                 }
