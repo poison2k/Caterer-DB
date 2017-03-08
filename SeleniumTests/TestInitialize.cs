@@ -3,10 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumTests
 {
@@ -59,3 +56,18 @@ namespace SeleniumTests
 
     }
 }
+
+
+//using NUnit.Framework;
+//using OpenQA.Selenium;
+//using OpenQA.Selenium.Support.UI;
+//using SeleniumTests.Services;
+//using System;
+
+
+//namespace SeleniumTests
+//{
+//    [TestFixture]
+//    [Category("Userstory_C2_1")]
+//    public class Userstory_U1_4 : TestInitialize
+//    {

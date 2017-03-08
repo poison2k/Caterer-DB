@@ -1,18 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace SeleniumTests.Services
 {
     public static class TestTools
     {
 
-        //Prüft mittels ObjektID ob Element sichtbar ist.
-        public static bool FehlerID(string id, IWebDriver driver, Int16 zeit=0)
+        public static bool Fehlermeldung_Sichtbarkeitsprüfung(string id, IWebDriver driver, Int16 zeit=0)
         {
 
             bool present = false;
@@ -31,11 +27,10 @@ namespace SeleniumTests.Services
 
         }
 
-        //Gibt mittels ObjektID den Text eines sichbaren Elements zurück.
-        public static String IDTextÜberprüfen(string id, IWebDriver driver, Int16 zeit=5)
+        public static string Label_Text_Zurückgeben(string id, IWebDriver driver, Int16 zeit=5)
         {
 
-            String Text = "";
+            string Text = "";
             {
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
                 driver.FindElement(By.Id(id));
@@ -46,8 +41,7 @@ namespace SeleniumTests.Services
 
         }
 
-        //Gibt mittels ObjektID den Wert einer sichbaren Textbox zurück.
-        public static String TextboxTextÜberprüfen(string id, IWebDriver driver, Int16 zeit=5)
+        public static String Textbox_Text_Zurückgeben(string id, IWebDriver driver, Int16 zeit=5)
         {
 
             String Text = "";
@@ -61,14 +55,13 @@ namespace SeleniumTests.Services
 
         }
 
-        //Prüft ob der User angemeldet ist und loggt sich ggf aus.
-        public static void TestStart(IWebDriver driver)
+        public static void TestStart_Angemeldete_User_Ausloggen(IWebDriver driver)
         {
 
-            if (FehlerID("DropdownLogin", driver))
+            if (Fehlermeldung_Sichtbarkeitsprüfung("DropdownLogin", driver))
             {
-                ElementKlick("DropdownLogin", driver);
-                ElementKlick("Ausloggen", driver);
+                Element_Klicken("DropdownLogin", driver);
+                Element_Klicken("Ausloggen", driver);
             }
             else
             {
@@ -77,20 +70,18 @@ namespace SeleniumTests.Services
 
         }
 
-        //Klick mittels ObjektID ein sichbares Elements.
-        public static void ElementKlick(string id, IWebDriver driver, Int16 zeit=5)
+        public static void Element_Klicken(string id, IWebDriver driver, Int16 zeit=5)
         {
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
             driver.FindElement(By.Id(id));
             driver.FindElement(By.Id(id)).Click();
         }
 
-        //Für den Userlogin durch.
-        public static void LoginDatenEingeben(String email, String pw, IWebDriver driver, Int16 zeit=5)
+        public static void User_Login_Durchführen(String email, String pw, IWebDriver driver, Int16 zeit=5)
         {
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
-            ElementKlick("DropdownLogout", driver);
-            ElementKlick("loginLinkhead", driver);
+            Element_Klicken("DropdownLogout", driver);
+            Element_Klicken("loginLinkhead", driver);
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys(email);
             driver.FindElement(By.Id("Passwort")).Clear();
@@ -99,8 +90,7 @@ namespace SeleniumTests.Services
 
         }
 
-        //Gibt mittels ObjektID, Daten in eine sichbare Textbox ein.
-        public static void DatenEingeben(string daten, string id, IWebDriver driver, int zeit=5)
+        public static void Daten_In_Textbox_Eingeben(string daten, string id, IWebDriver driver, int zeit=5)
         {
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(zeit));
             driver.FindElement(By.Id(id)).Clear();
@@ -108,34 +98,31 @@ namespace SeleniumTests.Services
 
         }
 
-        //Lässt Selenium 1 Sekunde warten.
-        public static void EineSekundeWarten(IWebDriver driver)
+        public static void Selenium_Wartet_Eine_Sekunde(IWebDriver driver)
         {
 
-            FehlerID("xxx", driver, 1);
+            Fehlermeldung_Sichtbarkeitsprüfung("xxx", driver, 1);
 
         }
 
-        //Loggt den User aus.
-        public static void NutzerAusloggen(IWebDriver driver)
+        public static void Nutzer_Ausloggen(IWebDriver driver)
         {
 
-            ElementKlick("DropdownLogin", driver);
-            ElementKlick("Ausloggen", driver);
+            Element_Klicken("DropdownLogin", driver);
+            Element_Klicken("Ausloggen", driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("loginLinkbutton"));
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
 
         }
 
-        //Loggt angemeldeten User aus oder geht auf die Startseite.
-        public static void TestEnde(IWebDriver driver)
+        public static void TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(IWebDriver driver)
         {
             
-            if (FehlerID("DropdownLogin", driver))
+            if (Fehlermeldung_Sichtbarkeitsprüfung("DropdownLogin", driver))
             {
-                ElementKlick("DropdownLogin", driver);
-                ElementKlick("Ausloggen", driver);
+                Element_Klicken("DropdownLogin", driver);
+                Element_Klicken("Ausloggen", driver);
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
                 driver.FindElement(By.Id("loginLinkbutton"));
                 Assert.AreEqual(Hinweise.Startseite, driver.Title);
@@ -143,7 +130,7 @@ namespace SeleniumTests.Services
             else
             {
 
-                ElementKlick("StartButton", driver);
+                Element_Klicken("StartButton", driver);
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
                 driver.FindElement(By.Id("loginLinkbutton"));
                 Assert.AreEqual(Hinweise.Startseite, driver.Title);
@@ -158,8 +145,8 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("Kontakt", driver);
-            Assert.AreEqual(Hinweise.Kontaktseite,IDTextÜberprüfen("Ansprechp", driver));
+            Element_Klicken("Kontakt", driver);
+            Assert.AreEqual(Hinweise.Kontaktseite,Label_Text_Zurückgeben("Ansprechp", driver));
 
         }
 
@@ -168,9 +155,9 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("DropdownServiceLogout", driver);
-            ElementKlick("DropdownKontaktLogout", driver);
-            Assert.AreEqual(Hinweise.Kontaktseite, IDTextÜberprüfen("Ansprechp", driver));
+            Element_Klicken("DropdownServiceLogout", driver);
+            Element_Klicken("DropdownKontaktLogout", driver);
+            Assert.AreEqual(Hinweise.Kontaktseite, Label_Text_Zurückgeben("Ansprechp", driver));
 
         }
 
@@ -179,9 +166,9 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("DropdownServiceLogin", driver);
-            ElementKlick("DropdownKontaktLogin", driver);
-            Assert.AreEqual(Hinweise.Kontaktseite, IDTextÜberprüfen("Ansprechp", driver));
+            Element_Klicken("DropdownServiceLogin", driver);
+            Element_Klicken("DropdownKontaktLogin", driver);
+            Assert.AreEqual(Hinweise.Kontaktseite, Label_Text_Zurückgeben("Ansprechp", driver));
 
         }
 
@@ -191,8 +178,8 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("Datenschutz", driver);
-            Assert.AreEqual(Hinweise.Datenschutzseite, IDTextÜberprüfen("Datenschutzbest", driver));
+            Element_Klicken("Datenschutz", driver);
+            Assert.AreEqual(Hinweise.Datenschutzseite, Label_Text_Zurückgeben("Datenschutzbest", driver));
 
         }
 
@@ -201,9 +188,9 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("DropdownServiceLogout", driver);
-            ElementKlick("DropdownDatenschutzLogout", driver);
-            Assert.AreEqual(Hinweise.Datenschutzseite, IDTextÜberprüfen("Datenschutzbest", driver));
+            Element_Klicken("DropdownServiceLogout", driver);
+            Element_Klicken("DropdownDatenschutzLogout", driver);
+            Assert.AreEqual(Hinweise.Datenschutzseite, Label_Text_Zurückgeben("Datenschutzbest", driver));
 
         }
 
@@ -212,9 +199,9 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("DropdownServiceLogin", driver);
-            ElementKlick("DropdownDatenschutzLogin", driver);
-            Assert.AreEqual(Hinweise.Datenschutzseite, IDTextÜberprüfen("Datenschutzbest", driver));
+            Element_Klicken("DropdownServiceLogin", driver);
+            Element_Klicken("DropdownDatenschutzLogin", driver);
+            Assert.AreEqual(Hinweise.Datenschutzseite, Label_Text_Zurückgeben("Datenschutzbest", driver));
 
         }
 
@@ -224,8 +211,8 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("AGB", driver);
-            Assert.AreEqual(Hinweise.AGBseite, IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            Element_Klicken("AGB", driver);
+            Assert.AreEqual(Hinweise.AGBseite, Label_Text_Zurückgeben("AllgemGeschäftsbedingungen", driver));
 
         }
 
@@ -234,9 +221,9 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("DropdownServiceLogout", driver);
-            ElementKlick("DropdownAGBLogout", driver);
-            Assert.AreEqual(Hinweise.AGBseite, IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            Element_Klicken("DropdownServiceLogout", driver);
+            Element_Klicken("DropdownAGBLogout", driver);
+            Assert.AreEqual(Hinweise.AGBseite, Label_Text_Zurückgeben("AllgemGeschäftsbedingungen", driver));
 
         }
 
@@ -245,10 +232,15 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("DropdownServiceLogin", driver);
-            ElementKlick("DropdownAGBLogin", driver);
-            Assert.AreEqual(Hinweise.AGBseite, IDTextÜberprüfen("AllgemGeschäftsbedingungen", driver));
+            Element_Klicken("DropdownServiceLogin", driver);
+            Element_Klicken("DropdownAGBLogin", driver);
+            Assert.AreEqual(Hinweise.AGBseite, Label_Text_Zurückgeben("AllgemGeschäftsbedingungen", driver));
 
+        }
+
+        internal static void TestEnde(IWebDriver driver)
+        {
+            throw new NotImplementedException();
         }
 
         //------------------------------------------------------------------------------------------------------------
@@ -257,8 +249,8 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("Impressum", driver);
-            Assert.AreEqual(Hinweise.Impressumseite, IDTextÜberprüfen("Impr", driver));
+            Element_Klicken("Impressum", driver);
+            Assert.AreEqual(Hinweise.Impressumseite, Label_Text_Zurückgeben("Impr", driver));
 
         }
 
@@ -267,9 +259,9 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("DropdownServiceLogout", driver);
-            ElementKlick("DropdownImpressumLogout", driver);
-            Assert.AreEqual(Hinweise.Impressumseite, IDTextÜberprüfen("Impr", driver));
+            Element_Klicken("DropdownServiceLogout", driver);
+            Element_Klicken("DropdownImpressumLogout", driver);
+            Assert.AreEqual(Hinweise.Impressumseite, Label_Text_Zurückgeben("Impr", driver));
 
         }
 
@@ -278,9 +270,9 @@ namespace SeleniumTests.Services
         {
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            ElementKlick("DropdownServiceLogin", driver);
-            ElementKlick("DropdownImpressumLogin", driver);
-            Assert.AreEqual(Hinweise.Impressumseite, IDTextÜberprüfen("Impr", driver));
+            Element_Klicken("DropdownServiceLogin", driver);
+            Element_Klicken("DropdownImpressumLogin", driver);
+            Assert.AreEqual(Hinweise.Impressumseite, Label_Text_Zurückgeben("Impr", driver));
 
         }
 

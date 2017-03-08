@@ -66,6 +66,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Services\ObjektIDs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObjektIDs.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tests Neu.cs" />
+    <Compile Include="Tests Userstory C2-5.cs" />
+    <Compile Include="Tests Userstory C2-2.cs" />
+    <Compile Include="Tests Userstory C2-1.cs" />
+    <Compile Include="Tests Userstory U1-3.cs" />
+    <Compile Include="Tests Userstory U1-7.cs" />
+    <Compile Include="Tests Userstory U1-6.cs" />
+    <Compile Include="Tests Userstory U1-2.cs" />
     <Compile Include="Services\Fehlermeldung.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,7 +101,7 @@
       <DependentUpon>Hinweise.resx</DependentUpon>
     </Compile>
     <Compile Include="TestInitialize.cs" />
-    <Compile Include="Tests Chrome.cs" />
+    <Compile Include="Tests Userstory U1-4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +126,10 @@
     <EmbeddedResource Include="Services\NutzerDaten.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>NutzerDaten.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\ObjektIDs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ObjektIDs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Choose>
