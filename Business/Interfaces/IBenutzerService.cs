@@ -13,9 +13,12 @@ namespace Business.Interfaces
 
         List<Benutzer> FindAllBenutzers();
         List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse);
+        List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse);
 
         void AddBenutzer(Benutzer benutzer);
-        void AddMitarbeiter(Benutzer benutzer, string mitarbeiterGruppe);
+        void AddMitarbeiter(Benutzer benutzer, string gruppe);
+        void AddCaterer(Benutzer benutzer, string gruppe);
+        void AddBenutzer(Benutzer benutzer, string gruppe);
 
         void RegisterBenutzer(Benutzer benutzer);
 
@@ -29,6 +32,8 @@ namespace Business.Interfaces
         bool VerifyPasswordChange(string id, string verify);
         void EditBenutzerPassword(Benutzer benutzer);
         int GetMitarbeiterCount();
-
+        int GetCatererCount();
+        void RemoveCaterer(int benutzerId);
+        void EditCaterer(Benutzer benutzer);
     }
 }

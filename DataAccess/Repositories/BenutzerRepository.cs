@@ -79,12 +79,29 @@ namespace DataAccess.Repositories
                 .Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
         }
 
+        public List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse)
+        {
+            //ToDo BenutzerGruppen als Parameter übergeben
+            //Abfrage optimieren nur benötigte Daten abrufen
+            var benutzerGruppe = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Caterer").Single();
+            return Db.Benutzer.Include(y => y.BenutzerGruppen)
+                .ToList().Where(x => x.BenutzerGruppen.Contains(benutzerGruppe))
+                .Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
+        }
+
         public int GetMitarbeiterCount()
         {
             //Abfrage optimieren nur benötigte Daten abrufen
             var mitarbeiter = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Mitarbeiter").Single();
             var administratoren = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Administrator").Single();
             return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren)).Count();
+        }
+
+        public int GetCatererCount()
+        {
+            //Abfrage optimieren nur benötigte Daten abrufen
+            var caterer = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Caterer").Single();
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(caterer)).Count();
         }
 
 

@@ -33,6 +33,9 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, ForgottenPasswordRequestViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, ForgottenPasswordCreateNewPasswordViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, IndexBenutzerViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, IndexCatererViewModel>().ReverseMap(); 
+                cfg.CreateMap<Benutzer, CreateCatererViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, DetailsCatererViewModel>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();
@@ -74,6 +77,11 @@ namespace Caterer_DB.Models.ViewModelServices
         public Benutzer Map_CreateMitarbeiterViewModel_Benutzer(CreateMitarbeiterViewModel createMitarbeiterViewModel)
         { 
             return Mapper.Map<Benutzer>(createMitarbeiterViewModel);
+        }
+
+        public Benutzer Map_CreateCatererViewModel_Benutzer(CreateCatererViewModel createCatererViewModel)
+        {
+            return Mapper.Map<Benutzer>(createCatererViewModel);
         }
 
         public Benutzer Map_ForgottenPasswordRequestViewModel_Benutzer(ForgottenPasswordRequestViewModel forgottenPasswordRequestViewModel)
@@ -137,9 +145,19 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<DetailsBenutzerViewModel>(benutzer);
         }
 
+        public DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer)
+        {
+            return Mapper.Map<DetailsCatererViewModel>(benutzer);
+        }
+
         public CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel()
         {
             return  AddListsToCreateViewModel(new CreateMitarbeiterViewModel()); 
+        }
+
+        public CreateCatererViewModel CreateNewCreateCatererViewModel()
+        {
+            return AddListsToCreateCatererViewModel(new CreateCatererViewModel());
         }
 
         public CreateMitarbeiterViewModel UpdateCreateMitarbeiterViewModel(CreateMitarbeiterViewModel createMitarbeiterViewModel)
@@ -184,12 +202,28 @@ namespace Caterer_DB.Models.ViewModelServices
             return listViewModel;
         }
 
+        public ListViewModel<IndexCatererViewModel> GeneriereListViewModelCaterer(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10)
+        {
+            var listViewModel = new ListViewModel<IndexCatererViewModel>(gesamtAnzahlDatensätze, aktuelleSeite, seitenGröße);
+            foreach (var benutzer in benutzerListe)
+                listViewModel.Entitäten.Add(GeneriereIndexCatererViewModel(benutzer));
+
+            return listViewModel;
+        }
+
 
         public IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer)
         {
             var indexBenutzerViewModel = Mapper.Map<IndexBenutzerViewModel>(benutzer);
 
             return indexBenutzerViewModel;
+        }
+
+        public IndexCatererViewModel GeneriereIndexCatererViewModel(Benutzer benutzer)
+        {
+            var indexCatererViewModel = Mapper.Map<IndexCatererViewModel>(benutzer);
+
+            return indexCatererViewModel;
         }
 
         public CreateMitarbeiterViewModel AddListsToCreateViewModel(CreateMitarbeiterViewModel createBenutzerViewModel) {
@@ -201,6 +235,38 @@ namespace Caterer_DB.Models.ViewModelServices
                             }, "Value", "Text");
 
             return createBenutzerViewModel;
+
+        }
+
+        public CreateCatererViewModel AddListsToCreateCatererViewModel(CreateCatererViewModel createCatererViewModel)
+        {
+            createCatererViewModel.Anreden = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Herr", Value = "Herr" },
+                                new SelectListItem { Text = "Frau", Value = "Frau" }
+                            }, "Value", "Text");
+
+            createCatererViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
+                                new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
+                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
+                                new SelectListItem { Text = "Bis 40 km", Value = "Bis 40 km" },
+                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
+                                new SelectListItem { Text = "100 km +", Value = "100 km +" },
+                            }, "Value", "Text");
+
+            createCatererViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
+                                new SelectListItem { Text = "Caterer", Value = "Caterer" },
+
+                            }, "Value", "Text");
+
+            return createCatererViewModel;
 
         }
 

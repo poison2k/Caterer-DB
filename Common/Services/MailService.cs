@@ -17,11 +17,38 @@ namespace Common.Services
             SendMail(mailModel);
         }
 
+        public void SendRemoveCatererMail(string mail)
+        {
+            var mailModel = ConfigureMail();
+            mailModel.Betreff = "Sie wurden als Caterer aus der Caterer-DB entfernt";
+            mailModel.Empfaenger = mail;
+            mailModel.Inhalt = "Wir bedauern dass Sie nicht weiter in unserer Caterer Datenbank geführt werden möchten.";
+            SendMail(mailModel);
+        }
+
+        public void SendEditCatererMail(string mail)
+        {
+            var mailModel = ConfigureMail();
+            mailModel.Betreff = "Ihre Daten in der Caterer-DB wurden bearbeitet";
+            mailModel.Empfaenger = mail;
+            mailModel.Inhalt = "Ihre Daten wurden von uns aktualisiert.";
+            SendMail(mailModel);
+        }
+
 
         public void SendNewMitarbeiterMail(string passwordVerificationCode, string mail, string id)
         {
             var mailModel = ConfigureMail();
             mailModel.Betreff = "Sie wurden als neuer Mitarbeiter der Caterer-DB hinzugefügt";
+            mailModel.Empfaenger = mail;
+            mailModel.Inhalt = "Bitte folgen Sie dem folgenden Link und legen Sie ihr Passwort fest http://localhost:60003/Account/PasswordChange?verify=" + passwordVerificationCode + "&id=" + id;
+            SendMail(mailModel);
+        }
+
+        public void SendNewCatererMail(string passwordVerificationCode, string mail, string id)
+        {
+            var mailModel = ConfigureMail();
+            mailModel.Betreff = "Sie wurden als neuer Caterer der Caterer-DB hinzugefügt";
             mailModel.Empfaenger = mail;
             mailModel.Inhalt = "Bitte folgen Sie dem folgenden Link und legen Sie ihr Passwort fest http://localhost:60003/Account/PasswordChange?verify=" + passwordVerificationCode + "&id=" + id;
             SendMail(mailModel);

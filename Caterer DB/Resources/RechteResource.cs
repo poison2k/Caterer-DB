@@ -10,7 +10,9 @@
         //Administration
         public const string EditConfig = "EditConfig";
         public const string CreateMitarbeiter = "CreateMitarbeiter";
+        public const string CreateCaterer = "CreateCaterer";
         public const string IndexMitarbeiter = "IndexMitarbeiter";
+        public const string IndexCaterer = "IndexCaterer";
 
     }
 }

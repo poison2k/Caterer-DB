@@ -41,6 +41,19 @@ namespace Caterer_DB.Controllers
             
         }
 
+        // GET: Benutzer
+        [CustomAuthorize(Roles = RechteResource.IndexCaterer)]
+        public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10)
+        {
+
+            return View(BenutzerViewModelService.GeneriereListViewModelCaterer(
+                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse)
+                , BenutzerService.GetCatererCount()
+                , aktuelleSeite
+                , seitenGrösse));
+
+        }
+
         // GET: Benutzer/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,11 +72,36 @@ namespace Caterer_DB.Controllers
             return View(detailsBenutzerViewModel);
         }
 
+        // GET: Benutzer/Details/5
+        public ActionResult DetailsCaterer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            DetailsCatererViewModel detailsCatererViewModel =
+                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+
+            if (detailsCatererViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(detailsCatererViewModel);
+        }
+
         // GET: Benutzer/Create
         [CustomAuthorize(Roles = RechteResource.CreateMitarbeiter)]
         public ActionResult Create()
         {
             return View(BenutzerViewModelService.CreateNewCreateMitarbeiterViewModel());
+        }
+
+        // GET: Benutzer/CreateCaterer
+        [CustomAuthorize(Roles = RechteResource.CreateCaterer)]
+        public ActionResult CreateCaterer()
+        {
+            return View(BenutzerViewModelService.CreateNewCreateCatererViewModel());
         }
 
         // POST: Benutzer/Create
@@ -80,6 +118,30 @@ namespace Caterer_DB.Controllers
             }
 
             return View(BenutzerViewModelService.AddListsToCreateViewModel(createMitarbeiterViewModel));
+        }
+
+        // POST: Benutzer/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [CustomAuthorize(Roles = RechteResource.CreateCaterer)]
+        public ActionResult CreateCaterer(CreateCatererViewModel createCatererViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (BenutzerService.CheckEmailForRegistration(createCatererViewModel.Mail))
+                {
+                    BenutzerService.AddCaterer(BenutzerViewModelService.Map_CreateCatererViewModel_Benutzer(createCatererViewModel), BenutzerGruppenResource.Caterer);
+                }
+                else
+                {
+                    ModelState.AddModelError("", LoginResources.EMailVorhanden);
+                    return View(BenutzerViewModelService.AddListsToCreateCatererViewModel(createCatererViewModel));
+                }
+                return RedirectToAction("IndexCaterer");
+            }
+
+            return View(BenutzerViewModelService.AddListsToCreateCatererViewModel(createCatererViewModel));
+            
         }
 
         // GET: Benutzer/Edit/5
@@ -133,6 +195,24 @@ namespace Caterer_DB.Controllers
             return View(myDataBenutzerViewModel);
         }
 
+        // GET: Benutzer/Mydata/5
+        public ActionResult EditCaterer(int? id)
+        {
+            if (id == null)
+            {
+                return View("~/Views/Shared/Error.cshtml");
+            }
+
+            MyDataBenutzerViewModel myDataBenutzerViewModel =
+                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+
+            if (myDataBenutzerViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(myDataBenutzerViewModel);
+        }
+
         // POST: Benutzer/MyData/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -154,6 +234,31 @@ namespace Caterer_DB.Controllers
 
                 }
                 return RedirectToAction("Index", "Home");
+
+            }
+            return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
+        }
+
+        // POST: Benutzer/MyData/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCaterer(MyDataBenutzerViewModel myDataBenutzerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Request.Form["btnSave"] != null)
+                {
+                    BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
+                    TempData["isSaved"] = true;
+
+                }
+                else if (Request.Form["btnModalDelete"] != null)
+                {
+                    BenutzerService.RemoveCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel).BenutzerId);
+                    TempData["isAccountDeleted"] = true;
+
+                }
+                return RedirectToAction("IndexCaterer", "Benutzer");
 
             }
             return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
