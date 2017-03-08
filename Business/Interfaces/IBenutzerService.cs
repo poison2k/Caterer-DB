@@ -34,5 +34,6 @@ namespace Business.Interfaces
         int GetMitarbeiterCount();
         int GetCatererCount();
         void RemoveCaterer(int benutzerId);
+        void EditCaterer(Benutzer benutzer);
     }
 }

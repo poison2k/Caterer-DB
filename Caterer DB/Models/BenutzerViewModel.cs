@@ -155,6 +155,12 @@ namespace Caterer_DB.Models
         [Required]
         public string Nachname { get; set; }
 
+        public string Straße { get; set; }
+
+        public string Postleitzahl { get; set; }
+
+        public string Ort { get; set; }
+
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
