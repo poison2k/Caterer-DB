@@ -22,13 +22,13 @@ namespace SeleniumTests
 
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
-            TestTools.Element_Klicken("StartButton", driver);
+            TestTools.Element_Klicken(ObjektIDs.StartButton, driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("loginLinkbutton"));
+            driver.FindElement(By.Id(ObjektIDs.LoginButton));
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
 
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
@@ -48,37 +48,37 @@ namespace SeleniumTests
             //AGB
             TestTools.AGBFußzeile(driver);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //Datenschutz
             TestTools.DatenschutzFußzeile(driver);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //Kontakt
             TestTools.KontaktFußzeile(driver);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //Impressum
             TestTools.ImpressumFußzeile(driver);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //AGBs bei Lesebestätigung
             TestTools.Element_Klicken("RegAGB", driver);
             Assert.AreEqual(Hinweise.AGBseite, TestTools.Label_Text_Zurückgeben("AllgemGeschäftsbedingungen", driver));
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //Datenschutz bei Lesebestätigung
@@ -95,29 +95,29 @@ namespace SeleniumTests
             //Variante Dropdown
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //AGB
             TestTools.AGBDropdownLogout(driver);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //Datenschutz
             TestTools.DatenschutzDropdownLogout(driver);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //Kontakt
             TestTools.KontaktDropdownLogout(driver);
 
-            TestTools.Element_Klicken("DropdownLogout", driver);
-            TestTools.Element_Klicken("registerLinkhead", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Logout_RegisterButton, driver);
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
 
             //Impressum
@@ -203,18 +203,18 @@ namespace SeleniumTests
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Mail")).Clear();
-            driver.FindElement(By.Id("Mail")).SendKeys("XXX@xxx.xx");
+            driver.FindElement(By.Id(ObjektIDs.EMail_Feld)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.EMail_Feld)).SendKeys("XXX@xxx.xx");
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Mail-error", driver));
 
             //Passwort befüllen
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("12345678");
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld)).SendKeys("12345678");
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Passwort-error", driver));
 
             //Passwort wiederholen befüllen
-            driver.FindElement(By.Id("PasswortVerification")).Clear();
-            driver.FindElement(By.Id("PasswortVerification")).SendKeys("12345678");
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld_Bestätigung)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld_Bestätigung)).SendKeys("12345678");
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("PasswortVerification-error", driver));
 
             //Firmenname befüllen
@@ -284,16 +284,16 @@ namespace SeleniumTests
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Mail")).Clear();
-            driver.FindElement(By.Id("Mail")).SendKeys(LoginDaten.Name1);
+            driver.FindElement(By.Id(ObjektIDs.EMail_Feld)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.EMail_Feld)).SendKeys(LoginDaten.Name1);
 
             //Passwort befüllen
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("12345678");
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld)).SendKeys("12345678");
 
             //Passwort wiederholen befüllen
-            driver.FindElement(By.Id("PasswortVerification")).Clear();
-            driver.FindElement(By.Id("PasswortVerification")).SendKeys("12345678");
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld_Bestätigung)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld_Bestätigung)).SendKeys("12345678");
 
             //Firmenname befüllen
             driver.FindElement(By.Id(ObjektIDs.Firmanname)).Clear();
@@ -362,16 +362,16 @@ namespace SeleniumTests
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-            driver.FindElement(By.Id("Mail")).Clear();
-            driver.FindElement(By.Id("Mail")).SendKeys("projek1test@gmail.com");
+            driver.FindElement(By.Id(ObjektIDs.EMail_Feld)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.EMail_Feld)).SendKeys("projek1test@gmail.com");
 
             //Passwort befüllen
-            driver.FindElement(By.Id("Passwort")).Clear();
-            driver.FindElement(By.Id("Passwort")).SendKeys("12345678");
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld)).SendKeys("12345678");
 
             //Passwort wiederholen befüllen
-            driver.FindElement(By.Id("PasswortVerification")).Clear();
-            driver.FindElement(By.Id("PasswortVerification")).SendKeys("12345678");
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld_Bestätigung)).Clear();
+            driver.FindElement(By.Id(ObjektIDs.Passwort_Feld_Bestätigung)).SendKeys("12345678");
 
             //Firmenname befüllen
             driver.FindElement(By.Id(ObjektIDs.Firmanname)).Clear();

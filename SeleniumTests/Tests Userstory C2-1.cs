@@ -19,8 +19,8 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             
 
             //Leeren aller Daten
@@ -61,8 +61,8 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben("Lieferumkreis-error", driver));
 
             //Löschen unbestätigt abbrechen
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
 
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
 
@@ -94,8 +94,8 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken("btnSpeichern", driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
 
             //Prüfen ob alte Daten geändert worden
             Assert.AreEqual(NutzerDaten.NutzerDaten_Firmenname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
@@ -138,85 +138,85 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
 
             //Daten ändern über AGB Fußzeile abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.AGBFußzeile(driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über Datenschutzbestimmungen Fußzeile abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.DatenschutzFußzeile(driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über Kontakt Fußzeile abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.KontaktFußzeile(driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über Impressum Fußzeile abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.ImpressumFußzeile(driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über AGB Dropdown abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.AGBDropdownLogin(driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über Datenschutzbestimmungen Dropdown abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.DatenschutzDropdownLogin(driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über Kontakt Dropdown abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.KontaktDropdownLogin(driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über Impressum Dropdown abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.ImpressumDropdownLogin(driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über Eigene Daten abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über StartButton abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             driver.Navigate().GoToUrl(baseURL);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             //Daten ändern über Logout abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs.Firmanname, driver);
             TestTools.Nutzer_Ausloggen(driver);
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Eigene Daten")).Click();
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs.Firmanname, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
@@ -231,11 +231,11 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //AGBs Fußzeile
             TestTools.AGBFußzeile(driver);
@@ -243,11 +243,11 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //Datenschutzbestimmungen Fußzeile
             TestTools.DatenschutzFußzeile(driver);
@@ -255,11 +255,11 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //Kontakt Fußzeile
             TestTools.KontaktFußzeile(driver);
@@ -267,11 +267,11 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //Impressum Fußzeile
             TestTools.ImpressumFußzeile(driver);
@@ -279,11 +279,11 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //AGBs Dropdown
             TestTools.AGBDropdownLogin(driver);
@@ -291,11 +291,11 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //Datenschutzbestimmungen Dropdown
             TestTools.DatenschutzDropdownLogin(driver);
@@ -303,11 +303,11 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //Kontakt Dropdown
             TestTools.KontaktDropdownLogin(driver);
@@ -315,11 +315,11 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //Impressum Dropdown
             TestTools.ImpressumDropdownLogin(driver);
@@ -327,14 +327,14 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
 
             //StartButton
-            TestTools.Element_Klicken("StartButton", driver);
+            TestTools.Element_Klicken(ObjektIDs.StartButton, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
             TestTools.Nutzer_Ausloggen(driver);
 
@@ -343,15 +343,15 @@ namespace SeleniumTests
             //Änderung durchführen
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen("caterer1@test.de", LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Name2, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken("DropdownLogin", driver);
-            driver.FindElement(By.LinkText("Passwort ändern")).Click();
-            Assert.AreEqual("Neues Passwort", TestTools.Label_Text_Zurückgeben("PasswortChange", driver));
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "Passwort", driver);
-            TestTools.Daten_In_Textbox_Eingeben("ZZZZZZZZ", "PasswortVerification", driver);
+            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs.Dropdown_Login_PW_Ändern)).Click();
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs.PW_Ändern_Seite, driver));
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW2, ObjektIDs.Passwort_Feld_Bestätigung, driver);
             TestTools.Element_Klicken("Abschicken", driver);
-            Assert.AreEqual(Hinweise.PW_Änderung_Erfolgreich, TestTools.Label_Text_Zurückgeben("Passwort", driver));
+            Assert.AreEqual(Hinweise.PW_Änderung_Erfolgreich, TestTools.Label_Text_Zurückgeben(ObjektIDs.Passwort_Feld, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 

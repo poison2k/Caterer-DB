@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using SeleniumTests.Services;
 using System;
 using System.Text;
 
@@ -44,9 +45,9 @@ namespace SeleniumTests
         {
             driver.Navigate().GoToUrl(baseURL);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
-            driver.FindElement(By.Id("loginLinkbutton"));
+            driver.FindElement(By.Id(ObjektIDs.LoginButton));
 
-            Assert.AreEqual(Services.Hinweise.Startseite, driver.Title);
+            Assert.AreEqual(Hinweise.Startseite, driver.Title);
         }
 
         [TearDown]

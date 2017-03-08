@@ -123,6 +123,24 @@
   <data name="Ansprechpartner" xml:space="preserve">
     <value>FunktionAnsprechpartner</value>
   </data>
+  <data name="Dropdown_Login" xml:space="preserve">
+    <value>DropdownLogin</value>
+  </data>
+  <data name="Dropdown_Logout" xml:space="preserve">
+    <value>DropdownLogout</value>
+  </data>
+  <data name="Dropdown_Logout_LoginButton" xml:space="preserve">
+    <value>loginLinkhead</value>
+  </data>
+  <data name="Dropdown_Logout_RegisterButton" xml:space="preserve">
+    <value>registerLinkhead</value>
+  </data>
+  <data name="EMail_Feld" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="EMail_Feld_Login" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="Fax" xml:space="preserve">
     <value>Fax</value>
   </data>
@@ -144,6 +162,12 @@
   <data name="Ort" xml:space="preserve">
     <value>Ort</value>
   </data>
+  <data name="Passwort_Feld" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="Passwort_Feld_Bestätigung" xml:space="preserve">
+    <value>PasswortVerification</value>
+  </data>
   <data name="PLZ" xml:space="preserve">
     <value>Postleitzahl</value>
   </data>
@@ -155,5 +179,53 @@
   </data>
   <data name="Vorname" xml:space="preserve">
     <value>Vorname</value>
+  </data>
+  <data name="Eigene_Daten" xml:space="preserve">
+    <value>Eigene Daten</value>
+  </data>
+  <data name="DropdownAGBLogin" xml:space="preserve">
+    <value>DropdownAGBLogin</value>
+  </data>
+  <data name="DropdownAGBLogout" xml:space="preserve">
+    <value>DropdownAGBLogout</value>
+  </data>
+  <data name="DropdownDatenschutzLogin" xml:space="preserve">
+    <value>DropdownDatenschutzLogin</value>
+  </data>
+  <data name="DropdownDatenschutzLogout" xml:space="preserve">
+    <value>DropdownDatenschutzLogout</value>
+  </data>
+  <data name="DropdownImpressumLogin" xml:space="preserve">
+    <value>DropdownImpressumLogin</value>
+  </data>
+  <data name="DropdownImpressumLogout" xml:space="preserve">
+    <value>DropdownImpressumLogout</value>
+  </data>
+  <data name="DropdownKontaktLogin" xml:space="preserve">
+    <value>DropdownKontaktLogin</value>
+  </data>
+  <data name="DropdownKontaktLogout" xml:space="preserve">
+    <value>DropdownKontaktLogout</value>
+  </data>
+  <data name="Dropdown_Login_Ausloggen" xml:space="preserve">
+    <value>Ausloggen</value>
+  </data>
+  <data name="Dropdown_Login_PW_Ändern" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="Dropdown_Service_Login" xml:space="preserve">
+    <value>DropdownServiceLogin</value>
+  </data>
+  <data name="Dropdown_Service_Logout" xml:space="preserve">
+    <value>DropdownServiceLogout</value>
+  </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>loginLinkbutton</value>
+  </data>
+  <data name="PW_Ändern_Seite" xml:space="preserve">
+    <value>PasswortChange</value>
+  </data>
+  <data name="StartButton" xml:space="preserve">
+    <value>StartButton</value>
   </data>
 </root>

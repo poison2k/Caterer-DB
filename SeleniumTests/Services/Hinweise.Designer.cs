@@ -124,6 +124,15 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Neues Passwort ähnelt.
+        /// </summary>
+        internal static string PW_Ändern_Seite {
+            get {
+                return ResourceManager.GetString("PW_Ändern_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Bestätigung der Passwortänderung ähnelt.
         /// </summary>
         internal static string PW_Änderung_Bestätigung {
