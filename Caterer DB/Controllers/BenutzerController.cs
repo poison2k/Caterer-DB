@@ -79,7 +79,7 @@ namespace Caterer_DB.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(createMitarbeiterViewModel);
+            return View(BenutzerViewModelService.AddListsToCreateViewModel(createMitarbeiterViewModel));
         }
 
         // GET: Benutzer/Edit/5
