@@ -291,6 +291,9 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
+        [DisplayName(@"Funktion")]
+        public string FunktionAnsprechpartner { get; set; }
+
         [Required]
         [EmailAddress]
         public string Mail { get; set; }
