@@ -102,9 +102,9 @@
     <div class="col-md-4 col-md-offset-4 text-center">
         <ul class="list-unstyled list-inline ">
             <li>
-                <button type="submit" class="btn btn-default">
-                    @Html.ActionLink("Mitarbeiter bearbeiten", "Edit", new { id = Model.BenutzerId })
-                </button>
+                <a class="btn btn-default" href="@Url.Action("Edit", "Benutzer", new {id = Model.BenutzerId})" >
+                    Mitarbeiter bearbeiten
+                </a>
             </li>
             <li>
                 <a class="btn btn-default" href="/Benutzer/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
