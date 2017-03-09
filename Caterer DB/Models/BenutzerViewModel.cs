@@ -479,7 +479,7 @@ namespace Caterer_DB.Models
         public string Organisationsform { get; set; }
 
         [Required]
-        [DisplayName(@"Funktion des Ansprechpartners")]
+        [DisplayName(@"Funktion")]
         public string FunktionAnsprechpartner { get; set; }
 
         [Required]
@@ -491,7 +491,7 @@ namespace Caterer_DB.Models
         public string Fax { get; set; }
 
         [Required]
-        [DisplayName(@"Straße und Hausnummer")]
+        [DisplayName(@"Straße")]
         public string Straße { get; set; }
 
         [Required]
