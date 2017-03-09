@@ -68,20 +68,9 @@ namespace DataAccess.Repositories
 
         }
 
-        public List<Benutzer> SearchAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse)
-        {
-            //ToDo BenutzerGruppen als Parameter übergeben
-            //Abfrage optimieren nur benötigte Daten abrufen
-            var benutzerGruppe = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Mitarbeiter").Single();
-            var administratoren = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Administrator").Single();
-            return Db.Benutzer.Include(y => y.BenutzerGruppen)
-                .ToList().Where(x => x.BenutzerGruppen.Contains(benutzerGruppe) || x.BenutzerGruppen.Contains(administratoren))
-                .Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
-        }
 
-        public List<Benutzer> SearchAllUserByUSerGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy)
+        public List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy)
         {
-
             var mitarbeiterQuery = Db.Benutzer.Include(x => x.BenutzerGruppen);
             int count = 0;
             foreach (string benutzerGruppe in BenutzerGruppen)
@@ -102,52 +91,7 @@ namespace DataAccess.Repositories
             return mitarbeiterQuery.ToList();
         }
 
-        private IQueryable<Benutzer> SortFilter(IQueryable<Benutzer> query, string orderBy)
-        {
-
-           
-                switch (orderBy)
-                {
-                    case "BenutzerId":
-                        query = query.OrderBy(x => x.BenutzerId);
-                        break;
-                    case "BenutzerId_desc":
-                        query = query.OrderByDescending(x => x.BenutzerId);
-                        break;
-                    case "Nachname":
-                        query = query.OrderBy(x => x.Nachname);
-                        break;
-                    case "Nachname_desc":
-                        query = query.OrderByDescending(x => x.Nachname);
-                        break;
-                    case "Vorname":
-                        query = query.OrderBy(x => x.Vorname);
-                        break;
-                    case "Vorname_desc":
-                        query = query.OrderByDescending(x => x.Vorname);
-                        break;
-                    case "PLZ":
-                        query = query.OrderBy(x => x.Postleitzahl);
-                        break;
-                    case "PLZ_desc":
-                        query = query.OrderByDescending(x => x.Postleitzahl);
-                        break;
-                    case "Ort":
-                        query = query.OrderBy(x => x.Ort);
-                        break;
-                    case "Ort_desc":
-                        query = query.OrderByDescending(x => x.Ort);
-                        break;
-                    case "Anrede":
-                        query = query.OrderBy(x => x.Anrede);
-                        break;
-                    case "Anrede_desc":
-                        query = query.OrderByDescending(x => x.Anrede);
-                        break;
-            }
-            
-            return query;
-        }
+        
 
         public List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse)
         {
@@ -194,6 +138,100 @@ namespace DataAccess.Repositories
             Db.Set<Benutzer>().Remove(benutzer);
             Db.SaveChanges();
 
+        }
+
+        private IQueryable<Benutzer> SortFilter(IQueryable<Benutzer> query, string orderBy)
+        {
+
+            switch (orderBy)
+            {
+                case "BenutzerId":
+                    query = query.OrderBy(x => x.BenutzerId);
+                    break;
+                case "BenutzerId_desc":
+                    query = query.OrderByDescending(x => x.BenutzerId);
+                    break;
+                case "Anrede":
+                    query = query.OrderBy(x => x.Anrede);
+                    break;
+                case "Anrede_desc":
+                    query = query.OrderByDescending(x => x.Anrede);
+                    break;
+                case "Nachname":
+                    query = query.OrderBy(x => x.Nachname);
+                    break;
+                case "Nachname_desc":
+                    query = query.OrderByDescending(x => x.Nachname);
+                    break;
+                case "Vorname":
+                    query = query.OrderBy(x => x.Vorname);
+                    break;
+                case "Vorname_desc":
+                    query = query.OrderByDescending(x => x.Vorname);
+                    break;
+                case "PLZ":
+                    query = query.OrderBy(x => x.Postleitzahl);
+                    break;
+                case "PLZ_desc":
+                    query = query.OrderByDescending(x => x.Postleitzahl);
+                    break;
+                case "Ort":
+                    query = query.OrderBy(x => x.Ort);
+                    break;
+                case "Ort_desc":
+                    query = query.OrderByDescending(x => x.Ort);
+                    break;
+                case "Telefon":
+                    query = query.OrderBy(x => x.Telefon);
+                    break;
+                case "Telefon_desc":
+                    query = query.OrderByDescending(x => x.Telefon);
+                    break;
+                case "Strasse":
+                    query = query.OrderBy(x => x.Straße);
+                    break;
+                case "Strasse_desc":
+                    query = query.OrderByDescending(x => x.Straße);
+                    break;
+                case "Organisationsform":
+                    query = query.OrderBy(x => x.Organisationsform);
+                    break;
+                case "Organisationsform_desc":
+                    query = query.OrderByDescending(x => x.Organisationsform);
+                    break;
+                case "Firmenname":
+                    query = query.OrderBy(x => x.Firmenname);
+                    break;
+                case "Firmenname_desc":
+                    query = query.OrderByDescending(x => x.Firmenname);
+                    break;
+                case "FunktionAnsprechpartner":
+                    query = query.OrderBy(x => x.FunktionAnsprechpartner);
+                    break;
+                case "FunktionAnsprechpartner_desc":
+                    query = query.OrderByDescending(x => x.FunktionAnsprechpartner);
+                    break;
+                case "Internetadresse":
+                    query = query.OrderBy(x => x.Internetadresse);
+                    break;
+                case "Internetadresse_desc":
+                    query = query.OrderByDescending(x => x.Internetadresse);
+                    break;
+                case "Lieferumkreis":
+                    query = query.OrderBy(x => x.Lieferumkreis);
+                    break;
+                case "Lieferumkreis_desc":
+                    query = query.OrderByDescending(x => x.Lieferumkreis);
+                    break;
+                case "Mail":
+                    query = query.OrderBy(x => x.Mail);
+                    break;
+                case "Mail_desc":
+                    query = query.OrderByDescending(x => x.Mail);
+                    break;
+            }
+
+            return query;
         }
 
 

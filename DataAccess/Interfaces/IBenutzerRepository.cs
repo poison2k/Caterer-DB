@@ -22,9 +22,8 @@ namespace DataAccess.Interfaces
         List<Benutzer> SearchUserByCity(string city);
         List<Benutzer> SearchUserByPostcode(string postcode);
         List<Benutzer> SearchUserBySurname(string surname);
-        List<Benutzer> SearchAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse);
         List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse);
-        List<Benutzer> SearchAllUserByUSerGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy = "");
+        List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy = "");
 
         int GetMitarbeiterCount();
         int GetCatererCount();

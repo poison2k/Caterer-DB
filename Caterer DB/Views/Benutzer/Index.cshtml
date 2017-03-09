@@ -81,10 +81,32 @@
                                         }
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon)
+                                        @if (ViewBag.Sortierrung == "Telefon")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung = "Telefon_desc"})">@Html.DisplayNameFor(model => model.FirstOrDefault().Telefon) <b class="caret"></b> </a>
+                                        }
+                                        else if (ViewBag.Sortierrung == "Telefon_desc")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b> </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon)  </a>
+                                        }
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.FirstOrDefault().FunktionAnsprechpartner)
+                                        @if (ViewBag.Sortierrung == "FunktionAnsprechpartner")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung = "FunktionAnsprechpartner_desc"})">@Html.DisplayNameFor(model => model.FirstOrDefault().FunktionAnsprechpartner) <b class="caret"></b> </a>
+                                        }
+                                        else if (ViewBag.Sortierrung == "FunktionAnsprechpartner_desc")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "FunktionAnsprechpartner"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().FunktionAnsprechpartner) <b class="caret caret-reversed"></b> </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "FunktionAnsprechpartner"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().FunktionAnsprechpartner)  </a>
+                                        }
                                     </th>
 
                                     <th></th>
