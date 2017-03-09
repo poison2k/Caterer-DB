@@ -229,6 +229,12 @@ namespace DataAccess.Repositories
                 case "Mail_desc":
                     query = query.OrderByDescending(x => x.Mail);
                     break;
+                case "Postleitzahl":
+                    query = query.OrderBy(x => x.Postleitzahl);
+                    break;
+                case "Postleitzahl_desc":
+                    query = query.OrderByDescending(x => x.Postleitzahl);
+                    break;
             }
 
             return query;

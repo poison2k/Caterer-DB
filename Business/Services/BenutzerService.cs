@@ -63,17 +63,19 @@ namespace Business.Services
             return BenutzerRepository.SearchUser();
         }
 
-        public List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse, string Sortierrung)
+        public List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung)
         {
             var benutzerGruppen = new List<string>() { "Administrator", "Mitarbeiter" };
 
-            return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, Sortierrung);
+            return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung);
            
         }
 
-        public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse)
+        public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung)
         {
-            return BenutzerRepository.SearchAllCatererWithPaging(aktuelleSeite, seitenGroesse);
+            var benutzerGruppen = new List<string>() { "Caterer" };
+
+            return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung);
         }
 
 
@@ -215,7 +217,7 @@ namespace Business.Services
 
         public int GetCatererCount()
         {
-            return BenutzerRepository.GetMitarbeiterCount();
+            return BenutzerRepository.GetCatererCount();
         }
     }
 }

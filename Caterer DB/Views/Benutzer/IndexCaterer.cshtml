@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Caterer_DB.Models.IndexCatererViewModel>
+﻿@using PagedList.Mvc
+@using Caterer_DB.Models
+@model ListViewModel<IndexCatererViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -6,8 +8,8 @@
 
 @using (Html.BeginForm())
 {
-    
-        <div style="margin-top: 15px"></div>
+
+    <div style="margin-top: 15px"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -22,10 +24,103 @@
                     </div>
                     <div style="margin-top: 15px"></div>
                     <div class="row" id="BenutzerIndexPartial">
-                        @{Html.RenderPartial("_ListViewCaterer", Model);}
+
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Caterer</div>
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>
+                                            @if (ViewBag.Sortierrung == "Firmenname")
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname_desc" })"> @Html.DisplayNameFor(model => model.FirstOrDefault().Firmenname) <b class="caret"></b> </a>
+                                            }
+                                            else if (ViewBag.Sortierrung == "Firmenname_desc")
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Firmenname"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname" })"> @Html.DisplayNameFor(model => model.FirstOrDefault().Firmenname)  </a>
+                                            }
+                                        </th>
+                                        <th>
+                                            @if (ViewBag.Sortierrung == "Telefon")
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Telefon_desc"})">@Html.DisplayNameFor(model => model.FirstOrDefault().Telefon) <b class="caret"></b> </a>
+                                            }
+                                            else if (ViewBag.Sortierrung == "Telefon_desc")
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b> </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon)  </a>
+                                            }
+                                        </th>
+                                        <th>
+                                            @if (ViewBag.Sortierrung == "Postleitzahl")
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Postleitzahl_desc"})">@Html.DisplayNameFor(model => model.FirstOrDefault().Postleitzahl) <b class="caret"></b> </a>
+                                            }
+                                            else if (ViewBag.Sortierrung == "Postleitzahl_desc")
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Postleitzahl"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Postleitzahl) <b class="caret caret-reversed"></b> </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Postleitzahl"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Postleitzahl)  </a>
+                                            }
+
+                                        </th>
+                                        <th>
+                                            @if (ViewBag.Sortierrung == "Ort")
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Ort_desc"})">@Html.DisplayNameFor(model => model.FirstOrDefault().Ort) <b class="caret"></b> </a>
+                                            }
+                                            else if (ViewBag.Sortierrung == "Ort_desc")
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Ort"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Ort) <b class="caret caret-reversed"></b> </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Ort"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Ort)  </a>
+                                            }
+                                        </th>
+
+                                        <th></th>
+                                    </tr>
+
+                                    @foreach (var item in Model.Entitäten)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.Firmenname)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Postleitzahl)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Ort)</td>
+
+                                            <td>
+                                                <a class="btn btn-default" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+
+                            @if (Model.TotalItemCount > Model.PageSize)
+                            {
+                                var seitenAnzahl = Model.TotalItemCount / Model.PageSize + 1;
+
+                                <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
+                                <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
+                                    Seite @Model.PageNumber von @(seitenAnzahl)
+                                    @Html.PagedListPager(Model, aktuelleSeite => Url.Action("IndexCaterer", new { aktuelleSeite, Model.PageSize, Sortierrung = ViewBag.Sortierrung }))
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-                            }
+}

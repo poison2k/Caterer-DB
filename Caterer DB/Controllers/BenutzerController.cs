@@ -44,11 +44,12 @@ namespace Caterer_DB.Controllers
 
         // GET: Benutzer
         [CustomAuthorize(Roles = RechteResource.IndexCaterer)]
-        public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10)
+        public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
         {
+            ViewBag.Sortierrung = Sortierrung;
 
             return View(BenutzerViewModelService.GeneriereListViewModelCaterer(
-                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse)
+                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung)
                 , BenutzerService.GetCatererCount()
                 , aktuelleSeite
                 , seitenGrösse));

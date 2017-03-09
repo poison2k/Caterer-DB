@@ -249,6 +249,33 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
             }
 
+            for (int i = 0; i < 20; i++)
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "Caterer" + i + "@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Caterer" + i,
+                    Vorname = "Vorname" + i,
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Firma" + i,
+                    Internetadresse = "-",
+                    Lieferumkreis = "-",
+                    Organisationsform = "-",
+                    Telefon = "-",
+                    Fax = "-",
+                    Straße = "-",
+                    Postleitzahl = "-",
+                    Ort = "-",
+                    Anrede = "Frau",
+                    FunktionAnsprechpartner = "-",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+
+            }
+
             db.SaveChanges();
         }
     }
