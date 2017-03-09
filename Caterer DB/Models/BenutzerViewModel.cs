@@ -21,6 +21,10 @@ namespace Caterer_DB.Models
         public string Nachname { get; set; }
 
         public string Telefon { get; set; }
+
+        [DisplayName(@"Teamleiter")]
+        public string FunktionAnsprechpartner { get; set; }
+
     }
 
 
@@ -165,6 +169,7 @@ namespace Caterer_DB.Models
         public string Telefon { get; set; }
 
         [Required]
+        [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
 
@@ -178,6 +183,8 @@ namespace Caterer_DB.Models
     {
         [Key]
         public int BenutzerId { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
 
         [Required]
         public string Anrede { get; set; }
@@ -202,6 +209,10 @@ namespace Caterer_DB.Models
         public string Ort { get; set; }
 
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
+
+        [Required]
+        [DisplayName(@"Funktion")]
+        public string FunktionAnsprechpartner { get; set; }
     }
 
 

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Caterer_DB.Resources
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,7 +16,7 @@
     }
 </head>
 <body>
-    
+
     <div class="navbar  navbar-fixed-top" id="topnavbar">
         <div class="container" id="banner">
             <div class="row">
@@ -35,7 +36,29 @@
                     @Html.ActionLink("Start", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", id = "StartButton" })
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav"></ul>
+                    @if (Request.IsAuthenticated)
+                    {
+
+                        if (User.HatDasRecht(RechteResource.MenueCaterer))
+                        {
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown" , id="DropdownServiceLogout">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class='glyphicon glyphicon-info-sign'></i><b class="caret"></b>
+                                    </a>
+
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("AGB", "AGB", "Home", null, new { id = "DropdownAGBLogout" })</li>
+                                        <li>@Html.ActionLink("Datenschutz", "Datenschutz", "Home", null, new { id = "DropdownDatenschutzLogout" })</li>
+                                        <li>@Html.ActionLink("Kontakt", "Contact", "Home", null, new { id = "DropdownKontaktLogout" })</li>
+                                        <li>@Html.ActionLink("Impressum", "Impressum", "Home", null, new { id = "DropdownImpressumLogout" })</li>
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        }
+                    }
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>
@@ -45,7 +68,7 @@
         <div class="spacer">
             &nbsp;
         </div>
-       
+
         <div class="mybg">
             @RenderBody()
         </div>
@@ -56,19 +79,13 @@
                 <div class="col-md-4">
                     <img class="center-block" src="~/Content/Images/Logo_Ministerium.png" />
                 </div>
-
-
                 <div class="col-md-4">
-
                     <ul class="navbar nav nav-justified">
                         <li><a href="/Home/AGB" id="AGB">AGB</a></li>
                         <li><a href="/Home/Datenschutz" id="Datenschutz">Datenschutz</a></li>
                         <li><a href="/Home/Contact" id="Kontakt">Kontakt</a></li>
                         <li><a href="/Home/Impressum" id="Impressum">Impressum</a></li>
                     </ul>
-                </div>
-                <div class="col-md-4">
-
                 </div>
             </div>
         </footer>
