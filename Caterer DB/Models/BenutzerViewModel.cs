@@ -21,6 +21,10 @@ namespace Caterer_DB.Models
         public string Nachname { get; set; }
 
         public string Telefon { get; set; }
+
+        [DisplayName(@"Teamleiter")]
+        public string FunktionAnsprechpartner { get; set; }
+
     }
 
 
@@ -207,7 +211,7 @@ namespace Caterer_DB.Models
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
 
         [Required]
-        [DisplayName(@"Funktion des Mitarbeiters")]
+        [DisplayName(@"Funktion")]
         public string FunktionAnsprechpartner { get; set; }
     }
 

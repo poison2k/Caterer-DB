@@ -49,6 +49,9 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon)
                                     </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstOrDefault().FunktionAnsprechpartner)
+                                    </th>
 
                                     <th></th>
                                 </tr>
@@ -59,7 +62,8 @@
                                         <td>@Html.DisplayFor(modelItem => item.Anrede)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Nachname)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Vorname)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Telefon)</td>    
+                                        <td>@Html.DisplayFor(modelItem => item.FunktionAnsprechpartner)</td>                                   
 
                                         <td align="center">
                                             <a class="btn btn-default" href="@Url.Action("Details", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
