@@ -41,7 +41,7 @@
                         </div>
                         <div class="row">                           
                         </div>
-                        <div class="row">
+                        @*<div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label " })
@@ -49,7 +49,7 @@
                                     @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -71,14 +71,23 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label " })
+                                    @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>      
+                        @*<div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
                                     @Html.LabelFor(model => model.FunktionAnsprechpartner, htmlAttributes: new { @class = "control-label " })
                                     @Html.EditorFor(model => model.FunktionAnsprechpartner, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.FunktionAnsprechpartner, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
 
-                        <div class="row">
+                        @*<div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Straße, htmlAttributes: new { @class = "control-label" })
@@ -86,8 +95,8 @@
                                     @Html.ValidationMessageFor(model => model.Straße, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div>*@
+                        @*<div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
 
@@ -96,8 +105,8 @@
                                     @Html.ValidationMessageFor(model => model.Postleitzahl, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div>*@
+                        @*<div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Ort, htmlAttributes: new { @class = "control-label" })
@@ -105,23 +114,15 @@
                                     @Html.ValidationMessageFor(model => model.Ort, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="well well-lg">
-                        <h4><i class="glyphicon glyphicon-earphone"></i> Ereichbarkeit</h4>
+                        <h4><i class="glyphicon glyphicon-user"></i> Account</h4>
                         <br />
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label " })
-                                    @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>       
+                         
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
