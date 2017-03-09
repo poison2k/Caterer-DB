@@ -38,13 +38,47 @@
                             <table class="table table-striped">
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.FirstOrDefault().Anrede)
+                                        @if (ViewBag.Sortierrung == "Anrede")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung = "Anrede_desc" })"> @Html.DisplayNameFor(model => model.FirstOrDefault().Anrede) <b class="caret"></b> </a>
+                                        }
+                                        else if (ViewBag.Sortierrung == "Anrede_desc")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Anrede"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Anrede ) <b class="caret caret-reversed"></b> </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung = "Anrede" })"> @Html.DisplayNameFor(model => model.FirstOrDefault().Anrede)  </a>
+                                        }
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.FirstOrDefault().Nachname)
+                                        @if (ViewBag.Sortierrung == "Nachname")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung = "Nachname_desc"})">@Html.DisplayNameFor(model => model.FirstOrDefault().Nachname) <b class="caret"></b> </a>
+                                        }
+                                        else if (ViewBag.Sortierrung == "Nachname_desc")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Nachname"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Nachname) <b class="caret caret-reversed"></b> </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Nachname"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Nachname)  </a>
+                                        }
+                                       
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.FirstOrDefault().Vorname)
+                                        @if (ViewBag.Sortierrung == "Vorname")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung = "Vorname_desc"})">@Html.DisplayNameFor(model => model.FirstOrDefault().Vorname) <b class="caret"></b> </a>
+                                        }
+                                        else if (ViewBag.Sortierrung == "Vorname_desc")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Vorname"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Vorname) <b class="caret caret-reversed"></b> </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Vorname"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Vorname)  </a>
+                                        }
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.FirstOrDefault().Telefon)
@@ -81,7 +115,7 @@
                             <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
                             <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
                                 Seite @Model.PageNumber von @(seitenAnzahl)
-                                @Html.PagedListPager(Model, aktuelleSeite => Url.Action("Index", new { aktuelleSeite, Model.PageSize, Sortierreihenfolge = ViewBag.AktuelleSortierung }))
+                                @Html.PagedListPager(Model, aktuelleSeite => Url.Action("Index", new { aktuelleSeite, Model.PageSize,Sortierrung = ViewBag.Sortierrung }))
                             </div>
                         }
                     </div>

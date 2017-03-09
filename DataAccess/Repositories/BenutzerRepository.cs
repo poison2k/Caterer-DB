@@ -79,7 +79,7 @@ namespace DataAccess.Repositories
                 .Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
         }
 
-        public List<Benutzer> SearchAllUserByUSerGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy, bool descending = false)
+        public List<Benutzer> SearchAllUserByUSerGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy)
         {
 
             var mitarbeiterQuery = Db.Benutzer.Include(x => x.BenutzerGruppen);
@@ -97,62 +97,55 @@ namespace DataAccess.Repositories
                 }
             }
 
-            mitarbeiterQuery = SortFilter(mitarbeiterQuery, descending, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
+            mitarbeiterQuery = SortFilter(mitarbeiterQuery, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
 
             return mitarbeiterQuery.ToList();
         }
 
-        private IQueryable<Benutzer> SortFilter(IQueryable<Benutzer> query, bool desc, string orderBy)
+        private IQueryable<Benutzer> SortFilter(IQueryable<Benutzer> query, string orderBy)
         {
 
-            if (!desc)
-            {
+           
                 switch (orderBy)
                 {
                     case "BenutzerId":
                         query = query.OrderBy(x => x.BenutzerId);
                         break;
-                    case "Nachname":
-                        query = query.OrderBy(x => x.Nachname);
-                        break;
-
-                    case "Vorname":
-                        query = query.OrderBy(x => x.Vorname);
-                        break;
-
-                    case "PLZ":
-                        query = query.OrderBy(x => x.Postleitzahl);
-                        break;
-
-                    case "Ort":
-                        query = query.OrderBy(x => x.Ort);
-                        break;
-                }
-            }
-            else
-            {
-                switch (orderBy)
-                {
-                    case "BenutzerId":
+                    case "BenutzerId_desc":
                         query = query.OrderByDescending(x => x.BenutzerId);
                         break;
                     case "Nachname":
+                        query = query.OrderBy(x => x.Nachname);
+                        break;
+                    case "Nachname_desc":
                         query = query.OrderByDescending(x => x.Nachname);
                         break;
-
                     case "Vorname":
+                        query = query.OrderBy(x => x.Vorname);
+                        break;
+                    case "Vorname_desc":
                         query = query.OrderByDescending(x => x.Vorname);
                         break;
-
                     case "PLZ":
+                        query = query.OrderBy(x => x.Postleitzahl);
+                        break;
+                    case "PLZ_desc":
                         query = query.OrderByDescending(x => x.Postleitzahl);
                         break;
-
                     case "Ort":
+                        query = query.OrderBy(x => x.Ort);
+                        break;
+                    case "Ort_desc":
                         query = query.OrderByDescending(x => x.Ort);
                         break;
-                }
+                    case "Anrede":
+                        query = query.OrderBy(x => x.Anrede);
+                        break;
+                    case "Anrede_desc":
+                        query = query.OrderByDescending(x => x.Anrede);
+                        break;
             }
+            
             return query;
         }
 

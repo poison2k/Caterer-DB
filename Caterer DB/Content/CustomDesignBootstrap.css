@@ -240,6 +240,11 @@ ul {
   vertical-align: middle;
 }
 
+.caret.caret-reversed {
+    border-top-width: 0;
+    border-bottom: 4px solid;
+}
+
 /* PageList Hintergrundfarbe Überschriften --> Noch in Arbeit <--*/
 /*th {
     background-color: rgba(255,255,255,1);

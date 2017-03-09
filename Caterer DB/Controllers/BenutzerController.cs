@@ -30,11 +30,12 @@ namespace Caterer_DB.Controllers
 
         // GET: Benutzer
         [CustomAuthorize(Roles = RechteResource.IndexMitarbeiter)]
-        public ActionResult Index(string suche, int aktuelleSeite = 1, int seitenGrösse = 10)
+        public ActionResult Index(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Nachname" )
         {
+            ViewBag.Sortierrung = Sortierrung;
 
             return View(BenutzerViewModelService.GeneriereListViewModel(
-                 BenutzerService.FindAllMitarbeiterWithPaging(aktuelleSeite, seitenGrösse)
+                 BenutzerService.FindAllMitarbeiterWithPaging(aktuelleSeite, seitenGrösse, Sortierrung)
                 , BenutzerService.GetMitarbeiterCount()
                 , aktuelleSeite
                 , seitenGrösse));

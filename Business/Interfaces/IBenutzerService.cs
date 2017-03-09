@@ -12,7 +12,7 @@ namespace Business.Interfaces
         Benutzer SearchUserByEmail(string email);
 
         List<Benutzer> FindAllBenutzers();
-        List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse);
+        List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse, string Sortierrung);
         List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse);
 
         void AddBenutzer(Benutzer benutzer);

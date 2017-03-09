@@ -63,11 +63,11 @@ namespace Business.Services
             return BenutzerRepository.SearchUser();
         }
 
-        public List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse)
+        public List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse, string Sortierrung)
         {
             var benutzerGruppen = new List<string>() { "Administrator", "Mitarbeiter" };
 
-            return BenutzerRepository.SearchAllUserByUSerGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen,"Nachname", false);
+            return BenutzerRepository.SearchAllUserByUSerGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, Sortierrung);
             //return BenutzerRepository.SearchAllMitarbeiterWithPaging(aktuelleSeite, seitenGroesse);
         }
 
