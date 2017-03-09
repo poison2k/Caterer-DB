@@ -18,7 +18,7 @@ namespace DataAccess.Repositories
 
         public Benutzer SearchUserById(int id)
         {
-            return Db.Benutzer.Include(x =>x.BenutzerGruppen).Where(x => x.BenutzerId == id).SingleOrDefault();
+            return Db.Benutzer.Include(x => x.BenutzerGruppen).Where(x => x.BenutzerId == id).SingleOrDefault();
 
         }
 
@@ -79,6 +79,83 @@ namespace DataAccess.Repositories
                 .Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
         }
 
+        public List<Benutzer> SearchAllUserByUSerGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy, bool descending = false)
+        {
+
+            var mitarbeiterQuery = Db.Benutzer.Include(x => x.BenutzerGruppen);
+            int count = 0;
+            foreach (string benutzerGruppe in BenutzerGruppen)
+            {
+                if (count == 0)
+                {
+                    mitarbeiterQuery =  mitarbeiterQuery.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()));
+                    count++;
+                }
+                else
+                {
+                   mitarbeiterQuery = mitarbeiterQuery.Union((Db.Benutzer.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()))));
+                }
+            }
+
+            mitarbeiterQuery = SortFilter(mitarbeiterQuery, descending, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
+
+            return mitarbeiterQuery.ToList();
+        }
+
+        private IQueryable<Benutzer> SortFilter(IQueryable<Benutzer> query, bool desc, string orderBy)
+        {
+
+            if (!desc)
+            {
+                switch (orderBy)
+                {
+                    case "BenutzerId":
+                        query = query.OrderBy(x => x.BenutzerId);
+                        break;
+                    case "Nachname":
+                        query = query.OrderBy(x => x.Nachname);
+                        break;
+
+                    case "Vorname":
+                        query = query.OrderBy(x => x.Vorname);
+                        break;
+
+                    case "PLZ":
+                        query = query.OrderBy(x => x.Postleitzahl);
+                        break;
+
+                    case "Ort":
+                        query = query.OrderBy(x => x.Ort);
+                        break;
+                }
+            }
+            else
+            {
+                switch (orderBy)
+                {
+                    case "BenutzerId":
+                        query = query.OrderByDescending(x => x.BenutzerId);
+                        break;
+                    case "Nachname":
+                        query = query.OrderByDescending(x => x.Nachname);
+                        break;
+
+                    case "Vorname":
+                        query = query.OrderByDescending(x => x.Vorname);
+                        break;
+
+                    case "PLZ":
+                        query = query.OrderByDescending(x => x.Postleitzahl);
+                        break;
+
+                    case "Ort":
+                        query = query.OrderByDescending(x => x.Ort);
+                        break;
+                }
+            }
+            return query;
+        }
+
         public List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse)
         {
             //ToDo BenutzerGruppen als Parameter übergeben
@@ -126,6 +203,6 @@ namespace DataAccess.Repositories
 
         }
 
-    
+
     }
 }
