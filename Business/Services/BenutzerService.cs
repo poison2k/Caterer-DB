@@ -21,7 +21,7 @@ namespace Business.Services
         private IMapper Mapper { get; set; }
 
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService,IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash)
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash)
         {
             BenutzerRepository = benutzerRepository;
             BenutzerGruppeService = benutzerGruppeService;
@@ -68,7 +68,7 @@ namespace Business.Services
             var benutzerGruppen = new List<string>() { "Administrator", "Mitarbeiter" };
 
             return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung);
-           
+
         }
 
         public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung)
@@ -131,13 +131,40 @@ namespace Business.Services
             MailService.SendForgottenPasswordMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
+        public void EditBenutzer(Benutzer editedBenutzer, bool istAdmin)
+        {
+            var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
+            var rolleVorhanden = false;
+            foreach (BenutzerGruppe benutzergruppe in dbBenutzer.BenutzerGruppen)
+            {
+                if (benutzergruppe.Bezeichnung == "Administrator")
+                {
+                    rolleVorhanden = true;
+                }
+            }
+            if (istAdmin && !rolleVorhanden)
+            {
+                dbBenutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung("Administrator") };
+            }
+            else if (!istAdmin && rolleVorhanden)
+            {
+                dbBenutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung("Mitarbeiter") };
+            }
+            editedBenutzer.BenutzerGruppen = dbBenutzer.BenutzerGruppen;
+            editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
+            Mapper.Map(editedBenutzer, dbBenutzer);
+            BenutzerRepository.EditUser(dbBenutzer);
+        }
+
         public void EditBenutzer(Benutzer editedBenutzer)
         {
             var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
-
-            Mapper.Map(editedBenutzer,dbBenutzer);
+            editedBenutzer.BenutzerGruppen = dbBenutzer.BenutzerGruppen;
+            editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
+            Mapper.Map(editedBenutzer, dbBenutzer);
             BenutzerRepository.EditUser(dbBenutzer);
         }
+
 
         public void EditCaterer(Benutzer editedBenutzer)
         {
@@ -194,7 +221,7 @@ namespace Business.Services
             if (benutzer != null && verify != null)
             {
                 TimeSpan ts = DateTime.Now - benutzer.PasswortZeitstempel;
-                if (benutzer?.PasswordVerificationCode == verify && ts.Minutes < 120 )
+                if (benutzer?.PasswordVerificationCode == verify && ts.Minutes < 120)
                 {
                     return true;
                 }

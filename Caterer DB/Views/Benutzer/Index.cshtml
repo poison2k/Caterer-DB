@@ -95,18 +95,7 @@
                                         }
                                     </th>
                                     <th>
-                                        @if (ViewBag.Sortierrung == "FunktionAnsprechpartner")
-                                        {
-                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung = "FunktionAnsprechpartner_desc"})">@Html.DisplayNameFor(model => model.FirstOrDefault().FunktionAnsprechpartner) <b class="caret"></b> </a>
-                                        }
-                                        else if (ViewBag.Sortierrung == "FunktionAnsprechpartner_desc")
-                                        {
-                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "FunktionAnsprechpartner"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().FunktionAnsprechpartner) <b class="caret caret-reversed"></b> </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "FunktionAnsprechpartner"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().FunktionAnsprechpartner)  </a>
-                                        }
+                                       @Html.DisplayNameFor(model => model.FirstOrDefault().IstAdmin) 
                                     </th>
 
                                     <th></th>
@@ -119,7 +108,7 @@
                                         <td>@Html.DisplayFor(modelItem => item.Nachname)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Vorname)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Telefon)</td>    
-                                        <td>@Html.DisplayFor(modelItem => item.FunktionAnsprechpartner)</td>                                   
+                                        <td>@if (item.IstAdmin) {<div><i class="glyphicon glyphicon-ok"></i></div> } </td>                                   
 
                                         <td align="center">
                                             <a class="btn btn-default" href="@Url.Action("Details", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>

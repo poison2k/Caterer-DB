@@ -33,7 +33,7 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, ForgottenPasswordRequestViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, ForgottenPasswordCreateNewPasswordViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, IndexBenutzerViewModel>().ReverseMap();
-                cfg.CreateMap<Benutzer, IndexCatererViewModel>().ReverseMap(); 
+                cfg.CreateMap<Benutzer, IndexCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, CreateCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsCatererViewModel>().ReverseMap();
             });
@@ -75,7 +75,7 @@ namespace Caterer_DB.Models.ViewModelServices
         }
 
         public Benutzer Map_CreateMitarbeiterViewModel_Benutzer(CreateMitarbeiterViewModel createMitarbeiterViewModel)
-        { 
+        {
             return Mapper.Map<Benutzer>(createMitarbeiterViewModel);
         }
 
@@ -137,12 +137,30 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public EditBenutzerViewModel Map_Benutzer_EditBenutzerViewModel(Benutzer benutzer)
         {
-            return Mapper.Map<EditBenutzerViewModel>(benutzer);
+            var editBenutzerViewModel = Mapper.Map<EditBenutzerViewModel>(benutzer);
+            editBenutzerViewModel.IstAdmin = "false";
+            foreach (BenutzerGruppe benutzergruppe in benutzer.BenutzerGruppen) {
+                if (benutzergruppe.Bezeichnung == "Administrator") {
+                    editBenutzerViewModel.IstAdmin = "true";
+                }
+            }
+            return AddListsToEditViewModel(editBenutzerViewModel);
         }
 
         public DetailsBenutzerViewModel Map_Benutzer_DetailsBenutzerViewModel(Benutzer benutzer)
         {
-            return Mapper.Map<DetailsBenutzerViewModel>(benutzer);
+
+            var detailsBenutzerViewModel = Mapper.Map<DetailsBenutzerViewModel>(benutzer);
+            detailsBenutzerViewModel.IstAdmin = false;
+            foreach (BenutzerGruppe benutzergruppe in benutzer.BenutzerGruppen)
+            {
+                if (benutzergruppe.Bezeichnung == "Administrator")
+                {
+                    detailsBenutzerViewModel.IstAdmin = true;
+                }
+            }
+            return detailsBenutzerViewModel;
+
         }
 
         public DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer)
@@ -152,7 +170,7 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel()
         {
-            return  AddListsToCreateViewModel(new CreateMitarbeiterViewModel()); 
+            return AddListsToCreateViewModel(new CreateMitarbeiterViewModel());
         }
 
         public CreateCatererViewModel CreateNewCreateCatererViewModel()
@@ -214,8 +232,15 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer)
         {
+           
             var indexBenutzerViewModel = Mapper.Map<IndexBenutzerViewModel>(benutzer);
-
+            var istAdmin = false;
+            foreach (BenutzerGruppe benutzerGruppe in benutzer.BenutzerGruppen) {
+                if (benutzerGruppe.Bezeichnung == "Administrator") {
+                    istAdmin = true;
+                }
+            }
+            indexBenutzerViewModel.IstAdmin = istAdmin;
             return indexBenutzerViewModel;
         }
 
@@ -226,45 +251,29 @@ namespace Caterer_DB.Models.ViewModelServices
             return indexCatererViewModel;
         }
 
-        public CreateMitarbeiterViewModel AddListsToCreateViewModel(CreateMitarbeiterViewModel createBenutzerViewModel) {
-            createBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Herr", Value = "Herr" },
-                                new SelectListItem { Text = "Frau", Value = "Frau" }
-                            }, "Value", "Text");
-
+        public CreateMitarbeiterViewModel AddListsToCreateViewModel(CreateMitarbeiterViewModel createBenutzerViewModel)
+        {
+            createBenutzerViewModel.Anreden = CreateAnredenSelectList();
+            createBenutzerViewModel.JaNein = CreateJaNeinSelectList();
             return createBenutzerViewModel;
+
+        }
+
+        public EditBenutzerViewModel AddListsToEditViewModel(EditBenutzerViewModel editBenutzerViewModel)
+        {
+            editBenutzerViewModel.Anreden = CreateAnredenSelectList();
+            editBenutzerViewModel.JaNein = CreateJaNeinSelectList();
+            return editBenutzerViewModel;
 
         }
 
         public CreateCatererViewModel AddListsToCreateCatererViewModel(CreateCatererViewModel createCatererViewModel)
         {
-            createCatererViewModel.Anreden = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Herr", Value = "Herr" },
-                                new SelectListItem { Text = "Frau", Value = "Frau" }
-                            }, "Value", "Text");
+            createCatererViewModel.Anreden = CreateAnredenSelectList();
 
-            createCatererViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
-                                new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
-                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
-                                new SelectListItem { Text = "Bis 40 km", Value = "Bis 40 km" },
-                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
-                                new SelectListItem { Text = "100 km +", Value = "100 km +" },
-                            }, "Value", "Text");
+            createCatererViewModel.Lieferumkreise = CreateLieferumkreisSelectList();
 
-            createCatererViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
-                                new SelectListItem { Text = "Caterer", Value = "Caterer" },
-
-                            }, "Value", "Text");
+            createCatererViewModel.Organisationsformen = CreateOrganisationsformenSelectList();
 
             return createCatererViewModel;
 
@@ -273,47 +282,53 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel)
         {
-            registerBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Herr", Value = "Herr" },
-                                new SelectListItem { Text = "Frau", Value = "Frau" }
-                            }, "Value", "Text");
+            registerBenutzerViewModel.Anreden = CreateAnredenSelectList();
 
-            registerBenutzerViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
-                                new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
-                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
-                                new SelectListItem { Text = "Bis 40 km", Value = "Bis 40 km" },
-                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
-                                new SelectListItem { Text = "100 km +", Value = "100 km +" },
-                            }, "Value", "Text");
+            registerBenutzerViewModel.Lieferumkreise = CreateLieferumkreisSelectList();
 
-            registerBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
-                                new SelectListItem { Text = "Caterer", Value = "Caterer" },
-                              
-                            }, "Value", "Text");
+            registerBenutzerViewModel.Organisationsformen = CreateOrganisationsformenSelectList();
+
             return registerBenutzerViewModel;
         }
 
 
         public MyDataBenutzerViewModel AddListsToMyDataViewModel(MyDataBenutzerViewModel myDataBenutzerViewModel)
         {
-            myDataBenutzerViewModel.Anreden = new SelectList(new List<SelectListItem>
+            myDataBenutzerViewModel.Anreden = CreateAnredenSelectList();
+
+            myDataBenutzerViewModel.Lieferumkreise = CreateLieferumkreisSelectList();
+
+            myDataBenutzerViewModel.Organisationsformen = CreateOrganisationsformenSelectList();
+
+            return myDataBenutzerViewModel;
+        }
+
+        private SelectList CreateAnredenSelectList()
+        {
+
+            return new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
                                 new SelectListItem { Text = "Herr", Value = "Herr" },
                                 new SelectListItem { Text = "Frau", Value = "Frau" }
                             }, "Value", "Text");
+        }
 
-            myDataBenutzerViewModel.Lieferumkreise = new SelectList(new List<SelectListItem>
+        private SelectList CreateJaNeinSelectList()
+        {
+
+            return new SelectList(new List<SelectListItem>
                             {
-                               new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
+                                new SelectListItem { Text = "Nein", Value = "false" },
+                                new SelectListItem { Text = "Ja", Value = "true" }
+                            }, "Value", "Text");
+        }
+
+        private SelectList CreateLieferumkreisSelectList()
+        {
+            return new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
                                 new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
                                 new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
                                 new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
@@ -321,18 +336,18 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
                                 new SelectListItem { Text = "100 km +", Value = "100 km +" },
                             }, "Value", "Text");
+        }
 
-            myDataBenutzerViewModel.Organisationsformen = new SelectList(new List<SelectListItem>
+        private SelectList CreateOrganisationsformenSelectList()
+        {
+            return new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
                                 new SelectListItem { Text = "Mensaverein", Value = "Mensaverein" },
                                 new SelectListItem { Text = "Caterer", Value = "Caterer" },
-                                //new SelectListItem { Text = "Sonstiges", Value = "Sonstiges" }
                             }, "Value", "Text");
-            return myDataBenutzerViewModel;
         }
 
-       
 
 
     }

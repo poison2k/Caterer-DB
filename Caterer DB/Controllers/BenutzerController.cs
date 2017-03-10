@@ -116,7 +116,11 @@ namespace Caterer_DB.Controllers
             {
                 if (BenutzerService.CheckEmailForRegistration(createMitarbeiterViewModel.Mail))
                 {
-                    BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel), BenutzerGruppenResource.Mitarbeiter);
+                    if (Convert.ToBoolean(createMitarbeiterViewModel.IstAdmin)){
+                        BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel), BenutzerGruppenResource.Administrator);
+                    } else {
+                        BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel), BenutzerGruppenResource.Mitarbeiter);
+                    }
                     return RedirectToAction("Index");
                 }
                 else
@@ -160,8 +164,7 @@ namespace Caterer_DB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            EditBenutzerViewModel editBenutzerViewModel =
-                BenutzerViewModelService.Map_Benutzer_EditBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+            EditBenutzerViewModel editBenutzerViewModel = BenutzerViewModelService.Map_Benutzer_EditBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
 
             if (editBenutzerViewModel == null)
             {
@@ -177,11 +180,12 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel));
-
+              
+                    BenutzerService.EditBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel), Convert.ToBoolean(editBenutzerViewModel.IstAdmin));
+                
                 return RedirectToAction("Index");
             }
-            return View(editBenutzerViewModel);
+            return View(BenutzerViewModelService.AddListsToEditViewModel(editBenutzerViewModel));
         }
 
 

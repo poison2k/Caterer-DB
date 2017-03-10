@@ -23,6 +23,7 @@ namespace Business.Interfaces
         void RegisterBenutzer(Benutzer benutzer);
 
 
+        void EditBenutzer(Benutzer benutzer, bool istAdmin);
         void EditBenutzer(Benutzer benutzer);
         void RemoveBenutzer(int id);
         void ForgottenPasswordEmailForBenutzer(string Mail);
