@@ -71,7 +71,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 Bezeichnung = "MitarbeiterRechte",
                 Rechte = new List<Recht>() { db.Recht.Single(x => x.Bezeichnung == RechteResource.TestBlock2),
-                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.MenueCaterer) }
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.MenueCaterer),
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.IndexCaterer)}
             });
 
             db.SaveChanges();
