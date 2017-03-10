@@ -228,4 +228,22 @@
   <data name="StartButton" xml:space="preserve">
     <value>StartButton</value>
   </data>
+  <data name="DropdownMAAnzeigen" xml:space="preserve">
+    <value>MitarbeiterAnzeigen</value>
+  </data>
+  <data name="DropdownMAHinzufügen" xml:space="preserve">
+    <value>MitarbeiterHinzufügen</value>
+  </data>
+  <data name="Dropdown_Konfiguration_Login" xml:space="preserve">
+    <value>DropdownKonfigurationLogin</value>
+  </data>
+  <data name="Mitarbeiter_Bearbeiten" xml:space="preserve">
+    <value>MitarbeiterBearbeitenSeite</value>
+  </data>
+  <data name="Mitarbeiter_Seite" xml:space="preserve">
+    <value>MitarbeiterSeite</value>
+  </data>
+  <data name="Speichern" xml:space="preserve">
+    <value>btnSpeichern</value>
+  </data>
 </root>

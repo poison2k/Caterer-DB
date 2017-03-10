@@ -27,18 +27,18 @@
 
             @if (User.HatDasRecht(RechteResource.EditConfig) || User.HatDasRecht(RechteResource.CreateMitarbeiter) || User.HatDasRecht(RechteResource.IndexMitarbeiter))
             {
-                <li class="dropdown" , id="DropdownLogin">
+                <li class="dropdown" , id="DropdownKonfigurationLogin">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class='glyphicon glyphicon-cog'></i><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         @if (User.HatDasRecht(RechteResource.IndexMitarbeiter))
                         {
-                            <li>@Html.ActionLink("Mitarbeiter anzeigen", "Index", "Benutzer", null, new { id = "EinstellungenLink" })</li>
+                            <li>@Html.ActionLink("Mitarbeiter anzeigen", "Index", "Benutzer", null, new { id = "MitarbeiterAnzeigen" })</li>
                         }
                         @if (User.HatDasRecht(RechteResource.CreateMitarbeiter))
                         {
-                            <li>@Html.ActionLink("Mitarbeiter hinzufügen", "Create", "Benutzer", null, new { id = "EinstellungenLink" })</li>
+                            <li>@Html.ActionLink("Mitarbeiter hinzufügen", "Create", "Benutzer", null, new { id = "MitarbeiterHinzufügen" })</li>
                         }
                         @if (User.HatDasRecht(RechteResource.CreateMitarbeiter) || User.HatDasRecht(RechteResource.IndexMitarbeiter))
                         {
