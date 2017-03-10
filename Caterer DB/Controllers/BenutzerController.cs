@@ -30,7 +30,7 @@ namespace Caterer_DB.Controllers
 
         // GET: Benutzer
         [CustomAuthorize(Roles = RechteResource.IndexMitarbeiter)]
-        public ActionResult Index(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Nachname" )
+        public ActionResult Index(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Nachname")
         {
             ViewBag.Sortierrung = Sortierrung;
 
@@ -39,7 +39,7 @@ namespace Caterer_DB.Controllers
                 , BenutzerService.GetMitarbeiterCount()
                 , aktuelleSeite
                 , seitenGrösse));
-            
+
         }
 
         // GET: Benutzer
@@ -114,11 +114,17 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel),BenutzerGruppenResource.Mitarbeiter);
-
-                return RedirectToAction("Index");
+                if (BenutzerService.CheckEmailForRegistration(createMitarbeiterViewModel.Mail))
+                {
+                    BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel), BenutzerGruppenResource.Mitarbeiter);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", LoginResources.EMailVorhanden);
+                    return View(BenutzerViewModelService.AddListsToCreateViewModel(createMitarbeiterViewModel));
+                }
             }
-
             return View(BenutzerViewModelService.AddListsToCreateViewModel(createMitarbeiterViewModel));
         }
 
@@ -143,7 +149,7 @@ namespace Caterer_DB.Controllers
             }
 
             return View(BenutzerViewModelService.AddListsToCreateCatererViewModel(createCatererViewModel));
-            
+
         }
 
         // GET: Benutzer/Edit/5
@@ -223,12 +229,12 @@ namespace Caterer_DB.Controllers
             if (ModelState.IsValid)
             {
                 if (Request.Form["btnSave"] != null)
-                { 
+                {
                     BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
                     TempData["isSaved"] = true;
 
                 }
-                else if(Request.Form["btnModalDelete"] != null)
+                else if (Request.Form["btnModalDelete"] != null)
                 {
                     LoginService.Abmelden();
                     BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel).BenutzerId);
