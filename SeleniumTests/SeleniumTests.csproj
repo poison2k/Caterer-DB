@@ -71,7 +71,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ObjektIDs.resx</DependentUpon>
     </Compile>
-    <Compile Include="Tests Neu.cs" />
+    <Compile Include="Tests Userstory T3-1.cs" />
     <Compile Include="Tests Userstory C2-5.cs" />
     <Compile Include="Tests Userstory C2-2.cs" />
     <Compile Include="Tests Userstory C2-1.cs" />

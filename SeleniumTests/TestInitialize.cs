@@ -14,6 +14,7 @@ namespace SeleniumTests
         protected StringBuilder verificationErrors;
         protected string baseURL;
         protected string PWRequestURL;
+        protected string MAEditURL;
         protected WebDriverWait wait;
 
         [OneTimeSetUp]
@@ -22,6 +23,7 @@ namespace SeleniumTests
             driver = new ChromeDriver();
             baseURL = "http://localhost:60003/";
             PWRequestURL = "http://localhost:60003/Account/PasswordRequest";
+            MAEditURL = "http://localhost:60003/Benutzer/Edit/5";
             verificationErrors = new StringBuilder();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }

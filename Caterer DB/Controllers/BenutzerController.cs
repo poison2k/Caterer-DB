@@ -261,13 +261,13 @@ namespace Caterer_DB.Controllers
                 if (Request.Form["btnSave"] != null)
                 {
                     BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
-                    TempData["isSaved"] = true;
+                    //TempData["isSaved"] = true;
 
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
                     BenutzerService.RemoveCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel).BenutzerId);
-                    TempData["isAccountDeleted"] = true;
+                    //TempData["isAccountDeleted"] = true;
 
                 }
                 return RedirectToAction("IndexCaterer", "Benutzer");
