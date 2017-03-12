@@ -1,10 +1,8 @@
 ﻿using Business.Interfaces;
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
-using Caterer_DB.Models.ViewModelServices;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
-using DataAccess.Model;
 using System;
 using System.Net;
 using System.Web.Mvc;
@@ -189,6 +187,39 @@ namespace Caterer_DB.Controllers
         }
 
 
+        // GET: Benutzer/MeineDaten/5
+        [CustomAuthorize(Roles = RechteResource.MeineDatenMitarbeiter)]
+        public ActionResult MeineDaten(int? id)
+        {
+            if (id == null || id != User.BenutzerId)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            MeineDatenBenutzerViewModel meineDatenBenutzerViewModel = BenutzerViewModelService.Map_Benutzer_MeineDatenBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+
+            if (meineDatenBenutzerViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(meineDatenBenutzerViewModel);
+        }
+
+        // POST: Benutzer/MeineDaten/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MeineDaten(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MeineDatenBenutzerViewModel_Benutzer(meineDatenBenutzerViewModel));
+                TempData["isSaved"] = true;
+                return RedirectToAction("Index", "Home");
+            }
+            return View(BenutzerViewModelService.AddListsToMeineDatenViewModel(meineDatenBenutzerViewModel));
+        }
+
+
         // GET: Benutzer/Mydata/5
         public ActionResult MyData(int? id)
         {
@@ -197,14 +228,14 @@ namespace Caterer_DB.Controllers
                 return View("~/Views/Shared/Error.cshtml");
             }
 
-            MyDataBenutzerViewModel myDataBenutzerViewModel =
-                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+            MeineDatenBenutzerViewModel meineDatenBenutzerViewModel =
+                BenutzerViewModelService.Map_Benutzer_MeineDatenBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
 
-            if (myDataBenutzerViewModel == null)
+            if (meineDatenBenutzerViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(myDataBenutzerViewModel);
+            return View(meineDatenBenutzerViewModel);
         }
 
         // GET: Benutzer/Mydata/5
@@ -245,6 +276,7 @@ namespace Caterer_DB.Controllers
                     TempData["isAccountDeleted"] = true;
 
                 }
+              
                 return RedirectToAction("Index", "Home");
 
             }

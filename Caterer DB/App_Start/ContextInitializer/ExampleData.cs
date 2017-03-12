@@ -30,7 +30,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 new Recht() { Bezeichnung = RechteResource.IndexMitarbeiter, Beschreibung = "Anzeige aller Mitarbeiter" },
                 new Recht() { Bezeichnung = RechteResource.CreateCaterer, Beschreibung = "Caterer können angelegt werden" },
                 new Recht() { Bezeichnung = RechteResource.IndexCaterer, Beschreibung = "Anzeige aller Caterer" },
-                new Recht() { Bezeichnung = RechteResource.MenueCaterer, Beschreibung = "Menü zur Bearbeitung und Anzeige von Caterern wird angezeigt" }
+                new Recht() { Bezeichnung = RechteResource.MenueCaterer, Beschreibung = "Menü zur Bearbeitung und Anzeige von Caterern wird angezeigt" },
+                new Recht() { Bezeichnung = RechteResource.MeineDatenMitarbeiter, Beschreibung = "Mitarbeiter kann seine Daten bearbeiten" }
 
             });
             db.SaveChanges();
@@ -72,7 +73,9 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Bezeichnung = "MitarbeiterRechte",
                 Rechte = new List<Recht>() { db.Recht.Single(x => x.Bezeichnung == RechteResource.TestBlock2),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.MenueCaterer),
-                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.IndexCaterer)}
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.IndexCaterer),
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.MeineDatenMitarbeiter)}
+
             });
 
             db.SaveChanges();
@@ -224,10 +227,11 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
             });
 
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < 20; i++)
+            {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "mitarbeiter"+i+"@test.de",
+                    Mail = "mitarbeiter" + i + "@test.de",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Mitarbeiter" + i,
                     Vorname = "Vorname" + i,

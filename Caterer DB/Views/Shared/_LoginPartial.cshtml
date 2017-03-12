@@ -18,7 +18,14 @@
                     <i class='glyphicon glyphicon-user'></i><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("Eigene Daten", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
+                    @if (User.HatDasRecht(RechteResource.MeineDatenMitarbeiter))
+                    {
+                        <li>@Html.ActionLink("Eigene Daten", "MeineDaten", "Benutzer", new { Id = User.BenutzerId }, null)</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Eigene Daten", "MyData", "Benutzer", new { Id = User.BenutzerId }, null)</li>
+                    }
                     <li>@Html.ActionLink("Passwort ändern", "PasswordChange", "Account", new { Id = User.BenutzerId }, null)</li>
                     <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
                     

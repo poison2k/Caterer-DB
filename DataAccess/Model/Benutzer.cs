@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.Model
 {
+    
     public class Benutzer
     {
         [Key]

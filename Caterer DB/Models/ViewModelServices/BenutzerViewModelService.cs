@@ -36,6 +36,8 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, IndexCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, CreateCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsCatererViewModel>().ReverseMap();
+                cfg.CreateMap<Benutzer, MeineDatenBenutzerViewModel>().ReverseMap();
+
             });
 
             Mapper = config.CreateMapper();
@@ -103,6 +105,12 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             return Mapper.Map<Benutzer>(editBenutzerViewModel);
         }
+       
+
+        public Benutzer Map_MeineDatenBenutzerViewModel_Benutzer(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel)
+        {
+           return Mapper.Map<Benutzer>(meineDatenBenutzerViewModel);
+        }
 
         public Benutzer Map_MyDataBenutzerViewModel_Benutzer(MyDataBenutzerViewModel myDataBenutzerViewModel)
         {
@@ -145,6 +153,14 @@ namespace Caterer_DB.Models.ViewModelServices
                 }
             }
             return AddListsToEditViewModel(editBenutzerViewModel);
+        }
+
+        public MeineDatenBenutzerViewModel Map_Benutzer_MeineDatenBenutzerViewModel(Benutzer benutzer)
+        {
+           
+            var meineDatenBenutzerViewModel = Mapper.Map<MeineDatenBenutzerViewModel>(benutzer);
+
+            return AddListsToMeineDatenViewModel(meineDatenBenutzerViewModel);
         }
 
         public DetailsBenutzerViewModel Map_Benutzer_DetailsBenutzerViewModel(Benutzer benutzer)
@@ -259,6 +275,14 @@ namespace Caterer_DB.Models.ViewModelServices
 
         }
 
+
+        public MeineDatenBenutzerViewModel AddListsToMeineDatenViewModel(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel)
+        {
+            meineDatenBenutzerViewModel.Anreden = CreateAnredenSelectList();
+            
+            return meineDatenBenutzerViewModel;
+        }
+
         public EditBenutzerViewModel AddListsToEditViewModel(EditBenutzerViewModel editBenutzerViewModel)
         {
             editBenutzerViewModel.Anreden = CreateAnredenSelectList();
@@ -348,7 +372,6 @@ namespace Caterer_DB.Models.ViewModelServices
                             }, "Value", "Text");
         }
 
-
-
+       
     }
 }

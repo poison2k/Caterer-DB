@@ -207,6 +207,29 @@ namespace Caterer_DB.Models
        
     }
 
+    public class MeineDatenBenutzerViewModel
+    {
+        public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
+        [Required]
+        public string Anrede { get; set; }
+
+        [Key]
+        [Required]
+        public int BenutzerId { get; set; }
+
+        [Required]
+        public string Vorname { get; set; }
+
+        [Required]
+        public string Nachname { get; set; }
+
+        [DisplayName(@"Telefon (optional)")]
+        public string Telefon { get; set; }
+
+    }
+
+
 
     public class MyDataBenutzerViewModel
     {
