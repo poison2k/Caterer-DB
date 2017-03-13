@@ -1,0 +1,56 @@
+﻿@using Caterer_DB.Models
+@model BearbeiteFragebogenViewModel
+
+@{
+    ViewBag.Title = "Fragebogen";
+}
+
+<h2>Fragebogen</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+       
+        <hr />
+        @for (int i = 0; i < Model.Fragen.Count; i++)
+        {
+            <div class="row">
+                <div class="well ">
+                    <div class="form-group">
+                        @Html.HiddenFor(Model => Model.Fragen[i])
+                        <div class="row">
+                            <label class="control-label col-md-2"> Frage @(i + 1) </label>
+                            <label class="control-label col-md-10 text-left">
+                                @Model.Fragen[i].Bezeichnung
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="funkyradio">
+                                @for (int j = 0; j < Model.Fragen[i].Antworten.Count; j++)
+                                {
+                                    <div class="funkyradio-success">
+                                        @Html.RadioButton(Model.Fragen[i].FrageId.ToString(), Model.Fragen[i].Antworten[j].AntwortId.ToString(),false , new {id = "radio" + Model.Fragen[i].Antworten[j].AntwortId.ToString() } )
+                                        <label for="radio@(Model.Fragen[i].Antworten[j].AntwortId.ToString())"> @Model.Fragen[i].Antworten[j].Bezeichnung</label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
