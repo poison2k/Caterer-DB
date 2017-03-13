@@ -65,7 +65,23 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                FrageService.AddFrage(FrageViewModelService.Map_CreateFrageViewModel_Frage(createFrageViewModel));
+                if (Request.Form["btnAddAnswer"] != null)
+                {
+                    if (createFrageViewModel.Antworten == null)
+                    {
+                        createFrageViewModel.Antworten = new List<Antwort>();
+                    }
+                    
+                    createFrageViewModel.Antworten.Add(new Antwort());
+                    return View(createFrageViewModel);
+
+                }
+                else if (Request.Form["btnCreateQuestion"] != null)
+                {
+
+                    FrageService.AddFrage(FrageViewModelService.Map_CreateFrageViewModel_Frage(createFrageViewModel));
+                }
+
                 return RedirectToAction("Index");
             }
 

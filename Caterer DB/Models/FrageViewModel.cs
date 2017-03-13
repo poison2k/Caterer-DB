@@ -53,17 +53,17 @@ namespace Caterer_DB.Models
         public List<Antwort> Antworten { get; set; }
 
         public Sparte Sparte { get; set; }
-        }
+    }
 
-        public class BearbeiteFrageViewModel
-        {
-            [Key]
-            public int FrageId { get; set; }
-            [Required]
-            public string Bezeichnung { get; set; }
+    public class BearbeiteFrageViewModel
+    {
+        [Key]
+        public int FrageId { get; set; }
+        [Required]
+        public string Bezeichnung { get; set; }
 
-            public Sparte Sparte { get; set; }
+        public Sparte Sparte { get; set; }
 
-            public List<Antwort> Antworten { get; set; } 
-        }
+        public List<Antwort> Antworten { get; set; }
+    }
 }
