@@ -228,14 +228,14 @@ namespace Caterer_DB.Controllers
                 return View("~/Views/Shared/Error.cshtml");
             }
 
-            MeineDatenBenutzerViewModel meineDatenBenutzerViewModel =
-                BenutzerViewModelService.Map_Benutzer_MeineDatenBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+            MyDataBenutzerViewModel myDataBenutzerViewModel =
+                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
 
-            if (meineDatenBenutzerViewModel == null)
+            if (myDataBenutzerViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(meineDatenBenutzerViewModel);
+            return View(myDataBenutzerViewModel);
         }
 
         // GET: Benutzer/Mydata/5
