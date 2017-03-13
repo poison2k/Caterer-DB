@@ -27,12 +27,12 @@
             </div>
         </div>
 
-        @foreach (Antwort antwort in Model.Antworten)
+        @for (int i = 0; i <  Model.Antworten.Count ; i++)
         {
-            @Html.TextBoxFor(m => antwort.Bezeichnung)
+            @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
+            @Html.TextBoxFor(Model => Model.Antworten[i].Bezeichnung)<br/>
 
         }
-        @Html.EditorFor(model => model.Antworten)
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
