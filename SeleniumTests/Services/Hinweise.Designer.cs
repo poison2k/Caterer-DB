@@ -99,9 +99,18 @@ namespace SeleniumTests.Services {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Eigene Daten ähnelt.
         /// </summary>
-        internal static string Eigene_Datenseite {
+        internal static string Eigene_Datenseite_Caterer {
             get {
-                return ResourceManager.GetString("Eigene_Datenseite", resourceCulture);
+                return ResourceManager.GetString("Eigene_Datenseite_Caterer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Meine Daten bearbeiten ähnelt.
+        /// </summary>
+        internal static string Eigene_Datenseite_Mitarbeiter {
+            get {
+                return ResourceManager.GetString("Eigene_Datenseite_Mitarbeiter", resourceCulture);
             }
         }
         
@@ -129,6 +138,24 @@ namespace SeleniumTests.Services {
         internal static string Mitarbeiter_Bearbeiten {
             get {
                 return ResourceManager.GetString("Mitarbeiter_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Detailansicht Mitarbeiter ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Details {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mitarbeiter hinzufügen ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Hinzufügen {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Hinzufügen", resourceCulture);
             }
         }
         

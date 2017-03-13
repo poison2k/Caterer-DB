@@ -61,204 +61,6 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Anrede ähnelt.
-        /// </summary>
-        internal static string Anrede {
-            get {
-                return ResourceManager.GetString("Anrede", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die FunktionAnsprechpartner ähnelt.
-        /// </summary>
-        internal static string Ansprechpartner {
-            get {
-                return ResourceManager.GetString("Ansprechpartner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eigene Daten ähnelt.
-        /// </summary>
-        internal static string Dropdown_Eigene_Daten {
-            get {
-                return ResourceManager.GetString("Dropdown_Eigene_Daten", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownKonfigurationLogin ähnelt.
-        /// </summary>
-        internal static string Dropdown_Konfiguration_Login {
-            get {
-                return ResourceManager.GetString("Dropdown_Konfiguration_Login", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownLogin ähnelt.
-        /// </summary>
-        internal static string Dropdown_Login {
-            get {
-                return ResourceManager.GetString("Dropdown_Login", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Ausloggen ähnelt.
-        /// </summary>
-        internal static string Dropdown_Login_Ausloggen {
-            get {
-                return ResourceManager.GetString("Dropdown_Login_Ausloggen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Passwort ändern ähnelt.
-        /// </summary>
-        internal static string Dropdown_Login_PW_Ändern {
-            get {
-                return ResourceManager.GetString("Dropdown_Login_PW_Ändern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownLogout ähnelt.
-        /// </summary>
-        internal static string Dropdown_Logout {
-            get {
-                return ResourceManager.GetString("Dropdown_Logout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die loginLinkhead ähnelt.
-        /// </summary>
-        internal static string Dropdown_Logout_LoginButton {
-            get {
-                return ResourceManager.GetString("Dropdown_Logout_LoginButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die registerLinkhead ähnelt.
-        /// </summary>
-        internal static string Dropdown_Logout_RegisterButton {
-            get {
-                return ResourceManager.GetString("Dropdown_Logout_RegisterButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownServiceLogin ähnelt.
-        /// </summary>
-        internal static string Dropdown_Service_Login {
-            get {
-                return ResourceManager.GetString("Dropdown_Service_Login", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownServiceLogout ähnelt.
-        /// </summary>
-        internal static string Dropdown_Service_Logout {
-            get {
-                return ResourceManager.GetString("Dropdown_Service_Logout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownAGBLogin ähnelt.
-        /// </summary>
-        internal static string DropdownAGBLogin {
-            get {
-                return ResourceManager.GetString("DropdownAGBLogin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownAGBLogout ähnelt.
-        /// </summary>
-        internal static string DropdownAGBLogout {
-            get {
-                return ResourceManager.GetString("DropdownAGBLogout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownDatenschutzLogin ähnelt.
-        /// </summary>
-        internal static string DropdownDatenschutzLogin {
-            get {
-                return ResourceManager.GetString("DropdownDatenschutzLogin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownDatenschutzLogout ähnelt.
-        /// </summary>
-        internal static string DropdownDatenschutzLogout {
-            get {
-                return ResourceManager.GetString("DropdownDatenschutzLogout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownImpressumLogin ähnelt.
-        /// </summary>
-        internal static string DropdownImpressumLogin {
-            get {
-                return ResourceManager.GetString("DropdownImpressumLogin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownImpressumLogout ähnelt.
-        /// </summary>
-        internal static string DropdownImpressumLogout {
-            get {
-                return ResourceManager.GetString("DropdownImpressumLogout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownKontaktLogin ähnelt.
-        /// </summary>
-        internal static string DropdownKontaktLogin {
-            get {
-                return ResourceManager.GetString("DropdownKontaktLogin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownKontaktLogout ähnelt.
-        /// </summary>
-        internal static string DropdownKontaktLogout {
-            get {
-                return ResourceManager.GetString("DropdownKontaktLogout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterAnzeigen ähnelt.
-        /// </summary>
-        internal static string DropdownMAAnzeigen {
-            get {
-                return ResourceManager.GetString("DropdownMAAnzeigen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterHinzufügen ähnelt.
-        /// </summary>
-        internal static string DropdownMAHinzufügen {
-            get {
-                return ResourceManager.GetString("DropdownMAHinzufügen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mail ähnelt.
         /// </summary>
         internal static string EMail_Feld {
@@ -277,74 +79,11 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Fax ähnelt.
-        /// </summary>
-        internal static string Fax {
-            get {
-                return ResourceManager.GetString("Fax", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Firmenname ähnelt.
-        /// </summary>
-        internal static string Firmanname {
-            get {
-                return ResourceManager.GetString("Firmanname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Internetadresse ähnelt.
-        /// </summary>
-        internal static string Internet {
-            get {
-                return ResourceManager.GetString("Internet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Lieferumkreis ähnelt.
-        /// </summary>
-        internal static string Lieferumkreis {
-            get {
-                return ResourceManager.GetString("Lieferumkreis", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die loginLinkbutton ähnelt.
         /// </summary>
         internal static string LoginButton {
             get {
                 return ResourceManager.GetString("LoginButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Nachname ähnelt.
-        /// </summary>
-        internal static string Nachname {
-            get {
-                return ResourceManager.GetString("Nachname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Organisationsform ähnelt.
-        /// </summary>
-        internal static string Organisationsform {
-            get {
-                return ResourceManager.GetString("Organisationsform", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Ort ähnelt.
-        /// </summary>
-        internal static string Ort {
-            get {
-                return ResourceManager.GetString("Ort", resourceCulture);
             }
         }
         
@@ -367,15 +106,6 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Postleitzahl ähnelt.
-        /// </summary>
-        internal static string PLZ {
-            get {
-                return ResourceManager.GetString("PLZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die PasswortChange ähnelt.
         /// </summary>
         internal static string PW_Ändern_Seite {
@@ -390,33 +120,6 @@ namespace SeleniumTests.Services {
         internal static string StartButton {
             get {
                 return ResourceManager.GetString("StartButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Stra_e ähnelt.
-        /// </summary>
-        internal static string Straße_Nr {
-            get {
-                return ResourceManager.GetString("Straße_Nr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Telefon ähnelt.
-        /// </summary>
-        internal static string Telefon {
-            get {
-                return ResourceManager.GetString("Telefon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Vorname ähnelt.
-        /// </summary>
-        internal static string Vorname {
-            get {
-                return ResourceManager.GetString("Vorname", resourceCulture);
             }
         }
         

@@ -117,107 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Anrede" xml:space="preserve">
-    <value>Anrede</value>
-  </data>
-  <data name="Ansprechpartner" xml:space="preserve">
-    <value>FunktionAnsprechpartner</value>
-  </data>
-  <data name="Dropdown_Login" xml:space="preserve">
-    <value>DropdownLogin</value>
-  </data>
-  <data name="Dropdown_Logout" xml:space="preserve">
-    <value>DropdownLogout</value>
-  </data>
-  <data name="Dropdown_Logout_LoginButton" xml:space="preserve">
-    <value>loginLinkhead</value>
-  </data>
-  <data name="Dropdown_Logout_RegisterButton" xml:space="preserve">
-    <value>registerLinkhead</value>
-  </data>
   <data name="EMail_Feld" xml:space="preserve">
     <value>Mail</value>
   </data>
   <data name="EMail_Feld_Login" xml:space="preserve">
     <value>Email</value>
-  </data>
-  <data name="Fax" xml:space="preserve">
-    <value>Fax</value>
-  </data>
-  <data name="Firmanname" xml:space="preserve">
-    <value>Firmenname</value>
-  </data>
-  <data name="Internet" xml:space="preserve">
-    <value>Internetadresse</value>
-  </data>
-  <data name="Lieferumkreis" xml:space="preserve">
-    <value>Lieferumkreis</value>
-  </data>
-  <data name="Nachname" xml:space="preserve">
-    <value>Nachname</value>
-  </data>
-  <data name="Organisationsform" xml:space="preserve">
-    <value>Organisationsform</value>
-  </data>
-  <data name="Ort" xml:space="preserve">
-    <value>Ort</value>
-  </data>
-  <data name="Passwort_Feld" xml:space="preserve">
-    <value>Passwort</value>
-  </data>
-  <data name="Passwort_Feld_Bestätigung" xml:space="preserve">
-    <value>PasswortVerification</value>
-  </data>
-  <data name="PLZ" xml:space="preserve">
-    <value>Postleitzahl</value>
-  </data>
-  <data name="Straße_Nr" xml:space="preserve">
-    <value>Stra_e</value>
-  </data>
-  <data name="Telefon" xml:space="preserve">
-    <value>Telefon</value>
-  </data>
-  <data name="Vorname" xml:space="preserve">
-    <value>Vorname</value>
-  </data>
-  <data name="Dropdown_Eigene_Daten" xml:space="preserve">
-    <value>Eigene Daten</value>
-  </data>
-  <data name="DropdownAGBLogin" xml:space="preserve">
-    <value>DropdownAGBLogin</value>
-  </data>
-  <data name="DropdownAGBLogout" xml:space="preserve">
-    <value>DropdownAGBLogout</value>
-  </data>
-  <data name="DropdownDatenschutzLogin" xml:space="preserve">
-    <value>DropdownDatenschutzLogin</value>
-  </data>
-  <data name="DropdownDatenschutzLogout" xml:space="preserve">
-    <value>DropdownDatenschutzLogout</value>
-  </data>
-  <data name="DropdownImpressumLogin" xml:space="preserve">
-    <value>DropdownImpressumLogin</value>
-  </data>
-  <data name="DropdownImpressumLogout" xml:space="preserve">
-    <value>DropdownImpressumLogout</value>
-  </data>
-  <data name="DropdownKontaktLogin" xml:space="preserve">
-    <value>DropdownKontaktLogin</value>
-  </data>
-  <data name="DropdownKontaktLogout" xml:space="preserve">
-    <value>DropdownKontaktLogout</value>
-  </data>
-  <data name="Dropdown_Login_Ausloggen" xml:space="preserve">
-    <value>Ausloggen</value>
-  </data>
-  <data name="Dropdown_Login_PW_Ändern" xml:space="preserve">
-    <value>Passwort ändern</value>
-  </data>
-  <data name="Dropdown_Service_Login" xml:space="preserve">
-    <value>DropdownServiceLogin</value>
-  </data>
-  <data name="Dropdown_Service_Logout" xml:space="preserve">
-    <value>DropdownServiceLogout</value>
   </data>
   <data name="LoginButton" xml:space="preserve">
     <value>loginLinkbutton</value>
@@ -228,14 +132,11 @@
   <data name="StartButton" xml:space="preserve">
     <value>StartButton</value>
   </data>
-  <data name="DropdownMAAnzeigen" xml:space="preserve">
-    <value>MitarbeiterAnzeigen</value>
+  <data name="Passwort_Feld" xml:space="preserve">
+    <value>Passwort</value>
   </data>
-  <data name="DropdownMAHinzufügen" xml:space="preserve">
-    <value>MitarbeiterHinzufügen</value>
-  </data>
-  <data name="Dropdown_Konfiguration_Login" xml:space="preserve">
-    <value>DropdownKonfigurationLogin</value>
+  <data name="Passwort_Feld_Bestätigung" xml:space="preserve">
+    <value>PasswortVerification</value>
   </data>
   <data name="Zurück_Button" xml:space="preserve">
     <value>btnZurück</value>

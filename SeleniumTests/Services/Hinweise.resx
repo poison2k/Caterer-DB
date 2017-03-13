@@ -129,7 +129,7 @@
   <data name="Datenschutzseite" xml:space="preserve">
     <value>Datenschutzbestimmungen</value>
   </data>
-  <data name="Eigene_Datenseite" xml:space="preserve">
+  <data name="Eigene_Datenseite_Caterer" xml:space="preserve">
     <value>Eigene Daten</value>
   </data>
   <data name="Impressumseite" xml:space="preserve">
@@ -156,8 +156,17 @@
   <data name="PW_Ändern_Seite" xml:space="preserve">
     <value>Neues Passwort</value>
   </data>
+  <data name="Eigene_Datenseite_Mitarbeiter" xml:space="preserve">
+    <value>Meine Daten bearbeiten</value>
+  </data>
   <data name="Mitarbeiter_Bearbeiten" xml:space="preserve">
     <value>Mitarbeiter bearbeiten</value>
+  </data>
+  <data name="Mitarbeiter_Details" xml:space="preserve">
+    <value>Detailansicht Mitarbeiter</value>
+  </data>
+  <data name="Mitarbeiter_Hinzufügen" xml:space="preserve">
+    <value>Mitarbeiter hinzufügen</value>
   </data>
   <data name="Mitarbeiter_Seite" xml:space="preserve">
     <value>Mitarbeiter</value>

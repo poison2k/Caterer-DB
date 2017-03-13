@@ -61,6 +61,33 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die btnEdit ähnelt.
+        /// </summary>
+        internal static string Daten_Bearbeiten {
+            get {
+                return ResourceManager.GetString("Daten_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
+        /// </summary>
+        internal static string Eigene_Daten_Seite_Caterer {
+            get {
+                return ResourceManager.GetString("Eigene_Daten_Seite_Caterer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterBearbeitenSeite ähnelt.
+        /// </summary>
+        internal static string Eigene_Daten_Seite_Mitarbeiter {
+            get {
+                return ResourceManager.GetString("Eigene_Daten_Seite_Mitarbeiter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die btnModalCancel ähnelt.
         /// </summary>
         internal static string Löschen_Abbrechen {
@@ -106,11 +133,38 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die btnMarkierungenErstellen ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Anlegen_Button {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Anlegen_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterBearbeitenSeite ähnelt.
         /// </summary>
         internal static string Mitarbeiter_Bearbeiten {
             get {
                 return ResourceManager.GetString("Mitarbeiter_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Details {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Hinzufügen {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Hinzufügen", resourceCulture);
             }
         }
         

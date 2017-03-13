@@ -20,17 +20,17 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken("registerLink", driver);
 
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.Element_Klicken(ObjektIDs_Allgemein.StartButton, driver);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id(ObjektIDs_Allgemein.LoginButton));
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
 
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 
@@ -43,43 +43,43 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             TestTools.Element_Klicken("registerLink", driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //AGB
             TestTools.AGBFußzeile(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Datenschutz
             TestTools.DatenschutzFußzeile(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Kontakt
             TestTools.KontaktFußzeile(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Impressum
             TestTools.ImpressumFußzeile(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //AGBs bei Lesebestätigung
             TestTools.Element_Klicken("RegAGB", driver);
             Assert.AreEqual(Hinweise.AGBseite, TestTools.Label_Text_Zurückgeben("AllgemGeschäftsbedingungen", driver));
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Datenschutz bei Lesebestätigung
             TestTools.Element_Klicken("RegDatenschutz", driver);
@@ -95,30 +95,30 @@ namespace SeleniumTests
             //Variante Dropdown
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //AGB
             TestTools.AGBDropdownLogout(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Datenschutz
             TestTools.DatenschutzDropdownLogout(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Kontakt
             TestTools.KontaktDropdownLogout(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Impressum
             TestTools.ImpressumDropdownLogout(driver);
@@ -134,7 +134,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken("registerLink", driver);
 
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.Element_Klicken("btnSpeichern", driver);
 
@@ -173,7 +173,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken("registerLink", driver);
 
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.Element_Klicken("btnSpeichern", driver);
 
@@ -218,55 +218,55 @@ namespace SeleniumTests
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("PasswortVerification-error", driver));
 
             //Firmenname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Firmanname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Firmanname)).SendKeys(NutzerDaten.NutzerDaten_Firmenname);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Firmanname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Firmanname)).SendKeys(NutzerDaten.NutzerDaten_Firmenname);
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Firmenname-error", driver));
 
             //Organisationsform wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Organisationsform)).SendKeys("Caterer");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Organisationsform)).SendKeys("Caterer");
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Organisationsform-error", driver));
 
             //Straße befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Straße_Nr)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Straße_Nr)).SendKeys(NutzerDaten.NutzerDaten_Straße_Nr);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Straße_Nr)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Straße_Nr)).SendKeys(NutzerDaten.NutzerDaten_Straße_Nr);
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Stra_e-error", driver));
 
             //PLZ befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.PLZ)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.PLZ)).SendKeys(NutzerDaten.NutzerDaten_PLZ);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.PLZ)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.PLZ)).SendKeys(NutzerDaten.NutzerDaten_PLZ);
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Postleitzahl-error", driver));
 
             //Ort befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ort)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ort)).SendKeys(NutzerDaten.NutzerDaten_Ort);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ort)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ort)).SendKeys(NutzerDaten.NutzerDaten_Ort);
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Ort-error", driver));
 
             //Anrede wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Anrede)).SendKeys("Herr");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede)).SendKeys("Herr");
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Anrede-error", driver));
 
             //Vorname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Vorname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Vorname)).SendKeys(NutzerDaten.NutzerDaten_Vorname);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Vorname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Vorname)).SendKeys(NutzerDaten.NutzerDaten_Vorname);
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Vorname-error", driver));
 
             //Nachname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Nachname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Nachname-error", driver));
 
             //FunktionAnprechpartner befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ansprechpartner)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ansprechpartner)).SendKeys(NutzerDaten.NutzerDaten_Ansprechpartner);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).SendKeys(NutzerDaten.NutzerDaten_Ansprechpartner);
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("FunktionAnsprechpartner-error", driver));
 
             //Telefon befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Telefon)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Telefon)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Telefon)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Telefon)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Telefon-error", driver));
 
             //Umkreis wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Lieferumkreis)).SendKeys("Bis 30 km");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Lieferumkreis)).SendKeys("Bis 30 km");
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Lieferumkreis-error", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
@@ -280,7 +280,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken("registerLink", driver);
 
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -296,45 +296,45 @@ namespace SeleniumTests
             driver.FindElement(By.Id(ObjektIDs_Allgemein.Passwort_Feld_Bestätigung)).SendKeys("12345678");
 
             //Firmenname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Firmanname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Firmanname)).SendKeys(NutzerDaten.NutzerDaten_Firmenname);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Firmanname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Firmanname)).SendKeys(NutzerDaten.NutzerDaten_Firmenname);
 
             //Organisationsform wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Organisationsform)).SendKeys("Caterer");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Organisationsform)).SendKeys("Caterer");
 
             //Straße befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Straße_Nr)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Straße_Nr)).SendKeys(NutzerDaten.NutzerDaten_Straße_Nr);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Straße_Nr)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Straße_Nr)).SendKeys(NutzerDaten.NutzerDaten_Straße_Nr);
 
             //PLZ befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.PLZ)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.PLZ)).SendKeys(NutzerDaten.NutzerDaten_PLZ);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.PLZ)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.PLZ)).SendKeys(NutzerDaten.NutzerDaten_PLZ);
 
             //Ort befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ort)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ort)).SendKeys(NutzerDaten.NutzerDaten_Ort);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ort)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ort)).SendKeys(NutzerDaten.NutzerDaten_Ort);
 
             //Anrede wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Anrede)).SendKeys("Herr");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede)).SendKeys("Herr");
 
             //Vorname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Vorname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Vorname)).SendKeys(NutzerDaten.NutzerDaten_Vorname);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Vorname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Vorname)).SendKeys(NutzerDaten.NutzerDaten_Vorname);
 
             //Nachname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Nachname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
 
             //FunktionAnprechpartner befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ansprechpartner)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ansprechpartner)).SendKeys(NutzerDaten.NutzerDaten_Ansprechpartner);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).SendKeys(NutzerDaten.NutzerDaten_Ansprechpartner);
 
             //Telefon befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Telefon)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Telefon)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Telefon)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Telefon)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
 
             //Umkreis wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Lieferumkreis)).SendKeys("Bis 30 km");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Lieferumkreis)).SendKeys("Bis 30 km");
 
             //AGBs akzeptieren
             TestTools.Element_Klicken("AGBs", driver);
@@ -358,7 +358,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken("registerLink", driver);
 
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -374,53 +374,53 @@ namespace SeleniumTests
             driver.FindElement(By.Id(ObjektIDs_Allgemein.Passwort_Feld_Bestätigung)).SendKeys("12345678");
 
             //Firmenname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Firmanname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Firmanname)).SendKeys(NutzerDaten.NutzerDaten_Firmenname);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Firmanname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Firmanname)).SendKeys(NutzerDaten.NutzerDaten_Firmenname);
 
             //Organisationsform wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Organisationsform)).SendKeys("Caterer");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Organisationsform)).SendKeys("Caterer");
 
             //Straße befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Straße_Nr)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Straße_Nr)).SendKeys(NutzerDaten.NutzerDaten_Straße_Nr);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Straße_Nr)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Straße_Nr)).SendKeys(NutzerDaten.NutzerDaten_Straße_Nr);
 
             //PLZ befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.PLZ)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.PLZ)).SendKeys(NutzerDaten.NutzerDaten_PLZ);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.PLZ)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.PLZ)).SendKeys(NutzerDaten.NutzerDaten_PLZ);
 
             //Ort befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ort)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ort)).SendKeys(NutzerDaten.NutzerDaten_Ort);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ort)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ort)).SendKeys(NutzerDaten.NutzerDaten_Ort);
 
             //Anrede wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Anrede)).SendKeys("Herr");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede)).SendKeys("Herr");
 
             //Vorname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Vorname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Vorname)).SendKeys(NutzerDaten.NutzerDaten_Vorname);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Vorname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Vorname)).SendKeys(NutzerDaten.NutzerDaten_Vorname);
 
             //Nachname befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Nachname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
 
             //FunktionAnprechpartner befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ansprechpartner)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Ansprechpartner)).SendKeys(NutzerDaten.NutzerDaten_Ansprechpartner);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).SendKeys(NutzerDaten.NutzerDaten_Ansprechpartner);
 
             //Telefon befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Telefon)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Telefon)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Telefon)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Telefon)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
 
             //Fax befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Fax)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Fax)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Fax)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Fax)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
 
             //Internetadresse befüllen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Internet)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Internet)).SendKeys("www.test.test");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Internet)).Clear();
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Internet)).SendKeys("www.test.test");
 
             //Umkreis wählen
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.Lieferumkreis)).SendKeys("Bis 30 km");
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Lieferumkreis)).SendKeys("Bis 30 km");
 
             TestTools.Element_Klicken("btnSpeichern", driver);
 

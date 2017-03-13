@@ -74,15 +74,15 @@ namespace SeleniumTests
             driver.Navigate().GoToUrl(PWRequestURL);
 
             //Login Dropdown
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_LoginButton, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_LoginButton, driver);
             Assert.AreEqual("Login", TestTools.Label_Text_Zurückgeben("LoginPage", driver));
             driver.Navigate().GoToUrl(PWRequestURL);
 
             //Registrierung Dropdown
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 
@@ -185,8 +185,8 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.PW_Änderung_Bestätigung, TestTools.Label_Text_Zurückgeben("RegErfolg", driver));
 
             //Login Dropdown
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_LoginButton, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_LoginButton, driver);
             Assert.AreEqual("Login", TestTools.Label_Text_Zurückgeben("LoginPage", driver));
             driver.Navigate().GoToUrl(PWRequestURL);
             Assert.AreEqual("", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_Allgemein.EMail_Feld, driver));
@@ -195,9 +195,9 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.PW_Änderung_Bestätigung, TestTools.Label_Text_Zurückgeben("RegErfolg", driver));
 
             //Registrierung Dropdown
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout, driver);
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Logout_RegisterButton, driver);
-            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben("RegSeite", driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout, driver);
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Logout_RegisterButton, driver);
+            Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 

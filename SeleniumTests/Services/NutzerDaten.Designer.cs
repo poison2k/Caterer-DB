@@ -61,6 +61,15 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sebastian ähnelt.
+        /// </summary>
+        internal static string Dummy_Daten_Vorname {
+            get {
+                return ResourceManager.GetString("Dummy_Daten_Vorname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 2 ähnelt.
         /// </summary>
         internal static string NutzerDaten_Anrede_Frau {
@@ -84,6 +93,15 @@ namespace SeleniumTests.Services {
         internal static string NutzerDaten_Ansprechpartner {
             get {
                 return ResourceManager.GetString("NutzerDaten_Ansprechpartner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die projekt10test@gmail.com ähnelt.
+        /// </summary>
+        internal static string NutzerDaten_Email {
+            get {
+                return ResourceManager.GetString("NutzerDaten_Email", resourceCulture);
             }
         }
         
