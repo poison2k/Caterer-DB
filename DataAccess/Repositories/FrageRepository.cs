@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Model;
+using System.Data.Entity;
 
 namespace DataAccess.Repositories
 {
@@ -19,12 +20,12 @@ namespace DataAccess.Repositories
 
         public Frage SearchFrageById(int id)
         {
-            return Db.Frage.Where(x => x.FrageId == id).SingleOrDefault();
+            return Db.Frage.Include(x => x.Antworten).Where(x => x.FrageId == id).SingleOrDefault();
         }
 
         public List<Frage> SearchFrageBySparte(Sparte sparte)
         {
-            return Db.Frage.Where(x => x.Sparte == sparte).ToList();
+            return Db.Frage.Include(x => x.Antworten).Where(x => x.Sparte == sparte).ToList();
         }
 
         public void AddFrage(Frage frage)
@@ -47,7 +48,7 @@ namespace DataAccess.Repositories
 
         public List<Frage> SearchFrage()
         {
-            return Db.Frage.ToList();
+            return Db.Frage.Include(x => x.Antworten).ToList();
         }
     }
 }
