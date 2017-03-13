@@ -18,8 +18,8 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
-            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
+            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs_Allgemein.Dropdown_Eigene_Daten)).Click();
 
             TestTools.Element_Klicken("LöschenButton", driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
@@ -41,8 +41,8 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
 
-            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
-            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
+            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs_Allgemein.Dropdown_Eigene_Daten)).Click();
 
             TestTools.Element_Klicken("LöschenButton", driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
@@ -64,8 +64,8 @@ namespace SeleniumTests
 
             TestTools.User_Login_Durchführen(LoginDaten.Name2, LoginDaten.PW2, driver);
 
-            TestTools.Element_Klicken(ObjektIDs.Dropdown_Login, driver);
-            driver.FindElement(By.LinkText(ObjektIDs.Eigene_Daten)).Click();
+            TestTools.Element_Klicken(ObjektIDs_Allgemein.Dropdown_Login, driver);
+            driver.FindElement(By.LinkText(ObjektIDs_Allgemein.Dropdown_Eigene_Daten)).Click();
 
             TestTools.Element_Klicken("LöschenButton", driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);

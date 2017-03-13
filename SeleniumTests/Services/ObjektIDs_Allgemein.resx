@@ -180,7 +180,7 @@
   <data name="Vorname" xml:space="preserve">
     <value>Vorname</value>
   </data>
-  <data name="Eigene_Daten" xml:space="preserve">
+  <data name="Dropdown_Eigene_Daten" xml:space="preserve">
     <value>Eigene Daten</value>
   </data>
   <data name="DropdownAGBLogin" xml:space="preserve">
@@ -237,13 +237,7 @@
   <data name="Dropdown_Konfiguration_Login" xml:space="preserve">
     <value>DropdownKonfigurationLogin</value>
   </data>
-  <data name="Mitarbeiter_Bearbeiten" xml:space="preserve">
-    <value>MitarbeiterBearbeitenSeite</value>
-  </data>
-  <data name="Mitarbeiter_Seite" xml:space="preserve">
-    <value>MitarbeiterSeite</value>
-  </data>
-  <data name="Speichern" xml:space="preserve">
-    <value>btnSpeichern</value>
+  <data name="Zurück_Button" xml:space="preserve">
+    <value>btnZurück</value>
   </data>
 </root>

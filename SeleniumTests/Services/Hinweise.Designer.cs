@@ -124,6 +124,24 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mitarbeiter bearbeiten ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Bearbeiten {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mitarbeiter ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Seite {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Neues Passwort ähnelt.
         /// </summary>
         internal static string PW_Ändern_Seite {

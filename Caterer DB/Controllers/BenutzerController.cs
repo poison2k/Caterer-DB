@@ -114,9 +114,12 @@ namespace Caterer_DB.Controllers
             {
                 if (BenutzerService.CheckEmailForRegistration(createMitarbeiterViewModel.Mail))
                 {
-                    if (Convert.ToBoolean(createMitarbeiterViewModel.IstAdmin)){
+                    if (Convert.ToBoolean(createMitarbeiterViewModel.IstAdmin))
+                    {
                         BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel), BenutzerGruppenResource.Administrator);
-                    } else {
+                    }
+                    else
+                    {
                         BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel), BenutzerGruppenResource.Mitarbeiter);
                     }
                     return RedirectToAction("Index");
@@ -178,11 +181,18 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-              
+                if (Request.Form["btnSave"] != null)
+                {
                     BenutzerService.EditBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel), Convert.ToBoolean(editBenutzerViewModel.IstAdmin));
-                
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                else if (Request.Form["btnModalDelete"] != null)
+                {
+                    BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel).BenutzerId);
+                    return RedirectToAction("Index");
+                }
             }
+
             return View(BenutzerViewModelService.AddListsToEditViewModel(editBenutzerViewModel));
         }
 
@@ -212,8 +222,18 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MeineDatenBenutzerViewModel_Benutzer(meineDatenBenutzerViewModel));
-                TempData["isSaved"] = true;
+                if (Request.Form["btnSave"] != null)
+                {
+                    BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MeineDatenBenutzerViewModel_Benutzer(meineDatenBenutzerViewModel));
+                    TempData["isSaved"] = true;
+                }
+                else if (Request.Form["btnModalDelete"] != null)
+                {
+                    LoginService.Abmelden();
+                    BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_MeineDatenBenutzerViewModel_Benutzer(meineDatenBenutzerViewModel).BenutzerId);
+                    TempData["isAccountDeleted"] = true;
+
+                }
                 return RedirectToAction("Index", "Home");
             }
             return View(BenutzerViewModelService.AddListsToMeineDatenViewModel(meineDatenBenutzerViewModel));
@@ -228,14 +248,14 @@ namespace Caterer_DB.Controllers
                 return View("~/Views/Shared/Error.cshtml");
             }
 
-            MeineDatenBenutzerViewModel meineDatenBenutzerViewModel =
-                BenutzerViewModelService.Map_Benutzer_MeineDatenBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+            MyDataBenutzerViewModel myDataBenutzerViewModel =
+                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
 
-            if (meineDatenBenutzerViewModel == null)
+            if (myDataBenutzerViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(meineDatenBenutzerViewModel);
+            return View(myDataBenutzerViewModel);
         }
 
         // GET: Benutzer/Mydata/5
@@ -276,7 +296,7 @@ namespace Caterer_DB.Controllers
                     TempData["isAccountDeleted"] = true;
 
                 }
-              
+
                 return RedirectToAction("Index", "Home");
 
             }
