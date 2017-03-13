@@ -276,6 +276,7 @@
     <Compile Include="Controllers\BenutzerController.cs" />
     <Compile Include="Controllers\BenutzerGruppeController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
+    <Compile Include="Controllers\FragebogenController.cs" />
     <Compile Include="Controllers\FrageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MailController.cs" />
@@ -290,6 +291,7 @@
     <Compile Include="Interfaces\IBenutzerViewModelService.cs" />
     <Compile Include="Interfaces\IConfigViewModelService.cs" />
     <Compile Include="Interfaces\IFindCurrentUserService.cs" />
+    <Compile Include="Interfaces\IFragebogenViewModelService.cs" />
     <Compile Include="Interfaces\IFrageViewModelService.cs" />
     <Compile Include="Interfaces\ILoginService.cs" />
     <Compile Include="Interfaces\IRechteGruppeViewModelService.cs" />
@@ -300,6 +302,7 @@
     <Compile Include="Models\BenutzerViewModel.cs" />
     <Compile Include="Interfaces\IBenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ConfigViewModel.cs" />
+    <Compile Include="Models\FragebogenViewModel.cs" />
     <Compile Include="Models\FrageViewModel.cs" />
     <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\MailViewModels.cs" />
@@ -311,6 +314,7 @@
     <Compile Include="Models\ViewModelServices\BenutzerGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\ConfigViewModelService.cs" />
+    <Compile Include="Models\ViewModelServices\FragebogenViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\FrageViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\RechteGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\RechtViewModelService.cs" />
@@ -334,6 +338,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomDesignBootstrap.css" />
+    <Content Include="Content\FunkyButton.css" />
     <Content Include="Content\Images\Arnold.JPG" />
     <Content Include="Content\Images\banner.png" />
     <Content Include="Content\Images\error.jpg" />
@@ -444,6 +449,7 @@
     <Content Include="Views\Benutzer\DetailsCaterer.cshtml" />
     <Content Include="Views\Benutzer\MeineDaten.cshtml" />
     <Content Include="Views\Frage\Bearbeiten.cshtml" />
+    <Content Include="Views\Fragebogen\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

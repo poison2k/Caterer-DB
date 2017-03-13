@@ -26,7 +26,8 @@ namespace Caterer_DB
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/CustomDesignBootstrap.css"));
+                      "~/Content/CustomDesignBootstrap.css",
+                      "~/Content/FunkyButton.css"));
         }
     }
 }
