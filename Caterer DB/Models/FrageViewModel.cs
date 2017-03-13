@@ -50,7 +50,9 @@ namespace Caterer_DB.Models
         [Required]
         public string Bezeichnung { get; set; }
 
-            public Sparte Sparte { get; set; }
+        public List<Antwort> Antworten { get; set; }
+
+        public Sparte Sparte { get; set; }
         }
 
         public class BearbeiteFrageViewModel

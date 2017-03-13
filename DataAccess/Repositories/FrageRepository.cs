@@ -36,6 +36,11 @@ namespace DataAccess.Repositories
 
         public void EditFrage(Frage frage)
         {
+            foreach (var item in frage.Antworten)
+            {
+                Db.SetModified(item);
+            }
+
             Db.SetModified(frage);
             Db.SaveChanges();
         }
