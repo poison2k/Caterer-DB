@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Dummy_Daten_Vorname" xml:space="preserve">
+    <value>Sebastian</value>
+  </data>
   <data name="NutzerDaten_Anrede_Frau" xml:space="preserve">
     <value>2</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="NutzerDaten_Ansprechpartner" xml:space="preserve">
     <value>Tester</value>
+  </data>
+  <data name="NutzerDaten_Email" xml:space="preserve">
+    <value>projekt10test@gmail.com</value>
   </data>
   <data name="NutzerDaten_Firmenname" xml:space="preserve">
     <value>Testfirma</value>

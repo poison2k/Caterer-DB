@@ -81,6 +81,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ObjektIDs_NutzerDaten.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\ObjektIDs_Dropdown.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObjektIDs_Dropdown.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tests Userstory T3-1.cs" />
     <Compile Include="Tests Userstory C2-5.cs" />
     <Compile Include="Tests Userstory C2-2.cs" />
@@ -148,6 +153,10 @@
     <EmbeddedResource Include="Services\ObjektIDs_NutzerDaten.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ObjektIDs_NutzerDaten.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\ObjektIDs_Dropdown.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ObjektIDs_Dropdown.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Choose>

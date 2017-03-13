@@ -15,6 +15,7 @@ namespace SeleniumTests
         protected string baseURL;
         protected string PWRequestURL;
         protected string MAEditURL;
+        protected string MADetailURL;
         protected WebDriverWait wait;
 
         [OneTimeSetUp]
@@ -24,6 +25,7 @@ namespace SeleniumTests
             baseURL = "http://localhost:60003/";
             PWRequestURL = "http://localhost:60003/Account/PasswordRequest";
             MAEditURL = "http://localhost:60003/Benutzer/Edit/5";
+            MADetailURL = "http://localhost:60003/Benutzer/Details/5";
             verificationErrors = new StringBuilder();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }

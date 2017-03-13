@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Daten_Bearbeiten" xml:space="preserve">
+    <value>btnEdit</value>
+  </data>
+  <data name="Eigene_Daten_Seite_Caterer" xml:space="preserve">
+    <value>RegSeite</value>
+  </data>
+  <data name="Eigene_Daten_Seite_Mitarbeiter" xml:space="preserve">
+    <value>MitarbeiterBearbeitenSeite</value>
+  </data>
   <data name="Löschen_Abbrechen" xml:space="preserve">
     <value>btnModalCancel</value>
   </data>
@@ -132,8 +141,17 @@
   <data name="Löschen_Seite" xml:space="preserve">
     <value>LöschenBest</value>
   </data>
+  <data name="Mitarbeiter_Anlegen_Button" xml:space="preserve">
+    <value>btnMarkierungenErstellen</value>
+  </data>
   <data name="Mitarbeiter_Bearbeiten" xml:space="preserve">
     <value>MitarbeiterBearbeitenSeite</value>
+  </data>
+  <data name="Mitarbeiter_Details" xml:space="preserve">
+    <value>RegSeite</value>
+  </data>
+  <data name="Mitarbeiter_Hinzufügen" xml:space="preserve">
+    <value>RegSeite</value>
   </data>
   <data name="Mitarbeiter_Seite" xml:space="preserve">
     <value>MitarbeiterSeite</value>

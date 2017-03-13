@@ -59,5 +59,122 @@ namespace SeleniumTests.Services {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Anrede ähnelt.
+        /// </summary>
+        internal static string Anrede {
+            get {
+                return ResourceManager.GetString("Anrede", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die FunktionAnsprechpartner ähnelt.
+        /// </summary>
+        internal static string Ansprechpartner {
+            get {
+                return ResourceManager.GetString("Ansprechpartner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fax ähnelt.
+        /// </summary>
+        internal static string Fax {
+            get {
+                return ResourceManager.GetString("Fax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Firmenname ähnelt.
+        /// </summary>
+        internal static string Firmanname {
+            get {
+                return ResourceManager.GetString("Firmanname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Internetadresse ähnelt.
+        /// </summary>
+        internal static string Internet {
+            get {
+                return ResourceManager.GetString("Internet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Lieferumkreis ähnelt.
+        /// </summary>
+        internal static string Lieferumkreis {
+            get {
+                return ResourceManager.GetString("Lieferumkreis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Nachname ähnelt.
+        /// </summary>
+        internal static string Nachname {
+            get {
+                return ResourceManager.GetString("Nachname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Organisationsform ähnelt.
+        /// </summary>
+        internal static string Organisationsform {
+            get {
+                return ResourceManager.GetString("Organisationsform", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ort ähnelt.
+        /// </summary>
+        internal static string Ort {
+            get {
+                return ResourceManager.GetString("Ort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Postleitzahl ähnelt.
+        /// </summary>
+        internal static string PLZ {
+            get {
+                return ResourceManager.GetString("PLZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stra_e ähnelt.
+        /// </summary>
+        internal static string Straße_Nr {
+            get {
+                return ResourceManager.GetString("Straße_Nr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Telefon ähnelt.
+        /// </summary>
+        internal static string Telefon {
+            get {
+                return ResourceManager.GetString("Telefon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Vorname ähnelt.
+        /// </summary>
+        internal static string Vorname {
+            get {
+                return ResourceManager.GetString("Vorname", resourceCulture);
+            }
+        }
     }
 }
