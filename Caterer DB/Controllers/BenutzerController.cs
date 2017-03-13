@@ -178,11 +178,18 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-              
+                if (Request.Form["btnSave"] != null)
+                {
                     BenutzerService.EditBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel), Convert.ToBoolean(editBenutzerViewModel.IstAdmin));
-                
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                else if (Request.Form["btnModalDelete"] != null)
+                {
+                    BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel).BenutzerId);
+                    return RedirectToAction("Index");
+                }
             }
+
             return View(BenutzerViewModelService.AddListsToEditViewModel(editBenutzerViewModel));
         }
 
