@@ -1,8 +1,8 @@
 ﻿@using Caterer_DB.Models
-@model EditBenutzerViewModel
+@model MeineDatenBenutzerViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Meine Daten";
 }
 
 <br />
@@ -10,7 +10,7 @@
 <br />
 <div class="row">
     <div id="MitarbeiterBearbeitenSeite" class="col-md-6 col-md-offset-3 text-center">
-        <h1>Mitarbeiter bearbeiten</h1>
+        <h1>Meine Daten bearbeiten</h1>
     </div>
 </div>
 <br />
@@ -23,7 +23,6 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BenutzerId)
-        @Html.HiddenFor(model => model.Mail)
 
 
         <div class="row">
@@ -84,23 +83,6 @@
                             
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="well well-lg">
-                            <h4><i class="glyphicon glyphicon-education"></i> Account</h4>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group ">
-                                        @Html.LabelFor(model => model.IstAdmin, htmlAttributes: new { @class = "control-label " })
-                                        @Html.DropDownList("IstAdmin", Model.JaNein, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
-                                        @Html.ValidationMessageFor(model => model.IstAdmin, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="col-md-3"></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -118,16 +100,6 @@
                 </ul>
             </div>
 
-            <div class="col-md-2 col-md-offset-4">
-                <ul class="list-unstyled list-inline text-right">
-
-                    <li>
-                        <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
-                            <i class="glyphicon glyphicon-trash"></i> Konto löschen
-                        </button>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 }

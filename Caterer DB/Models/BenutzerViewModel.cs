@@ -23,7 +23,7 @@ namespace Caterer_DB.Models
         public string Telefon { get; set; }
 
         [DisplayName(@"Teamleiter")]
-        public string FunktionAnsprechpartner { get; set; }
+        public bool IstAdmin { get; set; }
 
     }
 
@@ -145,13 +145,14 @@ namespace Caterer_DB.Models
 
     public class CreateMitarbeiterViewModel
     {
-        [Key]
-        public int BenutzerId { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
 
         [Required]
         public string Anrede { get; set; }
 
-        public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
+        [Key]
+        public int BenutzerId { get; set; }
 
         [Required]
         public string Vorname { get; set; }
@@ -159,13 +160,8 @@ namespace Caterer_DB.Models
         [Required]
         public string Nachname { get; set; }
 
-        public string Straße { get; set; }
-
-        public string Postleitzahl { get; set; }
-
-        public string Ort { get; set; }
-
-        [DisplayName(@"Telefon")]
+      
+        [DisplayName(@"Telefon (optional)")]
         public string Telefon { get; set; }
 
         [Required]
@@ -173,21 +169,22 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
-        [Required]
-        [DisplayName(@"Funktion des Mitarbeiters")]
-        public string FunktionAnsprechpartner { get; set; }
+        [DisplayName(@"Administrationsberechtigungen")]
+        public string IstAdmin { get; set; }
+
 
     }
 
     public class EditBenutzerViewModel
     {
-        [Key]
-        public int BenutzerId { get; set; }
-
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
-
+        public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
         [Required]
         public string Anrede { get; set; }
+
+        [Key]
+        [Required]
+        public int BenutzerId { get; set; }
 
         [Required]
         public string Vorname { get; set; }
@@ -195,25 +192,43 @@ namespace Caterer_DB.Models
         [Required]
         public string Nachname { get; set; }
 
-        [DisplayName(@"Telefon")]
+        [DisplayName(@"Telefon (optional)")]
         public string Telefon { get; set; }
 
         [Required]
         [EmailAddress]
         public string Mail { get; set; }
 
-        public string Straße { get; set; }
-
-        public string Postleitzahl { get; set; }
-
-        public string Ort { get; set; }
-
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
 
-        [Required]
-        [DisplayName(@"Funktion")]
-        public string FunktionAnsprechpartner { get; set; }
+        [DisplayName(@"Administrationsberechtigungen")]
+        public string IstAdmin { get; set; }
+
+       
     }
+
+    public class MeineDatenBenutzerViewModel
+    {
+        public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
+        [Required]
+        public string Anrede { get; set; }
+
+        [Key]
+        [Required]
+        public int BenutzerId { get; set; }
+
+        [Required]
+        public string Vorname { get; set; }
+
+        [Required]
+        public string Nachname { get; set; }
+
+        [DisplayName(@"Telefon (optional)")]
+        public string Telefon { get; set; }
+
+    }
+
 
 
     public class MyDataBenutzerViewModel
@@ -302,20 +317,12 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-        [DisplayName(@"Funktion")]
-        public string FunktionAnsprechpartner { get; set; }
-
         [Required]
         [EmailAddress]
         public string Mail { get; set; }
 
-        public string Straße { get; set; }
-
-        public string Postleitzahl { get; set; }
-
-        public string Ort { get; set; }
-
-        public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
+        [DisplayName(@"Teamleiter")]
+        public bool IstAdmin { get;set; }
     }
 
     public class DeleteBenutzerViewModel
@@ -479,7 +486,7 @@ namespace Caterer_DB.Models
         public string Organisationsform { get; set; }
 
         [Required]
-        [DisplayName(@"Funktion des Ansprechpartners")]
+        [DisplayName(@"Funktion")]
         public string FunktionAnsprechpartner { get; set; }
 
         [Required]
@@ -491,7 +498,7 @@ namespace Caterer_DB.Models
         public string Fax { get; set; }
 
         [Required]
-        [DisplayName(@"Straße und Hausnummer")]
+        [DisplayName(@"Straße")]
         public string Straße { get; set; }
 
         [Required]

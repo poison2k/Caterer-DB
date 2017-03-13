@@ -336,6 +336,7 @@
     <Content Include="Content\CustomDesignBootstrap.css" />
     <Content Include="Content\Images\Arnold.JPG" />
     <Content Include="Content\Images\banner.png" />
+    <Content Include="Content\Images\error.jpg" />
     <Content Include="Content\Images\Hg100_1024.png" />
     <Content Include="Content\Images\Hg30_1024.png" />
     <Content Include="Content\Images\Hg50_kleiner.png" />
@@ -441,6 +442,7 @@
     <Content Include="Views\Benutzer\CreateCaterer.cshtml" />
     <Content Include="Views\Benutzer\EditCaterer.cshtml" />
     <Content Include="Views\Benutzer\DetailsCaterer.cshtml" />
+    <Content Include="Views\Benutzer\MeineDaten.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

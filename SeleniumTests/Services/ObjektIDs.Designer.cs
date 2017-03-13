@@ -79,6 +79,15 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownKonfigurationLogin ähnelt.
+        /// </summary>
+        internal static string Dropdown_Konfiguration_Login {
+            get {
+                return ResourceManager.GetString("Dropdown_Konfiguration_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die DropdownLogin ähnelt.
         /// </summary>
         internal static string Dropdown_Login {
@@ -223,6 +232,24 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterAnzeigen ähnelt.
+        /// </summary>
+        internal static string DropdownMAAnzeigen {
+            get {
+                return ResourceManager.GetString("DropdownMAAnzeigen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterHinzufügen ähnelt.
+        /// </summary>
+        internal static string DropdownMAHinzufügen {
+            get {
+                return ResourceManager.GetString("DropdownMAHinzufügen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Eigene Daten ähnelt.
         /// </summary>
         internal static string Eigene_Daten {
@@ -295,6 +322,24 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterBearbeitenSeite ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Bearbeiten {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterSeite ähnelt.
+        /// </summary>
+        internal static string Mitarbeiter_Seite {
+            get {
+                return ResourceManager.GetString("Mitarbeiter_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Nachname ähnelt.
         /// </summary>
         internal static string Nachname {
@@ -354,6 +399,15 @@ namespace SeleniumTests.Services {
         internal static string PW_Ändern_Seite {
             get {
                 return ResourceManager.GetString("PW_Ändern_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die btnSpeichern ähnelt.
+        /// </summary>
+        internal static string Speichern {
+            get {
+                return ResourceManager.GetString("Speichern", resourceCulture);
             }
         }
         

@@ -5,103 +5,131 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Caterer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Anrede)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Anrede)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Vorname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Vorname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nachname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nachname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Straße)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Straße)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Postleitzahl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Postleitzahl)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ort)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ort)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Firmenname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Firmenname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FunktionAnsprechpartner)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FunktionAnsprechpartner)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Lieferumkreis)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Lieferumkreis)
-        </dd>
-
-    </dl>
+<br />
+<br />
+<br />
+<div class="row">
+    <div id="RegSeite" class="col-md-6 col-md-offset-3 text-center">
+        <h1>Detailansicht Caterer</h1>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Caterer bearbeiten", "EditCaterer", new { id = Model.BenutzerId }) |
-    @Html.ActionLink("Zurück zur Liste", "IndexCaterer")
-</p>
+<br />
+
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-lg">
+                    <div>
+                        <dl class="dl-horizontal text-center">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Anrede)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Anrede)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Vorname)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Vorname)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Nachname)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Nachname)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Telefon)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Telefon)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Mail)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Mail)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Straße)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Straße)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Postleitzahl)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Postleitzahl)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Ort)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Ort)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Firmenname)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Firmenname)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.FunktionAnsprechpartner)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.FunktionAnsprechpartner)
+                            </dd>
+                            <br />
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Lieferumkreis)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Lieferumkreis)
+                            </dd>
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 text-center">
+        <ul class="list-unstyled list-inline ">
+            <li>
+                <a class="btn btn-default" href="@Url.Action("EditCaterer", "Benutzer", new {id = Model.BenutzerId})">
+                    Caterer bearbeiten
+                </a>
+            </li>
+            <li>
+                <a class="btn btn-default" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+            </li>
+        </ul>
+    </div>
+</div>

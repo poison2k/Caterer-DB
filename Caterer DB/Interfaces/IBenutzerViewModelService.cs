@@ -19,6 +19,8 @@ namespace Caterer_DB.Interfaces
         Benutzer Map_RegisterBenutzerViewModel_Benutzer(RegisterBenutzerViewModel registerBenutzerViewModel);
         Benutzer Map_ForgottenPasswordRequestViewModel_Benutzer(ForgottenPasswordRequestViewModel forgottenPasswordRequestViewModel);
         Benutzer Map_ForgottenPasswordCreateNewPasswordViewModel_Benutzer(ForgottenPasswordCreateNewPasswordViewModel forgottenPasswordCreateNewPasswordViewModel);
+        Benutzer Map_MeineDatenBenutzerViewModel_Benutzer(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel);
+       
 
         IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer);
         EditBenutzerViewModel Map_Benutzer_EditBenutzerViewModel(Benutzer benutzer);
@@ -27,6 +29,7 @@ namespace Caterer_DB.Interfaces
         DeleteBenutzerViewModel Map_Benutzer_DeleteBenutzerViewModel(Benutzer benutzer);
         RegisterBenutzerViewModel CreateNewRegisterBenutzerViewModel();
         DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer);
+        MeineDatenBenutzerViewModel Map_Benutzer_MeineDatenBenutzerViewModel(Benutzer benutzer);
 
         CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel();
         CreateMitarbeiterViewModel UpdateCreateMitarbeiterViewModel(CreateMitarbeiterViewModel createMitarbeiterViewModel);
@@ -39,10 +42,16 @@ namespace Caterer_DB.Interfaces
         MyDataBenutzerViewModel AddListsToMyDataViewModel(MyDataBenutzerViewModel myDataBenutzerViewModel);
         CreateMitarbeiterViewModel AddListsToCreateViewModel(CreateMitarbeiterViewModel createBenutzerViewModel);
         CreateCatererViewModel AddListsToCreateCatererViewModel(CreateCatererViewModel createCatererViewModel);
+        EditBenutzerViewModel AddListsToEditViewModel(EditBenutzerViewModel editBenutzerViewModel);
+        MeineDatenBenutzerViewModel AddListsToMeineDatenViewModel(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel);
+
 
         ListViewModel<IndexBenutzerViewModel> GeneriereListViewModel(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10);
         ListViewModel<IndexCatererViewModel> GeneriereListViewModelCaterer(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10);
         IndexCatererViewModel GeneriereIndexCatererViewModel(Benutzer benutzer);
         CreateCatererViewModel CreateNewCreateCatererViewModel();
+        
+        
+       
     }
 }

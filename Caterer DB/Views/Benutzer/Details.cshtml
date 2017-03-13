@@ -9,25 +9,18 @@
 <br />
 <div class="row">
     <div id="RegSeite" class="col-md-6 col-md-offset-3 text-center">
-        <h1>Detailsansicht Mitarbeiter</h1>
+        <h1>Detailansicht Mitarbeiter</h1>
     </div>
 </div>
 <br />
 <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-6 col-md-offset-3">
         <div class="row">
             <div class="col-md-12">
                 <div class="well well-lg">
                     <div>
-                        <dl class="dl-horizontal">
-                            @*<dt>
-                                @Html.DisplayNameFor(model => model.Anrede)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Anrede)
-                            </dd>*@
-
+                        <dl class="dl-horizontal text-center">
+                          
                             <dt>
                                 @Html.DisplayNameFor(model => model.Vorname)
                             </dt>
@@ -61,35 +54,18 @@
                             </dd>
                             <br />
                             <dt>
-                                @Html.DisplayNameFor(model => model.FunktionAnsprechpartner)
+                                @Html.DisplayNameFor(model => model.IstAdmin)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.FunktionAnsprechpartner)
+                               @if (Convert.ToBoolean(Model.IstAdmin))
+                               {<div><i class="glyphicon glyphicon-ok"></i></div> }
+                               else
+                               {
+                                <div><i class="glyphicon glyphicon-remove"></i></div>
+                               }
                             </dd>
-                            @*<dt>
-                                @Html.DisplayNameFor(model => model.Straße)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Straße)
-                            </dd>*@
-
-                            @*<dt>
-                                @Html.DisplayNameFor(model => model.Postleitzahl)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Postleitzahl)
-                            </dd>*@
-
-                            @*<dt>
-                                @Html.DisplayNameFor(model => model.Ort)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Ort)
-                            </dd>*@
+                          
                         </dl>
                     </div>
                 </div>

@@ -14,6 +14,7 @@
         public const string IndexMitarbeiter = "IndexMitarbeiter";
         public const string IndexCaterer = "IndexCaterer";
         public const string MenueCaterer = "MenueCaterer";
+        public const string MeineDatenMitarbeiter = "MeineDatenMitarbeiter";
 
     }
 }
