@@ -394,17 +394,17 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Passwort")]
-        public string Passwort { get; set; }
+        //[Required]
+        //[StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Passwort")]
+        //public string Passwort { get; set; }
 
-        [Required]
-        [DisplayName(@"Passwort Wiederholung")]
-        [DataType(DataType.Password)]
-        [Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
-        public string PasswortVerification { get; set; }
+        //[Required]
+        //[DisplayName(@"Passwort Wiederholung")]
+        //[DataType(DataType.Password)]
+        //[Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
+        //public string PasswortVerification { get; set; }
 
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
