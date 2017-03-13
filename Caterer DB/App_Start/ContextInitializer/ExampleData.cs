@@ -15,6 +15,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             CreateBenutzerGruppenData(db);
             CreateUserData(db);
             CreateConfig(db);
+            CreateFragen(db);
         }
 
         private static void CreateRechte(CatererContext db)
@@ -282,6 +283,47 @@ namespace Caterer_DB.App_Start.ContextInitializer
             }
 
             db.SaveChanges();
+        }
+
+        public static void CreateFragen(CatererContext db)
+        {
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 1",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 1"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 1"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 1"}
+                }
+
+
+            });
+
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 2",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 2"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 2"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 2"},
+                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 2"}
+                }
+
+
+            });
+
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 3",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 3"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 3"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 3"}
+                }
+
+
+            }
+                );
         }
     }
 }
