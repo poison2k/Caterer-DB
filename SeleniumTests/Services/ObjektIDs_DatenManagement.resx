@@ -117,49 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Account_Gelöscht" xml:space="preserve">
-    <value>Ihr Account wurde erfolgreich gelöscht!</value>
+  <data name="Löschen_Abbrechen" xml:space="preserve">
+    <value>btnModalCancel</value>
   </data>
-  <data name="Account_Löschen_Bestätigen" xml:space="preserve">
-    <value>Löschen bestätigen</value>
+  <data name="Löschen_Button" xml:space="preserve">
+    <value>LöschenButton</value>
   </data>
-  <data name="AGBseite" xml:space="preserve">
-    <value>Allgemeine Geschäftsbedingungen</value>
+  <data name="Löschen_Ja" xml:space="preserve">
+    <value>btnModalDelete</value>
   </data>
-  <data name="Datenschutzseite" xml:space="preserve">
-    <value>Datenschutzbestimmungen</value>
+  <data name="Löschen_Nein" xml:space="preserve">
+    <value>LöschenCancel</value>
   </data>
-  <data name="Eigene_Datenseite" xml:space="preserve">
-    <value>Eigene Daten</value>
-  </data>
-  <data name="Impressumseite" xml:space="preserve">
-    <value>Impressum</value>
-  </data>
-  <data name="Kontaktseite" xml:space="preserve">
-    <value>Ansprechpartner</value>
-  </data>
-  <data name="PW_Änderung_Bestätigung" xml:space="preserve">
-    <value>Bestätigung der Passwortänderung</value>
-  </data>
-  <data name="PW_Änderung_Erfolgreich" xml:space="preserve">
-    <value>Ihr Passwort wurde erfolgreich geändert!</value>
-  </data>
-  <data name="Registrierungsseite" xml:space="preserve">
-    <value>Registrierung</value>
-  </data>
-  <data name="Reg_Email_Verifikation_Fehlt" xml:space="preserve">
-    <value>Registrierung noch nicht abgeschlossen</value>
-  </data>
-  <data name="Startseite" xml:space="preserve">
-    <value>Startseite - My ASP.NET Application</value>
-  </data>
-  <data name="PW_Ändern_Seite" xml:space="preserve">
-    <value>Neues Passwort</value>
+  <data name="Löschen_Seite" xml:space="preserve">
+    <value>LöschenBest</value>
   </data>
   <data name="Mitarbeiter_Bearbeiten" xml:space="preserve">
-    <value>Mitarbeiter bearbeiten</value>
+    <value>MitarbeiterBearbeitenSeite</value>
   </data>
   <data name="Mitarbeiter_Seite" xml:space="preserve">
-    <value>Mitarbeiter</value>
+    <value>MitarbeiterSeite</value>
+  </data>
+  <data name="Speichern" xml:space="preserve">
+    <value>btnSpeichern</value>
   </data>
 </root>
