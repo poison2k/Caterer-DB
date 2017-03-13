@@ -17,5 +17,8 @@ namespace DataAccess.Model
         public virtual List<Antwort> Antworten { get; set; }
         
         public Sparte Sparte { get; set; }
+
+        public bool IstVeröffentlicht { get; set; }
+
     }
 }
