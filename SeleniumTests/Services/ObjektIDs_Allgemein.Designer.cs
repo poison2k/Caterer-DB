@@ -22,14 +22,14 @@ namespace SeleniumTests.Services {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ObjektIDs {
+    internal class ObjektIDs_Allgemein {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ObjektIDs() {
+        internal ObjektIDs_Allgemein() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SeleniumTests.Services {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SeleniumTests.Services.ObjektIDs", typeof(ObjektIDs).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SeleniumTests.Services.ObjektIDs_Allgemein", typeof(ObjektIDs_Allgemein).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,6 +75,15 @@ namespace SeleniumTests.Services {
         internal static string Ansprechpartner {
             get {
                 return ResourceManager.GetString("Ansprechpartner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Eigene Daten ähnelt.
+        /// </summary>
+        internal static string Dropdown_Eigene_Daten {
+            get {
+                return ResourceManager.GetString("Dropdown_Eigene_Daten", resourceCulture);
             }
         }
         
@@ -250,15 +259,6 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eigene Daten ähnelt.
-        /// </summary>
-        internal static string Eigene_Daten {
-            get {
-                return ResourceManager.GetString("Eigene_Daten", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mail ähnelt.
         /// </summary>
         internal static string EMail_Feld {
@@ -318,24 +318,6 @@ namespace SeleniumTests.Services {
         internal static string LoginButton {
             get {
                 return ResourceManager.GetString("LoginButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterBearbeitenSeite ähnelt.
-        /// </summary>
-        internal static string Mitarbeiter_Bearbeiten {
-            get {
-                return ResourceManager.GetString("Mitarbeiter_Bearbeiten", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterSeite ähnelt.
-        /// </summary>
-        internal static string Mitarbeiter_Seite {
-            get {
-                return ResourceManager.GetString("Mitarbeiter_Seite", resourceCulture);
             }
         }
         
@@ -403,15 +385,6 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnSpeichern ähnelt.
-        /// </summary>
-        internal static string Speichern {
-            get {
-                return ResourceManager.GetString("Speichern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die StartButton ähnelt.
         /// </summary>
         internal static string StartButton {
@@ -444,6 +417,15 @@ namespace SeleniumTests.Services {
         internal static string Vorname {
             get {
                 return ResourceManager.GetString("Vorname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die btnZurück ähnelt.
+        /// </summary>
+        internal static string Zurück_Button {
+            get {
+                return ResourceManager.GetString("Zurück_Button", resourceCulture);
             }
         }
     }

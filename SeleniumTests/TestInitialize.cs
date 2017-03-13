@@ -47,7 +47,7 @@ namespace SeleniumTests
         {
             driver.Navigate().GoToUrl(baseURL);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
-            driver.FindElement(By.Id(ObjektIDs.LoginButton));
+            driver.FindElement(By.Id(ObjektIDs_Allgemein.LoginButton));
 
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
         }

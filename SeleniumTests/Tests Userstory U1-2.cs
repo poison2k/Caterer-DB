@@ -17,9 +17,9 @@ namespace SeleniumTests
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.Element_Klicken(ObjektIDs.LoginButton, driver);
-            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.Name1, ObjektIDs.EMail_Feld_Login, driver);
-            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW1, ObjektIDs.Passwort_Feld, driver);
+            TestTools.Element_Klicken(ObjektIDs_Allgemein.LoginButton, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.Name1, ObjektIDs_Allgemein.EMail_Feld_Login, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW1, ObjektIDs_Allgemein.Passwort_Feld, driver);
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -77,7 +77,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.Element_Klicken(ObjektIDs.LoginButton, driver);
+            TestTools.Element_Klicken(ObjektIDs_Allgemein.LoginButton, driver);
             TestTools.User_Login_Durchführen(LoginDaten.Name1, "", driver);
             Assert.AreEqual(Fehlermeldung.PW_Erforderlich, TestTools.Label_Text_Zurückgeben("error1", driver));
 

@@ -66,10 +66,20 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Services\ObjektIDs.Designer.cs">
+    <Compile Include="Services\ObjektIDs_Allgemein.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ObjektIDs.resx</DependentUpon>
+      <DependentUpon>ObjektIDs_Allgemein.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ObjektIDs_DatenManagement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObjektIDs_DatenManagement.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ObjektIDs_NutzerDaten.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObjektIDs_NutzerDaten.resx</DependentUpon>
     </Compile>
     <Compile Include="Tests Userstory T3-1.cs" />
     <Compile Include="Tests Userstory C2-5.cs" />
@@ -127,9 +137,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>NutzerDaten.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Services\ObjektIDs.resx">
+    <EmbeddedResource Include="Services\ObjektIDs_Allgemein.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ObjektIDs.Designer.cs</LastGenOutput>
+      <LastGenOutput>ObjektIDs_Allgemein.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\ObjektIDs_DatenManagement.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ObjektIDs_DatenManagement.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\ObjektIDs_NutzerDaten.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ObjektIDs_NutzerDaten.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Choose>
