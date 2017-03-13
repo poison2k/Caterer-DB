@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,36 @@
                     </li>
                 </ul>
             </div>
+            <div class="col-md-2 col-md-offset-4">
+                <ul class="list-unstyled list-inline text-right">
 
+                    <li>
+                        <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
+                            <i class="glyphicon glyphicon-trash"></i> Konto löschen
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <!-- Modal -->
+    <div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button id="LöschenCancel" type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="LöschenBest" class="modal-title">Löschen bestätigen</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Wollen Sie ihren Account jetzt löschen?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" id="btnModalDelete" name="btnModalDelete" value="Delete">Ja</button>
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" id="btnModalCancel" name="btnModalCancel" value="Cancel">Nein</button>
+                </div>
+            </div>
         </div>
     </div>
 }

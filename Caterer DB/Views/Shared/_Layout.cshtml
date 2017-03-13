@@ -50,9 +50,16 @@
                                         <li>@Html.ActionLink("Caterer anzeigen", "IndexCaterer", "Benutzer", null, new { id = "DropdownAGBLogout" })</li>
                                         <li>@Html.ActionLink("Caterer hinzufügen", "CreateCaterer", "Benutzer", null, new { id = "DropdownAGBLogout" })</li>                                     
                                     </ul>
-
                                 </li>
-
+                                <li class="dropdown" , id="DropdownServiceLogout">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Fragen verwalten<b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Fragen anzeigen", "Index", "Frage", null, new { id = "DropdownAGBLogout" })</li>
+                                        <li>@Html.ActionLink("Frage hinzufügen", "Create", "Frage", null, new { id = "DropdownAGBLogout" })</li>
+                                    </ul>
+                                </li>
                             </ul>
                         }
                     }

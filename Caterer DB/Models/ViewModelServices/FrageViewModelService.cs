@@ -23,6 +23,8 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Frage, EditFrageViewModel>().ReverseMap();
                 cfg.CreateMap<Frage, DeleteFrageViewModel>().ReverseMap();
                 cfg.CreateMap<Frage, DetailsFrageViewModel>().ReverseMap();
+                cfg.CreateMap<Frage, BearbeiteFrageViewModel>().ReverseMap();
+
             });
 
             Mapper = config.CreateMapper();
@@ -37,6 +39,11 @@ namespace Caterer_DB.Models.ViewModelServices
         public Frage Map_EditFrageViewModel_Frage(EditFrageViewModel editFrageViewModel)
         {
             return Mapper.Map<Frage>(editFrageViewModel);
+        }
+
+        public Frage Map_BearbeiteFrageViewModel_Frage(BearbeiteFrageViewModel bearbeiteFrageViewModel)
+        {
+            return Mapper.Map<Frage>(bearbeiteFrageViewModel);
         }
 
         public EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage)
@@ -58,6 +65,11 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             return Mapper.Map<DeleteFrageViewModel>(Frage);
         }
-        
+
+        public BearbeiteFrageViewModel Map_Frage_BearbeiteFrageViewModel(Frage Frage)
+        {
+            return Mapper.Map<BearbeiteFrageViewModel>(Frage);
+        }
+
     }
 }

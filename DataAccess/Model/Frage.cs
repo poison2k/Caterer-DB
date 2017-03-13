@@ -13,7 +13,12 @@ namespace DataAccess.Model
         public int FrageId { get; set; }
         [Required]
         public string Bezeichnung { get; set; }
+
+        public virtual List<Antwort> Antworten { get; set; }
         
         public Sparte Sparte { get; set; }
+
+        public bool IstVeröffentlicht { get; set; }
+
     }
 }

@@ -12,9 +12,13 @@ namespace Caterer_DB.Interfaces
     {
         Frage Map_CreateFrageViewModel_Frage(CreateFrageViewModel createFrageViewModel);
         Frage Map_EditFrageViewModel_Frage(EditFrageViewModel editFrageViewModel);
+        Frage Map_BearbeiteFrageViewModel_Frage(BearbeiteFrageViewModel bearbeiteFrageViewModel);
+
+        BearbeiteFrageViewModel Map_Frage_BearbeiteFrageViewModel(Frage Frage);
         EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage);
         DetailsFrageViewModel Map_Frage_DetailsFrageViewModel(Frage Frage);
         Frage Map_DeleteFrageViewModel_Frage(DeleteFrageViewModel deleteFrageViewModel);
         DeleteFrageViewModel Map_Frage_DeleteFrageViewModel(Frage Frage);
+        
     }
 }

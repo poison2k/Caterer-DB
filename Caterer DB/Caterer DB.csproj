@@ -443,6 +443,7 @@
     <Content Include="Views\Benutzer\EditCaterer.cshtml" />
     <Content Include="Views\Benutzer\DetailsCaterer.cshtml" />
     <Content Include="Views\Benutzer\MeineDaten.cshtml" />
+    <Content Include="Views\Frage\Bearbeiten.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

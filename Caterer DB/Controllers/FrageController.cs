@@ -132,5 +132,40 @@ namespace Caterer_DB.Controllers
             return RedirectToAction("Index");
         }
 
+
+
+
+        // GET: Frages/Edit/5
+        public ActionResult Bearbeiten(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            BearbeiteFrageViewModel bearbeiteFrageViewModel =
+               FrageViewModelService.Map_Frage_BearbeiteFrageViewModel(FrageService.SearchFrageById(Convert.ToInt32(id)));
+
+            if (bearbeiteFrageViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bearbeiteFrageViewModel);
+        }
+
+        // POST: Frages/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Bearbeiten(BearbeiteFrageViewModel bearbeiteFrageViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                FrageService.EditFrage(FrageViewModelService.Map_BearbeiteFrageViewModel_Frage(bearbeiteFrageViewModel));
+                return RedirectToAction("Index");
+            }
+            return View(bearbeiteFrageViewModel);
+        }
     }
 }

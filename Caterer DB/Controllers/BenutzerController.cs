@@ -114,9 +114,12 @@ namespace Caterer_DB.Controllers
             {
                 if (BenutzerService.CheckEmailForRegistration(createMitarbeiterViewModel.Mail))
                 {
-                    if (Convert.ToBoolean(createMitarbeiterViewModel.IstAdmin)){
+                    if (Convert.ToBoolean(createMitarbeiterViewModel.IstAdmin))
+                    {
                         BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel), BenutzerGruppenResource.Administrator);
-                    } else {
+                    }
+                    else
+                    {
                         BenutzerService.AddMitarbeiter(BenutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel), BenutzerGruppenResource.Mitarbeiter);
                     }
                     return RedirectToAction("Index");
@@ -219,8 +222,18 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MeineDatenBenutzerViewModel_Benutzer(meineDatenBenutzerViewModel));
-                TempData["isSaved"] = true;
+                if (Request.Form["btnSave"] != null)
+                {
+                    BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MeineDatenBenutzerViewModel_Benutzer(meineDatenBenutzerViewModel));
+                    TempData["isSaved"] = true;
+                }
+                else if (Request.Form["btnModalDelete"] != null)
+                {
+                    LoginService.Abmelden();
+                    BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_MeineDatenBenutzerViewModel_Benutzer(meineDatenBenutzerViewModel).BenutzerId);
+                    TempData["isAccountDeleted"] = true;
+
+                }
                 return RedirectToAction("Index", "Home");
             }
             return View(BenutzerViewModelService.AddListsToMeineDatenViewModel(meineDatenBenutzerViewModel));
@@ -283,7 +296,7 @@ namespace Caterer_DB.Controllers
                     TempData["isAccountDeleted"] = true;
 
                 }
-              
+
                 return RedirectToAction("Index", "Home");
 
             }

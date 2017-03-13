@@ -19,6 +19,17 @@
             @Html.DisplayFor(model => model.Bezeichnung)
         </dd>
 
+        @foreach (var item in Model.Antworten)
+        {
+            <dt>
+                @item.AntwortId
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelitem => item.Bezeichnung)
+            </dd>
+        }
+
     </dl>
 </div>
 <p>
