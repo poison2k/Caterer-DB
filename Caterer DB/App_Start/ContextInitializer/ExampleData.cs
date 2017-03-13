@@ -255,7 +255,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
             }
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 2; i < 20; i++)
             {
                 db.Benutzer.Add(new Benutzer
                 {
