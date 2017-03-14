@@ -136,31 +136,31 @@ namespace SeleniumTests
 
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
-            TestTools.Element_Klicken("btnSpeichern", driver);
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             //Account
-            Assert.AreEqual(Fehlermeldung.Email_Erforderlich, TestTools.Label_Text_Zurückgeben("Mail-error", driver));
-            Assert.AreEqual(Fehlermeldung.PW_Erforderlich, TestTools.Label_Text_Zurückgeben("Passwort-error", driver));
-            Assert.AreEqual(Fehlermeldung.PW_Wiederholung_Erforderlich, TestTools.Label_Text_Zurückgeben("PasswortVerification-error", driver));
+            Assert.AreEqual(Fehlermeldung.Email_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Email, driver));
+            Assert.AreEqual(Fehlermeldung.PW_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Passwort, driver));
+            Assert.AreEqual(Fehlermeldung.PW_Wiederholung_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Passwort_Wiederholen, driver));
 
             //Firma
-            Assert.AreEqual(Fehlermeldung.Firma_Erforderlich, TestTools.Label_Text_Zurückgeben("Firmenname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Organisation_Erforderlich, TestTools.Label_Text_Zurückgeben("Organisationsform-error", driver));
-            Assert.AreEqual(Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.Label_Text_Zurückgeben("Stra_e-error", driver));
-            Assert.AreEqual(Fehlermeldung.PLZ_Erforderlich, TestTools.Label_Text_Zurückgeben("Postleitzahl-error", driver));
-            Assert.AreEqual(Fehlermeldung.Ort_Erforderlich, TestTools.Label_Text_Zurückgeben("Ort-error", driver));
+            Assert.AreEqual(Fehlermeldung.Firma_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Firmenname, driver));
+            Assert.AreEqual(Fehlermeldung.Organisation_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Organisation, driver));
+            Assert.AreEqual(Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Straße_Hnr, driver));
+            Assert.AreEqual(Fehlermeldung.PLZ_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.PLZ, driver));
+            Assert.AreEqual(Fehlermeldung.Ort_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Ort, driver));
 
             //Ansprechpartner
-            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben("Anrede-error", driver));
-            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben("Vorname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben("Nachname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.Label_Text_Zurückgeben("FunktionAnsprechpartner-error", driver));
+            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Anrede, driver));
+            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Vorname, driver));
+            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Nachname, driver));
+            Assert.AreEqual(Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Ansprechpartner, driver));
 
             //Erreichbarkeit
-            Assert.AreEqual(Fehlermeldung.Telefon_Erforderlich, TestTools.Label_Text_Zurückgeben("Telefon-error", driver));
+            Assert.AreEqual(Fehlermeldung.Telefon_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Telefon, driver));
 
             //Sonstiges
-            Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben("Lieferumkreis-error", driver));
+            Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Lieferumkreis, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 
@@ -175,99 +175,99 @@ namespace SeleniumTests
 
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
-            TestTools.Element_Klicken("btnSpeichern", driver);
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             //Account
-            Assert.AreEqual(Fehlermeldung.Email_Erforderlich, TestTools.Label_Text_Zurückgeben("Mail-error", driver));
-            Assert.AreEqual(Fehlermeldung.PW_Erforderlich, TestTools.Label_Text_Zurückgeben("Passwort-error", driver));
-            Assert.AreEqual(Fehlermeldung.PW_Wiederholung_Erforderlich, TestTools.Label_Text_Zurückgeben("PasswortVerification-error", driver));
+            Assert.AreEqual(Fehlermeldung.Email_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Email, driver));
+            Assert.AreEqual(Fehlermeldung.PW_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Passwort, driver));
+            Assert.AreEqual(Fehlermeldung.PW_Wiederholung_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Passwort_Wiederholen, driver));
 
             //Firma
-            Assert.AreEqual(Fehlermeldung.Firma_Erforderlich, TestTools.Label_Text_Zurückgeben("Firmenname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Organisation_Erforderlich, TestTools.Label_Text_Zurückgeben("Organisationsform-error", driver));
-            Assert.AreEqual(Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.Label_Text_Zurückgeben("Stra_e-error", driver));
-            Assert.AreEqual(Fehlermeldung.PLZ_Erforderlich, TestTools.Label_Text_Zurückgeben("Postleitzahl-error", driver));
-            Assert.AreEqual(Fehlermeldung.Ort_Erforderlich, TestTools.Label_Text_Zurückgeben("Ort-error", driver));
+            Assert.AreEqual(Fehlermeldung.Firma_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Firmenname, driver));
+            Assert.AreEqual(Fehlermeldung.Organisation_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Organisation, driver));
+            Assert.AreEqual(Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Straße_Hnr, driver));
+            Assert.AreEqual(Fehlermeldung.PLZ_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.PLZ, driver));
+            Assert.AreEqual(Fehlermeldung.Ort_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Ort, driver));
 
             //Ansprechpartner
-            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben("Anrede-error", driver));
-            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben("Vorname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben("Nachname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.Label_Text_Zurückgeben("FunktionAnsprechpartner-error", driver));
+            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Anrede, driver));
+            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Vorname, driver));
+            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Nachname, driver));
+            Assert.AreEqual(Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Ansprechpartner, driver));
 
             //Erreichbarkeit
-            Assert.AreEqual(Fehlermeldung.Telefon_Erforderlich, TestTools.Label_Text_Zurückgeben("Telefon-error", driver));
+            Assert.AreEqual(Fehlermeldung.Telefon_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Telefon, driver));
 
             //Sonstiges
-            Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben("Lieferumkreis-error", driver));
+            Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Lieferumkreis, driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id(ObjektIDs_Allgemein.EMail_Feld)).Clear();
             driver.FindElement(By.Id(ObjektIDs_Allgemein.EMail_Feld)).SendKeys("XXX@xxx.xx");
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Mail-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Email, driver));
 
             //Passwort befüllen
             driver.FindElement(By.Id(ObjektIDs_Allgemein.Passwort_Feld)).Clear();
             driver.FindElement(By.Id(ObjektIDs_Allgemein.Passwort_Feld)).SendKeys("12345678");
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Passwort-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Passwort, driver));
 
             //Passwort wiederholen befüllen
             driver.FindElement(By.Id(ObjektIDs_Allgemein.Passwort_Feld_Bestätigung)).Clear();
             driver.FindElement(By.Id(ObjektIDs_Allgemein.Passwort_Feld_Bestätigung)).SendKeys("12345678");
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("PasswortVerification-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Passwort_Wiederholen, driver));
 
             //Firmenname befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Firmanname)).Clear();
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Firmanname)).SendKeys(NutzerDaten.NutzerDaten_Firmenname);
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Firmenname-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Firmenname, driver));
 
             //Organisationsform wählen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Organisationsform)).SendKeys("Caterer");
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Organisationsform-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Organisation, driver));
 
             //Straße befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Straße_Nr)).Clear();
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Straße_Nr)).SendKeys(NutzerDaten.NutzerDaten_Straße_Nr);
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Stra_e-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Straße_Hnr, driver));
 
             //PLZ befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.PLZ)).Clear();
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.PLZ)).SendKeys(NutzerDaten.NutzerDaten_PLZ);
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Postleitzahl-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.PLZ, driver));
 
             //Ort befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ort)).Clear();
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ort)).SendKeys(NutzerDaten.NutzerDaten_Ort);
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Ort-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Ort, driver));
 
             //Anrede wählen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede)).SendKeys("Herr");
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Anrede-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Anrede, driver));
 
             //Vorname befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Vorname)).Clear();
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Vorname)).SendKeys(NutzerDaten.NutzerDaten_Vorname);
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Vorname-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Vorname, driver));
 
             //Nachname befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Nachname-error", driver));
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Nachname);
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Nachname, driver));
 
             //FunktionAnprechpartner befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).Clear();
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).SendKeys(NutzerDaten.NutzerDaten_Ansprechpartner);
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("FunktionAnsprechpartner-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Ansprechpartner, driver));
 
             //Telefon befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Telefon)).Clear();
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Telefon)).SendKeys(NutzerDaten.NutzerDaten_Telefon);
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Telefon-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Telefon, driver));
 
             //Umkreis wählen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Lieferumkreis)).SendKeys("Bis 30 km");
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung("Lieferumkreis-error", driver));
+            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Lieferumkreis, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 
@@ -323,7 +323,7 @@ namespace SeleniumTests
 
             //Nachname befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Nachname);
 
             //FunktionAnprechpartner befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).Clear();
@@ -343,7 +343,7 @@ namespace SeleniumTests
             //AGBs akzeptieren
             TestTools.Element_Klicken("WeitergabeVonDaten", driver);
 
-            TestTools.Element_Klicken("btnSpeichern", driver);
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             Assert.AreEqual(Fehlermeldung.Email_Bereits_Vorhanden, TestTools.Label_Text_Zurückgeben("VallidationSummary", driver));
 
@@ -401,7 +401,7 @@ namespace SeleniumTests
 
             //Nachname befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Name);
+            driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Nachname)).SendKeys(NutzerDaten.NutzerDaten_Nachname);
 
             //FunktionAnprechpartner befüllen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Ansprechpartner)).Clear();
@@ -422,7 +422,7 @@ namespace SeleniumTests
             //Umkreis wählen
             driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Lieferumkreis)).SendKeys("Bis 30 km");
 
-            TestTools.Element_Klicken("btnSpeichern", driver);
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
 
@@ -437,7 +437,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken("WeitergabeVonDaten", driver);
 
 
-            TestTools.Element_Klicken("btnSpeichern", driver);
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
 

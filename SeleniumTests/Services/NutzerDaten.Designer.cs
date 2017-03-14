@@ -126,9 +126,9 @@ namespace SeleniumTests.Services {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Teste ähnelt.
         /// </summary>
-        internal static string NutzerDaten_Name {
+        internal static string NutzerDaten_Nachname {
             get {
-                return ResourceManager.GetString("NutzerDaten_Name", resourceCulture);
+                return ResourceManager.GetString("NutzerDaten_Nachname", resourceCulture);
             }
         }
         
