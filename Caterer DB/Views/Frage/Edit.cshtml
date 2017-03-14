@@ -32,11 +32,11 @@
                         @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
                         <br />
-                    </div>                  
+                    </div>
                     <div class="col-md-12 text-center">
                         <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default" />
-                    </div>                  
-                </div>               
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -46,11 +46,20 @@
                 @for (int i = 0; i < Model.Antworten.Count; i++)
                 {
                     <div class="form-group">
-                        <div class="col-md-12">
+                        <div class="col-md-11">
                             @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
                             <label class="control-label col-md-0"> Antwort @(i + 1) </label>
                             @Html.EditorFor(Model => Model.Antworten[i].Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>                       
+                        </div>
+                        <div class="col-md-1 text-right">
+                            <ul class="list-unstyled list-inline " style="margin-top: 27px;">
+                                <li>
+                                    <button id="LöschenButton" type="button" class="btn btn-success">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 }
             </div>
