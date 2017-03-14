@@ -161,6 +161,7 @@ namespace Business.Services
             var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
             editedBenutzer.BenutzerGruppen = dbBenutzer.BenutzerGruppen;
             editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
+            editedBenutzer.IstEmailVerifiziert = dbBenutzer.IstEmailVerifiziert;
             Mapper.Map(editedBenutzer, dbBenutzer);
             BenutzerRepository.EditUser(dbBenutzer);
         }
