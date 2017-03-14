@@ -75,6 +75,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Rechte = new List<Recht>() { db.Recht.Single(x => x.Bezeichnung == RechteResource.TestBlock2),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.MenueCaterer),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.IndexCaterer),
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.CreateCaterer),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.MeineDatenMitarbeiter)}
 
             });
@@ -187,6 +188,29 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                 Nachname = "Müller",
                 Vorname = "Alex",
+                IstEmailVerifiziert = true,
+                Firmenname = "-",
+                Internetadresse = "-",
+                Lieferumkreis = "-",
+                Organisationsform = "-",
+                Telefon = "-",
+                Fax = "-",
+                Straße = "-",
+                Postleitzahl = "-",
+                Ort = "-",
+                Anrede = "-",
+                FunktionAnsprechpartner = "-",
+                EMailVerificationCode = "-",
+                PasswortZeitstempel = System.DateTime.Now,
+                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
+            });
+
+            Benutzer admin2 = db.Benutzer.Add(new Benutzer
+            {
+                Mail = "admin2@test.de",
+                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Nachname = "Mustermann ",
+                Vorname = "Maximus",
                 IstEmailVerifiziert = true,
                 Firmenname = "-",
                 Internetadresse = "-",

@@ -53,7 +53,7 @@ namespace Caterer_DB.Controllers
         // GET: Frages/Create
         public ActionResult Create()
         {
-            return View();
+           return View();
         }
 
         // POST: Frages/Create
@@ -61,7 +61,7 @@ namespace Caterer_DB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateFrageViewModel createFrageViewModel)
+        public ActionResult Create(CreateFrageViewModel createFrageViewModel, int test = 0 )
         {
             if (ModelState.IsValid)
             {
@@ -73,8 +73,22 @@ namespace Caterer_DB.Controllers
                     }
                     
                     createFrageViewModel.Antworten.Add(new Antwort());
+                    
+                    
                     return View(createFrageViewModel);
 
+                }
+                else if (Request.Form["btnDeleteAnswer"] != null)
+                {
+                    for (int i = 0; i < Request.Form.Count; i++)
+                    {
+                        if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
+                        {
+                            ModelState.Clear();
+                            createFrageViewModel.Antworten.RemoveAt(i / 2 - 2);
+                            return View(createFrageViewModel);
+                        }
+                    }                    
                 }
                 else if (Request.Form["btnCreateQuestion"] != null)
                 {
