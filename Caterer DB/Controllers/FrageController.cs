@@ -129,7 +129,35 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                FrageService.EditFrage(FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel));
+                if (Request.Form["btnAddAnswer"] != null)
+                {
+                    if (editFrageViewModel.Antworten == null)
+                    {
+                        editFrageViewModel.Antworten = new List<Antwort>();
+                    }
+
+                    editFrageViewModel.Antworten.Add(new Antwort());
+
+
+                    return View(editFrageViewModel);
+
+                }
+                else if (Request.Form["btnDeleteAnswer"] != null)
+                {
+                    for (int i = 0; i < Request.Form.Count; i++)
+                    {
+                        if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
+                        {
+                            ModelState.Clear();
+                            editFrageViewModel.Antworten.RemoveAt(i / 2 - 2);
+                            return View(editFrageViewModel);
+                        }
+                    }
+                }
+                else if (Request.Form["btnSave"] != null)
+                {
+                    FrageService.EditFrage(FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel));
+                }
                 return RedirectToAction("Index");
             }
             return View(editFrageViewModel);
