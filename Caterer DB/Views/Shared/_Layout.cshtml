@@ -38,6 +38,7 @@
                 <div class="navbar-collapse collapse">
                     @if (Request.IsAuthenticated)
                     {
+                        
 
                         if (User.HatDasRecht(RechteResource.MenueCaterer))
                         {
@@ -60,6 +61,21 @@
                                         <li>@Html.ActionLink("Frage hinzufügen", "Create", "Frage", null, new { id = "FragenHinzufügen" })</li>
                                     </ul>
                                 </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown" , id="DropdownManageCaterer">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Fragebogen<b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Fragebogen bearbeiten", "Details", "Fragebogen", null, new { id = "FragebogenBearbeiten" })</li>
+                                       
+                                    </ul>
+                                </li>
+                                
                             </ul>
                         }
                     }

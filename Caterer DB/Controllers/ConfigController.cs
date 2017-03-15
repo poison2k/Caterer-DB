@@ -22,7 +22,7 @@ namespace Caterer_DB.Controllers
 
         
         // GET: Config
-        [CustomAuthorize(Roles = RechteResource.EditConfig)]
+        [CustomAuthorize(Rights = RechteResource.EditConfig)]
         public ActionResult Edit()
         {
             return View(ConfigViewModelService.Map_Config_EditConfigViewModel(ConfigService.GetConfig()));
@@ -30,7 +30,7 @@ namespace Caterer_DB.Controllers
 
         // POST: Config 
         [HttpPost]
-        [CustomAuthorize(Roles = RechteResource.EditConfig)]
+        [CustomAuthorize(Rights = RechteResource.EditConfig)]
         public ActionResult Edit(EditConfigViewModel editConfigViewModel) 
         {
             if (ModelState.IsValid) {

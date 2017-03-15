@@ -117,6 +117,20 @@ namespace Caterer_DB.Services
             return rechteBezeichnungen;
         }
 
+        public List<string> ladeRollen(int benutzerId)
+        {
+            var benutzerGruppen = LoginRepository
+                .GruppenFürBenutzer(benutzerId)
+                .Select(nutzergruppe => nutzergruppe);
+
+            List<string> gruppenBezeichnungen = new List<string>();
+
+            foreach (var benutzergrp in benutzerGruppen)
+                    gruppenBezeichnungen.Add(benutzergrp.Bezeichnung);
+
+            return gruppenBezeichnungen;
+        }
+
         public List<int> ladeNutzergruppenIds(int benutzerId)
         {
             return LoginRepository
@@ -133,6 +147,10 @@ namespace Caterer_DB.Services
 
         public string RolesConfigKey { get; set; }
 
+        public string RightsConfigKey { get; set; }
+
+        public string Rights { get; set; }
+
         protected virtual UserModel CurrentUser
         {
             get { return HttpContext.Current.User as UserModel; }
@@ -144,12 +162,18 @@ namespace Caterer_DB.Services
             {
                 string authorizedUsers = ConfigurationManager.AppSettings[UsersConfigKey];
                 string authorizedRoles = ConfigurationManager.AppSettings[RolesConfigKey];
+                string authorizedRights = ConfigurationManager.AppSettings[RightsConfigKey];
 
                 Users = String.IsNullOrEmpty(Users) ? authorizedUsers : Users;
                 Roles = String.IsNullOrEmpty(Roles) ? authorizedRoles : Roles;
+                Rights = String.IsNullOrEmpty(Rights) ? authorizedRoles : Rights;
+
+                if (!String.IsNullOrEmpty(Rights))
+                    if (!CurrentUser.HatDasRecht(Rights))
+                        filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Error", action = "ZugriffVerweigert" }));
 
                 if (!String.IsNullOrEmpty(Roles))
-                    if (!CurrentUser.HatDasRecht(Roles))
+                    if (!CurrentUser.HatDieRolle(Roles))
                         filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Error", action = "ZugriffVerweigert" }));
 
                 if (!String.IsNullOrEmpty(Users))
@@ -158,6 +182,9 @@ namespace Caterer_DB.Services
 
                 if (String.IsNullOrEmpty(Users) && String.IsNullOrEmpty(Roles))
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Error", action = "ZugriffVerweigert" }));
+
+                
+
             }
             else
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));

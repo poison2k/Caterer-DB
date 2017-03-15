@@ -14,6 +14,7 @@ namespace Caterer_DB.Models
             BenutzerId = benutzerId;
             Identity = new GenericIdentity(kurzname);
             Rechte = anmeldeService.ladeRechte(BenutzerId);
+            Rollen = anmeldeService.ladeRollen(BenutzerId);
             NutzergruppenIds = anmeldeService.ladeNutzergruppenIds(BenutzerId);
         }
 
@@ -37,6 +38,8 @@ namespace Caterer_DB.Models
         public IIdentity Identity { get; private set; }
 
         public List<string> Rechte { get; set; }
+
+        public List<string> Rollen { get; set; }
 
         public List<int> NutzergruppenIds { get; set; }
 
@@ -64,6 +67,27 @@ namespace Caterer_DB.Models
             if (t)
                 return Rechte.Contains(teilrecht);
             return Rechte.Contains(recht);
+        }
+
+        public bool HatDieRolle(string rolle)
+        {
+            Boolean t = false;
+            String teilrecht = "";
+            if (rolle.Contains(","))
+            {
+                foreach (string r in rolle.Split(','))
+                {
+                    t = HatDieRolle(r.TrimStart(' '));
+                    if (t)
+                    {
+                        teilrecht = r;
+                        break;
+                    }
+                }
+            }
+            if (t)
+                return Rollen.Contains(teilrecht);
+            return Rollen.Contains(rolle);
         }
 
         public bool HatNichtDasRecht(string recht)

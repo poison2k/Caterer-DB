@@ -1,6 +1,7 @@
 ﻿using Business.Interfaces;
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
+using Caterer_DB.Services;
 using DataAccess.Model;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -23,6 +24,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Fragebogen/Details
+        [CustomAuthorize(Roles = "Caterer")]
         public ActionResult Details()
         {
             var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
@@ -32,12 +34,12 @@ namespace Caterer_DB.Controllers
 
         // GET: Fragebogen/Details
         [HttpPost]
+        [CustomAuthorize(Roles = "Caterer")]
         public ActionResult Details(BearbeiteFragebogenViewModel bearbeitefragebogenviewmodel)
         {
             if (ModelState.IsValid) {
                List<int> antwortIDs = FragebogenViewModelService.Map_BearbeiteFragebogenViewModel_BenutzerResultSet(bearbeitefragebogenviewmodel);
                var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
-
                benutzer.AntwortIDs = antwortIDs;
                BenutzerService.EditBenutzer(benutzer);
             }
