@@ -180,7 +180,7 @@ namespace Caterer_DB.Services
                     if (!Users.Contains(CurrentUser.BenutzerId.ToString()))
                         filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Error", action = "ZugriffVerweigert" }));
 
-                if (String.IsNullOrEmpty(Users) && String.IsNullOrEmpty(Rights))
+                if (String.IsNullOrEmpty(Users) && String.IsNullOrEmpty(Rights) && String.IsNullOrEmpty(Roles))
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Error", action = "ZugriffVerweigert" }));
 
                 

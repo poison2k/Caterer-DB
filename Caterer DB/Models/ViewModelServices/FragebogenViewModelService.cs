@@ -37,24 +37,38 @@ namespace Caterer_DB.Models.ViewModelServices
                 int antwortResultId = -1;
                 foreach (int antwortId in nutzerAntworten)
                 {
-                    foreach (Antwort antwort in frage.Antworten)
+                    if (frage.IstMultiSelect != true)
                     {
-                        if (antwort.AntwortId == antwortId)
+                        foreach (Antwort antwort in frage.Antworten)
                         {
-                            antwortResultId = antwort.AntwortId;
+                            if (antwort.AntwortId == antwortId)
+                            {
+                                antwortResultId = antwort.AntwortId;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (Antwort antwort in frage.Antworten)
+                        {
+                            if (antwort.AntwortId == antwortId)
+                            {
+                                antwort.IsChecked = true;
+                            }
                         }
                     }
 
                 }
-
+                
                 fragenViewModel.Add(new FragenViewModel()
-                {
-                    Antworten = frage.Antworten,
-                    ID = frage.FrageId,
-                    Text = frage.Bezeichnung,
-                    GegebeneAntwort = antwortResultId
-                });
-
+                    {
+                        Antworten = frage.Antworten,
+                        ID = frage.FrageId,
+                        Text = frage.Bezeichnung,
+                        GegebeneAntwort = antwortResultId,
+                        IstMultiSelect = frage.IstMultiSelect
+                    });
+                
 
             }
 
@@ -89,10 +103,11 @@ namespace Caterer_DB.Models.ViewModelServices
                 {
                     foreach (Antwort antwort in frage.Antworten)
                     {
-                        if (antwort.AntwortId == frage.GegebeneAntwort)
+                        if (antwort.AntwortId == frage.GegebeneAntwort || antwort.IsChecked)
                         {
                             antwortIDs.Add(antwort.AntwortId);
                         }
+                        
                     }
                 }
             }

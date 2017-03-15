@@ -318,9 +318,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext1 zu Frage 1"},
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 1"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 1"}
-                }
-
-
+                },
+                IstMultiSelect = true
             });
 
             db.Frage.Add(new Frage()

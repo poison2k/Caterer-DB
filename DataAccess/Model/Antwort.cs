@@ -14,6 +14,8 @@ namespace DataAccess.Model
         [Required]
         public string Bezeichnung { get; set; }
 
+        public bool IsChecked { get; set; }
+
         public Frage Frage { get; set; }
 
     }

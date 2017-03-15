@@ -16,7 +16,7 @@ namespace Caterer_DB.Models
     {
         public int ID { get; set; } // for binding
         public string Text { get; set; }
-        [Required]
+        public bool IstMultiSelect { get; set; }
         public int? GegebeneAntwort { get; set; } // for binding
         public List<Antwort> Antworten { get; set; }
     }
@@ -28,11 +28,7 @@ namespace Caterer_DB.Models
         public List<FragenViewModel> Questions { get; set; }
     }
 
-    public class AnswerVM
-    {
-        public int ID { get; set; }
-        public string Text { get; set; }
-    }
+   
 
   
 
