@@ -12,41 +12,52 @@
 {
     @Html.AntiForgeryToken()
 
-    <div>
-       
-        <hr />
-        @for (int i = 0; i < Model.Fragen.Count; i++)
+  
+
+    @Html.HiddenFor(m => m.Id)
+    @Html.DisplayFor(m => m.Name)
+    for (int i = 0; i < Model.Fragen.Count; i++)
+    {
+
+        @Html.HiddenFor(m => m.Fragen[i].ID)
+        <h3> @Html.DisplayFor(m => m.Fragen[i].Name) </h3>
+        for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
         {
             <div class="row">
                 <div class="well ">
+                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].ID)
                     <div class="form-group">
-                        @Html.HiddenFor(Model => Model.Fragen[i])
                         <div class="row">
-                            <label class="control-label col-md-2"> Frage @(i + 1) </label>
+                            <label class="control-label col-md-2"> Frage @(j + 1) </label>
                             <label class="control-label col-md-10 text-left">
-                                @Model.Fragen[i].Bezeichnung
+                                @Html.DisplayFor(m => m.Fragen[i].Questions[j].Text)
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="funkyradio">
-                                @for (int j = 0; j < Model.Fragen[i].Antworten.Count; j++)
-                                {
+                                @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                { 
+                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
+                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
                                     <div class="funkyradio-success">
-                                        @Html.RadioButton(Model.Fragen[i].FrageId.ToString(), Model.Fragen[i].Antworten[j].AntwortId.ToString(),false , new {id = "radio" + Model.Fragen[i].Antworten[j].AntwortId.ToString() } )
-                                        <label for="radio@(Model.Fragen[i].Antworten[j].AntwortId.ToString())"> @Model.Fragen[i].Antworten[j].Bezeichnung</label>
+                                        @Html.RadioButtonFor(m => m.Fragen[i].Questions[j].GegebeneAntwort, Model.Fragen[i].Questions[j].Antworten[k].AntwortId, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
+                                        <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
                                     </div>
                                 }
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+            @Html.ValidationMessageFor(m => m.Fragen[i].Questions[j].GegebeneAntwort)
+
         }
-    </div>
+    }
+    <input type="submit" value="save" />
 }
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

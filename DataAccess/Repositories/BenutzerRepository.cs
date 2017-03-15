@@ -77,12 +77,12 @@ namespace DataAccess.Repositories
             {
                 if (count == 0)
                 {
-                    mitarbeiterQuery =  mitarbeiterQuery.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()));
+                    mitarbeiterQuery = mitarbeiterQuery.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()));
                     count++;
                 }
                 else
                 {
-                   mitarbeiterQuery = mitarbeiterQuery.Union((Db.Benutzer.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()))));
+                    mitarbeiterQuery = mitarbeiterQuery.Union((Db.Benutzer.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()))));
                 }
             }
 
@@ -91,7 +91,7 @@ namespace DataAccess.Repositories
             return mitarbeiterQuery.ToList();
         }
 
-        
+
 
         public List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse)
         {
@@ -129,6 +129,8 @@ namespace DataAccess.Repositories
 
         public void EditUser(Benutzer benutzer)
         {
+        
+
             Db.SetModified(benutzer);
             Db.SaveChanges();
         }

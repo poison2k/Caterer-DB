@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccess.Model
 {
@@ -57,5 +58,46 @@ namespace DataAccess.Model
         public bool WeitergabeVonDaten { get; set; }
 
         public string Sonstiges { get; set; }
+
+        //Fragebogen
+        public string _AntwortIDs { get; set; }
+
+        
+
+        [NotMapped]
+        public virtual List<int> AntwortIDs
+        {
+            get
+            {  if (_AntwortIDs != "" && _AntwortIDs != null)
+                {
+                    var test = _AntwortIDs.Split(',');
+                    var ids = new List<int>();
+                    foreach (string id in test)
+                    {
+                        ids.Add(Convert.ToInt32(id));
+                    }
+                    return ids;
+
+                }
+                else {                 
+                }
+                return new List<int>();
+            }
+            set
+            {
+                var ids = value;
+                _AntwortIDs = "";
+                for (int i = 0; i < ids.Count; i++) {
+                    if (!(i == ids.Count - 1))
+                    {
+                        _AntwortIDs = _AntwortIDs + ids[i]+",";
+                    }
+                    else {
+                        _AntwortIDs = _AntwortIDs + ids[i];
+                    }
+
+                }
+            }
+        }
     }
 }
