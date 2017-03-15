@@ -37,9 +37,6 @@ namespace Caterer_DB.Models.ViewModelServices
                 Fragen = new List<FragenNachThemengebiet>()
             };
 
-
-           
-
             foreach (List<Frage> fragen in fragenListen)
             {
                 List<FragenViewModel> fragenViewModel = new List<FragenViewModel>();
@@ -79,7 +76,6 @@ namespace Caterer_DB.Models.ViewModelServices
                         GegebeneAntwort = antwortResultId,
                         IstMultiSelect = frage.IstMultiSelect
                     });
-
 
                 }
 

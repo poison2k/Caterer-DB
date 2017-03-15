@@ -353,8 +353,53 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Antworten = new List<Antwort>() {
                     new Antwort() {Bezeichnung = "Antworttext1 zu Frage 2"},
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 2"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 2"},
-                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 2"}
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 2"}
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                IstMultiSelect = true
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 3",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 3"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 3"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 3"}
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                IstMultiSelect = true
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 4",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 4"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 4"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 4"}
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                IstMultiSelect = false
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 5",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 5"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 5"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 5"}
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                IstMultiSelect = false
+            });
+
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 6",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 6"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 6"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 6"},
+                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 6"}
 
                 },
                 Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
@@ -364,11 +409,92 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
             db.Frage.Add(new Frage()
             {
-                Bezeichnung = "Fragetext zu Frage 3",
+                Bezeichnung = "Fragetext zu Frage 7",
                 Antworten = new List<Antwort>() {
-                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 3"},
-                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 3"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 3"}
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 7"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 7"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 7"},
+                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 7"}
+
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+
+
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 8",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 8"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 8"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 8"},
+                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 8"}
+
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+
+
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 9",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 9"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 9"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 9"},
+                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 9"}
+
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+
+
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 10",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 10"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 10"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 10"},
+                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 10"}
+
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+
+
+            });
+
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 11",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 11"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 11"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 11"}
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Biobauer"),
+
+            });
+
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 12",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 12"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 12"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 12"}
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Biobauer"),
+
+            });
+
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext zu Frage 13",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 13"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 13"},
+                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 13"}
                 },
                 Sparte = db.Sparte.Single(x => x.Bezeichnung == "Biobauer"),
 

@@ -5,80 +5,99 @@
     ViewBag.Title = "Fragebogen";
 }
 
-<h2>Fragebogen</h2>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-
-
-    @Html.HiddenFor(m => m.Id)
-    for (int i = 0; i < Model.Fragen.Count; i++)
-    {
-
-        @Html.HiddenFor(m => m.Fragen[i].ID)
-        <h3> @Html.DisplayFor(m => m.Fragen[i].Name) </h3>
-        for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
+<div class="row">
+    <nav class="sidebar hidden-xs hidden-sm"  id="myScrollspy">
+        <ul class="nav nav-pills nav-stacked" >
+            <li><h2>Fragebogen</h2></li>
+            @for (int i = 0; i < Model.Fragen.Count; i++)
+            {
+                <li><a href="#@Model.Fragen[i].Name">@Model.Fragen[i].Name</a></li>
+            }
+        </ul>
+    </nav>
+    <div class="col-md-9 col-md-offset-3">
+        @using (Html.BeginForm())
         {
-            <div class="row">
-                <div class="well ">
-                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].ID)
-                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].IstMultiSelect)
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="control-label col-md-2"> Frage @(j + 1) </label>
-                            <label class="control-label col-md-10 text-left">
-                                @Html.DisplayFor(m => m.Fragen[i].Questions[j].Text)
-                            </label>
-                        </div>
-                    </div>
-                    @if (!Model.Fragen[i].Questions[j].IstMultiSelect)
+            @Html.AntiForgeryToken()
+
+
+            @Html.HiddenFor(m => m.Id)
+            for (int i = 0; i < Model.Fragen.Count; i++)
+            {
+
+                @Html.HiddenFor(m => m.Fragen[i].ID)
+                <div id="@Model.Fragen[i].Name" style="padding-top: 160px; margin-top: -160px;">
+                    @Html.HiddenFor(m => m.Fragen[i].Name) 
+                    <h3> @Html.DisplayFor(m => m.Fragen[i].Name) </h3>
+                    @for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
                     {
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="funkyradio">
-                                    @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
-                                    {
-                                        @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
-                                        @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
-                                        <div class="funkyradio-success">
-                                            @Html.RadioButtonFor(m => m.Fragen[i].Questions[j].GegebeneAntwort, Model.Fragen[i].Questions[j].Antworten[k].AntwortId, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
-                                            <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
-                                        </div>
-                                    }
+                            <div class="well well-lg">
+                                @Html.HiddenFor(m => m.Fragen[i].Questions[j].ID)
+                                @Html.HiddenFor(m => m.Fragen[i].Questions[j].IstMultiSelect)
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label class="control-label col-md-2"> Frage @(j + 1) </label>
+                                        <label class="control-label col-md-10 text-left">
+                                            @Html.DisplayFor(m => m.Fragen[i].Questions[j].Text)
+                                        </label>
+                                    </div>
                                 </div>
+                                @if (!Model.Fragen[i].Questions[j].IstMultiSelect)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="funkyradio">
+                                                @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                                {
+                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
+                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
+                                                    <div class="funkyradio-primary">
+                                                        @Html.RadioButtonFor(m => m.Fragen[i].Questions[j].GegebeneAntwort, Model.Fragen[i].Questions[j].Antworten[k].AntwortId, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
+                                                        <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>(Mehrfachauswahl möglich)</p>
+                                            <div class="funkyradio">
+                                                @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                                {
+                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
+                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
+                                                    <div class="funkyradio-primary">
+                                                        @Html.CheckBoxFor(m => m.Fragen[i].Questions[j].Antworten[k].IsChecked, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
+                                                        <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
-                    }
-                    else
-                    {
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>(Mehrfachauswahl möglich)</p>
-                                <div class="funkyradio">
-                                    @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
-                                    {
-                                        @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
-                                        @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
-                                        <div class="funkyradio-success">
-                                            @Html.CheckBoxFor(m => m.Fragen[i].Questions[j].Antworten[k].IsChecked, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
-                                            <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </div>
+                        @Html.ValidationMessageFor(m => m.Fragen[i].Questions[j].GegebeneAntwort)
+
                     }
                 </div>
-            </div>
-            @Html.ValidationMessageFor(m => m.Fragen[i].Questions[j].GegebeneAntwort)
+            }
+
+
+            <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-default">
+                <i class="glyphicon glyphicon-ok"></i> Speichern
+            </button>
 
         }
-    }
-    <input type="submit" value="save" />
-}
+    </div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

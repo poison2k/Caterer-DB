@@ -135,7 +135,7 @@ h6,
     color: rgb(0, 0, 0);
 }
 
-}
+
 /*-------------------------------------------------*/
 /* Navigationsleiste - Dropdown-Menü angepasst*/
 .navbar-default .navbar-nav > .open > a,
@@ -245,6 +245,11 @@ ul {
     border-top-width: 0;
     border-bottom: 4px solid;
 }
+
+ .sidebar {
+      top: 160px;
+      position: fixed;
+  }
 
 /* PageList Hintergrundfarbe Überschriften --> Noch in Arbeit <--*/
 /*th {
