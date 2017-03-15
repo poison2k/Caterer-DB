@@ -3,6 +3,7 @@ using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
 using Caterer_DB.Resources;
+using System;
 
 namespace Caterer_DB.App_Start.ContextInitializer
 {
@@ -15,8 +16,12 @@ namespace Caterer_DB.App_Start.ContextInitializer
             CreateBenutzerGruppenData(db);
             CreateUserData(db);
             CreateConfig(db);
+            CreateSparte(db);
             CreateFragen(db);
+
         }
+
+
 
         private static void CreateRechte(CatererContext db)
         {
@@ -309,6 +314,25 @@ namespace Caterer_DB.App_Start.ContextInitializer
             db.SaveChanges();
         }
 
+
+        private static void CreateSparte(CatererContext db)
+        {
+            db.Sparte.Add(new Sparte()
+            {
+                Bezeichnung = "Essen"
+            });
+            db.Sparte.Add(new Sparte()
+            {
+                Bezeichnung = "Verpflegung"
+            });
+            db.Sparte.Add(new Sparte()
+            {
+                Bezeichnung = "Biobauer"
+            });
+            db.SaveChanges();
+        }
+
+
         public static void CreateFragen(CatererContext db)
         {
             db.Frage.Add(new Frage()
@@ -319,6 +343,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 1"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 1"}
                 },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
                 IstMultiSelect = true
             });
 
@@ -330,7 +355,9 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 2"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 2"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 2"}
-                }
+
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
 
 
             });
@@ -342,11 +369,12 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext1 zu Frage 3"},
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 3"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 3"}
-                }
+                },
+                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Biobauer"),
+
+            });
 
 
-            }
-                );
         }
     }
 }

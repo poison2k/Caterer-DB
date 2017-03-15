@@ -42,7 +42,7 @@ namespace DataAccess.Repositories
 
         public List<Sparte> SearchSparte()
         {
-            return Db.Sparte.ToList();
+            return Db.Sparte.OrderBy(x=>x.Bezeichnung).ToList();
         }
 
         public Sparte SearchSparteByName(string name)

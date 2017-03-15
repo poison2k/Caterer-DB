@@ -28,39 +28,50 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<FragebogenViewModelService>(fragebogenViewModelService);
         }
 
-        public BearbeiteFragebogenViewModel Map_Fragen_BearbeiteFragebogenViewModel(List<Frage> fragen, List<int> nutzerAntworten)
+        public BearbeiteFragebogenViewModel Map_Fragen_BearbeiteFragebogenViewModel(List<List<Frage>> fragenListen, List<int> nutzerAntworten)
         {
-            List<FragenViewModel> fragenViewModel = new List<FragenViewModel>();
 
-            foreach (Frage frage in fragen)
+            var bearbeiteFragebogenViewModel = new BearbeiteFragebogenViewModel()
             {
-                int antwortResultId = -1;
-                foreach (int antwortId in nutzerAntworten)
+                Id = 1,
+                Fragen = new List<FragenNachThemengebiet>()
+            };
+
+
+           
+
+            foreach (List<Frage> fragen in fragenListen)
+            {
+                List<FragenViewModel> fragenViewModel = new List<FragenViewModel>();
+                foreach (Frage frage in fragen)
                 {
-                    if (frage.IstMultiSelect != true)
+                    int antwortResultId = -1;
+                    foreach (int antwortId in nutzerAntworten)
                     {
-                        foreach (Antwort antwort in frage.Antworten)
+                        if (frage.IstMultiSelect != true)
                         {
-                            if (antwort.AntwortId == antwortId)
+                            foreach (Antwort antwort in frage.Antworten)
                             {
-                                antwortResultId = antwort.AntwortId;
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwortResultId = antwort.AntwortId;
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        foreach (Antwort antwort in frage.Antworten)
+                        else
                         {
-                            if (antwort.AntwortId == antwortId)
+                            foreach (Antwort antwort in frage.Antworten)
                             {
-                                antwort.IsChecked = true;
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwort.IsChecked = true;
+                                }
                             }
                         }
+
                     }
 
-                }
-                
-                fragenViewModel.Add(new FragenViewModel()
+                    fragenViewModel.Add(new FragenViewModel()
                     {
                         Antworten = frage.Antworten,
                         ID = frage.FrageId,
@@ -68,27 +79,18 @@ namespace Caterer_DB.Models.ViewModelServices
                         GegebeneAntwort = antwortResultId,
                         IstMultiSelect = frage.IstMultiSelect
                     });
-                
 
+
+                }
+
+                FragenNachThemengebiet fragenNachThemengebiet = new FragenNachThemengebiet()
+                {
+                    Questions = fragenViewModel,
+                    Name = fragen[0].Sparte.Bezeichnung,
+                    ID = 1
+                };
+                bearbeiteFragebogenViewModel.Fragen.Add(fragenNachThemengebiet);
             }
-
-            FragenNachThemengebiet fragenNachThemengebiet = new FragenNachThemengebiet()
-            {
-                Questions = fragenViewModel,
-                Name = "TestKategorie",
-                ID = 1
-            };
-
-
-            var bearbeiteFragebogenViewModel = new BearbeiteFragebogenViewModel()
-            {
-
-                Id = 1,
-                Name = "test"
-            };
-            bearbeiteFragebogenViewModel.Fragen = new List<FragenNachThemengebiet>();
-            bearbeiteFragebogenViewModel.Fragen.Add(fragenNachThemengebiet);
-
 
             return bearbeiteFragebogenViewModel;
 
@@ -107,7 +109,7 @@ namespace Caterer_DB.Models.ViewModelServices
                         {
                             antwortIDs.Add(antwort.AntwortId);
                         }
-                        
+
                     }
                 }
             }

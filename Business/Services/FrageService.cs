@@ -14,10 +14,12 @@ namespace Business.Services
 
         public IFrageRepository FrageRepository { get; set; }
 
-        public FrageService(IFrageRepository frageRepository)
+        public ISparteRepository SparteRepository { get; set; }
+
+        public FrageService(IFrageRepository frageRepository, ISparteRepository sparteRepository)
         {
             FrageRepository = frageRepository;
-
+            SparteRepository = sparteRepository;
         }
 
         public void AddFrage(Frage frage)
@@ -33,6 +35,11 @@ namespace Business.Services
         public List<Frage> FindAlleFragen()
         {
             return FrageRepository.SearchFrage();
+        }
+
+        public List<List<Frage>> FindAlleFragenNachSparteninEigenenListen()
+        {
+            return FrageRepository.GetAllFragenSortetBySparteInDifferntLists(SparteRepository.SearchSparte());
         }
 
         public void RemoveFrage(int id)

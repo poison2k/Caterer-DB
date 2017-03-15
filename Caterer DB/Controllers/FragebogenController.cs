@@ -2,7 +2,6 @@
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Services;
-using DataAccess.Model;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -29,7 +28,7 @@ namespace Caterer_DB.Controllers
         {
             var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
 
-            return View(FragebogenViewModelService.Map_Fragen_BearbeiteFragebogenViewModel(FrageService.FindAlleFragen(),benutzer.AntwortIDs));
+            return View(FragebogenViewModelService.Map_Fragen_BearbeiteFragebogenViewModel(FrageService.FindAlleFragenNachSparteninEigenenListen(),benutzer.AntwortIDs));
         }
 
         // GET: Fragebogen/Details
