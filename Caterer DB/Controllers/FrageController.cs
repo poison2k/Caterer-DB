@@ -53,7 +53,7 @@ namespace Caterer_DB.Controllers
         // GET: Frages/Create
         public ActionResult Create()
         {
-            return View();
+           return View();
         }
 
         // POST: Frages/Create
@@ -61,7 +61,7 @@ namespace Caterer_DB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateFrageViewModel createFrageViewModel)
+        public ActionResult Create(CreateFrageViewModel createFrageViewModel, int test = 0 )
         {
             if (ModelState.IsValid)
             {
@@ -73,8 +73,22 @@ namespace Caterer_DB.Controllers
                     }
                     
                     createFrageViewModel.Antworten.Add(new Antwort());
+                    
+                    
                     return View(createFrageViewModel);
 
+                }
+                else if (Request.Form["btnDeleteAnswer"] != null)
+                {
+                    for (int i = 0; i < Request.Form.Count; i++)
+                    {
+                        if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
+                        {
+                            ModelState.Clear();
+                            createFrageViewModel.Antworten.RemoveAt(i / 2 - 2);
+                            return View(createFrageViewModel);
+                        }
+                    }                    
                 }
                 else if (Request.Form["btnCreateQuestion"] != null)
                 {
@@ -115,7 +129,35 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                FrageService.EditFrage(FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel));
+                if (Request.Form["btnAddAnswer"] != null)
+                {
+                    if (editFrageViewModel.Antworten == null)
+                    {
+                        editFrageViewModel.Antworten = new List<Antwort>();
+                    }
+
+                    editFrageViewModel.Antworten.Add(new Antwort());
+
+
+                    return View(editFrageViewModel);
+
+                }
+                else if (Request.Form["btnDeleteAnswer"] != null)
+                {
+                    for (int i = 0; i < Request.Form.Count; i++)
+                    {
+                        if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
+                        {
+                            ModelState.Clear();
+                            editFrageViewModel.Antworten.RemoveAt(i / 2 - 2);
+                            return View(editFrageViewModel);
+                        }
+                    }
+                }
+                else if (Request.Form["btnSave"] != null)
+                {
+                    FrageService.EditFrage(FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel));
+                }
                 return RedirectToAction("Index");
             }
             return View(editFrageViewModel);

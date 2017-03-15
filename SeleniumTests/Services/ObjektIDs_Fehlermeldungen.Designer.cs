@@ -22,14 +22,14 @@ namespace SeleniumTests.Services {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ObjektIDs_DatenManagement {
+    internal class ObjektIDs_Fehlermeldungen {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ObjektIDs_DatenManagement() {
+        internal ObjektIDs_Fehlermeldungen() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SeleniumTests.Services {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SeleniumTests.Services.ObjektIDs_DatenManagement", typeof(ObjektIDs_DatenManagement).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SeleniumTests.Services.ObjektIDs_Fehlermeldungen", typeof(ObjektIDs_Fehlermeldungen).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,137 +61,137 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnEdit ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Anrede-error ähnelt.
         /// </summary>
-        internal static string Daten_Bearbeiten {
+        internal static string Anrede {
             get {
-                return ResourceManager.GetString("Daten_Bearbeiten", resourceCulture);
+                return ResourceManager.GetString("Anrede", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die FunktionAnsprechpartner-error ähnelt.
         /// </summary>
-        internal static string Eigene_Daten_Seite_Caterer {
+        internal static string Ansprechpartner {
             get {
-                return ResourceManager.GetString("Eigene_Daten_Seite_Caterer", resourceCulture);
+                return ResourceManager.GetString("Ansprechpartner", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterBearbeitenSeite ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mail-error ähnelt.
         /// </summary>
-        internal static string Eigene_Daten_Seite_Mitarbeiter {
+        internal static string Email {
             get {
-                return ResourceManager.GetString("Eigene_Daten_Seite_Mitarbeiter", resourceCulture);
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnModalCancel ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
         /// </summary>
-        internal static string Löschen_Abbrechen {
+        internal static string Email_Bestätigen {
             get {
-                return ResourceManager.GetString("Löschen_Abbrechen", resourceCulture);
+                return ResourceManager.GetString("Email_Bestätigen", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die LöschenButton ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Firmenname-error ähnelt.
         /// </summary>
-        internal static string Löschen_Button {
+        internal static string Firmenname {
             get {
-                return ResourceManager.GetString("Löschen_Button", resourceCulture);
+                return ResourceManager.GetString("Firmenname", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnModalDelete ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Lieferumkreis-error ähnelt.
         /// </summary>
-        internal static string Löschen_Ja {
+        internal static string Lieferumkreis {
             get {
-                return ResourceManager.GetString("Löschen_Ja", resourceCulture);
+                return ResourceManager.GetString("Lieferumkreis", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die LöschenCancel ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Nachname-error ähnelt.
         /// </summary>
-        internal static string Löschen_Nein {
+        internal static string Nachname {
             get {
-                return ResourceManager.GetString("Löschen_Nein", resourceCulture);
+                return ResourceManager.GetString("Nachname", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die LöschenBest ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Organisationsform-error ähnelt.
         /// </summary>
-        internal static string Löschen_Seite {
+        internal static string Organisation {
             get {
-                return ResourceManager.GetString("Löschen_Seite", resourceCulture);
+                return ResourceManager.GetString("Organisation", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnSpeichern ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ort-error ähnelt.
         /// </summary>
-        internal static string Mitarbeiter_Anlegen_Button {
+        internal static string Ort {
             get {
-                return ResourceManager.GetString("Mitarbeiter_Anlegen_Button", resourceCulture);
+                return ResourceManager.GetString("Ort", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterBearbeitenSeite ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Passwort-error ähnelt.
         /// </summary>
-        internal static string Mitarbeiter_Bearbeiten {
+        internal static string Passwort {
             get {
-                return ResourceManager.GetString("Mitarbeiter_Bearbeiten", resourceCulture);
+                return ResourceManager.GetString("Passwort", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die PasswortVerification-error ähnelt.
         /// </summary>
-        internal static string Mitarbeiter_Details {
+        internal static string Passwort_Wiederholen {
             get {
-                return ResourceManager.GetString("Mitarbeiter_Details", resourceCulture);
+                return ResourceManager.GetString("Passwort_Wiederholen", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Postleitzahl-error ähnelt.
         /// </summary>
-        internal static string Mitarbeiter_Hinzufügen {
+        internal static string PLZ {
             get {
-                return ResourceManager.GetString("Mitarbeiter_Hinzufügen", resourceCulture);
+                return ResourceManager.GetString("PLZ", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die MitarbeiterSeite ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stra_e-error ähnelt.
         /// </summary>
-        internal static string Mitarbeiter_Seite {
+        internal static string Straße_Hnr {
             get {
-                return ResourceManager.GetString("Mitarbeiter_Seite", resourceCulture);
+                return ResourceManager.GetString("Straße_Hnr", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnMarkierungenErstellen ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Telefon-error ähnelt.
         /// </summary>
-        internal static string Neuer_Mitarbeiter {
+        internal static string Telefon {
             get {
-                return ResourceManager.GetString("Neuer_Mitarbeiter", resourceCulture);
+                return ResourceManager.GetString("Telefon", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnSpeichern ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Vorname-error ähnelt.
         /// </summary>
-        internal static string Speichern {
+        internal static string Vorname {
             get {
-                return ResourceManager.GetString("Speichern", resourceCulture);
+                return ResourceManager.GetString("Vorname", resourceCulture);
             }
         }
     }

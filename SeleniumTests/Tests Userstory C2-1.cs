@@ -38,27 +38,27 @@ namespace SeleniumTests
             TestTools.Daten_In_Textbox_Eingeben("", ObjektIDs_NutzerDaten.Internet, driver);
             new SelectElement(driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Lieferumkreis))).SelectByIndex(0);
 
-            TestTools.Element_Klicken("btnSpeichern", driver);
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             //Fehlermeldungen überprüfen
             //Firma
-            Assert.AreEqual(Fehlermeldung.Firma_Erforderlich, TestTools.Label_Text_Zurückgeben("Firmenname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Organisation_Erforderlich, TestTools.Label_Text_Zurückgeben("Organisationsform-error", driver));
-            Assert.AreEqual(Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.Label_Text_Zurückgeben("Stra_e-error", driver));
-            Assert.AreEqual(Fehlermeldung.PLZ_Erforderlich, TestTools.Label_Text_Zurückgeben("Postleitzahl-error", driver));
-            Assert.AreEqual(Fehlermeldung.Ort_Erforderlich, TestTools.Label_Text_Zurückgeben("Ort-error", driver));
+            Assert.AreEqual(Fehlermeldung.Firma_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Firmenname, driver));
+            Assert.AreEqual(Fehlermeldung.Organisation_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Organisation, driver));
+            Assert.AreEqual(Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Straße_Hnr, driver));
+            Assert.AreEqual(Fehlermeldung.PLZ_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.PLZ, driver));
+            Assert.AreEqual(Fehlermeldung.Ort_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Ort, driver));
 
             //Ansprechpartner
-            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben("Anrede-error", driver));
-            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben("Vorname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben("Nachname-error", driver));
-            Assert.AreEqual(Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.Label_Text_Zurückgeben("FunktionAnsprechpartner-error", driver));
+            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Anrede, driver));
+            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Vorname, driver));
+            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Nachname, driver));
+            Assert.AreEqual(Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Ansprechpartner, driver));
 
             //Erreichbarkeit
-            Assert.AreEqual(Fehlermeldung.Telefon_Erforderlich, TestTools.Label_Text_Zurückgeben("Telefon-error", driver));
+            Assert.AreEqual(Fehlermeldung.Telefon_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Telefon, driver));
 
             //Sonstiges
-            Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben("Lieferumkreis-error", driver));
+            Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Lieferumkreis, driver));
 
             //Löschen unbestätigt abbrechen
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
@@ -86,13 +86,13 @@ namespace SeleniumTests
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Ort, ObjektIDs_NutzerDaten.Ort, driver);
             new SelectElement(driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede))).SelectByIndex(1);
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Vorname, ObjektIDs_NutzerDaten.Vorname, driver);
-            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Name, ObjektIDs_NutzerDaten.Nachname, driver);
+            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Nachname, ObjektIDs_NutzerDaten.Nachname, driver);
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Ansprechpartner, ObjektIDs_NutzerDaten.Ansprechpartner, driver);
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Telefon, ObjektIDs_NutzerDaten.Telefon, driver);
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Telefon, ObjektIDs_NutzerDaten.Fax, driver);
             new SelectElement(driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Lieferumkreis))).SelectByIndex(1);
 
-            TestTools.Element_Klicken("btnSpeichern", driver);
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Eigene_Daten)).Click();
@@ -105,7 +105,7 @@ namespace SeleniumTests
             Assert.AreEqual(NutzerDaten.NutzerDaten_Ort, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Ort, driver));
             Assert.AreEqual("Herr", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Anrede, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Vorname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname, driver));
-            Assert.AreEqual(NutzerDaten.NutzerDaten_Name, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Nachname, driver));
+            Assert.AreEqual(NutzerDaten.NutzerDaten_Nachname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Nachname, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Ansprechpartner, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Ansprechpartner, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Telefon, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Telefon, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Telefon, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Fax, driver));
@@ -124,7 +124,7 @@ namespace SeleniumTests
             TestTools.Daten_In_Textbox_Eingeben("01234 - 56789", ObjektIDs_NutzerDaten.Telefon, driver);
             TestTools.Daten_In_Textbox_Eingeben("01234 - 99999", ObjektIDs_NutzerDaten.Fax, driver);
 
-            TestTools.Element_Klicken("btnSpeichern", driver);
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 

@@ -21,67 +21,82 @@
     @Html.AntiForgeryToken()
 
 
-
-
-
-
-
-
-
-
-
-
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.FrageId)
-        <div class="form-group">
-            <div class="col-md-8 col-md-offset-2">
-                @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label col-md-0" })
-                @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
+    <div class="col-md-8 col-md-offset-2">
+        <div class="well well-lg">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.FrageId)
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label col-md-0" })
+                        @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
+                        <br />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
 
-        @for (int i = 0; i < Model.Antworten.Count; i++)
-        {
-            <div class="form-group">
-                <div class="col-md-8 col-md-offset-2">
-                    @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
-                    <label class="control-label col-md-0"> Antwort @(i + 1) </label>
-                    @Html.EditorFor(Model => Model.Antworten[i].Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
 
+    <div class="col-md-8 col-md-offset-2">
+        <div class="well well-lg">
+            <div class="row">
+                @for (int i = 0; i < Model.Antworten.Count; i++)
+                {
+                    <div class="form-group">
+                        <div class="col-md-11">
+                            @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
+                            <label class="control-label col-md-0"> Antwort @(i + 1) </label>
+                            @Html.EditorFor(Model => Model.Antworten[i].Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="col-md-1 text-right">
+                            <ul class="list-unstyled list-inline " style="margin-top: 27px;">
+                                <li>
+                                    <button id="LöschenButton" name="btnDeleteAnswer" type="submit" class="btn btn-success">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
             </div>
-        }      
+        </div>
     </div>
 
-<div class="row">
-    <div class="col-md-4 col-md-offset-2">
-        <ul class="list-unstyled list-inline " style="margin-left: -5px;">
-            <li>
-                <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-default">
-                    <i class="glyphicon glyphicon-ok"></i> Speichern
-                </button>
-            </li>
-           
-            <li>
-                <a class="btn btn-default" id="btnZurück" href="@Url.Action("Index", "Frage", new {id = Model.FrageId})"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-            </li>
-        </ul>
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-2">
+            <ul class="list-unstyled list-inline " style="margin-left: 5px;">
+                <li>
+                    <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-default">
+                        <i class="glyphicon glyphicon-ok"></i> Speichern
+                    </button>
+                </li>
+                <li>
+                    <a class="btn btn-default" id="btnZurück" href="@Url.Action("Index", "Frage", new {id = Model.FrageId})"><i class="glyphicon glyphicon-upload"></i> Veröffentlichen</a>
+                </li>
+                <li>
+                    <a class="btn btn-default" id="btnZurück" href="@Url.Action("Index", "Frage", new {id = Model.FrageId})"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 text-right">
+            <ul class="list-unstyled list-inline " style="margin-right: 0px;">
+                <li>
+                    <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
+                        <i class="glyphicon glyphicon-trash"></i> Frage löschen
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4 text-right">
-        <ul class="list-unstyled list-inline " style="margin-right: 0px;">
-            <li>
-                <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
-                    <i class="glyphicon glyphicon-trash"></i> Konto löschen
-                </button>
-            </li>
-        </ul>
-    </div>
-</div>
 
 }
 

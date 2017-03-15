@@ -142,6 +142,60 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownManageCaterer ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Caterer {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Caterer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererAnzeigen ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Caterer_Anzeigen {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Caterer_Anzeigen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererHinzufügen ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Caterer_Hinzufügen {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Caterer_Hinzufügen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die DropdownManageFragebogen ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Fragebogen {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Fragebogen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die FragenAnzeigen ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Fragebogen_Anzeigen {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Fragebogen_Anzeigen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die FragenHinzufügen ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Hinzufügen {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Hinzufügen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die DropdownServiceLogin ähnelt.
         /// </summary>
         internal static string Dropdown_Service_Login {

@@ -142,7 +142,7 @@
     <value>LöschenBest</value>
   </data>
   <data name="Mitarbeiter_Anlegen_Button" xml:space="preserve">
-    <value>btnMarkierungenErstellen</value>
+    <value>btnSpeichern</value>
   </data>
   <data name="Mitarbeiter_Bearbeiten" xml:space="preserve">
     <value>MitarbeiterBearbeitenSeite</value>
@@ -155,6 +155,9 @@
   </data>
   <data name="Mitarbeiter_Seite" xml:space="preserve">
     <value>MitarbeiterSeite</value>
+  </data>
+  <data name="Neuer_Mitarbeiter" xml:space="preserve">
+    <value>btnMarkierungenErstellen</value>
   </data>
   <data name="Speichern" xml:space="preserve">
     <value>btnSpeichern</value>
