@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abschluss" xml:space="preserve">
+    <value>
+
+Wir wünschen Ihnen einen erfolgreichen Tag!
+
+Ihr Team der Vernetzungsstelle für Schulverpflegung Niedersachsen</value>
+  </data>
+  <data name="Anregung" xml:space="preserve">
+    <value>
+
+
+
+Sie haben noch Fragen oder Anregungen? Bitte antworten Sie nicht direkt auf diese E-Mail - aus technischen Gründen können wir Ihre Anfrage leider nicht bearbeiten, wenn Sie die Reply-Funktion Ihres E-Mail-Programms wählen.
+
+Nutzen Sie einfach die Kontaktmöglichkeiten unter:
+
+</value>
+  </data>
+  <data name="Catererangelegt" xml:space="preserve">
+    <value>Sehr geehrter Mitarbeiter, 
+
+Ihr Nutzerkonto für die Caterer Datenbank wurde gerade durch unseren Mitarbeiter eingerichtet. 
+Bitte nutzen Sie den mitgesendeten Link zur Vergabe eines Passwortes und zum Abschluss Ihrer Registrierung. 
+Im Anschluss steht Ihnen der interne Bereich der Caterer Datenbank zur Verfügung.
+Vielen Dank für Ihr Vertrauen. 
+
+</value>
+  </data>
+  <data name="CatererRegistrierung1" xml:space="preserve">
+    <value>Sehr geehrter Nutzer, 
+
+Sie haben ein Benutzerkonto bei der Caterer Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsenangelegt. Eine gute Entscheidung! Nur so können Sie bei der Empfehlung von Verpflegungsanbietern für Schulen berücksichtigt werden.
+
+Damit Sie Ihr Konto nutzen können, fehlt nur noch ein Schritt:
+Bestätigen Sie Ihre E-Mail Adresse. 
+Klicken Sie dafür einfach auf den nach folgenden Link. 
+
+</value>
+  </data>
+  <data name="CatererRegistrierung2" xml:space="preserve">
+    <value>
+
+Im Anschluss können Sie mit Ihren Anmeldedaten alle Funktionen des internen Bereichs nutzen.</value>
+  </data>
+  <data name="Linkanfang" xml:space="preserve">
+    <value>http://localhost:60003/Account/PasswordChange?verify=</value>
+  </data>
+  <data name="Mitarbeiterangelegt" xml:space="preserve">
+    <value>Sehr geehrter Mitarbeiter, 
+
+Ihr Nutzerkonto für die Caterer Datenbank wurde gerade durch den Administrator eingerichtet. 
+Bitte nutzen Sie den mitgesendeten Link zur Vergabe eines Passwortes und zum Abschluss Ihrer Registrierung. 
+
+</value>
+  </data>
+  <data name="Nutzerlöschen" xml:space="preserve">
+    <value>Sehr geehrter Nutzer,
+
+Ihr Nutzerkonto wurde gerade aus der Caterer Datenbank entfernt. 
+Wir bedauern, dass Sie nicht weiter in unserer Caterer Datenbank geführt werden möchten. </value>
+  </data>
+  <data name="NutzerÄnderung" xml:space="preserve">
+    <value>Sehr geehrter Nutzer,
+
+wie von Ihnen gewünscht, wurde Ihr Nutzerkonto der Caterer Datenbank von unseren Mitarbeitern aktualisiert. 
+Vielen Dank für Ihr Vertrauen. 
+
+Für Rückfragen stehen wir Ihnen gerne zur Verfügung. </value>
+  </data>
+  <data name="PWvergessen" xml:space="preserve">
+    <value>Sehr geehrter Nutzer,
+
+falls Sie Ihr Passwort vergessen haben, können Sie sich mit Hilfe des folgenden Links ein neues Passwort vergeben. 
+Bitte beachten Sie, dass der Link nur 2 Stunden gültig ist.Danach müssen Sie eine neue E-Mail anfordern.
+
+</value>
+  </data>
+</root>
