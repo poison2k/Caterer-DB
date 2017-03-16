@@ -38,7 +38,7 @@ namespace BusinessBenutzerServiceTest
 
             var mockBenutzerRepository = new Mock<IBenutzerRepository>();
             mockBenutzerRepository.Setup(x => x.SearchUser()).Returns(benutzerList);
-            mockBenutzerRepository.Setup(x => x.SearchAllMitarbeiterWithPaging(It.IsAny<int>(), It.IsAny<int>())).Returns(benutzerList);
+            mockBenutzerRepository.Setup(x => x.SearchAllCatererWithPaging(It.IsAny<int>(), It.IsAny<int>())).Returns(benutzerList);
             mockBenutzerRepository.Setup(x => x.SearchUserById(It.IsAny<int>())).Returns(Fixture.Build<Benutzer>().With(x => x.BenutzerId, 1).With(x => x.EMailVerificationCode, "TestHash").With(x => x.PasswordVerificationCode, "TestHash").Create());
             mockBenutzerRepository.Setup(x => x.SearchUserByIdNoTracking(It.IsAny<int>())).Returns(Fixture.Build<Benutzer>().With(x => x.BenutzerId, 1).Create());
             mockBenutzerRepository.Setup(x => x.SearchUserByEMail(It.IsAny<string>())).Returns(Fixture.Build<Benutzer>().With(x => x.Mail, "test@test.de").Create());
@@ -133,7 +133,7 @@ namespace BusinessBenutzerServiceTest
             //Assert
 
             //Act
-            var result = BenutzerService.FindAllMitarbeiterWithPaging(1, 10);
+            var result = BenutzerService.FindAllMitarbeiterWithPaging(1,10,"test");
 
             //Assert
             Assert.IsNotNull(result);

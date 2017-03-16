@@ -2,8 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Web.Mvc;
 namespace Caterer_DB.Models
 {
     public class ListViewModel<T> : IPagedList<T>
@@ -23,65 +21,30 @@ namespace Caterer_DB.Models
             TotalItemCount = gesamtZahl;
             PageNumber = aktuelleSeite;
             PageSize = seitenGroesse;
+            int seitenAnzehl = TotalItemCount / seitenGroesse;
+            if (TotalItemCount % seitenGroesse > 0)
+            {
+                seitenAnzehl++;
+            }
+            if (seitenAnzehl != aktuelleSeite)
+            {
+                HasNextPage = true;
+            } else {
+                IsLastPage = true;
+                HasNextPage = false;
+            }
+            HasPreviousPage = true;
+           
         }
 
-        public ListViewModel(int gesamtZahl, int aktuelleSeite, int seitenGroesse, int kaplBwVersionId)
-        {
-            Entitäten = new List<T>();
-            TotalItemCount = gesamtZahl;
-            PageNumber = aktuelleSeite;
-            PageSize = seitenGroesse;
-            KaplBwVersionId = kaplBwVersionId;
-        }
+       
 
-        public ListViewModel(
-            int gesamtZahl
-            , int aktuelleSeite
-            , int seitenGroesse
-            , string actionName
-            , DateTime gültigAm)
-        {
-            Entitäten = new List<T>();
-            TotalItemCount = gesamtZahl;
-            PageNumber = aktuelleSeite;
-            PageSize = seitenGroesse;
-            ActionName = actionName;
-            GültigAm = gültigAm;
-        }
-
-        public ListViewModel(
-            int gesamtZahl
-            , int aktuelleSeite
-            , int seitenGroesse
-            , DateTime gültigAm)
-        {
-            Entitäten = new List<T>();
-            TotalItemCount = gesamtZahl;
-            PageNumber = aktuelleSeite;
-            PageSize = seitenGroesse;
-            GültigAm = gültigAm;
-        }
+        
 
         public string ActionName { get; set; }
         public string SeitenTitel { get; set; }
 
-        public string SortierSpalte { get; set; }
-
-        public string SortierRichtung { get; set; }
-
-        [DisplayName(@"Gültig am")]
-        public DateTime GültigAm { get; set; }
-
-        [DisplayName(@"KAPlBw-Version")]
-        public int KaplBwVersionId { get; set; }
-
-        [DisplayName(@"KAPlBw-Version wählen")]
-        public SelectList KaplBwVersionen { get; set; }
-
         public List<string> FehlerListe { get; set; }
-
-        [DisplayName(@"Ansicht wählen")]
-        public Dictionary<int, string> Ansicht { get; set; }
 
         public int PageCount
         {

@@ -116,8 +116,11 @@
 
                             @if (Model.TotalItemCount > Model.PageSize)
                             {
-                                var seitenAnzahl = Model.TotalItemCount / Model.PageSize + 1;
-
+                                var seitenAnzahl = Model.TotalItemCount / Model.PageSize;
+                                if (Model.TotalItemCount % Model.PageSize > 0)
+                                {
+                                    seitenAnzahl++;
+                                }
                                 <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
                                 <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
                                     Seite @Model.PageNumber von @(seitenAnzahl)
