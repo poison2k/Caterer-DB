@@ -156,7 +156,7 @@ h6,
 .well-lg {
     padding: 24px;
     border-radius: 6px;
-    background-color: rgba(164, 212, 145, 0.8);
+   background-color: rgba(164, 212, 145, 0.8);
     border-color: rgba(160,200,140,1);
 }
 
@@ -252,18 +252,22 @@ ul {
   }
 
 /* PageList Hintergrundfarbe Überschriften --> Noch in Arbeit <--*/
-/*th {
-    background-color: rgba(255,255,255,1);
-    color: rgba(0,0,0,1)
-    }
 .panel-default > .panel-heading {
     background-color: rgba(46,109,164,1);
-  border-color: #ddd;
 }
-  table{
-      border-color: rgba(3)5
-  }*/
 
+th {
+    background-color: rgba(220,220,255,1);
+    color: rgba(0,0,0,1);
+    }
+
+  /*Pagelist-Seiten - Seitennavigation*/
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  background-color: rgb(209, 232, 250);
+}
 
 
 
