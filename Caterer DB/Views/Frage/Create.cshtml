@@ -20,88 +20,90 @@
 {
     @Html.AntiForgeryToken()
 
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="well well-lg">
 
-    <div class="col-md-8 col-md-offset-2">
-        <div class="well well-lg">
-
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label col-md-0" })
-                        @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label col-md-0" })
+                            @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group ">
-                        @Html.LabelFor(model => model.SpartenName, htmlAttributes: new { @class = "control-label " })
-                        @Html.DropDownList("SpartenName", Model.Sparten, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
-                        @Html.ValidationMessageFor(model => model.SpartenName, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            @Html.LabelFor(model => model.SpartenName, htmlAttributes: new { @class = "control-label " })
+                            @Html.DropDownList("SpartenName", Model.Sparten, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                            @Html.ValidationMessageFor(model => model.SpartenName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            @Html.LabelFor(model => model.IstMultiSelect, htmlAttributes: new { @class = "control-label " })
+                            @Html.DropDownList("IstMultiSelect", Model.JaNein, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                            @Html.ValidationMessageFor(model => model.IstMultiSelect, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group ">
-                        @Html.LabelFor(model => model.IstMultiSelect, htmlAttributes: new { @class = "control-label " })
-                        @Html.DropDownList("IstMultiSelect", Model.JaNein, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
-                        @Html.ValidationMessageFor(model => model.IstMultiSelect, "", new { @class = "text-danger" })
+                <br />
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default" />
                     </div>
                 </div>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default" />
-                </div>
-            </div>
 
+            </div>
         </div>
     </div>
-
-    <div class="col-md-8 col-md-offset-2">
-        <div class="well well-lg">
-            <div class="row">
-                @if (Model != null)
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="well well-lg">
+                <div class="row">
+                    @if (Model != null)
                 {
                     for (int i = 0; i < Model.Antworten.Count; i++)
                     {
-                        <div class="form-group">
-                            <div class="col-md-11">
-                                @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
-                                <label class="control-label col-md-0"> Antwort @(i + 1) </label>
-                                @Html.EditorFor(Model => Model.Antworten[i].Bezeichnung, new { htmlAttributes = new { @class = "form-control", id = @Model.Antworten[i].GetHashCode() } })
+                            <div class="form-group">
+                                <div class="col-md-11">
+                                    @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
+                                    <label class="control-label col-md-0"> Antwort @(i + 1) </label>
+                                    @Html.EditorFor(Model => Model.Antworten[i].Bezeichnung, new { htmlAttributes = new { @class = "form-control", id = @Model.Antworten[i].GetHashCode() } })
+                                </div>
+                                <div class="col-md-1 text-right">
+                                    <ul class="list-unstyled list-inline " style="margin-top: 27px;">
+                                        <li>
+                                            <button id="LöschenButton" name="btnDeleteAnswer" type="submit" class="btn btn-success">
+                                                <i class="glyphicon glyphicon-trash"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-md-1 text-right">
-                                <ul class="list-unstyled list-inline " style="margin-top: 27px;">
-                                    <li>
-                                        <button id="LöschenButton" name="btnDeleteAnswer" type="submit" class="btn btn-success">
-                                            <i class="glyphicon glyphicon-trash"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        }
                     }
-                }
+                </div>
             </div>
         </div>
     </div>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-2">
-                <ul class="list-unstyled list-inline " style="margin-left: 5px;">
-                    <li>
-                        <button type="submit" id="btnSpeichern" name="btnCreateQuestion" value="Frage anlegen" class="btn btn-default">
-                            <i class="glyphicon glyphicon-ok"></i> Frage anlegen
-                        </button>
-                    </li>
-                    <li>
-                        <a class="btn btn-default" id="btnZurück" href="@Url.Action("Index", "Frage")"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-                    </li>
-                </ul>
-            </div>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-2">
+            <ul class="list-unstyled list-inline " style="margin-left: 5px;">
+                <li>
+                    <button type="submit" id="btnSpeichern" name="btnCreateQuestion" value="Frage anlegen" class="btn btn-default">
+                        <i class="glyphicon glyphicon-ok"></i> Frage anlegen
+                    </button>
+                </li>
+                <li>
+                    <a class="btn btn-default" id="btnZurück" href="@Url.Action("Index", "Frage")"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                </li>
+            </ul>
         </div>
+    </div>
 
 }
 
