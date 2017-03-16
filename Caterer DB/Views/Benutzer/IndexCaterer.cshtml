@@ -123,7 +123,6 @@
                                 }
                                 <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
                                 <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
-                                    Seite @Model.PageNumber von @(seitenAnzahl)
                                     @Html.PagedListPager(Model, aktuelleSeite => Url.Action("IndexCaterer", new { aktuelleSeite, Model.PageSize, Sortierrung = ViewBag.Sortierrung }))
                                 </div>
                             }
