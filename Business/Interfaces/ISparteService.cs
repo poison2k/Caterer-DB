@@ -14,5 +14,6 @@ namespace Business.Interfaces
         void AddSparte(Sparte sparte);
         void EditSparte(Sparte sparte);
         void RemoveSparte(int id);
+        Sparte SearchSparteByName(string sparte);
     }
 }

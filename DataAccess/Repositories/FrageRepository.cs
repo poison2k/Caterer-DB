@@ -20,7 +20,7 @@ namespace DataAccess.Repositories
 
         public Frage SearchFrageById(int id)
         {
-            return Db.Frage.Include(x => x.Antworten).Where(x => x.FrageId == id).SingleOrDefault();
+            return Db.Frage.Include(x => x.Antworten).Include(x => x.Sparte).Where(x => x.FrageId == id).SingleOrDefault();
         }
 
         public List<List<Frage>> GetAllFragenSortetBySparteInDifferntLists(List<Sparte> sparten) {
