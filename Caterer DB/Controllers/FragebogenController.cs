@@ -28,7 +28,7 @@ namespace Caterer_DB.Controllers
         {
             var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
 
-            return View(FragebogenViewModelService.Map_Fragen_BearbeiteFragebogenViewModel(FrageService.FindAlleFragenNachSparteninEigenenListen(),benutzer.AntwortIDs));
+            return View(FragebogenViewModelService.Map_Fragen_BearbeiteFragebogenViewModel(FrageService.FindAlleFragenNachKategorieninEigenenListen(),benutzer.AntwortIDs));
         }
 
         // GET: Fragebogen/Details

@@ -1,5 +1,5 @@
 ﻿@using Caterer_DB.Models
-@model DetailsSparteViewModel
+@model DetailsKategorieViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -8,7 +8,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Sparte</h4>
+    <h4>Kategorie</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -22,6 +22,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SparteId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KategorieId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

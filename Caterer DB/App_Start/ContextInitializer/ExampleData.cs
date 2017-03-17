@@ -16,7 +16,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             CreateBenutzerGruppenData(db);
             CreateUserData(db);
             CreateConfig(db);
-            CreateSparte(db);
+            CreateKategorie(db);
             CreateFragen(db);
 
         }
@@ -315,17 +315,17 @@ namespace Caterer_DB.App_Start.ContextInitializer
         }
 
 
-        private static void CreateSparte(CatererContext db)
+        private static void CreateKategorie(CatererContext db)
         {
-            db.Sparte.Add(new Sparte()
+            db.Kategorie.Add(new Kategorie()
             {
                 Bezeichnung = "Essen"
             });
-            db.Sparte.Add(new Sparte()
+            db.Kategorie.Add(new Kategorie()
             {
                 Bezeichnung = "Verpflegung"
             });
-            db.Sparte.Add(new Sparte()
+            db.Kategorie.Add(new Kategorie()
             {
                 Bezeichnung = "Biobauer"
             });
@@ -343,7 +343,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 1"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 1"}
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
                 IstMultiSelect = true
             });
 
@@ -355,7 +355,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 2"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 2"}
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
                 IstMultiSelect = true
             });
             db.Frage.Add(new Frage()
@@ -366,7 +366,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 3"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 3"}
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
                 IstMultiSelect = true
             });
             db.Frage.Add(new Frage()
@@ -377,7 +377,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 4"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 4"}
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
                 IstMultiSelect = false
             });
             db.Frage.Add(new Frage()
@@ -388,7 +388,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 5"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 5"}
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Essen"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
                 IstMultiSelect = false
             });
 
@@ -402,7 +402,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 6"}
 
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
 
 
             });
@@ -417,7 +417,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 7"}
 
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
 
 
             });
@@ -431,7 +431,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 8"}
 
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
 
 
             });
@@ -445,7 +445,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 9"}
 
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
 
 
             });
@@ -459,7 +459,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 10"}
 
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Verpflegung"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
 
 
             });
@@ -472,7 +472,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 11"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 11"}
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Biobauer"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
 
             });
 
@@ -484,7 +484,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 12"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 12"}
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Biobauer"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
 
             });
 
@@ -496,7 +496,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 13"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 13"}
                 },
-                Sparte = db.Sparte.Single(x => x.Bezeichnung == "Biobauer"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
 
             });
 

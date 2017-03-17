@@ -35,7 +35,7 @@ namespace DataAccess.Interfaces
         DbSet<Recht> Recht { get; set; }
         DbSet<RechteGruppe> RechteGruppe { get; set; }
         DbSet<Benutzer> Benutzer { get; set; }
-        DbSet<Sparte> Sparte { get; set; }
+        DbSet<Kategorie> Kategorie { get; set; }
         DbSet<Frage> Frage { get; set; }
         DbSet<Antwort> Antwort { get; set; }
         DbSet<Fragebogen> Fragebogen { get; set; }

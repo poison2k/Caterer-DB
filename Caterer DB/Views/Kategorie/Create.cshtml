@@ -1,5 +1,5 @@
 ﻿@using Caterer_DB.Models
-@model CreateSparteViewModel
+@model CreateKategorieViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Sparte</h4>
+        <h4>Kategorie</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

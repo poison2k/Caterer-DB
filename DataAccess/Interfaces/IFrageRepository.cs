@@ -15,7 +15,7 @@ namespace DataAccess.Interfaces
         
         List<Frage> SearchFrage();
         Frage SearchFrageById(int id);
-        List<Frage> SearchFrageBySparte(Sparte sparte);
-        List<List<Frage>> GetAllFragenSortetBySparteInDifferntLists(List<Sparte> sparten);
+        List<Frage> SearchFrageByKategorie(Kategorie kategorie);
+        List<List<Frage>> GetAllFragenSortetByKategorienInDifferntLists(List<Kategorie> kategorien);
     }
 }

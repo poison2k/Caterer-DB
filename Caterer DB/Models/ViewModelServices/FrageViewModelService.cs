@@ -40,19 +40,19 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Frage>(editFrageViewModel);
         }
 
-        public CreateFrageViewModel CreateCreateFrageViewModel(List<Sparte> sparten)
+        public CreateFrageViewModel CreateCreateFrageViewModel(List<Kategorie> kategorien)
         {
             var createFrageViewModel = new CreateFrageViewModel() {
                 Antworten = new List<Antwort>()
             };
-            return AddListsToCreateFrageViewModel( createFrageViewModel ,sparten);
+            return AddListsToCreateFrageViewModel( createFrageViewModel ,kategorien);
         }
 
-        public EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage, List<Sparte> sparten)
+        public EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage, List<Kategorie> kategorien)
         {
             var editFrageViewModel = Mapper.Map<EditFrageViewModel>(Frage);
-            editFrageViewModel.SpartenName = Frage.Sparte.Bezeichnung;
-            return AddListsToEditFrageViewModel(editFrageViewModel, sparten);
+            editFrageViewModel.KategorieName = Frage.Kategorie.Bezeichnung;
+            return AddListsToEditFrageViewModel(editFrageViewModel, kategorien);
         }
 
         public DetailsFrageViewModel Map_Frage_DetailsFrageViewModel(Frage Frage)
@@ -71,20 +71,20 @@ namespace Caterer_DB.Models.ViewModelServices
         }
 
 
-        public CreateFrageViewModel AddListsToCreateFrageViewModel(CreateFrageViewModel createFrageViewModel, List<Sparte> sparten)
+        public CreateFrageViewModel AddListsToCreateFrageViewModel(CreateFrageViewModel createFrageViewModel, List<Kategorie> kategorien)
         {
             createFrageViewModel.JaNein = CreateJaNeinSelectList();
 
-            createFrageViewModel.Sparten = CreateSpartenSelectList(sparten);
+            createFrageViewModel.Kategorien = CreateKategorienSelectList(kategorien);
 
             return createFrageViewModel;
         }
 
-        public EditFrageViewModel AddListsToEditFrageViewModel(EditFrageViewModel editFrageViewModel, List<Sparte> sparten)
+        public EditFrageViewModel AddListsToEditFrageViewModel(EditFrageViewModel editFrageViewModel, List<Kategorie> kategorien)
         {
             editFrageViewModel.JaNein = CreateJaNeinSelectList();
 
-            editFrageViewModel.Sparten = CreateSpartenSelectList(sparten);
+            editFrageViewModel.Kategorien = CreateKategorienSelectList(kategorien);
 
             return editFrageViewModel;
         }
@@ -99,13 +99,13 @@ namespace Caterer_DB.Models.ViewModelServices
                             }, "Value", "Text");
         }
 
-        private SelectList CreateSpartenSelectList(List<Sparte> sparten)
+        private SelectList CreateKategorienSelectList(List<Kategorie> kategorien)
         {
             var selectListItems = new List<SelectListItem>();
             selectListItems.Add(new SelectListItem { Text = "Bitte wählen...", Value = String.Empty });
 
-            foreach (Sparte sparte in sparten) {
-                selectListItems.Add(new SelectListItem { Text = sparte.Bezeichnung, Value = sparte.Bezeichnung });
+            foreach (Kategorie kategorie in kategorien) {
+                selectListItems.Add(new SelectListItem { Text = kategorie.Bezeichnung, Value = kategorie.Bezeichnung });
             }
            
             return new SelectList(selectListItems, "Value", "Text"); 

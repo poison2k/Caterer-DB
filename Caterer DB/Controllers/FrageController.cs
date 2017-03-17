@@ -14,13 +14,13 @@ namespace Caterer_DB.Controllers
     {
         private IFrageViewModelService FrageViewModelService { get; set; }
 
-        private ISparteService SparteService { get; set; }
+        private IKategorieService KategorienService { get; set; }
 
         private IFrageService FrageService { get; set; }
 
-        public FrageController(IFrageService frageService, IFrageViewModelService frageViewModelService, ISparteService sparteService)
+        public FrageController(IFrageService frageService, IFrageViewModelService frageViewModelService, IKategorieService kategorienService)
         {
-            SparteService = sparteService;
+            KategorienService = kategorienService;
             FrageService = frageService;
             FrageViewModelService = frageViewModelService;
         }
@@ -52,7 +52,7 @@ namespace Caterer_DB.Controllers
         // GET: Frages/Create
         public ActionResult Create()
         {
-            return View(FrageViewModelService.CreateCreateFrageViewModel(SparteService.FindAlleSparten()));
+            return View(FrageViewModelService.CreateCreateFrageViewModel(KategorienService.FindAlleKategorien()));
         }
 
         // POST: Frages/Create
@@ -74,7 +74,7 @@ namespace Caterer_DB.Controllers
                     createFrageViewModel.Antworten.Add(new Antwort());
                     
                     
-                    return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel,SparteService.FindAlleSparten()));
+                    return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel,KategorienService.FindAlleKategorien()));
 
                 }
                 else if (Request.Form["btnDeleteAnswer"] != null)
@@ -85,21 +85,21 @@ namespace Caterer_DB.Controllers
                         {
                             ModelState.Clear();
                             createFrageViewModel.Antworten.RemoveAt(i / 2 - 2);
-                            return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, SparteService.FindAlleSparten()));
+                            return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
                         }
                     }                    
                 }
                 else if (Request.Form["btnCreateQuestion"] != null)
                 {
                     var frage = FrageViewModelService.Map_CreateFrageViewModel_Frage(createFrageViewModel);
-                    frage.Sparte = SparteService.SearchSparteByName(createFrageViewModel.SpartenName);
+                    frage.Kategorie = KategorienService.SearchKategorieByName(createFrageViewModel.KategorieName);
                     FrageService.AddFrage(frage);
                 }
 
                 return RedirectToAction("Index");
             }
 
-            return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, SparteService.FindAlleSparten()));
+            return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
         }
 
         // GET: Frages/Edit/5
@@ -111,7 +111,7 @@ namespace Caterer_DB.Controllers
             }
 
             EditFrageViewModel editFrageViewModel =
-               FrageViewModelService.Map_Frage_EditFrageViewModel(FrageService.SearchFrageById(Convert.ToInt32(id)),SparteService.FindAlleSparten());
+               FrageViewModelService.Map_Frage_EditFrageViewModel(FrageService.SearchFrageById(Convert.ToInt32(id)),KategorienService.FindAlleKategorien());
 
             if (editFrageViewModel == null)
             {
@@ -139,7 +139,7 @@ namespace Caterer_DB.Controllers
                     editFrageViewModel.Antworten.Add(new Antwort());
 
 
-                    return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, SparteService.FindAlleSparten()));
+                    return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, KategorienService.FindAlleKategorien()));
 
                 }
                 else if (Request.Form["btnDeleteAnswer"] != null)
@@ -150,19 +150,19 @@ namespace Caterer_DB.Controllers
                         {
                             ModelState.Clear();
                             editFrageViewModel.Antworten.RemoveAt(i / 2 - 2);
-                            return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, SparteService.FindAlleSparten()));
+                            return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, KategorienService.FindAlleKategorien()));
                         }
                     }
                 }
                 else if (Request.Form["btnSave"] != null)
                 {
                     var frage = FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel);
-                    frage.Sparte = SparteService.SearchSparteByName(editFrageViewModel.SpartenName);
+                    frage.Kategorie = KategorienService.SearchKategorieByName(editFrageViewModel.KategorieName);
                     FrageService.EditFrage(frage);
                 }
                 return RedirectToAction("Index");
             }
-            return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel,SparteService.FindAlleSparten()));
+            return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel,KategorienService.FindAlleKategorien()));
         }
 
         // GET: Frages/Delete/5
