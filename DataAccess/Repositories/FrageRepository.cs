@@ -1,9 +1,6 @@
 ﻿using DataAccess.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Model;
 using System.Data.Entity;
 
@@ -11,6 +8,7 @@ namespace DataAccess.Repositories
 {
     public class FrageRepository : IFrageRepository
     {
+
         protected ICatererContext Db { get; }
         
         public FrageRepository(ICatererContext db)
@@ -20,22 +18,22 @@ namespace DataAccess.Repositories
 
         public Frage SearchFrageById(int id)
         {
-            return Db.Frage.Include(x => x.Antworten).Include(x => x.Sparte).Where(x => x.FrageId == id).SingleOrDefault();
+            return Db.Frage.Include(x => x.Antworten).Include(x => x.Kategorie).Where(x => x.FrageId == id).SingleOrDefault();
         }
 
-        public List<List<Frage>> GetAllFragenSortetBySparteInDifferntLists(List<Sparte> sparten) {
+        public List<List<Frage>> GetAllFragenSortetByKategorienInDifferntLists(List<Kategorie> kategorien) {
 
             var fragen = new List<List<Frage>>();
-            foreach (Sparte sparte in sparten) {
-                fragen.Add(Db.Frage.Include(y => y.Sparte).Where(x => x.Sparte.Bezeichnung == sparte.Bezeichnung).ToList());
+            foreach (Kategorie kategorie in kategorien) {
+                fragen.Add(Db.Frage.Include(y => y.Kategorie).Where(x => x.Kategorie.Bezeichnung == kategorie.Bezeichnung).ToList());
             }
 
             return fragen;
         } 
 
-        public List<Frage> SearchFrageBySparte(Sparte sparte)
+        public List<Frage> SearchFrageByKategorie(Kategorie kategorien)
         {
-            return Db.Frage.Include(x => x.Antworten).Where(x => x.Sparte == sparte).ToList();
+            return Db.Frage.Include(x => x.Antworten).Where(x => x.Kategorie == kategorien).ToList();
         }
 
         public void AddFrage(Frage frage)

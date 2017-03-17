@@ -82,7 +82,7 @@ namespace Caterer_DB.Models.ViewModelServices
                 FragenNachThemengebiet fragenNachThemengebiet = new FragenNachThemengebiet()
                 {
                     Questions = fragenViewModel,
-                    Name = fragen[0].Sparte.Bezeichnung,
+                    Name = fragen[0].Kategorie.Bezeichnung,
                     ID = 1
                 };
                 bearbeiteFragebogenViewModel.Fragen.Add(fragenNachThemengebiet);

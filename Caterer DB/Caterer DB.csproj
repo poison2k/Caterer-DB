@@ -282,7 +282,7 @@
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\RechtController.cs" />
     <Compile Include="Controllers\RechteGruppeController.cs" />
-    <Compile Include="Controllers\SparteController.cs" />
+    <Compile Include="Controllers\KategorieController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -296,7 +296,7 @@
     <Compile Include="Interfaces\ILoginService.cs" />
     <Compile Include="Interfaces\IRechteGruppeViewModelService.cs" />
     <Compile Include="Interfaces\IRechtViewModelService.cs" />
-    <Compile Include="Interfaces\ISparteViewModelService.cs" />
+    <Compile Include="Interfaces\IKategorieViewModelService.cs" />
     <Compile Include="Models\AntwortViewModel.cs" />
     <Compile Include="Models\BenutzerGruppeViewModel.cs" />
     <Compile Include="Models\BenutzerViewModel.cs" />
@@ -308,7 +308,7 @@
     <Compile Include="Models\MailViewModels.cs" />
     <Compile Include="Models\RechteGruppeViewModel.cs" />
     <Compile Include="Models\RechtViewModel.cs" />
-    <Compile Include="Models\SparteViewModel.cs" />
+    <Compile Include="Models\KategorieViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\ViewModelServices\AntwortViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\BenutzerGruppeViewModelService.cs" />
@@ -318,7 +318,7 @@
     <Compile Include="Models\ViewModelServices\FrageViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\RechteGruppeViewModelService.cs" />
     <Compile Include="Models\ViewModelServices\RechtViewModelService.cs" />
-    <Compile Include="Models\ViewModelServices\SparteViewModelService.cs" />
+    <Compile Include="Models\ViewModelServices\KategorieViewModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\LoginResources1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -429,11 +429,11 @@
     <Content Include="Views\Frage\Details.cshtml" />
     <Content Include="Views\Frage\Edit.cshtml" />
     <Content Include="Views\Frage\Index.cshtml" />
-    <Content Include="Views\Sparte\Create.cshtml" />
-    <Content Include="Views\Sparte\Delete.cshtml" />
-    <Content Include="Views\Sparte\Details.cshtml" />
-    <Content Include="Views\Sparte\Edit.cshtml" />
-    <Content Include="Views\Sparte\Index.cshtml" />
+    <Content Include="Views\Kategorie\Create.cshtml" />
+    <Content Include="Views\Kategorie\Delete.cshtml" />
+    <Content Include="Views\Kategorie\Details.cshtml" />
+    <Content Include="Views\Kategorie\Edit.cshtml" />
+    <Content Include="Views\Kategorie\Index.cshtml" />
     <Content Include="Views\Antwort\Create.cshtml" />
     <Content Include="Views\Antwort\Delete.cshtml" />
     <Content Include="Views\Antwort\Details.cshtml" />
