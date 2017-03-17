@@ -44,5 +44,10 @@ namespace Business.Services
         {
             return SparteRepository.SearchSparteById(id);
         }
+
+        public Sparte SearchSparteByName(string name)
+        {
+            return SparteRepository.SearchSparteByName(name);
+        }
     }
 }

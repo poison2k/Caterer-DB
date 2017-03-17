@@ -20,5 +20,7 @@ namespace DataAccess.Model
 
         public bool IstVeröffentlicht { get; set; }
 
+        public bool IstMultiSelect { get; set; }
+
     }
 }

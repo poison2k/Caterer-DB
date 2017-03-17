@@ -15,7 +15,7 @@
         });
     }
 </head>
-<body>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
 
     <div class="navbar  navbar-fixed-top" id="topnavbar">
         <div class="container" id="banner">
@@ -38,28 +38,44 @@
                 <div class="navbar-collapse collapse">
                     @if (Request.IsAuthenticated)
                     {
+                        
 
                         if (User.HatDasRecht(RechteResource.MenueCaterer))
                         {
                             <ul class="nav navbar-nav">
-                                <li class="dropdown" , id="DropdownServiceLogout">
+                                <li class="dropdown" , id="DropdownManageCaterer">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                         Caterer<b class="caret"></b>
                                     </a>                                                                                             
                                     <ul class="dropdown-menu">
-                                        <li>@Html.ActionLink("Caterer anzeigen", "IndexCaterer", "Benutzer", null, new { id = "DropdownAGBLogout" })</li>
-                                        <li>@Html.ActionLink("Caterer hinzufügen", "CreateCaterer", "Benutzer", null, new { id = "DropdownAGBLogout" })</li>                                     
+                                        <li>@Html.ActionLink("Caterer anzeigen", "IndexCaterer", "Benutzer", null, new { id = "CatererAnzeigen" })</li>
+                                        <li>@Html.ActionLink("Caterer hinzufügen", "CreateCaterer", "Benutzer", null, new { id = "CatererHinzufügen" })</li>                                     
                                     </ul>
                                 </li>
-                                <li class="dropdown" , id="DropdownServiceLogout">
+                                <li class="dropdown" , id="DropdownManageFragebogen">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                         Fragen verwalten<b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li>@Html.ActionLink("Fragen anzeigen", "Index", "Frage", null, new { id = "DropdownAGBLogout" })</li>
-                                        <li>@Html.ActionLink("Frage hinzufügen", "Create", "Frage", null, new { id = "DropdownAGBLogout" })</li>
+                                        <li>@Html.ActionLink("Fragen anzeigen", "Index", "Frage", null, new { id = "FragenAnzeigen" })</li>
+                                        <li>@Html.ActionLink("Frage hinzufügen", "Create", "Frage", null, new { id = "FragenHinzufügen" })</li>
                                     </ul>
                                 </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown" , id="DropdownManageCaterer">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Fragebogen<b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Fragebogen bearbeiten", "Details", "Fragebogen", null, new { id = "FragebogenBearbeiten" })</li>
+                                       
+                                    </ul>
+                                </li>
+                                
                             </ul>
                         }
                     }
@@ -79,9 +95,9 @@
 
         <hr />
         <footer>
-            <div class="row bg-white">
+            <div class="row bg-white" style="background-color:white">              
                 <div class="col-md-4">
-                    <img class="center-block" src="~/Content/Images/Logo_Ministerium.png" />
+                    <img class="center-block" src="~/Content/Images/ML Logo Förderung 197 frei.png" />
                 </div>
                 <div class="col-md-4">
                     <ul class="navbar nav nav-justified">

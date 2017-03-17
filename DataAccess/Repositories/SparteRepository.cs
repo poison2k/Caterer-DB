@@ -1,9 +1,6 @@
 ﻿using DataAccess.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Model;
 
 namespace DataAccess.Repositories
@@ -42,7 +39,7 @@ namespace DataAccess.Repositories
 
         public List<Sparte> SearchSparte()
         {
-            return Db.Sparte.ToList();
+            return Db.Sparte.OrderBy(x=>x.Bezeichnung).ToList();
         }
 
         public Sparte SearchSparteByName(string name)

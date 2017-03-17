@@ -7,16 +7,17 @@ namespace Caterer_DB.Interfaces
 {
     public interface ILoginService
     {
-       
-            LoginSuccessLevel AnmeldePrüfung(string kurzname, string passwort);
 
-            void Abmelden();
+        LoginSuccessLevel AnmeldePrüfung(string kurzname, string passwort);
 
-            ILoginRepository LoginRepository { get; }
+        void Abmelden();
 
-            
-            List<string> ladeRechte(int benutzerId);
-            List<int> ladeNutzergruppenIds(int benutzerId);
-        
+        ILoginRepository LoginRepository { get; }
+
+
+        List<string> ladeRechte(int benutzerId);
+        List<string> ladeRollen(int benutzerId);
+        List<int> ladeNutzergruppenIds(int benutzerId);
+
     }
 }

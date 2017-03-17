@@ -22,6 +22,14 @@
                         <dl class="dl-horizontal text-center">
                           
                             <dt>
+                                @Html.DisplayNameFor(model => model.Anrede)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Anrede)
+                            </dd>
+                            <br />
+                            <dt>
                                 @Html.DisplayNameFor(model => model.Vorname)
                             </dt>
 
@@ -46,7 +54,7 @@
                             </dd>
                             </br>
                             <dt>
-                                @Html.DisplayNameFor(model => model.Mail)
+                                E-@Html.DisplayNameFor(model => model.Mail)
                             </dt>
 
                             <dd>
@@ -79,7 +87,7 @@
         <ul class="list-unstyled list-inline ">
             <li>
                 <a class="btn btn-default" id="btnEdit" href="@Url.Action("Edit", "Benutzer", new {id = Model.BenutzerId})" >
-                    Mitarbeiter bearbeiten
+                    <i class="glyphicon glyphicon-pencil"></i> Bearbeiten
                 </a>
             </li>
             <li>

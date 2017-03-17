@@ -44,12 +44,41 @@
     <Compile Include="Interfaces\IMailService.cs" />
     <Compile Include="Interfaces\IMd5Hash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EMailBetreff.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMailBetreff.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\EMailTexte.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMailTexte.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Links.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Links.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\MailModel.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\MD5Hash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="88_Common_Klassendiagramm.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Services\EMailBetreff.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EMailBetreff.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\EMailTexte.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EMailTexte.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Links.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Links.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

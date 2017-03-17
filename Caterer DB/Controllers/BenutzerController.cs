@@ -27,7 +27,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer
-        [CustomAuthorize(Roles = RechteResource.IndexMitarbeiter)]
+        [CustomAuthorize(Rights = RechteResource.IndexMitarbeiter)]
         public ActionResult Index(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Nachname")
         {
             ViewBag.Sortierrung = Sortierrung;
@@ -41,7 +41,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer
-        [CustomAuthorize(Roles = RechteResource.IndexCaterer)]
+        [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
         {
             ViewBag.Sortierrung = Sortierrung;
@@ -91,14 +91,14 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer/Create
-        [CustomAuthorize(Roles = RechteResource.CreateMitarbeiter)]
+        [CustomAuthorize(Rights = RechteResource.CreateMitarbeiter)]
         public ActionResult Create()
         {
             return View(BenutzerViewModelService.CreateNewCreateMitarbeiterViewModel());
         }
 
         // GET: Benutzer/CreateCaterer
-        [CustomAuthorize(Roles = RechteResource.CreateCaterer)]
+        [CustomAuthorize(Rights = RechteResource.CreateCaterer)]
         public ActionResult CreateCaterer()
         {
             return View(BenutzerViewModelService.CreateNewCreateCatererViewModel());
@@ -107,7 +107,7 @@ namespace Caterer_DB.Controllers
         // POST: Benutzer/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CustomAuthorize(Roles = RechteResource.CreateMitarbeiter)]
+        [CustomAuthorize(Rights = RechteResource.CreateMitarbeiter)]
         public ActionResult Create(CreateMitarbeiterViewModel createMitarbeiterViewModel)
         {
             if (ModelState.IsValid)
@@ -136,7 +136,7 @@ namespace Caterer_DB.Controllers
         // POST: Benutzer/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CustomAuthorize(Roles = RechteResource.CreateCaterer)]
+        [CustomAuthorize(Rights = RechteResource.CreateCaterer)]
         public ActionResult CreateCaterer(CreateCatererViewModel createCatererViewModel)
         {
             if (ModelState.IsValid)
@@ -198,7 +198,7 @@ namespace Caterer_DB.Controllers
 
 
         // GET: Benutzer/MeineDaten/5
-        [CustomAuthorize(Roles = RechteResource.MeineDatenMitarbeiter)]
+        [CustomAuthorize(Rights = RechteResource.MeineDatenMitarbeiter)]
         public ActionResult MeineDaten(int? id)
         {
             if (id == null || id != User.BenutzerId)

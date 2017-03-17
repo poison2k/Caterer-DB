@@ -117,46 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dummy_Daten_Vorname" xml:space="preserve">
-    <value>Sebastian</value>
+  <data name="Abschluss" xml:space="preserve">
+    <value>
+
+Wir wünschen Ihnen einen erfolgreichen Tag!
+
+Ihr Team der Vernetzungsstelle für Schulverpflegung Niedersachsen</value>
   </data>
-  <data name="NutzerDaten_Anrede_Frau" xml:space="preserve">
-    <value>2</value>
+  <data name="Anregung" xml:space="preserve">
+    <value>
+
+
+
+Sie haben noch Fragen oder Anregungen? Bitte antworten Sie nicht direkt auf diese E-Mail - aus technischen Gründen können wir Ihre Anfrage leider nicht bearbeiten, wenn Sie die Reply-Funktion Ihres E-Mail-Programms wählen.
+
+Nutzen Sie einfach die Kontaktmöglichkeiten unter:
+
+</value>
   </data>
-  <data name="NutzerDaten_Anrede_Herr" xml:space="preserve">
-    <value>1</value>
+  <data name="Catererangelegt" xml:space="preserve">
+    <value>Sehr geehrter Mitarbeiter, 
+
+Ihr Nutzerkonto für die Caterer Datenbank wurde gerade durch unseren Mitarbeiter eingerichtet. 
+Bitte nutzen Sie den mitgesendeten Link zur Vergabe eines Passwortes und zum Abschluss Ihrer Registrierung. 
+Im Anschluss steht Ihnen der interne Bereich der Caterer Datenbank zur Verfügung.
+Vielen Dank für Ihr Vertrauen. 
+
+</value>
   </data>
-  <data name="NutzerDaten_Ansprechpartner" xml:space="preserve">
-    <value>Tester</value>
+  <data name="CatererRegistrierung1" xml:space="preserve">
+    <value>Sehr geehrter Nutzer, 
+
+Sie haben ein Benutzerkonto bei der Caterer Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsenangelegt. Eine gute Entscheidung! Nur so können Sie bei der Empfehlung von Verpflegungsanbietern für Schulen berücksichtigt werden.
+
+Damit Sie Ihr Konto nutzen können, fehlt nur noch ein Schritt:
+Bestätigen Sie Ihre E-Mail Adresse. 
+Klicken Sie dafür einfach auf den nach folgenden Link. 
+
+</value>
   </data>
-  <data name="NutzerDaten_Email" xml:space="preserve">
-    <value>projekt10test@gmail.com</value>
+  <data name="CatererRegistrierung2" xml:space="preserve">
+    <value>
+
+Im Anschluss können Sie mit Ihren Anmeldedaten alle Funktionen des internen Bereichs nutzen.</value>
   </data>
-  <data name="NutzerDaten_Firmenname" xml:space="preserve">
-    <value>Testfirma</value>
+  <data name="Linkanfang" xml:space="preserve">
+    <value>http://localhost:60003/Account/PasswordChange?verify=</value>
   </data>
-  <data name="NutzerDaten_Lieferumkreis" xml:space="preserve">
-    <value>1</value>
+  <data name="Mitarbeiterangelegt" xml:space="preserve">
+    <value>Sehr geehrter Mitarbeiter, 
+
+Ihr Nutzerkonto für die Caterer Datenbank wurde gerade durch den Administrator eingerichtet. 
+Bitte nutzen Sie den mitgesendeten Link zur Vergabe eines Passwortes und zum Abschluss Ihrer Registrierung. 
+
+</value>
   </data>
-  <data name="NutzerDaten_Nachname" xml:space="preserve">
-    <value>Teste</value>
+  <data name="Nutzerlöschen" xml:space="preserve">
+    <value>Sehr geehrter Nutzer,
+
+Ihr Nutzerkonto wurde gerade aus der Caterer Datenbank entfernt. 
+Wir bedauern, dass Sie nicht weiter in unserer Caterer Datenbank geführt werden möchten. </value>
   </data>
-  <data name="NutzerDaten_Organisationsform" xml:space="preserve">
-    <value>1</value>
+  <data name="NutzerÄnderung" xml:space="preserve">
+    <value>Sehr geehrter Nutzer,
+
+wie von Ihnen gewünscht, wurde Ihr Nutzerkonto der Caterer Datenbank von unseren Mitarbeitern aktualisiert. 
+Vielen Dank für Ihr Vertrauen. 
+
+Für Rückfragen stehen wir Ihnen gerne zur Verfügung. </value>
   </data>
-  <data name="NutzerDaten_Ort" xml:space="preserve">
-    <value>Testen</value>
-  </data>
-  <data name="NutzerDaten_PLZ" xml:space="preserve">
-    <value>12345</value>
-  </data>
-  <data name="NutzerDaten_Straße_Nr" xml:space="preserve">
-    <value>Teststraße 0</value>
-  </data>
-  <data name="NutzerDaten_Telefon" xml:space="preserve">
-    <value>09876/54321</value>
-  </data>
-  <data name="NutzerDaten_Vorname" xml:space="preserve">
-    <value>Test</value>
+  <data name="PWvergessen" xml:space="preserve">
+    <value>Sehr geehrter Nutzer,
+
+falls Sie Ihr Passwort vergessen haben, können Sie sich mit Hilfe des folgenden Links ein neues Passwort vergeben. 
+Bitte beachten Sie, dass der Link nur 2 Stunden gültig ist.Danach müssen Sie eine neue E-Mail anfordern.
+
+</value>
   </data>
 </root>

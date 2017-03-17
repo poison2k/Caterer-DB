@@ -3,8 +3,7 @@ using Caterer_DB.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
@@ -23,7 +22,7 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Frage, EditFrageViewModel>().ReverseMap();
                 cfg.CreateMap<Frage, DeleteFrageViewModel>().ReverseMap();
                 cfg.CreateMap<Frage, DetailsFrageViewModel>().ReverseMap();
-                cfg.CreateMap<Frage, BearbeiteFrageViewModel>().ReverseMap();
+               
 
             });
 
@@ -41,14 +40,19 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Frage>(editFrageViewModel);
         }
 
-        public Frage Map_BearbeiteFrageViewModel_Frage(BearbeiteFrageViewModel bearbeiteFrageViewModel)
+        public CreateFrageViewModel CreateCreateFrageViewModel(List<Sparte> sparten)
         {
-            return Mapper.Map<Frage>(bearbeiteFrageViewModel);
+            var createFrageViewModel = new CreateFrageViewModel() {
+                Antworten = new List<Antwort>()
+            };
+            return AddListsToCreateFrageViewModel( createFrageViewModel ,sparten);
         }
 
-        public EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage)
+        public EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage, List<Sparte> sparten)
         {
-            return Mapper.Map<EditFrageViewModel>(Frage);
+            var editFrageViewModel = Mapper.Map<EditFrageViewModel>(Frage);
+            editFrageViewModel.SpartenName = Frage.Sparte.Bezeichnung;
+            return AddListsToEditFrageViewModel(editFrageViewModel, sparten);
         }
 
         public DetailsFrageViewModel Map_Frage_DetailsFrageViewModel(Frage Frage)
@@ -66,10 +70,45 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<DeleteFrageViewModel>(Frage);
         }
 
-        public BearbeiteFrageViewModel Map_Frage_BearbeiteFrageViewModel(Frage Frage)
+
+        public CreateFrageViewModel AddListsToCreateFrageViewModel(CreateFrageViewModel createFrageViewModel, List<Sparte> sparten)
         {
-            return Mapper.Map<BearbeiteFrageViewModel>(Frage);
+            createFrageViewModel.JaNein = CreateJaNeinSelectList();
+
+            createFrageViewModel.Sparten = CreateSpartenSelectList(sparten);
+
+            return createFrageViewModel;
         }
 
+        public EditFrageViewModel AddListsToEditFrageViewModel(EditFrageViewModel editFrageViewModel, List<Sparte> sparten)
+        {
+            editFrageViewModel.JaNein = CreateJaNeinSelectList();
+
+            editFrageViewModel.Sparten = CreateSpartenSelectList(sparten);
+
+            return editFrageViewModel;
+        }
+
+        private SelectList CreateJaNeinSelectList()
+        {
+
+            return new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Nein", Value = "false" },
+                                new SelectListItem { Text = "Ja", Value = "true" }
+                            }, "Value", "Text");
+        }
+
+        private SelectList CreateSpartenSelectList(List<Sparte> sparten)
+        {
+            var selectListItems = new List<SelectListItem>();
+            selectListItems.Add(new SelectListItem { Text = "Bitte wählen...", Value = String.Empty });
+
+            foreach (Sparte sparte in sparten) {
+                selectListItems.Add(new SelectListItem { Text = sparte.Bezeichnung, Value = sparte.Bezeichnung });
+            }
+           
+            return new SelectList(selectListItems, "Value", "Text"); 
+        }
     }
 }

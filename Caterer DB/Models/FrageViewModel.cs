@@ -1,9 +1,6 @@
 ﻿using DataAccess.Model;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Caterer_DB.Models
 {
@@ -16,7 +13,14 @@ namespace Caterer_DB.Models
 
         public List<Antwort> Antworten { get; set; }
 
-        public Sparte Sparte { get; set; }
+        [Required]
+        public string SpartenName { get; set; }
+
+        public bool IstMultiSelect { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Sparten { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
     }
 
     public class EditFrageViewModel
@@ -28,7 +32,14 @@ namespace Caterer_DB.Models
 
         public List<Antwort> Antworten { get; set; }
 
-        public Sparte Sparte { get; set; }
+        [Required]
+        public string SpartenName { get; set; }
+
+        public bool IstMultiSelect { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Sparten { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
     }
 
     public class DeleteFrageViewModel
@@ -39,6 +50,8 @@ namespace Caterer_DB.Models
         public string Bezeichnung { get; set; }
 
         public List<Antwort> Antworten { get; set; }
+
+        public bool IstMultiSelect { get; set; }
 
         public Sparte Sparte { get; set; }
     }
@@ -53,17 +66,10 @@ namespace Caterer_DB.Models
         public List<Antwort> Antworten { get; set; }
 
         public Sparte Sparte { get; set; }
+
+        public bool IstMultiSelect { get; set; }
+
     }
 
-    public class BearbeiteFrageViewModel
-    {
-        [Key]
-        public int FrageId { get; set; }
-        [Required]
-        public string Bezeichnung { get; set; }
-
-        public Sparte Sparte { get; set; }
-
-        public List<Antwort> Antworten { get; set; }
-    }
+    
 }
