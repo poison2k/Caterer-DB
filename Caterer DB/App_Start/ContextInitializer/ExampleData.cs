@@ -41,6 +41,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 new Recht() { Bezeichnung = RechteResource.EditKategorie, Beschreibung = "Mitarbeiter kann Kategorien Bearbeiten" },
                 new Recht() { Bezeichnung = RechteResource.Detailsategorie, Beschreibung = "Mitarbeiter kann Kategorien Einsehen" },
                 new Recht() { Bezeichnung = RechteResource.IndexKategorie, Beschreibung = "Mitarbeiter kann Kategorien Übersicht sehen"  },
+                 new Recht() { Bezeichnung = RechteResource.CreateKategorie, Beschreibung = "Mitarbeiter kann Kategorien anlegen"  }
 
 
             });
@@ -88,6 +89,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.MeineDatenMitarbeiter),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.IndexKategorie),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.Detailsategorie),
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.CreateKategorie),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.EditKategorie)}
             });
 
