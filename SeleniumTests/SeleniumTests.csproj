@@ -91,12 +91,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ObjektIDs_Fehlermeldungen.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\ObjektIDs_FragebogenManagement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObjektIDs_FragebogenManagement.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\TestTools Userstory C2-3.cs" />
     <Compile Include="Services\TestTools Userstory T3-1.cs" />
     <Compile Include="Tests Userstory T3-1.cs" />
     <Compile Include="Tests Userstory C2-5.cs" />
     <Compile Include="Tests Userstory C2-2.cs" />
     <Compile Include="Tests Userstory C2-1.cs" />
     <Compile Include="Tests Userstory U1-3.cs" />
+    <Compile Include="Tests Userstory C2-3.cs" />
     <Compile Include="Tests Userstory U1-7.cs" />
     <Compile Include="Tests Userstory U1-6.cs" />
     <Compile Include="Tests Userstory U1-2.cs" />
@@ -167,6 +174,10 @@
     <EmbeddedResource Include="Services\ObjektIDs_Fehlermeldungen.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ObjektIDs_Fehlermeldungen.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\ObjektIDs_FragebogenManagement.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ObjektIDs_FragebogenManagement.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Choose>

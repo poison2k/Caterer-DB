@@ -187,6 +187,15 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die FragebogenBearbeiten ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Fragebogen_Bearbeiten {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Fragebogen_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die FragenHinzufügen ähnelt.
         /// </summary>
         internal static string Dropdown_Manage_Hinzufügen {
