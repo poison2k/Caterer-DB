@@ -37,7 +37,11 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 new Recht() { Bezeichnung = RechteResource.CreateCaterer, Beschreibung = "Caterer können angelegt werden" },
                 new Recht() { Bezeichnung = RechteResource.IndexCaterer, Beschreibung = "Anzeige aller Caterer" },
                 new Recht() { Bezeichnung = RechteResource.MenueCaterer, Beschreibung = "Menü zur Bearbeitung und Anzeige von Caterern wird angezeigt" },
-                new Recht() { Bezeichnung = RechteResource.MeineDatenMitarbeiter, Beschreibung = "Mitarbeiter kann seine Daten bearbeiten" }
+                new Recht() { Bezeichnung = RechteResource.MeineDatenMitarbeiter, Beschreibung = "Mitarbeiter kann seine Daten bearbeiten" },
+                new Recht() { Bezeichnung = RechteResource.EditKategorie, Beschreibung = "Mitarbeiter kann Kategorien Bearbeiten" },
+                new Recht() { Bezeichnung = RechteResource.Detailsategorie, Beschreibung = "Mitarbeiter kann Kategorien Einsehen" },
+                new Recht() { Bezeichnung = RechteResource.IndexKategorie, Beschreibung = "Mitarbeiter kann Kategorien Übersicht sehen"  },
+
 
             });
             db.SaveChanges();
@@ -81,8 +85,10 @@ namespace Caterer_DB.App_Start.ContextInitializer
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.MenueCaterer),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.IndexCaterer),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.CreateCaterer),
-                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.MeineDatenMitarbeiter)}
-
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.MeineDatenMitarbeiter),
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.IndexKategorie),
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.Detailsategorie),
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.EditKategorie)}
             });
 
             db.SaveChanges();
