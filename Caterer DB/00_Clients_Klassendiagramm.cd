@@ -66,7 +66,7 @@
   <Class Name="Caterer_DB.App_Start.ContextInitializer.ExampleData" Collapsed="true">
     <Position X="26.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIACBgAAAAAAAACAAAAAIAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\ContextInitializer\ExampleData.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -94,7 +94,7 @@
   <Class Name="Caterer_DB.Controllers.AccountController" Collapsed="true">
     <Position X="7.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEBAAAAAIAAAAAAAAAAAAJACBAAAAQAAQAAAA=</HashCode>
+      <HashCode>AAAAAAAEBAAAAAIEAAAAIAAAAAAZACRAAAAQAAQAAAA=</HashCode>
       <FileName>Controllers\AccountController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -113,9 +113,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.BenutzerController" Collapsed="true">
-    <Position X="14" Y="2" Width="1.5" />
+    <Position X="13.5" Y="2" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAABAAKAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <HashCode>CAAAAAAABBAFAAKAAAAAAAAAAAEAIGQCAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\BenutzerController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -127,14 +127,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.FrageController" Collapsed="true">
-    <Position X="18.5" Y="2" Width="1.5" />
+    <Position X="18.5" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAABAACAAAAAAAAAAAEAAMACAAEAAAQAAAA=</HashCode>
+      <HashCode>AQAAAAAAAAABAACAAAAAAAAAAAEAAMACAAEAAAQAAAA=</HashCode>
       <FileName>Controllers\FrageController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.HomeController" Collapsed="true">
-    <Position X="20.75" Y="2" Width="1.5" />
+    <Position X="21" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AEAAAAAIAAgAAAIACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\HomeController.cs</FileName>
@@ -227,35 +227,28 @@
   <Class Name="Caterer_DB.Models.RegisterBenutzerViewModel" Collapsed="true">
     <Position X="32" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAACAAAEwAAQAIgAAQACAEAAAAAACAAgAACQAwABgAA=</HashCode>
-      <FileName>Models\BenutzerViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Caterer_DB.Models.CreateBenutzerViewModel" Collapsed="true">
-    <Position X="33.75" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>CAACAAAAAAAAAAAgAAAAAAAAAAAACAIgAAAQAwABAAA=</HashCode>
+      <HashCode>CACCAAAMwAASAIgAAQACAEAAAAAACAAgAACQAwABgCA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.EditBenutzerViewModel" Collapsed="true">
     <Position X="32" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAACAAAAAAAAAAAgAAAAAAAAAAAACAIgAAAQAwABAAA=</HashCode>
+      <HashCode>AAADAAAAAAAAAAAgAAAAAEAAIAAAAAIAAAAQAwABAAA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.MyDataBenutzerViewModel" Collapsed="true">
     <Position X="26.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAACAAAEwAAQAIgAAQACAEAAAAAACAIgAAAQAwABAAA=</HashCode>
+      <HashCode>CACiAAAE4AAQAIgAAQACAEAAAAAACAIgAAAQAwABACA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DetailsBenutzerViewModel" Collapsed="true">
     <Position X="33.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAACAAAAAAAAAAAgAAAAAAAAAAAACAIgAAAQAwABAAA=</HashCode>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAQAwABAAA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -276,28 +269,28 @@
   <Class Name="Caterer_DB.Models.CreateFrageViewModel" Collapsed="true">
     <Position X="35.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
       <FileName>Models\FrageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.EditFrageViewModel" Collapsed="true">
     <Position X="33.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
       <FileName>Models\FrageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DeleteFrageViewModel" Collapsed="true">
     <Position X="23.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
       <FileName>Models\FrageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DetailsFrageViewModel" Collapsed="true">
     <Position X="35.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
       <FileName>Models\FrageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -433,7 +426,7 @@
   <Class Name="Caterer_DB.Models.ViewModelServices.BenutzerViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="32" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAEEAAAACAoAAAAAAQCICQIAAABCAAAAAAA=</HashCode>
+      <HashCode>AASAAAAABgUkAACIWgsAAQAAQACIiQMCKCFCAIBAiAA=</HashCode>
       <FileName>Models\ViewModelServices\BenutzerViewModelService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -441,7 +434,7 @@
   <Class Name="Caterer_DB.Models.ViewModelServices.FrageViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="32" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAACAAIAAAAACAAAAAAAAEAgAABAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAACAEIAAAAACAAAAAAAAEAgQABAAA=</HashCode>
       <FileName>Models\ViewModelServices\FrageViewModelService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -473,7 +466,7 @@
   <Class Name="Caterer_DB.Resources.LoginResources" Collapsed="true">
     <Position X="35.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QCEBIAAQAAAAAgAAQAABEgAEAQAAAAAABAAAAAEAAII=</HashCode>
+      <HashCode>QCEBIAAQQAAAAgAAQAABEgAEAQAAAAAABAAAAAEAAII=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Services.BaseViewPage" Collapsed="true">
@@ -523,7 +516,7 @@
   <Interface Name="Caterer_DB.Interfaces.IBenutzerViewModelService" Collapsed="true">
     <Position X="26.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEEAAAAAAoAAAAAAQCICQIAAABCAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAgUEAACIEAsAAQAAQACIiQMCKCFCAIBAiAA=</HashCode>
       <FileName>Interfaces\IBenutzerViewModelService.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -537,7 +530,7 @@
   <Interface Name="Caterer_DB.Interfaces.IFrageViewModelService" Collapsed="true">
     <Position X="30.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAAAAAIAAAAACAAAAAAAAEAgAABAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAAAAEIAAAAACAAAAAAAAEAgQABAAA=</HashCode>
       <FileName>Interfaces\IFrageViewModelService.cs</FileName>
     </TypeIdentifier>
   </Interface>
