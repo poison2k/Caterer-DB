@@ -8,8 +8,8 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Business.Services.BenutzerGruppeService" BaseTypeListCollapsed="true">
-    <Position X="8.25" Y="1.5" Width="2.75" />
+  <Class Name="Business.Services.BenutzerGruppeService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAEAAAAAAAIAAAAAAAAAAAAEAEAAACAAA=</HashCode>
       <FileName>Services\BenutzerGruppeService.cs</FileName>
@@ -19,7 +19,7 @@
   <Class Name="Business.Services.BenutzerService" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IgAIAAAABAAQABABHQFAgACDEAAAIkUAAAgAAoAAAAA=</HashCode>
+      <HashCode>AgAIAAAABAAQAAAAAQEAgACAAAAAAgEAAAAAAgAAAAA=</HashCode>
       <FileName>Services\BenutzerService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -66,14 +66,14 @@
   <Interface Name="Business.Interfaces.IBenutzerGruppeService" Collapsed="true">
     <Position X="2.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAEAAAAAAAIAAAAAAAAAAAAEAEAAACAAA=</HashCode>
+      <HashCode>AAAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAEAEAAACAAA=</HashCode>
       <FileName>Interfaces\IBenutzerGruppeService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Business.Interfaces.IBenutzerService" Collapsed="true">
     <Position X="4" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IgAIAAAABAAQABAABQFAgAADEAAAIEUAAAgAAoAAAAA=</HashCode>
+      <HashCode>AgAIAAAABAAQAAAAAQEAgAAAAAAAAAEAAAAAAgAAAAA=</HashCode>
       <FileName>Interfaces\IBenutzerService.cs</FileName>
     </TypeIdentifier>
   </Interface>
