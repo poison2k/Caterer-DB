@@ -37,9 +37,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group ">
-                            @Html.LabelFor(model => model.SpartenName, htmlAttributes: new { @class = "control-label " })
-                            @Html.DropDownList("SpartenName", Model.Sparten, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
-                            @Html.ValidationMessageFor(model => model.SpartenName, "", new { @class = "text-danger" })
+                            @Html.LabelFor(model => model.KategorieName, htmlAttributes: new { @class = "control-label " })
+                            @Html.DropDownList("KategorieName", Model.Kategorien, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                            @Html.ValidationMessageFor(model => model.KategorieName, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -50,8 +50,8 @@
                         </div>
                     </div>
                 </div>
-                <br />
-                <div class="row">
+                <hr />
+                              <div class="row">
                     <div class="col-md-12 text-center">
                         <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default" />
                     </div>
@@ -62,12 +62,13 @@
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="well well-lg">
-                <div class="row">
-                    @if (Model != null)
+
+            @if (Model != null)
                 {
                     for (int i = 0; i < Model.Antworten.Count; i++)
                     {
+                    <div class="well well-lg">
+                        <div class="row">
                             <div class="form-group">
                                 <div class="col-md-11">
                                     @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
@@ -84,11 +85,13 @@
                                     </ul>
                                 </div>
                             </div>
-                        }
-                    }
-                </div>
-            </div>
+                        </div>
+                    </div>
+                }
+            }
+
         </div>
+
     </div>
     <div class="row">
         <div class="col-md-5 col-md-offset-2">

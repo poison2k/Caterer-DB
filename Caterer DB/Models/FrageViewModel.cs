@@ -14,11 +14,11 @@ namespace Caterer_DB.Models
         public List<Antwort> Antworten { get; set; }
 
         [Required]
-        public string SpartenName { get; set; }
+        public string KategorieName { get; set; }
 
         public bool IstMultiSelect { get; set; }
 
-        public IEnumerable<System.Web.Mvc.SelectListItem> Sparten { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> Kategorien { get; set; }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
     }
@@ -33,11 +33,11 @@ namespace Caterer_DB.Models
         public List<Antwort> Antworten { get; set; }
 
         [Required]
-        public string SpartenName { get; set; }
+        public string KategorieName { get; set; }
 
         public bool IstMultiSelect { get; set; }
 
-        public IEnumerable<System.Web.Mvc.SelectListItem> Sparten { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> Kategorien { get; set; }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
     }
@@ -53,7 +53,7 @@ namespace Caterer_DB.Models
 
         public bool IstMultiSelect { get; set; }
 
-        public Sparte Sparte { get; set; }
+        public Kategorie Kategorie { get; set; }
     }
 
     public class DetailsFrageViewModel
@@ -65,7 +65,7 @@ namespace Caterer_DB.Models
 
         public List<Antwort> Antworten { get; set; }
 
-        public Sparte Sparte { get; set; }
+        public Kategorie Kategorien { get; set; }
 
         public bool IstMultiSelect { get; set; }
 

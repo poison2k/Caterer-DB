@@ -38,7 +38,7 @@
                 <div class="navbar-collapse collapse">
                     @if (Request.IsAuthenticated)
                     {
-                        
+
 
                         if (User.HatDasRecht(RechteResource.MenueCaterer))
                         {
@@ -46,10 +46,10 @@
                                 <li class="dropdown" , id="DropdownManageCaterer">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                         Caterer<b class="caret"></b>
-                                    </a>                                                                                             
+                                    </a>
                                     <ul class="dropdown-menu">
                                         <li>@Html.ActionLink("Caterer anzeigen", "IndexCaterer", "Benutzer", null, new { id = "CatererAnzeigen" })</li>
-                                        <li>@Html.ActionLink("Caterer hinzufügen", "CreateCaterer", "Benutzer", null, new { id = "CatererHinzufügen" })</li>                                     
+                                        <li>@Html.ActionLink("Caterer hinzufügen", "CreateCaterer", "Benutzer", null, new { id = "CatererHinzufügen" })</li>
                                     </ul>
                                 </li>
                                 <li class="dropdown" , id="DropdownManageFragebogen">
@@ -59,6 +59,18 @@
                                     <ul class="dropdown-menu">
                                         <li>@Html.ActionLink("Fragen anzeigen", "Index", "Frage", null, new { id = "FragenAnzeigen" })</li>
                                         <li>@Html.ActionLink("Frage hinzufügen", "Create", "Frage", null, new { id = "FragenHinzufügen" })</li>
+                                        @if (User.HatDasRecht(RechteResource.IndexKategorie) || User.HatDasRecht(RechteResource.CreateKategorie))
+                                        {
+                                            <li class="divider"></li>
+                                        }
+                                        @if (User.HatDasRecht(RechteResource.CreateKategorie))
+                                        {
+                                            <li>@Html.ActionLink("Kategorien anzeigen", "Create", "Kategorie", null, new { id = "KategorieAnzeigen" })</li>
+                                        }
+                                        @if (User.HatDasRecht(RechteResource.IndexKategorie))
+                                        {
+                                            <li>@Html.ActionLink("Kategorie hinzufügen", "Create", "Kategorie", null, new { id = "KategorieHinzufügen" })</li>
+                                        }
                                     </ul>
                                 </li>
                             </ul>
@@ -75,7 +87,7 @@
                                        
                                     </ul>
                                 </li>
-                                
+
                             </ul>
                         }
                     }
@@ -95,7 +107,7 @@
 
         <hr />
         <footer>
-            <div class="row bg-white" style="background-color:white">              
+            <div class="row bg-white" style="background-color:white">
                 <div class="col-md-4">
                     <img class="center-block" src="~/Content/Images/ML Logo Förderung 197 frei.png" />
                 </div>

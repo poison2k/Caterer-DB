@@ -6,34 +6,34 @@ using System.Web;
 
 namespace Caterer_DB.Models
 {
-    public class CreateSparteViewModel
+    public class CreateKategorieViewModel
     {
         [Key]
-        public int SparteId { get; set; }
+        public int KategorieId { get; set; }
         [Required]
         public string Bezeichnung { get; set; }
     }
 
-    public class EditSparteViewModel
+    public class EditKategorieViewModel
     {
         [Key]
-        public int SparteId { get; set; }
+        public int KategorieId { get; set; }
         [Required]
         public string Bezeichnung { get; set; }
     }
 
-    public class DeleteSparteViewModel
+    public class DeleteKategorieViewModel
     {
         [Key]
-        public int SparteId { get; set; }
+        public int KategorieId { get; set; }
         [Required]
         public string Bezeichnung { get; set; }
     }
 
-    public class DetailsSparteViewModel
+    public class DetailsKategorieViewModel
     {
         [Key]
-        public int SparteId { get; set; }
+        public int KategorieId { get; set; }
         [Required]
         public string Bezeichnung { get; set; }
     }

@@ -78,7 +78,7 @@
     <Compile Include="Interfaces\ILoginRepository.cs" />
     <Compile Include="Interfaces\IRechteGruppeRepository.cs" />
     <Compile Include="Interfaces\IRechtRepository.cs" />
-    <Compile Include="Interfaces\ISparteRepository.cs" />
+    <Compile Include="Interfaces\IKategorieRepository.cs" />
     <Compile Include="Model\Antwort.cs" />
     <Compile Include="Model\Benutzer.cs" />
     <Compile Include="Model\BenutzerGruppe.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="Model\GegebeneAntworten.cs" />
     <Compile Include="Model\Recht.cs" />
     <Compile Include="Model\RechteGruppe.cs" />
-    <Compile Include="Model\Sparte.cs" />
+    <Compile Include="Model\Kategorie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AntwortRepository.cs" />
     <Compile Include="Repositories\BenutzerGruppeRepository.cs" />
@@ -99,14 +99,14 @@
     <Compile Include="Repositories\LoginRepository.cs" />
     <Compile Include="Repositories\RechteGruppeRepository.cs" />
     <Compile Include="Repositories\RechtRepository.cs" />
-    <Compile Include="Repositories\SparteRepository.cs" />
+    <Compile Include="Repositories\KategorieRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="02_Data_Klassendiagramm.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

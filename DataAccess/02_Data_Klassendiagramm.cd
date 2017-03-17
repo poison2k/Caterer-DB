@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="DataAccess.Context.CatererContext" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="9.25" Y="1.5" Width="1.5" />
+    <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAATAIACAAAAAgAkAAAAAAEAAAAEIAAAyAAgAAAAA=</HashCode>
+      <HashCode>BAAAATAIAiAAAAAgAkAAAAAAEAAAAEIAAAyAAgAAAAA=</HashCode>
       <FileName>Context\CatererContext.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -18,7 +18,7 @@
   <Class Name="DataAccess.Model.Benutzer" Collapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAiAAAA4QAQAIggAQAAAAAAAAAACAMgAAAQAwABgCA=</HashCode>
+      <HashCode>CACiAAAA4QAQAIggAQAAAAAAAAAACAMgAAAQAwABgCA=</HashCode>
       <FileName>Model\Benutzer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -32,7 +32,7 @@
   <Class Name="DataAccess.Model.Frage" Collapsed="true">
     <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
       <FileName>Model\Frage.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -83,7 +83,7 @@
   <Class Name="DataAccess.Repositories.BenutzerRepository" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAABAAAQEAUAAAAgAAAAAAAgAAAEAIAAAgA=</HashCode>
+      <HashCode>ABEAAAAAAAABgAAQFAUAAIAhAAAAAAAgAAAEAIAAAgA=</HashCode>
       <FileName>Repositories\BenutzerRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -153,14 +153,14 @@
   <Interface Name="DataAccess.Interfaces.IBenutzerRepository" Collapsed="true">
     <Position X="4" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAABAAAQAAUAAAAgAAAAAAAgAAAEAIAAAgA=</HashCode>
+      <HashCode>AAEAAAAAAAABgAAQBAUAAIAhAAAAAAAgAAAEAIAAAgA=</HashCode>
       <FileName>Interfaces\IBenutzerRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DataAccess.Interfaces.ICatererContext" Collapsed="true">
     <Position X="5.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>hAAQATAIACAABEAgAkAAAAAAAAAAAAIAAAyAAAAAAAA=</HashCode>
+      <HashCode>hAAQATAIAiAABEAgAkAAAAAAAAAAAAIAAAyAAAAAAAA=</HashCode>
       <FileName>Interfaces\ICatererContext.cs</FileName>
     </TypeIdentifier>
   </Interface>

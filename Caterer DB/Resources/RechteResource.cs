@@ -16,5 +16,11 @@
         public const string MenueCaterer = "MenueCaterer";
         public const string MeineDatenMitarbeiter = "MeineDatenMitarbeiter";
 
+        //Rechte Für KategorieVerwaltung
+        public const string IndexKategorie = "IndexKategorie";
+        public const string Detailsategorie = "DetailsKategorie";
+        public const string EditKategorie = "EditKategorie";
+        public const string CreateKategorie = "CreateKategorie";
+
     }
 }

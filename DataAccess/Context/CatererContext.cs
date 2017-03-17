@@ -17,7 +17,7 @@ namespace DataAccess.Context
         public virtual DbSet<Recht> Recht { get; set; }
         public virtual DbSet<RechteGruppe> RechteGruppe { get; set; }
         public virtual DbSet<Benutzer> Benutzer { get; set; }
-        public virtual DbSet<Sparte> Sparte { get; set; }
+        public virtual DbSet<Kategorie> Kategorie { get; set; }
         public virtual DbSet<Frage> Frage { get; set; }
         public virtual DbSet<Antwort> Antwort { get; set; }
         public virtual DbSet<Fragebogen> Fragebogen { get; set; }

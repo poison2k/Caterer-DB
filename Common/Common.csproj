@@ -64,7 +64,7 @@
     <Compile Include="Services\MD5Hash.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="88_Common_Klassendiagramm.cd" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Services\EMailBetreff.resx">

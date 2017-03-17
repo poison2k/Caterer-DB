@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataAccess.Model.Sparte>
+﻿@model IEnumerable<DataAccess.Model.Kategorie>
 
 @{
     ViewBag.Title = "Index";
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Bezeichnung)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SparteId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SparteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SparteId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.KategorieId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.KategorieId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KategorieId })
         </td>
     </tr>
 }

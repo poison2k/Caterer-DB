@@ -75,9 +75,9 @@ namespace Caterer_DB.App_Start
             container.RegisterType<IFrageService, FrageService>();
             container.RegisterType<IFrageRepository, FrageRepository>();
 
-            container.RegisterType<ISparteViewModelService, SparteViewModelService>();
-            container.RegisterType<ISparteService, SparteService>();
-            container.RegisterType<ISparteRepository, SparteRepository>();
+            container.RegisterType<IKategorieViewModelService, KategorieViewModelService>();
+            container.RegisterType<IKategorieService, KategorieService>();
+            container.RegisterType<IKategorieRepository, KategorieRepository>();
 
             container.RegisterType<IAntwortViewModelService, AntwortViewModelService>();
             container.RegisterType<IAntwortService, AntwortService>();

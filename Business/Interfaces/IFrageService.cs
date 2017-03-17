@@ -11,7 +11,7 @@ namespace Business.Interfaces
     {
         Frage SearchFrageById(int id);
         List<Frage> FindAlleFragen();
-        List<List<Frage>> FindAlleFragenNachSparteninEigenenListen();
+        List<List<Frage>> FindAlleFragenNachKategorieninEigenenListen();
         void AddFrage(Frage frage);
         void EditFrage(Frage frage);
         void RemoveFrage(int id);
