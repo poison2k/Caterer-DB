@@ -22,7 +22,7 @@ namespace Caterer_DB.Models
 
         public string Telefon { get; set; }
 
-        [DisplayName(@"Teamleiter")]
+        [DisplayName(@"Administrator")]
         public bool IstAdmin { get; set; }
 
     }
@@ -321,7 +321,7 @@ namespace Caterer_DB.Models
         [EmailAddress]
         public string Mail { get; set; }
 
-        [DisplayName(@"Teamleiter")]
+        [DisplayName(@"Administrator")]
         public bool IstAdmin { get;set; }
     }
 
