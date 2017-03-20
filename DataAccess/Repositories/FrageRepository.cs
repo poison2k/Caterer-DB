@@ -55,6 +55,9 @@ namespace DataAccess.Repositories
 
         public void RemoveFrage(Frage frage)
         {
+            
+            Db.Set<Antwort>().RemoveRange(frage.Antworten);
+            
             Db.Set<Frage>().Remove(frage);
             Db.SaveChanges();
         }
