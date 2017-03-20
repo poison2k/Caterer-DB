@@ -10,7 +10,7 @@ namespace DataAccess.Repositories
     {
 
         protected ICatererContext Db { get; }
-        
+
         public FrageRepository(ICatererContext db)
         {
             Db = db;
@@ -21,15 +21,17 @@ namespace DataAccess.Repositories
             return Db.Frage.Include(x => x.Antworten).Include(x => x.Kategorie).Where(x => x.FrageId == id).SingleOrDefault();
         }
 
-        public List<List<Frage>> GetAllFragenSortetByKategorienInDifferntLists(List<Kategorie> kategorien) {
+        public List<List<Frage>> GetAllFragenSortetByKategorienInDifferntLists(List<Kategorie> kategorien)
+        {
 
             var fragen = new List<List<Frage>>();
-            foreach (Kategorie kategorie in kategorien) {
+            foreach (Kategorie kategorie in kategorien)
+            {
                 fragen.Add(Db.Frage.Include(y => y.Kategorie).Where(x => x.Kategorie.Bezeichnung == kategorie.Bezeichnung).ToList());
             }
 
             return fragen;
-        } 
+        }
 
         public List<Frage> SearchFrageByKategorie(Kategorie kategorien)
         {
@@ -55,9 +57,9 @@ namespace DataAccess.Repositories
 
         public void RemoveFrage(Frage frage)
         {
-            
+
             Db.Set<Antwort>().RemoveRange(frage.Antworten);
-            
+
             Db.Set<Frage>().Remove(frage);
             Db.SaveChanges();
         }
@@ -66,5 +68,17 @@ namespace DataAccess.Repositories
         {
             return Db.Frage.Include(x => x.Antworten).ToList();
         }
+
+        public List<Frage> GetFragenOfKategorieByKategorieId(int kategorieId)
+        {
+
+            return Db.Frage.Where(x => x.Kategorie.KategorieId == kategorieId).ToList();
+            {
+
+
+            }
+        }
+
     }
 }
+

@@ -5,38 +5,149 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Kategorie</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.KategorieId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
-            </div>
+
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div id="CatererBearbeitenSeite" class="col-md-6 col-md-offset-3 text-center">
+            <h1>Kategorie bearbeiten</h1>
         </div>
+    </div>
+    <br />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="well well-lg">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.KategorieId)
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+               
+                @if (Model.Fragen.Count != 0)
+                {
+                    <br />
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Zugeordnete Fragen</h2>
+                        </div>
+                    </div>
+                    <div class="row" id="BenutzerIndexPartial">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"></div>
+                                <table class="table table-striped">
+
+                                    @foreach (var item in Model.Fragen)
+
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Bezeichnung)
+                                            </td>
+                                            <td align="right">
+                                                <a class="btn btn-default" href="@Url.Action("Details", "Frage", new {id = item.FrageId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                            </td>
+                                            <td align="left">
+                                                <a class="btn btn-default" href="@Url.Action("Edit", "Kategorie", new { id = item.FrageId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr></tr>
+                                    }
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-info">
+                                Um eine Kategorie löschen zu können müssen vorher alle zugeorneten Fragen gelöscht oder einer anderen Kategorie zugeordnet werden.
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 ">
+                    <ul class="list-unstyled list-inline " style="margin-left: -5px;">
+                        <li>
+                            <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-default">
+                                <i class="glyphicon glyphicon-ok"></i> Speichern
+                            </button>
+                        </li>
+                        <li>
+                            <a class="btn btn-default" id="btnZurück" href="/Kategorie/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <ul class="list-unstyled list-inline text-right">
+                        @if (Model.Fragen.Count == 0)
+                        {
+                            <li>
+                                <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="glyphicon glyphicon-trash"></i> Kategorie löschen
+                                </button>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <button id="LöschenButton" type="button" class="btn btn-success" disabled>
+                                    <i class="glyphicon glyphicon-trash"></i> Kategorie löschen
+                                </button>
+                            </li>
+
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+    if (Model.Fragen.Count == 0)
+    {
+     <!-- Modal -->
+        <div class="modal fade" id="deleteModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="LöschenCancel" type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 id="LöschenBest" class="modal-title">Löschen bestätigen</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Wollen Sie diese Kategorie wirklich löschen?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" id="btnModalDelete" name="btnModalDelete" value="Delete">Ja</button>
+                        <button type="submit" class="btn btn-success" data-dismiss="modal" id="btnModalCancel" name="btnModalCancel" value="Cancel">Nein</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -39,14 +39,18 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Kategorie>(editKategorieViewModel);
         }
 
-        public EditKategorieViewModel Map_Kategorie_EditKategorieViewModel(Kategorie kategorie)
+        public EditKategorieViewModel Map_Kategorie_EditKategorieViewModel(Kategorie kategorie, List<Frage> fragenZuKategorie)
         {
-            return Mapper.Map<EditKategorieViewModel>(kategorie);
+            var editKategorieViewModel = Mapper.Map<EditKategorieViewModel>(kategorie);
+            editKategorieViewModel.Fragen = fragenZuKategorie;
+            return editKategorieViewModel;
         }
 
-        public DetailsKategorieViewModel Map_Kategorie_DetailsKategorieViewModel(Kategorie kategorie)
+        public DetailsKategorieViewModel Map_Kategorie_DetailsKategorieViewModel(Kategorie kategorie, List<Frage> fragenZuKategorie)
         {
-            return Mapper.Map<DetailsKategorieViewModel>(kategorie);
+            var detailsKategorieViewModel = Mapper.Map<DetailsKategorieViewModel>(kategorie);
+            detailsKategorieViewModel.Fragen = fragenZuKategorie;
+            return detailsKategorieViewModel;
         }
 
         public Kategorie Map_DeleteKategorieViewModel_Kategorie(DeleteKategorieViewModel deleteKategorieViewModel)

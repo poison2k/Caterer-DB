@@ -3,9 +3,6 @@ using DataAccess.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Services
 {
@@ -37,6 +34,11 @@ namespace Business.Services
             return FrageRepository.SearchFrage();
         }
 
+        public List<Frage> FindFragenNachKategorieByKategorieId(int kategorieId)
+        {
+            return FrageRepository.GetFragenOfKategorieByKategorieId(kategorieId);
+        }
+
         public List<List<Frage>> FindAlleFragenNachKategorieninEigenenListen()
         {
             return FrageRepository.GetAllFragenSortetByKategorienInDifferntLists(KategorienRepository.SearchKategorie());
@@ -51,5 +53,7 @@ namespace Business.Services
         {
             return FrageRepository.SearchFrageById(id);
         }
+
+       
     }
 }
