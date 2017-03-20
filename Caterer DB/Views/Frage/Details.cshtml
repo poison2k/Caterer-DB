@@ -42,15 +42,12 @@
                         <dl class="text-center">
                             @foreach (var item in Model.Antworten)
                             {
-                                <dt>
-                                    Antwort: @item.AntwortId                                   
-                                </dt>
-
                                 <dd>
                                     @Html.DisplayFor(modelitem => item.Bezeichnung)
                                 </dd>
+                                <hr/>
                             }
-
+                            
                         </dl>
                     </div>
                 </div>
