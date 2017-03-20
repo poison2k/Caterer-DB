@@ -65,7 +65,7 @@
                                         }
                                         @if (User.HatDasRecht(RechteResource.CreateKategorie))
                                         {
-                                            <li>@Html.ActionLink("Kategorien anzeigen", "Create", "Kategorie", null, new { id = "KategorieAnzeigen" })</li>
+                                            <li>@Html.ActionLink("Kategorien anzeigen", "Index", "Kategorie", null, new { id = "KategorieAnzeigen" })</li>
                                         }
                                         @if (User.HatDasRecht(RechteResource.IndexKategorie))
                                         {
