@@ -134,7 +134,7 @@ namespace Caterer_DB.Controllers
                         if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
                         {
                             ModelState.Clear();
-                            createFrageViewModel.Antworten.RemoveAt(i / 2 - 2);
+                            createFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
                             return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
                         }
                     }                    
