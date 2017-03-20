@@ -8,8 +8,8 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Business.Services.BenutzerGruppeService" BaseTypeListCollapsed="true">
-    <Position X="8.25" Y="1.5" Width="2.75" />
+  <Class Name="Business.Services.BenutzerGruppeService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAEAAAAAAAIAAAAAAAAAAAAEAEAAACAAA=</HashCode>
       <FileName>Services\BenutzerGruppeService.cs</FileName>
@@ -24,16 +24,32 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Business.Services.FrageService" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="Business.Services.ConfigService" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAgAAAAAAAEAAAAAAACAgBAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Services\ConfigService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Business.Services.FrageService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAgAAQAAgAEAAAAAAACAgBAAAAAA=</HashCode>
       <FileName>Services\FrageService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Business.Services.KategorieService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAAAAACIAAQAAAAAAAAAQAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Services\KategorieService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Business.Services.RechteGruppeService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAEAYAAAAAAAAAAAgAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>Services\RechteGruppeService.cs</FileName>
@@ -41,18 +57,10 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Business.Services.RechtService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4" Y="1.5" Width="1.5" />
+    <Position X="2.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAABAAAAEg=</HashCode>
       <FileName>Services\RechtService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Business.Services.SparteService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAACAACAAAIAAAAAAAAAAAAAAAAAAAAEQA=</HashCode>
-      <FileName>Services\SparteService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
@@ -77,32 +85,39 @@
       <FileName>Interfaces\IBenutzerService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Business.Interfaces.IFrageService" Collapsed="true">
+  <Interface Name="Business.Interfaces.IConfigService" Collapsed="true">
     <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAgAAAAAAAEAAAAAAACAgAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IConfigService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Business.Interfaces.IFrageService" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAgAAAAAgAEAAAAAAACAgAAAAAAA=</HashCode>
       <FileName>Interfaces\IFrageService.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Business.Interfaces.IKategorieService" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAACIAAQAAAAAAAAAQAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Interfaces\IKategorieService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Interface Name="Business.Interfaces.IRechteGruppeService" Collapsed="true">
-    <Position X="2.25" Y="4.5" Width="1.5" />
+    <Position X="0.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAEAQAAAAAAAAAAAgAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IRechteGruppeService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Business.Interfaces.IRechtService" Collapsed="true">
-    <Position X="4" Y="4.5" Width="1.5" />
+    <Position X="2.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAABAAAAEg=</HashCode>
       <FileName>Interfaces\IRechtService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Business.Interfaces.ISparteService" Collapsed="true">
-    <Position X="0.5" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAACAACAAAIAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
-      <FileName>Interfaces\ISparteService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

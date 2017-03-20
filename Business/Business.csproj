@@ -99,8 +99,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="01_Business_Klassendiagramm.cd" />
     <None Include="App.config" />
-    <None Include="01_business_Klassendiagramm.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
