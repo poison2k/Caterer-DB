@@ -97,6 +97,15 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die mitarbeiter@test.de ähnelt.
+        /// </summary>
+        internal static string Name3 {
+            get {
+                return ResourceManager.GetString("Name3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Start#22 ähnelt.
         /// </summary>
         internal static string PW1 {

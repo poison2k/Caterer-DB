@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Fragebogen" xml:space="preserve">
-    <value>Fragebogen</value>
+  <data name="Caterer_Bearbeiten_Seite" xml:space="preserve">
+    <value>CatererBearbeitenSeite</value>
   </data>
-  <data name="Fragen_Erstellen" xml:space="preserve">
-    <value>CatererSeite</value>
+  <data name="Caterer_Details_Seite" xml:space="preserve">
+    <value>RegSeite</value>
   </data>
-  <data name="Fragen_Übersicht" xml:space="preserve">
+  <data name="Caterer_Hinzufügen_Seite" xml:space="preserve">
+    <value>RegSeite</value>
+  </data>
+  <data name="Caterer_Übersicht_Seite" xml:space="preserve">
     <value>CatererSeite</value>
   </data>
 </root>

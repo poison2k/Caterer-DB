@@ -76,6 +76,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ObjektIDs_DatenManagement.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\ObjektIDs_CatererManagement.Designer.cs">
+      <DependentUpon>ObjektIDs_CatererManagement.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Services\ObjektIDs_NutzerDaten.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,6 +101,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ObjektIDs_FragebogenManagement.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\TestTools Userstory M4-6.cs" />
     <Compile Include="Services\TestTools Userstory C2-3.cs" />
     <Compile Include="Services\TestTools Userstory T3-1.cs" />
     <Compile Include="Tests Userstory T3-1.cs" />
@@ -104,6 +110,7 @@
     <Compile Include="Tests Userstory C2-1.cs" />
     <Compile Include="Tests Userstory U1-3.cs" />
     <Compile Include="Tests Userstory C2-3.cs" />
+    <Compile Include="Tests Userstory M4-6.cs" />
     <Compile Include="Tests Userstory U1-7.cs" />
     <Compile Include="Tests Userstory U1-6.cs" />
     <Compile Include="Tests Userstory U1-2.cs" />
@@ -162,6 +169,10 @@
     <EmbeddedResource Include="Services\ObjektIDs_DatenManagement.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ObjektIDs_DatenManagement.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\ObjektIDs_CatererManagement.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ObjektIDs_CatererManagement.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\ObjektIDs_NutzerDaten.resx">
       <Generator>ResXFileCodeGenerator</Generator>

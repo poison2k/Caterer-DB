@@ -30,7 +30,7 @@ namespace SeleniumTests.Services
         public static void Details_Von_Mitarbeiter_Anzeigen(IWebDriver driver)
         {
 
-            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/Details/5");
+            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/Details/6");
             Assert.AreEqual(Hinweise.Mitarbeiter_Details, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Details, driver));
 
         }
@@ -38,7 +38,7 @@ namespace SeleniumTests.Services
         public static void Bearbeiten_Von_Mitarbeiter_Anzeigen(IWebDriver driver)
         {
 
-            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/Edit/5");
+            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/Edit/6");
             Assert.AreEqual(Hinweise.Mitarbeiter_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Bearbeiten,driver));
 
         }

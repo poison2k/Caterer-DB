@@ -192,7 +192,7 @@
   <data name="Dropdown_Manage_Fragebogen_Bearbeiten" xml:space="preserve">
     <value>FragebogenBearbeiten</value>
   </data>
-  <data name="Dropdown_Manage_Hinzufügen" xml:space="preserve">
+  <data name="Dropdown_Manage_Fragen_Hinzufügen" xml:space="preserve">
     <value>FragenHinzufügen</value>
   </data>
   <data name="Dropdown_Service_Login" xml:space="preserve">

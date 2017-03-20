@@ -198,9 +198,9 @@ namespace SeleniumTests.Services {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die FragenHinzufügen ähnelt.
         /// </summary>
-        internal static string Dropdown_Manage_Hinzufügen {
+        internal static string Dropdown_Manage_Fragen_Hinzufügen {
             get {
-                return ResourceManager.GetString("Dropdown_Manage_Hinzufügen", resourceCulture);
+                return ResourceManager.GetString("Dropdown_Manage_Fragen_Hinzufügen", resourceCulture);
             }
         }
         

@@ -329,8 +329,11 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Mitarbeiter_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Seite, driver));
 
             //Mitarbeiter löschen über Details Seite
+            //TestTools_Userstory_T3_1.Details_Von_Mitarbeiter_Anzeigen(driver);
+
             driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/Details/10");
             Assert.AreEqual(Hinweise.Mitarbeiter_Details, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Details, driver));
+
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Daten_Bearbeiten, driver);
             Assert.AreEqual(Hinweise.Mitarbeiter_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Bearbeiten, driver));
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);

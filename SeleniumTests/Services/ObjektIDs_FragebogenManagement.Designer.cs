@@ -68,5 +68,23 @@ namespace SeleniumTests.Services {
                 return ResourceManager.GetString("Fragebogen", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
+        /// </summary>
+        internal static string Fragen_Erstellen {
+            get {
+                return ResourceManager.GetString("Fragen_Erstellen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
+        /// </summary>
+        internal static string Fragen_Übersicht {
+            get {
+                return ResourceManager.GetString("Fragen_Übersicht", resourceCulture);
+            }
+        }
     }
 }
