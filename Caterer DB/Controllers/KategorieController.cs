@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DataAccess.Context;
-using DataAccess.Model;
 using Caterer_DB.Interfaces;
 using Business.Interfaces;
 using Caterer_DB.Models;
@@ -20,10 +13,14 @@ namespace Caterer_DB.Controllers
 
         private IKategorieService KategorieService { get; set; }
 
-        public KategorieController(IKategorieService kategorieService, IKategorieViewModelService kategorieViewModelService)
+        private IFrageService FrageService { get; set; }
+
+        public KategorieController(IKategorieService kategorieService, IKategorieViewModelService kategorieViewModelService, IFrageService frageService)
         {
             KategorieService = kategorieService;
+            FrageService = frageService;
             KategorieViewModelService = kategorieViewModelService;
+
         }
 
         // GET: Kategorie
@@ -41,7 +38,7 @@ namespace Caterer_DB.Controllers
             }
 
             DetailsKategorieViewModel KategorieViewModel =
-                KategorieViewModelService.Map_Kategorie_DetailsKategorieViewModel(KategorieService.SearchKategorieById(Convert.ToInt32(id)));
+                KategorieViewModelService.Map_Kategorie_DetailsKategorieViewModel(KategorieService.SearchKategorieById(Convert.ToInt32(id)), FrageService.FindFragenNachKategorieByKategorieId(Convert.ToInt32(id)));
 
             if (KategorieViewModel == null)
             {
@@ -81,7 +78,7 @@ namespace Caterer_DB.Controllers
             }
 
             EditKategorieViewModel editKategorieViewModel =
-               KategorieViewModelService.Map_Kategorie_EditKategorieViewModel(KategorieService.SearchKategorieById(Convert.ToInt32(id)));
+               KategorieViewModelService.Map_Kategorie_EditKategorieViewModel(KategorieService.SearchKategorieById(Convert.ToInt32(id)), FrageService.FindFragenNachKategorieByKategorieId(Convert.ToInt32(id)));
 
             if (editKategorieViewModel == null)
             {
@@ -99,7 +96,14 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                KategorieService.EditKategorie(KategorieViewModelService.Map_EditKategorieViewModel_Kategorie(editKategorieViewModel));
+                if (Request.Form["btnModalDelete"] != null)
+                {
+                    KategorieService.RemoveKategorie(editKategorieViewModel.KategorieId);
+                }
+                else
+                {
+                    KategorieService.EditKategorie(KategorieViewModelService.Map_EditKategorieViewModel_Kategorie(editKategorieViewModel));
+                }
                 return RedirectToAction("Index");
             }
             return View(editKategorieViewModel);

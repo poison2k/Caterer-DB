@@ -160,6 +160,10 @@ namespace Caterer_DB.Controllers
                     frage.Kategorie = KategorienService.SearchKategorieByName(editFrageViewModel.KategorieName);
                     FrageService.EditFrage(frage);
                 }
+                else if (Request.Form["btnModalDelete"] != null)
+                {
+                   FrageService.RemoveFrage(FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel).FrageId);
+                }
                 return RedirectToAction("Index");
             }
             return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel,KategorienService.FindAlleKategorien()));

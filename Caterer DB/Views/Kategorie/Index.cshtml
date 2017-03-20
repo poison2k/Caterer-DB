@@ -4,30 +4,113 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br />
+<br />
+<br />
+<div class="row">
+    <div id="CatererSeite" class="col-md-4 col-md-offset-4 text-center">
+        <h1> Kategorieübersicht</h1>
+    </div>
+</div>
+<div style="margin-top: 15px"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <ul class="list-unstyled list-inline col-md-12" style="margin-left: -5px;">
+                    <li>
+                        <a id="btnFrageErstellen" href="@Url.Action("Create", "Kategorie")" na name="btnErstellen" type="submit" class="btn btn-success">
+                            <i class="glyphicon glyphicon-plus"></i> Neue Kategorie
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-top: 15px"></div>
+            <div class="row" id="BenutzerIndexPartial">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"></div>
+                        <table class="table table-striped ">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Bezeichnung)
-        </th>
-        <th></th>
-    </tr>
+                            @foreach (var item in Model)
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bezeichnung)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KategorieId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KategorieId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KategorieId })
-        </td>
-    </tr>
-}
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Bezeichnung)
+                                    </td>
+                                    <td align="right">
+                                        <a class="btn btn-default" href="@Url.Action("Details", "Kategorie", new {id = item.KategorieId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                    </td>
+                                    <td  align="left">
+                                        <a class="btn btn-default" href="@Url.Action("Edit", "Kategorie", new { id = item.KategorieId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    </td>
+                                </tr>
+                                
+                            }
+                        </table>
 
-</table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Bezeichnung)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bezeichnung)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.FrageId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.FrageId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.FrageId })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>*@
