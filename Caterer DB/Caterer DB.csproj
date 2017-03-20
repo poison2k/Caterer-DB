@@ -451,6 +451,8 @@
     <Content Include="Views\Benutzer\MeineDaten.cshtml" />
     <Content Include="Views\Frage\Bearbeiten.cshtml" />
     <Content Include="Views\Fragebogen\Details.cshtml" />
+    <Content Include="Views\Frage\IndexVeroeffentlicht.cshtml" />
+    <Content Include="Views\Frage\DetailsVeroeffentlicht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

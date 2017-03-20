@@ -22,12 +22,29 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Frage, EditFrageViewModel>().ReverseMap();
                 cfg.CreateMap<Frage, DeleteFrageViewModel>().ReverseMap();
                 cfg.CreateMap<Frage, DetailsFrageViewModel>().ReverseMap();
+                cfg.CreateMap<Frage, IndexFrageViewModel>().ReverseMap();
                
 
             });
 
             Mapper = config.CreateMapper();
 
+        }
+
+        public ListViewModel<IndexFrageViewModel> GeneriereListViewModel(List<Frage> fragenListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10)
+        {
+            var listViewModel = new ListViewModel<IndexFrageViewModel>(gesamtAnzahlDatensätze, aktuelleSeite, seitenGröße);
+            foreach (var frage in fragenListe)
+                listViewModel.Entitäten.Add(GeneriereIndexFrageViewModel(frage));
+
+            return listViewModel;
+        }
+
+        public IndexFrageViewModel GeneriereIndexFrageViewModel(Frage frage)
+        {
+            var indexFrageViewModel = Mapper.Map<IndexFrageViewModel>(frage);
+
+            return indexFrageViewModel;
         }
 
         public Frage Map_CreateFrageViewModel_Frage(CreateFrageViewModel createFrageViewModel)

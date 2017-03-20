@@ -18,5 +18,11 @@ namespace DataAccess.Interfaces
         List<Frage> SearchFrageByKategorie(Kategorie kategorie);
         List<List<Frage>> GetAllFragenSortetByKategorienInDifferntLists(List<Kategorie> kategorien);
         List<Frage> GetFragenOfKategorieByKategorieId(int kategorieId);
+
+        List<Frage> SearchAllFrageNeuWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, string orderBy);
+        List<Frage> SearchAllFrageVeröffentlichtWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, string orderBy);
+
+        int GetFrageNeuCount();
+        int GetFrageVeröffentlichtCount();
     }
 }

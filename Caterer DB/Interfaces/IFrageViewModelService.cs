@@ -6,9 +6,12 @@ namespace Caterer_DB.Interfaces
 {
     public interface IFrageViewModelService
     {
+        ListViewModel<IndexFrageViewModel> GeneriereListViewModel(List<Frage> fragenListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10);
+
         Frage Map_CreateFrageViewModel_Frage(CreateFrageViewModel createFrageViewModel);
         Frage Map_EditFrageViewModel_Frage(EditFrageViewModel editFrageViewModel);
 
+        IndexFrageViewModel GeneriereIndexFrageViewModel(Frage frage);
         CreateFrageViewModel CreateCreateFrageViewModel(List<Kategorie> kategorien);
         EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage, List<Kategorie> kategorien);
         DetailsFrageViewModel Map_Frage_DetailsFrageViewModel(Frage Frage);

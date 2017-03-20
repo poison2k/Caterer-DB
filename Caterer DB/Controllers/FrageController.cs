@@ -26,9 +26,27 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Frages
-        public ActionResult Index()
+        public ActionResult Index(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Bezeichnung")
         {
-            return View(FrageService.FindAlleFragen());
+            ViewBag.Sortierrung = Sortierrung;
+
+            return View(FrageViewModelService.GeneriereListViewModel(
+                FrageService.FindAllFrageWithPagingNeu(aktuelleSeite, seitenGrösse, Sortierrung)
+               , FrageService.GetFrageNeuCount()
+               , aktuelleSeite
+               , seitenGrösse));
+        }
+
+        // GET: Frages
+        public ActionResult IndexVeroeffentlicht(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Bezeichnung")
+        {
+            ViewBag.Sortierrung = Sortierrung;
+
+            return View(FrageViewModelService.GeneriereListViewModel(
+                FrageService.FindAllFrageWithPagingVeröffentlicht(aktuelleSeite, seitenGrösse, Sortierrung)
+               , FrageService.GetFrageVeröffentlichtCount()
+               , aktuelleSeite
+               , seitenGrösse));
         }
 
         // GET: Frages/Details/5
@@ -47,6 +65,38 @@ namespace Caterer_DB.Controllers
                 return HttpNotFound();
             }
             return View(FrageViewModel);
+        }
+
+        // GET: Frages/DetailsVeroeffentlicht/5
+        public ActionResult DetailsVeroeffentlicht(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            DetailsFrageViewModel FrageViewModel =
+                FrageViewModelService.Map_Frage_DetailsFrageViewModel(FrageService.SearchFrageById(Convert.ToInt32(id)));
+
+            if (FrageViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(FrageViewModel);
+        }
+
+        // Post: Frages/DetailsVeroeffentlicht/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DetailsVeroeffentlicht(DetailsFrageViewModel detailsFrageViewModel)
+        {
+            FrageService.RemoveFrage(detailsFrageViewModel.FrageId);
+
+            if (detailsFrageViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return RedirectToAction("IndexVeroeffentlicht");
         }
 
         // GET: Frages/Create
@@ -154,6 +204,13 @@ namespace Caterer_DB.Controllers
                         }
                     }
                 }
+                else if (Request.Form["btnVeroeffentlichen"] != null)
+                {
+                    var frage = FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel);
+                    frage.Kategorie = KategorienService.SearchKategorieByName(editFrageViewModel.KategorieName);
+                    frage.IstVeröffentlicht = true;
+                    FrageService.EditFrage(frage);
+                }
                 else if (Request.Form["btnSave"] != null)
                 {
                     var frage = FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel);
@@ -162,7 +219,7 @@ namespace Caterer_DB.Controllers
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
-                   FrageService.RemoveFrage(FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel).FrageId);
+                    FrageService.RemoveFrage(FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel).FrageId);
                 }
                 return RedirectToAction("Index");
             }

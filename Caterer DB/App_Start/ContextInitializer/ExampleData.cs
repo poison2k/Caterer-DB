@@ -454,7 +454,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
-
+                IstVeröffentlicht = true
 
             });
             db.Frage.Add(new Frage()
@@ -468,7 +468,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
-
+                IstVeröffentlicht = true
 
             });
 
@@ -481,7 +481,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 11"}
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
-
+                IstVeröffentlicht = true
             });
 
             db.Frage.Add(new Frage()
@@ -493,8 +493,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 12"}
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
-
-            });
+                IstVeröffentlicht = true
+        });
 
             db.Frage.Add(new Frage()
             {
@@ -505,6 +505,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 13"}
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
+                IstVeröffentlicht = true
 
             });
 

@@ -57,7 +57,7 @@
                                         Fragebogen<b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li>@Html.ActionLink("Veröffentlichte Fragen anzeigen", "#", "#", null, new { id = "#" })</li>                                      
+                                        <li>@Html.ActionLink("Veröffentlichte Fragen anzeigen", "IndexVeroeffentlicht", "Frage", null, new { id = "FrageAnzeigenVeroeffentlicht" })</li>                                      
                                         <li>@Html.ActionLink("Neue Fragen anzeigen", "Index", "Frage", null, new { id = "FragenAnzeigen" })</li>
                                         <li>@Html.ActionLink("Neue Fragen hinzufügen", "Create", "Frage", null, new { id = "FragenHinzufügen" })</li>
                                         @if (User.HatDasRecht(RechteResource.IndexKategorie) || User.HatDasRecht(RechteResource.CreateKategorie))

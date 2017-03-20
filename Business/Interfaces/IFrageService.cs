@@ -16,6 +16,9 @@ namespace Business.Interfaces
         void AddFrage(Frage frage);
         void EditFrage(Frage frage);
         void RemoveFrage(int id);
-
+        List<Frage> FindAllFrageWithPagingNeu(int aktuelleSeite, int seitenGrösse, string sortierrung);
+        List<Frage> FindAllFrageWithPagingVeröffentlicht(int aktuelleSeite, int seitenGrösse, string sortierrung);
+        int GetFrageVeröffentlichtCount();
+        int GetFrageNeuCount();
     }
 }

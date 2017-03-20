@@ -10,22 +10,14 @@
 <br />
 <div class="row">
     <div id="CatererSeite" class="col-md-4 col-md-offset-4 text-center">
-        <h1>Neue Fragen</h1>
+        <h1>Veröffentlichte Fragen</h1>
     </div>
 </div>
 <div style="margin-top: 15px"></div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="row">
-                <ul class="list-unstyled list-inline col-md-12" style="margin-left: -5px;">
-                    <li>
-                        <a id="btnFrageErstellen" href="@Url.Action("Create", "Frage")" na name="btnErstellen" type="submit" class="btn btn-success">
-                            <i class="glyphicon glyphicon-plus"></i> Neue Frage
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            
             <div style="margin-top: 15px"></div>
             <div class="row" id="BenutzerIndexPartial">
                 <div class="col-md-12">
@@ -112,12 +104,10 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.IstMultiSelect)
                                         </td>
-                                        <td align="right">
-                                            <a class="btn btn-default" href="@Url.Action("Details", "Frage", new {id = item.FrageId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
-                                        </td>
                                         <td align="left">
-                                            <a class="btn btn-default" href="@Url.Action("Edit", "Frage", new { id = item.FrageId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            <a class="btn btn-default" href="@Url.Action("DetailsVeroeffentlicht", "Frage", new {id = item.FrageId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
                                         </td>
+                                       
                                     </tr>
                                     <tr></tr>
                                 }

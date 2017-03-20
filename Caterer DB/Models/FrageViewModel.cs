@@ -5,6 +5,29 @@ using System.ComponentModel;
 
 namespace Caterer_DB.Models
 {
+
+
+    public class IndexFrageViewModel
+    {
+        [Key]
+        public int FrageId { get; set; }
+
+        [Required]
+        [DisplayName(@"Frage")]
+        public string Bezeichnung { get; set; }
+
+        [DisplayName(@"Anzahl Antworten")]
+        public List<Antwort> Antworten { get; set; }
+
+        [Required]
+        [DisplayName(@"Kategorie")]
+        public Kategorie Kategorie { get; set; }
+
+        [DisplayName(@"Mehrfachantwort")]
+        public bool IstMultiSelect { get; set; }
+
+    }
+
     public class CreateFrageViewModel
     {
         [Key]

@@ -54,6 +54,24 @@ namespace Business.Services
             return FrageRepository.SearchFrageById(id);
         }
 
-       
+        public List<Frage> FindAllFrageWithPagingNeu(int aktuelleSeite, int seitenGrösse, string sortierrung)
+        {
+            return FrageRepository.SearchAllFrageNeuWithPagingOrderByCategory(aktuelleSeite, seitenGrösse, sortierrung);
+        }
+
+        public List<Frage> FindAllFrageWithPagingVeröffentlicht(int aktuelleSeite, int seitenGrösse, string sortierrung)
+        {
+            return FrageRepository.SearchAllFrageVeröffentlichtWithPagingOrderByCategory(aktuelleSeite, seitenGrösse, sortierrung);
+        }
+
+        public int GetFrageVeröffentlichtCount()
+        {
+            return FrageRepository.GetFrageVeröffentlichtCount();
+        }
+
+        public int GetFrageNeuCount()
+        {
+            return FrageRepository.GetFrageNeuCount();
+        }
     }
 }
