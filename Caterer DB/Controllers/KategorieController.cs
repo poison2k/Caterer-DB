@@ -38,7 +38,7 @@ namespace Caterer_DB.Controllers
             }
 
             DetailsKategorieViewModel KategorieViewModel =
-                KategorieViewModelService.Map_Kategorie_DetailsKategorieViewModel(KategorieService.SearchKategorieById(Convert.ToInt32(id)),FrageService.FindFragenNachKategorieByKategorieId(Convert.ToInt32(id)));
+                KategorieViewModelService.Map_Kategorie_DetailsKategorieViewModel(KategorieService.SearchKategorieById(Convert.ToInt32(id)), FrageService.FindFragenNachKategorieByKategorieId(Convert.ToInt32(id)));
 
             if (KategorieViewModel == null)
             {
@@ -96,7 +96,14 @@ namespace Caterer_DB.Controllers
         {
             if (ModelState.IsValid)
             {
-                KategorieService.EditKategorie(KategorieViewModelService.Map_EditKategorieViewModel_Kategorie(editKategorieViewModel));
+                if (Request.Form["btnModalDelete"] != null)
+                {
+                    KategorieService.RemoveKategorie(editKategorieViewModel.KategorieId);
+                }
+                else
+                {
+                    KategorieService.EditKategorie(KategorieViewModelService.Map_EditKategorieViewModel_Kategorie(editKategorieViewModel));
+                }
                 return RedirectToAction("Index");
             }
             return View(editKategorieViewModel);
