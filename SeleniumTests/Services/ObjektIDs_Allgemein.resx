@@ -141,4 +141,7 @@
   <data name="Zurück_Button" xml:space="preserve">
     <value>btnZurück</value>
   </data>
+  <data name="Speichern" xml:space="preserve">
+    <value>btnSpeichern</value>
+  </data>
 </root>

@@ -14,7 +14,6 @@ namespace SeleniumTests
         public void FrageAntwort1()
         //T_C2-3_F02_B_001
         {
-            //Variante Knopf
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Caterer einloggen

@@ -88,6 +88,42 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Caterer bearbeiten ähnelt.
+        /// </summary>
+        internal static string Caterer_Bearbeiten_Seite {
+            get {
+                return ResourceManager.GetString("Caterer_Bearbeiten_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Detailansicht Caterer ähnelt.
+        /// </summary>
+        internal static string Caterer_Details_Seite {
+            get {
+                return ResourceManager.GetString("Caterer_Details_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Caterer hinzufügen ähnelt.
+        /// </summary>
+        internal static string Caterer_Hinzufügen_Seite {
+            get {
+                return ResourceManager.GetString("Caterer_Hinzufügen_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Caterer ähnelt.
+        /// </summary>
+        internal static string Catererseite {
+            get {
+                return ResourceManager.GetString("Catererseite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Datenschutzbestimmungen ähnelt.
         /// </summary>
         internal static string Datenschutzseite {
@@ -111,6 +147,24 @@ namespace SeleniumTests.Services {
         internal static string Eigene_Datenseite_Mitarbeiter {
             get {
                 return ResourceManager.GetString("Eigene_Datenseite_Mitarbeiter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frage erstellen ähnelt.
+        /// </summary>
+        internal static string Fragen_Hinzufügen {
+            get {
+                return ResourceManager.GetString("Fragen_Hinzufügen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fragenübersicht ähnelt.
+        /// </summary>
+        internal static string Fragen_Übersicht {
+            get {
+                return ResourceManager.GetString("Fragen_Übersicht", resourceCulture);
             }
         }
         

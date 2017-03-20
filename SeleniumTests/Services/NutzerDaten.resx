@@ -120,6 +120,9 @@
   <data name="Dummy_Daten_Vorname" xml:space="preserve">
     <value>Sebastian</value>
   </data>
+  <data name="Dummy_Firmenname" xml:space="preserve">
+    <value>AllYouCanEat GmbH</value>
+  </data>
   <data name="NutzerDaten_Anrede_Frau" xml:space="preserve">
     <value>2</value>
   </data>
@@ -132,8 +135,14 @@
   <data name="NutzerDaten_Email" xml:space="preserve">
     <value>projekt10test@gmail.com</value>
   </data>
+  <data name="NutzerDaten_Fax" xml:space="preserve">
+    <value>09876/54321</value>
+  </data>
   <data name="NutzerDaten_Firmenname" xml:space="preserve">
     <value>Testfirma</value>
+  </data>
+  <data name="NutzerDaten_Internetadresse" xml:space="preserve">
+    <value>www.test.test</value>
   </data>
   <data name="NutzerDaten_Lieferumkreis" xml:space="preserve">
     <value>1</value>

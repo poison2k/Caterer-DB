@@ -70,6 +70,15 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die AllYouCanEat GmbH ähnelt.
+        /// </summary>
+        internal static string Dummy_Firmenname {
+            get {
+                return ResourceManager.GetString("Dummy_Firmenname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 2 ähnelt.
         /// </summary>
         internal static string NutzerDaten_Anrede_Frau {
@@ -106,11 +115,29 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 09876/54321 ähnelt.
+        /// </summary>
+        internal static string NutzerDaten_Fax {
+            get {
+                return ResourceManager.GetString("NutzerDaten_Fax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Testfirma ähnelt.
         /// </summary>
         internal static string NutzerDaten_Firmenname {
             get {
                 return ResourceManager.GetString("NutzerDaten_Firmenname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die www.test.test ähnelt.
+        /// </summary>
+        internal static string NutzerDaten_Internetadresse {
+            get {
+                return ResourceManager.GetString("NutzerDaten_Internetadresse", resourceCulture);
             }
         }
         

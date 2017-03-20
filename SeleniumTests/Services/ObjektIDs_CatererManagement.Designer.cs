@@ -22,14 +22,14 @@ namespace SeleniumTests.Services {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ObjektIDs_Allgemein {
+    internal class ObjektIDs_CatererManagement {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ObjektIDs_Allgemein() {
+        internal ObjektIDs_CatererManagement() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SeleniumTests.Services {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SeleniumTests.Services.ObjektIDs_Allgemein", typeof(ObjektIDs_Allgemein).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SeleniumTests.Services.ObjektIDs_CatererManagement", typeof(ObjektIDs_CatererManagement).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,38 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Mail ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererBearbeitenSeite ähnelt.
         /// </summary>
-        internal static string EMail_Feld {
+        internal static string Caterer_Bearbeiten_Seite {
             get {
-                return ResourceManager.GetString("EMail_Feld", resourceCulture);
+                return ResourceManager.GetString("Caterer_Bearbeiten_Seite", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Email ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
         /// </summary>
-        internal static string EMail_Feld_Login {
+        internal static string Caterer_Details_Seite {
             get {
-                return ResourceManager.GetString("EMail_Feld_Login", resourceCulture);
+                return ResourceManager.GetString("Caterer_Details_Seite", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die loginLinkbutton ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
         /// </summary>
-        internal static string LoginButton {
+        internal static string Caterer_Hinzufügen_Seite {
             get {
-                return ResourceManager.GetString("LoginButton", resourceCulture);
+                return ResourceManager.GetString("Caterer_Hinzufügen_Seite", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Passwort ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
         /// </summary>
-        internal static string Passwort_Feld {
+        internal static string Caterer_Übersicht_Seite {
             get {
-                return ResourceManager.GetString("Passwort_Feld", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die PasswortVerification ähnelt.
-        /// </summary>
-        internal static string Passwort_Feld_Bestätigung {
-            get {
-                return ResourceManager.GetString("Passwort_Feld_Bestätigung", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die PasswortChange ähnelt.
-        /// </summary>
-        internal static string PW_Ändern_Seite {
-            get {
-                return ResourceManager.GetString("PW_Ändern_Seite", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnSpeichern ähnelt.
-        /// </summary>
-        internal static string Speichern {
-            get {
-                return ResourceManager.GetString("Speichern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die StartButton ähnelt.
-        /// </summary>
-        internal static string StartButton {
-            get {
-                return ResourceManager.GetString("StartButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die btnZurück ähnelt.
-        /// </summary>
-        internal static string Zurück_Button {
-            get {
-                return ResourceManager.GetString("Zurück_Button", resourceCulture);
+                return ResourceManager.GetString("Caterer_Übersicht_Seite", resourceCulture);
             }
         }
     }
