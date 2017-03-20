@@ -1,119 +1,119 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Caterer_DB.BundleConfig" Collapsed="true">
-    <Position X="33.75" Y="0.5" Width="1.5" />
+    <Position X="41.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\BundleConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.FilterConfig" Collapsed="true">
-    <Position X="28.5" Y="5.5" Width="1.5" />
+    <Position X="34.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>App_Start\FilterConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.RouteConfig" Collapsed="true">
-    <Position X="33.75" Y="6.5" Width="1.5" />
+    <Position X="27.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\RouteConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Startup" Collapsed="true">
-    <Position X="25" Y="7.5" Width="1.5" />
+    <Position X="31.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAA=</HashCode>
       <FileName>App_Start\Startup.Auth.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.MvcApplication" Collapsed="true">
-    <Position X="25" Y="6.5" Width="1.5" />
+    <Position X="33" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAEAAAAA=</HashCode>
       <FileName>Global.asax.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.App_Start.ContextInitializer.ContextInitializerCreateAlwaysMitBeispieldaten" Collapsed="true">
-    <Position X="35.5" Y="0.5" Width="1.5" />
+    <Position X="29.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\ContextInitializer\ContextInitializerCreateAlwaysWithExampleData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.App_Start.ContextInitializer.ContextInitializerCreateAlwaysWithStartData" Collapsed="true">
-    <Position X="25" Y="1.5" Width="1.5" />
+    <Position X="33" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\ContextInitializer\ContextInitializerCreateAlwaysWithStartData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.App_Start.ContextInitializer.ContextInitializerCreateAlwaysWithExampleData" Collapsed="true">
-    <Position X="23.25" Y="1.5" Width="1.5" />
+    <Position X="31.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\ContextInitializer\ContextInitializerCreateIfNotExistsWithExampleData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.App_Start.ContextInitializer.ContextInitializerCreateIfNotExistsWithStartData" Collapsed="true">
-    <Position X="26.75" Y="1.5" Width="1.5" />
+    <Position X="34.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\ContextInitializer\ContextInitializerCreateIfNotExistsWithStartData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.App_Start.ContextInitializer.ExampleData" Collapsed="true">
-    <Position X="26.75" Y="5.5" Width="1.5" />
+    <Position X="33" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIACBgAAAAAAAACAAAAAIAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIACBgAAAAAAAACAACAAIAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\ContextInitializer\ExampleData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.App_Start.ContextInitializer.StartData" Collapsed="true">
-    <Position X="23.25" Y="7.5" Width="1.5" />
+    <Position X="29.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\ContextInitializer\StartData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.App_Start.UnityConfig" Collapsed="true">
-    <Position X="26.75" Y="7.5" Width="1.5" />
+    <Position X="33" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\UnityConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.App_Start.UnityWebActivator" Collapsed="true">
-    <Position X="28.5" Y="7.5" Width="1.5" />
+    <Position X="34.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\UnityMvcActivator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.AccountController" Collapsed="true">
-    <Position X="7.25" Y="2" Width="1.5" />
+    <Position X="5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEBAAAAAIEAAAAIAAAAAAZACRAAAAQAAQAAAA=</HashCode>
       <FileName>Controllers\AccountController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.AntwortController" Collapsed="true">
-    <Position X="11.75" Y="2" Width="1.5" />
+    <Position X="9.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAEAAABAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\AntwortController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.BaseController" Collapsed="true">
-    <Position X="10.5" Y="0.5" Width="1.5" />
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\BaseController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.BenutzerController" Collapsed="true">
-    <Position X="13.5" Y="2" Width="2" />
+    <Position X="14" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAABBAFAAKAAAAAAAAAAAEAIGQCAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\BenutzerController.cs</FileName>
@@ -126,289 +126,395 @@
       <FileName>Controllers\BenutzerGruppeController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Caterer_DB.Controllers.FrageController" Collapsed="true">
-    <Position X="18.5" Y="2" Width="1.75" />
+  <Class Name="Caterer_DB.Controllers.ConfigController" Collapsed="true">
+    <Position X="18.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAABAACAAAAAAAAAAAEAAMACAAEAAAQAAAA=</HashCode>
+      <HashCode>AAgAAAAIAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ConfigController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Controllers.FragebogenController" Collapsed="true">
+    <Position X="20.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAABAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\FragebogenController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Controllers.FrageController" Collapsed="true">
+    <Position X="23" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAACBAAAAAAAAAAEAAMACAAEAAAQAAAA=</HashCode>
       <FileName>Controllers\FrageController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.HomeController" Collapsed="true">
-    <Position X="21" Y="2" Width="1.75" />
+    <Position X="25.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAIAAgAAAIACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\HomeController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Caterer_DB.Controllers.MailController" Collapsed="true">
+  <Class Name="Caterer_DB.Controllers.KategorieController" Collapsed="true">
     <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAACAAAAAAAAAgAEAAEACAgEAAAAAAAA=</HashCode>
+      <FileName>Controllers\KategorieController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Controllers.MailController" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\MailController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.RechtController" Collapsed="true">
-    <Position X="2.75" Y="2" Width="1.5" />
+    <Position X="7.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAABAACAAAAAAAAAAAEAAEACAAEAgAAAAAA=</HashCode>
       <FileName>Controllers\RechtController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Controllers.RechteGruppeController" Collapsed="true">
-    <Position X="5" Y="2" Width="1.5" />
+    <Position X="11.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABEECAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\RechteGruppeController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Caterer_DB.Controllers.SparteController" Collapsed="true">
-    <Position X="9.5" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAAAAAAAAABAACAAAAAAAAAACEAAEACAAEAAAAAAAA=</HashCode>
-      <FileName>Controllers\SparteController.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Caterer_DB.Models.CreateAntwortViewModel" Collapsed="true">
-    <Position X="30.25" Y="1.5" Width="1.5" />
+    <Position X="38.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABA=</HashCode>
       <FileName>Models\AntwortViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.EditAntwortViewModel" Collapsed="true">
-    <Position X="28.5" Y="4.5" Width="1.5" />
+    <Position X="34.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABA=</HashCode>
       <FileName>Models\AntwortViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DeleteAntwortViewModel" Collapsed="true">
-    <Position X="32" Y="2.5" Width="1.5" />
+    <Position X="40" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABA=</HashCode>
       <FileName>Models\AntwortViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DetailsAntwortViewModel" Collapsed="true">
-    <Position X="30.25" Y="3.5" Width="1.5" />
+    <Position X="36.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABA=</HashCode>
       <FileName>Models\AntwortViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.CreateBenutzerGruppeViewModel" Collapsed="true">
-    <Position X="32" Y="1.5" Width="1.5" />
+    <Position X="40" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAgAEAAAAAAAAAAAAAAAwAAAAAABA=</HashCode>
       <FileName>Models\BenutzerGruppeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.EditBenutzerGruppeViewModel" Collapsed="true">
-    <Position X="30.25" Y="4.5" Width="1.5" />
+    <Position X="36.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAgAEAAAAAAAAAAAAAAAwAAAAAABA=</HashCode>
       <FileName>Models\BenutzerGruppeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DeleteBenutzerGruppeViewModel" Collapsed="true">
-    <Position X="33.75" Y="2.5" Width="1.5" />
+    <Position X="41.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAgAEAAAAAAAAAAAAAAAwAAAAAABA=</HashCode>
       <FileName>Models\BenutzerGruppeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DetailsBenutzerGruppeViewModel" Collapsed="true">
-    <Position X="32" Y="3.5" Width="1.5" />
+    <Position X="38.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAgAEAAAAAAAAAAAAAAAwAAAAAABA=</HashCode>
       <FileName>Models\BenutzerGruppeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Caterer_DB.Models.IndexBenutzerViewModel" Collapsed="true">
+    <Position X="33" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAQAgABAAA=</HashCode>
+      <FileName>Models\BenutzerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.ForgottenPasswordRequestViewModel" Collapsed="true">
+    <Position X="40" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\BenutzerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.ForgottenPasswordCreateNewPasswordViewModel" Collapsed="true">
+    <Position X="38.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAACAAQAAgAA=</HashCode>
+      <FileName>Models\BenutzerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Caterer_DB.Models.RegisterBenutzerViewModel" Collapsed="true">
-    <Position X="32" Y="6.5" Width="1.5" />
+    <Position X="41.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CACCAAAMwAASAIgAAQACAEAAAAAACAAgAACQAwABgCA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Caterer_DB.Models.CreateMitarbeiterViewModel" Collapsed="true">
+    <Position X="33" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAEAAIAAAAAIAAAAQAwABAAA=</HashCode>
+      <FileName>Models\BenutzerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Caterer_DB.Models.EditBenutzerViewModel" Collapsed="true">
-    <Position X="32" Y="4.5" Width="1.5" />
+    <Position X="38.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAADAAAAAAAAAAAgAAAAAEAAIAAAAAIAAAAQAwABAAA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Caterer_DB.Models.MeineDatenBenutzerViewModel" Collapsed="true">
+    <Position X="29.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAEAAIAAAAAIAAAAQAgABAAA=</HashCode>
+      <FileName>Models\BenutzerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Caterer_DB.Models.MyDataBenutzerViewModel" Collapsed="true">
-    <Position X="26.75" Y="6.5" Width="1.5" />
+    <Position X="34.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CACiAAAE4AAQAIgAAQACAEAAAAAACAIgAAAQAwABACA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DetailsBenutzerViewModel" Collapsed="true">
-    <Position X="33.75" Y="3.5" Width="1.5" />
+    <Position X="40" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAQAwABAAA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DeleteBenutzerViewModel" Collapsed="true">
-    <Position X="35.5" Y="2.5" Width="1.5" />
+    <Position X="27.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAACAAAAAAAAAAAgAAAAAAAAAAAACAIgAAAQAwABAAA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.AnmeldenBenutzerViewModel" Collapsed="true">
-    <Position X="23.25" Y="0.5" Width="1.5" />
+    <Position X="27.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAQAAAAAAAAAgAAAAAAABAAAAAAAAAAAQEgAAAAA=</HashCode>
       <FileName>Models\BenutzerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Caterer_DB.Models.CreateFrageViewModel" Collapsed="true">
-    <Position X="35.5" Y="1.5" Width="1.5" />
+  <Class Name="Caterer_DB.Models.IndexCatererViewModel" Collapsed="true">
+    <Position X="34.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAACAIgAAAAAAABAAA=</HashCode>
+      <FileName>Models\BenutzerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.CreateCatererViewModel" Collapsed="true">
+    <Position X="41.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACCAAAEwAAQAIgAAQACAEAAAAAACAAgAAAQAwABAAA=</HashCode>
+      <FileName>Models\BenutzerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.DetailsCatererViewModel" Collapsed="true">
+    <Position X="41.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACiAAAA4AAQAIgAAQAAAAAAAAAACAIgAAAQAwABACA=</HashCode>
+      <FileName>Models\BenutzerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.EditConfigViewModel" Collapsed="true">
+    <Position X="40" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAABEAAAAAAACAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ConfigViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.BearbeiteFragebogenViewModel" Collapsed="true">
+    <Position X="34.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FragebogenViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.FragenViewModel" Collapsed="true">
+    <Position X="29.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAACAAgAAA=</HashCode>
+      <FileName>Models\FragebogenViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.FragenNachThemengebiet" Collapsed="true">
+    <Position X="27.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FragebogenViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.CreateFrageViewModel" Collapsed="true">
+    <Position X="27.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAAAAAAAAAQAAQAAAAoAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\FrageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.EditFrageViewModel" Collapsed="true">
-    <Position X="33.75" Y="4.5" Width="1.5" />
+    <Position X="41.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>ACIAAAAAAAAAAAAAQAAQAAAAoAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\FrageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DeleteFrageViewModel" Collapsed="true">
-    <Position X="23.25" Y="3.5" Width="1.5" />
+    <Position X="29.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>ACAAAAAAAAAAACAAQAAQAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\FrageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DetailsFrageViewModel" Collapsed="true">
-    <Position X="35.5" Y="3.5" Width="1.5" />
+    <Position X="27.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>ACAAAAAAAAAAAAAAQAAQAAAAgAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\FrageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Caterer_DB.Models.CreateKategorieViewModel" Collapsed="true">
+    <Position X="29.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBA=</HashCode>
+      <FileName>Models\KategorieViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.EditKategorieViewModel" Collapsed="true">
+    <Position X="27.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBA=</HashCode>
+      <FileName>Models\KategorieViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.DeleteKategorieViewModel" Collapsed="true">
+    <Position X="31.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBA=</HashCode>
+      <FileName>Models\KategorieViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.DetailsKategorieViewModel" Collapsed="true">
+    <Position X="29.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBA=</HashCode>
+      <FileName>Models\KategorieViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caterer_DB.Models.ListViewModel&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiEgEAACAAAABCACEAAAAQUAABAAAAEAAAEEAAQAAA=</HashCode>
+      <FileName>Models\ListViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Caterer_DB.Models.CreateMailViewModel" Collapsed="true">
-    <Position X="23.25" Y="2.5" Width="1.5" />
+    <Position X="31.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAFAAAAAAAAAAAKAAAAAAAAQAAEAAAgQA=</HashCode>
       <FileName>Models\MailViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.CreateRechteGruppeViewModel" Collapsed="true">
-    <Position X="25" Y="2.5" Width="1.5" />
+    <Position X="34.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAACABA=</HashCode>
       <FileName>Models\RechteGruppeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.EditRechteGruppeViewModel" Collapsed="true">
-    <Position X="35.5" Y="4.5" Width="1.5" />
+    <Position X="29.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAACABA=</HashCode>
       <FileName>Models\RechteGruppeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DetailsRechteGruppeViewModel" Collapsed="true">
-    <Position X="23.25" Y="4.5" Width="1.5" />
+    <Position X="31.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAACABA=</HashCode>
       <FileName>Models\RechteGruppeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DeleteRechteGruppeViewModel" Collapsed="true">
-    <Position X="25" Y="3.5" Width="1.5" />
+    <Position X="33" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAACABA=</HashCode>
       <FileName>Models\RechteGruppeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.CreateRechtViewModel" Collapsed="true">
-    <Position X="26.75" Y="2.5" Width="1.5" />
+    <Position X="36.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAIAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\RechtViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.EditRechtViewModel" Collapsed="true">
-    <Position X="23.25" Y="5.5" Width="1.5" />
+    <Position X="31.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAIAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\RechtViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DeleteRechtViewModel" Collapsed="true">
-    <Position X="26.75" Y="3.5" Width="1.5" />
+    <Position X="34.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAIAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\RechtViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.DetailsRechtViewModel" Collapsed="true">
-    <Position X="25" Y="4.5" Width="1.5" />
+    <Position X="33" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAIAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\RechtViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Caterer_DB.Models.CreateSparteViewModel" Collapsed="true">
-    <Position X="28.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAABA=</HashCode>
-      <FileName>Models\SparteViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Caterer_DB.Models.EditSparteViewModel" Collapsed="true">
-    <Position X="25" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAABA=</HashCode>
-      <FileName>Models\SparteViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Caterer_DB.Models.DeleteSparteViewModel" Collapsed="true">
-    <Position X="28.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAABA=</HashCode>
-      <FileName>Models\SparteViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Caterer_DB.Models.DetailsSparteViewModel" Collapsed="true">
-    <Position X="26.75" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAABA=</HashCode>
-      <FileName>Models\SparteViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Caterer_DB.Models.UserModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="30.25" Y="7.5" Width="1.5" />
+    <Position X="36.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACCAAAACiAAgQAAAAAAAAAAAAAAAAIAAEAAAgAAgAA=</HashCode>
+      <HashCode>AACCAAAACiBAgQAAAAAAAEAAAAAAAAIAAEAAAgAAgAA=</HashCode>
       <FileName>Models\UserModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Caterer_DB.Models.LoginModel" Collapsed="true">
-    <Position X="33.75" Y="5.5" Width="1.5" />
+    <Position X="40" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>Models\UserModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.CookieSerializeModel" Collapsed="true">
-    <Position X="28.5" Y="1.5" Width="1.5" />
+    <Position X="36.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAiAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAAAA=</HashCode>
       <FileName>Models\UserModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Models.ViewModelServices.AntwortViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="25" Y="0.5" Width="1.5" />
+    <Position X="29.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAgAAAAICCAAgEAAAAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\ViewModelServices\AntwortViewModelService.cs</FileName>
@@ -416,7 +522,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Caterer_DB.Models.ViewModelServices.BenutzerGruppeViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="30.25" Y="0.5" Width="1.5" />
+    <Position X="38.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAABAAAAAAAAAAACAAAAQAAAAAAAAABAAABAAAAAAA=</HashCode>
       <FileName>Models\ViewModelServices\BenutzerGruppeViewModelService.cs</FileName>
@@ -424,23 +530,47 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Caterer_DB.Models.ViewModelServices.BenutzerViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="32" Y="0.5" Width="1.5" />
+    <Position X="40" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AASAAAAABgUkAACIWgsAAQAAQACIiQMCKCFCAIBAiAA=</HashCode>
       <FileName>Models\ViewModelServices\BenutzerViewModelService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Caterer_DB.Models.ViewModelServices.FrageViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="32" Y="5.5" Width="1.5" />
+  <Class Name="Caterer_DB.Models.ViewModelServices.ConfigViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAACAEIAAAAACAAAAAAAAEAgQABAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAUAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModelServices\ConfigViewModelService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Caterer_DB.Models.ViewModelServices.FragebogenViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAGAAAAAAAAAAABAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\ViewModelServices\FragebogenViewModelService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Caterer_DB.Models.ViewModelServices.FrageViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACBAQAAAAAASAIIAAAAACAAAAAAABEAgAABAAA=</HashCode>
       <FileName>Models\ViewModelServices\FrageViewModelService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Caterer_DB.Models.ViewModelServices.KategorieViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="36.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAABAAACAAAEAAAAAQAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModelServices\KategorieViewModelService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Caterer_DB.Models.ViewModelServices.RechteGruppeViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="28.5" Y="6.5" Width="1.5" />
+    <Position X="36.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAgAAACAAAAAAABAAAAAIAAAAIAAAAAgA=</HashCode>
       <FileName>Models\ViewModelServices\RechteGruppeViewModelService.cs</FileName>
@@ -448,43 +578,49 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Caterer_DB.Models.ViewModelServices.RechtViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="30.25" Y="6.5" Width="1.5" />
+    <Position X="40" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAEAACAAAAAAAAAAAAAABAAAAIAAAAUA=</HashCode>
       <FileName>Models\ViewModelServices\RechtViewModelService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Caterer_DB.Models.ViewModelServices.SparteViewModelService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="35.5" Y="6.5" Width="1.5" />
+  <Class Name="Caterer_DB.Resources.BenutzerGruppenResource" Collapsed="true">
+    <Position X="36.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAIAAAAAAAAACAAEAAAAAAJAAAAAAAAAAAQAAAA=</HashCode>
-      <FileName>Models\ViewModelServices\SparteViewModelService.cs</FileName>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\BenutzerGruppenResource.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Caterer_DB.Resources.LoginResources" Collapsed="true">
-    <Position X="35.5" Y="5.5" Width="1.5" />
+    <Position X="41.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QCEBIAAQQAAAAgAAQAABEgAEAQAAAAAABAAAAAEAAII=</HashCode>
     </TypeIdentifier>
   </Class>
+  <Class Name="Caterer_DB.Resources.RechteResource" Collapsed="true">
+    <Position X="38.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KIAAYEEAAFAEAAAAEACAAAAAAACAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Resources\RechteResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Caterer_DB.Services.BaseViewPage" Collapsed="true">
-    <Position X="28.5" Y="0.5" Width="1.5" />
+    <Position X="33" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\BaseViewPage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Services.BaseViewPage&lt;TModel&gt;" Collapsed="true">
-    <Position X="26.75" Y="0.5" Width="1.5" />
+    <Position X="31.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\BaseViewPage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Caterer_DB.Services.FindCurrentUserService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="30.25" Y="5.5" Width="1.5" />
+    <Position X="36.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\FindCurrentUserService.cs</FileName>
@@ -492,85 +628,106 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Caterer_DB.Services.LoginService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="23.25" Y="6.5" Width="1.5" />
+    <Position X="27.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAAAAgAAgAAAAQAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAAAAAAAgAAgAAQAQAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Services\LoginService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Caterer_DB.Services.CustomAuthorizeAttribute" Collapsed="true">
-    <Position X="30.25" Y="2.5" Width="1.5" />
+    <Position X="38.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAEA=</HashCode>
+      <HashCode>AAAEAAAAAIAAAQAAAAAAAAAAAAAAAAAAAASAAAAAAEA=</HashCode>
       <FileName>Services\LoginService.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Caterer_DB.Services.MustBeTrueAttribute" Collapsed="true">
+    <Position X="31.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ValidationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="Caterer_DB.Interfaces.IAntwortViewModelService" Collapsed="true">
-    <Position X="23.25" Y="8.75" Width="1.5" />
+    <Position X="27.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAgAAAAIACAAgEAAAAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IAntwortViewModelService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Caterer_DB.Interfaces.IBenutzerViewModelService" Collapsed="true">
-    <Position X="26.75" Y="8.75" Width="1.5" />
+    <Position X="31.25" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAgUEAACIEAsAAQAAQACIiQMCKCFCAIBAiAA=</HashCode>
       <FileName>Interfaces\IBenutzerViewModelService.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Caterer_DB.Interfaces.IConfigViewModelService" Collapsed="true">
+    <Position X="33" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IConfigViewModelService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Interface Name="Caterer_DB.Interfaces.IFindCurrentUserService" Collapsed="true">
-    <Position X="28.5" Y="8.75" Width="1.5" />
+    <Position X="34.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IFindCurrentUserService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Caterer_DB.Interfaces.IFrageViewModelService" Collapsed="true">
-    <Position X="30.25" Y="8.75" Width="1.5" />
+  <Interface Name="Caterer_DB.Interfaces.IFragebogenViewModelService" Collapsed="true">
+    <Position X="36.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAAAAEIAAAAACAAAAAAAAEAgQABAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAABAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Interfaces\IFragebogenViewModelService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Caterer_DB.Interfaces.IFrageViewModelService" Collapsed="true">
+    <Position X="38.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAQAAAAAAAAIIAAAAACAAAAAAABEAgAABAAA=</HashCode>
       <FileName>Interfaces\IFrageViewModelService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Caterer_DB.Interfaces.ILoginService" Collapsed="true">
-    <Position X="32" Y="8.75" Width="1.5" />
+  <Interface Name="Caterer_DB.Interfaces.IKategorieViewModelService" Collapsed="true">
+    <Position X="40" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAAAAAAAgAAAAQAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAEAAAABAAAAAAAEAAAAAQAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IKategorieViewModelService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Caterer_DB.Interfaces.ILoginService" Collapsed="true">
+    <Position X="41.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAgAAQAQAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ILoginService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Caterer_DB.Interfaces.IRechteGruppeViewModelService" Collapsed="true">
-    <Position X="33.75" Y="8.75" Width="1.5" />
+    <Position X="27.75" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAgAAAAAAAAAAABAAAAAIAAAAIAAAAAgA=</HashCode>
       <FileName>Interfaces\IRechteGruppeViewModelService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Caterer_DB.Interfaces.IRechtViewModelService" Collapsed="true">
-    <Position X="35.5" Y="8.75" Width="1.5" />
+    <Position X="29.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABAAAAIAAAAUA=</HashCode>
       <FileName>Interfaces\IRechtViewModelService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Caterer_DB.Interfaces.ISparteViewModelService" Collapsed="true">
-    <Position X="23.25" Y="9.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAEAIAAAAAAAAAAAAEAAAAAAJAAAAAAAAAAAQAAAA=</HashCode>
-      <FileName>Interfaces\ISparteViewModelService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="Caterer_DB.Models.Interfaces.IBenutzerGruppeViewModelService" Collapsed="true">
-    <Position X="25" Y="8.75" Width="1.5" />
+    <Position X="29.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAABAAAAAAAAAAACAAAAQAAAAAAAAABAAABAAAAAAA=</HashCode>
       <FileName>Interfaces\IBenutzerGruppeViewModelService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="Caterer_DB.Services.LoginSuccessLevel" Collapsed="true">
-    <Position X="23.25" Y="10.5" Width="1.5" />
+    <Position X="27.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAAAAAAAAAAAAgAAAEAAEAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Services\LoginSuccessLevel.cs</FileName>

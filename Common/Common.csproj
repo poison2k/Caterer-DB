@@ -64,9 +64,6 @@
     <Compile Include="Services\MD5Hash.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="88_Common_Klassendiagramm.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Services\EMailBetreff.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EMailBetreff.Designer.cs</LastGenOutput>
@@ -79,6 +76,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Links.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="88_Common_Klassendiagramm.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

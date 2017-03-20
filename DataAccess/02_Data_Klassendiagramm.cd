@@ -3,7 +3,7 @@
   <Class Name="DataAccess.Context.CatererContext" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAATAIAiAAAAAgAkAAAAAAEAAAAEIAAAyAAgAAAAA=</HashCode>
+      <HashCode>BAAAATAIAiAAACAgAkAAAAAAEAAAAEIAAAwAAgAAAAA=</HashCode>
       <FileName>Context\CatererContext.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -11,14 +11,14 @@
   <Class Name="DataAccess.Model.Antwort" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABA=</HashCode>
+      <HashCode>BAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABA=</HashCode>
       <FileName>Model\Antwort.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DataAccess.Model.Benutzer" Collapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CACiAAAA4QAQAIggAQAAAAAAAAAACAMgAAAQAwABgCA=</HashCode>
+      <HashCode>CACiAAAA4QAQAIggAQAAAAAAAAAACAMgAAgQAxABgCA=</HashCode>
       <FileName>Model\Benutzer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -29,39 +29,46 @@
       <FileName>Model\BenutzerGruppe.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DataAccess.Model.Frage" Collapsed="true">
+  <Class Name="DataAccess.Model.Config" Collapsed="true">
     <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAACAAAAAABA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAABEAAAAAAACAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.Model.Frage" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACgAAAAAAAAAACAAQAAQAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Model\Frage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DataAccess.Model.Fragebogen" Collapsed="true">
-    <Position X="5.75" Y="1.5" Width="1.5" />
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAIAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Model\Fragebogen.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="DataAccess.Model.Kategorie" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBA=</HashCode>
+      <FileName>Model\Kategorie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="DataAccess.Model.Recht" Collapsed="true">
-    <Position X="4" Y="2.5" Width="1.5" />
+    <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAIAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Model\Recht.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DataAccess.Model.RechteGruppe" Collapsed="true">
-    <Position X="5.75" Y="2.5" Width="1.5" />
+    <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAACABA=</HashCode>
       <FileName>Model\RechteGruppe.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DataAccess.Model.Sparte" Collapsed="true">
-    <Position X="2.25" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAABA=</HashCode>
-      <FileName>Model\Sparte.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DataAccess.Repositories.AntwortRepository" Collapsed="true" BaseTypeListCollapsed="true">
@@ -88,8 +95,16 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="DataAccess.Repositories.ConfigRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAABAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ConfigRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="DataAccess.Repositories.FragebogenRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="7.5" Y="1.5" Width="1.5" />
+    <Position X="2.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAgABAAAAAAAA=</HashCode>
       <FileName>Repositories\FragebogenRepository.cs</FileName>
@@ -97,15 +112,23 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="DataAccess.Repositories.FrageRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+    <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAEAIAAAAAAEAAAAAAAiAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAABAAAEAIAAAAAAEAAAAAAAGAgAAAAAAA=</HashCode>
       <FileName>Repositories\FrageRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="DataAccess.Repositories.KategorieRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAACIAAAAAAEAAAAAQQAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Repositories\KategorieRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="DataAccess.Repositories.LoginRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="2.5" Width="1.5" />
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAQAAAAACAAEAAAQAFAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Repositories\LoginRepository.cs</FileName>
@@ -113,7 +136,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="DataAccess.Repositories.RechteGruppeRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="7.5" Y="2.5" Width="1.5" />
+    <Position X="5.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAECAAAAAAAAAAEIEBgAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Repositories\RechteGruppeRepository.cs</FileName>
@@ -121,18 +144,10 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="DataAccess.Repositories.RechtRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+    <Position X="7.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAgAAAQAAABAAEAAAAAAAAAAAAAAEAAAABAAAAAQ=</HashCode>
       <FileName>Repositories\RechtRepository.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="DataAccess.Repositories.SparteRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAACMAEIAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
-      <FileName>Repositories\SparteRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
@@ -160,50 +175,57 @@
   <Interface Name="DataAccess.Interfaces.ICatererContext" Collapsed="true">
     <Position X="5.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>hAAQATAIAiAABEAgAkAAAAAAAAAAAAIAAAyAAAAAAAA=</HashCode>
+      <HashCode>hAAQATAIAiAABGAgAkAAAAAAAAAAAAIAAAwAAAAAAAA=</HashCode>
       <FileName>Interfaces\ICatererContext.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="DataAccess.Interfaces.IFragebogenRepository" Collapsed="true">
+  <Interface Name="DataAccess.Interfaces.IConfigRepository" Collapsed="true">
     <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IConfigRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataAccess.Interfaces.IFragebogenRepository" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAgABAAAAAAAA=</HashCode>
       <FileName>Interfaces\IFragebogenRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DataAccess.Interfaces.IFrageRepository" Collapsed="true">
-    <Position X="0.5" Y="5.5" Width="1.5" />
+    <Position X="2.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAIAAAAAAEAAAAAAAiAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAABAAAAAIAAAAAAEAAAAAAAGAgAAAAAAA=</HashCode>
       <FileName>Interfaces\IFrageRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="DataAccess.Interfaces.IKategorieRepository" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAACIAAAAAAAAAAAAQQAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Interfaces\IKategorieRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Interface Name="DataAccess.Interfaces.ILoginRepository" Collapsed="true">
-    <Position X="2.25" Y="5.5" Width="1.5" />
+    <Position X="5.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAACAAAAAAQAFAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ILoginRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DataAccess.Interfaces.IRechteGruppeRepository" Collapsed="true">
-    <Position X="4" Y="5.5" Width="1.5" />
+    <Position X="7.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAECAAAAAAAAAAEIABgAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IRechteGruppeRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DataAccess.Interfaces.IRechtRepository" Collapsed="true">
-    <Position X="5.75" Y="5.5" Width="1.5" />
+    <Position X="0.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAgAAAQAAABAAAAAAAAAAAAAAAAAEAAAABAAAAAQ=</HashCode>
       <FileName>Interfaces\IRechtRepository.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="DataAccess.Interfaces.ISparteRepository" Collapsed="true">
-    <Position X="7.5" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAACIAEIAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
-      <FileName>Interfaces\ISparteRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
