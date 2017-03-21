@@ -58,7 +58,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default" />
+                        <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default" formnovalidate />
                     </div>
                 </div>
                 <br />
@@ -72,12 +72,13 @@
                                     @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
                                     <label class="control-label col-md-0"> Antwort @(i + 1) </label>
                                     @Html.EditorFor(Model => Model.Antworten[i].Bezeichnung, new { htmlAttributes = new { @class = "form-control", id = @Model.Antworten[i].GetHashCode() } })
-                               @Html.ValidationMessageFor(model => model.Antworten[i].Bezeichnung, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.Antworten[i].Bezeichnung, "", new { @class = "text-danger" })
+                                  
                                  </div>
                                 <div class="col-md-1 text-right">
                                     <ul class="list-unstyled list-inline " style="margin-top: 27px;">
                                         <li>
-                                            <button id="LöschenButton" name="btnDeleteAnswer" title="Antwort löschen" type="submit" class="btn btn-success">
+                                            <button id="LöschenButton"  name="btnDeleteAnswer" title="Antwort löschen" type="submit" class="btn btn-success" formnovalidate>
                                                 <i class="glyphicon glyphicon-trash"></i>
                                             </button>
                                         </li>

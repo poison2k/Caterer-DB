@@ -110,10 +110,8 @@ namespace Caterer_DB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateFrageViewModel createFrageViewModel, int test = 0 )
+        public ActionResult Create(CreateFrageViewModel createFrageViewModel)
         {
-            if (ModelState.IsValid)
-            {
                 if (Request.Form["btnAddAnswer"] != null)
                 {
                     if (createFrageViewModel.Antworten == null)
@@ -139,7 +137,9 @@ namespace Caterer_DB.Controllers
                         }
                     }                    
                 }
-                else if (Request.Form["btnCreateQuestion"] != null)
+            if (ModelState.IsValid)
+            {
+                if (Request.Form["btnCreateQuestion"] != null)
                 {
                     var frage = FrageViewModelService.Map_CreateFrageViewModel_Frage(createFrageViewModel);
                     frage.Kategorie = KategorienService.SearchKategorieByName(createFrageViewModel.KategorieName);
@@ -177,8 +177,7 @@ namespace Caterer_DB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditFrageViewModel editFrageViewModel)
         {
-            if (ModelState.IsValid)
-            {
+            
                 if (Request.Form["btnAddAnswer"] != null)
                 {
                     if (editFrageViewModel.Antworten == null)
@@ -204,7 +203,9 @@ namespace Caterer_DB.Controllers
                         }
                     }
                 }
-                else if (Request.Form["btnVeroeffentlichen"] != null)
+            if (ModelState.IsValid)
+            {
+                if (Request.Form["btnVeroeffentlichen"] != null)
                 {
                     var frage = FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel);
                     frage.Kategorie = KategorienService.SearchKategorieByName(editFrageViewModel.KategorieName);
