@@ -91,7 +91,7 @@ namespace Common.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Sehr geehrter Mitarbeiter, 
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sehr geehrter Nutzer
         ///
         ///Ihr Nutzerkonto für die Caterer Datenbank wurde gerade durch unseren Mitarbeiter eingerichtet. 
         ///Bitte nutzen Sie den mitgesendeten Link zur Vergabe eines Passwortes und zum Abschluss Ihrer Registrierung. 
@@ -131,15 +131,6 @@ namespace Common.Services {
         internal static string CatererRegistrierung2 {
             get {
                 return ResourceManager.GetString("CatererRegistrierung2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die http://localhost:60003/Account/PasswordChange?verify= ähnelt.
-        /// </summary>
-        internal static string Linkanfang {
-            get {
-                return ResourceManager.GetString("Linkanfang", resourceCulture);
             }
         }
         

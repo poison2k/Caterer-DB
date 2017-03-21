@@ -136,7 +136,7 @@ Nutzen Sie einfach die Kontaktmöglichkeiten unter:
 </value>
   </data>
   <data name="Catererangelegt" xml:space="preserve">
-    <value>Sehr geehrter Mitarbeiter, 
+    <value>Sehr geehrter Nutzer
 
 Ihr Nutzerkonto für die Caterer Datenbank wurde gerade durch unseren Mitarbeiter eingerichtet. 
 Bitte nutzen Sie den mitgesendeten Link zur Vergabe eines Passwortes und zum Abschluss Ihrer Registrierung. 
@@ -160,9 +160,6 @@ Klicken Sie dafür einfach auf den nach folgenden Link.
     <value>
 
 Im Anschluss können Sie mit Ihren Anmeldedaten alle Funktionen des internen Bereichs nutzen.</value>
-  </data>
-  <data name="Linkanfang" xml:space="preserve">
-    <value>http://localhost:60003/Account/PasswordChange?verify=</value>
   </data>
   <data name="Mitarbeiterangelegt" xml:space="preserve">
     <value>Sehr geehrter Mitarbeiter, 
