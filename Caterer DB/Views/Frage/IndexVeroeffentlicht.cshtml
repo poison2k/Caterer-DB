@@ -28,57 +28,57 @@
                                     <td>
                                         @if (ViewBag.Sortierrung == "Bezeichnung")
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Bezeichnung_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung) <b class="caret"></b> </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung = "Bezeichnung_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung) <b class="caret"></b> </a>
                                         }
                                         else if (ViewBag.Sortierrung == "Bezeichnung_desc")
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Bezeichnung"})"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung) <b class="caret caret-reversed"></b> </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung  = "Bezeichnung"})"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung) <b class="caret caret-reversed"></b> </a>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Bezeichnung" })"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung)  </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung = "Bezeichnung" })"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung)  </a>
                                         }
                                     </td>
                                     <td>
                                         @if (ViewBag.Sortierrung == "Kategorie")
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Kategorie_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie) <b class="caret"></b> </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung = "Kategorie_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie) <b class="caret"></b> </a>
                                         }
                                         else if (ViewBag.Sortierrung == "Kategorie_desc")
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Kategorie"})"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie) <b class="caret caret-reversed"></b> </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung  = "Kategorie"})"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie) <b class="caret caret-reversed"></b> </a>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Kategorie" })"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie)  </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung = "Kategorie" })"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie)  </a>
                                         }
                                     </td>
                                     <td>
                                         @if (ViewBag.Sortierrung == "Antworten")
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Antworten_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Antworten) <b class="caret"></b> </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung = "Antworten_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Antworten) <b class="caret"></b> </a>
                                         }
                                         else if (ViewBag.Sortierrung == "Antworten_desc")
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Antworten"})"> @Html.LabelFor(model => model.FirstOrDefault().Antworten) <b class="caret caret-reversed"></b> </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung  = "Antworten"})"> @Html.LabelFor(model => model.FirstOrDefault().Antworten) <b class="caret caret-reversed"></b> </a>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Antworten" })"> @Html.LabelFor(model => model.FirstOrDefault().Antworten)  </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung = "Antworten" })"> @Html.LabelFor(model => model.FirstOrDefault().Antworten)  </a>
                                         }
                                     </td>
                                     <td>
                                         @if (ViewBag.Sortierrung == "IstMultiSelect")
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "IstMultiSelect_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect) <b class="caret"></b> </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung = "IstMultiSelect_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect) <b class="caret"></b> </a>
                                         }
                                         else if (ViewBag.Sortierrung == "IstMultiSelect_desc")
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "IstMultiSelect" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect) <b class="caret caret-reversed"></b> </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung  = "IstMultiSelect" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect) <b class="caret caret-reversed"></b> </a>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "IstMultiSelect" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect)  </a>
+                                            <a href="@Url.Action("IndexVeroeffentlicht", "Frage", new { Sortierrung = "IstMultiSelect" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect)  </a>
                                         }
                                     </td>
                                     <td align="right"></td>
