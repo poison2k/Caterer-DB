@@ -78,7 +78,8 @@
                                     @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
                                     <label class="control-label col-md-0"> Antwort @(i + 1) </label>
                                     @Html.EditorFor(Model => Model.Antworten[i].Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
-                                </div>
+                               @Html.ValidationMessageFor(model => model.Antworten[i].Bezeichnung, "", new { @class = "text-danger" })
+                                 </div>
                                 <div class="col-md-1 text-right">
                                     <ul class="list-unstyled list-inline " style="margin-top: 27px;">
                                         <li>
