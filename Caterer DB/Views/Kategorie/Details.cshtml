@@ -10,10 +10,102 @@
 <br />
 <div class="row">
     <div id="CatererBearbeitenSeite" class="col-md-6 col-md-offset-3 text-center">
-        <h1>Kategorie Details</h1>
+        <h1> Detailansicht Kategorie</h1>
     </div>
 </div>
 <br />
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-lg">
+                    <div>
+                        <dl class="text-center">
+                            <dd>
+                                <h4>
+                                    @Model.Bezeichnung
+                                </h4>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <h3>Fragen dieser Kategorie</h3>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="row">
+            @foreach (var item in Model.Fragen)
+            {
+                <div class="col-md-12 text-center">
+                    <div class="well well-lg">
+                        @Html.DisplayFor(modelitem => item.Bezeichnung)
+                        <div class="row">                           
+                            <hr />
+                            <a class="btn btn-default" href="@Url.Action("Details", "Frage", new { id = item.FrageId })" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                            <a class="btn btn-default" href="@Url.Action("Edit", "Frage", new { id = item.FrageId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-unstyled list-inline  text-center">
+            <li>
+                <a class="btn btn-default" id="btnEdit" href="@Url.Action("Edit", "Kategorie", new {id = Model.KategorieId})">
+                    Kategorie bearbeiten
+                </a>
+            </li>
+            <li>
+                <a class="btn btn-default" id="btnZurück" href="@Url.Action("Index", "Kategorie", new {id = Model.KategorieId})"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -22,25 +114,29 @@
             @Html.HiddenFor(model => model.KategorieId)
             <div class="row">
                 <div class="form-group col-md-12 text-center">
-                    @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label " })
-                    <br />
-                    @Model.Bezeichnung
+                    <h3>
+                        @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label " })
+                    </h3>
+
+                    <h4>
+                        @Model.Bezeichnung
+                    </h4>
 
                 </div>
             </div>
 
             @if (Model.Fragen.Count != 0)
             {
-                <hr/>
+                <hr />
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         <h2>Zugeordnete Fragen</h2>
                     </div>
                 </div>
                 <div class="row" id="BenutzerIndexPartial">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading"></div>
+                            @*<div class="panel-heading"></div>*@
                             <table class="table table-striped">
 
                                 @foreach (var item in Model.Fragen)
