@@ -61,6 +61,33 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bieten Sie Getränke an? ähnelt.
+        /// </summary>
+        internal static string Frage_Dummyfrage {
+            get {
+                return ResourceManager.GetString("Frage_Dummyfrage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bezeichnung ähnelt.
+        /// </summary>
+        internal static string Frage_Formulieren_Textbox {
+            get {
+                return ResourceManager.GetString("Frage_Formulieren_Textbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fragetext zu Frage 1 ähnelt.
+        /// </summary>
+        internal static string Frage_Musterfrage {
+            get {
+                return ResourceManager.GetString("Frage_Musterfrage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Fragebogen ähnelt.
         /// </summary>
         internal static string Fragebogen {
@@ -70,7 +97,16 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
+        /// </summary>
+        internal static string Fragen_Details {
+            get {
+                return ResourceManager.GetString("Fragen_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererBearbeitenSeite ähnelt.
         /// </summary>
         internal static string Fragen_Erstellen {
             get {
@@ -79,11 +115,47 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererBearbeitenSeite ähnelt.
+        /// </summary>
+        internal static string Fragen_Kategorie_hinzufügen {
+            get {
+                return ResourceManager.GetString("Fragen_Kategorie_hinzufügen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
         /// </summary>
-        internal static string Fragen_Übersicht {
+        internal static string Fragen_Kategorie_Übersicht {
             get {
-                return ResourceManager.GetString("Fragen_Übersicht", resourceCulture);
+                return ResourceManager.GetString("Fragen_Kategorie_Übersicht", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererBearbeitenSeite ähnelt.
+        /// </summary>
+        internal static string Fragen_Neu_Bearbeiten {
+            get {
+                return ResourceManager.GetString("Fragen_Neu_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
+        /// </summary>
+        internal static string Fragen_Übersicht_Neu {
+            get {
+                return ResourceManager.GetString("Fragen_Übersicht_Neu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
+        /// </summary>
+        internal static string Fragen_Übersicht_Öffentlich {
+            get {
+                return ResourceManager.GetString("Fragen_Übersicht_Öffentlich", resourceCulture);
             }
         }
     }
