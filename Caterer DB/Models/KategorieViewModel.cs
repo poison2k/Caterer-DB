@@ -12,7 +12,10 @@ namespace Caterer_DB.Models
     {
         [Key]
         public int KategorieId { get; set; }
+
+
         [Required]
+        [DisplayName(@"Kategorie")]
         public string Bezeichnung { get; set; }
     }
 
