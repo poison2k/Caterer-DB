@@ -51,12 +51,42 @@ namespace DataAccess.Repositories
 
         public void EditFrage(Frage frage)
         {
-            foreach (var item in frage.Antworten)
-            {
-                Db.SetModified(item);
+            var test = Db.Frage.Include(x => x.Antworten).Include(x => x.Kategorie).Where(x => x.FrageId == frage.FrageId).SingleOrDefault();
+            var neueAntworten = new List<Antwort>();
+            var deleteAntworten = new List<Antwort>();
+            //Alte Antworten Löschen
+            foreach (Antwort antwort in test.Antworten) {
+                bool istVorhanden = false;
+                foreach (Antwort newAntwort in frage.Antworten) {
+                    if (newAntwort.AntwortId == antwort.AntwortId) {
+                        istVorhanden = true;
+                    }
+                }
+                if (istVorhanden) {
+                    neueAntworten.Add(antwort);
+                }else
+                {
+                    deleteAntworten.Add(antwort);
+                }
             }
 
-            Db.SetModified(frage);
+            deleteAntworten.ToList().ForEach(x =>  Db.Antwort.Remove(x));
+
+            //Neue Antworten hinzufügen
+            foreach (Antwort antwort in frage.Antworten) {
+                bool istVorhanden = false;
+                foreach (Antwort newAntworten in neueAntworten) {
+                    if (newAntworten.AntwortId == antwort.AntwortId) {
+                        istVorhanden = true;
+                    }
+                }
+                if (!istVorhanden) {
+                    neueAntworten.Add(antwort);
+                }
+            }
+                                 
+            test.Antworten = neueAntworten;
+                     
             Db.SaveChanges();
         }
 
