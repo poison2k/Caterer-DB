@@ -180,9 +180,18 @@ namespace SeleniumTests.Services {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die FragenAnzeigen ähnelt.
         /// </summary>
-        internal static string Dropdown_Manage_Fragebogen_Anzeigen {
+        internal static string Dropdown_Manage_Fragebogen_Anzeigen_Neu {
             get {
-                return ResourceManager.GetString("Dropdown_Manage_Fragebogen_Anzeigen", resourceCulture);
+                return ResourceManager.GetString("Dropdown_Manage_Fragebogen_Anzeigen_Neu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die FrageAnzeigenVeroeffentlicht ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Fragebogen_Anzeigen_Öffentlicht {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Fragebogen_Anzeigen_Öffentlicht", resourceCulture);
             }
         }
         
@@ -192,6 +201,24 @@ namespace SeleniumTests.Services {
         internal static string Dropdown_Manage_Fragebogen_Bearbeiten {
             get {
                 return ResourceManager.GetString("Dropdown_Manage_Fragebogen_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die KategorieAnzeigen ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Fragebogen_Kategorie_Anzeigen {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Fragebogen_Kategorie_Anzeigen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die KategorieHinzufügen ähnelt.
+        /// </summary>
+        internal static string Dropdown_Manage_Fragebogen_Kategorie_Hinzufügen {
+            get {
+                return ResourceManager.GetString("Dropdown_Manage_Fragebogen_Kategorie_Hinzufügen", resourceCulture);
             }
         }
         

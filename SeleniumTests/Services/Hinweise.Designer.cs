@@ -151,7 +151,16 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Frage erstellen ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Detailansicht Fragen ähnelt.
+        /// </summary>
+        internal static string Fragen_Details {
+            get {
+                return ResourceManager.GetString("Fragen_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Neue Frage hinzufügen ähnelt.
         /// </summary>
         internal static string Fragen_Hinzufügen {
             get {
@@ -160,11 +169,47 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Fragenübersicht ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Neue Kategorie hinzufügen ähnelt.
         /// </summary>
-        internal static string Fragen_Übersicht {
+        internal static string Fragen_Kategorie_Hinzufügen {
             get {
-                return ResourceManager.GetString("Fragen_Übersicht", resourceCulture);
+                return ResourceManager.GetString("Fragen_Kategorie_Hinzufügen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kategorieübersicht ähnelt.
+        /// </summary>
+        internal static string Fragen_Kategorie_Übersicht {
+            get {
+                return ResourceManager.GetString("Fragen_Kategorie_Übersicht", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Neue Frage bearbeiten ähnelt.
+        /// </summary>
+        internal static string Fragen_Neu_Bearbeiten {
+            get {
+                return ResourceManager.GetString("Fragen_Neu_Bearbeiten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Neue Fragen ähnelt.
+        /// </summary>
+        internal static string Fragen_Übersicht_Neu {
+            get {
+                return ResourceManager.GetString("Fragen_Übersicht_Neu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Veröffentlichte Fragen ähnelt.
+        /// </summary>
+        internal static string Fragen_Übersicht_Öffentlich {
+            get {
+                return ResourceManager.GetString("Fragen_Übersicht_Öffentlich", resourceCulture);
             }
         }
         
