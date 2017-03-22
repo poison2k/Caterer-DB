@@ -186,11 +186,20 @@
   <data name="Dropdown_Manage_Fragebogen" xml:space="preserve">
     <value>DropdownManageFragebogen</value>
   </data>
-  <data name="Dropdown_Manage_Fragebogen_Anzeigen" xml:space="preserve">
+  <data name="Dropdown_Manage_Fragebogen_Anzeigen_Neu" xml:space="preserve">
     <value>FragenAnzeigen</value>
+  </data>
+  <data name="Dropdown_Manage_Fragebogen_Anzeigen_Öffentlicht" xml:space="preserve">
+    <value>FrageAnzeigenVeroeffentlicht</value>
   </data>
   <data name="Dropdown_Manage_Fragebogen_Bearbeiten" xml:space="preserve">
     <value>FragebogenBearbeiten</value>
+  </data>
+  <data name="Dropdown_Manage_Fragebogen_Kategorie_Anzeigen" xml:space="preserve">
+    <value>KategorieAnzeigen</value>
+  </data>
+  <data name="Dropdown_Manage_Fragebogen_Kategorie_Hinzufügen" xml:space="preserve">
+    <value>KategorieHinzufügen</value>
   </data>
   <data name="Dropdown_Manage_Fragen_Hinzufügen" xml:space="preserve">
     <value>FragenHinzufügen</value>

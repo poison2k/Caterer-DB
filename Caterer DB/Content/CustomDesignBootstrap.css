@@ -38,8 +38,8 @@ body {
     float: left;
     height: 50px;
     padding: 15px 15px;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -47,6 +47,8 @@ body {
     color: rgb(35,31,32);
     background-color: rgba(102,204,204,0.2);
 }
+
+
 /*------------------------------------------------*/
 /* Navigationsleiste - Registrieren und Login */
 .navbar-default .navbar-nav > li > a:hover,
@@ -272,7 +274,6 @@ th {
     background-color: rgba(255, 255, 255, 1);
     border-color: rgba(255,255,255,1);
 }
-
 
 
     /*Nicht löschen Sebastian...Das das ist ein Hilfsraster für die Schachteln*/

@@ -184,9 +184,24 @@
     <value>Caterer hinzufügen</value>
   </data>
   <data name="Fragen_Hinzufügen" xml:space="preserve">
-    <value>Frage erstellen</value>
+    <value>Neue Frage hinzufügen</value>
   </data>
-  <data name="Fragen_Übersicht" xml:space="preserve">
-    <value>Fragenübersicht</value>
+  <data name="Fragen_Übersicht_Neu" xml:space="preserve">
+    <value>Neue Fragen</value>
+  </data>
+  <data name="Fragen_Details" xml:space="preserve">
+    <value>Detailansicht Fragen</value>
+  </data>
+  <data name="Fragen_Kategorie_Hinzufügen" xml:space="preserve">
+    <value>Neue Kategorie hinzufügen</value>
+  </data>
+  <data name="Fragen_Kategorie_Übersicht" xml:space="preserve">
+    <value>Kategorieübersicht</value>
+  </data>
+  <data name="Fragen_Neu_Bearbeiten" xml:space="preserve">
+    <value>Neue Frage bearbeiten</value>
+  </data>
+  <data name="Fragen_Übersicht_Öffentlich" xml:space="preserve">
+    <value>Veröffentlichte Fragen</value>
   </data>
 </root>

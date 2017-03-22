@@ -137,8 +137,8 @@ namespace SeleniumTests
             TestTools_Userstory_M4_6.Caterer_Übersicht_Aufrufen(driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
-            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen, driver);
-            Assert.AreEqual(Hinweise.Fragen_Übersicht,TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht,driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen_Neu, driver);
+            Assert.AreEqual(Hinweise.Fragen_Übersicht_Neu,TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht_Neu,driver));
 
             //Variante Fragen hinzufügen
             TestTools_Userstory_M4_6.Caterer_Übersicht_Aufrufen(driver);
@@ -224,8 +224,8 @@ namespace SeleniumTests
             TestTools_Userstory_M4_6.Details_Von_Caterer_Anzeigen(driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
-            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen, driver);
-            Assert.AreEqual(Hinweise.Fragen_Übersicht, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht, driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen_Neu, driver);
+            Assert.AreEqual(Hinweise.Fragen_Übersicht_Neu, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht_Neu, driver));
 
             //Variante Fragen hinzufügen
             TestTools_Userstory_M4_6.Details_Von_Caterer_Anzeigen(driver);
@@ -321,8 +321,8 @@ namespace SeleniumTests
             TestTools_Userstory_M4_6.Caterer_Bearbeiten_Seite_Firmanamen_Prüfen_Und_Ändern(driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
-            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen, driver);
-            Assert.AreEqual(Hinweise.Fragen_Übersicht, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht, driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen_Neu, driver);
+            Assert.AreEqual(Hinweise.Fragen_Übersicht_Neu, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht_Neu, driver));
 
             //Variante Fragen hinzufügen
             TestTools_Userstory_M4_6.Caterer_Bearbeiten_Seite_Firmanamen_Prüfen_Und_Ändern(driver);
@@ -415,8 +415,8 @@ namespace SeleniumTests
             TestTools_Userstory_M4_6.Caterer_Hinzufügen_Seite_Firmanamen_Eintragen(driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
-            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen, driver);
-            Assert.AreEqual(Hinweise.Fragen_Übersicht, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht, driver));
+            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen_Neu, driver);
+            Assert.AreEqual(Hinweise.Fragen_Übersicht_Neu, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht_Neu, driver));
 
             //Variante Fragen hinzufügen
             TestTools_Userstory_M4_6.Caterer_Hinzufügen_Seite_Firmanamen_Eintragen(driver);
