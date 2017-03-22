@@ -76,9 +76,10 @@ namespace DataAccess.Repositories
             foreach (Antwort antwort in frage.Antworten) {
                 bool istVorhanden = false;
                 foreach (Antwort newAntworten in neueAntworten) {
-                    if (newAntworten.AntwortId == antwort.AntwortId) {
+                    if (newAntworten.AntwortId != 0 && newAntworten.AntwortId == antwort.AntwortId) {
                         istVorhanden = true;
                     }
+                    
                 }
                 if (!istVorhanden) {
                     neueAntworten.Add(antwort);
