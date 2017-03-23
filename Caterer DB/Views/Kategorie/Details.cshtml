@@ -19,19 +19,24 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well well-lg">
-                    <div>
-                        <dl class="text-center">
-                            <dd>
-                                <h4>
-                                    Kategorie: @Model.Bezeichnung
-                                </h4>
-                            </dd>
-                        </dl>
+                    <div class="row">
+                        <div class="col-md-6 text-right">
+                            <h4>Kategorie:</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="text-left">
+                                <dd>
+                                    <h4>
+                                        @Model.Bezeichnung
+                                    </h4>
+                                </dd>
+                            </dl>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3>Fragen dieser Kategorie</h3>
+                        <h2>Fragen dieser Kategorie</h2>
                     </div>
                 </div>
             </div>
@@ -45,15 +50,8 @@
                         @foreach (var item in Model.Fragen)
             {
                             <div class="row">
-
-                                <div class="col-md-10">
+                                <div class="col-md-12 text-justify">
                                     @Html.DisplayFor(modelitem => item.Bezeichnung)
-                                </div>
-                                <div class="col-md-1 text-right">
-                                    <a class="btn btn-default" href="@Url.Action("Details", "Frage", new { id = item.FrageId })" title="Details"><i class="glyphicon glyphicon-search"></i></a>
-                                </div>
-                                <div class="col-md-1">
-                                    <a class="btn btn-default" href="@Url.Action("Edit", "Frage", new { id = item.FrageId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
                                 </div>
                             </div><hr />
                         }
