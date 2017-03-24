@@ -41,6 +41,7 @@ namespace Caterer_DB.Controllers
                var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
                benutzer.AntwortIDs = antwortIDs;
                BenutzerService.EditBenutzer(benutzer);
+                return RedirectToAction("Index", "Home"); 
             }
             return View(bearbeitefragebogenviewmodel);
         }
