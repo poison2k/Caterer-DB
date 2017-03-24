@@ -12,7 +12,7 @@
     margin: 0;
 }
 
-    #topnavbar.affix {
+#topnavbar.affix {
         position: fixed;
         top: 0;
         width: 100%;
@@ -47,7 +47,6 @@ body {
     color: rgb(35,31,32);
     background-color: rgba(102,204,204,0.2);
 }
-
 
 /*------------------------------------------------*/
 /* Navigationsleiste - Registrieren und Login */
@@ -273,6 +272,16 @@ th {
 .well-lg-weiss {
     background-color: rgba(255, 255, 255, 1);
     border-color: rgba(255,255,255,1);
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover 
+{
+  background-color: rgba(77,147,208,1);
+}
+
+.nav-pills > li > a:hover {
+   background-color: rgba(102,204,204,0.2);
 }
 
 
