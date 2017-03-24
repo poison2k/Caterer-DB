@@ -85,7 +85,10 @@ namespace DataAccess.Repositories
                     neueAntworten.Add(antwort);
                 }
             }
-                                 
+            test.Kategorie = frage.Kategorie;
+            test.IstMultiSelect = frage.IstMultiSelect;
+            test.IstVeröffentlicht = frage.IstVeröffentlicht;
+            test.Bezeichnung = frage.Bezeichnung;                     
             test.Antworten = neueAntworten;
                      
             Db.SaveChanges();
