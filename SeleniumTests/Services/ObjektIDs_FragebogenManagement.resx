@@ -150,4 +150,13 @@
   <data name="Frage_Musterfrage" xml:space="preserve">
     <value>Fragetext zu Frage 1</value>
   </data>
+  <data name="Fragen_Veröffentlicht_Details" xml:space="preserve">
+    <value>RegSeite</value>
+  </data>
+  <data name="Frage_Kategorie_Vergeben" xml:space="preserve">
+    <value>KategorieName</value>
+  </data>
+  <data name="Frage_Mehrfachantwort_Vergeben" xml:space="preserve">
+    <value>IstMultiSelect</value>
+  </data>
 </root>

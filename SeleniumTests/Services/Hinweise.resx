@@ -120,7 +120,7 @@
   <data name="Account_Gelöscht" xml:space="preserve">
     <value>Ihr Account wurde erfolgreich gelöscht!</value>
   </data>
-  <data name="Account_Löschen_Bestätigen" xml:space="preserve">
+  <data name="Löschen_Bestätigen" xml:space="preserve">
     <value>Löschen bestätigen</value>
   </data>
   <data name="AGBseite" xml:space="preserve">
@@ -193,15 +193,18 @@
     <value>Detailansicht Fragen</value>
   </data>
   <data name="Fragen_Kategorie_Hinzufügen" xml:space="preserve">
-    <value>Neue Kategorie hinzufügen</value>
+    <value>Kategorie hinzufügen</value>
   </data>
   <data name="Fragen_Kategorie_Übersicht" xml:space="preserve">
-    <value>Kategorieübersicht</value>
+    <value>Kategorien</value>
   </data>
   <data name="Fragen_Neu_Bearbeiten" xml:space="preserve">
     <value>Neue Frage bearbeiten</value>
   </data>
   <data name="Fragen_Übersicht_Öffentlich" xml:space="preserve">
     <value>Veröffentlichte Fragen</value>
+  </data>
+  <data name="Fragen_Veröffentlicht_Details" xml:space="preserve">
+    <value>Detailansicht Veröffentlichte Frage</value>
   </data>
 </root>

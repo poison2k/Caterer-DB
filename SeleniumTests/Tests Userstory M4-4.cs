@@ -99,7 +99,6 @@ namespace SeleniumTests
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 
         }
-
         [Test]
         public void FragenBearbeiten4()
         //T_M4-4_F04_B_001
@@ -271,6 +270,42 @@ namespace SeleniumTests
             //Variante Kategorien hinzufügen
             TestTools_Userstory_M4_4.Fragebogen_Fragen_Details_Aufrufen(driver);
             TestTools_Userstory_M4_4.Fragebogen_Kategorie_Hinzufügen(driver);
+
+            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
+
+        }
+
+        [Test]
+        public void FragenBearbeiten6()
+        //T_M4-4_F06_B_001
+        {
+            TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
+
+            //Als Mitarbeiter einloggen
+            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+
+            //Neue Fragen Details aufrufen
+            TestTools_Userstory_M4_4.Fragebogen_Frage_Bearbeiten_Aufrufen_Zum_Löschen(driver);
+
+            //Löschen via CancelButton abbrechen
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Nein, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+
+            //Löschen via Kreuz abbrechen
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Abbrechen, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+
+            //Löschen durchführen
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Ja, driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 
@@ -469,6 +504,42 @@ namespace SeleniumTests
             //Variante Kategorien hinzufügen
             TestTools_Userstory_M4_4.Fragebogen_Fragenübersicht_Aufrufen(driver);
             TestTools_Userstory_M4_4.Fragebogen_Kategorie_Hinzufügen(driver);
+
+            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
+
+        }
+        [Test]
+        public void FragenBearbeiten9()
+        //T_M4-4_F09_B_001
+        {
+            TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
+
+            //Als Mitarbeiter einloggen
+            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+
+            //Neue Fragen Details aufrufen
+            TestTools_Userstory_M4_4.Fragebogen_Veröffentlichte_Frage_Details_Aufrufen_Zum_Löschen(driver);
+
+            //Löschen via CancelButton abbrechen
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Nein, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+
+            //Löschen via Kreuz abbrechen
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Abbrechen, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+
+            //Löschen durchführen
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Ja, driver);
+            Assert.AreEqual(Hinweise.Fragen_Übersicht_Öffentlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht_Öffentlich, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
 

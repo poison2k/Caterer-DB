@@ -23,7 +23,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Account_Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben("LöschenBest", driver));
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben("LöschenBest", driver));
 
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Nein, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
@@ -46,7 +46,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Account_Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben("LöschenBest", driver));
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben("LöschenBest", driver));
 
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Abbrechen, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
@@ -69,7 +69,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Account_Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben("LöschenBest", driver));
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben("LöschenBest", driver));
 
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Ja, driver);
             Assert.AreEqual(Hinweise.Account_Gelöscht, TestTools.Label_Text_Zurückgeben("Gelöscht", driver));

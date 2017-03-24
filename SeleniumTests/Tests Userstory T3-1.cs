@@ -95,7 +95,7 @@ namespace SeleniumTests
             //Änderung via Löschen-Menü abbrechen
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Account_Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Abbrechen, driver);
             Assert.AreEqual(Hinweise.Mitarbeiter_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Bearbeiten, driver));
 
@@ -278,7 +278,7 @@ namespace SeleniumTests
             TestTools_Userstory_T3_1.Mitarbeiter_Vorname_Ändern(driver);
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Account_Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Abbrechen, driver);
             Assert.AreEqual(Hinweise.Mitarbeiter_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Bearbeiten, driver));
 
@@ -289,7 +289,7 @@ namespace SeleniumTests
             TestTools_Userstory_T3_1.Mitarbeiter_Vorname_Ändern(driver);
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Account_Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Nein, driver);
             Assert.AreEqual(Hinweise.Mitarbeiter_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Bearbeiten, driver));
 
@@ -338,7 +338,7 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Mitarbeiter_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Bearbeiten, driver));
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Account_Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
+            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Ja, driver);
             Assert.AreEqual(Hinweise.Mitarbeiter_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Seite, driver));
 

@@ -79,6 +79,24 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die KategorieName ähnelt.
+        /// </summary>
+        internal static string Frage_Kategorie_Vergeben {
+            get {
+                return ResourceManager.GetString("Frage_Kategorie_Vergeben", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die IstMultiSelect ähnelt.
+        /// </summary>
+        internal static string Frage_Mehrfachantwort_Vergeben {
+            get {
+                return ResourceManager.GetString("Frage_Mehrfachantwort_Vergeben", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Fragetext zu Frage 1 ähnelt.
         /// </summary>
         internal static string Frage_Musterfrage {
@@ -156,6 +174,15 @@ namespace SeleniumTests.Services {
         internal static string Fragen_Übersicht_Öffentlich {
             get {
                 return ResourceManager.GetString("Fragen_Übersicht_Öffentlich", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die RegSeite ähnelt.
+        /// </summary>
+        internal static string Fragen_Veröffentlicht_Details {
+            get {
+                return ResourceManager.GetString("Fragen_Veröffentlicht_Details", resourceCulture);
             }
         }
     }

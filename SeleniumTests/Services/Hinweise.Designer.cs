@@ -70,15 +70,6 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Löschen bestätigen ähnelt.
-        /// </summary>
-        internal static string Account_Löschen_Bestätigen {
-            get {
-                return ResourceManager.GetString("Account_Löschen_Bestätigen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Allgemeine Geschäftsbedingungen ähnelt.
         /// </summary>
         internal static string AGBseite {
@@ -169,7 +160,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Neue Kategorie hinzufügen ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kategorie hinzufügen ähnelt.
         /// </summary>
         internal static string Fragen_Kategorie_Hinzufügen {
             get {
@@ -178,7 +169,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Kategorieübersicht ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kategorien ähnelt.
         /// </summary>
         internal static string Fragen_Kategorie_Übersicht {
             get {
@@ -214,6 +205,15 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Detailansicht Veröffentlichte Frage ähnelt.
+        /// </summary>
+        internal static string Fragen_Veröffentlicht_Details {
+            get {
+                return ResourceManager.GetString("Fragen_Veröffentlicht_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Impressum ähnelt.
         /// </summary>
         internal static string Impressumseite {
@@ -228,6 +228,15 @@ namespace SeleniumTests.Services {
         internal static string Kontaktseite {
             get {
                 return ResourceManager.GetString("Kontaktseite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Löschen bestätigen ähnelt.
+        /// </summary>
+        internal static string Löschen_Bestätigen {
+            get {
+                return ResourceManager.GetString("Löschen_Bestätigen", resourceCulture);
             }
         }
         

@@ -77,6 +77,24 @@ namespace SeleniumTests.Services
 
         }
 
+        public static void Fragebogen_Frage_Bearbeiten_Aufrufen_Zum_Löschen(IWebDriver driver)
+        {
+
+            driver.Navigate().GoToUrl("http://localhost:60003/Frage/Edit/5");
+            Assert.AreEqual(Hinweise.Fragen_Neu_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Neu_Bearbeiten, driver));
+
+        }
+
+        public static void Fragebogen_Veröffentlichte_Frage_Details_Aufrufen_Zum_Löschen(IWebDriver driver)
+        {
+
+            driver.Navigate().GoToUrl("http://localhost:60003/Frage/DetailsVeroeffentlicht/10");
+            Assert.AreEqual(Hinweise.Fragen_Veröffentlicht_Details, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Veröffentlicht_Details, driver));
+
+        }
+
+        
+
     }
 }
 
