@@ -120,10 +120,34 @@
   <data name="Fragebogen" xml:space="preserve">
     <value>Fragebogen</value>
   </data>
+  <data name="Fragen_Details" xml:space="preserve">
+    <value>RegSeite</value>
+  </data>
   <data name="Fragen_Erstellen" xml:space="preserve">
+    <value>CatererBearbeitenSeite</value>
+  </data>
+  <data name="Fragen_Kategorie_hinzufügen" xml:space="preserve">
+    <value>CatererBearbeitenSeite</value>
+  </data>
+  <data name="Fragen_Kategorie_Übersicht" xml:space="preserve">
     <value>CatererSeite</value>
   </data>
-  <data name="Fragen_Übersicht" xml:space="preserve">
+  <data name="Fragen_Neu_Bearbeiten" xml:space="preserve">
+    <value>CatererBearbeitenSeite</value>
+  </data>
+  <data name="Fragen_Übersicht_Neu" xml:space="preserve">
     <value>CatererSeite</value>
+  </data>
+  <data name="Fragen_Übersicht_Öffentlich" xml:space="preserve">
+    <value>CatererSeite</value>
+  </data>
+  <data name="Frage_Dummyfrage" xml:space="preserve">
+    <value>Bieten Sie Getränke an?</value>
+  </data>
+  <data name="Frage_Formulieren_Textbox" xml:space="preserve">
+    <value>Bezeichnung</value>
+  </data>
+  <data name="Frage_Musterfrage" xml:space="preserve">
+    <value>Fragetext zu Frage 1</value>
   </data>
 </root>

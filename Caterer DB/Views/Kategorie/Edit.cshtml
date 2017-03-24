@@ -32,29 +32,33 @@
                         @Html.LabelFor(model => model.Bezeichnung, htmlAttributes: new { @class = "control-label " })
                         @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
-
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a class="btn btn-default" title="Details">Änderungen übernehmen</a>
+                        </div>
                     </div>
                 </div>
-               
+
                 @if (Model.Fragen.Count != 0)
                 {
                     <br />
                     <hr />
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <h2>Zugeordnete Fragen</h2>
+                            <h2>Fragen dieser Kategorie</h2>
                         </div>
                     </div>
                     <div class="row" id="BenutzerIndexPartial">
                         <div class="col-md-12">
                             <div class="panel panel-default">
-                                @*<div class="panel-heading"></div>*@
+                                <div class="panel-heading"></div>
                                 <table class="table table-striped">
 
                                     @foreach (var item in Model.Fragen)
 
                                     {
-                                        <tr>
+                                        <tr>                                           
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Bezeichnung)
                                             </td>
@@ -64,8 +68,7 @@
                                             <td align="left">
                                                 <a class="btn btn-default" href="@Url.Action("Edit", "Frage", new { id = item.FrageId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
                                             </td>
-                                        </tr>
-                                        <tr></tr>
+                                        </tr>                                       
                                     }
                                 </table>
 
