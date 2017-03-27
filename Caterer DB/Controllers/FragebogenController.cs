@@ -31,7 +31,7 @@ namespace Caterer_DB.Controllers
             return View(FragebogenViewModelService.Map_Fragen_BearbeiteFragebogenViewModel(FrageService.FindAlleFragenNachKategorieninEigenenListen(),benutzer.AntwortIDs));
         }
 
-        // GET: Fragebogen/Details
+        // POST: Fragebogen/Details
         [HttpPost]
         [CustomAuthorize(Roles = "Caterer")]
         public ActionResult Details(BearbeiteFragebogenViewModel bearbeitefragebogenviewmodel)
@@ -41,7 +41,11 @@ namespace Caterer_DB.Controllers
                var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
                benutzer.AntwortIDs = antwortIDs;
                BenutzerService.EditBenutzer(benutzer);
-                return RedirectToAction("Index", "Home"); 
+                if (Request.Form["btnSave"] != null)
+                {
+                    TempData["isSavedFragebogen"] = true;
+                    return RedirectToAction("Index", "Home");
+                }
             }
             return View(bearbeitefragebogenviewmodel);
         }

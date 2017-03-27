@@ -51,6 +51,17 @@ background-position:center;">
     </div>
 }
 
+@if (TempData["isSavedFragebogen"] != null)
+{
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center " id="Gelöscht">
+            <div class="well well-lg">
+                <div class="text-center" role="alert"><H2>Ihr Fragebogen wurde erfolgreich gespeichert!</H2></div>
+            </div>
+        </div>
+    </div>
+}
+
 
 <br />
 <div class="row">
