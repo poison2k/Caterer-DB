@@ -34,9 +34,9 @@
       @Html.HiddenFor(m => m.Id)
         for (int i = 0; i < Model.Fragen.Count; i++)
         {
-            <div class="well-lg col-md-12 col-md-offset-0">
+            <div class="well-lg col-md-12 col-md-offset-0" style="z-index:@(Model.Fragen.Count -i) ">
                 @Html.HiddenFor(m => m.Fragen[i].ID)
-               <div id="@Model.Fragen[i].Name" style="padding-top: 160px; margin-top: -160px">
+               <div id="@Model.Fragen[i].Name" style="padding-top: 160px; margin-top: -160px; ">
                     @Html.HiddenFor(m => m.Fragen[i].Name)
                     <h3> @Html.DisplayFor(m => m.Fragen[i].Name) </h3>
                     <hr />
