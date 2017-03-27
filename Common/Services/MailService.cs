@@ -36,6 +36,15 @@ namespace Common.Services
             SendMail(mailModel);
         }
 
+        public void SendReleasedQuestionCatererMail(string mail)
+        {
+            var mailModel = ConfigureMail();
+            mailModel.Betreff = Common.Services.EMailBetreff.NeueFragen;
+            mailModel.Empfaenger = mail;
+            mailModel.Inhalt = Common.Services.EMailTexte.NeueFragen;
+            SendMail(mailModel);
+        }
+
 
         public void SendNewMitarbeiterMail(string passwordVerificationCode, string mail, string id)
         {

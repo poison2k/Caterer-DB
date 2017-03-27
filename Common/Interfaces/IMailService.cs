@@ -8,5 +8,6 @@
         void SendNewCatererMail(string passwordVerificationCode, string mail, string v);
         void SendRemoveCatererMail(string mail);
         void SendEditCatererMail(string mail);
+        void SendReleasedQuestionCatererMail(string mail);
     }
 }
