@@ -38,39 +38,43 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h2>Fragen dieser Kategorie</h2>
+@if (Model.Fragen.Count()!=0)
+{
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2>Fragen dieser Kategorie</h2>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well well-lg">
-                    @foreach (var item in Model.Fragen)
-            {
-                        <div class="row">
-                            <div class="col-md-12 text-justify">
-                                @Html.DisplayFor(modelitem => item.Bezeichnung)
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well well-lg">
+                        @foreach (var item in Model.Fragen)
+                        {
+                            <div class="row">
+                                <div class="col-md-12 text-justify">
+                                    @Html.DisplayFor(modelitem => item.Bezeichnung)
+                                </div>
                             </div>
-                        </div>
-                    <hr />
-                    }
+                            <hr />
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+}
+
 
 <div class="row">
     <div class="col-md-12">

@@ -31,99 +31,102 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading"></div>
-                            <table class="table table-striped">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>
+                                    @if (ViewBag.Sortierrung == "Bezeichnung")
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Bezeichnung_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung) <b class="caret"></b> </a>
+                                    }
+                                    else if (ViewBag.Sortierrung == "Bezeichnung_desc")
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Bezeichnung"})"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung) <b class="caret caret-reversed"></b> </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Bezeichnung" })"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung)  </a>
+                                    }
+                                </td>
+                                <td>
+                                    @if (ViewBag.Sortierrung == "Kategorie")
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Kategorie_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie) <b class="caret"></b> </a>
+                                    }
+                                    else if (ViewBag.Sortierrung == "Kategorie_desc")
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Kategorie"})"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie) <b class="caret caret-reversed"></b> </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Kategorie" })"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie)  </a>
+                                    }
+                                </td>
+                                <td>
+                                    @if (ViewBag.Sortierrung == "Antworten")
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Antworten_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Antworten) <b class="caret"></b> </a>
+                                    }
+                                    else if (ViewBag.Sortierrung == "Antworten_desc")
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Antworten"})"> @Html.LabelFor(model => model.FirstOrDefault().Antworten) <b class="caret caret-reversed"></b> </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Antworten" })"> @Html.LabelFor(model => model.FirstOrDefault().Antworten)  </a>
+                                    }
+                                </td>
+                                <td>
+                                    @if (ViewBag.Sortierrung == "IstMultiSelect")
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung = "IstMultiSelect_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect) <b class="caret"></b> </a>
+                                    }
+                                    else if (ViewBag.Sortierrung == "IstMultiSelect_desc")
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "IstMultiSelect" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect) <b class="caret caret-reversed"></b> </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Index", "Frage", new { Sortierrung = "IstMultiSelect" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect)  </a>
+                                    }
+                                </td>
+                                <td align="right"></td>
+                                <td align="left"></td>
+                            </tr>
+                            <tr></tr>
+
+
+                            @foreach (var item in Model)
+
+                            {
                                 <tr>
                                     <td>
-                                        @if (ViewBag.Sortierrung == "Bezeichnung")
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Bezeichnung_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung) <b class="caret"></b> </a>
-                                        }
-                                        else if (ViewBag.Sortierrung == "Bezeichnung_desc")
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Bezeichnung"})"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung) <b class="caret caret-reversed"></b> </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Bezeichnung" })"> @Html.LabelFor(model => model.FirstOrDefault().Bezeichnung)  </a>
-                                        }
+
+                                        @Html.DisplayFor(modelItem => item.Bezeichnung)
                                     </td>
                                     <td>
-                                        @if (ViewBag.Sortierrung == "Kategorie")
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Kategorie_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie) <b class="caret"></b> </a>
-                                        }
-                                        else if (ViewBag.Sortierrung == "Kategorie_desc")
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Kategorie"})"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie) <b class="caret caret-reversed"></b> </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Kategorie" })"> @Html.LabelFor(model => model.FirstOrDefault().Kategorie)  </a>
-                                        }
+                                        @Html.DisplayFor(modelItem => item.Kategorie.Bezeichnung)
                                     </td>
                                     <td>
-                                        @if (ViewBag.Sortierrung == "Antworten")
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Antworten_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().Antworten) <b class="caret"></b> </a>
-                                        }
-                                        else if (ViewBag.Sortierrung == "Antworten_desc")
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "Antworten"})"> @Html.LabelFor(model => model.FirstOrDefault().Antworten) <b class="caret caret-reversed"></b> </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "Antworten" })"> @Html.LabelFor(model => model.FirstOrDefault().Antworten)  </a>
-                                        }
+                                        @Html.DisplayFor(modelItem => item.Antworten.Count)
                                     </td>
                                     <td>
-                                        @if (ViewBag.Sortierrung == "IstMultiSelect")
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "IstMultiSelect_desc" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect) <b class="caret"></b> </a>
-                                        }
-                                        else if (ViewBag.Sortierrung == "IstMultiSelect_desc")
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung  = "IstMultiSelect" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect) <b class="caret caret-reversed"></b> </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("Index", "Frage", new { Sortierrung = "IstMultiSelect" })"> @Html.LabelFor(model => model.FirstOrDefault().IstMultiSelect)  </a>
-                                        }
+                                        @if (item.IstMultiSelect)
+                                        {<div><i class="glyphicon glyphicon-ok"></i></div> }
                                     </td>
-                                    <td align="right"></td>
-                                    <td align="left"></td>
+
+                                    
+                                    <td align="right">
+                                        <a class="btn btn-default" href="@Url.Action("Details", "Frage", new {id = item.FrageId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                    </td>
+                                    <td align="left">
+                                        <a class="btn btn-default" href="@Url.Action("Edit", "Frage", new { id = item.FrageId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    </td>
                                 </tr>
-                                <tr></tr>
-
-
-                                @foreach (var item in Model)
-
-                                {
-                                    <tr>
-                                        <td>
-                                           
-                                            @Html.DisplayFor(modelItem => item.Bezeichnung)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Kategorie.Bezeichnung)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Antworten.Count)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.IstMultiSelect)
-                                        </td>
-                                        <td align="right">
-                                            <a class="btn btn-default" href="@Url.Action("Details", "Frage", new {id = item.FrageId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
-                                        </td>
-                                        <td align="left">
-                                            <a class="btn btn-default" href="@Url.Action("Edit", "Frage", new { id = item.FrageId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        </td>
-                                    </tr>
                                     <tr></tr>
-                                }
-                            </table>
+                            }
+                        </table>
 
-                        </div>
+                    </div>
                     @if (Model.TotalItemCount > Model.PageSize)
                     {
                         var seitenAnzahl = Model.TotalItemCount / Model.PageSize;
@@ -132,21 +135,21 @@
                             seitenAnzahl++;
                         }
                         <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
-                            <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
-                                @Html.PagedListPager(Model, aktuelleSeite => Url.Action("Index", new { aktuelleSeite, Model.PageSize, Sortierrung = ViewBag.Sortierrung }))
-                            </div>
+                        <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
+                            @Html.PagedListPager(Model, aktuelleSeite => Url.Action("Index", new { aktuelleSeite, Model.PageSize, Sortierrung = ViewBag.Sortierrung }))
+                        </div>
                     }
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
