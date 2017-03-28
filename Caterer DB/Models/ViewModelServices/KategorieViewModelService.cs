@@ -23,12 +23,13 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Kategorie, EditKategorieViewModel>().ReverseMap();
                 cfg.CreateMap<Kategorie, DeleteKategorieViewModel>().ReverseMap();
                 cfg.CreateMap<Kategorie, DetailsKategorieViewModel>().ReverseMap();
+                cfg.CreateMap<Kategorie, IndexKategorieViewModel>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();
 
         }
-
+        
         public Kategorie Map_CreateKategorieViewModel_Kategorie(CreateKategorieViewModel createKategorieViewModel)
         {
             return Mapper.Map<Kategorie>(createKategorieViewModel);
@@ -44,6 +45,18 @@ namespace Caterer_DB.Models.ViewModelServices
             var editKategorieViewModel = Mapper.Map<EditKategorieViewModel>(kategorie);
             editKategorieViewModel.Fragen = fragenZuKategorie;
             return editKategorieViewModel;
+        }
+
+        public Kategorie Map_IndexKategorieViewModel_Kategorie(IndexKategorieViewModel indexKategorieViewModel)
+        {
+            return Mapper.Map<Kategorie>(indexKategorieViewModel);
+        }
+
+        public IndexKategorieViewModel Map_Kategorie_IndexKategorieViewModel(Kategorie kategorie, List<Frage> fragenZuKategorie)
+        {
+            var indexKategorieViewModel = Mapper.Map<IndexKategorieViewModel>(kategorie);
+            indexKategorieViewModel.Fragen = fragenZuKategorie;
+            return indexKategorieViewModel;
         }
 
         public DetailsKategorieViewModel Map_Kategorie_DetailsKategorieViewModel(Kategorie kategorie, List<Frage> fragenZuKategorie)

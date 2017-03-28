@@ -8,6 +8,18 @@ using System.ComponentModel;
 
 namespace Caterer_DB.Models
 {
+    public class IndexKategorieViewModel
+    {
+        [Key]
+        public int KategorieId { get; set; }
+
+        [Required]
+        [DisplayName(@"Kategorie")]
+        public string Bezeichnung { get; set; }
+
+        public List<Frage> Fragen { get; set; }
+    }
+
     public class CreateKategorieViewModel
     {
         [Key]
