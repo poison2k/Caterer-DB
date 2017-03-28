@@ -65,24 +65,28 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Bezeichnung)
                                             </td>
-                                            
-                                            <td>@if (item.IstVeröffentlicht)
-                                            {<div><i class="glyphicon glyphicon-ok"></i></div> } 
+
+                                            <td>
+                                                @if (item.IstVeröffentlicht)
+                                                {<div><i class="glyphicon glyphicon-ok"></i></div> }
                                             </td>
-                                        
+
                                             <td align="right">
-                                                <a class="btn btn-default" href="@Url.Action("Details", "Frage", new { id = item.FrageId })" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                                @if (item.IstVeröffentlicht)
+                                                {
+                                                    <a class="btn btn-default" href="@Url.Action("DetailsVeroeffentlicht", "Frage", new { id = item.FrageId })" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btn btn-default" href="@Url.Action("Details", "Frage", new { id = item.FrageId })" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                                }
                                             </td>
-                                            @if (!item.IstVeröffentlicht) { 
                                             <td align="left">
-                                                <a class="btn btn-default" href="@Url.Action("Edit", "Frage", new { id = item.FrageId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                                                @if (!item.IstVeröffentlicht)
+                                                {
+                                                    <a class="btn btn-default" href="@Url.Action("Edit", "Frage", new { id = item.FrageId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                                                }
                                             </td>
-                                            }
-                                            else
-                                            {
-                                            <td align="left">
-                                                
-                                            </td> }
                                         </tr>
                                     }
                                 </table>
