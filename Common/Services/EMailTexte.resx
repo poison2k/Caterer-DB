@@ -191,4 +191,12 @@ Bitte beachten Sie, dass der Link nur 2 Stunden gültig ist.Danach müssen Sie e
 
 </value>
   </data>
+  <data name="NeueFragen" xml:space="preserve">
+    <value>Sehr geehrter Nutzer,
+
+in der Caterer Datenbank wurden neue Fragen veröffentlicht. Melden Sie sich an, 
+um die neue Fragen zu bearbeiten.
+
+Ihr Caterer-DB Team</value>
+  </data>
 </root>

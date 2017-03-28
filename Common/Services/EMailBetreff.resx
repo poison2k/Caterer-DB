@@ -120,6 +120,9 @@
   <data name="Kontoangelegt" xml:space="preserve">
     <value>Willkommen bei der Caterer Datenbank </value>
   </data>
+  <data name="NeueFragen" xml:space="preserve">
+    <value>Neue Fragen in der Caterer Datenbank</value>
+  </data>
   <data name="Nutzerlöschen" xml:space="preserve">
     <value>Ihr Benutzerkonto wurde erfolgreich gelöscht.</value>
   </data>

@@ -1,4 +1,5 @@
 ﻿using Business.Interfaces;
+using Common.Interfaces;
 using DataAccess.Interfaces;
 using DataAccess.Model;
 using System;
@@ -13,10 +14,16 @@ namespace Business.Services
 
         public IKategorieRepository KategorienRepository { get; set; }
 
-        public FrageService(IFrageRepository frageRepository, IKategorieRepository kategorienRepository)
+        public IMailService MailService { get; set; }
+
+        public IBenutzerService BenutzerService { get; set; }
+
+        public FrageService(IFrageRepository frageRepository, IKategorieRepository kategorienRepository, IMailService mailService, IBenutzerService benutzerService)
         {
             FrageRepository = frageRepository;
             KategorienRepository = kategorienRepository;
+            MailService = mailService;
+            BenutzerService = benutzerService;
         }
 
         public void AddFrage(Frage frage)
@@ -26,6 +33,20 @@ namespace Business.Services
 
         public void EditFrage(Frage frage)
         {
+            if (frage.IstVeröffentlicht)
+            {
+                foreach (var benutzer in BenutzerService.FindAllBenutzers())
+                {
+                    
+                    foreach (var gruppe in benutzer.BenutzerGruppen)
+                    {
+                        if (gruppe.Bezeichnung == "Caterer")
+                        {
+                            MailService.SendReleasedQuestionCatererMail(benutzer.Mail);
+                        }
+                    }
+                }
+            }
             FrageRepository.EditFrage(frage);
         }
 
