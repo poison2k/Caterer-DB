@@ -22,7 +22,7 @@
         public const string CreateCaterer = "CreateCaterer";
         public const string IndexCaterer = "IndexCaterer";
         public const string EditCaterer = "EditCaterer";
-        public const string DetailsCaterer = "EditCaterer";
+        public const string DetailsCaterer = "DetailsCaterer";
         public const string DeleteCaterer = "DeleteCaterer";
         public const string MenueCaterer = "MenueCaterer";
 
@@ -31,7 +31,7 @@
         public const string IndexFrage = "IndexFrage";
         public const string EditFrage = "EditFrage";
         public const string DeleteFrage = "DeleteFrage";
-        public const string DetailsFrage = "DetailsCaterer";
+        public const string DetailsFrage = "DetailsFrage";
         public const string MenueFrage = "MenueFrage";
 
         //Rechte für Fragebogen

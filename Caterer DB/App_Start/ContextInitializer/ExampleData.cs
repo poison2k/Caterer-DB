@@ -121,7 +121,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.DeleteKategorie),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.CreateKategorie),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.DetailsKategorie),
-
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.EditKategorie)}
             });
 
