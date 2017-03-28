@@ -11,6 +11,7 @@ using System.Web.Mvc;
 namespace Caterer_DB.Controllers
 {
 
+    [Authorize]
     public class MailController : BaseController
     {
         //ToDo Dies ist nur ein Test-Controller, zur Überprüfung der Mail-Funktionalität

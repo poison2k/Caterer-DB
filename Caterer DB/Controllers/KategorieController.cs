@@ -4,10 +4,14 @@ using System.Web.Mvc;
 using Caterer_DB.Interfaces;
 using Business.Interfaces;
 using Caterer_DB.Models;
+using Caterer_DB.Services;
+using Caterer_DB.Resources;
 using System.Collections.Generic;
 
 namespace Caterer_DB.Controllers
 {
+
+    [Authorize]
     public class KategorieController : BaseController
     {
         private IKategorieViewModelService KategorieViewModelService { get; set; }
@@ -25,6 +29,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategorie
+        [CustomAuthorize(Rights = RechteResource.IndexKategorie)]
         public ActionResult Index()
         {
             List<IndexKategorieViewModel> kategorieList = new List<IndexKategorieViewModel>();
@@ -39,6 +44,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategorie/Details/5
+        [CustomAuthorize(Rights = RechteResource.DetailsKategorie)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -57,6 +63,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategories/Create
+        [CustomAuthorize(Rights = RechteResource.CreateKategorie)]
         public ActionResult Create()
         {
             return View();
@@ -79,6 +86,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategorie/Edit/5
+        [CustomAuthorize(Rights = RechteResource.EditKategorie)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -119,6 +127,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategories/Delete/5
+        [CustomAuthorize(Rights = RechteResource.DeleteKategorie)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
