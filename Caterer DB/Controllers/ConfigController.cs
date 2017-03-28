@@ -30,7 +30,7 @@ namespace Caterer_DB.Controllers
 
         // POST: Config 
         [HttpPost]
-        [CustomAuthorize(Rights = RechteResource.EditConfig)]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(EditConfigViewModel editConfigViewModel) 
         {
             if (ModelState.IsValid) {

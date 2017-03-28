@@ -7,6 +7,8 @@ using DataAccess.Model;
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Business.Interfaces;
+using Caterer_DB.Services;
+using Caterer_DB.Resources;
 
 namespace Caterer_DB.Controllers
 {
@@ -27,6 +29,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Frages
+        [CustomAuthorize(Rights = RechteResource.IndexFrage)]
         public ActionResult Index(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Bezeichnung")
         {
             ViewBag.Sortierrung = Sortierrung;
@@ -39,6 +42,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Frages
+        [CustomAuthorize(Rights = RechteResource.IndexFrage)]
         public ActionResult IndexVeroeffentlicht(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Bezeichnung")
         {
             ViewBag.Sortierrung = Sortierrung;
@@ -51,6 +55,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Frages/Details/5
+        [CustomAuthorize(Rights = RechteResource.DetailsFrage)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -69,6 +74,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Frages/DetailsVeroeffentlicht/5
+        [CustomAuthorize(Rights = RechteResource.DetailsFrage)]
         public ActionResult DetailsVeroeffentlicht(int? id)
         {
             if (id == null)
@@ -101,6 +107,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Frages/Create
+        [CustomAuthorize(Rights = RechteResource.CreateFrage)]
         public ActionResult Create()
         {
             return View(FrageViewModelService.CreateCreateFrageViewModel(KategorienService.FindAlleKategorien()));
@@ -154,6 +161,8 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Frages/Edit/5
+
+        [CustomAuthorize(Rights = RechteResource.EditFrage)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -229,6 +238,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Frages/Delete/5
+        [CustomAuthorize(Rights = RechteResource.DeleteFrage)]
         public ActionResult Delete(int? id)
         {
             if (id == null)

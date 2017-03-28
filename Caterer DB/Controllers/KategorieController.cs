@@ -4,6 +4,8 @@ using System.Web.Mvc;
 using Caterer_DB.Interfaces;
 using Business.Interfaces;
 using Caterer_DB.Models;
+using Caterer_DB.Services;
+using Caterer_DB.Resources;
 
 namespace Caterer_DB.Controllers
 {
@@ -26,12 +28,14 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategorie
+        [CustomAuthorize(Rights = RechteResource.IndexKategorie)]
         public ActionResult Index()
         {
             return View(KategorieService.FindAlleKategorien());
         }
 
         // GET: Kategorie/Details/5
+        [CustomAuthorize(Rights = RechteResource.DetailsKategorie)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -50,6 +54,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategories/Create
+        [CustomAuthorize(Rights = RechteResource.CreateKategorie)]
         public ActionResult Create()
         {
             return View();
@@ -72,6 +77,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategorie/Edit/5
+        [CustomAuthorize(Rights = RechteResource.EditKategorie)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -112,6 +118,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Kategories/Delete/5
+        [CustomAuthorize(Rights = RechteResource.DeleteKategorie)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
