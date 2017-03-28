@@ -95,7 +95,18 @@
                                         }
                                     </th>
                                     <th>
-                                       @Html.DisplayNameFor(model => model.FirstOrDefault().IstAdmin) 
+                                        @if (ViewBag.Sortierrung == "IstAdmin")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung = "IstAdmin_desc"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().IstAdmin) <b class="caret"></b> </a>
+                                        }
+                                        else if (ViewBag.Sortierrung == "IstAdmin_desc")
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "IstAdmin"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().IstAdmin) <b class="caret caret-reversed"></b> </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "IstAdmin"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().IstAdmin)  </a>
+                                        }
                                     </th>
 
                                     <th></th>
