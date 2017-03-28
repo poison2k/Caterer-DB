@@ -14,6 +14,8 @@ using Caterer_DB.Models;
 
 namespace Caterer_DB.Controllers
 {
+
+    [Authorize]
     public class RechteGruppeController : BaseController
     {
         private IRechteGruppeViewModelService RechteGruppeViewModelService { get; set; }

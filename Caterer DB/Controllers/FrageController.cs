@@ -10,6 +10,7 @@ using Business.Interfaces;
 
 namespace Caterer_DB.Controllers
 {
+    [Authorize]
     public class FrageController : BaseController
     {
         private IFrageViewModelService FrageViewModelService { get; set; }

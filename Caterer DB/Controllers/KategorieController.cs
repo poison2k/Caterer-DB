@@ -7,6 +7,8 @@ using Caterer_DB.Models;
 
 namespace Caterer_DB.Controllers
 {
+
+    [Authorize]
     public class KategorieController : BaseController
     {
         private IKategorieViewModelService KategorieViewModelService { get; set; }
