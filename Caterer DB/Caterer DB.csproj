@@ -276,6 +276,7 @@
     <Compile Include="Controllers\BenutzerController.cs" />
     <Compile Include="Controllers\BenutzerGruppeController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FragebogenController.cs" />
     <Compile Include="Controllers\FrageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -453,6 +454,7 @@
     <Content Include="Views\Fragebogen\Details.cshtml" />
     <Content Include="Views\Frage\IndexVeroeffentlicht.cshtml" />
     <Content Include="Views\Frage\DetailsVeroeffentlicht.cshtml" />
+    <Content Include="Views\Error\ZugriffVerweigert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

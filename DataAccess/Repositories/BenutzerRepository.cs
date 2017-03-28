@@ -85,7 +85,7 @@ namespace DataAccess.Repositories
                     mitarbeiterQuery = mitarbeiterQuery.Union((Db.Benutzer.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()))));
                 }
             }
-
+           
             mitarbeiterQuery = SortFilter(mitarbeiterQuery, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
 
             return mitarbeiterQuery.ToList();
@@ -237,6 +237,14 @@ namespace DataAccess.Repositories
                 case "Postleitzahl_desc":
                     query = query.OrderByDescending(x => x.Postleitzahl);
                     break;
+                case "IstAdmin":
+                    query = query.OrderBy(p => p.BenutzerGruppen.Select(r => r.Bezeichnung).FirstOrDefault());
+                   
+                    break;
+                case "IstAdmin_desc":
+                    query = query.OrderByDescending(p => p.BenutzerGruppen.Select(r => r.Bezeichnung).FirstOrDefault());
+                    break;
+
             }
 
             return query;

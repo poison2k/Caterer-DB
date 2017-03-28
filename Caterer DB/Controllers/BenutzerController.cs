@@ -55,6 +55,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer/Details/5
+        [CustomAuthorize(Rights = RechteResource.DetailsMitarbeiter)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -73,6 +74,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer/Details/5
+        [CustomAuthorize(Rights = RechteResource.DetailsCaterer)]
         public ActionResult DetailsCaterer(int? id)
         {
             if (id == null)
@@ -158,6 +160,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer/Edit/5
+        [CustomAuthorize(Rights = RechteResource.EditMitarbeiter)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -259,6 +262,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer/Mydata/5
+        [CustomAuthorize(Rights = RechteResource.EditCaterer)]
         public ActionResult EditCaterer(int? id)
         {
             if (id == null)
@@ -329,6 +333,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer/Delete/5
+        [CustomAuthorize(Rights = RechteResource.DeleteMitarbeiter)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
