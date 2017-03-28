@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataAccess.Model.Kategorie>
+﻿@model IEnumerable<Caterer_DB.Models.IndexKategorieViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -50,7 +50,7 @@
                                         @Html.DisplayFor(modelItem => item.Bezeichnung)
                                     </td>
                                     <td>
-                                        3
+                                        @Html.DisplayFor(modelItem => item.Fragen.Count)
                                     </td>
                                     <td align="right">
                                         <a class="btn btn-default" href="@Url.Action("Details", "Kategorie", new {id = item.KategorieId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>

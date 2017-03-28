@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Caterer_DB.Interfaces;
 using Business.Interfaces;
 using Caterer_DB.Models;
+using System.Collections.Generic;
 
 namespace Caterer_DB.Controllers
 {
@@ -26,7 +27,15 @@ namespace Caterer_DB.Controllers
         // GET: Kategorie
         public ActionResult Index()
         {
-            return View(KategorieService.FindAlleKategorien());
+            List<IndexKategorieViewModel> kategorieList = new List<IndexKategorieViewModel>();
+
+            foreach (var kategorie in KategorieService.FindAlleKategorien())
+            {
+                kategorieList.Add(KategorieViewModelService.Map_Kategorie_IndexKategorieViewModel(kategorie,
+                                               FrageService.FindFragenNachKategorieByKategorieId(Convert.ToInt32(kategorie.KategorieId))));
+            }
+            
+            return View(kategorieList);
         }
 
         // GET: Kategorie/Details/5
