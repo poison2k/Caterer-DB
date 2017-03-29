@@ -67,7 +67,7 @@ background-position:center;">
             @if (Request.IsAuthenticated)
             {
 
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-md-offset-1 col-md-10" id="Willkommen">
                         <h2>Willkommen @Model.Vorname @Model.Nachname</h2>
 
@@ -75,10 +75,7 @@ background-position:center;">
                 {
                             <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
                         }
-                        else if (User.HatDasRecht(RechteResource.TestBlock3))
-                        {
-                            <h4 class="text-danger">Ich bin Mitglied der Gruppe Caterer</h4>
-                        }
+                        
                         else if (User.HatDasRecht(RechteResource.TestBlock2))
                         {
                             <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
@@ -86,7 +83,7 @@ background-position:center;">
                         @if (User.HatDieRolle(BenutzerGruppenResource.Caterer) && Model.OffeneFragen != 0)
                         {
                             <h4 class="text-danger">
-                                Sie haben "@Model.OffeneFragen" unbeantwortete Fragen.
+                                Ihr Fragebogen besitzt noch @Model.OffeneFragen offene Fragen.
                             </h4>
                         }
                     </div>
