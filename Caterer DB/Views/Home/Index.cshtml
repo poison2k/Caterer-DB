@@ -83,6 +83,12 @@ background-position:center;">
                         {
                             <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
                         }
+                        @if (User.HatDieRolle(BenutzerGruppenResource.Caterer) && Model.OffeneFragen != 0)
+                        {
+                            <h4 class="text-danger">
+                                Sie haben "@Model.OffeneFragen" unbeantwortete Fragen.
+                            </h4>
+                        }
                     </div>
                 </div>
             }

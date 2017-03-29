@@ -42,7 +42,7 @@ namespace Caterer_DB.Models.ViewModelServices
             Mapper = config.CreateMapper();
         }
 
-        public AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(Benutzer benutzer)
+        public AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen)
         {
             var anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
             anmeldenBenutzerViewModel.AnmeldenModel = new LoginModel();
@@ -52,26 +52,101 @@ namespace Caterer_DB.Models.ViewModelServices
                 anmeldenBenutzerViewModel = Mapper.Map<AnmeldenBenutzerViewModel>(benutzer);
             }
 
+            foreach (List<Frage> fragen in fragenListen)
+            {
+                int beantwortetCounter = 0;
+                int fragencounter = 0;
+                foreach (Frage frage in fragen)
+                {
+                    bool beantwortet = false;
+                    foreach (int antwortId in benutzer.AntwortIDs)
+                    {
+                        if (frage.IstMultiSelect != true)
+                        {
+
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    beantwortet = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    beantwortet = true;
+                                }
+                            }
+                        }
+                    }
+                    if (beantwortet)
+                    {
+                        beantwortetCounter++;
+                    }
+                    fragencounter++;
+                }
+                anmeldenBenutzerViewModel.OffeneFragen = fragencounter - beantwortetCounter;
+            }
             return anmeldenBenutzerViewModel;
         }
 
-        public AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(int benutzerId = -1, string infobox = "")
+        public AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(int benutzerId = -1, List<List<Frage>> fragenListen = null)
         {
             var anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
             anmeldenBenutzerViewModel.AnmeldenModel = new LoginModel();
-
-            //Todo InfoBox entfernen
-            if (infobox == "schliessen")
-                anmeldenBenutzerViewModel.Infobox = "verbergen";
-            else
-                anmeldenBenutzerViewModel.Infobox = "anzeigen";
 
             Benutzer benutzer = BenutzerService.SearchUserById(benutzerId);
             if (benutzer != null)
             {
                 anmeldenBenutzerViewModel = Mapper.Map(benutzer, anmeldenBenutzerViewModel);
             }
+            if (fragenListen != null)
+            {
+                int fragencounter = 0;
+                int beantworteteCounter = 0;
+                foreach (List<Frage> fragen in fragenListen)
+                {
+                    foreach (Frage frage in fragen)
+                    {
+                        bool beantwortet = false;
+                        foreach (int antwortId in benutzer.AntwortIDs)
+                        {
+                            if (frage.IstMultiSelect != true)
+                            {
 
+                                foreach (Antwort antwort in frage.Antworten)
+                                {
+                                    if (antwort.AntwortId == antwortId)
+                                    {
+                                        beantwortet = true;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach (Antwort antwort in frage.Antworten)
+                                {
+                                    if (antwort.AntwortId == antwortId)
+                                    {
+                                        beantwortet = true;
+                                    }
+                                }
+                            }
+                        }
+                        if (beantwortet)
+                        {
+                            beantworteteCounter++;
+                        }
+                        fragencounter++;
+                    }
+                  
+                }
+                anmeldenBenutzerViewModel.OffeneFragen = fragencounter - beantworteteCounter;
+            }
             return anmeldenBenutzerViewModel;
         }
 

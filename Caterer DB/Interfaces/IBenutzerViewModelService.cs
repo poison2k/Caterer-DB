@@ -6,9 +6,9 @@ namespace Caterer_DB.Interfaces
 {
     public interface IBenutzerViewModelService
     {
-        AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(Benutzer benutzer);
+        AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen);
 
-        AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(int benutzerId = -1, string infobox = "");
+        AnmeldenBenutzerViewModel GeneriereAnmeldenBenutzerViewModel(int benutzerId = -1, List<List<Frage>> fragenListen = null);
 
         Benutzer Map_CreateMitarbeiterViewModel_Benutzer(CreateMitarbeiterViewModel createBenutzerViewModel);
 
