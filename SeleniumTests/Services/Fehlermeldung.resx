@@ -141,6 +141,9 @@
   <data name="Firma_Erforderlich" xml:space="preserve">
     <value>Das Feld "Firmenname" ist erforderlich.</value>
   </data>
+  <data name="Fragen_Kategorie_Hinzufügen_Fehlermeldung" xml:space="preserve">
+    <value>Das Feld "Kategorie" ist erforderlich.</value>
+  </data>
   <data name="Lieferumkreis_Erforderlich" xml:space="preserve">
     <value>Das Feld "Lieferumkreis" ist erforderlich.</value>
   </data>

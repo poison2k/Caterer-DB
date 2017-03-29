@@ -40,7 +40,7 @@ namespace SeleniumTests.Services
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Kategorie_Anzeigen, driver);
-            Assert.AreEqual(Hinweise.Fragen_Kategorie_Übersicht, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Kategorie_Übersicht, driver));
+            Assert.AreEqual(Hinweise.Fragen_Kategorie_Übersicht, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Kategorie_Übersicht_Seite, driver));
 
         }
 
@@ -49,7 +49,7 @@ namespace SeleniumTests.Services
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Kategorie_Hinzufügen, driver);
-            Assert.AreEqual(Hinweise.Fragen_Kategorie_Hinzufügen, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Kategorie_hinzufügen, driver));
+            Assert.AreEqual(Hinweise.Fragen_Kategorie_Hinzufügen, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Kategorie_hinzufügen_Seite, driver));
 
         }
 
