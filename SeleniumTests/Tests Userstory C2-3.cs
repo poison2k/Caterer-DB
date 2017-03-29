@@ -2,14 +2,12 @@
 using OpenQA.Selenium;
 using SeleniumTests.Services;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_C2_3")]
     public class Userstory_C2_3 : TestInitialize
     {
-
         [Test]
         public void FrageAntwort1()
         //T_C2-3_F02_B_001
@@ -41,7 +39,7 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_Allgemein.PW_Ändern_Seite, driver));
 
             TestTools_Userstory_C2_3.Fragebogen_Bearbeiten_Aufrufen(driver);
-            
+
             //Variante Ausloggen
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
@@ -81,7 +79,7 @@ namespace SeleniumTests
             TestTools_Userstory_C2_3.Fragebogen_Bearbeiten_Aufrufen(driver);
 
             //Variante Kontakt Fußzeile
-             TestTools.KontaktFußzeile(driver);
+            TestTools.KontaktFußzeile(driver);
 
             TestTools_Userstory_C2_3.Fragebogen_Bearbeiten_Aufrufen(driver);
 
@@ -89,11 +87,6 @@ namespace SeleniumTests
             TestTools.ImpressumFußzeile(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
-
-
-      
-
     }
 }

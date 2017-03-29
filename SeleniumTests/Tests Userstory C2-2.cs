@@ -3,14 +3,12 @@ using OpenQA.Selenium;
 using SeleniumTests.Services;
 using System;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_C2_2")]
     public class Userstory_C2_2 : TestInitialize
     {
-
         [Test]
         public void PWVergessen1()
         //T_C2-2_F02_B_001
@@ -53,7 +51,6 @@ namespace SeleniumTests
             TestTools.ImpressumDropdownLogout(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -85,8 +82,8 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void PWVergessen3()
         //T_C2-2_F04_B_001
@@ -159,8 +156,8 @@ namespace SeleniumTests
             TestTools.ImpressumDropdownLogout(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void PWVergessen5()
         //T_C2-2_F05_B_001
@@ -200,8 +197,8 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void PWVergessen6()
         //T_C2-2_F11_B_001
@@ -232,8 +229,6 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.Email_Ungültig, TestTools.Label_Text_Zurückgeben("PWRecoveryFehler", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
-
     }
 }

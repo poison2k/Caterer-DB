@@ -37,7 +37,6 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, CreateCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, MeineDatenBenutzerViewModel>().ReverseMap();
-
             });
 
             Mapper = config.CreateMapper();
@@ -88,7 +87,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public Benutzer Map_ForgottenPasswordRequestViewModel_Benutzer(ForgottenPasswordRequestViewModel forgottenPasswordRequestViewModel)
         {
-
             return Mapper.Map<Benutzer>(forgottenPasswordRequestViewModel);
         }
 
@@ -105,11 +103,10 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             return Mapper.Map<Benutzer>(editBenutzerViewModel);
         }
-       
 
         public Benutzer Map_MeineDatenBenutzerViewModel_Benutzer(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel)
         {
-           return Mapper.Map<Benutzer>(meineDatenBenutzerViewModel);
+            return Mapper.Map<Benutzer>(meineDatenBenutzerViewModel);
         }
 
         public Benutzer Map_MyDataBenutzerViewModel_Benutzer(MyDataBenutzerViewModel myDataBenutzerViewModel)
@@ -137,7 +134,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public ForgottenPasswordCreateNewPasswordViewModel Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(int id)
         {
-
             var benutzer = BenutzerService.SearchUserById(id);
             benutzer.Passwort = "";
             return Mapper.Map<ForgottenPasswordCreateNewPasswordViewModel>(benutzer);
@@ -147,8 +143,10 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             var editBenutzerViewModel = Mapper.Map<EditBenutzerViewModel>(benutzer);
             editBenutzerViewModel.IstAdmin = "false";
-            foreach (BenutzerGruppe benutzergruppe in benutzer.BenutzerGruppen) {
-                if (benutzergruppe.Bezeichnung == "Administrator") {
+            foreach (BenutzerGruppe benutzergruppe in benutzer.BenutzerGruppen)
+            {
+                if (benutzergruppe.Bezeichnung == "Administrator")
+                {
                     editBenutzerViewModel.IstAdmin = "true";
                 }
             }
@@ -157,7 +155,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public MeineDatenBenutzerViewModel Map_Benutzer_MeineDatenBenutzerViewModel(Benutzer benutzer)
         {
-           
             var meineDatenBenutzerViewModel = Mapper.Map<MeineDatenBenutzerViewModel>(benutzer);
 
             return AddListsToMeineDatenViewModel(meineDatenBenutzerViewModel);
@@ -165,7 +162,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public DetailsBenutzerViewModel Map_Benutzer_DetailsBenutzerViewModel(Benutzer benutzer)
         {
-
             var detailsBenutzerViewModel = Mapper.Map<DetailsBenutzerViewModel>(benutzer);
             detailsBenutzerViewModel.IstAdmin = false;
             foreach (BenutzerGruppe benutzergruppe in benutzer.BenutzerGruppen)
@@ -176,7 +172,6 @@ namespace Caterer_DB.Models.ViewModelServices
                 }
             }
             return detailsBenutzerViewModel;
-
         }
 
         public DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer)
@@ -226,7 +221,6 @@ namespace Caterer_DB.Models.ViewModelServices
             return registerBenutzerViewModel;
         }
 
-
         public ListViewModel<IndexBenutzerViewModel> GeneriereListViewModel(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10)
         {
             var listViewModel = new ListViewModel<IndexBenutzerViewModel>(gesamtAnzahlDatensätze, aktuelleSeite, seitenGröße);
@@ -245,14 +239,14 @@ namespace Caterer_DB.Models.ViewModelServices
             return listViewModel;
         }
 
-
         public IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer)
         {
-           
             var indexBenutzerViewModel = Mapper.Map<IndexBenutzerViewModel>(benutzer);
             var istAdmin = false;
-            foreach (BenutzerGruppe benutzerGruppe in benutzer.BenutzerGruppen) {
-                if (benutzerGruppe.Bezeichnung == "Administrator") {
+            foreach (BenutzerGruppe benutzerGruppe in benutzer.BenutzerGruppen)
+            {
+                if (benutzerGruppe.Bezeichnung == "Administrator")
+                {
                     istAdmin = true;
                 }
             }
@@ -272,14 +266,12 @@ namespace Caterer_DB.Models.ViewModelServices
             createBenutzerViewModel.Anreden = CreateAnredenSelectList();
             createBenutzerViewModel.JaNein = CreateJaNeinSelectList();
             return createBenutzerViewModel;
-
         }
-
 
         public MeineDatenBenutzerViewModel AddListsToMeineDatenViewModel(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel)
         {
             meineDatenBenutzerViewModel.Anreden = CreateAnredenSelectList();
-            
+
             return meineDatenBenutzerViewModel;
         }
 
@@ -288,7 +280,6 @@ namespace Caterer_DB.Models.ViewModelServices
             editBenutzerViewModel.Anreden = CreateAnredenSelectList();
             editBenutzerViewModel.JaNein = CreateJaNeinSelectList();
             return editBenutzerViewModel;
-
         }
 
         public CreateCatererViewModel AddListsToCreateCatererViewModel(CreateCatererViewModel createCatererViewModel)
@@ -300,9 +291,7 @@ namespace Caterer_DB.Models.ViewModelServices
             createCatererViewModel.Organisationsformen = CreateOrganisationsformenSelectList();
 
             return createCatererViewModel;
-
         }
-
 
         public RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel)
         {
@@ -314,7 +303,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
             return registerBenutzerViewModel;
         }
-
 
         public MyDataBenutzerViewModel AddListsToMyDataViewModel(MyDataBenutzerViewModel myDataBenutzerViewModel)
         {
@@ -329,7 +317,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         private SelectList CreateAnredenSelectList()
         {
-
             return new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
@@ -340,7 +327,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         private SelectList CreateJaNeinSelectList()
         {
-
             return new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Nein", Value = "false" },
@@ -371,7 +357,5 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Caterer", Value = "Caterer" },
                             }, "Value", "Text");
         }
-
-       
     }
 }

@@ -2,12 +2,9 @@
 using Caterer_DB.Interfaces;
 using DataAccess.Model;
 using System.Collections.Generic;
-using System;
-using Caterer_DB.Models;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
-
     public class FragebogenViewModelService : IFragebogenViewModelService
     {
         private IMapper Mapper { get; set; }
@@ -30,7 +27,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public BearbeiteFragebogenViewModel Map_Fragen_BearbeiteFragebogenViewModel(List<List<Frage>> fragenListen, List<int> nutzerAntworten)
         {
-
             var bearbeiteFragebogenViewModel = new BearbeiteFragebogenViewModel()
             {
                 Id = 1,
@@ -65,7 +61,6 @@ namespace Caterer_DB.Models.ViewModelServices
                                 }
                             }
                         }
-
                     }
 
                     fragenViewModel.Add(new FragenViewModel()
@@ -76,7 +71,6 @@ namespace Caterer_DB.Models.ViewModelServices
                         GegebeneAntwort = antwortResultId,
                         IstMultiSelect = frage.IstMultiSelect
                     });
-
                 }
 
                 FragenNachThemengebiet fragenNachThemengebiet = new FragenNachThemengebiet()
@@ -89,7 +83,6 @@ namespace Caterer_DB.Models.ViewModelServices
             }
 
             return bearbeiteFragebogenViewModel;
-
         }
 
         public List<int> Map_BearbeiteFragebogenViewModel_BenutzerResultSet(BearbeiteFragebogenViewModel bearbeitefragebogenviewmodel)
@@ -105,7 +98,6 @@ namespace Caterer_DB.Models.ViewModelServices
                         {
                             antwortIDs.Add(antwort.AntwortId);
                         }
-
                     }
                 }
             }

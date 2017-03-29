@@ -11,7 +11,6 @@ namespace Caterer_DB.Tests.Business
 {
     public class BenutzerGruppeServiceTest
     {
-
         [TestFixture]
         public class RechteGruppeServiceTests
         {
@@ -78,5 +77,4 @@ namespace Caterer_DB.Tests.Business
             }
         }
     }
-
 }

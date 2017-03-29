@@ -7,8 +7,6 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
 
-
-
 namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
 {
     [TestFixture]
@@ -28,7 +26,6 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
         [Test]
         public void Map_CreateRechterGruppeViewModel_RechteGruppe_Test()
         {
-
             //Assert
             var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
             var createRechteGruppeViewModel = Fixture.Build<CreateRechteGruppeViewModel>().Create();
@@ -41,7 +38,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
             //Act
             var result = rechteGruppeViewModelService.Map_CreateRechteGruppeViewModel_RechteGruppe(createRechteGruppeViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(rechteGruppe.GetType(), result.GetType());
         }
@@ -49,7 +46,6 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
         [Test]
         public void Map_EditRechteGruppeViewModel_RechteGruppe_Test()
         {
-
             //Assert
             var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
             var editRechteGruppeViewModel = Fixture.Build<EditRechteGruppeViewModel>().Create();
@@ -62,7 +58,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
             //Act
             var result = rechteGruppeViewModelService.Map_EditRechteGruppeViewModel_RechteGruppe(editRechteGruppeViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(rechteGruppe.GetType(), result.GetType());
         }
@@ -70,7 +66,6 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
         [Test]
         public void Map_DeleteRechteGruppeViewModel_RechteGruppe_Test()
         {
-
             //Assert
             var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
             var deleteRechteGruppeViewModel = Fixture.Build<DeleteRechteGruppeViewModel>().Create();
@@ -83,7 +78,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
             //Act
             var result = rechteGruppeViewModelService.Map_DeleteRechteGruppeViewModel_RechteGruppe(deleteRechteGruppeViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(rechteGruppe.GetType(), result.GetType());
         }
@@ -103,7 +98,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
             //Act
             var result = rechteGruppeViewModelService.Map_RechteGruppe_EditRechteGruppeViewModel(rechteGruppe);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(editRechteGruppeViewModel.GetType(), result.GetType());
         }
@@ -123,7 +118,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
             //Act
             var result = rechteGruppeViewModelService.Map_RechteGruppe_DetailsRechteGruppeViewModel(rechteGruppe);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(detailsRechteGruppeViewModel.GetType(), result.GetType());
         }
@@ -143,7 +138,7 @@ namespace Caterer_DB.Tests.RechteGruppenViewModelServiceTest
             //Act
             var result = rechteGruppeViewModelService.Map_RechteGruppe_DeleteRechteGruppeViewModel(rechteGruppe);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(deleteRechteGruppeViewModel.GetType(), result.GetType());
         }

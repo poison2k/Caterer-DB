@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using DataAccess.Context;
-using DataAccess.Model;
+﻿using Business.Interfaces;
 using Caterer_DB.Interfaces;
-using Business.Interfaces;
 using Caterer_DB.Models;
+using System;
+using System.Net;
+using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
-
     [Authorize]
     public class AntwortController : BaseController
     {
@@ -59,7 +51,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Antworts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -93,7 +85,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Antworts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -133,6 +125,5 @@ namespace Caterer_DB.Controllers
             AntwortService.RemoveAntwort(Convert.ToInt32(id));
             return RedirectToAction("Index");
         }
-
     }
 }

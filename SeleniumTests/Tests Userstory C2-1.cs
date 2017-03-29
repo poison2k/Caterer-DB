@@ -3,17 +3,15 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Services;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_C2_1")]
     public class Userstory_C2_1 : TestInitialize
     {
-
         [Test]
         public void PersDatenÄndern()
-        //T_C2-1_F01_B_001 
+        //T_C2-1_F01_B_001
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
@@ -21,7 +19,6 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Eigene_Daten)).Click();
-            
 
             //Leeren aller Daten
             TestTools.Daten_In_Textbox_Eingeben("", ObjektIDs_NutzerDaten.Firmanname, driver);
@@ -127,12 +124,11 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
         public void PersDatenÄndern2()
-        //T_C2-1_F02_B_001 
+        //T_C2-1_F02_B_001
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
@@ -220,7 +216,6 @@ namespace SeleniumTests
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Firmanname, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -354,8 +349,6 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.PW_Änderung_Erfolgreich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Allgemein.Passwort_Feld, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
-
     }
 }

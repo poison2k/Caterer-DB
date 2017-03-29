@@ -18,8 +18,5 @@ namespace Caterer_DB.Models
 
         [Required]
         public int SmtpPort { get; set; }
-
-
-
     }
 }

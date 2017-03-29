@@ -1,18 +1,17 @@
 ﻿using AutoMapper;
 using Business.Interfaces;
+using Business.Services;
 using Common.Interfaces;
 using DataAccess.Interfaces;
 using DataAccess.Model;
+using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using System.Linq;
-using Moq;
-using Business.Services;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BusinessBenutzerServiceTest
 {
-
     [TestFixture]
     public class BusinessBenutzerServiceTest
     {
@@ -67,11 +66,7 @@ namespace BusinessBenutzerServiceTest
             MockMailService = mockMailService.Object;
 
             BenutzerService = new BenutzerService(MockBenutzerRepository, MockMailService, MockBenutzerGruppeService, MockMD5Hash);
-
-
-
         }
-
 
         [Test]
         public void SearchUserById_Test()
@@ -84,7 +79,6 @@ namespace BusinessBenutzerServiceTest
             //Assert
             Assert.IsNotNull(result.GetType());
             Assert.AreEqual(1, result.BenutzerId);
-
         }
 
         [Test]
@@ -126,14 +120,13 @@ namespace BusinessBenutzerServiceTest
             Assert.IsNotEmpty(result);
         }
 
-
         [Test]
         public void FindAllMitarbeiterWithPaginng_Test()
         {
             //Assert
 
             //Act
-            var result = BenutzerService.FindAllMitarbeiterWithPaging(1,10,"test");
+            var result = BenutzerService.FindAllMitarbeiterWithPaging(1, 10, "test");
 
             //Assert
             Assert.IsNotNull(result);
@@ -153,14 +146,12 @@ namespace BusinessBenutzerServiceTest
 
             //Assert
             Assert.AreEqual(true, result);
-
         }
 
         [Test]
         public void CheckEmailForRegistration_SearchUserByEMailReturnsObject_Test()
         {
             //Assert
-
 
             //Act
             var result = BenutzerService.CheckEmailForRegistration("test@test.de");
@@ -169,14 +160,13 @@ namespace BusinessBenutzerServiceTest
             Assert.AreEqual(false, result);
         }
 
-
         [Test]
-        public void  VerifyRegistration_BenutzerAndVerifyOK_verifyCodeGuilty_Test()
+        public void VerifyRegistration_BenutzerAndVerifyOK_verifyCodeGuilty_Test()
         {
             //Assert
 
             //Act
-            var result = BenutzerService.VerifyRegistration("1","TestHash");
+            var result = BenutzerService.VerifyRegistration("1", "TestHash");
 
             //Assert
             Assert.AreEqual(true, result);
@@ -205,7 +195,6 @@ namespace BusinessBenutzerServiceTest
             //Assert
             Assert.AreEqual(false, result);
         }
-
 
         [Test]
         public void VerifyPasswordChange_BenutzerAndVerifyOK_verifyCodeGuilty_Test()
@@ -245,16 +234,14 @@ namespace BusinessBenutzerServiceTest
 
         [Test]
         public void GetMitarbeiterCount_Test()
-        { 
+        {
             //Assert
 
             //Act
             var result = BenutzerService.GetMitarbeiterCount();
 
             //Assert
-            Assert.AreEqual(10,result);
-
+            Assert.AreEqual(10, result);
         }
-
     }
 }

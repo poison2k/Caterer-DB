@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace Caterer_DB.Models
 {
-
     public class CreateMailViewModel
     {
         public string Absender { get; set; }
@@ -18,6 +14,4 @@ namespace Caterer_DB.Models
         public int Port { get; set; }
         public List<string> FehlerListe { get; set; }
     }
-
-
 }

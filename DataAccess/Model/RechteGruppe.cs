@@ -7,7 +7,6 @@ namespace DataAccess.Model
     [Table("RechteGruppen")]
     public class RechteGruppe
     {
-
         [Key]
         public int RechteVerwaltungsGruppeId { get; set; }
 
@@ -17,7 +16,5 @@ namespace DataAccess.Model
         public bool Löschbar { get; set; }
 
         public virtual List<Recht> Rechte { get; set; }
-
     }
 }
-

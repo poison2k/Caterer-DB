@@ -8,11 +8,10 @@
 
 <h2>Edit</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Frage</h4>
         <hr />
@@ -30,7 +29,7 @@
         @for (int i = 0; i <  Model.Antworten.Count ; i++)
         {
             @Html.HiddenFor(Model => Model.Antworten[i].AntwortId)
-            @Html.TextBoxFor(Model => Model.Antworten[i].Bezeichnung)<br/>
+            @Html.TextBoxFor(Model => Model.Antworten[i].Bezeichnung)<br />
 
         }
 

@@ -1,17 +1,13 @@
 ﻿using AutoMapper;
+using Business.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
+using Common.Interfaces;
 using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
-using Caterer_DB.Interfaces;
-using System.Collections.Generic;
-using Common.Interfaces;
-using System.Web.Mvc;
-using System.Web.Helpers;
-using Business.Interfaces;
 
 namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
 {
@@ -38,7 +34,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void IsNotNull_AnmeldenBenutzerViewModel_Benutzer_Test()
         {
-
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
@@ -51,7 +46,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzer);
 
-            //Assert 
+            //Assert
 
             Assert.IsNotNull(anmeldenBenutzerViewModel.Nachname, result.Nachname);
         }
@@ -59,7 +54,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void IsNull_AnmeldenBenutzerViewModel_Benutzer_Test()
         {
-
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             benutzer = null;
@@ -75,7 +69,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzer);
 
-            //Assert 
+            //Assert
 
             Assert.IsNull(anmeldenBenutzerViewModel.Nachname, result.Nachname);
         }
@@ -83,7 +77,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void IsNotNull_AnmeldenBenutzerViewModel_ID_Test()
         {
-
             //Assert
             var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
             var mockMapper = new Mock<IMapper>();
@@ -97,7 +90,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(1);
 
-            //Assert 
+            //Assert
 
             Assert.IsNotNull(anmeldenBenutzerViewModel.Nachname, result.Nachname);
         }
@@ -105,7 +98,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void Map_CreateMitarbeiterViewModel_Benutzer_Test()
         {
-
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             var createMitarbeiterViewModel = Fixture.Build<CreateMitarbeiterViewModel>().Create();
@@ -118,7 +110,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_CreateMitarbeiterViewModel_Benutzer(createMitarbeiterViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(benutzer.GetType(), result.GetType());
         }
@@ -126,7 +118,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void Map_EditBenutzerViewModel_Benutzer_Test()
         {
-
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             var editBenutzerViewModel = Fixture.Build<EditBenutzerViewModel>().Create();
@@ -139,7 +130,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(benutzer.GetType(), result.GetType());
         }
@@ -147,7 +138,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void Map_MyDataBenutzerViewModel_Benutzer_Test()
         {
-
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             var myDataBenutzerViewModel = Fixture.Build<MyDataBenutzerViewModel>().Create();
@@ -160,7 +150,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(benutzer.GetType(), result.GetType());
         }
@@ -168,7 +158,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void Map_DeleteBenutzerViewModel_Benutzer_Test()
         {
-
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             var deleteBenutzerViewModel = Fixture.Build<DeleteBenutzerViewModel>().Create();
@@ -181,7 +170,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_DeleteBenutzerViewModel_Benutzer(deleteBenutzerViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(benutzer.GetType(), result.GetType());
         }
@@ -201,7 +190,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_Benutzer_EditBenutzerViewModel(benutzer);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(editBenutzerViewModel.GetType(), result.GetType());
         }
@@ -221,7 +210,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(benutzer);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(myDataBenutzerViewModel.GetType(), result.GetType());
         }
@@ -241,7 +230,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_Benutzer_DetailsBenutzerViewModel(benutzer);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(detailsBenutzerViewModel.GetType(), result.GetType());
         }
@@ -261,7 +250,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_Benutzer_DeleteBenutzerViewModel(benutzer);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(deleteBenutzerViewModel.GetType(), result.GetType());
         }
@@ -284,7 +273,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(Fixture.Build<RegisterBenutzerViewModel>().Create());
 
-            //Assert 
+            //Assert
 
             Assert.IsNotNull(result.Nachname, result.Nachname);
         }
@@ -292,7 +281,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void CreateNewRegisterBenutzerViewModel_Test()
         {
-
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             var createNewRegisterBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
@@ -305,7 +293,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.CreateNewRegisterBenutzerViewModel();
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(createNewRegisterBenutzerViewModel.GetType(), result.GetType());
         }
@@ -313,7 +301,6 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         [Test]
         public void AddListsToRegisterViewModel_Test()
         {
-
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
             var registerBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
@@ -323,7 +310,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             //Act
             var result = benutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(registerBenutzerViewModel.GetType(), result.GetType());
         }

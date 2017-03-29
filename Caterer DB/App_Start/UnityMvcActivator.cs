@@ -1,6 +1,6 @@
+using Microsoft.Practices.Unity.Mvc;
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.Practices.Unity.Mvc;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Caterer_DB.App_Start.UnityWebActivator), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(Caterer_DB.App_Start.UnityWebActivator), "Shutdown")]
@@ -11,7 +11,7 @@ namespace Caterer_DB.App_Start
     public static class UnityWebActivator
     {
         /// <summary>Integrates Unity when the application starts.</summary>
-        public static void Start() 
+        public static void Start()
         {
             var container = UnityConfig.GetConfiguredContainer();
 

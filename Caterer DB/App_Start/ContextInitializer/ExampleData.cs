@@ -1,9 +1,8 @@
-﻿using DataAccess.Context;
+﻿using Caterer_DB.Resources;
+using DataAccess.Context;
 using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
-using Caterer_DB.Resources;
-using System;
 
 namespace Caterer_DB.App_Start.ContextInitializer
 {
@@ -18,14 +17,10 @@ namespace Caterer_DB.App_Start.ContextInitializer
             CreateConfig(db);
             CreateKategorie(db);
             CreateFragen(db);
-
         }
-
-
 
         private static void CreateRechte(CatererContext db)
         {
-
             db.Recht.AddRange(new List<Recht>()
             {
                 new Recht() { Bezeichnung = RechteResource.TestBlock1, Beschreibung = "Zeigt Block 1 an " },
@@ -62,17 +57,12 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 new Recht() { Bezeichnung = RechteResource.IndexKategorie, Beschreibung = "Mitarbeiter kann Kategorien Übersicht sehen"  },
                 new Recht() { Bezeichnung = RechteResource.CreateKategorie, Beschreibung = "Mitarbeiter kann Kategorien anlegen"  },
                 new Recht() { Bezeichnung = RechteResource.DeleteKategorie, Beschreibung = "Mitarbeiter kann Kategorien löschen"  }
-
-
             });
             db.SaveChanges();
-
         }
-
 
         private static void CreateConfig(CatererContext db)
         {
-
             Config config = db.Config.Add(new Config
             {
                 UserNameForSMTPServer = "Hoersaal10@gmail.com",
@@ -81,7 +71,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 SmtpServer = "smtp.gmail.com"
             });
             db.SaveChanges();
-
         }
 
         private static void CreateRechteGruppenData(CatererContext db)
@@ -91,7 +80,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Bezeichnung = "AdminRechte",
                 Rechte = db.Recht.ToList()
             });
-
 
             RechteGruppe CatererRechte = db.RechteGruppe.Add(new RechteGruppe
             {
@@ -127,10 +115,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
             db.SaveChanges();
         }
 
-
         private static void CreateBenutzerGruppenData(CatererContext db)
         {
-
             BenutzerGruppe Admin = db.BenutzerGruppe.Add(new BenutzerGruppe
             {
                 Bezeichnung = BenutzerGruppenResource.Administrator,
@@ -151,7 +137,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
             db.SaveChanges();
         }
-
 
         private static void CreateUserData(CatererContext db)
         {
@@ -176,7 +161,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
-
             });
 
             Benutzer caterer1 = db.Benutzer.Add(new Benutzer
@@ -200,7 +184,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
-
             });
 
             Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer
@@ -293,7 +276,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
-
             });
 
             for (int i = 0; i < 20; i++)
@@ -320,7 +302,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     PasswortZeitstempel = System.DateTime.Now,
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Mitarbeiter) }
                 });
-
             }
 
             for (int i = 2; i < 20; i++)
@@ -347,12 +328,10 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     PasswortZeitstempel = System.DateTime.Now,
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
-
             }
 
             db.SaveChanges();
         }
-
 
         private static void CreateKategorie(CatererContext db)
         {
@@ -370,7 +349,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
             });
             db.SaveChanges();
         }
-
 
         public static void CreateFragen(CatererContext db)
         {
@@ -439,11 +417,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 6"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 6"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 6"}
-
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
-
-
             });
 
             db.Frage.Add(new Frage()
@@ -454,11 +429,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 7"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 7"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 7"}
-
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
-
-
             });
             db.Frage.Add(new Frage()
             {
@@ -468,11 +440,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 8"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 8"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 8"}
-
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
-
-
             });
             db.Frage.Add(new Frage()
             {
@@ -482,11 +451,9 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 9"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 9"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 9"}
-
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
                 IstVeröffentlicht = true
-
             });
             db.Frage.Add(new Frage()
             {
@@ -496,11 +463,9 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 10"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 10"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 10"}
-
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
                 IstVeröffentlicht = true
-
             });
 
             db.Frage.Add(new Frage()
@@ -525,7 +490,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
                 IstVeröffentlicht = true
-        });
+            });
 
             db.Frage.Add(new Frage()
             {
@@ -537,10 +502,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 },
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
                 IstVeröffentlicht = true
-
             });
-
-
         }
     }
 }

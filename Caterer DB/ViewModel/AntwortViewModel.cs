@@ -1,9 +1,5 @@
 ﻿using DataAccess.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Caterer_DB.Models
 {
@@ -11,6 +7,7 @@ namespace Caterer_DB.Models
     {
         [Key]
         public int AntwortId { get; set; }
+
         [Required]
         public string Bezeichnung { get; set; }
 
@@ -21,6 +18,7 @@ namespace Caterer_DB.Models
     {
         [Key]
         public int AntwortId { get; set; }
+
         [Required]
         public string Bezeichnung { get; set; }
 
@@ -31,6 +29,7 @@ namespace Caterer_DB.Models
     {
         [Key]
         public int AntwortId { get; set; }
+
         [Required]
         public string Bezeichnung { get; set; }
 
@@ -41,6 +40,7 @@ namespace Caterer_DB.Models
     {
         [Key]
         public int AntwortId { get; set; }
+
         [Required]
         public string Bezeichnung { get; set; }
 

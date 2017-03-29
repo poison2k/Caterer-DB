@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Caterer_DB.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Security.Principal;
-using Caterer_DB.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Principal;
 
 namespace Caterer_DB.Models
 {
     public class UserModel : IPrincipal
     {
-
         public UserModel(string kurzname, int benutzerId, ILoginService anmeldeService)
         {
             BenutzerId = benutzerId;
@@ -28,7 +27,6 @@ namespace Caterer_DB.Models
         public string Vorname { get; set; }
 
         public string Nachname { get; set; }
-
 
         [Required]
         [DataType(DataType.Password)]

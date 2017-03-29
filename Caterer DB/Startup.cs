@@ -1,8 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-
-
 [assembly: OwinStartupAttribute(typeof(Caterer_DB.Startup))]
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "Web.config", Watch = true)]
 

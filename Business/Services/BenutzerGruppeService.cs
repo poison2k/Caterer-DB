@@ -1,11 +1,7 @@
 ﻿using Business.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccess.Model;
 using DataAccess.Interfaces;
+using DataAccess.Model;
+using System.Collections.Generic;
 
 namespace Business.Services
 {
@@ -16,7 +12,6 @@ namespace Business.Services
         public BenutzerGruppeService(IBenutzerGruppeRepository benutzerGruppeRepository)
         {
             BenutzerGruppeRepository = benutzerGruppeRepository;
-
         }
 
         public void AddBenutzerGruppe(BenutzerGruppe benutzerGruppe)

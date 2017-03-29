@@ -54,17 +54,14 @@ namespace SeleniumTests
         public void TeardownTest()
         {
         }
-
     }
 }
-
 
 //using NUnit.Framework;
 //using OpenQA.Selenium;
 //using OpenQA.Selenium.Support.UI;
 //using SeleniumTests.Services;
 //using System;
-
 
 //namespace SeleniumTests
 //{

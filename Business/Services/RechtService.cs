@@ -1,23 +1,17 @@
 ﻿using Business.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccess.Model;
 using DataAccess.Interfaces;
+using DataAccess.Model;
+using System.Collections.Generic;
 
 namespace Business.Services
 {
     public class RechtService : IRechtService
     {
-
         public IRechtRepository RechtRepository { get; set; }
-        
+
         public RechtService(IRechtRepository rechtRepository)
         {
             RechtRepository = rechtRepository;
-
         }
 
         public void AddRecht(Recht recht)

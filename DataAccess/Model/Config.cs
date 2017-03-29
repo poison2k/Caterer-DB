@@ -2,10 +2,8 @@
 
 namespace DataAccess.Model
 {
-
     public class Config
     {
-
         [Key]
         public int ConfigId { get; set; }
 

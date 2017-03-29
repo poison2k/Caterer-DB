@@ -20,7 +20,7 @@
                 <div class="well well-lg">
                     <div>
                         <dl class="dl-horizontal text-center">
-                          
+
                             <dt>
                                 @Html.DisplayNameFor(model => model.Anrede)
                             </dt>
@@ -44,11 +44,11 @@
                             <dd>
                                 @Html.DisplayFor(model => model.Nachname)
                             </dd>
-                            </br>                                                   
+                            </br>
                             <dt>
                                 @Html.DisplayNameFor(model => model.Telefon)
                             </dt>
-                            
+
                             <dd>
                                 @Html.DisplayFor(model => model.Telefon)
                             </dd>
@@ -73,7 +73,6 @@
                                 <div><i class="glyphicon glyphicon-remove"></i></div>
                                }
                             </dd>
-                          
                         </dl>
                     </div>
                 </div>
@@ -86,7 +85,7 @@
     <div class="col-md-4 col-md-offset-4 text-center">
         <ul class="list-unstyled list-inline ">
             <li>
-                <a class="btn btn-default" id="btnEdit" href="@Url.Action("Edit", "Benutzer", new {id = Model.BenutzerId})" >
+                <a class="btn btn-default" id="btnEdit" href="@Url.Action("Edit", "Benutzer", new {id = Model.BenutzerId})">
                     <i class="glyphicon glyphicon-pencil"></i> Bearbeiten
                 </a>
             </li>
@@ -106,5 +105,3 @@
 <br />
 <br />
 <br />
-
-

@@ -13,15 +13,10 @@
 </div>
 <br />
 
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-
-
-    
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.BenutzerId)
     @Html.HiddenFor(model => model.Mail)
@@ -175,7 +170,6 @@
                         </div>
                         <br />
                     </div>
-
                 </div>
 
                 <div class="col-md-6">
@@ -248,9 +242,6 @@
                             <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
                                 <i class="glyphicon glyphicon-trash"></i> Konto löschen
                             </button>
-
-
-
                         </li>
                     </ul>
                 </div>
@@ -279,7 +270,6 @@
     </div>
 
 }
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

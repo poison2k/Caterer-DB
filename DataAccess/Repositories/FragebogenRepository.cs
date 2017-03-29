@@ -1,10 +1,7 @@
-﻿using System;
+﻿using DataAccess.Interfaces;
+using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccess.Interfaces;
-using DataAccess.Model;
 
 namespace DataAccess.Repositories
 {
@@ -22,7 +19,6 @@ namespace DataAccess.Repositories
             return Db.Fragebogen.Where(x => x.FragebogenId == id).SingleOrDefault();
         }
 
-     
         public List<Fragebogen> SearchFragebogenByBenutzer(Benutzer benutzer)
         {
             return Db.Fragebogen.Where(x => x.Benutzer == benutzer).ToList();

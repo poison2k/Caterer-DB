@@ -1,14 +1,12 @@
 ﻿using NUnit.Framework;
 using SeleniumTests.Services;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_U1_7")]
     public class Userstory_U1_7 : TestInitialize
     {
-
         [Test]
         public void AGBAufruf1()
         //T_U1-7_AL_B_01
@@ -19,7 +17,6 @@ namespace SeleniumTests
             TestTools.AGBFußzeile(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -32,7 +29,6 @@ namespace SeleniumTests
             TestTools.AGBDropdownLogout(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -48,6 +44,5 @@ namespace SeleniumTests
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
-
     }
 }

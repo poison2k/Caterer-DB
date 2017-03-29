@@ -4,28 +4,26 @@ using UnityAutoMoq;
 
 namespace Caterer_DB.Tests
 {
-
     public abstract class TestBase
+    {
+        private bool registered;
+
+        protected UnityAutoMoqContainer Container { get; private set; }
+
+        protected abstract UserModel AktuellerNutzer { get; }
+
+        [TestInitialize]
+        public void setUpBase()
         {
-            private bool registered;
-
-            protected UnityAutoMoqContainer Container { get; private set; }
-
-            protected abstract UserModel AktuellerNutzer { get; }
-
-            [TestInitialize]
-            public void setUpBase()
+            if (!registered)
             {
-                if (!registered)
-                {
-                    var container = new UnityAutoMoqContainer();
-                    Container = RegisterTypes(container);
+                var container = new UnityAutoMoqContainer();
+                Container = RegisterTypes(container);
 
-                    registered = true;
-                }
+                registered = true;
             }
-
-           protected abstract UnityAutoMoqContainer RegisterTypes(UnityAutoMoqContainer container);
         }
-    
+
+        protected abstract UnityAutoMoqContainer RegisterTypes(UnityAutoMoqContainer container);
+    }
 }

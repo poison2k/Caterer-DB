@@ -1,7 +1,5 @@
-﻿
-using DataAccess.Model;
+﻿using DataAccess.Model;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Caterer_DB.Models
 {
@@ -27,9 +25,4 @@ namespace Caterer_DB.Models
         public string Name { get; set; }
         public List<FragenViewModel> Questions { get; set; }
     }
-
-   
-
-  
-
 }

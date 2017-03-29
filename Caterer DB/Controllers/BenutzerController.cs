@@ -23,7 +23,6 @@ namespace Caterer_DB.Controllers
             LoginService = loginService;
             BenutzerService = benutzerService;
             BenutzerViewModelService = benutzerViewModelService;
-
         }
 
         // GET: Benutzer
@@ -37,7 +36,6 @@ namespace Caterer_DB.Controllers
                 , BenutzerService.GetMitarbeiterCount()
                 , aktuelleSeite
                 , seitenGrösse));
-
         }
 
         // GET: Benutzer
@@ -51,7 +49,6 @@ namespace Caterer_DB.Controllers
                 , BenutzerService.GetCatererCount()
                 , aktuelleSeite
                 , seitenGrösse));
-
         }
 
         // GET: Benutzer/Details/5
@@ -156,7 +153,6 @@ namespace Caterer_DB.Controllers
             }
 
             return View(BenutzerViewModelService.AddListsToCreateCatererViewModel(createCatererViewModel));
-
         }
 
         // GET: Benutzer/Edit/5
@@ -199,7 +195,6 @@ namespace Caterer_DB.Controllers
             return View(BenutzerViewModelService.AddListsToEditViewModel(editBenutzerViewModel));
         }
 
-
         // GET: Benutzer/MeineDaten/5
         [CustomAuthorize(Rights = RechteResource.MeineDatenMitarbeiter)]
         public ActionResult MeineDaten(int? id)
@@ -235,13 +230,11 @@ namespace Caterer_DB.Controllers
                     LoginService.Abmelden();
                     BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_MeineDatenBenutzerViewModel_Benutzer(meineDatenBenutzerViewModel).BenutzerId);
                     TempData["isAccountDeleted"] = true;
-
                 }
                 return RedirectToAction("Index", "Home");
             }
             return View(BenutzerViewModelService.AddListsToMeineDatenViewModel(meineDatenBenutzerViewModel));
         }
-
 
         // GET: Benutzer/Mydata/5
         public ActionResult MyData(int? id)
@@ -291,18 +284,15 @@ namespace Caterer_DB.Controllers
                 {
                     BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
                     TempData["isSaved"] = true;
-
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
                     LoginService.Abmelden();
                     BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel).BenutzerId);
                     TempData["isAccountDeleted"] = true;
-
                 }
 
                 return RedirectToAction("Index", "Home");
-
             }
             return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
         }
@@ -318,16 +308,13 @@ namespace Caterer_DB.Controllers
                 {
                     BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
                     //TempData["isSaved"] = true;
-
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
                     BenutzerService.RemoveCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel).BenutzerId);
                     //TempData["isAccountDeleted"] = true;
-
                 }
                 return RedirectToAction("IndexCaterer", "Benutzer");
-
             }
             return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
         }

@@ -1,12 +1,10 @@
-﻿
-@using Caterer_DB.Resources
+﻿@using Caterer_DB.Resources
 
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
-
 
         <ul class="nav navbar-nav navbar-right">
             <li class="text-center">
@@ -28,7 +26,6 @@
                     }
                     <li>@Html.ActionLink("Passwort ändern", "PasswordChange", "Account", new { Id = User.BenutzerId }, null)</li>
                     <li><a id="Ausloggen" href="javascript:document.getElementById('logoutForm').submit()">Ausloggen</a></li>
-                    
                 </ul>
             </li>
 
@@ -86,7 +83,6 @@ else
                 <li>@Html.ActionLink("Registrieren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLinkhead" })</li>
             </ul>
         </li>
-
 
         <li class="dropdown" , id="DropdownServiceLogout">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">

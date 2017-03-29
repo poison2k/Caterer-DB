@@ -26,22 +26,21 @@ namespace Caterer_DB.Tests.Benutzergruppentest
         [Test]
         public void Map_CreateBenutzerGruppeViewModel_BenutzerGruppe_Test()
         {
-             
             //Assert
             var benutzerGruppe = Fixture.Build<BenutzerGruppe>().Create();
             var createBenutzerGruppeViewModel = Fixture.Build<CreateBenutzerGruppeViewModel>().Create();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<BenutzerGruppe>(It.IsAny<CreateBenutzerGruppeViewModel>())).Returns(benutzerGruppe);
             MockMapper = mockMapper.Object;
-            
+
             var benutzerGruppenViewModelService = new BenutzerGruppeViewModelService();
 
             //Act
             var result = benutzerGruppenViewModelService.Map_CreateBenutzerGruppeViewModel_BenutzerGruppe(createBenutzerGruppeViewModel);
 
-            //Assert 
+            //Assert
 
-            Assert.AreEqual(benutzerGruppe.GetType(), result.GetType());            
+            Assert.AreEqual(benutzerGruppe.GetType(), result.GetType());
         }
 
         [Test]
@@ -53,13 +52,13 @@ namespace Caterer_DB.Tests.Benutzergruppentest
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<BenutzerGruppe>(It.IsAny<EditBenutzerGruppeViewModel>())).Returns(benutzerGruppe);
             MockMapper = mockMapper.Object;
-            
+
             var benutzerGruppenViewModelService = new BenutzerGruppeViewModelService();
 
             //Act
             var result = benutzerGruppenViewModelService.Map_EditBenutzerGruppeViewModel_BenutzerGruppe(editBenutzerGruppeViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(benutzerGruppe.GetType(), result.GetType());
         }
@@ -73,13 +72,13 @@ namespace Caterer_DB.Tests.Benutzergruppentest
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<BenutzerGruppe>(It.IsAny<DeleteBenutzerGruppeViewModel>())).Returns(benutzerGruppe);
             MockMapper = mockMapper.Object;
-            
+
             var benutzerGruppenViewModelService = new BenutzerGruppeViewModelService();
 
             //Act
             var result = benutzerGruppenViewModelService.Map_DeleteBenutzerGruppeViewModel_BenutzerGruppe(deleteBenutzerGruppeViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(benutzerGruppe.GetType(), result.GetType());
         }
@@ -93,16 +92,15 @@ namespace Caterer_DB.Tests.Benutzergruppentest
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<EditBenutzerGruppeViewModel>(It.IsAny<BenutzerGruppe>())).Returns(editBenutzerGruppeViewModel);
             MockMapper = mockMapper.Object;
-            
+
             var benutzerGruppeViewModelService = new BenutzerGruppeViewModelService();
 
             //Act
             var result = benutzerGruppeViewModelService.Map_BenutzerGruppe_EditBenutzerGruppeViewModel(benutzerGruppe);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(editBenutzerGruppeViewModel.GetType(), result.GetType());
-
         }
 
         [Test]
@@ -114,16 +112,15 @@ namespace Caterer_DB.Tests.Benutzergruppentest
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<DetailsBenutzerGruppeViewModel>(It.IsAny<BenutzerGruppe>())).Returns(detailsBenutzerGruppeViewModel);
             MockMapper = mockMapper.Object;
-            
+
             var benutzerGruppeViewModelService = new BenutzerGruppeViewModelService();
 
             //Act
             var result = benutzerGruppeViewModelService.Map_BenutzerGruppe_DetailsBenutzerGruppeViewModel(benutzerGruppe);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(detailsBenutzerGruppeViewModel.GetType(), result.GetType());
-
         }
 
         [Test]
@@ -135,16 +132,15 @@ namespace Caterer_DB.Tests.Benutzergruppentest
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<DeleteBenutzerGruppeViewModel>(It.IsAny<BenutzerGruppe>())).Returns(deleteBenutzerGruppeViewModel);
             MockMapper = mockMapper.Object;
-            
+
             var benutzerGruppeViewModelService = new BenutzerGruppeViewModelService();
 
             //Act
             var result = benutzerGruppeViewModelService.Map_BenutzerGruppe_DeleteBenutzerGruppeViewModel(benutzerGruppe);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(deleteBenutzerGruppeViewModel.GetType(), result.GetType());
-
         }
     }
 }

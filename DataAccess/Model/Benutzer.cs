@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccess.Model
 {
-    
     public class Benutzer
     {
         [Key]
@@ -62,13 +61,12 @@ namespace DataAccess.Model
         //Fragebogen
         public string _AntwortIDs { get; set; }
 
-        
-
         [NotMapped]
         public virtual List<int> AntwortIDs
         {
             get
-            {  if (_AntwortIDs != "" && _AntwortIDs != null)
+            {
+                if (_AntwortIDs != "" && _AntwortIDs != null)
                 {
                     var test = _AntwortIDs.Split(',');
                     var ids = new List<int>();
@@ -77,9 +75,9 @@ namespace DataAccess.Model
                         ids.Add(Convert.ToInt32(id));
                     }
                     return ids;
-
                 }
-                else {                 
+                else
+                {
                 }
                 return new List<int>();
             }
@@ -87,15 +85,16 @@ namespace DataAccess.Model
             {
                 var ids = value;
                 _AntwortIDs = "";
-                for (int i = 0; i < ids.Count; i++) {
+                for (int i = 0; i < ids.Count; i++)
+                {
                     if (!(i == ids.Count - 1))
                     {
-                        _AntwortIDs = _AntwortIDs + ids[i]+",";
+                        _AntwortIDs = _AntwortIDs + ids[i] + ",";
                     }
-                    else {
+                    else
+                    {
                         _AntwortIDs = _AntwortIDs + ids[i];
                     }
-
                 }
             }
         }

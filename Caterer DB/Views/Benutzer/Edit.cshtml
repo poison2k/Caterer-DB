@@ -19,12 +19,9 @@
 {
     @Html.AntiForgeryToken()
 
-
-
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.BenutzerId)
     @Html.HiddenFor(model => model.Mail)
-
 
     <div class="row">
         <div class="col-md-4"></div>
@@ -81,7 +78,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -151,8 +147,6 @@
             </div>
         </div>
 }
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

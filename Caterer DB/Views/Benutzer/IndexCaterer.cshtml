@@ -77,7 +77,6 @@
                                             {
                                                 <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Postleitzahl"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Postleitzahl)  </a>
                                             }
-
                                         </th>
                                         <th>
                                             @if (ViewBag.Sortierrung == "Ort")
@@ -107,7 +106,7 @@
 
                                             <td align="center">
                                                 <a class="btn btn-default" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
-                                                <a class="btn btn-default" href="@Url.Action("EditCaterer", "Benutzer", new { id = item.BenutzerId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>                         
+                                                <a class="btn btn-default" href="@Url.Action("EditCaterer", "Benutzer", new { id = item.BenutzerId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
                                              </td>
                                         </tr>
                                     }

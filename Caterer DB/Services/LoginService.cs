@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Caterer_DB.Interfaces;
+using Caterer_DB.Models;
+using DataAccess.Interfaces;
+using DataAccess.Model;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
-using Newtonsoft.Json;
-using DataAccess.Interfaces;
-using DataAccess.Model;
-using Caterer_DB.Models;
-using Caterer_DB.Interfaces;
-using System.Web.Helpers;
 
 namespace Caterer_DB.Services
 {
@@ -20,12 +20,9 @@ namespace Caterer_DB.Services
         public LoginService(ILoginRepository loginRepository)
         {
             LoginRepository = loginRepository;
-
         }
 
         public ILoginRepository LoginRepository { get; private set; }
-
-
 
         /// <returns>
         ///     1 = Login Erfolgreich; 2 = Nutzergruppen nicht vorhanden; 3 = Passwort falsch; 4 = Fehler beim lesen des Users
@@ -36,7 +33,8 @@ namespace Caterer_DB.Services
             try
             {
                 Benutzer user = LoginRepository.LadeNutzerMitEmail(email);
-                if (!(Crypto.VerifyHashedPassword(user.Passwort,passwort))) {
+                if (!(Crypto.VerifyHashedPassword(user.Passwort, passwort)))
+                {
                     return LoginSuccessLevel.PasswortFalsch;
                 }
 
@@ -60,7 +58,6 @@ namespace Caterer_DB.Services
             return LoginSuccessLevel.Unbekannt;
         }
 
-
         public void Abmelden()
         {
             FormsAuthentication.SignOut();
@@ -78,8 +75,6 @@ namespace Caterer_DB.Services
                     Vorname = user.Vorname,
                     Nachname = user.Nachname,
                     Email = user.Mail,
-                    
-                    
                 };
 
                 string benutzerDaten = JsonConvert.SerializeObject(serializeModel);
@@ -126,7 +121,7 @@ namespace Caterer_DB.Services
             List<string> gruppenBezeichnungen = new List<string>();
 
             foreach (var benutzergrp in benutzerGruppen)
-                    gruppenBezeichnungen.Add(benutzergrp.Bezeichnung);
+                gruppenBezeichnungen.Add(benutzergrp.Bezeichnung);
 
             return gruppenBezeichnungen;
         }
@@ -137,8 +132,6 @@ namespace Caterer_DB.Services
                 .GruppenFürBenutzer(benutzerId)
                 .Select(nutzergruppe => nutzergruppe.NutzerGruppeID).ToList();
         }
-
-
     }
 
     public class CustomAuthorizeAttribute : AuthorizeAttribute
@@ -182,9 +175,6 @@ namespace Caterer_DB.Services
 
                 if (String.IsNullOrEmpty(Users) && String.IsNullOrEmpty(Rights) && String.IsNullOrEmpty(Roles))
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Error", action = "ZugriffVerweigert" }));
-
-                
-
             }
             else
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));

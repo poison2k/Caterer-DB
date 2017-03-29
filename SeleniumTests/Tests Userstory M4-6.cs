@@ -3,14 +3,12 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Services;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_M4_6")]
     public class Userstory_M4_6 : TestInitialize
     {
-
         [Test]
         public void CatererAnlegen1()
         //T_M4-6_F04_B_001
@@ -138,14 +136,13 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen_Anzeigen_Neu, driver);
-            Assert.AreEqual(Hinweise.Fragen_Übersicht_Neu,TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht_Neu,driver));
+            Assert.AreEqual(Hinweise.Fragen_Übersicht_Neu, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht_Neu, driver));
 
             //Variante Fragen hinzufügen
             TestTools_Userstory_M4_6.Caterer_Übersicht_Aufrufen(driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragen_Hinzufügen, driver);
-           
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
@@ -233,10 +230,9 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragen_Hinzufügen, driver);
 
-
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void CatererAnlegen4()
         //T_M4-6_F07_B_001
@@ -330,10 +326,9 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragen_Hinzufügen, driver);
 
-
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void CatererAnlegen5()
         //T_M4-6_F08_B_001
@@ -424,9 +419,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragebogen, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Manage_Fragen_Hinzufügen, driver);
 
-
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
-
     }
 }

@@ -1,16 +1,12 @@
 ﻿using Caterer_DB.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
-
     [Authorize]
     public class MailController : BaseController
     {
@@ -28,12 +24,9 @@ namespace Caterer_DB.Controllers
             return View(erstelleMailViewModel);
         }
 
-
         //ToDo Dies ist nur ein Test-Controller, zur Überprüfung der Mail-Funktionalität
         public ActionResult KaisSpielwiese()
         {
-            
-
             return View();
         }
 
@@ -56,7 +49,6 @@ namespace Caterer_DB.Controllers
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = new NetworkCredential(createMailViewModel.UserName, createMailViewModel.Passwort);
 
-
                 smtpClient.Send(mail);
                 return View(createMailViewModel);
             }
@@ -66,6 +58,5 @@ namespace Caterer_DB.Controllers
                 return View(createMailViewModel);
             }
         }
-
     }
 }

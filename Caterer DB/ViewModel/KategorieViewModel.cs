@@ -1,10 +1,7 @@
 ﻿using DataAccess.Model;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Caterer_DB.Models
 {
@@ -25,7 +22,6 @@ namespace Caterer_DB.Models
         [Key]
         public int KategorieId { get; set; }
 
-
         [Required]
         [DisplayName(@"Kategorie")]
         public string Bezeichnung { get; set; }
@@ -40,17 +36,16 @@ namespace Caterer_DB.Models
         [DisplayName(@"Kategorie")]
         public string Bezeichnung { get; set; }
 
-        public List<Frage> Fragen {get;set;}
+        public List<Frage> Fragen { get; set; }
     }
 
     public class DeleteKategorieViewModel
     {
         [Key]
         public int KategorieId { get; set; }
+
         [Required]
         public string Bezeichnung { get; set; }
-
-
     }
 
     public class DetailsKategorieViewModel

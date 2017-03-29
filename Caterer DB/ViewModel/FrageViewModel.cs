@@ -1,12 +1,10 @@
 ﻿using DataAccess.Model;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Caterer_DB.Models
 {
-
-
     public class IndexFrageViewModel
     {
         [Key]
@@ -25,7 +23,6 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Mehrfachantwort")]
         public bool IstMultiSelect { get; set; }
-
     }
 
     public class CreateFrageViewModel
@@ -85,7 +82,7 @@ namespace Caterer_DB.Models
 
         public List<Antwort> Antworten { get; set; }
 
-        [DisplayName(@"Mehrfachantworten")]     
+        [DisplayName(@"Mehrfachantworten")]
         public bool IstMultiSelect { get; set; }
 
         [DisplayName(@"Kategorie")]
@@ -108,8 +105,5 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Mehrfachantworten")]
         public bool IstMultiSelect { get; set; }
-
     }
-
-    
 }

@@ -2,17 +2,15 @@
 using OpenQA.Selenium;
 using SeleniumTests.Services;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_C2_5")]
     public class Userstory_C2_5 : TestInitialize
     {
-
         [Test]
         public void DatenLöschen1()
-        //T_C2-5_F02_B_001 
+        //T_C2-5_F02_B_001
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
@@ -30,12 +28,11 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Eigene_Datenseite_Caterer, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
         public void DatenLöschen2()
-        //T_C2-5_F03_B_001 
+        //T_C2-5_F03_B_001
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
@@ -53,12 +50,11 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Eigene_Datenseite_Caterer, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
         public void DatenLöschen3()
-        //T_C2-5_F04_B_001 
+        //T_C2-5_F04_B_001
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
@@ -78,8 +74,6 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.LoginSeite_Email_PW_Fehler, TestTools.Label_Text_Zurückgeben("error2", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
-
     }
 }

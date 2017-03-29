@@ -1,15 +1,13 @@
 ﻿using DataAccess.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
 using DataAccess.Model;
+using System.Collections.Generic;
 using System.Data.Entity;
-using System;
+using System.Linq;
 
 namespace DataAccess.Repositories
 {
     public class FrageRepository : IFrageRepository
     {
-
         protected ICatererContext Db { get; }
 
         public FrageRepository(ICatererContext db)
@@ -24,7 +22,6 @@ namespace DataAccess.Repositories
 
         public List<List<Frage>> GetAllFragenSortetByKategorienInDifferntLists(List<Kategorie> kategorien)
         {
-
             var fragen = new List<List<Frage>>();
             foreach (Kategorie kategorie in kategorien)
             {
@@ -55,48 +52,55 @@ namespace DataAccess.Repositories
             var neueAntworten = new List<Antwort>();
             var deleteAntworten = new List<Antwort>();
             //Alte Antworten Löschen
-            foreach (Antwort antwort in test.Antworten) {
+            foreach (Antwort antwort in test.Antworten)
+            {
                 bool istVorhanden = false;
-                foreach (Antwort newAntwort in frage.Antworten) {
-                    if (newAntwort.AntwortId == antwort.AntwortId) {
+                foreach (Antwort newAntwort in frage.Antworten)
+                {
+                    if (newAntwort.AntwortId == antwort.AntwortId)
+                    {
                         istVorhanden = true;
                     }
                 }
-                if (istVorhanden) {
+                if (istVorhanden)
+                {
                     neueAntworten.Add(antwort);
-                }else
+                }
+                else
                 {
                     deleteAntworten.Add(antwort);
                 }
             }
 
-            deleteAntworten.ToList().ForEach(x =>  Db.Antwort.Remove(x));
+            deleteAntworten.ToList().ForEach(x => Db.Antwort.Remove(x));
 
             //Neue Antworten hinzufügen
-            foreach (Antwort antwort in frage.Antworten) {
+            foreach (Antwort antwort in frage.Antworten)
+            {
                 bool istVorhanden = false;
-                foreach (Antwort newAntworten in neueAntworten) {
-                    if (newAntworten.AntwortId != 0 && newAntworten.AntwortId == antwort.AntwortId) {
+                foreach (Antwort newAntworten in neueAntworten)
+                {
+                    if (newAntworten.AntwortId != 0 && newAntworten.AntwortId == antwort.AntwortId)
+                    {
                         istVorhanden = true;
                     }
-                    
                 }
-                if (!istVorhanden) {
+                if (!istVorhanden)
+                {
                     neueAntworten.Add(antwort);
                 }
             }
             test.Kategorie = frage.Kategorie;
             test.IstMultiSelect = frage.IstMultiSelect;
             test.IstVeröffentlicht = frage.IstVeröffentlicht;
-            test.Bezeichnung = frage.Bezeichnung;                     
+            test.Bezeichnung = frage.Bezeichnung;
             test.Antworten = neueAntworten;
-                     
+
             Db.SaveChanges();
         }
 
         public void RemoveFrage(Frage frage)
         {
-
             Db.Set<Antwort>().RemoveRange(frage.Antworten);
 
             Db.Set<Frage>().Remove(frage);
@@ -110,18 +114,15 @@ namespace DataAccess.Repositories
 
         public List<Frage> GetFragenOfKategorieByKategorieId(int kategorieId)
         {
-
             return Db.Frage.Where(x => x.Kategorie.KategorieId == kategorieId).ToList();
             {
-
-
             }
         }
 
         public List<Frage> SearchAllFrageNeuWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, string orderBy)
         {
             var frageQuery = Db.Frage.Include(x => x.Kategorie).Include(x => x.Antworten);
-            frageQuery = frageQuery.Where(y => y.IstVeröffentlicht  == false);
+            frageQuery = frageQuery.Where(y => y.IstVeröffentlicht == false);
             frageQuery = SortFilter(frageQuery, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
             return frageQuery.ToList();
         }
@@ -144,33 +145,38 @@ namespace DataAccess.Repositories
             return Db.Frage.Where(x => x.IstVeröffentlicht == true).Count();
         }
 
-
         private IQueryable<Frage> SortFilter(IQueryable<Frage> query, string orderBy)
         {
-
             switch (orderBy)
             {
                 case "Bezeichnung":
                     query = query.OrderBy(x => x.Bezeichnung);
                     break;
+
                 case "Bezeichnung_desc":
                     query = query.OrderByDescending(x => x.Bezeichnung);
                     break;
+
                 case "Kategorie":
                     query = query.OrderBy(x => x.Kategorie.Bezeichnung);
                     break;
+
                 case "Kategorie_desc":
                     query = query.OrderByDescending(x => x.Kategorie.Bezeichnung);
                     break;
+
                 case "Antworten":
                     query = query.OrderBy(x => x.Antworten.Count);
                     break;
+
                 case "Antworten_desc":
                     query = query.OrderByDescending(x => x.Antworten.Count);
                     break;
+
                 case "IstMultiSelect":
                     query = query.OrderBy(x => x.IstMultiSelect);
                     break;
+
                 case "IstMultiSelect_desc":
                     query = query.OrderByDescending(x => x.IstMultiSelect);
                     break;
@@ -178,7 +184,5 @@ namespace DataAccess.Repositories
 
             return query;
         }
-
     }
 }
-

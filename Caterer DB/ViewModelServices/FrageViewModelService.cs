@@ -11,10 +11,8 @@ namespace Caterer_DB.Models.ViewModelServices
     {
         private IMapper Mapper { get; set; }
 
-
         public FrageViewModelService()
         {
-
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
@@ -23,12 +21,9 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Frage, DeleteFrageViewModel>().ReverseMap();
                 cfg.CreateMap<Frage, DetailsFrageViewModel>().ReverseMap();
                 cfg.CreateMap<Frage, IndexFrageViewModel>().ReverseMap();
-               
-
             });
 
             Mapper = config.CreateMapper();
-
         }
 
         public ListViewModel<IndexFrageViewModel> GeneriereListViewModel(List<Frage> fragenListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10)
@@ -59,10 +54,11 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public CreateFrageViewModel CreateCreateFrageViewModel(List<Kategorie> kategorien)
         {
-            var createFrageViewModel = new CreateFrageViewModel() {
+            var createFrageViewModel = new CreateFrageViewModel()
+            {
                 Antworten = new List<Antwort>()
             };
-            return AddListsToCreateFrageViewModel( createFrageViewModel ,kategorien);
+            return AddListsToCreateFrageViewModel(createFrageViewModel, kategorien);
         }
 
         public EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage, List<Kategorie> kategorien)
@@ -87,7 +83,6 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<DeleteFrageViewModel>(Frage);
         }
 
-
         public CreateFrageViewModel AddListsToCreateFrageViewModel(CreateFrageViewModel createFrageViewModel, List<Kategorie> kategorien)
         {
             createFrageViewModel.JaNein = CreateJaNeinSelectList();
@@ -108,7 +103,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         private SelectList CreateJaNeinSelectList()
         {
-
             return new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Nein", Value = "false" },
@@ -121,11 +115,12 @@ namespace Caterer_DB.Models.ViewModelServices
             var selectListItems = new List<SelectListItem>();
             selectListItems.Add(new SelectListItem { Text = "Bitte wählen...", Value = String.Empty });
 
-            foreach (Kategorie kategorie in kategorien) {
+            foreach (Kategorie kategorie in kategorien)
+            {
                 selectListItems.Add(new SelectListItem { Text = kategorie.Bezeichnung, Value = kategorie.Bezeichnung });
             }
-           
-            return new SelectList(selectListItems, "Value", "Text"); 
+
+            return new SelectList(selectListItems, "Value", "Text");
         }
     }
 }

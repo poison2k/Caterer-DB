@@ -13,13 +13,9 @@
     <div class="col-md-4"></div>
 </div>
 
-
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
 
     <div class="row">
         <div class="col-md-4"></div>
@@ -63,7 +59,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -145,7 +140,7 @@
                                     @Html.ValidationMessageFor(model => model.FunktionAnsprechpartner, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </div>                     
+                        </div>
                     </div>
                 </div>
             </div>
@@ -176,7 +171,7 @@
                                         @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
                                     </div>
-                                </div>                                                                     
+                                </div>
                         </div>
                         <br />
                     </div>
@@ -279,12 +274,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
 
         }
 

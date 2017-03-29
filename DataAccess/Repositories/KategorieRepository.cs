@@ -1,7 +1,7 @@
 ﻿using DataAccess.Interfaces;
+using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
-using DataAccess.Model;
 
 namespace DataAccess.Repositories
 {
@@ -39,7 +39,7 @@ namespace DataAccess.Repositories
 
         public List<Kategorie> SearchKategorie()
         {
-            return Db.Kategorie.OrderBy(x=>x.Bezeichnung).ToList();
+            return Db.Kategorie.OrderBy(x => x.Bezeichnung).ToList();
         }
 
         public Kategorie SearchKategorieByName(string name)

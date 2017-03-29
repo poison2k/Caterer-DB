@@ -94,7 +94,6 @@
                             </tr>
                             <tr></tr>
 
-
                             @foreach (var item in Model)
 
                             {
@@ -114,7 +113,6 @@
                                         {<div><i class="glyphicon glyphicon-ok"></i></div> }
                                     </td>
 
-                                    
                                     <td align="right">
                                         <a class="btn btn-default" href="@Url.Action("Details", "Frage", new {id = item.FrageId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
                                     </td>
@@ -125,7 +123,6 @@
                                     <tr></tr>
                             }
                         </table>
-
                     </div>
                     @if (Model.TotalItemCount > Model.PageSize)
                     {

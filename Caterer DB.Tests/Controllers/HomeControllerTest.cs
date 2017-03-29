@@ -1,17 +1,16 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using Caterer_DB.Controllers;
-using Ploeh.AutoFixture;
+﻿using Caterer_DB.Controllers;
 using Caterer_DB.Interfaces;
 using Moq;
 using NUnit.Framework;
+using Ploeh.AutoFixture;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Caterer_DB.Tests.Controllers
 {
     [TestFixture]
-    public class HomeControllerTest 
+    public class HomeControllerTest
     {
-
         private Fixture Fixture { get; set; }
 
         private IBenutzerViewModelService MockBenutzerViewModelService { get; set; }
@@ -24,14 +23,11 @@ namespace Caterer_DB.Tests.Controllers
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
 
-    
-
-
         [Test]
         public void Index()
         {
             //Arrange
-           
+
             MockBenutzerViewModelService = new Mock<IBenutzerViewModelService>().Object;
 
             var controller = new HomeController(MockBenutzerViewModelService);
@@ -42,7 +38,6 @@ namespace Caterer_DB.Tests.Controllers
             //Assert
             Assert.IsNotNull(result);
         }
-
 
         [Test]
         public void Contact()
@@ -104,7 +99,4 @@ namespace Caterer_DB.Tests.Controllers
             Assert.AreEqual("Ihre Kontakt Seite", result.ViewBag.Message);
         }
     }
- 
 }
-
-

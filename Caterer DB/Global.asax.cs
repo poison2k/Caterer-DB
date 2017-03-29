@@ -1,5 +1,4 @@
-﻿using Caterer_DB.App_Start;
-using Caterer_DB.App_Start.ContextInitializer;
+﻿using Caterer_DB.App_Start.ContextInitializer;
 using Caterer_DB.Models;
 using Caterer_DB.Services;
 using DataAccess.Context;
@@ -7,16 +6,13 @@ using DataAccess.Repositories;
 using log4net.Config;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
-
 
 namespace Caterer_DB
 {
@@ -39,18 +35,12 @@ namespace Caterer_DB
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-
-
             XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
 
             AreaRegistration.RegisterAllAreas();
 
             //Die Webapi config muss auf jeden fall vor der RouteConfig kommen,
             //da sie sonst überschrieben wird und die webapi routen nicht gefunden werden
-
-          
-
-
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
@@ -72,17 +62,13 @@ namespace Caterer_DB
                         newUser.Vorname = serializeModel.Vorname;
                         newUser.Nachname = serializeModel.Nachname;
                         newUser.Email = serializeModel.Email;
-                        
+
                         newUser.NutzergruppenIds = serializeModel.NutzergruppenIds;
 
                         HttpContext.Current.User = newUser;
                     }
                 }
-
-
-
             }
         }
     }
 }
-

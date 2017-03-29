@@ -1,16 +1,14 @@
-﻿using System;
-using System.Net;
-using System.Web.Mvc;
-using Caterer_DB.Models.ViewModelServices;
-using Business.Interfaces;
+﻿using Business.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Models.Interfaces;
+using System;
+using System.Net;
+using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
     public class BenutzerGruppeController : BaseController
     {
-        
         private IBenutzerGruppeViewModelService BenutzerGruppeViewModelService { get; set; }
 
         private IBenutzerGruppeService BenutzerGruppeService { get; set; }
@@ -20,6 +18,7 @@ namespace Caterer_DB.Controllers
             BenutzerGruppeService = benutzerGruppeService;
             BenutzerGruppeViewModelService = benutzerGruppeViewModelService;
         }
+
         // GET: BenutzerGruppe
         public ActionResult Index()
         {
@@ -51,7 +50,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: BenutzerGruppe/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -85,7 +84,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: BenutzerGruppe/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

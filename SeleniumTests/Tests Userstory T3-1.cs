@@ -3,25 +3,21 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Services;
 
-
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_T3_1")]
     public class Userstory_T3_1 : TestInitialize
     {
-
         [Test]
         public void MitarbeiterBearbeiten1()
-        //T_T3-1_F01_B_001 
+        //T_T3-1_F01_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
             TestTools.User_Login_Durchführen(LoginDaten.Admin, LoginDaten.AdminPW, driver);
-            
+
             //Liste der Mitarbeiter aufrufen
             TestTools_Userstory_T3_1.Liste_Aller_Mitarbeiter_Anzeigen(driver);
 
@@ -35,21 +31,20 @@ namespace SeleniumTests
 
             //Prüfen ob Daten übernommen wurden
             TestTools_Userstory_T3_1.Bearbeiten_Von_Mitarbeiter_Anzeigen(driver);
-            Assert.AreEqual(NutzerDaten.NutzerDaten_Vorname,TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname,driver));
+            Assert.AreEqual(NutzerDaten.NutzerDaten_Vorname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname, driver));
 
             //Änderung Rückgängig machen
             TestTools.Daten_In_Textbox_Eingeben("", ObjektIDs_NutzerDaten.Vorname, driver);
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.Dummy_Daten_Vorname, ObjektIDs_NutzerDaten.Vorname, driver);
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
-            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);       
-
+            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
+
         [Test]
         public void MitarbeiterBearbeiten2()
-        //T_T3-1_F02_B_001 
+        //T_T3-1_F02_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -71,13 +66,12 @@ namespace SeleniumTests
             Assert.AreEqual(NutzerDaten.Dummy_Daten_Vorname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten3()
-        //T_T3-1_F03_B_001 
+        //T_T3-1_F03_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -106,13 +100,12 @@ namespace SeleniumTests
             TestTools_Userstory_T3_1.Liste_Aller_Mitarbeiter_Anzeigen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten4()
-        //T_T3-1_F04_B_001 
+        //T_T3-1_F04_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -138,7 +131,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Eigene_Daten)).Click();
-            Assert.AreEqual(Hinweise.Eigene_Datenseite_Mitarbeiter, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Mitarbeiter,driver));
+            Assert.AreEqual(Hinweise.Eigene_Datenseite_Mitarbeiter, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Mitarbeiter, driver));
 
             TestTools_Userstory_T3_1.Bearbeiten_Von_Mitarbeiter_Anzeigen(driver);
             Assert.AreEqual(NutzerDaten.Dummy_Daten_Vorname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname, driver));
@@ -148,7 +141,7 @@ namespace SeleniumTests
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
-            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_Allgemein.PW_Ändern_Seite,driver));
+            Assert.AreEqual(Hinweise.PW_Ändern_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_Allgemein.PW_Ändern_Seite, driver));
 
             TestTools_Userstory_T3_1.Bearbeiten_Von_Mitarbeiter_Anzeigen(driver);
             Assert.AreEqual(NutzerDaten.Dummy_Daten_Vorname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname, driver));
@@ -256,13 +249,12 @@ namespace SeleniumTests
             Assert.AreEqual(NutzerDaten.Dummy_Daten_Vorname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten5()
-        //T_T3-1_F06_B_001 
+        //T_T3-1_F06_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -297,13 +289,12 @@ namespace SeleniumTests
             Assert.AreEqual(NutzerDaten.Dummy_Daten_Vorname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten6()
-        //T_T3-1_F07_B_001 
+        //T_T3-1_F07_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -343,13 +334,12 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Mitarbeiter_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Seite, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten7()
-        //T_T3-1_F08_B_001 
+        //T_T3-1_F08_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -448,13 +438,12 @@ namespace SeleniumTests
             TestTools_Userstory_T3_1.Details_Von_Mitarbeiter_Anzeigen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten8()
-        //T_T3-1_F09_B_001 
+        //T_T3-1_F09_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -550,13 +539,12 @@ namespace SeleniumTests
             TestTools_Userstory_T3_1.Liste_Aller_Mitarbeiter_Anzeigen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten9()
-        //T_T3-1_F011_B_001 
+        //T_T3-1_F011_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -682,13 +670,12 @@ namespace SeleniumTests
             TestTools_Userstory_T3_1.Mitarbeiter_Hinzufügen_Über_Liste_Der_Mitarbeiter_Anzeigen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten10()
-        //T_T3-1_F012_B_001 
+        //T_T3-1_F012_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -707,7 +694,7 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.Email_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Email, driver));
 
             //Alle Felder Befüllen
-            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Vorname,ObjektIDs_NutzerDaten.Vorname, driver);
+            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Vorname, ObjektIDs_NutzerDaten.Vorname, driver);
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Nachname, ObjektIDs_NutzerDaten.Nachname, driver);
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Email, ObjektIDs_Allgemein.EMail_Feld, driver);
             new SelectElement(driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede))).SelectByIndex(1);
@@ -719,13 +706,12 @@ namespace SeleniumTests
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Email, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void MitarbeiterBearbeiten11()
-        //T_T3-1_F013_B_001 
+        //T_T3-1_F013_B_001
         {
-
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Admin anmelden
@@ -760,7 +746,6 @@ namespace SeleniumTests
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Nachname, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
     }
 }

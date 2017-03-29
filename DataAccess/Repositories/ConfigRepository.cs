@@ -1,12 +1,11 @@
 ﻿using DataAccess.Interfaces;
-using System.Linq;
 using DataAccess.Model;
+using System.Linq;
 
 namespace DataAccess.Repositories
 {
     public class ConfigRepository : IConfigRepository
     {
-
         protected ICatererContext Db { get; }
 
         public ConfigRepository(ICatererContext db)
@@ -30,6 +29,5 @@ namespace DataAccess.Repositories
         {
             return Db.Config.Where(x => x.ConfigId == 1).Single(); ;
         }
-
     }
 }

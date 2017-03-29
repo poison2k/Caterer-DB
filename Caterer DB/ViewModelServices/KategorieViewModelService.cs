@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using Caterer_DB.Interfaces;
 using DataAccess.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
@@ -12,10 +9,8 @@ namespace Caterer_DB.Models.ViewModelServices
     {
         private IMapper Mapper { get; set; }
 
-
         public KategorieViewModelService()
         {
-
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
@@ -27,9 +22,8 @@ namespace Caterer_DB.Models.ViewModelServices
             });
 
             Mapper = config.CreateMapper();
-
         }
-        
+
         public Kategorie Map_CreateKategorieViewModel_Kategorie(CreateKategorieViewModel createKategorieViewModel)
         {
             return Mapper.Map<Kategorie>(createKategorieViewModel);
@@ -75,6 +69,5 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             return Mapper.Map<DeleteKategorieViewModel>(kategorie);
         }
-
     }
 }

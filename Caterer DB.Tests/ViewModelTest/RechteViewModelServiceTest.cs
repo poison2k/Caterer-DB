@@ -7,8 +7,6 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
 
-
-
 namespace Caterer_DB.Tests.RechteViewModelServiceTest
 {
     [TestFixture]
@@ -28,7 +26,6 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
         [Test]
         public void Map_CreateRechtViewModel_Recht_Test()
         {
-
             //Assert
             var recht = Fixture.Build<Recht>().Create();
             var createRechtViewModel = Fixture.Build<CreateRechtViewModel>().Create();
@@ -41,7 +38,7 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
             //Act
             var result = rechtViewModelService.Map_CreateRechtViewModel_Recht(createRechtViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(recht.GetType(), result.GetType());
         }
@@ -49,7 +46,6 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
         [Test]
         public void Map_EditRechtViewModel_Recht_Test()
         {
-
             //Assert
             var recht = Fixture.Build<Recht>().Create();
             var editRechtViewModel = Fixture.Build<EditRechtViewModel>().Create();
@@ -62,7 +58,7 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
             //Act
             var result = rechtViewModelService.Map_EditRechtViewModel_Recht(editRechtViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(recht.GetType(), result.GetType());
         }
@@ -70,7 +66,6 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
         [Test]
         public void Map_DeleteRechtViewModel_Recht_Test()
         {
-
             //Assert
             var recht = Fixture.Build<Recht>().Create();
             var deleteRechtViewModel = Fixture.Build<DeleteRechtViewModel>().Create();
@@ -83,7 +78,7 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
             //Act
             var result = rechtViewModelService.Map_DeleteRechtViewModel_Recht(deleteRechtViewModel);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(recht.GetType(), result.GetType());
         }
@@ -103,7 +98,7 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
             //Act
             var result = rechtViewModelService.Map_Recht_EditRechtViewModel(recht);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(editRechtViewModel.GetType(), result.GetType());
         }
@@ -123,7 +118,7 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
             //Act
             var result = rechtViewModelService.Map_Recht_DetailsRechtViewModel(recht);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(detailsRechtViewModel.GetType(), result.GetType());
         }
@@ -143,7 +138,7 @@ namespace Caterer_DB.Tests.RechteViewModelServiceTest
             //Act
             var result = rechtViewModelService.Map_Recht_DeleteRechtViewModel(recht);
 
-            //Assert 
+            //Assert
 
             Assert.AreEqual(deleteRechtViewModel.GetType(), result.GetType());
         }

@@ -25,7 +25,6 @@
         </div>
         <div class="navbar-default">
 
-
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,7 +37,6 @@
                 <div class="navbar-collapse collapse">
                     @if (Request.IsAuthenticated)
                     {
-
 
                         if (User.HatDasRecht(RechteResource.MenueCaterer))
                         {
@@ -57,7 +55,7 @@
                                         Fragebogen<b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li>@Html.ActionLink("Veröffentlichte Fragen anzeigen", "IndexVeroeffentlicht", "Frage", null, new { id = "FrageAnzeigenVeroeffentlicht" })</li>                                      
+                                        <li>@Html.ActionLink("Veröffentlichte Fragen anzeigen", "IndexVeroeffentlicht", "Frage", null, new { id = "FrageAnzeigenVeroeffentlicht" })</li>
                                         <li>@Html.ActionLink("Neue Fragen anzeigen", "Index", "Frage", null, new { id = "FragenAnzeigen" })</li>
                                         <li>@Html.ActionLink("Neue Fragen hinzufügen", "Create", "Frage", null, new { id = "FragenHinzufügen" })</li>
                                         @if (User.HatDasRecht(RechteResource.IndexKategorie) || User.HatDasRecht(RechteResource.CreateKategorie))
@@ -85,10 +83,8 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>@Html.ActionLink("Fragebogen bearbeiten", "Details", "Fragebogen", null, new { id = "FragebogenBearbeiten" })</li>
-                                       
                                     </ul>
                                 </li>
-
                             </ul>
                         }
                     }

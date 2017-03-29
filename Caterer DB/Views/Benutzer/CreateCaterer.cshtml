@@ -14,13 +14,10 @@
     </div>
 </div>
 
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
 
     <div class="row">
         <div class="col-md-4"></div>
@@ -210,12 +207,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
 }
 

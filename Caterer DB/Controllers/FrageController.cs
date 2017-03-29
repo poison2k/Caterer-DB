@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Business.Interfaces;
+using Caterer_DB.Interfaces;
+using Caterer_DB.Models;
+using Caterer_DB.Resources;
+using Caterer_DB.Services;
+using DataAccess.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using DataAccess.Model;
-using Caterer_DB.Interfaces;
-using Caterer_DB.Models;
-using Business.Interfaces;
-using Caterer_DB.Services;
-using Caterer_DB.Resources;
 
 namespace Caterer_DB.Controllers
 {
@@ -114,37 +114,35 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Frages/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateFrageViewModel createFrageViewModel)
         {
-                if (Request.Form["btnAddAnswer"] != null)
+            if (Request.Form["btnAddAnswer"] != null)
+            {
+                if (createFrageViewModel.Antworten == null)
                 {
-                    if (createFrageViewModel.Antworten == null)
-                    {
-                        createFrageViewModel.Antworten = new List<Antwort>();
-                    }
-                    
-                    createFrageViewModel.Antworten.Add(new Antwort());
-                    
-                    
-                    return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel,KategorienService.FindAlleKategorien()));
+                    createFrageViewModel.Antworten = new List<Antwort>();
+                }
 
-                }
-                else if (Request.Form["btnDeleteAnswer"] != null)
+                createFrageViewModel.Antworten.Add(new Antwort());
+
+                return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
+            }
+            else if (Request.Form["btnDeleteAnswer"] != null)
+            {
+                for (int i = 0; i < Request.Form.Count; i++)
                 {
-                    for (int i = 0; i < Request.Form.Count; i++)
+                    if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
                     {
-                        if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
-                        {
-                            ModelState.Clear();
-                            createFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
-                            return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
-                        }
-                    }                    
+                        ModelState.Clear();
+                        createFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
+                        return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
+                    }
                 }
+            }
             if (ModelState.IsValid)
             {
                 if (Request.Form["btnCreateQuestion"] != null)
@@ -171,7 +169,7 @@ namespace Caterer_DB.Controllers
             }
 
             EditFrageViewModel editFrageViewModel =
-               FrageViewModelService.Map_Frage_EditFrageViewModel(FrageService.SearchFrageById(Convert.ToInt32(id)),KategorienService.FindAlleKategorien());
+               FrageViewModelService.Map_Frage_EditFrageViewModel(FrageService.SearchFrageById(Convert.ToInt32(id)), KategorienService.FindAlleKategorien());
 
             if (editFrageViewModel == null)
             {
@@ -181,38 +179,35 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Frages/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditFrageViewModel editFrageViewModel)
         {
-            
-                if (Request.Form["btnAddAnswer"] != null)
+            if (Request.Form["btnAddAnswer"] != null)
+            {
+                if (editFrageViewModel.Antworten == null)
                 {
-                    if (editFrageViewModel.Antworten == null)
-                    {
-                        editFrageViewModel.Antworten = new List<Antwort>();
-                    }
-
-                    editFrageViewModel.Antworten.Add(new Antwort());
-
-
-                    return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, KategorienService.FindAlleKategorien()));
-
+                    editFrageViewModel.Antworten = new List<Antwort>();
                 }
-                else if (Request.Form["btnDeleteAnswer"] != null)
+
+                editFrageViewModel.Antworten.Add(new Antwort());
+
+                return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, KategorienService.FindAlleKategorien()));
+            }
+            else if (Request.Form["btnDeleteAnswer"] != null)
+            {
+                for (int i = 0; i < Request.Form.Count; i++)
                 {
-                    for (int i = 0; i < Request.Form.Count; i++)
+                    if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
                     {
-                        if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
-                        {
-                            ModelState.Clear();
-                            editFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
-                            return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, KategorienService.FindAlleKategorien()));
-                        }
+                        ModelState.Clear();
+                        editFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
+                        return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, KategorienService.FindAlleKategorien()));
                     }
                 }
+            }
             if (ModelState.IsValid)
             {
                 if (Request.Form["btnVeroeffentlichen"] != null)
@@ -234,7 +229,7 @@ namespace Caterer_DB.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel,KategorienService.FindAlleKategorien()));
+            return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, KategorienService.FindAlleKategorien()));
         }
 
         // GET: Frages/Delete/5
@@ -264,7 +259,5 @@ namespace Caterer_DB.Controllers
             FrageService.RemoveFrage(Convert.ToInt32(id));
             return RedirectToAction("Index");
         }
-
-
     }
 }

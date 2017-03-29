@@ -2,14 +2,12 @@
 using Common.Interfaces;
 using DataAccess.Interfaces;
 using DataAccess.Model;
-using System;
 using System.Collections.Generic;
 
 namespace Business.Services
 {
     public class FrageService : IFrageService
     {
-
         public IFrageRepository FrageRepository { get; set; }
 
         public IKategorieRepository KategorienRepository { get; set; }
@@ -37,7 +35,6 @@ namespace Business.Services
             {
                 foreach (var benutzer in BenutzerService.FindAllBenutzers())
                 {
-                    
                     foreach (var gruppe in benutzer.BenutzerGruppen)
                     {
                         if (gruppe.Bezeichnung == "Caterer")

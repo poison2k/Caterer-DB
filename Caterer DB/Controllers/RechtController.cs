@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Business.Interfaces;
+using Caterer_DB.Interfaces;
+using Caterer_DB.Models;
+using System;
 using System.Net;
 using System.Web.Mvc;
-using Caterer_DB.Interfaces;
-using Business.Interfaces;
-using Caterer_DB.Models;
 
 namespace Caterer_DB.Controllers
 {
-
     [Authorize]
     public class RechtController : BaseController
     {
@@ -52,7 +51,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Rechts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -86,7 +85,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Rechts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -126,6 +125,5 @@ namespace Caterer_DB.Controllers
             RechtService.RemoveRecht(Convert.ToInt32(id));
             return RedirectToAction("Index");
         }
-        
     }
 }

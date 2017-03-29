@@ -30,14 +30,15 @@ namespace Caterer_DB.Tests.Business
 
             var mockBenutzerRepository = new Mock<IRechteGruppeRepository>();
             mockBenutzerRepository.Setup(x => x.SearchRightGroup()).Returns(rechteGruppeList);
-            mockBenutzerRepository.Setup(x => x.SearchRightGroupById(It.IsAny<int>())).Returns(Fixture.Build<RechteGruppe>().With(x => x.RechteVerwaltungsGruppeId,1).Create());
+            mockBenutzerRepository.Setup(x => x.SearchRightGroupById(It.IsAny<int>())).Returns(Fixture.Build<RechteGruppe>().With(x => x.RechteVerwaltungsGruppeId, 1).Create());
             MockRechteGruppeRepository = mockBenutzerRepository.Object;
 
             RechteGruppeService = new RechteGruppeService(MockRechteGruppeRepository);
         }
 
         [Test]
-        public void FindAllRightGroups_Test() {
+        public void FindAllRightGroups_Test()
+        {
             //Arrange
 
             //Act
@@ -57,7 +58,7 @@ namespace Caterer_DB.Tests.Business
             var result = RechteGruppeService.SearchRightGroupById(1);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(1,result.RechteVerwaltungsGruppeId);
+            Assert.AreEqual(1, result.RechteVerwaltungsGruppeId);
         }
     }
 }

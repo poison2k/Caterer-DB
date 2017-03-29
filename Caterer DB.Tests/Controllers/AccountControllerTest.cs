@@ -1,22 +1,20 @@
-﻿using Ploeh.AutoFixture;
+﻿using Business.Interfaces;
 using Caterer_DB.Controllers;
+using Caterer_DB.Interfaces;
+using Caterer_DB.Models;
+using Caterer_DB.Services;
+using DataAccess.Model;
+using Moq;
+using NUnit.Framework;
+using Ploeh.AutoFixture;
 using System.Linq;
 using System.Web.Mvc;
-using Caterer_DB.Models;
-using Caterer_DB.Interfaces;
-using Caterer_DB.Services;
-using Business.Interfaces;
-using Moq;
-using DataAccess.Model;
-using NUnit.Framework;
 
 namespace Caterer_DB.Tests.Controllers
 {
-
     [TestFixture]
     public class AccountControllerTest
-    { 
-        
+    {
         private Fixture Fixture { get; set; }
 
         private IBenutzerViewModelService MockBenutzerViewModelService { get; set; }
@@ -60,13 +58,12 @@ namespace Caterer_DB.Tests.Controllers
         public void Login_HTTPGet_Test()
         {
             //Arrange
-            
+
             //Act
             ActionResult result = AccountController.Login(null);
-          
+
             //Assert
             Assert.IsNotNull(result);
-           
         }
 
         [Test]
@@ -94,14 +91,13 @@ namespace Caterer_DB.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        
         [Test]
         public void RegisterComplete_HTTPGet_TrueVerifyCode_Test()
         {
             //Arrange
 
             //Act
-            ActionResult result = AccountController.RegisterComplete("TestID","TESTVerify");
+            ActionResult result = AccountController.RegisterComplete("TestID", "TESTVerify");
             //Assert
             Assert.IsNotNull(result);
         }
@@ -115,7 +111,7 @@ namespace Caterer_DB.Tests.Controllers
             var newMockBenutzerService = mockBenutzerService.Object;
             var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
             accountController.ControllerContext = new ControllerContext();
-            
+
             //Act
             ActionResult result = accountController.RegisterComplete("3", "TESTVerify");
             //Assert
@@ -188,7 +184,7 @@ namespace Caterer_DB.Tests.Controllers
             //Arrange
 
             //Act
-            ActionResult result = AccountController.PasswordChange(Fixture.Build<ForgottenPasswordCreateNewPasswordViewModel>().Create(),"TestId","TestVerify");
+            ActionResult result = AccountController.PasswordChange(Fixture.Build<ForgottenPasswordCreateNewPasswordViewModel>().Create(), "TestId", "TestVerify");
             string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
 
             //Assert
@@ -201,7 +197,7 @@ namespace Caterer_DB.Tests.Controllers
         {
             //Arrange
             var mockBenutzerService = new Mock<IBenutzerService>();
-  
+
             mockBenutzerService.Setup(x => x.VerifyPasswordChange(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
             mockBenutzerService.Setup(x => x.EditBenutzerPassword(It.IsAny<Benutzer>()));
             var newMockBenutzerService = mockBenutzerService.Object;
@@ -216,7 +212,6 @@ namespace Caterer_DB.Tests.Controllers
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual("~/Views/Shared/Error.cshtml", routeAction);
-
         }
 
         [Test]
@@ -237,7 +232,7 @@ namespace Caterer_DB.Tests.Controllers
         public void Register_HTTPPost_EMailCheckOK_ModelStateOk_Test()
         {
             //Arrange
-            
+
             //Act
             ActionResult result = AccountController.Register(Fixture.Build<RegisterBenutzerViewModel>().Create());
             string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
@@ -245,9 +240,7 @@ namespace Caterer_DB.Tests.Controllers
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual("RegisterSuccsessfull", routeAction);
-
         }
-
 
         [Test]
         public void Register_HTTPPost_EMailCheckOK_ModelStateFalse_Test()
@@ -258,7 +251,6 @@ namespace Caterer_DB.Tests.Controllers
 
             //Act
             ActionResult result = accountController.Register(Fixture.Build<RegisterBenutzerViewModel>().Create());
-
 
             //Assert
             Assert.IsNotNull(result);
@@ -283,13 +275,11 @@ namespace Caterer_DB.Tests.Controllers
             Assert.AreEqual(false, accountController.ModelState.IsValid);
         }
 
-
-
         [Test]
         public void LoginVorgang_LoginSuccessLevel_Erfolgreich_ModelStateOK_Test()
         {
             //Arrange
-            
+
             //Act
             ActionResult result = AccountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
             string routeController = ((RedirectToRouteResult)result).RouteValues["Controller"].ToString();
@@ -299,9 +289,7 @@ namespace Caterer_DB.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual("Home", routeController);
             Assert.AreEqual("Index", routeAction);
-
         }
-
 
         [Test]
         public void LoginVorgang_LoginSuccessLevel_Erfolgreich_ModelStateFalse_Test()
@@ -316,9 +304,7 @@ namespace Caterer_DB.Tests.Controllers
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(false, accountController.ModelState.IsValid);
-
         }
-
 
         [Test]
         public void LoginVorgang_LoginSuccessLevel_BenutzerNichtGefunden_ModelStateOK_Test()
@@ -331,7 +317,7 @@ namespace Caterer_DB.Tests.Controllers
 
             //Act
             ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
-          
+
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(false, accountController.ModelState.IsValid);
@@ -345,7 +331,7 @@ namespace Caterer_DB.Tests.Controllers
             newMockLoginService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.PasswortFalsch);
             var accountController = new AccountController(newMockLoginService.Object, MockBenutzerService, MockBenutzerViewModelService);
             accountController.ControllerContext = new ControllerContext();
-            
+
             //Act
             ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
 
@@ -362,7 +348,6 @@ namespace Caterer_DB.Tests.Controllers
             newMockLoginService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.DatenbankFehler);
             var accountController = new AccountController(newMockLoginService.Object, MockBenutzerService, MockBenutzerViewModelService);
             accountController.ControllerContext = new ControllerContext();
-            
 
             //Act
             ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
@@ -380,7 +365,6 @@ namespace Caterer_DB.Tests.Controllers
             newMockLoginService.Setup(x => x.AnmeldePrüfung(It.IsAny<string>(), It.IsAny<string>())).Returns(LoginSuccessLevel.Unbekannt);
             var accountController = new AccountController(newMockLoginService.Object, MockBenutzerService, MockBenutzerViewModelService);
             accountController.ControllerContext = new ControllerContext();
-            
 
             //Act
             ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
@@ -406,7 +390,6 @@ namespace Caterer_DB.Tests.Controllers
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual("RegisterMailVerificationNotComplete", routeAction);
-
         }
     }
 }

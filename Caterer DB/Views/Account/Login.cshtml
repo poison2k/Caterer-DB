@@ -5,16 +5,13 @@
     ViewBag.Title = "Log in";
 }
 
-
-
-
 <br />
 <br />
 <br />
 <div class="row">
     <div class="col-md-offset-2 col-md-8">
 
-        <div class="row" >
+        <div class="row">
             <div id="LoginPage" class="col-md-offset-4 col-md-4 text-center">
                 <h1>Login</h1>
             </div>
@@ -27,8 +24,8 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <div class="row" >
-                    <div class="col-md-6 col-md-offset-3" >
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
 
                         <div class="form-group">
                             <div class="input-group input-group">
@@ -40,7 +37,6 @@
                             <div class="text-center">
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -54,15 +50,12 @@
                                     <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-lock"></i></span>
                                     <div class="icon-addon addon-sm">
                                         @Html.PasswordFor(m => m.Passwort, new { @class = "form-control", placeholder = "Passwort" })
-
                                     </div>
                                 </div>
                                 <div class="text-center">
                                     @Html.ValidationMessageFor(m => m.Passwort, "", new { @class = "text-danger", id = "error1" })
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger", id = "error2" })
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -77,7 +70,6 @@
             }
         </section>
 
-
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
@@ -88,8 +80,6 @@
             <div class="col-md-4"></div>
         </div>
         <br />
-
-
     </div>
 </div>
 @section Scripts {
@@ -107,21 +97,6 @@
 <br />
 <br />
 <br />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @*@using Caterer_DB.Models
         @model LoginViewModel

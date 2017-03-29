@@ -1,8 +1,5 @@
 ﻿using DataAccess.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Caterer_DB.App_Start.ContextInitializer
 {

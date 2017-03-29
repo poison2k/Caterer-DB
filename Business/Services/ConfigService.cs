@@ -1,12 +1,11 @@
 ﻿using Business.Interfaces;
-using DataAccess.Model;
 using DataAccess.Interfaces;
+using DataAccess.Model;
 
 namespace Business.Services
 {
     public class ConfigService : IConfigService
     {
-
         private IConfigRepository ConfigRepository { get; set; }
 
         public ConfigService(IConfigRepository configRepository)

@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Business.Interfaces;
+using Caterer_DB.Interfaces;
+using Caterer_DB.Models;
+using Caterer_DB.Resources;
+using Caterer_DB.Services;
+using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
-using Caterer_DB.Interfaces;
-using Business.Interfaces;
-using Caterer_DB.Models;
-using Caterer_DB.Services;
-using Caterer_DB.Resources;
-using System.Collections.Generic;
 
 namespace Caterer_DB.Controllers
 {
-
     [Authorize]
     public class KategorieController : BaseController
     {
@@ -25,7 +24,6 @@ namespace Caterer_DB.Controllers
             KategorieService = kategorieService;
             FrageService = frageService;
             KategorieViewModelService = kategorieViewModelService;
-
         }
 
         // GET: Kategorie
@@ -39,7 +37,7 @@ namespace Caterer_DB.Controllers
                 kategorieList.Add(KategorieViewModelService.Map_Kategorie_IndexKategorieViewModel(kategorie,
                                                FrageService.FindFragenNachKategorieByKategorieId(Convert.ToInt32(kategorie.KategorieId))));
             }
-            
+
             return View(kategorieList);
         }
 
@@ -70,7 +68,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Kategories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -105,7 +103,7 @@ namespace Caterer_DB.Controllers
         }
 
         // POST: Kategories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -153,6 +151,5 @@ namespace Caterer_DB.Controllers
             KategorieService.RemoveKategorie(Convert.ToInt32(id));
             return RedirectToAction("Index");
         }
-
     }
 }

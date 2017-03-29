@@ -35,13 +35,12 @@ namespace Caterer_DB.Controllers
             return View();
         }
 
-
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            
+
             return View(BenutzerViewModelService.CreateNewRegisterBenutzerViewModel());
         }
 
@@ -78,7 +77,7 @@ namespace Caterer_DB.Controllers
         {
             if (BenutzerService.VerifyPasswordChange(id, verify) || (User != null && id.Contains(User.BenutzerId.ToString())))
             {
-               return View(BenutzerViewModelService.Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(Convert.ToInt32(id)));
+                return View(BenutzerViewModelService.Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(Convert.ToInt32(id)));
             };
             return View("~/Views/Shared/Error.cshtml");
         }
@@ -104,15 +103,12 @@ namespace Caterer_DB.Controllers
             return View();
         }
 
-
-
         // Post: /Account/PasswordRequest
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult PasswordRequest(ForgottenPasswordRequestViewModel forgottenPasswordRequestViewModel)
         {
-
             if (ModelState.IsValid)
             {
                 if (!BenutzerService.CheckEmailForRegistration(forgottenPasswordRequestViewModel.Mail))
@@ -127,8 +123,6 @@ namespace Caterer_DB.Controllers
             }
             return View();
         }
-
-
 
         // Post: /Account/PasswordChange
         [HttpPost]
@@ -146,7 +140,8 @@ namespace Caterer_DB.Controllers
                 }
                 return View();
             }
-            if(User != null){
+            if (User != null)
+            {
                 if (User.BenutzerId.ToString() == id)
                 {
                     if (ModelState.IsValid)
@@ -159,10 +154,8 @@ namespace Caterer_DB.Controllers
                     return View();
                 }
             }
-            return  RedirectToAction("~/Views/Shared/Error.cshtml");
-
+            return RedirectToAction("~/Views/Shared/Error.cshtml");
         }
-
 
         // POST: Benutzer/Register
         [HttpPost]
@@ -186,7 +179,6 @@ namespace Caterer_DB.Controllers
 
             return View(BenutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel));
         }
-
 
         //
         // POST: /Anmelde/Login

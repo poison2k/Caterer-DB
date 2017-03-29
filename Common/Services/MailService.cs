@@ -2,17 +2,15 @@
 using System;
 using System.Net;
 using System.Net.Mail;
-using Common.Services;
 
 namespace Common.Services
 {
     public class MailService : IMailService
     {
-
         public void SendForgottenPasswordMail(string passwordVerificationCode, string mail, string id)
         {
             var mailModel = ConfigureMail();
-            mailModel.Betreff = Common.Services.EMailBetreff.Passwortvergessen ;
+            mailModel.Betreff = Common.Services.EMailBetreff.Passwortvergessen;
             mailModel.Empfaenger = mail;
             mailModel.Inhalt = Common.Services.EMailTexte.PWvergessen + Common.Services.Links.ForgottenPassword + passwordVerificationCode + "&id=" + id + Common.Services.EMailTexte.Abschluss;
             SendMail(mailModel);
@@ -23,7 +21,7 @@ namespace Common.Services
             var mailModel = ConfigureMail();
             mailModel.Betreff = Common.Services.EMailBetreff.Nutzerlöschen;
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = Common.Services.EMailTexte.Nutzerlöschen + Common.Services.EMailTexte.Abschluss ;
+            mailModel.Inhalt = Common.Services.EMailTexte.Nutzerlöschen + Common.Services.EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
@@ -32,7 +30,7 @@ namespace Common.Services
             var mailModel = ConfigureMail();
             mailModel.Betreff = Common.Services.EMailBetreff.NutzerÄnderung;
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = Common.Services.EMailTexte.NutzerÄnderung + Common.Services.EMailTexte.Abschluss ;
+            mailModel.Inhalt = Common.Services.EMailTexte.NutzerÄnderung + Common.Services.EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
@@ -45,13 +43,12 @@ namespace Common.Services
             SendMail(mailModel);
         }
 
-
         public void SendNewMitarbeiterMail(string passwordVerificationCode, string mail, string id)
         {
             var mailModel = ConfigureMail();
             mailModel.Betreff = Common.Services.EMailBetreff.Kontoangelegt;
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = Common.Services.EMailTexte.Mitarbeiterangelegt + Common.Services.Links.NewMitarbeiter + passwordVerificationCode + "&id=" + id + Common.Services.EMailTexte.Abschluss ;
+            mailModel.Inhalt = Common.Services.EMailTexte.Mitarbeiterangelegt + Common.Services.Links.NewMitarbeiter + passwordVerificationCode + "&id=" + id + Common.Services.EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
@@ -60,7 +57,7 @@ namespace Common.Services
             var mailModel = ConfigureMail();
             mailModel.Betreff = Common.Services.EMailBetreff.Kontoangelegt;
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = Common.Services.EMailTexte.Catererangelegt + Common.Services.Links.NewCaterer + passwordVerificationCode + "&id=" + id + Common.Services.EMailTexte.Abschluss ;
+            mailModel.Inhalt = Common.Services.EMailTexte.Catererangelegt + Common.Services.Links.NewCaterer + passwordVerificationCode + "&id=" + id + Common.Services.EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
@@ -73,7 +70,8 @@ namespace Common.Services
             SendMail(mailModel);
         }
 
-        private MailModel ConfigureMail() {
+        private MailModel ConfigureMail()
+        {
             var mailModel = new MailModel();
 
             mailModel.SMTPSeverName = "smtp.gmail.com";
@@ -83,10 +81,7 @@ namespace Common.Services
             mailModel.UserName = "Hoersaal10@gmail.com";
 
             return mailModel;
-
-           
         }
-
 
         private void SendMail(MailModel mailModel)
         {
@@ -113,6 +108,4 @@ namespace Common.Services
             }
         }
     }
-
-   
 }

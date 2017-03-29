@@ -1,22 +1,15 @@
 ﻿using AutoMapper;
 using Caterer_DB.Models.Interfaces;
 using DataAccess.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
     public class BenutzerGruppeViewModelService : IBenutzerGruppeViewModelService
     {
-
         private IMapper Mapper { get; set; }
-
 
         public BenutzerGruppeViewModelService()
         {
-
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
@@ -27,7 +20,6 @@ namespace Caterer_DB.Models.ViewModelServices
             });
 
             Mapper = config.CreateMapper();
-
         }
 
         public BenutzerGruppe Map_CreateBenutzerGruppeViewModel_BenutzerGruppe(CreateBenutzerGruppeViewModel createBenutzerGruppeViewModel)
@@ -38,7 +30,6 @@ namespace Caterer_DB.Models.ViewModelServices
         public BenutzerGruppe Map_EditBenutzerGruppeViewModel_BenutzerGruppe(EditBenutzerGruppeViewModel editBenutzerGruppeViewModel)
         {
             return Mapper.Map<BenutzerGruppe>(editBenutzerGruppeViewModel);
-
         }
 
         public BenutzerGruppe Map_DeleteBenutzerGruppeViewModel_BenutzerGruppe(DeleteBenutzerGruppeViewModel deleteBenutzerGruppeViewModel)
@@ -55,8 +46,6 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             return Mapper.Map<DetailsBenutzerGruppeViewModel>(benutzerGruppe);
         }
-
-
 
         public DeleteBenutzerGruppeViewModel Map_BenutzerGruppe_DeleteBenutzerGruppeViewModel(BenutzerGruppe benutzerGruppe)
         {

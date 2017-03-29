@@ -1,7 +1,6 @@
 ﻿using DataAccess.Interfaces;
 using DataAccess.Model;
 using EntityFramework.DynamicFilters;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System.Configuration;
 using System.Data.Entity;
 
@@ -22,7 +21,6 @@ namespace DataAccess.Context
         public virtual DbSet<Antwort> Antwort { get; set; }
         public virtual DbSet<Fragebogen> Fragebogen { get; set; }
         public virtual DbSet<Config> Config { get; set; }
-
 
         public static CatererContext Create()
         {
@@ -63,6 +61,5 @@ namespace DataAccess.Context
         {
             Entry(objekt).State = EntityState.Modified;
         }
-
     }
 }

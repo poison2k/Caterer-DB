@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using Caterer_DB.Interfaces;
 using DataAccess.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
@@ -12,10 +8,8 @@ namespace Caterer_DB.Models.ViewModelServices
     {
         private IMapper Mapper { get; set; }
 
-
         public AntwortViewModelService()
         {
-
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
@@ -26,7 +20,6 @@ namespace Caterer_DB.Models.ViewModelServices
             });
 
             Mapper = config.CreateMapper();
-
         }
 
         public Antwort Map_CreateAntwortViewModel_Antwort(CreateAntwortViewModel createAntwortViewModel)
@@ -58,6 +51,5 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             return Mapper.Map<DeleteAntwortViewModel>(antwort);
         }
-
     }
 }

@@ -64,7 +64,6 @@
                                         {
                                             <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Nachname"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Nachname)  </a>
                                         }
-                                       
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Vorname")
@@ -118,8 +117,8 @@
                                         <td>@Html.DisplayFor(modelItem => item.Anrede)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Nachname)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Vorname)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Telefon)</td>    
-                                        <td>@if (item.IstAdmin) {<div><i class="glyphicon glyphicon-ok"></i></div> } </td>                                   
+                                        <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
+                                        <td>@if (item.IstAdmin) {<div><i class="glyphicon glyphicon-ok"></i></div> } </td>
 
                                         <td align="center">
                                             <a class="btn btn-default" href="@Url.Action("Details", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
@@ -143,7 +142,6 @@
                             </div>
                         }
                     </div>
-
                 </div>
             </div>
         </div>
@@ -159,6 +157,5 @@
     <br />
     <br />
     <br />
-
 
 }

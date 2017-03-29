@@ -4,18 +4,14 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Caterer_DB.Tests.Business
 {
     [TestFixture]
     public class RechteServiceTests
     {
-
         public IRechtRepository MockRechtRepository { get; set; }
         private Fixture Fixture { get; set; }
         private RechtService RechtService { get; set; }

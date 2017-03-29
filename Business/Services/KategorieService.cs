@@ -1,23 +1,17 @@
 ﻿using Business.Interfaces;
 using DataAccess.Interfaces;
 using DataAccess.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Services
 {
     public class KategorieService : IKategorieService
     {
-
         public IKategorieRepository KategorieRepository { get; set; }
 
         public KategorieService(IKategorieRepository kategorieRepository)
         {
             KategorieRepository = kategorieRepository;
-
         }
 
         public void AddKategorie(Kategorie kategorie)

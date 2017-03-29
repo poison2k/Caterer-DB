@@ -3,14 +3,12 @@ using OpenQA.Selenium;
 using SeleniumTests.Services;
 using System;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_U1_2")]
     public class Userstory_U1_2 : TestInitialize
     {
-
         [Test]
         public void LoginTest1()
         //T_U1-2_ALF_B_00 / T_U1-2_ALF_B_01
@@ -68,7 +66,6 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.LoginSeite_Email_PW_Fehler, TestTools.Label_Text_Zurückgeben("error2", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -82,7 +79,6 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.PW_Erforderlich, TestTools.Label_Text_Zurückgeben("error1", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -95,8 +91,6 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.Email_Erforderlich, TestTools.Label_Text_Zurückgeben("Email-error", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
-
     }
 }

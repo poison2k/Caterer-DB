@@ -1,14 +1,12 @@
 ﻿using NUnit.Framework;
 using SeleniumTests.Services;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_U1_6")]
     public class Userstory_U1_6 : TestInitialize
     {
-
         [Test]
         public void DatenschutzAufruf1()
         //T_U1-6_AL_B_01
@@ -45,7 +43,6 @@ namespace SeleniumTests
             TestTools.DatenschutzDropdownLogin(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
     }
 }

@@ -3,16 +3,14 @@ using OpenQA.Selenium;
 using SeleniumTests.Services;
 using System;
 
-
 namespace SeleniumTests
 {
     [TestFixture]
     [Category("Userstory_U1_3")]
     public class Userstory_U1_3 : TestInitialize
     {
-
         [Test]
-        //T_U1-3_F01_B_001 
+        //T_U1-3_F01_B_001
         public void RegistrationsAufruf1()
         {
             //Variante Button
@@ -33,10 +31,10 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Registrierungsseite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Eigene_Daten_Seite_Caterer, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
-        //T_U1-3_F02_B_001 
+        //T_U1-3_F02_B_001
         public void RegistrationsSeitenLinks()
         {
             //Variante Links
@@ -86,10 +84,10 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Datenschutzseite, TestTools.Label_Text_Zurückgeben("Datenschutzbest", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
-        //T_U1-3_F03_B_001 
+        //T_U1-3_F03_B_001
         public void RegistrationsDropdownLinks()
         {
             //Variante Dropdown
@@ -124,10 +122,10 @@ namespace SeleniumTests
             TestTools.ImpressumDropdownLogout(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
-        //T_U1-3_F04_B_001 
+        //T_U1-3_F04_B_001
         public void RegistrationsFehler()
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
@@ -163,10 +161,10 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Lieferumkreis, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
-        //T_U1-3_F05_B_001 
+        //T_U1-3_F05_B_001
         public void RegistrationsFehler2()
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
@@ -270,10 +268,10 @@ namespace SeleniumTests
             Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Lieferumkreis, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
-        //T_U1-3_F08_B_001 
+        //T_U1-3_F08_B_001
         public void RegistrationsFehlerDoppelMail()
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
@@ -348,8 +346,8 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.Email_Bereits_Vorhanden, TestTools.Label_Text_Zurückgeben("VallidationSummary", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         //T_U1-3_F11_B_001 & T_U1-3_F06_B_001
         public void RegistrationsFehlerEinverständniss()
@@ -436,7 +434,6 @@ namespace SeleniumTests
             //AGBs akzeptieren
             TestTools.Element_Klicken("WeitergabeVonDaten", driver);
 
-
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
 
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
@@ -449,8 +446,6 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Reg_Email_Verifikation_Fehlt, TestTools.Label_Text_Zurückgeben("RegMailValidation-error", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
-
     }
 }

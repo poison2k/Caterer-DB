@@ -1,6 +1,4 @@
-﻿
-
-using Caterer_DB.Services;
+﻿using Caterer_DB.Services;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
@@ -24,9 +22,7 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Administrator")]
         public bool IstAdmin { get; set; }
-
     }
-
 
     public class ForgottenPasswordRequestViewModel
     {
@@ -78,7 +74,6 @@ namespace Caterer_DB.Models
         [Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
         public string PasswortVerification { get; set; }
 
-
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Organisationsformen { get; set; }
@@ -107,7 +102,6 @@ namespace Caterer_DB.Models
         [Required]
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
-
 
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
@@ -139,9 +133,7 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
-
     }
-
 
     public class CreateMitarbeiterViewModel
     {
@@ -160,7 +152,6 @@ namespace Caterer_DB.Models
         [Required]
         public string Nachname { get; set; }
 
-      
         [DisplayName(@"Telefon (optional)")]
         public string Telefon { get; set; }
 
@@ -171,14 +162,13 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Administrationsberechtigungen")]
         public string IstAdmin { get; set; }
-
-
     }
 
     public class EditBenutzerViewModel
     {
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
+
         [Required]
         public string Anrede { get; set; }
 
@@ -203,14 +193,13 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Administrationsberechtigungen")]
         public string IstAdmin { get; set; }
-
-       
     }
 
     public class MeineDatenBenutzerViewModel
     {
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
+
         [Required]
         public string Anrede { get; set; }
 
@@ -226,10 +215,7 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Telefon (optional)")]
         public string Telefon { get; set; }
-
     }
-
-
 
     public class MyDataBenutzerViewModel
     {
@@ -270,7 +256,6 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
@@ -297,7 +282,6 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
-
     }
 
     public class DetailsBenutzerViewModel
@@ -322,7 +306,7 @@ namespace Caterer_DB.Models
         public string Mail { get; set; }
 
         [DisplayName(@"Administrator")]
-        public bool IstAdmin { get;set; }
+        public bool IstAdmin { get; set; }
     }
 
     public class DeleteBenutzerViewModel
@@ -406,7 +390,6 @@ namespace Caterer_DB.Models
         //[Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
         //public string PasswortVerification { get; set; }
 
-
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Organisationsformen { get; set; }
@@ -436,7 +419,6 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
@@ -454,10 +436,9 @@ namespace Caterer_DB.Models
 
         [Required]
         public string Lieferumkreis { get; set; }
-        
+
         [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
-
     }
 
     public class DetailsCatererViewModel
@@ -493,7 +474,6 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
@@ -520,6 +500,5 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
-
     }
 }

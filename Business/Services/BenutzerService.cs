@@ -1,10 +1,10 @@
-﻿using Business.Interfaces;
-using System;
-using DataAccess.Model;
-using DataAccess.Interfaces;
-using System.Collections.Generic;
+﻿using AutoMapper;
+using Business.Interfaces;
 using Common.Interfaces;
-using AutoMapper;
+using DataAccess.Interfaces;
+using DataAccess.Model;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Services
 {
@@ -20,7 +20,6 @@ namespace Business.Services
 
         private IMapper Mapper { get; set; }
 
-
         public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash)
         {
             BenutzerRepository = benutzerRepository;
@@ -35,13 +34,10 @@ namespace Business.Services
                 cfg.CreateMap<Benutzer, Benutzer>()
                     .ForMember(x => x.BenutzerGruppen, opt => opt.MapFrom(s => Mapper.Map<List<BenutzerGruppe>, List<BenutzerGruppe>>(s.BenutzerGruppen)))
                     .ForAllMembers(opt => opt.Condition((source, destination, sourceMember, destMember) => (sourceMember != null)));
-
             });
 
             Mapper = config.CreateMapper();
-
         }
-
 
         public Benutzer SearchUserById(int id)
         {
@@ -68,7 +64,6 @@ namespace Business.Services
             var benutzerGruppen = new List<string>() { "Administrator", "Mitarbeiter" };
 
             return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung);
-
         }
 
         public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung)
@@ -77,7 +72,6 @@ namespace Business.Services
 
             return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung);
         }
-
 
         public void AddBenutzer(Benutzer benutzer)
         {
@@ -104,7 +98,6 @@ namespace Business.Services
             AddBenutzer(benutzer, gruppe);
 
             MailService.SendNewMitarbeiterMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
-
         }
 
         public void AddCaterer(Benutzer benutzer, string gruppe)
@@ -112,9 +105,7 @@ namespace Business.Services
             AddBenutzer(benutzer, gruppe);
 
             MailService.SendNewCatererMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
-
         }
-
 
         public void RegisterBenutzer(Benutzer benutzer)
         {
@@ -166,7 +157,6 @@ namespace Business.Services
             BenutzerRepository.EditUser(dbBenutzer);
         }
 
-
         public void EditCaterer(Benutzer editedBenutzer)
         {
             var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
@@ -184,7 +174,6 @@ namespace Business.Services
 
         public void RemoveBenutzer(int id)
         {
-
             BenutzerRepository.RemoveUser(BenutzerRepository.SearchUserById(id));
         }
 

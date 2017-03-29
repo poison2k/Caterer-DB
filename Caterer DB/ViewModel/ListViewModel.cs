@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 namespace Caterer_DB.Models
 {
     public class ListViewModel<T> : IPagedList<T>
@@ -29,17 +30,14 @@ namespace Caterer_DB.Models
             if (seitenAnzehl != aktuelleSeite)
             {
                 HasNextPage = true;
-            } else {
+            }
+            else
+            {
                 IsLastPage = true;
                 HasNextPage = false;
             }
             HasPreviousPage = true;
-           
         }
-
-       
-
-        
 
         public string ActionName { get; set; }
         public string SeitenTitel { get; set; }

@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Services;
-
 
 namespace SeleniumTests
 {
@@ -97,8 +95,8 @@ namespace SeleniumTests
             TestTools_Userstory_M4_4.Fragebogen_Kategorie_Hinzufügen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void FragenBearbeiten4()
         //T_M4-4_F04_B_001
@@ -182,7 +180,6 @@ namespace SeleniumTests
             TestTools_Userstory_M4_4.Fragebogen_Kategorie_Hinzufügen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -272,7 +269,6 @@ namespace SeleniumTests
             TestTools_Userstory_M4_4.Fragebogen_Kategorie_Hinzufügen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -308,7 +304,6 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Ja, driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -416,7 +411,6 @@ namespace SeleniumTests
             TestTools_Userstory_M4_4.Fragebogen_Kategorie_Hinzufügen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
 
         [Test]
@@ -506,8 +500,8 @@ namespace SeleniumTests
             TestTools_Userstory_M4_4.Fragebogen_Kategorie_Hinzufügen(driver);
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
+
         [Test]
         public void FragenBearbeiten9()
         //T_M4-4_F09_B_001
@@ -542,8 +536,6 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Fragen_Übersicht_Öffentlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Fragen_Übersicht_Öffentlich, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-
         }
-
     }
 }

@@ -16,7 +16,8 @@ namespace Caterer_DB.Controllers
 
         public IFragebogenViewModelService FragebogenViewModelService { get; set; }
 
-        public FragebogenController(IFrageService frageService, IFragebogenViewModelService fragebogenViewModelService , IBenutzerService benutzerService) {
+        public FragebogenController(IFrageService frageService, IFragebogenViewModelService fragebogenViewModelService, IBenutzerService benutzerService)
+        {
             FrageService = frageService;
             FragebogenViewModelService = fragebogenViewModelService;
             BenutzerService = benutzerService;
@@ -28,7 +29,7 @@ namespace Caterer_DB.Controllers
         {
             var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
 
-            return View(FragebogenViewModelService.Map_Fragen_BearbeiteFragebogenViewModel(FrageService.FindAlleFragenNachKategorieninEigenenListen(),benutzer.AntwortIDs));
+            return View(FragebogenViewModelService.Map_Fragen_BearbeiteFragebogenViewModel(FrageService.FindAlleFragenNachKategorieninEigenenListen(), benutzer.AntwortIDs));
         }
 
         // POST: Fragebogen/Details
@@ -36,11 +37,12 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Roles = "Caterer")]
         public ActionResult Details(BearbeiteFragebogenViewModel bearbeitefragebogenviewmodel)
         {
-            if (ModelState.IsValid) {
-               List<int> antwortIDs = FragebogenViewModelService.Map_BearbeiteFragebogenViewModel_BenutzerResultSet(bearbeitefragebogenviewmodel);
-               var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
-               benutzer.AntwortIDs = antwortIDs;
-               BenutzerService.EditBenutzer(benutzer);
+            if (ModelState.IsValid)
+            {
+                List<int> antwortIDs = FragebogenViewModelService.Map_BearbeiteFragebogenViewModel_BenutzerResultSet(bearbeitefragebogenviewmodel);
+                var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
+                benutzer.AntwortIDs = antwortIDs;
+                BenutzerService.EditBenutzer(benutzer);
                 if (Request.Form["btnSave"] != null)
                 {
                     TempData["isSavedFragebogen"] = true;

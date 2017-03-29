@@ -20,7 +20,6 @@ namespace Caterer_DB.Controllers
             ConfigService = configService;
         }
 
-        
         // GET: Config
         [CustomAuthorize(Rights = RechteResource.EditConfig)]
         public ActionResult Edit()
@@ -28,12 +27,13 @@ namespace Caterer_DB.Controllers
             return View(ConfigViewModelService.Map_Config_EditConfigViewModel(ConfigService.GetConfig()));
         }
 
-        // POST: Config 
+        // POST: Config
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditConfigViewModel editConfigViewModel) 
+        public ActionResult Edit(EditConfigViewModel editConfigViewModel)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 ConfigService.EditConfig(ConfigViewModelService.Map_EditConfigViewModel_Config(editConfigViewModel));
                 return RedirectToAction("Index", "Home");
             }
