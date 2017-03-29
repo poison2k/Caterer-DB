@@ -135,24 +135,6 @@ namespace SeleniumTests.Services {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die CatererBearbeitenSeite ähnelt.
         /// </summary>
-        internal static string Fragen_Kategorie_hinzufügen {
-            get {
-                return ResourceManager.GetString("Fragen_Kategorie_hinzufügen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
-        /// </summary>
-        internal static string Fragen_Kategorie_Übersicht {
-            get {
-                return ResourceManager.GetString("Fragen_Kategorie_Übersicht", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CatererBearbeitenSeite ähnelt.
-        /// </summary>
         internal static string Fragen_Neu_Bearbeiten {
             get {
                 return ResourceManager.GetString("Fragen_Neu_Bearbeiten", resourceCulture);
@@ -183,6 +165,78 @@ namespace SeleniumTests.Services {
         internal static string Fragen_Veröffentlicht_Details {
             get {
                 return ResourceManager.GetString("Fragen_Veröffentlicht_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die btnKategorieAnlegen ähnelt.
+        /// </summary>
+        internal static string Kategorie_Anlegen_Button {
+            get {
+                return ResourceManager.GetString("Kategorie_Anlegen_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererBearbeitenSeite ähnelt.
+        /// </summary>
+        internal static string Kategorie_Bearbeiten_Seite {
+            get {
+                return ResourceManager.GetString("Kategorie_Bearbeiten_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Biobauer1 ähnelt.
+        /// </summary>
+        internal static string Kategorie_Dummykategorie {
+            get {
+                return ResourceManager.GetString("Kategorie_Dummykategorie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bezeichnung ähnelt.
+        /// </summary>
+        internal static string Kategorie_Formulieren_Textbox {
+            get {
+                return ResourceManager.GetString("Kategorie_Formulieren_Textbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererBearbeitenSeite ähnelt.
+        /// </summary>
+        internal static string Kategorie_hinzufügen_Seite {
+            get {
+                return ResourceManager.GetString("Kategorie_hinzufügen_Seite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bezeichnung-error ähnelt.
+        /// </summary>
+        internal static string Kategorie_hinzufügen_Seite_Fehlermeldung {
+            get {
+                return ResourceManager.GetString("Kategorie_hinzufügen_Seite_Fehlermeldung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die btnFrageErstellen ähnelt.
+        /// </summary>
+        internal static string Kategorie_Neu_Button {
+            get {
+                return ResourceManager.GetString("Kategorie_Neu_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CatererSeite ähnelt.
+        /// </summary>
+        internal static string Kategorie_Übersicht_Seite {
+            get {
+                return ResourceManager.GetString("Kategorie_Übersicht_Seite", resourceCulture);
             }
         }
     }

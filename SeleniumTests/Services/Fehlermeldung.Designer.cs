@@ -133,6 +133,15 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Das Feld &quot;Kategorie&quot; ist erforderlich. ähnelt.
+        /// </summary>
+        internal static string Fragen_Kategorie_Hinzufügen_Fehlermeldung {
+            get {
+                return ResourceManager.GetString("Fragen_Kategorie_Hinzufügen_Fehlermeldung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Das Feld &quot;Lieferumkreis&quot; ist erforderlich. ähnelt.
         /// </summary>
         internal static string Lieferumkreis_Erforderlich {

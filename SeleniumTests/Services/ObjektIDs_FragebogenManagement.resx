@@ -126,10 +126,10 @@
   <data name="Fragen_Erstellen" xml:space="preserve">
     <value>CatererBearbeitenSeite</value>
   </data>
-  <data name="Fragen_Kategorie_hinzufügen" xml:space="preserve">
+  <data name="Kategorie_hinzufügen_Seite" xml:space="preserve">
     <value>CatererBearbeitenSeite</value>
   </data>
-  <data name="Fragen_Kategorie_Übersicht" xml:space="preserve">
+  <data name="Kategorie_Übersicht_Seite" xml:space="preserve">
     <value>CatererSeite</value>
   </data>
   <data name="Fragen_Neu_Bearbeiten" xml:space="preserve">
@@ -158,5 +158,23 @@
   </data>
   <data name="Frage_Mehrfachantwort_Vergeben" xml:space="preserve">
     <value>IstMultiSelect</value>
+  </data>
+  <data name="Kategorie_Anlegen_Button" xml:space="preserve">
+    <value>btnKategorieAnlegen</value>
+  </data>
+  <data name="Kategorie_Bearbeiten_Seite" xml:space="preserve">
+    <value>CatererBearbeitenSeite</value>
+  </data>
+  <data name="Kategorie_Dummykategorie" xml:space="preserve">
+    <value>Biobauer1</value>
+  </data>
+  <data name="Kategorie_Formulieren_Textbox" xml:space="preserve">
+    <value>Bezeichnung</value>
+  </data>
+  <data name="Kategorie_hinzufügen_Seite_Fehlermeldung" xml:space="preserve">
+    <value>Bezeichnung-error</value>
+  </data>
+  <data name="Kategorie_Neu_Button" xml:space="preserve">
+    <value>btnFrageErstellen</value>
   </data>
 </root>

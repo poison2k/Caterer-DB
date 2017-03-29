@@ -133,7 +133,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Meine Daten bearbeiten ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Eigene Daten ähnelt.
         /// </summary>
         internal static string Eigene_Datenseite_Mitarbeiter {
             get {
@@ -156,6 +156,15 @@ namespace SeleniumTests.Services {
         internal static string Fragen_Hinzufügen {
             get {
                 return ResourceManager.GetString("Fragen_Hinzufügen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kategorie bearbeiten ähnelt.
+        /// </summary>
+        internal static string Fragen_Kategorie_Bearbeiten {
+            get {
+                return ResourceManager.GetString("Fragen_Kategorie_Bearbeiten", resourceCulture);
             }
         }
         

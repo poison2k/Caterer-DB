@@ -136,7 +136,7 @@ Nutzen Sie einfach die Kontaktmöglichkeiten unter:
 </value>
   </data>
   <data name="Catererangelegt" xml:space="preserve">
-    <value>Sehr geehrter Nutzer
+    <value>Sehr geehrter Nutzer,
 
 Ihr Nutzerkonto für die Caterer Datenbank wurde gerade durch unseren Mitarbeiter eingerichtet. 
 Bitte nutzen Sie den mitgesendeten Link zur Vergabe eines Passwortes und zum Abschluss Ihrer Registrierung. 
@@ -194,9 +194,10 @@ Bitte beachten Sie, dass der Link nur 2 Stunden gültig ist.Danach müssen Sie e
   <data name="NeueFragen" xml:space="preserve">
     <value>Sehr geehrter Nutzer,
 
-in der Caterer Datenbank wurden neue Fragen veröffentlicht. Melden Sie sich an, 
-um die neue Fragen zu bearbeiten.
+in der Caterer Datenbank wurden neue Fragen in Ihrem Fragebogen veröffentlicht. 
 
-Ihr Caterer-DB Team</value>
+Bitte nehmen Sie sich ein paar Minuten Zeit und aktualisieren Sie Ihre Antworten bzw. ergänzen Sie diese. 
+
+</value>
   </data>
 </root>

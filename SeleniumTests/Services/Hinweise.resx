@@ -157,7 +157,7 @@
     <value>Neues Passwort</value>
   </data>
   <data name="Eigene_Datenseite_Mitarbeiter" xml:space="preserve">
-    <value>Meine Daten bearbeiten</value>
+    <value>Eigene Daten</value>
   </data>
   <data name="Mitarbeiter_Bearbeiten" xml:space="preserve">
     <value>Mitarbeiter bearbeiten</value>
@@ -206,5 +206,8 @@
   </data>
   <data name="Fragen_Veröffentlicht_Details" xml:space="preserve">
     <value>Detailansicht Veröffentlichte Frage</value>
+  </data>
+  <data name="Fragen_Kategorie_Bearbeiten" xml:space="preserve">
+    <value>Kategorie bearbeiten</value>
   </data>
 </root>

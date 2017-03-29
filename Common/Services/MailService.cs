@@ -39,7 +39,7 @@ namespace Common.Services
             var mailModel = ConfigureMail();
             mailModel.Betreff = Common.Services.EMailBetreff.NeueFragen;
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = Common.Services.EMailTexte.NeueFragen;
+            mailModel.Inhalt = Common.Services.EMailTexte.NeueFragen + Common.Services.EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
