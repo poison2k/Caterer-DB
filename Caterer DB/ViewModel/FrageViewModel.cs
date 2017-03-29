@@ -66,6 +66,8 @@ namespace Caterer_DB.Models
         [DisplayName(@"Mehrfachantworten")]
         public bool IstMultiSelect { get; set; }
 
+        public bool IstVeröffentlicht { get; set; }
+
         public IEnumerable<System.Web.Mvc.SelectListItem> Kategorien { get; set; }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
