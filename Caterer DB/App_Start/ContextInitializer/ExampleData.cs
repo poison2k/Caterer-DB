@@ -337,15 +337,15 @@ namespace Caterer_DB.App_Start.ContextInitializer
         {
             db.Kategorie.Add(new Kategorie()
             {
-                Bezeichnung = "Essen"
+                Bezeichnung = "Allgemeines"
             });
             db.Kategorie.Add(new Kategorie()
             {
-                Bezeichnung = "Verpflegung"
+                Bezeichnung = "Speiseplan"
             });
             db.Kategorie.Add(new Kategorie()
             {
-                Bezeichnung = "Biobauer"
+                Bezeichnung = "Wahlmöglichkeiten"
             });
             db.SaveChanges();
         }
@@ -354,83 +354,100 @@ namespace Caterer_DB.App_Start.ContextInitializer
         {
             db.Frage.Add(new Frage()
             {
-                Bezeichnung = "Fragetext zu Frage 1",
+                Bezeichnung = "Haben Sie Erfahrung mit der Lieferung von Mahlzeiten an Schulen/Kitas? Liegen Referenzen vor?",
                 Antworten = new List<Antwort>() {
-                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 1"},
-                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 1"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 1"}
+                    new Antwort() {Bezeichnung = "keine Angabe..."},
+                    new Antwort() {Bezeichnung = "Ja mit Refernezen"},
+                    new Antwort() {Bezeichnung = "Ja ohne Refernzen"},
+                    new Antwort() {Bezeichnung = "Nein"},
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
-                IstMultiSelect = true
-            });
-
-            db.Frage.Add(new Frage()
-            {
-                Bezeichnung = "Fragetext zu Frage 2",
-                Antworten = new List<Antwort>() {
-                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 2"},
-                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 2"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 2"}
-                },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
-                IstMultiSelect = true
-            });
-            db.Frage.Add(new Frage()
-            {
-                Bezeichnung = "Fragetext zu Frage 3",
-                Antworten = new List<Antwort>() {
-                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 3"},
-                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 3"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 3"}
-                },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
-                IstMultiSelect = true
-            });
-            db.Frage.Add(new Frage()
-            {
-                Bezeichnung = "Fragetext zu Frage 4",
-                Antworten = new List<Antwort>() {
-                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 4"},
-                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 4"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 4"}
-                },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
-                IstMultiSelect = false
-            });
-            db.Frage.Add(new Frage()
-            {
-                Bezeichnung = "Fragetext zu Frage 5",
-                Antworten = new List<Antwort>() {
-                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 5"},
-                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 5"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 5"}
-                },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Essen"),
+                IstVeröffentlicht = true,
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Allgemeines"),
                 IstMultiSelect = false
             });
 
             db.Frage.Add(new Frage()
             {
-                Bezeichnung = "Fragetext zu Frage 6",
+                Bezeichnung = "Nach welchem Produktionssystem können Sie ihre Waren anbieten?",
                 Antworten = new List<Antwort>() {
-                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 6"},
-                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 6"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 6"},
-                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 6"}
+                    new Antwort() {Bezeichnung = "Cook & Serve"},
+                    new Antwort() {Bezeichnung = "Cook & Hold"},
+                    new Antwort() {Bezeichnung = "Cook & Chill"},
+
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
+                IstVeröffentlicht = true,
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Allgemeines"),
+                IstMultiSelect = true
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Bleiben die Warmheltezeiten ihrer Speisen unter 3 Stunden?",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "keine Angabe..."},
+                    new Antwort() {Bezeichnung = "Ja"},
+                    new Antwort() {Bezeichnung = "Nein"}
+                },
+                IstVeröffentlicht = true,
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Allgemeines"),
+                IstMultiSelect = false
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Welche Mahlzeiten bieten Sie an?",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Mittagsverpflegung"},
+                    new Antwort() {Bezeichnung = "Pausenverpflegung (Kiosk, Bistro, Frühstücksservice)"},
+                    new Antwort() {Bezeichnung = "Zwischenverpflegung am Nachmittag"},
+                    new Antwort() {Bezeichnung = "Automatenverpflegung"},
+                    new Antwort() {Bezeichnung = "Getränkeservice"}
+
+                },
+                IstVeröffentlicht = true,
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Speiseplan"),
+                IstMultiSelect = true
+            });
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Orientieren Sie sich an ernährungswissenschaftlichen Empfehlungen?",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "DGE-Qualitätsstandard für Kita- oder Schulverpflegung"},
+                    new Antwort() {Bezeichnung = "optimix - Forschungsinstitut für Kinderernährung"},
+                    new Antwort() {Bezeichnung = "Bremer Checkliste"}
+                },
+                IstVeröffentlicht = true,
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Speiseplan"),
+                IstMultiSelect = true
             });
 
             db.Frage.Add(new Frage()
             {
-                Bezeichnung = "Fragetext zu Frage 7",
+                Bezeichnung = "Besitzen Sie eine der folgenden Zertifizierungen?",
                 Antworten = new List<Antwort>() {
-                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage 7"},
-                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage 7"},
-                    new Antwort() {Bezeichnung = "Antworttext3 zu Frage 7"},
-                    new Antwort() {Bezeichnung = "Antworttext4 zu Frage 7"}
+                    new Antwort() {Bezeichnung = "Deutsche Gesellschaft für Ernährung e.V."},
+                    new Antwort() {Bezeichnung = "TÜV Reinland / Hochschule Niederrhein"},
+                    new Antwort() {Bezeichnung = "Forschungsinstitut für Kinderernährung"},
+                    new Antwort() {Bezeichnung = "Technische Universität Dortmund"},
+                    new Antwort() {Bezeichnung = "DIN EN ISO"},
+                    new Antwort() {Bezeichnung = "IFS oder BRC"},
+                    new Antwort() {Bezeichnung = "EU Öko-VO"},
+                    new Antwort() {Bezeichnung = "Technische Universität Dortmund"}
+
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
+                IstVeröffentlicht = true,
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Speiseplan"),
+                IstMultiSelect = true
+            });
+
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Ist ein Onlinebestellsystem vorhanden?",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "keine Angabe..."},
+                    new Antwort() {Bezeichnung = "Ja"},
+                    new Antwort() {Bezeichnung = "Nein"},
+                },
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Speiseplan"),
+                IstVeröffentlicht = true
             });
             db.Frage.Add(new Frage()
             {
@@ -441,7 +458,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 8"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 8"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Speiseplan"),
             });
             db.Frage.Add(new Frage()
             {
@@ -452,8 +469,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 9"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 9"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
-                IstVeröffentlicht = true
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Speiseplan")
             });
             db.Frage.Add(new Frage()
             {
@@ -464,7 +480,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 10"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 10"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Verpflegung"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -476,7 +492,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 11"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 11"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -488,7 +504,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 12"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 12"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -500,7 +516,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 13"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 13"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Biobauer"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
         }

@@ -187,7 +187,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Biobauer1 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wahlmöglichkeiten1 ähnelt.
         /// </summary>
         internal static string Kategorie_Dummykategorie {
             get {
