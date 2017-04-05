@@ -5,6 +5,7 @@ using DataAccess.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
+using Common.Services;
 
 namespace Business.Services
 {
@@ -16,15 +17,18 @@ namespace Business.Services
 
         public IMailService MailService { get; set; }
 
+        public IDocumentService DocumentService { get; set; }
+
         public IMd5Hash MD5Hash { get; set; }
 
         private IMapper Mapper { get; set; }
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash)
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService)
         {
             BenutzerRepository = benutzerRepository;
             BenutzerGruppeService = benutzerGruppeService;
             MailService = mailService;
+            DocumentService = documentService;
             MD5Hash = md5Hash;
 
             var config = new MapperConfiguration(cfg =>
@@ -163,6 +167,7 @@ namespace Business.Services
             MailService.SendEditCatererMail(dbBenutzer.Mail);
             Mapper.Map(editedBenutzer, dbBenutzer);
             BenutzerRepository.EditUser(dbBenutzer);
+            DocumentService.writeWordDocument("C:\\Download\\" + editedBenutzer.Firmenname + ".docx", editedBenutzer.Firmenname);
         }
 
         public void RemoveCaterer(int id)
