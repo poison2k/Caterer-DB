@@ -16,13 +16,16 @@ namespace Caterer_DB.Controllers
 
         private IBenutzerService BenutzerService { get; set; }
 
+        private IFrageService FrageService { get; set; }
+
         public ILoginService LoginService { get; set; }
 
-        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService, ILoginService loginService)
+        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService, ILoginService loginService, IFrageService frageService)
         {
             LoginService = loginService;
             BenutzerService = benutzerService;
             BenutzerViewModelService = benutzerViewModelService;
+            FrageService = frageService;
         }
 
         // GET: Benutzer
@@ -245,7 +248,7 @@ namespace Caterer_DB.Controllers
             }
 
             MyDataBenutzerViewModel myDataBenutzerViewModel =
-                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
 
             if (myDataBenutzerViewModel == null)
             {
@@ -264,7 +267,7 @@ namespace Caterer_DB.Controllers
             }
 
             MyDataBenutzerViewModel myDataBenutzerViewModel =
-                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
 
             if (myDataBenutzerViewModel == null)
             {

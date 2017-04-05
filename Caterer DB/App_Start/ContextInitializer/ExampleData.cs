@@ -163,29 +163,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
             });
 
-            Benutzer caterer1 = db.Benutzer.Add(new Benutzer
-            {
-                Mail = "caterer1@test.de",
-                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
-                Nachname = "Mustermann",
-                Vorname = "Max",
-                IstEmailVerifiziert = true,
-                Firmenname = "AllYouCanEat GmbH",
-                Internetadresse = "www.AYCE.de",
-                Lieferumkreis = "Bis 10 km",
-                Organisationsform = "Caterer",
-                Telefon = "01234 - 56789",
-                Fax = "01234 - 99999",
-                Straße = "Holzweg 1",
-                Postleitzahl = "87654",
-                Ort = "Woodway",
-                Anrede = "Herr",
-                FunktionAnsprechpartner = "Chef",
-                EMailVerificationCode = "",
-                PasswortZeitstempel = System.DateTime.Now,
-                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
-            });
-
             Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer
             {
                 Mail = "mitarbeiter@test.de",
@@ -304,26 +281,300 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 });
             }
 
-            for (int i = 2; i < 20; i++)
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "Caterer" + i + "@test.de",
+                    Mail = "citygrilluelzen@test.de",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
-                    Nachname = "Caterer" + i,
-                    Vorname = "Vorname" + i,
+                    Nachname = "Panzer",
+                    Vorname = "Paul",
                     IstEmailVerifiziert = true,
-                    Firmenname = "Firma" + i,
-                    Internetadresse = "-",
-                    Lieferumkreis = "-",
-                    Organisationsform = "-",
-                    Telefon = "-",
-                    Fax = "-",
-                    Straße = "-",
-                    Postleitzahl = "-",
-                    Ort = "-",
+                    Firmenname = "City Grill Uelzen",
+                    Internetadresse = "citygrilluelzen.de",
+                    Lieferumkreis = "Bis 40 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "05026/54682",
+                    Fax = "05026/54687",
+                    Straße = "Bahnhofsstraße 9",
+                    Postleitzahl = "29525 ",
+                    Ort = "Uelzen",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Geschäftsführer",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "ingosgrill@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Griller",
+                    Vorname = "Ingo",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Ingos Grill",
+                    Internetadresse = "ingosgrill.de",
+                    Lieferumkreis = "Bis 10 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "05264/456458",
+                    Fax = "05264/4564555",
+                    Straße = "Große Horststr. 48",
+                    Postleitzahl = "29328",
+                    Ort = "Faßberg",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Geschäftsführer",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "11akuechehannover@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Mütterchen",
+                    Vorname = "Erna",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "11A-Küche mit Garten-Hannover",
+                    Internetadresse = "11akuechehannover.de",
+                    Lieferumkreis = "Bis 5 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "0511/4564521",
+                    Fax = "",
+                    Straße = "Am Küchengarten 11A",
+                    Postleitzahl = "30449",
+                    Ort = "Hannover",
                     Anrede = "Frau",
-                    FunktionAnsprechpartner = "-",
+                    FunktionAnsprechpartner = "Geschäftsführer",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "daseihannover@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Henne",
+                    Vorname = "Mareike",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Das EI Hannover",
+                    Internetadresse = "daseihannover.de",
+                    Lieferumkreis = "Bis 50 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "0511/1234548",
+                    Fax = "0511/12345481",
+                    Straße = "Selmastraße 9",
+                    Postleitzahl = "30451",
+                    Ort = "Hannover",
+                    Anrede = "Frau",
+                    FunktionAnsprechpartner = "Geschäftsführer",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "vapianooldenburg@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Garciaz",
+                    Vorname = "Stefano",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Vapiano Oldenburg",
+                    Internetadresse = "vapianooldenburg.de",
+                    Lieferumkreis = "Bis 30 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "05644/564564",
+                    Fax = "05644/564561",
+                    Straße = "Kasinopl. 3",
+                    Postleitzahl = "26122",
+                    Ort = "Oldenburg",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Prokurist",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "pizzablitz@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Blitz",
+                    Vorname = "Pizzaro",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Pizza Blitz Hoya",
+                    Internetadresse = "pizzablitz.de",
+                    Lieferumkreis = "Bis 10 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "05022/146546",
+                    Fax = "05022/146541",
+                    Straße = "Bücker Str. 2",
+                    Postleitzahl = "27318",
+                    Ort = "Hoya",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Geschäftsführer",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "mensavereinsoltau@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Reynolds",
+                    Vorname = "Malcom",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Mensaverein Soltau e.V.",
+                    Internetadresse = "mensavereinsoltau.de",
+                    Lieferumkreis = "Bis 5 km",
+                    Organisationsform = "Mensaverein",
+                    Telefon = "05356/46515",
+                    Fax = "05356/46511",
+                    Straße = "Claudiusstraße 19",
+                    Postleitzahl = "29614",
+                    Ort = "Soltau",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Vorstandsvorsitzender",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "weiteweltgoslar@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Barbarossa",
+                    Vorname = "Friedrich",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Weite Welt-Goslar",
+                    Internetadresse = "weiteweltgoslar.de",
+                    Lieferumkreis = "Bis 75 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "05979/4655",
+                    Fax = "05979/4651",
+                    Straße = "Hoher Weg 11",
+                    Postleitzahl = "38640",
+                    Ort = "Goslar",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Kaiser",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "derbuttjever@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Flunder",
+                    Vorname = "Ole",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Der Butt - Jever",
+                    Internetadresse = "derbuttjever.de",
+                    Lieferumkreis = "100 km +",
+                    Organisationsform = "Caterer",
+                    Telefon = "06544/4685",
+                    Fax = "",
+                    Straße = "Kattrepel 2",
+                    Postleitzahl = "26441",
+                    Ort = "Jever",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Geschäftsführer",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "mensavereinbraunschweig@test,de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Lieberknecht",
+                    Vorname = "Torsten",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Mensaverein der IGS Querum in Braunschweig e. V.",
+                    Internetadresse = "mensavereinbraunschweig.de",
+                    Lieferumkreis = "Bis 5 km",
+                    Organisationsform = "Mensaverein",
+                    Telefon = "05666/16545",
+                    Fax = "05666/16541",
+                    Straße = "Essener Str. 85",
+                    Postleitzahl = "38108",
+                    Ort = "Braunschweig",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Vorstandsvorsitzender",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "dorospartyservice@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Schmitz",
+                    Vorname = "Dorothea",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Dorotheas Party Service",
+                    Internetadresse = "dorospartyservice.de",
+                    Lieferumkreis = "Bis 20 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "05233/14654",
+                    Fax = "",
+                    Straße = "Zum Alten Bad 23",
+                    Postleitzahl = "29227",
+                    Ort = "Celle",
+                    Anrede = "Frau",
+                    FunktionAnsprechpartner = "Geschäftsführer",
+                    EMailVerificationCode = "-",
+                    PasswortZeitstempel = System.DateTime.Now,
+                    BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                });
+            }
+
+            {
+                db.Benutzer.Add(new Benutzer
+                {
+                    Mail = "gloeckl-gastronomie@test.de",
+                    Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                    Nachname = "Hansen",
+                    Vorname = "Hendrick",
+                    IstEmailVerifiziert = true,
+                    Firmenname = "Glöckl Gastro Catering",
+                    Internetadresse = "gloeckl-gastronomie.de",
+                    Lieferumkreis = "Bis 30 km",
+                    Organisationsform = "Caterer",
+                    Telefon = "05244/14654",
+                    Fax = "05244/14666",
+                    Straße = " Reislinger Straße 20",
+                    Postleitzahl = "38446",
+                    Ort = "Wolfsburg",
+                    Anrede = "Herr",
+                    FunktionAnsprechpartner = "Geschäftsführer",
                     EMailVerificationCode = "-",
                     PasswortZeitstempel = System.DateTime.Now,
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
@@ -345,7 +596,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             });
             db.Kategorie.Add(new Kategorie()
             {
-                Bezeichnung = "Wahlmöglichkeiten"
+                Bezeichnung = "Wahlmoeglichkeiten"
             });
             db.SaveChanges();
         }
@@ -480,7 +731,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 10"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 10"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmoeglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -492,7 +743,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 11"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 11"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmoeglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -504,7 +755,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 12"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 12"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmoeglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -516,7 +767,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 13"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 13"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmoeglichkeiten"),
                 IstVeröffentlicht = true
             });
         }

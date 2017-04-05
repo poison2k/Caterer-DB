@@ -282,6 +282,8 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
+
+        public List<FragenNachThemengebiet> Fragen { get; set; }
     }
 
     public class DetailsBenutzerViewModel
@@ -502,5 +504,9 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
+
+        public List<FragenNachThemengebiet> Fragen { get; set; }
+
+
     }
 }
