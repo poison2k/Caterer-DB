@@ -32,7 +32,7 @@ namespace Caterer_DB.Interfaces
 
         EditBenutzerViewModel Map_Benutzer_EditBenutzerViewModel(Benutzer benutzer);
 
-        MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer);
+        MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen);
 
         DetailsBenutzerViewModel Map_Benutzer_DetailsBenutzerViewModel(Benutzer benutzer);
 

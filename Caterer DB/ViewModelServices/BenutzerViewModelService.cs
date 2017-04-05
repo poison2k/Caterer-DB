@@ -189,11 +189,64 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Benutzer>(myDataBenutzerViewModel);
         }
 
-        public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer)
+        public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen)
         {
             var myDataBenutzerViewModel = Mapper.Map<MyDataBenutzerViewModel>(benutzer);
 
             myDataBenutzerViewModel = AddListsToMyDataViewModel(myDataBenutzerViewModel);
+
+            var nutzerAntworten = benutzer.AntwortIDs;
+
+            myDataBenutzerViewModel.Fragen = new List<FragenNachThemengebiet>();
+
+            foreach (List<Frage> fragen in fragenListen)
+            {
+                List<FragenViewModel> fragenViewModel = new List<FragenViewModel>();
+                foreach (Frage frage in fragen)
+                {
+                    int antwortResultId = -1;
+                    foreach (int antwortId in nutzerAntworten)
+                    {
+                        if (frage.IstMultiSelect != true)
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwortResultId = antwort.AntwortId;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwort.IsChecked = true;
+                                }
+                            }
+                        }
+                    }
+
+                    fragenViewModel.Add(new FragenViewModel()
+                    {
+                        Antworten = frage.Antworten,
+                        ID = frage.FrageId,
+                        Text = frage.Bezeichnung,
+                        GegebeneAntwort = antwortResultId,
+                        IstMultiSelect = frage.IstMultiSelect
+                    });
+                }
+
+                FragenNachThemengebiet fragenNachThemengebiet = new FragenNachThemengebiet()
+                {
+                    Questions = fragenViewModel,
+                    Name = fragen[0].Kategorie.Bezeichnung,
+                    ID = 1
+                };
+                myDataBenutzerViewModel.Fragen.Add(fragenNachThemengebiet);
+            }
             return myDataBenutzerViewModel;
         }
 
