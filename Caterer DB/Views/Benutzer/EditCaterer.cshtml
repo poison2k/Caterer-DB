@@ -19,15 +19,37 @@
 
      <!-- Nav tabs -->
     <div class="tabbar">
-        <ul class="nav nav-tabs " role="tablist">
-            <li role="presentation" class="active"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
-            <li role="presentation"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
-        </ul>
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="nav-tabs" style="padding-left:400px; border-bottom:0">
+                    <button role="presentation" class="active" href="#stammdaten" aria-controls="home" data-toggle="tab">Caterer Daten</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav-tabs" style="border-bottom:0">
+                    <button role="presentation" href="#fragebogen" aria-controls="profile" data-toggle="tab">Fragebogen</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+    @*<div class="tabbar">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
+                <li role="presentation"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
+            </ul>
+        </div>*@
+
+
+
+
         <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="stammdaten">
-
+            <hr>
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4 text-center">
@@ -35,7 +57,6 @@
                 </div>
                 <div class="col-md-4"></div>
             </div>
-
             <div class="row">
                 <div id="CatererBearbeitenSeite" class="col-md-6 col-md-offset-3 text-center">
                     <h1>Caterer bearbeiten</h1>
@@ -288,11 +309,15 @@
             <div class="row">
                 <nav class="sidebar hidden-xs hidden-sm" id="myScrollspy">
                     <ul class="nav nav-pills nav-stacked" id="Fragebogen">
+                        <br />
+<br />
                         @for (int i = 0; i < Model.Fragen.Count; i++)
                         {
+
                             <li><a id="@Model.Fragen[i].Name@i" href="#@Model.Fragen[i].Name">@Model.Fragen[i].Name</a></li>
                         }
                     </ul>
+                    
                 </nav>
                 <div class="col-md-9 col-md-offset-2">
 
@@ -409,7 +434,7 @@
     </script>
     @for (int i = 0; i < Model.Fragen.Count; i++)
     {
-        var name = Model.Fragen[i].Name + i; 
+        var name = Model.Fragen[i].Name + i;
         <script>
             $(document).ready(function () {
 
