@@ -243,10 +243,19 @@ ul {
     border-bottom: 4px solid;
 }
 
- .sidebar {
-      top: 160px;
+.sidebar {
+      top: 220px;
       position: fixed;
   }
+ 
+.tabbar {
+      top: 170px;
+      position: fixed;
+      background-color: white;
+      z-index: 99;
+      width: 1165px;
+  }
+ 
 
 /* PageList Hintergrundfarbe Überschriften --> Noch in Arbeit <--*/
 .panel-default > .panel-heading {
