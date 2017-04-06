@@ -56,6 +56,26 @@ namespace Caterer_DB.Controllers
                 , seitenGrösse));
         }
 
+        // GET: Benutzer
+        [HttpPost]
+        [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
+        public ActionResult IndexCaterer(FormCollection formcollection, string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
+        {
+            ViewBag.Sortierrung = Sortierrung;
+
+            if (formcollection["plz"] != "" && formcollection["umkreis"] != "") {
+
+                return View(BenutzerViewModelService.GeneriereListViewModelCaterer(
+                 BenutzerService.FindeCatererNachUmkreis(formcollection["plz"], Convert.ToInt32(formcollection["umkreis"])), BenutzerService.FindeCatererNachUmkreis(formcollection["plz"], Convert.ToInt32(formcollection["umkreis"])).Count,aktuelleSeite,seitenGrösse));
+            }
+
+            return View(BenutzerViewModelService.GeneriereListViewModelCaterer(
+                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung)
+                , BenutzerService.GetCatererCount()
+                , aktuelleSeite
+                , seitenGrösse));
+        }
+
         // GET: Benutzer/Details/5
         [CustomAuthorize(Rights = RechteResource.DetailsMitarbeiter)]
         public ActionResult Details(int? id)

@@ -16,6 +16,36 @@
             <h1>Caterer</h1>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well well-lg">
+                <h3>Filter</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <label class="control-label">Plz</label>
+                            @Html.Editor("plz", new { htmlAttributes = new { @class = "form-control", id = "plz" } })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <label class="control-label">Umkreis</label>
+                            @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit"> Filtern </button>
+                    </div>
+                </div>
+                </div>
+
+        </div>
+    </div>
     <div style="margin-top: 15px"></div>
         <div class="container">
             <div class="row">

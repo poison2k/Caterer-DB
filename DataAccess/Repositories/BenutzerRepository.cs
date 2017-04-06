@@ -19,7 +19,7 @@ namespace DataAccess.Repositories
 
         public List<Benutzer> FindeCatererNachUmkreis(DbGeography geoDaten, int umkreis) {
 
-            return Db.Benutzer.Where(x => x.Koordinaten.Distance(geoDaten) * 0.00062 <= umkreis).ToList();
+            return Db.Benutzer.Where(x => x.Koordinaten.Distance(geoDaten)  <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).ToList();
         }
 
         public Benutzer SearchUserById(int id)
