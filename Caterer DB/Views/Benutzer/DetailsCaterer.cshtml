@@ -4,130 +4,173 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<br />
-<br />
-<br />
-<div class="row">
-    <div id="RegSeite" class="col-md-6 col-md-offset-3 text-center">
-        <h1>Detailansicht Caterer</h1>
-    </div>
-</div>
-<br />
-
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well well-lg">
-                    <div>
-                        <dl class="dl-horizontal text-center">
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Anrede)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Anrede)
-                            </dd>
-                            <br />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Vorname)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Vorname)
-                            </dd>
-                            <br />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Nachname)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Nachname)
-                            </dd>
-                            <br />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Telefon)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Telefon)
-                            </dd>
-                            <br />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Mail)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Mail)
-                            </dd>
-                            <hr />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Straße)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Straße)
-                            </dd>
-                            <br />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Postleitzahl)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Postleitzahl)
-                            </dd>
-                            <br />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Ort)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Ort)
-                            </dd>
-                            <hr />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Firmenname)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Firmenname)
-                            </dd>
-                            <br />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.FunktionAnsprechpartner)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.FunktionAnsprechpartner)
-                            </dd>
-                            <br />
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Lieferumkreis)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Lieferumkreis)
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
+<!-- Nav tabs -->
+<div class="tabbar">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="nav-tabs" style="padding-left:400px; border-bottom:0">
+                <button role="presentation" class="active" href="#stammdaten" aria-controls="home" data-toggle="tab">Caterer Daten</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="nav-tabs" style="border-bottom:0">
+                <button role="presentation" href="#fragebogen" aria-controls="profile" data-toggle="tab">Fragebogen</button>
             </div>
         </div>
     </div>
 </div>
+<br />
+<br />
+<br />
 
-<div class="row">
-    <div class="col-md-4 col-md-offset-4 text-center">
-        <ul class="list-unstyled list-inline ">
-            <li>
-                <a class="btn btn-default" id="btnEdit" href="@Url.Action("EditCaterer", "Benutzer", new {id = Model.BenutzerId})">
-                    Caterer bearbeiten
-                </a>
-            </li>
-            <li>
-                <a class="btn btn-default" id="btnZurück" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-            </li>
-        </ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="stammdaten">
+
+        <div class="row">
+            <div id="RegSeite" class="col-md-6 col-md-offset-3 text-center">
+                <h1>Detailansicht Caterer</h1>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well well-lg">
+                            <div>
+                                <dl class="dl-horizontal text-center">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Anrede)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Anrede)
+                                    </dd>
+                                    <br />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Vorname)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Vorname)
+                                    </dd>
+                                    <br />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Nachname)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Nachname)
+                                    </dd>
+                                    <br />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Telefon)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Telefon)
+                                    </dd>
+                                    <br />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Mail)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Mail)
+                                    </dd>
+                                    <hr />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Straße)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Straße)
+                                    </dd>
+                                    <br />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Postleitzahl)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Postleitzahl)
+                                    </dd>
+                                    <br />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Ort)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ort)
+                                    </dd>
+                                    <hr />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Firmenname)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Firmenname)
+                                    </dd>
+                                    <br />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.FunktionAnsprechpartner)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.FunktionAnsprechpartner)
+                                    </dd>
+                                    <br />
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Lieferumkreis)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Lieferumkreis)
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="list-unstyled list-inline ">
+                    <li>
+                        <a class="btn btn-default" id="btnEdit" href="@Url.Action("EditCaterer", "Benutzer", new {id = Model.BenutzerId})">
+                            Caterer bearbeiten
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-default" id="btnZurück" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade in active" id="fragebogen">
+        <div class="row">
+            <div class="col-md-8">
+                @for (int i = 0; i < Model.Fragen.Count; i++) {
+                     <h2>@Html.DisplayFor(m => m.Fragen[i].Name)</h2>
+
+                     for (int j = 0; j < Model.Fragen[i].Questions.Count; j++) {
+                         <h3>@Model.Fragen[i].Questions[j].Text </h3>
+                         for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++) {
+                             if (Model.Fragen[i].Questions[j].Antworten[k].IsChecked) {
+                                 <p>Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
+                             }
+
+                         }
+
+
+                     }
+                }
+
+            </div>
+        </div>
     </div>
 </div>

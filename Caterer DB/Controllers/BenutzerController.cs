@@ -84,7 +84,7 @@ namespace Caterer_DB.Controllers
             }
 
             DetailsCatererViewModel detailsCatererViewModel =
-                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
 
             if (detailsCatererViewModel == null)
             {
@@ -312,7 +312,7 @@ namespace Caterer_DB.Controllers
                 {
                     BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
                     List<int> antwortIDs = BenutzerViewModelService.Map_MyDataBenutzerViewModel_BenutzerResultSet(myDataBenutzerViewModel);
-                    var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
+                    var benutzer = BenutzerService.SearchUserById(myDataBenutzerViewModel.BenutzerId);
                     benutzer.AntwortIDs = antwortIDs;
                     BenutzerService.EditBenutzer(benutzer);
                     TempData["isSavedFragebogen"] = true;

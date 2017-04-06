@@ -42,7 +42,7 @@ namespace Caterer_DB.Interfaces
 
         RegisterBenutzerViewModel CreateNewRegisterBenutzerViewModel();
 
-        DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer);
+        DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer, List<List<Frage>> fragenListen);
 
         MeineDatenBenutzerViewModel Map_Benutzer_MeineDatenBenutzerViewModel(Benutzer benutzer);
 
