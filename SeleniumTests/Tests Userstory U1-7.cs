@@ -38,7 +38,7 @@ namespace SeleniumTests
             //Variante Dropdown Login
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.AGBDropdownLogin(driver);
 

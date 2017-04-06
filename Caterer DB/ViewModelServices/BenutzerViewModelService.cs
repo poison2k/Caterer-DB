@@ -189,6 +189,25 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Benutzer>(myDataBenutzerViewModel);
         }
 
+         public List<int> Map_MyDataBenutzerViewModel_BenutzerResultSet(MyDataBenutzerViewModel myDataBenutzerViewModel)
+        {
+            var antwortIDs = new List<int>();
+            foreach (FragenNachThemengebiet fragenNachThemengebiet in myDataBenutzerViewModel.Fragen)
+            {
+                foreach (FragenViewModel frage in fragenNachThemengebiet.Questions)
+                {
+                    foreach (Antwort antwort in frage.Antworten)
+                    {
+                        if (antwort.AntwortId == frage.GegebeneAntwort || antwort.IsChecked)
+                        {
+                            antwortIDs.Add(antwort.AntwortId);
+                        }
+                    }
+                }
+            }
+
+            return antwortIDs;
+        }
         public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen)
         {
             var myDataBenutzerViewModel = Mapper.Map<MyDataBenutzerViewModel>(benutzer);
@@ -224,11 +243,12 @@ namespace Caterer_DB.Models.ViewModelServices
                                 if (antwort.AntwortId == antwortId)
                                 {
                                     antwort.IsChecked = true;
+                                    antwortResultId--;
                                 }
                             }
                         }
                     }
-
+                                        
                     fragenViewModel.Add(new FragenViewModel()
                     {
                         Antworten = frage.Antworten,
@@ -302,9 +322,64 @@ namespace Caterer_DB.Models.ViewModelServices
             return detailsBenutzerViewModel;
         }
 
-        public DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer)
+        public DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer, List<List<Frage>> fragenListen)
         {
-            return Mapper.Map<DetailsCatererViewModel>(benutzer);
+            var detailsCatererViewModel = Mapper.Map<DetailsCatererViewModel>(benutzer);
+
+            var nutzerAntworten = benutzer.AntwortIDs;
+
+            detailsCatererViewModel.Fragen = new List<FragenNachThemengebiet>();
+
+            foreach (List<Frage> fragen in fragenListen)
+            {
+                List<FragenViewModel> fragenViewModel = new List<FragenViewModel>();
+                foreach (Frage frage in fragen)
+                {
+                    int antwortResultId = -1;
+                    foreach (int antwortId in nutzerAntworten)
+                    {
+                        if (frage.IstMultiSelect != true)
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwortResultId = antwort.AntwortId;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwort.IsChecked = true;
+                                    antwortResultId--;
+                                }
+                            }
+                        }
+                    }
+
+                    fragenViewModel.Add(new FragenViewModel()
+                    {
+                        Antworten = frage.Antworten,
+                        ID = frage.FrageId,
+                        Text = frage.Bezeichnung,
+                        GegebeneAntwort = antwortResultId,
+                        IstMultiSelect = frage.IstMultiSelect
+                    });
+                }
+
+                FragenNachThemengebiet fragenNachThemengebiet = new FragenNachThemengebiet()
+                {
+                    Questions = fragenViewModel,
+                    Name = fragen[0].Kategorie.Bezeichnung,
+                    ID = 1
+                };
+                detailsCatererViewModel.Fragen.Add(fragenNachThemengebiet);
+            }
+            return detailsCatererViewModel;
         }
 
         public CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel()

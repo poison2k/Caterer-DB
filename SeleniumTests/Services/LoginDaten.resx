@@ -123,13 +123,13 @@
   <data name="AdminPW" xml:space="preserve">
     <value>Start#22</value>
   </data>
-  <data name="Name1" xml:space="preserve">
+  <data name="Caterer1" xml:space="preserve">
     <value>caterer@test.de</value>
   </data>
-  <data name="Name2" xml:space="preserve">
+  <data name="Catwerer2" xml:space="preserve">
     <value>caterer1@test.de</value>
   </data>
-  <data name="Name3" xml:space="preserve">
+  <data name="Mitarbeiter" xml:space="preserve">
     <value>mitarbeiter@test.de</value>
   </data>
   <data name="PW1" xml:space="preserve">

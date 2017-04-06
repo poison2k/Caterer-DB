@@ -111,6 +111,7 @@
     <Compile Include="Services\TestTools Userstory C2-3.cs" />
     <Compile Include="Services\TestTools Userstory T3-1.cs" />
     <Compile Include="Tests Userstory M4-4.cs" />
+    <Compile Include="Tests Userstory M4-10.cs" />
     <Compile Include="Tests Userstory M4-9.cs" />
     <Compile Include="Tests Userstory T3-1.cs" />
     <Compile Include="Tests Userstory C2-5.cs" />

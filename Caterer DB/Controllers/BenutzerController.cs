@@ -4,8 +4,10 @@ using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Caterer_DB.Controllers
 {
@@ -83,7 +85,7 @@ namespace Caterer_DB.Controllers
             }
 
             DetailsCatererViewModel detailsCatererViewModel =
-                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
 
             if (detailsCatererViewModel == null)
             {
@@ -310,7 +312,11 @@ namespace Caterer_DB.Controllers
                 if (Request.Form["btnSave"] != null)
                 {
                     BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
-                    //TempData["isSaved"] = true;
+                    List<int> antwortIDs = BenutzerViewModelService.Map_MyDataBenutzerViewModel_BenutzerResultSet(myDataBenutzerViewModel);
+                    var benutzer = BenutzerService.SearchUserById(myDataBenutzerViewModel.BenutzerId);
+                    benutzer.AntwortIDs = antwortIDs;
+                    BenutzerService.EditBenutzer(benutzer);
+                    return RedirectToAction("DetailsCaterer", new RouteValueDictionary( new { controller = "Benutzer", action = "DetailsCaterer", Id = benutzer.BenutzerId }));
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
