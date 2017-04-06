@@ -1,10 +1,13 @@
 ﻿using DataAccess.Model;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 
 namespace DataAccess.Interfaces
 {
     public interface IBenutzerRepository
     {
+        List<Benutzer> FindeCatererNachUmkreis(DbGeography geoDaten, int umkreis);
+        
         void AddUser(Benutzer benutzer);
 
         void EditUser(Benutzer benutzer);

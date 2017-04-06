@@ -6,6 +6,8 @@ using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using Common.Services;
+using GoogleMaps.LocationServices;
+using System.Data.Entity.Spatial;
 
 namespace Business.Services
 {
@@ -48,6 +50,18 @@ namespace Business.Services
             return BenutzerRepository.SearchUserById(id);
         }
 
+        public List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis) {
+            var Adresse = new AddressData()
+            {
+                Country = "Deutschland",
+                Zip = plz,
+            };
+
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(Adresse);
+            var GeoDaten = DbGeography.FromText("Point(" + point.Longitude.ToString().Replace(',','.') + " " + point.Latitude.ToString().Replace(',', '.') + " )");
+            return BenutzerRepository.FindeCatererNachUmkreis(GeoDaten, umkreis);
+        }
         public Benutzer SearchUserByIdNoTracking(int id)
         {
             return BenutzerRepository.SearchUserByIdNoTracking(id);

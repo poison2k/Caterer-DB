@@ -17,6 +17,8 @@ namespace Business.Interfaces
 
         List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung);
 
+        List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis);
+
         void AddBenutzer(Benutzer benutzer);
 
         void AddMitarbeiter(Benutzer benutzer, string gruppe);

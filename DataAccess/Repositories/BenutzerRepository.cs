@@ -3,6 +3,7 @@ using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Spatial;
 using System.Linq;
 
 namespace DataAccess.Repositories
@@ -14,6 +15,11 @@ namespace DataAccess.Repositories
         public BenutzerRepository(ICatererContext db)
         {
             Db = db;
+        }
+
+        public List<Benutzer> FindeCatererNachUmkreis(DbGeography geoDaten, int umkreis) {
+
+            return Db.Benutzer.Where(x => x.Koordinaten.Distance(geoDaten) * 0.00062 <= umkreis).ToList();
         }
 
         public Benutzer SearchUserById(int id)

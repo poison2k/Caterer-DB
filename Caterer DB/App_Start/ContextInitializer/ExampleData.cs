@@ -2,6 +2,7 @@
 using DataAccess.Context;
 using DataAccess.Model;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 using System.Linq;
 
 namespace Caterer_DB.App_Start.ContextInitializer
@@ -160,7 +161,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
-                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
+            BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
             });
 
             Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer
@@ -327,6 +329,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     FunktionAnsprechpartner = "Geschäftsführer",
                     EMailVerificationCode = "-",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 10.166158 52.899777 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
