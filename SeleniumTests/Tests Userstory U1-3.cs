@@ -180,24 +180,7 @@ namespace SeleniumTests
             Assert.AreEqual(Fehlermeldung.PW_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Passwort, driver));
             Assert.AreEqual(Fehlermeldung.PW_Wiederholung_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Passwort_Wiederholen, driver));
 
-            //Firma
-            Assert.AreEqual(Fehlermeldung.Firma_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Firmenname, driver));
-            Assert.AreEqual(Fehlermeldung.Organisation_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Organisation, driver));
-            Assert.AreEqual(Fehlermeldung.Straße_Hausnummer_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Straße_Hnr, driver));
-            Assert.AreEqual(Fehlermeldung.PLZ_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.PLZ, driver));
-            Assert.AreEqual(Fehlermeldung.Ort_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Ort, driver));
 
-            //Ansprechpartner
-            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Anrede, driver));
-            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Vorname, driver));
-            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Nachname, driver));
-            Assert.AreEqual(Fehlermeldung.Ansprechpartner_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Ansprechpartner, driver));
-
-            //Erreichbarkeit
-            Assert.AreEqual(Fehlermeldung.Telefon_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Telefon, driver));
-
-            //Sonstiges
-            Assert.AreEqual(Fehlermeldung.Lieferumkreis_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Lieferumkreis, driver));
 
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
@@ -283,7 +266,7 @@ namespace SeleniumTests
             //Email befüllen
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id(ObjektIDs_Allgemein.EMail_Feld)).Clear();
-            driver.FindElement(By.Id(ObjektIDs_Allgemein.EMail_Feld)).SendKeys(LoginDaten.Name1);
+            driver.FindElement(By.Id(ObjektIDs_Allgemein.EMail_Feld)).SendKeys(LoginDaten.Caterer1);
 
             //Passwort befüllen
             driver.FindElement(By.Id(ObjektIDs_Allgemein.Passwort_Feld)).Clear();

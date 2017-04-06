@@ -16,7 +16,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             TestTools.Element_Klicken(ObjektIDs_Allgemein.LoginButton, driver);
-            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.Name1, ObjektIDs_Allgemein.EMail_Feld_Login, driver);
+            TestTools.Daten_In_Textbox_Eingeben(LoginDaten.Caterer1, ObjektIDs_Allgemein.EMail_Feld_Login, driver);
             TestTools.Daten_In_Textbox_Eingeben(LoginDaten.PW1, ObjektIDs_Allgemein.Passwort_Feld, driver);
             driver.FindElement(By.XPath("//input[@value='Anmelden']")).Click();
 
@@ -35,7 +35,7 @@ namespace SeleniumTests
 
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             driver.FindElement(By.Id("Willkommen"));
@@ -50,7 +50,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, "Start#21", driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, "Start#21", driver);
             Assert.AreEqual(Fehlermeldung.LoginSeite_Email_PW_Fehler, TestTools.Label_Text_Zurückgeben("error2", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
@@ -75,7 +75,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             TestTools.Element_Klicken(ObjektIDs_Allgemein.LoginButton, driver);
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, "", driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, "", driver);
             Assert.AreEqual(Fehlermeldung.PW_Erforderlich, TestTools.Label_Text_Zurückgeben("error1", driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);

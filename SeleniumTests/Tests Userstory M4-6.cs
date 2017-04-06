@@ -16,7 +16,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Caterer Übersicht aufrufen
             TestTools_Userstory_M4_6.Caterer_Übersicht_Aufrufen(driver);
@@ -68,7 +68,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Caterer Übersicht aufrufen
             TestTools_Userstory_M4_6.Caterer_Übersicht_Aufrufen(driver);
@@ -129,7 +129,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante Fragen anzeigen
             TestTools_Userstory_M4_6.Caterer_Übersicht_Aufrufen(driver);
@@ -154,7 +154,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Caterer Details aufrufen
             TestTools_Userstory_M4_6.Details_Von_Caterer_Anzeigen(driver);
@@ -215,7 +215,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante Fragen anzeigen
             TestTools_Userstory_M4_6.Details_Von_Caterer_Anzeigen(driver);
@@ -240,7 +240,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante AGB Fußzeile
             driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/EditCaterer/1");
@@ -311,7 +311,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante Fragen anzeigen
             TestTools_Userstory_M4_6.Caterer_Bearbeiten_Seite_Firmanamen_Prüfen_Und_Ändern(driver);
@@ -336,7 +336,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante AGB Fußzeile
             TestTools_Userstory_M4_6.Caterer_Hinzufügen_Seite_Firmanamen_Eintragen(driver);
@@ -404,7 +404,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante Fragen anzeigen
             TestTools_Userstory_M4_6.Caterer_Hinzufügen_Seite_Firmanamen_Eintragen(driver);

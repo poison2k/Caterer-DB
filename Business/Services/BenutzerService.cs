@@ -167,8 +167,6 @@ namespace Business.Services
             MailService.SendEditCatererMail(dbBenutzer.Mail);
             Mapper.Map(editedBenutzer, dbBenutzer);
             BenutzerRepository.EditUser(dbBenutzer);
-            //ToDo Wolle mach das richtig !!!!
-            //DocumentService.writeWordDocument("C:\\Download\\" + editedBenutzer.Firmenname + ".docx", editedBenutzer.Firmenname);
         }
 
         public void RemoveCaterer(int id)
