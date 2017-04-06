@@ -284,7 +284,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "citygrilluelzen@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Panzer",
                     Vorname = "Paul",
@@ -309,7 +309,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "ingosgrill@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Griller",
                     Vorname = "Ingo",
@@ -334,7 +334,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "11akuechehannover@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Mütterchen",
                     Vorname = "Erna",
@@ -359,7 +359,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "daseihannover@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Henne",
                     Vorname = "Mareike",
@@ -384,7 +384,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "vapianooldenburg@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Garciaz",
                     Vorname = "Stefano",
@@ -409,7 +409,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "pizzablitz@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Blitz",
                     Vorname = "Pizzaro",
@@ -434,7 +434,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "mensavereinsoltau@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Reynolds",
                     Vorname = "Malcom",
@@ -459,7 +459,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "weiteweltgoslar@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Barbarossa",
                     Vorname = "Friedrich",
@@ -484,7 +484,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "derbuttjever@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Flunder",
                     Vorname = "Ole",
@@ -509,7 +509,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "mensavereinbraunschweig@test,de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Lieberknecht",
                     Vorname = "Torsten",
@@ -534,7 +534,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "dorospartyservice@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Schmitz",
                     Vorname = "Dorothea",
@@ -559,7 +559,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 db.Benutzer.Add(new Benutzer
                 {
-                    Mail = "gloeckl-gastronomie@test.de",
+                    Mail = "projekt10test@gmail.com",
                     Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                     Nachname = "Hansen",
                     Vorname = "Hendrick",
