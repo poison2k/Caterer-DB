@@ -243,11 +243,12 @@ namespace Caterer_DB.Models.ViewModelServices
                                 if (antwort.AntwortId == antwortId)
                                 {
                                     antwort.IsChecked = true;
+                                    antwortResultId--;
                                 }
                             }
                         }
                     }
-
+                                        
                     fragenViewModel.Add(new FragenViewModel()
                     {
                         Antworten = frage.Antworten,
@@ -354,6 +355,7 @@ namespace Caterer_DB.Models.ViewModelServices
                                 if (antwort.AntwortId == antwortId)
                                 {
                                     antwort.IsChecked = true;
+                                    antwortResultId--;
                                 }
                             }
                         }
