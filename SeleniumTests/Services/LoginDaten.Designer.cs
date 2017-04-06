@@ -81,27 +81,27 @@ namespace SeleniumTests.Services {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die caterer@test.de ähnelt.
         /// </summary>
-        internal static string Name1 {
+        internal static string Caterer1 {
             get {
-                return ResourceManager.GetString("Name1", resourceCulture);
+                return ResourceManager.GetString("Caterer1", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die caterer1@test.de ähnelt.
         /// </summary>
-        internal static string Name2 {
+        internal static string Catwerer2 {
             get {
-                return ResourceManager.GetString("Name2", resourceCulture);
+                return ResourceManager.GetString("Catwerer2", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die mitarbeiter@test.de ähnelt.
         /// </summary>
-        internal static string Name3 {
+        internal static string Mitarbeiter {
             get {
-                return ResourceManager.GetString("Name3", resourceCulture);
+                return ResourceManager.GetString("Mitarbeiter", resourceCulture);
             }
         }
         

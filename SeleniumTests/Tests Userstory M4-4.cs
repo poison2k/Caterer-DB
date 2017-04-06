@@ -15,7 +15,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Neue Fragen Übersicht aufrufen
             TestTools_Userstory_M4_4.Fragebogen_Fragenübersicht_Neu_Aufrufen(driver);
@@ -76,7 +76,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante veröffentlichte Fragen anzeigen
             TestTools_Userstory_M4_4.Fragebogen_Fragenübersicht_Neu_Aufrufen(driver);
@@ -104,7 +104,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Frage hinzufügen aufrufen
             TestTools_Userstory_M4_4.Fragebogen_Fragen_Erstellen_Aufrufen(driver);
@@ -165,7 +165,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante neue Fragen anzeigen
             TestTools_Userstory_M4_4.Fragebogen_Fragen_Erstellen_Aufrufen(driver);
@@ -189,7 +189,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Fragendetails aufrufen
             TestTools_Userstory_M4_4.Fragebogen_Fragen_Details_Aufrufen(driver);
@@ -250,7 +250,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante neue Fragen anzeigen
             TestTools_Userstory_M4_4.Fragebogen_Fragen_Details_Aufrufen(driver);
@@ -278,7 +278,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Neue Fragen Details aufrufen
             TestTools_Userstory_M4_4.Fragebogen_Frage_Bearbeiten_Aufrufen_Zum_Löschen(driver);
@@ -313,7 +313,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Frage bearbeiten aufrufen
             TestTools_Userstory_M4_4.Fragebogen_Frage_Bearbeiten_Aufrufen(driver);
@@ -388,7 +388,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante neue Fragen anzeigen
             TestTools_Userstory_M4_4.Fragebogen_Frage_Bearbeiten_Aufrufen(driver);
@@ -420,7 +420,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Fragenübersicht aufrufen
             TestTools_Userstory_M4_4.Fragebogen_Fragenübersicht_Aufrufen(driver);
@@ -481,7 +481,7 @@ namespace SeleniumTests
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login_Ausloggen, driver);
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante neue Fragen anzeigen
             TestTools_Userstory_M4_4.Fragebogen_Fragenübersicht_Aufrufen(driver);
@@ -509,7 +509,7 @@ namespace SeleniumTests
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
             //Als Mitarbeiter einloggen
-            TestTools.User_Login_Durchführen(LoginDaten.Name3, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Neue Fragen Details aufrufen
             TestTools_Userstory_M4_4.Fragebogen_Veröffentlichte_Frage_Details_Aufrufen_Zum_Löschen(driver);
