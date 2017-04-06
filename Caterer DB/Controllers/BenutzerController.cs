@@ -4,6 +4,7 @@ using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 
@@ -310,7 +311,12 @@ namespace Caterer_DB.Controllers
                 if (Request.Form["btnSave"] != null)
                 {
                     BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
-                    //TempData["isSaved"] = true;
+                    List<int> antwortIDs = BenutzerViewModelService.Map_MyDataBenutzerViewModel_BenutzerResultSet(myDataBenutzerViewModel);
+                    var benutzer = BenutzerService.SearchUserById(User.BenutzerId);
+                    benutzer.AntwortIDs = antwortIDs;
+                    BenutzerService.EditBenutzer(benutzer);
+                    TempData["isSavedFragebogen"] = true;
+                    return RedirectToAction("Index", "Home");
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {

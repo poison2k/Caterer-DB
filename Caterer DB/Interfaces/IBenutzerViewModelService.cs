@@ -28,6 +28,8 @@ namespace Caterer_DB.Interfaces
 
         Benutzer Map_MeineDatenBenutzerViewModel_Benutzer(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel);
 
+        List<int> Map_MyDataBenutzerViewModel_BenutzerResultSet(MyDataBenutzerViewModel myDataBenutzerViewModel);
+
         IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer);
 
         EditBenutzerViewModel Map_Benutzer_EditBenutzerViewModel(Benutzer benutzer);

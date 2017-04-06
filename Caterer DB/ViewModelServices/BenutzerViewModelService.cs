@@ -189,6 +189,25 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Benutzer>(myDataBenutzerViewModel);
         }
 
+         public List<int> Map_MyDataBenutzerViewModel_BenutzerResultSet(MyDataBenutzerViewModel myDataBenutzerViewModel)
+        {
+            var antwortIDs = new List<int>();
+            foreach (FragenNachThemengebiet fragenNachThemengebiet in myDataBenutzerViewModel.Fragen)
+            {
+                foreach (FragenViewModel frage in fragenNachThemengebiet.Questions)
+                {
+                    foreach (Antwort antwort in frage.Antworten)
+                    {
+                        if (antwort.AntwortId == frage.GegebeneAntwort || antwort.IsChecked)
+                        {
+                            antwortIDs.Add(antwort.AntwortId);
+                        }
+                    }
+                }
+            }
+
+            return antwortIDs;
+        }
         public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen)
         {
             var myDataBenutzerViewModel = Mapper.Map<MyDataBenutzerViewModel>(benutzer);
