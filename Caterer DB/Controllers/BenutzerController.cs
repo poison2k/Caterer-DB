@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Caterer_DB.Controllers
 {
@@ -315,8 +316,7 @@ namespace Caterer_DB.Controllers
                     var benutzer = BenutzerService.SearchUserById(myDataBenutzerViewModel.BenutzerId);
                     benutzer.AntwortIDs = antwortIDs;
                     BenutzerService.EditBenutzer(benutzer);
-                    TempData["isSavedFragebogen"] = true;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DetailsCaterer", new RouteValueDictionary( new { controller = "Benutzer", action = "DetailsCaterer", Id = benutzer.BenutzerId }));
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
