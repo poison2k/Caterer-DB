@@ -327,6 +327,9 @@
                     <ul class="nav nav-pills nav-stacked" id="Fragebogen">
                         <br />
                         <br />
+                        <br />
+                        <br />
+                        <br />
                         @for (int i = 0; i < Model.Fragen.Count; i++)
                         {
 
@@ -336,14 +339,14 @@
 
                 </nav>
                 <div class="col-md-9 col-md-offset-2">
-
+                    <br />
                     <div class="row">
                         <div id="Fragebogen" class="col-md-6 col-md-offset-3 text-center">
                             <h1>Fragebogen</h1>
                             <br />
                         </div>
                     </div>
-
+                   
                     @for (int i = 0; i < Model.Fragen.Count; i++)
                     {
                         <div class="well-lg col-md-12 col-md-offset-0" style="z-index:@(Model.Fragen.Count -i) ">
