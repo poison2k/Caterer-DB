@@ -32,7 +32,7 @@ namespace DataAccess.Interfaces
 
         List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse);
 
-        List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy = "");
+        List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy = "" , int umkreis = -1, DbGeography geoDaten = null, string name = "");
 
         int GetMitarbeiterCount();
 
