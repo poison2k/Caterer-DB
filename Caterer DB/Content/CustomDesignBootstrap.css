@@ -251,7 +251,7 @@ ul {
 .tabbar {
       top: 170px;
       position: fixed;
-      background-color: white;
+      background-color: transparent;
       z-index: 99;
       width: 1165px;
   }
