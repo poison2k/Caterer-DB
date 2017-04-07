@@ -4,8 +4,7 @@
     ViewBag.Title = "MyData";
 }
 
-<br />
-
+ 
 
 @using (Html.BeginForm())
 {
@@ -33,18 +32,18 @@
             </div>
         </div>*@
 
-    <h3>
+ 
         <div class="row">
             <div class="col-md-12">
-                <div class="tabbar">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
-                        <li role="presentation"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
+                <div class="tabbar ">
+                    <ul class="nav nav-tabs innertab" role="tablist">
+                        <li role="presentation" class="active innertab"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
+                        <li role="presentation" class="innertab"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </h3>
+  
 
 
 
@@ -65,8 +64,8 @@
 
         <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade in active" id="stammdaten">
-            <hr>
+        <div role="tabpanel"  class="tab-pane fade in active" id="stammdaten">
+           
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4 text-center">

@@ -250,12 +250,15 @@ ul {
  
 .tabbar {
       top: 170px;
-      position: fixed;
-      background-color: transparent;
+     
       z-index: 99;
-      width: 1165px;
   }
- 
+.innertab {
+    z-index: 100;
+    font-size: 20px;
+}
+
+
 
 /* PageList Hintergrundfarbe Überschriften --> Noch in Arbeit <--*/
 .panel-default > .panel-heading {
