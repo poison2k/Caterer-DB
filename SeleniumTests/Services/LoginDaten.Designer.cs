@@ -90,9 +90,9 @@ namespace SeleniumTests.Services {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die caterer1@test.de ähnelt.
         /// </summary>
-        internal static string Catwerer2 {
+        internal static string Caterer2 {
             get {
-                return ResourceManager.GetString("Catwerer2", resourceCulture);
+                return ResourceManager.GetString("Caterer2", resourceCulture);
             }
         }
         

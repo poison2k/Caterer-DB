@@ -338,7 +338,7 @@ namespace SeleniumTests
             //Änderung durchführen
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Catwerer2, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer2, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
