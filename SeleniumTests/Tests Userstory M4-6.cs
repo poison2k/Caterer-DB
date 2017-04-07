@@ -44,6 +44,7 @@ namespace SeleniumTests
             TestTools_Userstory_M4_6.Caterer_Bearbeiten_Anzeigen(driver);
 
             //Pürfen ob Daten übernommen wurden
+            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
             Assert.AreEqual(NutzerDaten.NutzerDaten_Firmenname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Firmanname, driver));
             Assert.AreEqual("Mensaverein", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Organisationsform, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Straße_Nr, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Straße_Nr, driver));

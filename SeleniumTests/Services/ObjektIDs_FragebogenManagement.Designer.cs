@@ -97,7 +97,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Fragetext zu Frage 1 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fragetext zu Frage 8 ähnelt.
         /// </summary>
         internal static string Frage_Musterfrage {
             get {
