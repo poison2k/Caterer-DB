@@ -283,6 +283,31 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 });
             }
 
+            { 
+            db.Benutzer.Add(new Benutzer
+            {
+                Mail = "caterer1@test.de",
+                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Nachname = "Caterer1",
+                Vorname = "Test",
+                IstEmailVerifiziert = true,
+                Firmenname = "AllYouCanEat GmbH",
+                Internetadresse = "www.AYCE.de",
+                Lieferumkreis = "Bis 10 km",
+                Organisationsform = "Caterer",
+                Telefon = "01234 - 56789",
+                Fax = "01234 - 99999",
+                Straße = "Holzweg 1",
+                Postleitzahl = "87654",
+                Ort = "Woodway",
+                Anrede = "Herr",
+                FunktionAnsprechpartner = "Chef",
+                EMailVerificationCode = "",
+                PasswortZeitstempel = System.DateTime.Now,
+                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
+                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+            });
+
             {
                 db.Benutzer.Add(new Benutzer
                 {
