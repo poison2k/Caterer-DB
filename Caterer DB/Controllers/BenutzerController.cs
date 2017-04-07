@@ -66,9 +66,10 @@ namespace Caterer_DB.Controllers
             ViewBag.Sortierrung = Sortierrung;
 
             var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name);
+            var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name).Count;
             fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                 resultList
-                , resultList.Count
+                , resultcount
                 , aktuelleSeite
                 , seitenGrösse);
 

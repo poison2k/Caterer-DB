@@ -83,7 +83,7 @@ namespace DataAccess.Repositories
                 mitarbeiterQuery = mitarbeiterQuery.Where(y => y.Firmenname.Contains(name));
             }
 
-            if (umkreis != -1 && geoDaten != null) {
+            if (umkreis != 0 && umkreis != -1 && geoDaten.Longitude != null) {
 
                 mitarbeiterQuery = mitarbeiterQuery.Where(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000);
             }
