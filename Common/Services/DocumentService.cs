@@ -4,6 +4,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.IO;
+using System.Net;
 
 namespace Common.Services
 {
@@ -30,6 +31,9 @@ namespace Common.Services
             run.AppendChild(new Text(text));
 
             wordDocument.Close();
+
+            WebClient webClient = new WebClient();
+            webClient.DownloadFile(filepath, @"c:\\Download\\myfile.docx");
         }
     }
 }
