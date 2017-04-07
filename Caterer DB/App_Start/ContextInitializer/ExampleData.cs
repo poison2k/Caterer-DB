@@ -283,6 +283,31 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 });
             }
 
+            { 
+            db.Benutzer.Add(new Benutzer
+            {
+                Mail = "caterer1@test.de",
+                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Nachname = "Caterer1",
+                Vorname = "Test",
+                IstEmailVerifiziert = true,
+                Firmenname = "AllYouCanEat GmbH",
+                Internetadresse = "www.AYCE.de",
+                Lieferumkreis = "Bis 10 km",
+                Organisationsform = "Caterer",
+                Telefon = "01234 - 56789",
+                Fax = "01234 - 99999",
+                Straße = "Holzweg 1",
+                Postleitzahl = "87654",
+                Ort = "Woodway",
+                Anrede = "Herr",
+                FunktionAnsprechpartner = "Chef",
+                EMailVerificationCode = "",
+                PasswortZeitstempel = System.DateTime.Now,
+                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
+                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
+            });
+
             {
                 db.Benutzer.Add(new Benutzer
                 {
@@ -305,6 +330,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "4, 5, 9, 11, 18, 23, 25, 28",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 10.555055 52.966940 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -331,7 +357,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "4, 5, 6, 9, 14, 15, 18, 23, 25, 27",
                     PasswortZeitstempel = System.DateTime.Now,
-                    Koordinaten = DbGeography.FromText("Point( 10.166158 52.899777 )"),
+                    Koordinaten = DbGeography.FromText("Point( 10.170305 52.899754 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -358,6 +384,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "1, 6, 8, 11, 13, 17, 20, 28",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 9.713295 52.370499 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -384,6 +411,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "3, 7, 9, 11, 14, 15, 16, 25, 29",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 9.711535 52.371030 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -410,6 +438,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "3, 6, 7, 10, 11, 13, 16, 23, 28",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 8.213351 53.138222 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -436,6 +465,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "3, 6, 9, 14, 15, 17, 21, 23, 29",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 9.135246 52.804920 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -462,6 +492,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "2, 5, 6, 9, 12,16, 19, 22, 29",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 9.835967 52.975741 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -488,6 +519,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "4, 6, 7, 10, 15, 18, 22, 23, 28",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 10.427396 51.903510 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -514,6 +546,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "1, 5, 8, 11, 17, 21, 23, 28",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 7.903658 53.574694 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -540,6 +573,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "2, 5, 6, 9, 11, 17, 18, 21, 23, 24, 27",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 10.560487 52.290498 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -566,6 +600,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "2, 5, 6, 10, 11, 12, 17, 18, 21, 24, 28",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 10.083429 52.602581 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
@@ -592,6 +627,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     EMailVerificationCode = "-",
                     _AntwortIDs = "1, 5, 6, 8, 12, 17, 18, 21, 23, 24, 27",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 10.814477 52.428914 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
             }
