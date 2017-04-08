@@ -283,10 +283,21 @@ th {
 .nav-pills > li.active > a:hover
 {
   background-color: rgba(77,147,208,1);
+  text-decoration: none;
+    box-shadow: 20px 5px rgba(77,147,208,0.5);
+    border-radius: 15px 5px 15px 5px;
 }
 
 .nav-pills > li > a:hover {
-   background-color: rgba(102,204,204,0.2);
+    background-color: rgba(102,204,204,0.2);
+   text-decoration: none;
+   box-shadow: 0 8px -30px 0 rgba(0,0,0,1);
+}
+
+.linie {
+  border-top: 2px solid rgba(150,150,150,1);
+    background-color: rgba(150,150,150,1);
+    
 }
 
     /*Nicht löschen Sebastian...Das das ist ein Hilfsraster für die Schachteln*/
@@ -297,3 +308,10 @@ th {
 .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1{
     background-color: rgba(206, 0, 0, 0.5)
 }*/
+
+    .nav-tabs > li > a {
+  margin-right: 0;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 0px 20px 0 0;
+}
