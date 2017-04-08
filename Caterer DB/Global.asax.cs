@@ -5,8 +5,10 @@ using DataAccess.Context;
 using DataAccess.Repositories;
 using log4net.Config;
 using Newtonsoft.Json;
+using SqlServerTypes;
 using System;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
@@ -20,6 +22,8 @@ namespace Caterer_DB
     {
         protected void Application_Start()
         {
+            //Workariund um GeoDaten in SQL Server nutzen zu können
+            SqlProviderServices.SqlServerTypesAssemblyName = "Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
 #if DEBUG
             Database.SetInitializer(new ContextInitializerCreateAlwaysMitBeispieldaten());
 
@@ -27,20 +31,16 @@ namespace Caterer_DB
 
             Database.SetInitializer(new ContextInitializerCreateAlwaysWithStartData());
 #endif
-            //CatererContext db = new CatererContext();
-            //db.Database.Initialize(true);
-
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            Utilities.LoadNativeAssemblies(Server.MapPath("~/bin"));
             XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
-
             AreaRegistration.RegisterAllAreas();
 
-            //Die Webapi config muss auf jeden fall vor der RouteConfig kommen,
-            //da sie sonst überschrieben wird und die webapi routen nicht gefunden werden
+          
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)

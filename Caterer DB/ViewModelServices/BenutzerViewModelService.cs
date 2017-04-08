@@ -442,6 +442,17 @@ namespace Caterer_DB.Models.ViewModelServices
             return listViewModel;
         }
 
+        public FullFilterCatererViewModel GeneriereFullFilterCatererViewModel(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10)
+        {
+            var fullFilterCatererViewModel = new FullFilterCatererViewModel();
+            fullFilterCatererViewModel.ResultListCaterer = new ListViewModel<IndexCatererViewModel>(gesamtAnzahlDatensätze, aktuelleSeite, seitenGröße);
+            fullFilterCatererViewModel = AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
+
+            foreach (var benutzer in benutzerListe)
+                fullFilterCatererViewModel.ResultListCaterer.Entitäten.Add(GeneriereIndexCatererViewModel(benutzer));
+            return fullFilterCatererViewModel;
+        }
+
         public IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer)
         {
             var indexBenutzerViewModel = Mapper.Map<IndexBenutzerViewModel>(benutzer);
@@ -516,6 +527,14 @@ namespace Caterer_DB.Models.ViewModelServices
             myDataBenutzerViewModel.Organisationsformen = CreateOrganisationsformenSelectList();
 
             return myDataBenutzerViewModel;
+        }
+
+        public FullFilterCatererViewModel AddListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel)
+        {
+
+            fullFilterCatererViewModel.Lieferumkreise = CreateLieferumkreisSelectList();
+
+            return fullFilterCatererViewModel;
         }
 
         private SelectList CreateAnredenSelectList()

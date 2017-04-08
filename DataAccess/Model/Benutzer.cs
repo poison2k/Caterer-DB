@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
 
 namespace DataAccess.Model
 {
@@ -60,6 +61,10 @@ namespace DataAccess.Model
 
         //Fragebogen
         public string _AntwortIDs { get; set; }
+
+        //GeoInfoDaten
+        public DbGeography Koordinaten { get; set;}
+       
 
         [NotMapped]
         public virtual List<int> AntwortIDs
