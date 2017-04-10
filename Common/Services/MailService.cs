@@ -74,12 +74,16 @@ namespace Common.Services
         private MailModel ConfigureMail(Config config)
         {
             var mailModel = new MailModel();
-
+          
             mailModel.SMTPSeverName = config.SmtpServer;
             mailModel.Port = config.SmtpPort;
             mailModel.Absender = config.UserNameForSMTPServer;
             mailModel.Passwort = config.PasswortForSMTPServer;
             mailModel.UserName = config.UserNameForSMTPServer;
+
+
+           
+
 
             return mailModel;
         }
@@ -92,15 +96,14 @@ namespace Common.Services
                 mail.Subject = mailModel.Betreff;
                 mail.Body = mailModel.Inhalt;
 
-                SmtpClient smtpClient = new SmtpClient();
-                smtpClient.Port = mailModel.Port;
-                smtpClient.EnableSsl = true;
-                smtpClient.Host = mailModel.SMTPSeverName;
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                SmtpClient smtpClient = new SmtpClient(mailModel.SMTPSeverName);
+                //smtpClient.Port = mailModel.Port;
+                //smtpClient.Host = mailModel.SMTPSeverName;
 
-                smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = new NetworkCredential(mailModel.UserName, mailModel.Passwort);
 
+               
+                //send the message
                 smtpClient.Send(mail);
             }
             catch (Exception)
