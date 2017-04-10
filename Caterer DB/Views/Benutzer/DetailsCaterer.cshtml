@@ -178,56 +178,7 @@
 
 
 
-
-        @*------------------Eigene Bearbeitung----------------------*@
-        
-                    @for (int i = 0; i < Model.Fragen.Count; i++)
-                    {
-                        <h2>@Html.DisplayFor(m => m.Fragen[i].Name)</h2>
-
-
-
-
-
-
-                        for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
-                        {
-                            <h4>@Model.Fragen[i].Questions[j].Text </h4>
-                            if (Model.Fragen[i].Questions[j].GegebeneAntwort == -1)
-                            {
-                                <p>keine Angabe</p>
-                            }
-                            else if (Model.Fragen[i].Questions[j].IstMultiSelect)
-                            {
-                                for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
-                                {
-                                    if (Model.Fragen[i].Questions[j].Antworten[k].IsChecked)
-                                    {
-                                        <p>@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
-                                    }
-
-                                }
-                            }
-                            else
-                            {
-                                for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
-                                {
-                                    if (Model.Fragen[i].Questions[j].Antworten[k].AntwortId == Model.Fragen[i].Questions[j].GegebeneAntwort)
-                                    {
-                                        <p>@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
-                                    }
-
-                                }
-                            }
-
-                        }
-                    }
-
-                </div>
-            
-  
-
-
+       
                     @*-------------------Sebastian-----------------------------*@
                     <div class="row">
                         <div class="col-md-8">
