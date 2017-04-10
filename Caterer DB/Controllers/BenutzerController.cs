@@ -348,6 +348,15 @@ namespace Caterer_DB.Controllers
             return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
         }
 
+        // POST: Benutzer/DetailsCaterer
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DetailsCaterer(DetailsBenutzerViewModel detailsBenutzerViewModel)
+        {
+            
+            return View(detailsBenutzerViewModel);
+        }
+
         // GET: Benutzer/Delete/5
         [CustomAuthorize(Rights = RechteResource.DeleteMitarbeiter)]
         public ActionResult Delete(int? id)
