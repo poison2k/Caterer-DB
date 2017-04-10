@@ -33,7 +33,7 @@ namespace Common.Services
             wordDocument.Close();
 
             WebClient webClient = new WebClient();
-            webClient.DownloadFile(filepath, @"c:\\Download\\myfile.docx");
+            webClient.DownloadFile(filepath, @"c:\\Download\\downloadedFile.docx");
         }
     }
 }

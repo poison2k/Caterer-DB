@@ -120,6 +120,7 @@ namespace DataAccess.Repositories
 
         public void AddUser(Benutzer benutzer)
         {
+            benutzer.BenutzerGruppen.Add(Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Caterer").Single());
             benutzer.PasswortZeitstempel = DateTime.Now;
             Db.Benutzer.Add(benutzer);
             Db.SaveChanges();

@@ -157,17 +157,20 @@
                         <a class="btn btn-default" id="btnZurück" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                     </li>
                     <li>
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Exportieren
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="btn btn-default" id="btnLueneburg" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = Model.BenutzerId})">Lüneburg</a></li>
-                                <li><a class="btn btn-default" id="btnBraunschweig" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = Model.BenutzerId})">Braunschweig</a></li>
-                                <li><a class="btn btn-default" id="btnOsnabrueck" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = Model.BenutzerId})">Osnabrück</a></li>
-                            </ul>
-                        </div>
+                        @using (Html.BeginForm())
+                        {
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Exportieren
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="btn btn-default" name="lueneburg" id="btnLueneburg" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Lüneburg</a></li>
+                                    <li><a class="btn btn-default" name="braunschweig" id="btnBraunschweig" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Braunschweig</a></li>
+                                    <li><a class="btn btn-default" name="osnabrueck" id="btnOsnabrueck" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Osnabrück</a></li>
+                                </ul>
+                            </div>
+                        }
                     </li>
                 </ul>
             </div>
