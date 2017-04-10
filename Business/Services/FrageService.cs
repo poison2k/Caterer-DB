@@ -16,12 +16,15 @@ namespace Business.Services
 
         public IBenutzerService BenutzerService { get; set; }
 
-        public FrageService(IFrageRepository frageRepository, IKategorieRepository kategorienRepository, IMailService mailService, IBenutzerService benutzerService)
+        public IConfigService ConfigService { get; set; }
+
+        public FrageService(IFrageRepository frageRepository, IKategorieRepository kategorienRepository, IMailService mailService, IBenutzerService benutzerService, IConfigService configService)
         {
             FrageRepository = frageRepository;
             KategorienRepository = kategorienRepository;
             MailService = mailService;
             BenutzerService = benutzerService;
+            ConfigService = configService;
         }
 
         public void AddFrage(Frage frage)
@@ -39,7 +42,7 @@ namespace Business.Services
                     {
                         if (gruppe.Bezeichnung == "Caterer")
                         {
-                            MailService.SendReleasedQuestionCatererMail(benutzer.Mail);
+                            MailService.SendReleasedQuestionCatererMail(ConfigService.GetConfig(), benutzer.Mail);
                         }
                     }
                 }

@@ -8,9 +8,16 @@ namespace DataAccess.Context
 {
     public class CatererContext : DbContext, ICatererContext
     {
+
+#if DEBUG
         public CatererContext() : base("CatererConnectionString")
         {
         }
+#else
+        public CatererContext() : base("CatererConnectionStringLive")
+        {
+        }
+#endif 
 
         public virtual DbSet<BenutzerGruppe> BenutzerGruppe { get; set; }
         public virtual DbSet<Recht> Recht { get; set; }

@@ -1,19 +1,21 @@
-﻿namespace Common.Interfaces
+﻿using DataAccess.Model;
+
+namespace Common.Interfaces
 {
     public interface IMailService
     {
-        void SendRegisterMail(string verify, string email, string id);
+        void SendRegisterMail(Config config, string verify, string email, string id);
 
-        void SendNewMitarbeiterMail(string passwordVerificationCode, string mail, string id);
+        void SendNewMitarbeiterMail(Config config, string passwordVerificationCode, string mail, string id);
 
-        void SendForgottenPasswordMail(string eMailVerificationCode, string mail, string v);
+        void SendForgottenPasswordMail(Config config, string eMailVerificationCode, string mail, string v);
 
-        void SendNewCatererMail(string passwordVerificationCode, string mail, string v);
+        void SendNewCatererMail(Config config, string passwordVerificationCode, string mail, string v);
 
-        void SendRemoveCatererMail(string mail);
+        void SendRemoveCatererMail(Config config, string mail);
 
-        void SendEditCatererMail(string mail);
+        void SendEditCatererMail(Config config, string mail);
 
-        void SendReleasedQuestionCatererMail(string mail);
+        void SendReleasedQuestionCatererMail(Config config, string mail);
     }
 }
