@@ -324,15 +324,11 @@ th {
 .link-button {
   background: none;
   border: none;
-  color: blue;
-  text-decoration: underline;
+  color: #337ab7;
   cursor: pointer;
-  font-size: 1em;
-  font-family: serif;
+  text-decoration: none;
 }
 .link-button:focus {
-  outline: none;
-}
-.link-button:active {
-  color:red;
+  color: #23527c;
+  text-decoration: underline;
 }
