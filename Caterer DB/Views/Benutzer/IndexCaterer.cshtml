@@ -17,47 +17,63 @@
                 <h1>Caterer</h1>
             </div>
         </div>
+        <br />
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well well-lg">
-                    <h3>Filter</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                <div class="well well-lg-weiss" style="border-color: rgb(211, 211, 211);">
 
-                                <label class="control-label">Name</label>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Firmenname</label>
                                 @Html.Editor("name", new { htmlAttributes = new { @class = "form-control", id = "name" } })
                             </div>
                         </div>
-                        
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-
-                                <label class="control-label">Plz</label>
+                                <label class="control-label">Postleitzahl</label>
                                 @Html.Editor("plz", new { htmlAttributes = new { @class = "form-control", id = "plz" } })
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-
                                 <label class="control-label">Umkreis</label>
                                 @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
                             </div>
                         </div>
                     </div>
+                    <br />
+                    <br />
                     <div class="row">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Filtern</button>
+                        <div class="col-md-6">
+                            <label class="control-label">Frage</label>
+                            @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label">Antwort</label>
+                            @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-plus"></i></a>
+                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-trash"></i></a>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-default btn-block">Filter anwenden</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-default btn-block"> Filter zurücksetzen</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 15px"></div>
-
+        <br />
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
