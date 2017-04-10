@@ -79,31 +79,34 @@
                                     <th>
                                         @if (ViewBag.Sortierrung == "Firmenname")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname_desc" })"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret"></b> </a>
+                                            <button type="submit" class="link-button" href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname_desc" })"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Firmenname_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Firmenname"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit" class="link-button" href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Firmenname"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname" })"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname)  </a>
+                                            <button type="submit" class="link-button" href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname" })"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname)  </button>
                                         }
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Telefon")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Telefon_desc"})">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret"></b> </a>
+                                            <button type="submit"   class="link-button" href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Telefon_desc"})">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Telefon_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit"   class="link-button" href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon)  </a>
+                                            <button type="submit"   class="link-button" href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon)  </button>
                                         }
-                                    </th>
+</th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Postleitzahl")
                                         {

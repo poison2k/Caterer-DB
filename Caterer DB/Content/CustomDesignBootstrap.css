@@ -318,3 +318,21 @@ th {
   border: 1px solid transparent;
   border-radius: 0px 20px 0 0;
 }
+
+
+ /*Mask link as Button*/
+.link-button {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: serif;
+}
+.link-button:focus {
+  outline: none;
+}
+.link-button:active {
+  color:red;
+}

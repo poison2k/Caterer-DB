@@ -185,6 +185,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "-",
                 EMailVerificationCode = "-",
                 PasswortZeitstempel = System.DateTime.Now,
+                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Mitarbeiter) }
             });
 
@@ -208,6 +209,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "-",
                 EMailVerificationCode = "-",
                 PasswortZeitstempel = System.DateTime.Now,
+                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
             });
 
@@ -231,6 +233,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "-",
                 EMailVerificationCode = "-",
                 PasswortZeitstempel = System.DateTime.Now,
+                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
             });
 
@@ -254,6 +257,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
+                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
             });
 
@@ -279,6 +283,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     FunktionAnsprechpartner = "-",
                     EMailVerificationCode = "-",
                     PasswortZeitstempel = System.DateTime.Now,
+                    Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Mitarbeiter) }
                 });
             }
