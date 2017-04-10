@@ -375,6 +375,20 @@ namespace Caterer_DB.Models
         public string Ort { get; set; }
     }
 
+    public class FullFilterCatererViewModel
+    {
+        public string Name { get; set; }
+
+        public string PLZ { get; set; }
+
+        public string Umkreis { get; set; }
+
+        public ListViewModel<IndexCatererViewModel> ResultListCaterer { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
+
+    }
+
     public class CreateCatererViewModel
     {
         [Required]

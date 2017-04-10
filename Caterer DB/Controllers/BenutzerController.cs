@@ -47,33 +47,33 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
         {
-            ViewBag.Sortierrung = Sortierrung;
-
-            return View(BenutzerViewModelService.GeneriereListViewModelCaterer(
-                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung)
+            var fullFilterViewModel = new FullFilterCatererViewModel();
+            fullFilterViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
+                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung,-1,"","")
                 , BenutzerService.GetCatererCount()
                 , aktuelleSeite
-                , seitenGrösse));
+                , seitenGrösse);
+            ViewBag.Sortierrung = Sortierrung;
+
+            return View(fullFilterViewModel);
         }
 
         // GET: Benutzer
         [HttpPost]
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
-        public ActionResult IndexCaterer(FormCollection formcollection, string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
+        public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
         {
             ViewBag.Sortierrung = Sortierrung;
 
-            if (formcollection["plz"] != "" && formcollection["umkreis"] != "") {
-
-                return View(BenutzerViewModelService.GeneriereListViewModelCaterer(
-                 BenutzerService.FindeCatererNachUmkreis(formcollection["plz"], Convert.ToInt32(formcollection["umkreis"])), BenutzerService.FindeCatererNachUmkreis(formcollection["plz"], Convert.ToInt32(formcollection["umkreis"])).Count,aktuelleSeite,seitenGrösse));
-            }
-
-            return View(BenutzerViewModelService.GeneriereListViewModelCaterer(
-                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung)
-                , BenutzerService.GetCatererCount()
+            var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name);
+            var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name).Count;
+            fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
+                resultList
+                , resultcount
                 , aktuelleSeite
-                , seitenGrösse));
+                , seitenGrösse);
+
+            return View(fullFilterCatererViewModel);
         }
 
         // GET: Benutzer/Details/5

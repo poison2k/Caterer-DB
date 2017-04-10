@@ -4,8 +4,7 @@
     ViewBag.Title = "MyData";
 }
 
-<br />
-
+ 
 
 @using (Html.BeginForm())
 {
@@ -18,20 +17,37 @@
     @Html.HiddenFor(model => model.IstEmailVerifiziert)
 
      <!-- Nav tabs -->
-    <div class="tabbar">
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <div class="nav-tabs" style="padding-left:400px; border-bottom:0">
-                    <button role="presentation" class="active" href="#stammdaten" aria-controls="home" data-toggle="tab">Caterer Daten</button>
+    @*<div class="tabbar">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="nav-tabs" style="padding-left:400px; border-bottom:0">
+                        <button role="presentation" class="active" href="#stammdaten" aria-controls="home" data-toggle="tab">Caterer Daten</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="nav-tabs" style="border-bottom:0">
+                        <button role="presentation" href="#fragebogen" aria-controls="profile" data-toggle="tab">Fragebogen</button>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="nav-tabs" style="border-bottom:0">
-                    <button role="presentation" href="#fragebogen" aria-controls="profile" data-toggle="tab">Fragebogen</button>
+        </div>*@
+
+ 
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbar ">
+                    <ul class="nav nav-tabs innertab" role="tablist">
+                        <li role="presentation" class="active innertab"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
+                        <li role="presentation" class="innertab"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+  
+
+
+
+
 
 
 
@@ -48,8 +64,8 @@
 
         <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade in active" id="stammdaten">
-            <hr>
+        <div role="tabpanel"  class="tab-pane fade in active" id="stammdaten">
+           
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4 text-center">
@@ -310,24 +326,27 @@
                 <nav class="sidebar hidden-xs hidden-sm" id="myScrollspy">
                     <ul class="nav nav-pills nav-stacked" id="Fragebogen">
                         <br />
-<br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                         @for (int i = 0; i < Model.Fragen.Count; i++)
                         {
 
                             <li><a id="@Model.Fragen[i].Name@i" href="#@Model.Fragen[i].Name">@Model.Fragen[i].Name</a></li>
                         }
                     </ul>
-                    
+
                 </nav>
                 <div class="col-md-9 col-md-offset-2">
-
+                    <br />
                     <div class="row">
                         <div id="Fragebogen" class="col-md-6 col-md-offset-3 text-center">
                             <h1>Fragebogen</h1>
                             <br />
                         </div>
                     </div>
-
+                   
                     @for (int i = 0; i < Model.Fragen.Count; i++)
                     {
                         <div class="well-lg col-md-12 col-md-offset-0" style="z-index:@(Model.Fragen.Count -i) ">
@@ -403,7 +422,7 @@
                         <div class="col-md-12 col-md-offset-0">
                             <ul class="list-unstyled list-inline " style="margin-left: -5px;">
                                 <li>
-                                    <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-default">
+                                    <button type="submit" id="btnSpeichernFragen" name="btnSave" value="Speichern" class="btn btn-default">
                                         <i class="glyphicon glyphicon-ok"></i> Speichern
                                     </button>
                                 </li>

@@ -5,17 +5,27 @@
     ViewBag.Title = "Details";
 }
 <!-- Nav tabs -->
-<div class="tabbar">
-    <div class="col-md-12">
-        <div class="col-md-6">
-            <div class="nav-tabs" style="padding-left:400px; border-bottom:0">
-                <button role="presentation" class="active" href="#stammdaten" aria-controls="home" data-toggle="tab">Caterer Daten</button>
+@*<div class="tabbar">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="nav-tabs" style="padding-left:400px; border-bottom:0">
+                    <button role="presentation" class="active" href="#stammdaten" aria-controls="home" data-toggle="tab">Caterer Daten</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav-tabs" style="border-bottom:0">
+                    <button role="presentation" href="#fragebogen" aria-controls="profile" data-toggle="tab">Fragebogen</button>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="nav-tabs" style="border-bottom:0">
-                <button role="presentation" href="#fragebogen" aria-controls="profile" data-toggle="tab">Fragebogen</button>
-            </div>
+    </div>*@
+<div class="row">
+    <div class="col-md-12">
+        <div class="tabbar ">
+            <ul class="nav nav-tabs innertab" role="tablist">
+                <li role="presentation" class="active innertab"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
+                <li role="presentation" class="innertab"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -168,46 +178,70 @@
     </div>
 
     <div role="tabpanel" class="tab-pane fade" id="fragebogen">
-        <div class="row">
-            <div class="col-md-8">
-                @for (int i = 0; i < Model.Fragen.Count; i++)
+
+
+
+       
+                    @*-------------------Sebastian-----------------------------*@
+                    <div class="row">
+                        <div class="col-md-8">
+                            @for (int i = 0; i < Model.Fragen.Count; i++)
                 {
-                    <h2>@Html.DisplayFor(m => m.Fragen[i].Name)</h2>
+                                <h2>@Html.DisplayFor(m => m.Fragen[i].Name)</h2>
 
-                    for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
-                    {
-                        <h3>@Model.Fragen[i].Questions[j].Text </h3>
-                        if (Model.Fragen[i].Questions[j].GegebeneAntwort == -1)
-                        {
-                            <p>keine Angabe</p>
-                        }
-                        else if (Model.Fragen[i].Questions[j].IstMultiSelect)
-                        {
-                            for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
-                            {
-                                if (Model.Fragen[i].Questions[j].Antworten[k].IsChecked)
+                                for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
                                 {
-                                    <p>@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
+                                    <h4>@Model.Fragen[i].Questions[j].Text </h4>
+                                    if (Model.Fragen[i].Questions[j].GegebeneAntwort == -1)
+                                    {
+                                        <p>keine Angabe</p>
+                                    }
+                                    else if (Model.Fragen[i].Questions[j].IstMultiSelect)
+                                    {
+                                        for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                        {
+                                            if (Model.Fragen[i].Questions[j].Antworten[k].IsChecked)
+                                            {
+                                                <p>@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                        {
+                                            if (Model.Fragen[i].Questions[j].Antworten[k].AntwortId == Model.Fragen[i].Questions[j].GegebeneAntwort)
+                                            {
+                                                <p>@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
+                                            }
+
+                                        }
+                                    }
+
                                 }
-
                             }
-                        }
-                        else
-                        {
-                            for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
-                            {
-                                if (Model.Fragen[i].Questions[j].Antworten[k].AntwortId == Model.Fragen[i].Questions[j].GegebeneAntwort)
-                                {
-                                    <p>@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
-                                }
 
-                            }
-                        }
+                        </div>
+                    </div>
 
-                    }
-                }
 
-            </div>
-        </div>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
 </div>

@@ -62,7 +62,7 @@ namespace DataAccess.Repositories
             return Db.Benutzer.ToList();
         }
 
-        public List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy)
+        public List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy,  int umkreis = -1, DbGeography geoDaten = null, string name = "")
         {
             var mitarbeiterQuery = Db.Benutzer.Include(x => x.BenutzerGruppen);
             int count = 0;
@@ -77,6 +77,15 @@ namespace DataAccess.Repositories
                 {
                     mitarbeiterQuery = mitarbeiterQuery.Union((Db.Benutzer.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()))));
                 }
+            }
+
+            if (name != "" && name != null) {
+                mitarbeiterQuery = mitarbeiterQuery.Where(y => y.Firmenname.Contains(name));
+            }
+
+            if (umkreis != 0 && umkreis != -1 && geoDaten.Longitude != null) {
+
+                mitarbeiterQuery = mitarbeiterQuery.Where(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000);
             }
 
             mitarbeiterQuery = SortFilter(mitarbeiterQuery, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
