@@ -5,7 +5,6 @@ using DataAccess.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
-using Common.Services;
 using GoogleMaps.LocationServices;
 using System.Data.Entity.Spatial;
 
