@@ -90,22 +90,38 @@ namespace Common.Services
 
         private void SendMail(MailModel mailModel)
         {
-            try
+
+#if DEBUG
+        try
             {
                 MailMessage mail = new MailMessage(mailModel.Absender, mailModel.Empfaenger);
                 mail.Subject = mailModel.Betreff;
                 mail.Body = mailModel.Inhalt;
 
-                SmtpClient smtpClient = new SmtpClient(mailModel.SMTPSeverName);
-                //smtpClient.Port = mailModel.Port;
-                //smtpClient.Host = mailModel.SMTPSeverName;
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Port = mailModel.Port;
+                smtpClient.EnableSsl = true;
+                smtpClient.Host = mailModel.SMTPSeverName;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
+                smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = new NetworkCredential(mailModel.UserName, mailModel.Passwort);
 
-               
-                //send the message
                 smtpClient.Send(mail);
             }
+
+#else
+             try
+            {
+                MailMessage mail = new MailMessage(mailModel.Absender, mailModel.Empfaenger);
+                mail.Subject = mailModel.Betreff;
+                mail.Body = mailModel.Inhalt;
+                SmtpClient smtpClient = new SmtpClient(mailModel.SMTPSeverName);
+                smtpClient.Credentials = new NetworkCredential(mailModel.UserName, mailModel.Passwort);
+
+                smtpClient.Send(mail);
+            }
+#endif
             catch (Exception)
             {
                 throw new ArgumentException("Fehler beim Senden von EMail");
