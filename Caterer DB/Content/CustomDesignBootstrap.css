@@ -279,7 +279,7 @@ th {
 
 .well-lg-weiss {
     background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255,255,255,1);
+    border-color: rgba(255,255,255,1);    
 }
 
 .nav-pills > li.active > a,
@@ -345,3 +345,18 @@ background-color: rgba(248,248,248,1);
     border-bottom: 1px solid #ddd;
     border-radius:  0 0 5px 5px;
   }
+}
+
+
+ /*Mask link as Button*/
+.link-button {
+  background: none;
+  border: none;
+  color: #337ab7;
+  cursor: pointer;
+  text-decoration: none;
+}
+.link-button:focus {
+  color: #23527c;
+  text-decoration: underline;
+}

@@ -25,13 +25,16 @@ namespace Business.Services
 
         private IMapper Mapper { get; set; }
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService)
+        private IConfigService ConfigService {get; set;}
+
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService,IConfigService configService)
         {
             BenutzerRepository = benutzerRepository;
             BenutzerGruppeService = benutzerGruppeService;
             MailService = mailService;
             DocumentService = documentService;
             MD5Hash = md5Hash;
+            ConfigService = configService;
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -124,21 +127,21 @@ namespace Business.Services
         public void AddMitarbeiter(Benutzer benutzer, string gruppe)
         {
             AddBenutzer(benutzer, gruppe);
-
-            MailService.SendNewMitarbeiterMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+           
+            MailService.SendNewMitarbeiterMail(ConfigService.GetConfig(), benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void AddCaterer(Benutzer benutzer, string gruppe)
         {
             AddBenutzer(benutzer, gruppe);
 
-            MailService.SendNewCatererMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+            MailService.SendNewCatererMail(ConfigService.GetConfig(), benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void RegisterBenutzer(Benutzer benutzer)
         {
-            BenutzerRepository.AddUser(benutzer);
-            MailService.SendRegisterMail(benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+            AddBenutzer(benutzer, "Caterer");
+            MailService.SendRegisterMail(ConfigService.GetConfig(), benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void ForgottenPasswordEmailForBenutzer(string Mail)
@@ -147,7 +150,7 @@ namespace Business.Services
             benutzer.PasswordVerificationCode = MD5Hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname + benutzer.Passwort);
             benutzer.PasswortZeitstempel = DateTime.Now;
             BenutzerRepository.EditUser(benutzer);
-            MailService.SendForgottenPasswordMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+            MailService.SendForgottenPasswordMail(ConfigService.GetConfig(), benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void EditBenutzer(Benutzer editedBenutzer, bool istAdmin)
@@ -188,7 +191,7 @@ namespace Business.Services
         public void EditCaterer(Benutzer editedBenutzer)
         {
             var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
-            MailService.SendEditCatererMail(dbBenutzer.Mail);
+            MailService.SendEditCatererMail(ConfigService.GetConfig(), dbBenutzer.Mail);
             Mapper.Map(editedBenutzer, dbBenutzer);
             BenutzerRepository.EditUser(dbBenutzer);
         }
@@ -196,7 +199,7 @@ namespace Business.Services
         public void RemoveCaterer(int id)
         {
             var benutzer = BenutzerRepository.SearchUserById(id);
-            MailService.SendRemoveCatererMail(benutzer.Mail);
+            MailService.SendRemoveCatererMail(ConfigService.GetConfig(), benutzer.Mail);
             BenutzerRepository.RemoveUser(BenutzerRepository.SearchUserById(id));
         }
 

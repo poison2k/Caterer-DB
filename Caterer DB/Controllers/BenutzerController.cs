@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.UI.WebControls;
 
 namespace Caterer_DB.Controllers
 {
@@ -61,9 +62,45 @@ namespace Caterer_DB.Controllers
         // GET: Benutzer
         [HttpPost]
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
-        public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
+        public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, FormCollection formCollection)
         {
+            string Sortierrung = "Firmenname";
+            int aktuelleSeite = 1;
+            var seitenGrösse = 10;
+            if (Request.Form["Telefon"] != null) {
+                Sortierrung = "Telefon";
+            } else if (Request.Form["Telefon_desc"] != null)
+            {
+                Sortierrung = "Telefon_desc";
+            }
+            else if (Request.Form["Firmenname"] != null)
+            {
+                Sortierrung = "Firmenname";
+            }
+            else if (Request.Form["Firmenname_desc"] != null)
+            {
+                Sortierrung = "Firmenname_desc";
+            }
+            else if (Request.Form["Ort"] != null)
+            {
+                Sortierrung = "Ort";
+            }
+            else if (Request.Form["Ort_desc"] != null)
+            {
+                Sortierrung = "Ort_desc";
+            }
+            else if (Request.Form["Postleitzahl"] != null)
+            {
+                Sortierrung = "Postleitzahl";
+            }
+            else if (Request.Form["Postleitzahl_desc"] != null)
+            {
+                Sortierrung = "Postleitzahl_desc";
+            }
+
+
             ViewBag.Sortierrung = Sortierrung;
+
 
             var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name);
             var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name).Count;
@@ -346,6 +383,15 @@ namespace Caterer_DB.Controllers
                 return RedirectToAction("IndexCaterer", "Benutzer");
             }
             return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
+        }
+
+        // POST: Benutzer/DetailsCaterer
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DetailsCaterer(DetailsBenutzerViewModel detailsBenutzerViewModel)
+        {
+            
+            return View(detailsBenutzerViewModel);
         }
 
         // GET: Benutzer/Delete/5

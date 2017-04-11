@@ -17,47 +17,63 @@
                 <h1>Caterer</h1>
             </div>
         </div>
+        <br />
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well well-lg">
-                    <h3>Filter</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                <div class="well well-lg-weiss" style="border-color: rgb(211, 211, 211);">
 
-                                <label class="control-label">Name</label>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Firmenname</label>
                                 @Html.Editor("name", new { htmlAttributes = new { @class = "form-control", id = "name" } })
                             </div>
                         </div>
-                        
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-
-                                <label class="control-label">Plz</label>
+                                <label class="control-label">Postleitzahl</label>
                                 @Html.Editor("plz", new { htmlAttributes = new { @class = "form-control", id = "plz" } })
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-
                                 <label class="control-label">Umkreis</label>
                                 @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
                             </div>
                         </div>
                     </div>
+                    <br />
+                    <br />
                     <div class="row">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Filtern</button>
+                        <div class="col-md-6">
+                            <label class="control-label">Frage</label>
+                            @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label">Antwort</label>
+                            @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-plus"></i></a>
+                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-trash"></i></a>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-default btn-block">Filter anwenden</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-default btn-block"> Filter zurücksetzen</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 15px"></div>
-
+        <br />
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -79,57 +95,60 @@
                                     <th>
                                         @if (ViewBag.Sortierrung == "Firmenname")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname_desc" })"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret"></b> </a>
+                                            <button type="submit" name="Firmenname_desc" class="link-button" > @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Firmenname_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Firmenname"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit" name="Firmenname"  class="link-button" > @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname" })"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname)  </a>
+                                            <button type="submit" name="Firmenname" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname)  </button>
                                         }
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Telefon")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Telefon_desc"})">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret"></b> </a>
+                                            <button type="submit"  name="Telefon_desc" class="link-button" >
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Telefon_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit" name="Telefon"  class="link-button" >
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon)  </a>
+                                            <button type="submit" name="Telefon"  class="link-button" >
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon)  </button>
                                         }
-                                    </th>
+</th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Postleitzahl")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Postleitzahl_desc"})">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret"></b> </a>
+                                            <button type="submit"  name="Postleitzahl_desc" class="link-button" >@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Postleitzahl_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Postleitzahl"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit"  name="Postleitzahl" class="link-button" > @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Postleitzahl"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl)  </a>
+                                            <button type="submit"  name="Postleitzahl" class="link-button" > @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl)  </button>
                                         }
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Ort")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Ort_desc"})">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret"></b> </a>
+                                            <button type="submit"  name="Ort_desc" class="link-button">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Ort_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Ort"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit"  name="Ort" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Ort"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort)  </a>
+                                            <button type="submit"  name="Ort" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort)  </button>
                                         }
                                     </th>
 
