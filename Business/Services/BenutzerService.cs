@@ -26,7 +26,9 @@ namespace Business.Services
 
         private IConfigService ConfigService {get; set;}
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService,IConfigService configService)
+        private IGoogleService GoogleService { get; set; }
+
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService,IConfigService configService, IGoogleService googleService)
         {
             BenutzerRepository = benutzerRepository;
             BenutzerGruppeService = benutzerGruppeService;
@@ -34,6 +36,7 @@ namespace Business.Services
             DocumentService = documentService;
             MD5Hash = md5Hash;
             ConfigService = configService;
+            GoogleService = googleService;
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -53,15 +56,8 @@ namespace Business.Services
         }
 
         public List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis) {
-            var Adresse = new AddressData()
-            {
-                Country = "Deutschland",
-                Zip = plz,
-            };
-
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(Adresse);
-            var GeoDaten = DbGeography.FromText("Point(" + point.Longitude.ToString().Replace(',','.') + " " + point.Latitude.ToString().Replace(',', '.') + " )");
+            
+            var GeoDaten = GoogleService.FindeLocationByPlz(plz);
             return BenutzerRepository.FindeCatererNachUmkreis(GeoDaten, umkreis);
         }
         public Benutzer SearchUserByIdNoTracking(int id)
@@ -139,6 +135,7 @@ namespace Business.Services
 
         public void RegisterBenutzer(Benutzer benutzer)
         {
+            benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
             AddBenutzer(benutzer, "Caterer");
             MailService.SendRegisterMail(ConfigService.GetConfig(), benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
@@ -184,6 +181,7 @@ namespace Business.Services
             editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
             editedBenutzer.IstEmailVerifiziert = dbBenutzer.IstEmailVerifiziert;
             Mapper.Map(editedBenutzer, dbBenutzer);
+            dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
             BenutzerRepository.EditUser(dbBenutzer);
         }
 
@@ -192,6 +190,7 @@ namespace Business.Services
             var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
             MailService.SendEditCatererMail(ConfigService.GetConfig(), dbBenutzer.Mail);
             Mapper.Map(editedBenutzer, dbBenutzer);
+            dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
             BenutzerRepository.EditUser(dbBenutzer);
         }
 

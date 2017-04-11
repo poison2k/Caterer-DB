@@ -215,6 +215,7 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Telefon (optional)")]
         public string Telefon { get; set; }
+        
     }
 
     public class MyDataBenutzerViewModel
@@ -284,6 +285,8 @@ namespace Caterer_DB.Models
         public string Sonstiges { get; set; }
 
         public List<FragenNachThemengebiet> Fragen { get; set; }
+
+        public string _AntwortIDs { get; set; }
     }
 
     public class DetailsBenutzerViewModel
