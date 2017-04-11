@@ -413,6 +413,7 @@ namespace Caterer_DB.Models.ViewModelServices
             //ToDo in Hash in Business Layer verschieben
             benutzer.Passwort = Crypto.HashPassword(registerBenutzerViewModel.Passwort);
             benutzer.EMailVerificationCode = MD5hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname);
+            benutzer.IstEmailVerifiziert = false;
             return benutzer;
         }
 

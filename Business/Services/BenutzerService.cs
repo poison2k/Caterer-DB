@@ -107,7 +107,7 @@ namespace Business.Services
         public void AddBenutzer(Benutzer benutzer, string gruppe)
         {
             benutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung(gruppe) };
-            benutzer.IstEmailVerifiziert = true;
+           
             benutzer.PasswortZeitstempel = DateTime.Now;
 
             BenutzerRepository.AddUser(benutzer);
