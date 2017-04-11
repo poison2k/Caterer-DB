@@ -260,7 +260,7 @@ ul {
 
 
 
-/* PageList Hintergrundfarbe Überschriften --> Noch in Arbeit <--*/
+/* PageList Hintergrundfarbe Überschriften*/
 .panel-default > .panel-heading {
     background-color: rgba(46,109,164,1);
 }
@@ -287,8 +287,8 @@ th {
 {
   background-color: rgba(77,147,208,1);
   text-decoration: none;
-    box-shadow: 20px 5px rgba(77,147,208,0.5);
-    border-radius: 15px 5px 15px 5px;
+    /*box-shadow: 20px 5px rgba(77,147,208,0.5);*/
+    /*border-radius: 15px 5px 15px 5px;*/
 }
 
 .nav-pills > li > a:hover {
@@ -318,3 +318,30 @@ th {
   border: 1px solid transparent;
   border-radius: 0px 20px 0 0;
 }
+    /*Tabs*/
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #fff;
+  background-color: rgba(77,147,208,0.5);
+  /*background-image:linear-gradient(180deg, rgba(77,147,208,1), rgba(77,147,208,0.5));*/ 
+  border: 1px solid transparent;
+  box-shadow: 10px 20px 5px 5px rgba(0,0,0,0.5);
+}
+
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 0 0 5px 5px;
+  background-color: rgba(248,248,248,1);
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+background-color: rgba(248,248,248,1);
+}
+.nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #ddd;
+    border-radius:  0 0 5px 5px;
+  }
