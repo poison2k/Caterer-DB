@@ -326,7 +326,7 @@ th {
   background-color: rgba(77,147,208,0.5);
   /*background-image:linear-gradient(180deg, rgba(77,147,208,1), rgba(77,147,208,0.5));*/ 
   border: 1px solid transparent;
-  box-shadow: 10px 20px 5px 5px rgba(0,0,0,0.5);
+  
 }
 
 .nav-tabs > li > a {
