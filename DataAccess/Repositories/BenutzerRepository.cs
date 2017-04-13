@@ -19,8 +19,9 @@ namespace DataAccess.Repositories
 
         public List<Benutzer> FindeCatererNachUmkreis(DbGeography geoDaten, int umkreis)
         {
+            var query = Db.Benutzer.Where(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).ToList();
 
-            return Db.Benutzer.Where(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).ToList();
+            return query.ToList();
         }
 
         public Benutzer SearchUserById(int id)
@@ -65,32 +66,32 @@ namespace DataAccess.Repositories
 
         public List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy, int umkreis = -1, DbGeography geoDaten = null, string name = "")
         {
-            var mitarbeiterQuery = Db.Benutzer.Include(x => x.BenutzerGruppen);
+            var query = Db.Benutzer.Include(x => x.BenutzerGruppen);
            
             if (BenutzerGruppen.Count > 1)
             {
-                mitarbeiterQuery = mitarbeiterQuery.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Administrator").FirstOrDefault()) || y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Mitarbeiter").FirstOrDefault()));
+                query = query.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Administrator").FirstOrDefault()) || y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Mitarbeiter").FirstOrDefault()));
             }
             else 
             {
-                mitarbeiterQuery = mitarbeiterQuery.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Caterer").FirstOrDefault()));
+                query = query.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Caterer").FirstOrDefault()));
             }
 
 
             if (name != "" && name != null)
             {
-                mitarbeiterQuery = mitarbeiterQuery.Where(y => y.Firmenname.Contains(name));
+                query = query.Where(y => y.Firmenname.Contains(name));
             }
 
-            if (umkreis != 0 && umkreis != -1 && geoDaten.Longitude != null)
+            if (name != "" && umkreis != 100 && umkreis != 0 && umkreis != -1 && geoDaten != null)
             {
-
-                mitarbeiterQuery = mitarbeiterQuery.Where(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000);
+                query = query.Where(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000);
+                query.Where(x => x.Lieferumkreis <= umkreis);
             }
 
-            mitarbeiterQuery = SortFilter(mitarbeiterQuery, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
+            query = SortFilter(query, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
 
-            return mitarbeiterQuery.ToList();
+            return query.ToList();
         }
 
         public List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse)

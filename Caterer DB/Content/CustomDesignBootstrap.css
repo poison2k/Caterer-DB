@@ -345,10 +345,10 @@ background-color: rgba(248,248,248,1);
     border-bottom: 1px solid #ddd;
     border-radius:  0 0 5px 5px;
   }
-}
 
 
- /*Mask link as Button*/
+
+ /*Mask Button as link*/
 .link-button {
   background: none;
   border: none;

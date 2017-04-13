@@ -56,6 +56,8 @@ namespace Caterer_DB.Interfaces
 
         ForgottenPasswordCreateNewPasswordViewModel Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(int id);
 
+        FullFilterCatererViewModel AddListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel);
+
         RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel);
 
         MyDataBenutzerViewModel AddListsToMyDataViewModel(MyDataBenutzerViewModel myDataBenutzerViewModel);

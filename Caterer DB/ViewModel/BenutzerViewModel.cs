@@ -119,7 +119,7 @@ namespace Caterer_DB.Models
         public string Internetadresse { get; set; }
 
         [Required]
-        public string Lieferumkreis { get; set; }
+        public int Lieferumkreis { get; set; }
 
         [Required]
         [MustBeTrue(ErrorMessage = "Sie müssen die AGBs akzeptieren")]
@@ -273,7 +273,7 @@ namespace Caterer_DB.Models
         public string Internetadresse { get; set; }
 
         [Required]
-        public string Lieferumkreis { get; set; }
+        public int Lieferumkreis { get; set; }
 
         public DateTime PasswortZeitstempel { get; set; }
 
@@ -384,7 +384,7 @@ namespace Caterer_DB.Models
 
         public string PLZ { get; set; }
 
-        public string Umkreis { get; set; }
+        public int Umkreis { get; set; }
 
         public ListViewModel<IndexCatererViewModel> ResultListCaterer { get; set; }
 
@@ -398,18 +398,6 @@ namespace Caterer_DB.Models
         [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
-
-        //[Required]
-        //[StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
-        //[DataType(DataType.Password)]
-        //[Display(Name = "Passwort")]
-        //public string Passwort { get; set; }
-
-        //[Required]
-        //[DisplayName(@"Passwort Wiederholung")]
-        //[DataType(DataType.Password)]
-        //[Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
-        //public string PasswortVerification { get; set; }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
 
@@ -456,7 +444,7 @@ namespace Caterer_DB.Models
         public string Internetadresse { get; set; }
 
         [Required]
-        public string Lieferumkreis { get; set; }
+        public int Lieferumkreis { get; set; }
 
         [DisplayName(@"Bemerkungen")]
         public string Sonstiges { get; set; }
@@ -511,7 +499,7 @@ namespace Caterer_DB.Models
         public string Internetadresse { get; set; }
 
         [Required]
-        public string Lieferumkreis { get; set; }
+        public int Lieferumkreis { get; set; }
 
         public DateTime PasswortZeitstempel { get; set; }
 

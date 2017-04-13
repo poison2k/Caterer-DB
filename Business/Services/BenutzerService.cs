@@ -85,18 +85,16 @@ namespace Business.Services
         public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung, int umkreis, string plz, string name)
         {
             var benutzerGruppen = new List<string>() { "Caterer" };
-
-            var Adresse = new AddressData()
+            if (plz != "" && plz != null)
             {
-                Country = "Deutschland",
-                Zip = plz,
-            };
 
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(Adresse);
-            var GeoDaten = DbGeography.FromText("Point(" + point.Longitude.ToString().Replace(',', '.') + " " + point.Latitude.ToString().Replace(',', '.') + " )");
+                return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GoogleService.FindeLocationByPlz(plz), name);
 
-            return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GeoDaten, name);
+            }
+            else {
+
+                return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, null, name);
+            }
         }
 
         public void AddBenutzer(Benutzer benutzer)

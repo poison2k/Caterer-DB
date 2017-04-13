@@ -562,12 +562,19 @@ namespace Caterer_DB.Models.ViewModelServices
             return new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
-                                new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
-                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
-                                new SelectListItem { Text = "Bis 40 km", Value = "Bis 40 km" },
-                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
-                                new SelectListItem { Text = "100 km +", Value = "100 km +" },
+                                new SelectListItem { Text = "Bis  5 km", Value = "5" },
+                                new SelectListItem { Text = "Bis 10 km", Value = "10" },
+                                new SelectListItem { Text = "Bis 15 km", Value = "15" },
+                                new SelectListItem { Text = "Bis 20 km", Value = "20" },
+                                new SelectListItem { Text = "Bis 25 km", Value = "25" },
+                                new SelectListItem { Text = "Bis 30 km", Value = "30" },
+                                new SelectListItem { Text = "Bis 40 km", Value = "40" },
+                                new SelectListItem { Text = "Bis 50 km", Value = "50" },
+                                new SelectListItem { Text = "Bis 60 km", Value = "60" },
+                                new SelectListItem { Text = "Bis 70 km", Value = "70" },
+                                new SelectListItem { Text = "Bis 80 km", Value = "80" },
+                                new SelectListItem { Text = "Bis 90 km", Value = "90" },
+                                new SelectListItem { Text = "100 km +", Value = "100" },
                             }, "Value", "Text");
         }
 
@@ -580,5 +587,6 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Caterer", Value = "Caterer" },
                             }, "Value", "Text");
         }
+
     }
 }

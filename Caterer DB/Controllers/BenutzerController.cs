@@ -49,6 +49,7 @@ namespace Caterer_DB.Controllers
         public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
         {
             var fullFilterViewModel = new FullFilterCatererViewModel();
+            fullFilterViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterViewModel);
             fullFilterViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                  BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung,-1,"","")
                 , BenutzerService.GetCatererCount()
@@ -109,7 +110,7 @@ namespace Caterer_DB.Controllers
                 , resultcount
                 , aktuelleSeite
                 , seitenGrösse);
-
+            fullFilterCatererViewModel =  BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
             return View(fullFilterCatererViewModel);
         }
 
