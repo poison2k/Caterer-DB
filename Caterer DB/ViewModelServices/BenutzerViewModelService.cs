@@ -37,6 +37,7 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, CreateCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, MeineDatenBenutzerViewModel>().ReverseMap();
+                
             });
 
             Mapper = config.CreateMapper();
@@ -380,6 +381,18 @@ namespace Caterer_DB.Models.ViewModelServices
                 detailsCatererViewModel.Fragen.Add(fragenNachThemengebiet);
             }
             return detailsCatererViewModel;
+        }
+
+        public VergleichCatererViewModel Map_ListBenutzer_VergleichCatererViewModel(List<Benutzer> caterer, List<List<Frage>> fragenListen) {
+
+            var vergleichCatererViewModel = new VergleichCatererViewModel();
+            vergleichCatererViewModel.caterer = new List<DetailsCatererViewModel>();
+            foreach (Benutzer benutzer in caterer)
+            {
+                vergleichCatererViewModel.caterer.Add(Map_Benutzer_DetailsCatererViewModel(benutzer, fragenListen));
+            }
+
+            return vergleichCatererViewModel;
         }
 
         public CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel()

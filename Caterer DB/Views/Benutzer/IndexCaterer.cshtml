@@ -7,7 +7,9 @@
 }
 
 @using (Html.BeginForm())
-{
+{   
+    @Html.HiddenFor(model => model.FilterId)
+    @Html.HiddenFor(model => model.ResultListCaterer.ListViewId)
     <br />
     <br />
     <br />
@@ -86,6 +88,9 @@
                                 <i class="glyphicon glyphicon-plus"></i> Neuer Caterer
                             </a>
                         </li>
+                        <li>
+                            <button type="submit" class="btn btn-default btn-block" name="btnVergleich" id="btnVergleich"> <i class="glyphicon glyphicon-list"></i>Caterer Vergleichen</button>
+                        </li>
                     </ul>
                 </div>
                 <div style="margin-top: 15px"></div>
@@ -95,6 +100,9 @@
                             <div class="panel-heading"></div>
                             <table class="table table-striped">
                                 <tr>
+                                    <th>
+                                        Auswahl
+                                    </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Firmenname")
                                         {
@@ -158,17 +166,19 @@
                                     <th></th>
                                 </tr>
 
-                                @foreach (var item in Model.ResultListCaterer.Entitäten)
+                                @for (int i = 0; i < Model.ResultListCaterer.Entitäten.Count ;i++)
                                 {
+                                    @Html.HiddenFor(modelItem => Model.ResultListCaterer.Entitäten[i].BenutzerId)
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.Firmenname)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Postleitzahl)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Ort)</td>
+                                        <td>@Html.CheckBoxFor(modelItem => Model.ResultListCaterer.Entitäten[i].selected)</td>
+                                        <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Firmenname)</td>
+                                        <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Telefon)</td>
+                                        <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Postleitzahl)</td>
+                                        <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Ort)</td>
 
                                         <td align="center">
-                                            <a class="btn btn-default" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
-                                            <a class="btn btn-default" href="@Url.Action("EditCaterer", "Benutzer", new { id = item.BenutzerId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            <a class="btn btn-default" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = Model.ResultListCaterer.Entitäten[i].BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                            <a class="btn btn-default" href="@Url.Action("EditCaterer", "Benutzer", new { id = Model.ResultListCaterer.Entitäten[i].BenutzerId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
                                         </td>
                                     </tr>
                                 }

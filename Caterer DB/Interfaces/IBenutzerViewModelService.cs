@@ -77,5 +77,7 @@ namespace Caterer_DB.Interfaces
         IndexCatererViewModel GeneriereIndexCatererViewModel(Benutzer benutzer);
 
         CreateCatererViewModel CreateNewCreateCatererViewModel();
+
+        VergleichCatererViewModel Map_ListBenutzer_VergleichCatererViewModel(List<Benutzer> caterer, List<List<Frage>> fragenListen);
     }
 }

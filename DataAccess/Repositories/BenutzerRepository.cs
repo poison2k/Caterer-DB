@@ -64,6 +64,11 @@ namespace DataAccess.Repositories
             return Db.Benutzer.ToList();
         }
 
+        public List<Benutzer> SearchUser(List<int> ids)
+        {
+            return Db.Benutzer.Where(x => ids.Contains(x.BenutzerId)).ToList();
+        }
+
         public List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy, int umkreis = -1, DbGeography geoDaten = null, string name = "")
         {
             var query = Db.Benutzer.Include(x => x.BenutzerGruppen);

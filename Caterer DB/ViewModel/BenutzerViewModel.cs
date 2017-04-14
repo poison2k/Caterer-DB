@@ -215,7 +215,7 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Telefon (optional)")]
         public string Telefon { get; set; }
-        
+
     }
 
     public class MyDataBenutzerViewModel
@@ -376,10 +376,21 @@ namespace Caterer_DB.Models
         public string Postleitzahl { get; set; }
 
         public string Ort { get; set; }
+
+        public bool selected { get; set; }
+    }
+
+    public class VergleichCatererViewModel {
+
+        public List<DetailsCatererViewModel> caterer { get; set; }
+
     }
 
     public class FullFilterCatererViewModel
     {
+        [Key]
+        public int FilterId { get; set; }
+
         public string Name { get; set; }
 
         public string PLZ { get; set; }

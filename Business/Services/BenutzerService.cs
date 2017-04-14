@@ -55,6 +55,11 @@ namespace Business.Services
             return BenutzerRepository.SearchUserById(id);
         }
 
+        public List<Benutzer> FindeCatererNachIds(List<int> ids)
+        {
+            return BenutzerRepository.SearchUser(ids);
+        }
+
         public List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis) {
             
             var GeoDaten = GoogleService.FindeLocationByPlz(plz);

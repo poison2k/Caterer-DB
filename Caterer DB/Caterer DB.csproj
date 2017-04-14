@@ -476,6 +476,7 @@
     <Content Include="Views\Frage\DetailsVeroeffentlicht.cshtml" />
     <Content Include="Views\Error\ZugriffVerweigert.cshtml" />
     <Content Include="Views\Google\Index.cshtml" />
+    <Content Include="Views\Benutzer\VergleichCaterer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

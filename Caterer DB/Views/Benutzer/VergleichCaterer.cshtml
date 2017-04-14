@@ -1,0 +1,41 @@
+﻿
+@using PagedList.Mvc
+@using Caterer_DB.Models
+@model VergleichCatererViewModel
+@{
+    ViewBag.Title = "VergleichCaterer";
+}
+
+<h2>Caterer im Vergleich</h2>
+
+<div class="row" >
+    <div class="col-lg-12">
+        <div class="well well-lg">
+            <div class="row">
+                <div class="col-md-3">
+                    <span>Firmenname</span>
+                </div>
+
+                @foreach (DetailsCatererViewModel caterer in Model.caterer)
+                {
+                    <div class="col-md-3">
+                        <span>@caterer.Firmenname</span>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <span>Organisationsform</span>
+                </div>
+
+                @foreach (DetailsCatererViewModel caterer in Model.caterer)
+                {
+                    <div class="col-md-3">
+                        <span>@caterer.Organisationsform</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

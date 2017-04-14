@@ -2,15 +2,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Caterer_DB.Models
 {
     public class ListViewModel<T> : IPagedList<T>
     {
-        public List<T> Entitäten;
+
 
         public ListViewModel()
         {
+            ListViewId = 1;
             Entitäten = new List<T>();
             PageNumber = 1;
             PageSize = 10;
@@ -18,6 +20,7 @@ namespace Caterer_DB.Models
 
         public ListViewModel(int gesamtZahl, int aktuelleSeite, int seitenGroesse)
         {
+            ListViewId = 1;
             Entitäten = new List<T>();
             TotalItemCount = gesamtZahl;
             PageNumber = aktuelleSeite;
@@ -39,6 +42,10 @@ namespace Caterer_DB.Models
             HasPreviousPage = true;
         }
 
+        [Key]
+        public int ListViewId { get; set; }
+
+        public List<T> Entitäten { get; set; }
         public string ActionName { get; set; }
         public string SeitenTitel { get; set; }
 
