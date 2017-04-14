@@ -7,6 +7,11 @@
 
 <h2>Caterer im Vergleich</h2>
 
+
+
+@*-------------------Version Sebastian---------------------*@
+<h1>-------------------Version Sebastian---------------------</h1>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="well well-lg">
@@ -102,3 +107,202 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+@*-------------------Version Kai---------------------*@
+<h1>-------------------Version Kai---------------------</h1>
+<br />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="well well-lg">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="well well-lg">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>Firmenname</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @foreach (DetailsCatererViewModel caterer in Model.caterer)
+                {
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <b> <span>@caterer.Firmenname</span></b>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="well well-lg">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>Organisationsform</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @foreach (DetailsCatererViewModel caterer in Model.caterer)
+                {
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <span>@caterer.Organisationsform</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr/>
+
+
+
+
+
+
+
+            @foreach (List<Frage> kategorieFragen in Model.Fragen)
+            {
+
+               
+                for (int j = 0; j < kategorieFragen.Count; j++)
+                {
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="well well-lg">
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        @kategorieFragen[j].Bezeichnung
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @foreach (DetailsCatererViewModel caterer in Model.caterer)
+                    {
+
+                            <div class="col-lg-2">
+                                <div class="row ">
+                                    <div class="col-md-12 text-center">
+                                        @foreach (FragenNachThemengebiet cFrageNachKategorie in caterer.Fragen)
+                        {
+                            foreach (FragenViewModel cFrage in cFrageNachKategorie.Questions)
+                            {
+                                if (cFrage.ID == kategorieFragen[j].FrageId)
+                                {
+                                    if (cFrage.IstMultiSelect)
+                                    {
+                                        foreach (Antwort antwort in cFrage.Antworten)
+                                        {
+                                            if (antwort.IsChecked)
+                                            {                                                             
+                                                                <span>- @antwort.Bezeichnung</span><br />
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        foreach (Antwort antwort in cFrage.Antworten)
+                                                        {
+                                                            if (antwort.AntwortId == cFrage.GegebeneAntwort)
+                                                            {
+                                                                <span>- @antwort.Bezeichnung</span><br />
+                                                            }
+                                                        }
+                                                    }
+
+
+                                                }
+
+
+                                            }
+
+                                        }                                   
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <hr/>
+                }
+
+            }
+
+        </div>
+    </div>
+</div>
+@*
+    @foreach (List<Frage> kategorieFragen in Model.Fragen)
+    {
+
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+        for (int j = 0; j < kategorieFragen.Count; j++)
+        {
+            <div class="row ">
+                <div class="col-md-3">
+                    @kategorieFragen[j].Bezeichnung
+                    <hr />
+                </div>
+                @foreach (DetailsCatererViewModel caterer in Model.caterer)
+                {
+                    <div class="col-md-3">
+                        @foreach (FragenNachThemengebiet cFrageNachKategorie in caterer.Fragen)
+                        {
+                            foreach (FragenViewModel cFrage in cFrageNachKategorie.Questions)
+                            {
+                                if (cFrage.ID == kategorieFragen[j].FrageId)
+                                {
+                                    if (cFrage.IstMultiSelect)
+                                    {
+                                        foreach (Antwort antwort in cFrage.Antworten)
+                                        {
+                                            if (antwort.IsChecked)
+                                            {
+                                                <span>- @antwort.Bezeichnung</span><br />
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (Antwort antwort in cFrage.Antworten)
+                                        {
+                                            if (antwort.AntwortId == cFrage.GegebeneAntwort)
+                                            {
+                                                <span>- @antwort.Bezeichnung</span><br />
+                                            }
+                                        }
+                                    }
+
+
+                                }
+
+
+                            }
+
+                        }
+                    </div>
+
+                }
+            </div>
+        }
+
+    }
+
+    <div class="row">
+
+    </div>*@
