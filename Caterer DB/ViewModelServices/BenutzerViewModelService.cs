@@ -387,6 +387,7 @@ namespace Caterer_DB.Models.ViewModelServices
 
             var vergleichCatererViewModel = new VergleichCatererViewModel();
             vergleichCatererViewModel.caterer = new List<DetailsCatererViewModel>();
+            vergleichCatererViewModel.Fragen = fragenListen;
             foreach (Benutzer benutzer in caterer)
             {
                 vergleichCatererViewModel.caterer.Add(Map_Benutzer_DetailsCatererViewModel(benutzer, fragenListen));

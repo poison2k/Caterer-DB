@@ -1,5 +1,4 @@
-﻿
-@using PagedList.Mvc
+﻿@using DataAccess.Model
 @using Caterer_DB.Models
 @model VergleichCatererViewModel
 @{
@@ -8,7 +7,7 @@
 
 <h2>Caterer im Vergleich</h2>
 
-<div class="row" >
+<div class="row">
     <div class="col-lg-12">
         <div class="well well-lg">
             <div class="row">
@@ -35,7 +34,71 @@
                     </div>
                 }
             </div>
+            @foreach (List<Frage> kategorieFragen in Model.Fragen)
+            {
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+
+                </div>
+                for (int j = 0; j < kategorieFragen.Count; j++)
+                {
+                    <div class="row ">
+                        <div class="col-md-3">
+                            @kategorieFragen[j].Bezeichnung
+                        </div>
+                        @foreach (DetailsCatererViewModel caterer in Model.caterer)
+                        {
+                            <div class="col-md-3">
+                                @foreach (FragenNachThemengebiet cFrageNachKategorie in caterer.Fragen)
+                                {
+                                    foreach (FragenViewModel cFrage in cFrageNachKategorie.Questions)
+                                    {
+                                        if (cFrage.ID == kategorieFragen[j].FrageId)
+                                        {
+                                            if (cFrage.IstMultiSelect)
+                                            {
+                                                foreach (Antwort antwort in cFrage.Antworten)
+                                                {
+                                                    if (antwort.IsChecked)
+                                                    {
+                                                        <span>- @antwort.Bezeichnung</span><br />
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                foreach (Antwort antwort in cFrage.Antworten)
+                                                {
+                                                    if (antwort.AntwortId == cFrage.GegebeneAntwort)
+                                                    {
+                                                        <span>- @antwort.Bezeichnung</span><br />
+                                                    }
+                                                }
+                                            }
+
+
+                                        }
+
+
+                                    }
+
+                                }
+                            </div>
+
+                        }
+                    </div>
+                }
+
+            }
+
+            <div class="row">
+
+            </div>
         </div>
     </div>
 </div>
-

@@ -382,6 +382,7 @@ namespace Caterer_DB.Models
 
     public class VergleichCatererViewModel {
 
+        public List<List<Frage>> Fragen { get; set; }
         public List<DetailsCatererViewModel> caterer { get; set; }
 
     }
