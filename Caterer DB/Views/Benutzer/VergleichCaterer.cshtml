@@ -1,9 +1,11 @@
 ﻿@using DataAccess.Model
 @using Caterer_DB.Models
 @model VergleichCatererViewModel
+
 @{
     ViewBag.Title = "VergleichCaterer";
 }
+
 
 <h2>Caterer im Vergleich</h2>
 
@@ -118,13 +120,13 @@
 <br />
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <div class="well well-lg">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="well well-lg">
+                <div class="col-md-6">
+                    <div class="well well-md">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-center">
                                 <span>Firmenname</span>
                             </div>
                         </div>
@@ -132,22 +134,29 @@
                 </div>
                 @foreach (DetailsCatererViewModel caterer in Model.caterer)
                 {
-                    <div class="col-lg-2">
+
+                    <div class="col-md-2">
+                        <div class="col-md-12 text-center">
+                            <a class="btn btn-default" @*href="@Url.Action("DetailsCaterer", "Benutzer", new {id = Model.ResultListCaterer.Entitäten[i].BenutzerId})"*@ title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                            <a class="btn btn-default" @*href="@Url.Action("DetailsCaterer", "Benutzer", new {id = Model.ResultListCaterer.Entitäten[i].BenutzerId})"*@ title="Löschen"><i class="glyphicon glyphicon-trash"></i></a>
+                        </div>
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <b> <span>@caterer.Firmenname</span></b>
                             </div>
                         </div>
+
                     </div>
+
                 }
             </div>
-
+            <hr />
 
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="well well-lg">
+                <div class="col-md-6">
+                    <div class="well well-md">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-center">
                                 <span>Organisationsform</span>
                             </div>
                         </div>
@@ -155,7 +164,7 @@
                 </div>
                 @foreach (DetailsCatererViewModel caterer in Model.caterer)
                 {
-                    <div class="col-lg-2">
+                    <div class="col-md-2">
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <span>@caterer.Organisationsform</span>
@@ -164,7 +173,7 @@
                     </div>
                 }
             </div>
-            <hr/>
+            <hr />
 
 
 
@@ -175,14 +184,14 @@
             @foreach (List<Frage> kategorieFragen in Model.Fragen)
             {
 
-               
+
                 for (int j = 0; j < kategorieFragen.Count; j++)
                 {
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="well well-lg">
+                        <div class="col-md-6">
+                            <div class="well well-md">
                                 <div class="row ">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 text-center">
                                         @kategorieFragen[j].Bezeichnung
                                     </div>
                                 </div>
@@ -192,21 +201,21 @@
                         @foreach (DetailsCatererViewModel caterer in Model.caterer)
                     {
 
-                            <div class="col-lg-2">
+                            <div class="col-md-2">
                                 <div class="row ">
                                     <div class="col-md-12 text-center">
                                         @foreach (FragenNachThemengebiet cFrageNachKategorie in caterer.Fragen)
-                        {
-                            foreach (FragenViewModel cFrage in cFrageNachKategorie.Questions)
-                            {
-                                if (cFrage.ID == kategorieFragen[j].FrageId)
-                                {
-                                    if (cFrage.IstMultiSelect)
-                                    {
-                                        foreach (Antwort antwort in cFrage.Antworten)
                                         {
-                                            if (antwort.IsChecked)
-                                            {                                                             
+                                            foreach (FragenViewModel cFrage in cFrageNachKategorie.Questions)
+                                            {
+                                                if (cFrage.ID == kategorieFragen[j].FrageId)
+                                                {
+                                                    if (cFrage.IstMultiSelect)
+                                                    {
+                                                        foreach (Antwort antwort in cFrage.Antworten)
+                                                        {
+                                                            if (antwort.IsChecked)
+                                                            {
                                                                 <span>- @antwort.Bezeichnung</span><br />
                                                             }
                                                         }
@@ -228,21 +237,34 @@
 
                                             }
 
-                                        }                                   
+                                        }
                                     </div>
                                 </div>
                             </div>
                         }
 
                     </div>
-                    <hr/>
+                    <hr />
                 }
+                
 
             }
-
+            
         </div>
+        
+    </div>
+    <div class="col-md-12 text-center">
+        <a class="btn btn-default" id="btnZurück" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
     </div>
 </div>
+
+
+
+
+
+
+
+
 @*
     @foreach (List<Frage> kategorieFragen in Model.Fragen)
     {
