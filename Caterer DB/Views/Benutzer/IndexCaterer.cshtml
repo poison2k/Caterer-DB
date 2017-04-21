@@ -54,8 +54,11 @@
                     <br />
                     <div class="row">
                         <div class="col-md-6">
-                            <label class="control-label">Frage</label>
-                            @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Fragen, htmlAttributes: new { @class = "control-label " })
+                                @Html.DropDownList("Fragen", Model.Fragen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                                @Html.ValidationMessageFor(model => model.Fragen, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <label class="control-label">Antwort</label>
@@ -89,7 +92,7 @@
                             </a>
                         </li>
                         <li>
-                            <button type="submit" class="btn btn-default btn-block" name="btnVergleich" id="btnVergleich"> <i class="glyphicon glyphicon-list"></i>Caterer Vergleichen</button>
+                            <button type="submit" class="btn btn-default btn-block" name="btnVergleich" id="btnVergleich"> <i class="glyphicon glyphicon-list"></i> Caterer Vergleichen</button>
                         </li>
                     </ul>
                 </div>

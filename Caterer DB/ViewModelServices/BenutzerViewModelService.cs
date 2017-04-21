@@ -5,6 +5,7 @@ using Common.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -548,6 +549,26 @@ namespace Caterer_DB.Models.ViewModelServices
         {
 
             fullFilterCatererViewModel.Lieferumkreise = CreateLieferumkreisSelectList();
+
+            return fullFilterCatererViewModel;
+        }
+
+        public FullFilterCatererViewModel AddFragenListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel, List<Frage> fragen)
+        {
+          
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Bitte wählen...", Value = String.Empty });
+            items.AddRange(fragen.ConvertAll(a =>
+            {
+                return new SelectListItem()
+                {
+                    Text = a.Bezeichnung,
+                    Value = Convert.ToString(a.FrageId)
+                };
+            }));
+
+            fullFilterCatererViewModel.Fragen = items;
+
 
             return fullFilterCatererViewModel;
         }

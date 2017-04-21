@@ -50,6 +50,7 @@ namespace Caterer_DB.Controllers
         {
             var fullFilterViewModel = new FullFilterCatererViewModel();
             fullFilterViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterViewModel);
+            fullFilterViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterViewModel, FrageService.FindAlleFragen());
             fullFilterViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                  BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, -1, "", "")
                 , BenutzerService.GetCatererCount()
@@ -130,6 +131,7 @@ namespace Caterer_DB.Controllers
                 , aktuelleSeite
                 , seitenGrösse);
             fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
+            fullFilterCatererViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterCatererViewModel,FrageService.FindAlleFragen());
             return View(fullFilterCatererViewModel);
         }
 
