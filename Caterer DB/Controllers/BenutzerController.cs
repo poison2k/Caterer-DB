@@ -450,8 +450,11 @@ namespace Caterer_DB.Controllers
         {
 
             List<int> listIds = new List<int>();
-            var stringlist = ids.Split(',');
-            
+            string[]  stringlist = new string[0];
+            if (ids != "" && ids != null) {
+                 stringlist = ids.Split(',');
+            }
+
 
             foreach (string caterer in stringlist)
             {
