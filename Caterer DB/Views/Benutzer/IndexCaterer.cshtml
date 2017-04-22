@@ -6,8 +6,8 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm())
-{   
+@using (Html.BeginForm( new { id= "CatererForm" }))
+{
     @Html.HiddenFor(model => model.FilterId)
     @Html.HiddenFor(model => model.ResultListCaterer.ListViewId)
     <br />
@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                @Html.LabelFor(x => x.PLZ, new { @class = "control-label" }) 
+                                @Html.LabelFor(x => x.PLZ, new { @class = "control-label" })
                                 @Html.Editor("plz", new { htmlAttributes = new { @class = "form-control", id = "plz" } })
                             </div>
                         </div>
@@ -56,13 +56,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Fragen, htmlAttributes: new { @class = "control-label " })
-                                @Html.DropDownList("Fragen", Model.Fragen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                                @Html.DropDownList("Fragen", Model.Fragen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid", onchange = "ladeAntworten()" })
                                 @Html.ValidationMessageFor(model => model.Fragen, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label class="control-label">Antwort</label>
-                            @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
+                            <div class="form-group">
+                                <label class="control-label">Antwort wählen</label>
+                                <select id="Antworten" name="antworten" class="form-control"  disabled=""></select>
+                            </div>
                         </div>
                         <div class="col-md-2 text-right">
                             <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-plus"></i></a>
@@ -109,11 +111,11 @@
                                     <th>
                                         @if (ViewBag.Sortierrung == "Firmenname")
                                         {
-                                            <button type="submit" name="Firmenname_desc" class="link-button" > @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret"></b> </button>
+                                            <button type="submit" name="Firmenname_desc" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Firmenname_desc")
                                         {
-                                            <button type="submit" name="Firmenname"  class="link-button" > @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </button>
+                                            <button type="submit" name="Firmenname" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
@@ -123,53 +125,56 @@
                                     <th>
                                         @if (ViewBag.Sortierrung == "Telefon")
                                         {
-                                            <button type="submit"  name="Telefon_desc" class="link-button" >
-                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret"></b> </button>
+                                            <button type="submit" name="Telefon_desc" class="link-button">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret"></b>
+                                            </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Telefon_desc")
                                         {
-                                            <button type="submit" name="Telefon"  class="link-button" >
-                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b> </button>
+                                            <button type="submit" name="Telefon" class="link-button">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b>
+                                            </button>
                                         }
                                         else
                                         {
-                                            <button type="submit" name="Telefon"  class="link-button" >
-                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon)  </button>
+                                            <button type="submit" name="Telefon" class="link-button">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon)
+                                            </button>
                                         }
-</th>
+                                    </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Postleitzahl")
                                         {
-                                            <button type="submit"  name="Postleitzahl_desc" class="link-button" >@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret"></b> </button>
+                                            <button type="submit" name="Postleitzahl_desc" class="link-button">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Postleitzahl_desc")
                                         {
-                                            <button type="submit"  name="Postleitzahl" class="link-button" > @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret caret-reversed"></b> </button>
+                                            <button type="submit" name="Postleitzahl" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <button type="submit"  name="Postleitzahl" class="link-button" > @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl)  </button>
+                                            <button type="submit" name="Postleitzahl" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl)  </button>
                                         }
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Ort")
                                         {
-                                            <button type="submit"  name="Ort_desc" class="link-button">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret"></b> </button>
+                                            <button type="submit" name="Ort_desc" class="link-button">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Ort_desc")
                                         {
-                                            <button type="submit"  name="Ort" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret caret-reversed"></b> </button>
+                                            <button type="submit" name="Ort" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <button type="submit"  name="Ort" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort)  </button>
+                                            <button type="submit" name="Ort" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort)  </button>
                                         }
                                     </th>
 
                                     <th></th>
                                 </tr>
 
-                                @for (int i = 0; i < Model.ResultListCaterer.Entitäten.Count ;i++)
+                                @for (int i = 0; i < Model.ResultListCaterer.Entitäten.Count; i++)
                                 {
                                     @Html.HiddenFor(modelItem => Model.ResultListCaterer.Entitäten[i].BenutzerId)
                                     <tr>
@@ -206,4 +211,32 @@
         </div>
     </div>
 
+}
+
+@section Scripts {
+    <script>
+        function ladeAntworten() {
+            $('#Antworten').empty();
+            var frageId = $("#Fragen option:selected").val();
+
+            if (frageId != "") {
+                var sourceString = "/Frage/AjaxLadeAntwortenZuFrage?frageId=" + frageId;
+                $.ajax({
+                    type: 'POST',
+                    url: sourceString,
+                    cache: false,
+                    data: $('#CatererForm').serialize(),
+                    dataType: 'json',
+                    success: function(json) {
+                        ajaxGeraete = json;
+                        $.each(json, function(index) {
+                            $('#Antworten').append($('<option>').text(json[index].Antworttext).attr('value', json[index].AntwortId)
+                        );
+                            $("#Antworten").prop("disabled", false);
+                        });
+                    },
+                });
+            }
+        }
+    </script>
 }

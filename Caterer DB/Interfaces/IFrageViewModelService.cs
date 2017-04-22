@@ -27,5 +27,7 @@ namespace Caterer_DB.Interfaces
         CreateFrageViewModel AddListsToCreateFrageViewModel(CreateFrageViewModel createFrageViewModel, List<Kategorie> kategorien);
 
         EditFrageViewModel AddListsToEditFrageViewModel(EditFrageViewModel editFrageViewModel, List<Kategorie> kategorien);
+
+        List<AjaxAntwort> WandleAntworteninAjaxAntworten(List<Antwort> antworten);
     }
 }
