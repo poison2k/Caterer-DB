@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using GoogleMaps.LocationServices;
 using System.Data.Entity.Spatial;
+using System.IO;
 
 namespace Business.Services
 {
@@ -295,20 +296,19 @@ namespace Business.Services
             return BenutzerRepository.GetCatererCount();
         }
 
-        public void ExportCaterer(Benutzer benutzer, string standort)
+        public void  ExportCaterer(Benutzer benutzer, string standort, string pfad)
         {
-            if (standort == "Lueneburg")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Lueneburg.docx", benutzer.ConvertBenutzerZuStringList());
+          
 
-            }else if (standort == "Braunschweig")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Braunschweig.docx", benutzer.ConvertBenutzerZuStringList());
-            }
-            else if (standort == "Osnabrueck")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Osnabrueck.docx", benutzer.ConvertBenutzerZuStringList());
-            }
+         
+        }
+
+        public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
+        {
+          
+                DocumentService.DokumentDrucken(benutzer, memoryStream);
+
+           
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DataAccess.Model;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Business.Interfaces
 {
@@ -54,6 +55,7 @@ namespace Business.Interfaces
 
         void EditCaterer(Benutzer benutzer);
 
-        void ExportCaterer(Benutzer benutzer, string standort);
+        void ExportCaterer(Benutzer benutzer, string standort, string pfad);
+        void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream);
     }
 }

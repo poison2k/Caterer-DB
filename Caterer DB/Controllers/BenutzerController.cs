@@ -3,12 +3,16 @@ using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.UI.WebControls;
+using System.Xml;
 
 namespace Caterer_DB.Controllers
 {
@@ -425,29 +429,30 @@ namespace Caterer_DB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DetailsCaterer(DetailsCatererViewModel detailsCatererViewModel)
         {
+            string dateiName = "CatererUebersicht.docx";
+
             if (Request.Form["lueneburg"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Lueneburg");
+                dateiName = "CatererUebersicht.docx";
             }
             else if (Request.Form["braunschweig"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Braunschweig");
+                dateiName = "CatererUebersicht.docx";
             }
             else if (Request.Form["osnabrueck"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Osnabrueck");
+                dateiName = "CatererUebersicht.docx";
             }
 
+            string quellDatei = "/Content/DocxVorlagen/" + dateiName;
+            string zielDatei = dateiName;
 
-            detailsCatererViewModel =
-                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(detailsCatererViewModel.BenutzerId)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
+            byte[] dateiArray = System.IO.File.ReadAllBytes(HostingEnvironment.MapPath(quellDatei));
+            var memoryStream = new MemoryStream(dateiArray, true);
+            BenutzerService.DokumentDrucken(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), memoryStream);
 
-            if (detailsCatererViewModel == null)
-            {
-                return HttpNotFound();
-            }
+            return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.wordprocessingml.document", zielDatei);
 
-            return View(detailsCatererViewModel);
         }
 
         // GET: Benutzer/Delete/5
@@ -507,5 +512,7 @@ namespace Caterer_DB.Controllers
 
             return View(vergleichCatererViewModel);
         }
+
+     
     }
 }
