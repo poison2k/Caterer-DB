@@ -8,6 +8,6 @@ namespace Common.Interfaces
 {
     public interface IDocumentService
     {
-        void writeWordDocument(string filepath, string text);
+        void writeWordDocument(string filepath, List<string> text);
     }
 }

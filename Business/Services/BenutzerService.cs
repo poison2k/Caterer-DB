@@ -299,15 +299,15 @@ namespace Business.Services
         {
             if (standort == "Lueneburg")
             {
-                DocumentService.writeWordDocument("C:\\Download\\Lueneburg.docx", benutzer.ToString());
+                DocumentService.writeWordDocument("C:\\Download\\Lueneburg.docx", benutzer.ConvertBenutzerZuStringList());
 
             }else if (standort == "Braunschweig")
             {
-                DocumentService.writeWordDocument("C:\\Download\\Braunschweig.docx", benutzer.ToString());
+                DocumentService.writeWordDocument("C:\\Download\\Braunschweig.docx", benutzer.ConvertBenutzerZuStringList());
             }
             else if (standort == "Osnabrueck")
             {
-                DocumentService.writeWordDocument("C:\\Download\\Osnabrueck.docx", benutzer.ToString());
+                DocumentService.writeWordDocument("C:\\Download\\Osnabrueck.docx", benutzer.ConvertBenutzerZuStringList());
             }
         }
     }
