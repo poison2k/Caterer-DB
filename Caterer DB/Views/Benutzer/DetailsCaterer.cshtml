@@ -38,7 +38,7 @@
     <div role="tabpanel" class="tab-pane fade in active" id="stammdaten">
 
         <div class="row">
-            <div id="RegSeite" class="col-md-6 col-md-offset-3 text-center">
+            <div id="RegSeite" class="col-md-12 text-center">
                 <h1>Detailansicht @Model.Firmenname</h1>
             </div>
         </div>
@@ -182,10 +182,10 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="btn btn-default" name="lueneburg" id="btnLueneburg" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Lüneburg</a></li>
-                                    <li><a class="btn btn-default" name="braunschweig" id="btnBraunschweig" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Braunschweig</a></li>
-                                    <li><a class="btn btn-default" name="osnabrueck" id="btnOsnabrueck" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Osnabrück</a></li>
-                                </ul>
+                                    <li><a name="lueneburg" id="btnLueneburg" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Lüneburg</a></li>
+                                    <li><a name="braunschweig" id="btnBraunschweig" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Braunschweig</a></li>
+                                    <li><a name="osnabrueck" id="btnOsnabrueck" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Osnabrück</a></li>                                
+                                 </ul>
                             </div>
                         }
                     </li>
