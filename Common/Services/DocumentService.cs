@@ -14,7 +14,7 @@ namespace Common.Services
     {
         public void writeWordDocument(string filepath, string text)
         {
-            WordprocessingDocument wordDocument = WordprocessingDocument.Create(filepath, WordprocessingDocumentType.Document);
+            WordprocessingDocument wordDocument = WordprocessingDocument.Open(filepath,false);
             wordDocument.AddMainDocumentPart().Document = new Document();
             Body body = wordDocument.MainDocumentPart.Document.AppendChild(new Body());
             Paragraph paragraph = body.AppendChild(new Paragraph());
@@ -22,6 +22,7 @@ namespace Common.Services
 
             run.AppendChild(new Text(text));
 
+            wordDocument.SaveAs("C:\\Download\\ExportTest.docx");
             wordDocument.Close();
 
             //WebClient webClient = new WebClient();

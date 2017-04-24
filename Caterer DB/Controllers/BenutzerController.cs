@@ -427,15 +427,15 @@ namespace Caterer_DB.Controllers
         {
             if (Request.Form["lueneburg"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerViewModelService.Map_DetailsCatererViewModel_Benutzer(detailsCatererViewModel), "Lueneburg");
+                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Lueneburg");
             }
             else if (Request.Form["braunschweig"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerViewModelService.Map_DetailsCatererViewModel_Benutzer(detailsCatererViewModel), "Braunschweig");
+                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Braunschweig");
             }
             else if (Request.Form["osnabrueck"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerViewModelService.Map_DetailsCatererViewModel_Benutzer(detailsCatererViewModel), "Osnabrueck");
+                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Osnabrueck");
             }
 
 
