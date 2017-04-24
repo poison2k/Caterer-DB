@@ -6,7 +6,7 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm( new { id= "CatererForm" }))
+@using (Html.BeginForm(new { id = "CatererForm" }))
 {
     @Html.HiddenFor(model => model.FilterId)
     @Html.HiddenFor(model => model.ResultListCaterer.ListViewId)
@@ -52,25 +52,34 @@
                     </div>
                     <br />
                     <br />
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Fragen, htmlAttributes: new { @class = "control-label " })
-                                @Html.DropDownList("Fragen", Model.Fragen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid", onchange = "ladeAntworten()" })
-                                @Html.ValidationMessageFor(model => model.Fragen, "", new { @class = "text-danger" })
+                    @for (int i = 0; i < Model.FrageAntwortModel.Count; i++)
+                    {
+
+                        @Html.HiddenFor(model => model.FrageAntwortModel[i].FrageAntwortId)
+
+                        var test = "FrageAntwortModel[" + i + "].FrageId";
+                        var test2 = "FrageAntwortModel[" + i + "].AntwortId";
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Fragen, htmlAttributes: new { @class = "control-label " })
+                                    @Html.DropDownList(test, Model.Fragen, new { id = "Fragen" + i, @class = "form-control prefilled ng-untouched ng-pristine ng-valid", onchange = "ladeAntworten(" + i + ")" })
+                                    @Html.ValidationMessageFor(model => model.Fragen, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Antwort wählen</label>
+                                    @Html.DropDownList(test2, new List<SelectListItem>(), new { id = "Antworten" + i, @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-right">
+                                <button id="btnAddFilter" name="btnAddFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-plus"></i></button>
+                                <button id="btnDeleteFilter" name="btnDeleteFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Antwort wählen</label>
-                                <select id="Antworten" name="antworten" class="form-control"  disabled=""></select>
-                            </div>
-                        </div>
-                        <div class="col-md-2 text-right">
-                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-plus"></i></a>
-                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-trash"></i></a>
-                        </div>
-                    </div>
+                    }
                     <br />
                     <div class="row">
                         <div class="col-md-3">
@@ -89,7 +98,7 @@
                 <div class="row">
                     <ul class="list-unstyled list-inline col-md-12">
                         <li>
-                            <a id="btnMarkierungenErstellen" href="@Url.Action("CreateCaterer", "Benutzer")"name="btnErstellen" type="submit" class="btn btn-success">
+                            <a id="btnMarkierungenErstellen" href="@Url.Action("CreateCaterer", "Benutzer")" name="btnErstellen" type="submit" class="btn btn-success">
                                 <i class="glyphicon glyphicon-plus"></i> Neuer Caterer
                             </a>
                         </li>
@@ -98,7 +107,7 @@
                         </li>
                     </ul>
                 </div>
-              <div style="margin-top: 15px"></div>
+                <div style="margin-top: 15px"></div>
                 <div class="row" id="BenutzerIndexPartial">
                     <div class="col-md-12">
                         <div class="panel panel-default">
@@ -214,10 +223,13 @@
 }
 
 @section Scripts {
+
     <script>
-        function ladeAntworten() {
-            $('#Antworten').empty();
-            var frageId = $("#Fragen option:selected").val();
+        function ladeAntworten(i) {
+            var p1 = "#Antworten" + i;
+            var p2 = "#Fragen" + i + " option:selected";
+            $(p1).empty();
+            var frageId = $(p2).val();
 
             if (frageId != "") {
                 var sourceString = "/Frage/AjaxLadeAntwortenZuFrage?frageId=" + frageId;
@@ -227,16 +239,61 @@
                     cache: false,
                     data: $('#CatererForm').serialize(),
                     dataType: 'json',
-                    success: function(json) {
+                    success: function (json) {
                         ajaxGeraete = json;
-                        $.each(json, function(index) {
-                            $('#Antworten').append($('<option>').text(json[index].Antworttext).attr('value', json[index].AntwortId)
+                        $.each(json, function (index) {
+                            $(p1).append($('<option>').text(json[index].Antworttext).attr('value', json[index].AntwortId)
                         );
-                            $("#Antworten").prop("disabled", false);
+                            $(p1).prop("disabled", false);
                         });
                     },
                 });
             }
         }
+
+
+        function ladeAntwortenInitial(i, FrageId , AntwortId ) {
+            var p1 = "#Antworten" + i;
+            var p2 = "#Fragen" + i+ " option:selected";
+            $(p1).empty();
+            var frageId = $(p2).val();
+
+            if (frageId != "") {
+                var sourceString = "/Frage/AjaxLadeAntwortenZuFrage?frageId=" + FrageId;
+                $.ajax({
+                    type: 'POST',
+                    url: sourceString,
+                    cache: false,
+                    data: $('#CatererForm').serialize(),
+                    dataType: 'json',
+                    success: function (json) {
+                        ajaxGeraete = json;
+                        $.each(json, function (index) {
+                            $(p1).append($('<option>').text(json[index].Antworttext).attr('value', json[index].AntwortId)
+                        );
+                            $(p1).prop("disabled", false);
+                        });
+                    },
+                })
+                ;
+            }
+
+            $( document ).ajaxComplete(function(){
+
+                $(p1).val(AntwortId);
+            });
+
+        };
+
+
+
+
     </script>
+    @for (int i = 0; i < Model.FrageAntwortModel.Count; i++)
+    {
+        <script>
+            ladeAntwortenInitial(@i, @Model.FrageAntwortModel[i].FrageId, @Model.FrageAntwortModel[i].AntwortId)
+        </script>
+    }
+
 }

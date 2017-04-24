@@ -7,6 +7,7 @@ using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -52,17 +53,24 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
         {
-            var fullFilterViewModel = new FullFilterCatererViewModel();
-            fullFilterViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterViewModel);
-            fullFilterViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterViewModel, FrageService.FindAlleFragen());
-            fullFilterViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
+            var fullFilterCatererViewModel = new FullFilterCatererViewModel();
+
+            if (fullFilterCatererViewModel.FrageAntwortModel == null)
+            {
+                fullFilterCatererViewModel.FrageAntwortModel = new List<FrageAntwortModel>();
+                fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count ,AntwortId = 0, FrageId = 0 });
+            }
+
+            fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
+            fullFilterCatererViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterCatererViewModel, FrageService.FindAlleFragen());
+            fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                  BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, -1, "", "", new List<int>())
                 , BenutzerService.GetCatererCount()
                 , aktuelleSeite
                 , seitenGrösse);
             ViewBag.Sortierrung = Sortierrung;
 
-            return View(fullFilterViewModel);
+            return View(fullFilterCatererViewModel);
         }
 
         // GET: Benutzer
@@ -70,18 +78,37 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, FormCollection formCollection)
         {
-            List<string> values = new List<string>();
             List<int> antwortIds = new List<int>();
 
-            foreach (var key in formCollection.Keys)
-            {
-                if(key.ToString().Contains("antworten"))
-                values.Add(key.ToString()); 
+            foreach (FrageAntwortModel frageAntwort in fullFilterCatererViewModel.FrageAntwortModel) {
+                antwortIds.Add(frageAntwort.AntwortId);
             }
 
-            foreach (string key in values) {
-                antwortIds.Add(Convert.ToInt32(formCollection[key]));
+
+            if (Request.Form["btnAddFilter"] != null)
+            {
+                if (fullFilterCatererViewModel.FrageAntwortModel == null)
+                {
+                    fullFilterCatererViewModel.FrageAntwortModel = new List<FrageAntwortModel>();
+                }
+
+                fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count + 1, AntwortId = 0 , FrageId = 0 });
+
             }
+            else if (Request.Form["btnDeleteFilter"] != null)
+            {
+                for (int i = 0; i < Request.Form.Count; i++)
+                {
+                    if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteFilter")
+                    {
+                        ModelState.Clear();
+                        fullFilterCatererViewModel.FrageAntwortModel.RemoveAt(i / 2 - 5);
+                        
+                    }
+                }
+            }
+
+
 
             if (Request.Form["btnVergleich"] != null)
             {
