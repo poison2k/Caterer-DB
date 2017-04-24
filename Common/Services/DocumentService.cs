@@ -1,12 +1,6 @@
 ﻿using Common.Interfaces;
-using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 
 namespace Common.Services
 {
@@ -22,7 +16,7 @@ namespace Common.Services
 
             run.AppendChild(new Text(text));
 
-            wordDocument.SaveAs("C:\\Download\\ExportTest.docx");
+            //wordDocument.SaveAs("C:\\Download\\ExportTest.docx");
             wordDocument.Close();
 
             //WebClient webClient = new WebClient();
