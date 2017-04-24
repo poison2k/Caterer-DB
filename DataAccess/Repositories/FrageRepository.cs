@@ -40,6 +40,11 @@ namespace DataAccess.Repositories
             return Db.Frage.Include(x => x.Antworten).Where(x => x.Kategorie == kategorien).ToList();
         }
 
+        public Frage SearchFrageByAntwortId(int antwortID)
+        {
+            return Db.Frage.Include(x => x.Kategorie).Where(x => x.Antworten.Contains(Db.Antwort.Where(y=> y.AntwortId == antwortID).FirstOrDefault())).SingleOrDefault();
+        }
+
         public void AddFrage(Frage frage)
         {
             Db.Frage.Add(frage);

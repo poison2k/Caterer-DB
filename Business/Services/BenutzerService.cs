@@ -305,25 +305,6 @@ namespace Business.Services
             return BenutzerRepository.GetCatererCount();
         }
 
-        public void ExportCaterer(Benutzer benutzer, string standort)
-        {
-
-            if (standort == "Lueneburg")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Lueneburg.docx", benutzer);
-
-            }
-            else if (standort == "Braunschweig")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Braunschweig.docx", benutzer);
-            }
-            else if (standort == "Osnabrueck")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Osnabrueck.docx", benutzer);
-            }
-
-        }
-
         public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
         {
 

@@ -56,7 +56,5 @@ namespace Business.Interfaces
         void EditCaterer(Benutzer benutzer);
         
         void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream);
-
-        void ExportCaterer(Benutzer benutzer, string standort);
     }
 }

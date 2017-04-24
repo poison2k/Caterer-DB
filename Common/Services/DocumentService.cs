@@ -1,4 +1,5 @@
 ﻿using Common.Interfaces;
+using DataAccess.Interfaces;
 using DataAccess.Model;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
@@ -11,62 +12,33 @@ namespace Common.Services
 {
     public class DocumentService : IDocumentService
     {
-        public void writeWordDocument(string filepath, Benutzer benutzer)
+        public IAntwortRepository AntwortRepository { get; set; }
+        public IFrageRepository FrageRepository { get; set; }
+        public IKategorieRepository KategorieRepository { get; set; }
+        public IFragebogenRepository FragebogenRepository { get; set; }
+
+        public DocumentService(IAntwortRepository antwortRepository, IFrageRepository frageRepository, IKategorieRepository kategorieRepository, IFragebogenRepository fragebogenRepository)
         {
-            string newFile = "C:\\Download\\" + DateTime.Now.ToString("yyyymmdd") + "_" + benutzer.Firmenname + ".docx";
-
-            if (File.Exists(newFile))
-            {
-                File.Delete(newFile);
-            }
-            File.Copy(filepath, newFile);
-
-            using (WordprocessingDocument wordDocument = WordprocessingDocument.Open(newFile, true))
-            {
-                string docText = null;
-
-                using (StreamReader sr = new StreamReader(wordDocument.MainDocumentPart.GetStream()))
-                {
-                    docText = sr.ReadToEnd();
-                }
-                
-                docText = docText.Replace("Anrede", benutzer.Anrede);
-                docText = docText.Replace("Vorname", benutzer.Vorname);
-                docText = docText.Replace("Nachname", benutzer.Nachname);
-                docText = docText.Replace("FunktionAnsprechpartner", benutzer.FunktionAnsprechpartner);
-                docText = docText.Replace("Mail", benutzer.Mail);
-                docText = docText.Replace("Firmenname", benutzer.Firmenname);
-                docText = docText.Replace("Telefon", benutzer.Telefon);
-                docText = docText.Replace("Straße", benutzer.Straße);
-                docText = docText.Replace("Postleitzahl", benutzer.Postleitzahl);
-                docText = docText.Replace("Ort", benutzer.Ort);               
-
-                using (StreamWriter sw = new StreamWriter(wordDocument.MainDocumentPart.GetStream(FileMode.Create)))
-                {
-                    sw.Write(docText);
-                }
-
-                wordDocument.Close();
-            }
+            AntwortRepository = antwortRepository;
+            FrageRepository = frageRepository;
+            KategorieRepository = kategorieRepository;
+            FragebogenRepository = fragebogenRepository;
         }
-
-       
-        
 
         public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
         {
             {
                 WordprocessingDocument openXmlDocument = WordprocessingDocument.Open(memoryStream, true);
 
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "uebernehmenderNachname", benutzer.Nachname);
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "uebernehmenderVorname", benutzer.Vorname);
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "uebernehmenderApperatNr", benutzer.Telefon);
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "uebernehmenderDienststelle", benutzer.Firmenname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Nachname", benutzer.Nachname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Vorname", benutzer.Vorname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Telefon", benutzer.Telefon);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Firma", benutzer.Firmenname);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "bemerkung", benutzer.Sonstiges);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "aktuellesDatum", DateTime.Now.ToString("d"));
 
-                var tableRow = (TableRow)OpenXmlUtils.SucheTabellenReiheMitContentControl(openXmlDocument, "materialGeraeteart");
-                Table table = OpenXmlUtils.SucheTabelleMitContentControl(openXmlDocument, "materialGeraeteart");
+                var tableRow = (TableRow)OpenXmlUtils.SucheTabellenReiheMitContentControl(openXmlDocument, "Kategorie");
+                Table table = OpenXmlUtils.SucheTabelleMitContentControl(openXmlDocument, "Kategorie");
 
                 var neueTabellenZeile = new TableRow();
                 OpenXmlElement neueTabelle = new Table();
@@ -77,9 +49,29 @@ namespace Common.Services
                 int counter = 0;
                 foreach (int antwortId in benutzer.AntwortIDs)
                 {
+                    Frage aktuelleFrage = FrageRepository.SearchFrageByAntwortId(antwortId);
+                    string verketteteAntworten = "";
+
                     counter++;
                     neueTabellenZeile = (TableRow)tableRow.CloneNode(true);
-                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "materialGeraeteart", antwortId.ToString());
+
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Kategorie", KategorieRepository.SearchKategorieIdById(aktuelleFrage.Kategorie.KategorieId).Bezeichnung);
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Frage", aktuelleFrage.Bezeichnung);
+
+                    for (int i = 0; i < aktuelleFrage.Antworten.Count; i++)
+                    {
+                        if (benutzer._AntwortIDs.Contains(aktuelleFrage.Antworten[i].AntwortId.ToString()))
+                        {
+                            verketteteAntworten = verketteteAntworten + Convert.ToString(i + 1) + ". " + aktuelleFrage.Antworten[i].Bezeichnung + Environment.NewLine;
+                        }
+
+
+
+                    }
+
+
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Antworten", verketteteAntworten);
+
 
                     if (counter < 17)
                         tableRow.InsertBeforeSelf(neueTabellenZeile);

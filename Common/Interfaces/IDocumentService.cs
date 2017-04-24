@@ -10,8 +10,6 @@ namespace Common.Interfaces
 {
     public interface IDocumentService
     {
-        void writeWordDocument(string filepath, Benutzer benutzer);
-
         void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream);
     }
 }
