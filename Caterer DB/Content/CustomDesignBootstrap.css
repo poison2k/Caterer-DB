@@ -369,12 +369,13 @@ background-color: rgba(248,248,248,1);
   text-decoration: underline;
 }
 
+.btn-group
 
 
 
 
 
-button, input, optgroup, select, textarea {
+/*button, input, optgroup, select, textarea {
     background-color:transparent;
     color: #777;
     border:none;
@@ -383,6 +384,22 @@ button, input, optgroup, select, textarea {
 }
 
 button:hover, input:hover, optgroup:hover, select:hover, textarea:hover  {
+    background-color:rgba(102,204,204,0.2);
+    color: rgba(35,31,32,1);
+    margin-left:10px;
+}*/
+
+
+nav navbar-link {
+background-color:transparent;
+    color: #777;
+    border:none;
+    text-align:center;
+    margin-left:10px;
+}
+
+nav navbar-link:hover {
+background-color:transparent;
     background-color:rgba(102,204,204,0.2);
     color: rgba(35,31,32,1);
     margin-left:10px;
