@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using GoogleMaps.LocationServices;
 using System.Data.Entity.Spatial;
+using System.IO;
 
 namespace Business.Services
 {
@@ -297,6 +298,17 @@ namespace Business.Services
 
         public void ExportCaterer(Benutzer benutzer, string standort)
         {
+          
+
+         
+        }
+
+        public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
+        {
+          
+                DocumentService.DokumentDrucken(benutzer, memoryStream);
+
+           
             if (standort == "Lueneburg")
             {
                 DocumentService.writeWordDocument("C:\\Download\\Lueneburg.docx", benutzer);
