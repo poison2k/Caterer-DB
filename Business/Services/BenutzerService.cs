@@ -136,7 +136,9 @@ namespace Business.Services
             benutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung(gruppe) };
            
             benutzer.PasswortZeitstempel = DateTime.Now;
-
+            if (gruppe == "Caterer") {
+                benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
+            }
             BenutzerRepository.AddUser(benutzer);
 
             benutzer = BenutzerRepository.SearchUserByEMail(benutzer.Mail);
