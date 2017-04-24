@@ -6,8 +6,10 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm( new { id= "CatererForm" }))
 {
+    @Html.HiddenFor(model => model.FilterId)
+    @Html.HiddenFor(model => model.ResultListCaterer.ListViewId)
     <br />
     <br />
     <br />
@@ -17,47 +19,71 @@
                 <h1>Caterer</h1>
             </div>
         </div>
+        <br />
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well well-lg">
-                    <h3>Filter</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                <div class="well well-lg-weiss" style="border-color: rgb(211, 211, 211);">
 
-                                <label class="control-label">Name</label>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Name, new { @class = "control-label" })
                                 @Html.Editor("name", new { htmlAttributes = new { @class = "form-control", id = "name" } })
                             </div>
                         </div>
-                        
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-
-                                <label class="control-label">Plz</label>
+                                @Html.LabelFor(x => x.PLZ, new { @class = "control-label" })
                                 @Html.Editor("plz", new { htmlAttributes = new { @class = "form-control", id = "plz" } })
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-
-                                <label class="control-label">Umkreis</label>
-                                @Html.Editor("umkreis", new { htmlAttributes = new { @class = "form-control", id = "umkreis" } })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Umkreis, htmlAttributes: new { @class = "control-label " })
+                                    @Html.DropDownList("Umkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                                    @Html.ValidationMessageFor(model => model.Umkreis, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <br />
+                    <br />
                     <div class="row">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Filtern</button>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Fragen, htmlAttributes: new { @class = "control-label " })
+                                @Html.DropDownList("Fragen", Model.Fragen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid", onchange = "ladeAntworten()" })
+                                @Html.ValidationMessageFor(model => model.Fragen, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Antwort wählen</label>
+                                <select id="Antworten" name="antworten" class="form-control"  disabled=""></select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-plus"></i></a>
+                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-trash"></i></a>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-default btn-block">Filter anwenden</button>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/Benutzer/IndexCaterer" class="btn btn-default btn-block"> Filter zurücksetzen</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 15px"></div>
-
+        <br />
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -66,6 +92,9 @@
                             <a id="btnMarkierungenErstellen" href="@Url.Action("CreateCaterer", "Benutzer")" na name="btnErstellen" type="submit" class="btn btn-success">
                                 <i class="glyphicon glyphicon-plus"></i> Neuer Caterer
                             </a>
+                        </li>
+                        <li>
+                            <button type="submit" class="btn btn-default btn-block" name="btnVergleich" id="btnVergleich"> <i class="glyphicon glyphicon-list"></i> Caterer Vergleichen</button>
                         </li>
                     </ul>
                 </div>
@@ -77,76 +106,87 @@
                             <table class="table table-striped">
                                 <tr>
                                     <th>
+                                        Auswahl
+                                    </th>
+                                    <th>
                                         @if (ViewBag.Sortierrung == "Firmenname")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname_desc" })"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret"></b> </a>
+                                            <button type="submit" name="Firmenname_desc" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Firmenname_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Firmenname"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit" name="Firmenname" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Firmenname" })"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname)  </a>
+                                            <button type="submit" name="Firmenname" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Firmenname)  </button>
                                         }
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Telefon")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Telefon_desc"})">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret"></b> </a>
+                                            <button type="submit" name="Telefon_desc" class="link-button">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret"></b>
+                                            </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Telefon_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit" name="Telefon" class="link-button">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon) <b class="caret caret-reversed"></b>
+                                            </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Telefon"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon)  </a>
+                                            <button type="submit" name="Telefon" class="link-button">
+                                                @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Telefon)
+                                            </button>
                                         }
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Postleitzahl")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Postleitzahl_desc"})">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret"></b> </a>
+                                            <button type="submit" name="Postleitzahl_desc" class="link-button">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Postleitzahl_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Postleitzahl"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit" name="Postleitzahl" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Postleitzahl"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl)  </a>
+                                            <button type="submit" name="Postleitzahl" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Postleitzahl)  </button>
                                         }
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Ort")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung = "Ort_desc"})">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret"></b> </a>
+                                            <button type="submit" name="Ort_desc" class="link-button">@Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret"></b> </button>
                                         }
                                         else if (ViewBag.Sortierrung == "Ort_desc")
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Ort"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret caret-reversed"></b> </a>
+                                            <button type="submit" name="Ort" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort) <b class="caret caret-reversed"></b> </button>
                                         }
                                         else
                                         {
-                                            <a href="@Url.Action("IndexCaterer", "Benutzer", new { Sortierrung  = "Ort"})"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort)  </a>
+                                            <button type="submit" name="Ort" class="link-button"> @Html.DisplayNameFor(model => model.ResultListCaterer.FirstOrDefault().Ort)  </button>
                                         }
                                     </th>
 
                                     <th></th>
                                 </tr>
 
-                                @foreach (var item in Model.ResultListCaterer.Entitäten)
+                                @for (int i = 0; i < Model.ResultListCaterer.Entitäten.Count; i++)
                                 {
+                                    @Html.HiddenFor(modelItem => Model.ResultListCaterer.Entitäten[i].BenutzerId)
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.Firmenname)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Postleitzahl)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Ort)</td>
+                                        <td>@Html.CheckBoxFor(modelItem => Model.ResultListCaterer.Entitäten[i].selected)</td>
+                                        <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Firmenname)</td>
+                                        <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Telefon)</td>
+                                        <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Postleitzahl)</td>
+                                        <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Ort)</td>
 
                                         <td align="center">
-                                            <a class="btn btn-default" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
-                                            <a class="btn btn-default" href="@Url.Action("EditCaterer", "Benutzer", new { id = item.BenutzerId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            <a class="btn btn-default" href="@Url.Action("DetailsCaterer", "Benutzer", new {id = Model.ResultListCaterer.Entitäten[i].BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                                            <a class="btn btn-default" href="@Url.Action("EditCaterer", "Benutzer", new { id = Model.ResultListCaterer.Entitäten[i].BenutzerId })" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
                                         </td>
                                     </tr>
                                 }
@@ -171,4 +211,32 @@
         </div>
     </div>
 
+}
+
+@section Scripts {
+    <script>
+        function ladeAntworten() {
+            $('#Antworten').empty();
+            var frageId = $("#Fragen option:selected").val();
+
+            if (frageId != "") {
+                var sourceString = "/Frage/AjaxLadeAntwortenZuFrage?frageId=" + frageId;
+                $.ajax({
+                    type: 'POST',
+                    url: sourceString,
+                    cache: false,
+                    data: $('#CatererForm').serialize(),
+                    dataType: 'json',
+                    success: function(json) {
+                        ajaxGeraete = json;
+                        $.each(json, function(index) {
+                            $('#Antworten').append($('<option>').text(json[index].Antworttext).attr('value', json[index].AntwortId)
+                        );
+                            $("#Antworten").prop("disabled", false);
+                        });
+                    },
+                });
+            }
+        }
+    </script>
 }

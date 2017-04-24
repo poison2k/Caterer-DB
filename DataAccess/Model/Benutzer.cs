@@ -16,7 +16,7 @@ namespace DataAccess.Model
 
         public string Internetadresse { get; set; }
 
-        public string Lieferumkreis { get; set; }
+        public int Lieferumkreis { get; set; }
 
         public string Organisationsform { get; set; }
 

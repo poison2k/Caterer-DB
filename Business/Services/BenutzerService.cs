@@ -5,7 +5,6 @@ using DataAccess.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
-using Common.Services;
 using GoogleMaps.LocationServices;
 using System.Data.Entity.Spatial;
 
@@ -25,13 +24,19 @@ namespace Business.Services
 
         private IMapper Mapper { get; set; }
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService)
+        private IConfigService ConfigService {get; set;}
+
+        private IGoogleService GoogleService { get; set; }
+
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService,IConfigService configService, IGoogleService googleService)
         {
             BenutzerRepository = benutzerRepository;
             BenutzerGruppeService = benutzerGruppeService;
             MailService = mailService;
             DocumentService = documentService;
             MD5Hash = md5Hash;
+            ConfigService = configService;
+            GoogleService = googleService;
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -50,16 +55,14 @@ namespace Business.Services
             return BenutzerRepository.SearchUserById(id);
         }
 
-        public List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis) {
-            var Adresse = new AddressData()
-            {
-                Country = "Deutschland",
-                Zip = plz,
-            };
+        public List<Benutzer> FindeCatererNachIds(List<int> ids)
+        {
+            return BenutzerRepository.SearchUser(ids);
+        }
 
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(Adresse);
-            var GeoDaten = DbGeography.FromText("Point(" + point.Longitude.ToString().Replace(',','.') + " " + point.Latitude.ToString().Replace(',', '.') + " )");
+        public List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis) {
+            
+            var GeoDaten = GoogleService.FindeLocationByPlz(plz);
             return BenutzerRepository.FindeCatererNachUmkreis(GeoDaten, umkreis);
         }
         public Benutzer SearchUserByIdNoTracking(int id)
@@ -84,21 +87,43 @@ namespace Business.Services
             return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung);
         }
 
-        public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung, int umkreis, string plz, string name)
+        public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung, int umkreis, string plz, string name, List<int> antwortIds)
         {
             var benutzerGruppen = new List<string>() { "Caterer" };
-
-            var Adresse = new AddressData()
+            List<Benutzer> caterer;
+            if (plz != "" && plz != null)
             {
-                Country = "Deutschland",
-                Zip = plz,
-            };
 
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(Adresse);
-            var GeoDaten = DbGeography.FromText("Point(" + point.Longitude.ToString().Replace(',', '.') + " " + point.Latitude.ToString().Replace(',', '.') + " )");
+                caterer =  BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GoogleService.FindeLocationByPlz(plz), name);
 
-            return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GeoDaten, name);
+            }
+            else {
+
+                caterer =  BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, null, name);
+            }
+
+            
+            if (antwortIds.Count != 0) {
+                List<Benutzer> listUser = new List<Benutzer>();         
+                foreach (Benutzer user in caterer) {
+                    bool antwortEnthalten = false;
+                    foreach (int id in antwortIds) {
+                        if (user.AntwortIDs.Contains(id)){
+                            antwortEnthalten = true;
+                        } 
+
+                    }
+                    if (!antwortEnthalten) {
+                        listUser.Add(user);
+                    }
+                }
+                foreach (Benutzer user in listUser) {
+                    caterer.Remove(user);
+                }
+            }
+
+
+            return caterer;
         }
 
         public void AddBenutzer(Benutzer benutzer)
@@ -109,7 +134,7 @@ namespace Business.Services
         public void AddBenutzer(Benutzer benutzer, string gruppe)
         {
             benutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung(gruppe) };
-            benutzer.IstEmailVerifiziert = true;
+           
             benutzer.PasswortZeitstempel = DateTime.Now;
 
             BenutzerRepository.AddUser(benutzer);
@@ -124,21 +149,22 @@ namespace Business.Services
         public void AddMitarbeiter(Benutzer benutzer, string gruppe)
         {
             AddBenutzer(benutzer, gruppe);
-
-            MailService.SendNewMitarbeiterMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+           
+            MailService.SendNewMitarbeiterMail(ConfigService.GetConfig(), benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void AddCaterer(Benutzer benutzer, string gruppe)
         {
             AddBenutzer(benutzer, gruppe);
 
-            MailService.SendNewCatererMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+            MailService.SendNewCatererMail(ConfigService.GetConfig(), benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void RegisterBenutzer(Benutzer benutzer)
         {
-            BenutzerRepository.AddUser(benutzer);
-            MailService.SendRegisterMail(benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+            benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
+            AddBenutzer(benutzer, "Caterer");
+            MailService.SendRegisterMail(ConfigService.GetConfig(), benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void ForgottenPasswordEmailForBenutzer(string Mail)
@@ -147,7 +173,7 @@ namespace Business.Services
             benutzer.PasswordVerificationCode = MD5Hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname + benutzer.Passwort);
             benutzer.PasswortZeitstempel = DateTime.Now;
             BenutzerRepository.EditUser(benutzer);
-            MailService.SendForgottenPasswordMail(benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
+            MailService.SendForgottenPasswordMail(ConfigService.GetConfig(), benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
         public void EditBenutzer(Benutzer editedBenutzer, bool istAdmin)
@@ -182,21 +208,23 @@ namespace Business.Services
             editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
             editedBenutzer.IstEmailVerifiziert = dbBenutzer.IstEmailVerifiziert;
             Mapper.Map(editedBenutzer, dbBenutzer);
+            dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
             BenutzerRepository.EditUser(dbBenutzer);
         }
 
         public void EditCaterer(Benutzer editedBenutzer)
         {
             var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
-            MailService.SendEditCatererMail(dbBenutzer.Mail);
+            MailService.SendEditCatererMail(ConfigService.GetConfig(), dbBenutzer.Mail);
             Mapper.Map(editedBenutzer, dbBenutzer);
+            dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
             BenutzerRepository.EditUser(dbBenutzer);
         }
 
         public void RemoveCaterer(int id)
         {
             var benutzer = BenutzerRepository.SearchUserById(id);
-            MailService.SendRemoveCatererMail(benutzer.Mail);
+            MailService.SendRemoveCatererMail(ConfigService.GetConfig(), benutzer.Mail);
             BenutzerRepository.RemoveUser(BenutzerRepository.SearchUserById(id));
         }
 

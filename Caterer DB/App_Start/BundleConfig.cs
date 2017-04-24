@@ -26,7 +26,8 @@ namespace Caterer_DB
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/CustomDesignBootstrap.css",
-                      "~/Content/FunkyButton.css"));
+                      "~/Content/FunkyButton.css"
+                      ));
         }
     }
 }

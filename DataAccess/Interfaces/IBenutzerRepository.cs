@@ -34,6 +34,7 @@ namespace DataAccess.Interfaces
 
         List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy = "" , int umkreis = -1, DbGeography geoDaten = null, string name = "");
 
+        List<Benutzer> SearchUser(List<int> ids);
         int GetMitarbeiterCount();
 
         int GetCatererCount();

@@ -5,6 +5,7 @@ using Common.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -37,6 +38,7 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, CreateCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, MeineDatenBenutzerViewModel>().ReverseMap();
+                
             });
 
             Mapper = config.CreateMapper();
@@ -387,6 +389,19 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Benutzer>(detailsCatererViewModel);
         }
 
+        public VergleichCatererViewModel Map_ListBenutzer_VergleichCatererViewModel(List<Benutzer> caterer, List<List<Frage>> fragenListen) {
+
+            var vergleichCatererViewModel = new VergleichCatererViewModel();
+            vergleichCatererViewModel.caterer = new List<DetailsCatererViewModel>();
+            vergleichCatererViewModel.Fragen = fragenListen;
+            foreach (Benutzer benutzer in caterer)
+            {
+                vergleichCatererViewModel.caterer.Add(Map_Benutzer_DetailsCatererViewModel(benutzer, fragenListen));
+            }
+
+            return vergleichCatererViewModel;
+        }
+
         public CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel()
         {
             return AddListsToCreateViewModel(new CreateMitarbeiterViewModel());
@@ -418,6 +433,7 @@ namespace Caterer_DB.Models.ViewModelServices
             //ToDo in Hash in Business Layer verschieben
             benutzer.Passwort = Crypto.HashPassword(registerBenutzerViewModel.Passwort);
             benutzer.EMailVerificationCode = MD5hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname);
+            benutzer.IstEmailVerifiziert = false;
             return benutzer;
         }
 
@@ -542,6 +558,26 @@ namespace Caterer_DB.Models.ViewModelServices
             return fullFilterCatererViewModel;
         }
 
+        public FullFilterCatererViewModel AddFragenListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel, List<Frage> fragen)
+        {
+          
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Bitte wählen...", Value = String.Empty });
+            items.AddRange(fragen.ConvertAll(a =>
+            {
+                return new SelectListItem()
+                {
+                    Text = a.Bezeichnung,
+                    Value = Convert.ToString(a.FrageId)
+                };
+            }));
+
+            fullFilterCatererViewModel.Fragen = items;
+
+
+            return fullFilterCatererViewModel;
+        }
+
         private SelectList CreateAnredenSelectList()
         {
             return new SelectList(new List<SelectListItem>
@@ -566,12 +602,19 @@ namespace Caterer_DB.Models.ViewModelServices
             return new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
-                                new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
-                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
-                                new SelectListItem { Text = "Bis 40 km", Value = "Bis 40 km" },
-                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
-                                new SelectListItem { Text = "100 km +", Value = "100 km +" },
+                                new SelectListItem { Text = "Bis  5 km", Value = "5" },
+                                new SelectListItem { Text = "Bis 10 km", Value = "10" },
+                                new SelectListItem { Text = "Bis 15 km", Value = "15" },
+                                new SelectListItem { Text = "Bis 20 km", Value = "20" },
+                                new SelectListItem { Text = "Bis 25 km", Value = "25" },
+                                new SelectListItem { Text = "Bis 30 km", Value = "30" },
+                                new SelectListItem { Text = "Bis 40 km", Value = "40" },
+                                new SelectListItem { Text = "Bis 50 km", Value = "50" },
+                                new SelectListItem { Text = "Bis 60 km", Value = "60" },
+                                new SelectListItem { Text = "Bis 70 km", Value = "70" },
+                                new SelectListItem { Text = "Bis 80 km", Value = "80" },
+                                new SelectListItem { Text = "Bis 90 km", Value = "90" },
+                                new SelectListItem { Text = "100 km +", Value = "100" },
                             }, "Value", "Text");
         }
 
@@ -584,5 +627,6 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Caterer", Value = "Caterer" },
                             }, "Value", "Text");
         }
+
     }
 }

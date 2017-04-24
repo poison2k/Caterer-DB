@@ -158,6 +158,13 @@ h6,
     border-color: rgba(160,200,140,1);
 }
 
+.well-lg-transparent{
+    padding: 24px;
+    border-radius: 6px;
+   background-color: transparent;
+    border-color: transparent;
+}
+
 .well-sm {
     background-color: rgba(255, 255, 255, 0.80);
     border-color: rgb(255, 255, 255);
@@ -260,7 +267,7 @@ ul {
 
 
 
-/* PageList Hintergrundfarbe Überschriften --> Noch in Arbeit <--*/
+/* PageList Hintergrundfarbe Überschriften*/
 .panel-default > .panel-heading {
     background-color: rgba(46,109,164,1);
 }
@@ -279,7 +286,7 @@ th {
 
 .well-lg-weiss {
     background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255,255,255,1);
+    border-color: rgba(255,255,255,1);    
 }
 
 .nav-pills > li.active > a,
@@ -287,8 +294,8 @@ th {
 {
   background-color: rgba(77,147,208,1);
   text-decoration: none;
-    box-shadow: 20px 5px rgba(77,147,208,0.5);
-    border-radius: 15px 5px 15px 5px;
+    /*box-shadow: 20px 5px rgba(77,147,208,0.5);*/
+    /*border-radius: 15px 5px 15px 5px;*/
 }
 
 .nav-pills > li > a:hover {
@@ -317,4 +324,46 @@ th {
   line-height: 1.42857143;
   border: 1px solid transparent;
   border-radius: 0px 20px 0 0;
+}
+    /*Tabs*/
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #fff;
+  background-color: rgba(77,147,208,0.5);
+  /*background-image:linear-gradient(180deg, rgba(77,147,208,1), rgba(77,147,208,0.5));*/ 
+  border: 1px solid transparent;
+  
+}
+
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 0 0 5px 5px;
+  background-color: rgba(248,248,248,1);
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+background-color: rgba(248,248,248,1);
+}
+.nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #ddd;
+    border-radius:  0 0 5px 5px;
+  }
+
+
+
+ /*Mask Button as link*/
+.link-button {
+  background: none;
+  border: none;
+  color: #337ab7;
+  cursor: pointer;
+  text-decoration: none;
+}
+.link-button:focus {
+  color: #23527c;
+  text-decoration: underline;
 }

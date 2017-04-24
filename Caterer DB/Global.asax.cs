@@ -29,7 +29,7 @@ namespace Caterer_DB
 
 #else
 
-            Database.SetInitializer(new ContextInitializerCreateAlwaysWithStartData());
+            Database.SetInitializer(new ContextInitializerCreateIfNotExistsWithStartData());
 #endif
             
             AreaRegistration.RegisterAllAreas();

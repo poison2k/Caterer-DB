@@ -363,6 +363,10 @@
     <Content Include="Content\Images\Arnold.JPG" />
     <Content Include="Content\Images\banner.png" />
     <Content Include="Content\Images\error.jpg" />
+    <Content Include="Content\Images\Foto Albrecht_schwarz-weiß.jpg" />
+    <Content Include="Content\Images\Foto Kompe_schwarz-weiß.JPG" />
+    <Content Include="Content\Images\Foto Reif_schwarz-weiß.jpg" />
+    <Content Include="Content\Images\Foto Ullrich_schwar-weiß.jpg" />
     <Content Include="Content\Images\Hg100_1024.png" />
     <Content Include="Content\Images\Hg30_1024.png" />
     <Content Include="Content\Images\Hg50_kleiner.png" />
@@ -370,7 +374,7 @@
     <Content Include="Content\Images\Logo_AG_Wasserzeichen.png" />
     <Content Include="Content\Images\Logo_DGE.png" />
     <Content Include="Content\Images\Logo_Ministerium.png" />
-    <Content Include="Content\Images\ML Logo Förderung 197 frei.png" />
+    <Content Include="Content\Images\MLLogoFoerderung197frei.png" />
     <Content Include="Content\Images\reif.jpg" />
     <Content Include="Content\Images\Stephainski.jpg" />
     <Content Include="Content\PagedList.css" />
@@ -379,7 +383,14 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="00_Clients_Klassendiagramm.cd" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Lokal.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="GoogleMaps.LocationServices.readme.txt" />
     <Content Include="Scripts\bootstrap.js" />
@@ -469,6 +480,7 @@
     <Content Include="Views\Frage\DetailsVeroeffentlicht.cshtml" />
     <Content Include="Views\Error\ZugriffVerweigert.cshtml" />
     <Content Include="Views\Google\Index.cshtml" />
+    <Content Include="Views\Benutzer\VergleichCaterer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
