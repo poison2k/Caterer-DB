@@ -75,5 +75,7 @@ namespace Caterer_DB.Interfaces
         IndexCatererViewModel GeneriereIndexCatererViewModel(Benutzer benutzer);
 
         CreateCatererViewModel CreateNewCreateCatererViewModel();
+
+        Benutzer Map_DetailsCatererViewModel_Benutzer(DetailsCatererViewModel detailsCatererViewModel);
     }
 }

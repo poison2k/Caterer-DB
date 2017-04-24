@@ -4,6 +4,14 @@
 @{
     ViewBag.Title = "Details";
 }
+
+@using (Html.BeginForm())
+{
+     @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.BenutzerId)
+
 <!-- Nav tabs -->
 @*<div class="tabbar">
         <div class="col-md-12">
@@ -149,7 +157,7 @@
             <div class="col-md-6 col-md-offset-3 text-center">
                 <ul class="list-unstyled list-inline ">
                     <li>
-                        <a class="btn btn-default" id="btnEdit" href="@Url.Action("EditCaterer", "Benutzer", new {id = Model.BenutzerId})">
+                        <a class="btn btn-default" id="btnEdit" href="@Url.Action("EditCaterer", "Benutzer", new { id = Model.BenutzerId })">
                             Caterer bearbeiten
                         </a>
                     </li>
@@ -157,20 +165,25 @@
                         <a class="btn btn-default" id="btnZurück" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                     </li>
                     <li>
-                        @using (Html.BeginForm())
-                        {
+                        
+                            
+
+
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Exportieren
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="btn btn-default" name="lueneburg" id="btnLueneburg" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Lüneburg</a></li>
-                                    <li><a class="btn btn-default" name="braunschweig" id="btnBraunschweig" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Braunschweig</a></li>
-                                    <li><a class="btn btn-default" name="osnabrueck" id="btnOsnabrueck" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Osnabrück</a></li>
+                                    <li><button type="submit" class="nav navbar-link" name="lueneburg" id="btnLueneburg" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Lüneburg</button></li>
+                                    <li><button type="submit" class="nav navbar-link" name="braunschweig" id="btnBraunschweig" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Braunschweig</button></li>
+                                    <li><button type="submit" class="nav navbar-link" name="osnabrueck" id="btnOsnabrueck" href="@Url.Action("DetailsCaterer", "Benutzer", new { id = Model.BenutzerId })">Osnabrück</button></li>
                                 </ul>
                             </div>
-                        }
+                        
+
+
+
                     </li>
                 </ul>
             </div>
@@ -186,7 +199,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             @for (int i = 0; i < Model.Fragen.Count; i++)
-                {
+                            {
                                 <h2>@Html.DisplayFor(m => m.Fragen[i].Name)</h2>
 
                                 for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
@@ -245,3 +258,4 @@
 
                 </div>
 </div>
+}

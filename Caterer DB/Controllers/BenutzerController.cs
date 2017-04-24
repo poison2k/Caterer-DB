@@ -351,10 +351,31 @@ namespace Caterer_DB.Controllers
         // POST: Benutzer/DetailsCaterer
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DetailsCaterer(DetailsBenutzerViewModel detailsBenutzerViewModel)
+        public ActionResult DetailsCaterer(DetailsCatererViewModel detailsCatererViewModel)
         {
-            
-            return View(detailsBenutzerViewModel);
+            if (Request.Form["lueneburg"] != null)
+            {
+                BenutzerService.ExportCaterer(BenutzerViewModelService.Map_DetailsCatererViewModel_Benutzer(detailsCatererViewModel), "Lueneburg");
+            }
+            else if (Request.Form["braunschweig"] != null)
+            {
+                BenutzerService.ExportCaterer(BenutzerViewModelService.Map_DetailsCatererViewModel_Benutzer(detailsCatererViewModel), "Braunschweig");
+            }
+            else if (Request.Form["osnabrueck"] != null)
+            {
+                BenutzerService.ExportCaterer(BenutzerViewModelService.Map_DetailsCatererViewModel_Benutzer(detailsCatererViewModel), "Osnabrueck");
+            }
+
+
+            detailsCatererViewModel =
+                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(detailsCatererViewModel.BenutzerId)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
+
+            if (detailsCatererViewModel == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(detailsCatererViewModel);
         }
 
         // GET: Benutzer/Delete/5

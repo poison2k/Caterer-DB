@@ -382,6 +382,11 @@ namespace Caterer_DB.Models.ViewModelServices
             return detailsCatererViewModel;
         }
 
+        public Benutzer Map_DetailsCatererViewModel_Benutzer(DetailsCatererViewModel detailsCatererViewModel)
+        {
+            return Mapper.Map<Benutzer>(detailsCatererViewModel);
+        }
+
         public CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel()
         {
             return AddListsToCreateViewModel(new CreateMitarbeiterViewModel());

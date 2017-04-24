@@ -63,8 +63,8 @@ namespace DataAccess.Model
         public string _AntwortIDs { get; set; }
 
         //GeoInfoDaten
-        public DbGeography Koordinaten { get; set;}
-       
+        public DbGeography Koordinaten { get; set; }
+
 
         [NotMapped]
         public virtual List<int> AntwortIDs
@@ -102,6 +102,24 @@ namespace DataAccess.Model
                     }
                 }
             }
+
+
+        }
+
+
+        public override string ToString()
+        {
+            return "Anrede:" + this.Anrede +
+                    "Vorname:" + this.Vorname +
+                    "Nachname:" + this.Nachname +
+                    "Funktion:" + this.FunktionAnsprechpartner +
+                    "Mail:" + this.Mail +
+                    "Firma:" + this.Firmenname +
+                    "Telefon:" + this.Telefon +
+                    "Straße:" + this.Straße +
+                    "PLZ:" + this.Postleitzahl +
+                    "Ort:" + this.Ort;
+
         }
     }
 }

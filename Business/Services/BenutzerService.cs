@@ -264,5 +264,21 @@ namespace Business.Services
         {
             return BenutzerRepository.GetCatererCount();
         }
+
+        public void ExportCaterer(Benutzer benutzer, string standort)
+        {
+            if (standort == "Lueneburg")
+            {
+                DocumentService.writeWordDocument("C:\\Download\\Lueneburg.docx", benutzer.ToString());
+
+            }else if (standort == "Braunschweig")
+            {
+                DocumentService.writeWordDocument("C:\\Download\\Braunschweig.docx", benutzer.ToString());
+            }
+            else if (standort == "Osnabrueck")
+            {
+                DocumentService.writeWordDocument("C:\\Download\\Osnabrueck.docx", benutzer.ToString());
+            }
+        }
     }
 }
