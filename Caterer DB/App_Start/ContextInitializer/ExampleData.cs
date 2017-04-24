@@ -615,7 +615,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             });
             db.Kategorie.Add(new Kategorie()
             {
-                Bezeichnung = "Wahlmoeglichkeiten"
+                Bezeichnung = "Wahlmöglichkeiten"
             });
             db.SaveChanges();
         }
@@ -750,7 +750,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 10"},
                     new Antwort() {Bezeichnung = "Antworttext4 zu Frage 10"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmoeglichkeiten"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -762,7 +762,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 11"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 11"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmoeglichkeiten"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -774,7 +774,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 12"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 12"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmoeglichkeiten"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
 
@@ -786,7 +786,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Antworttext2 zu Frage 13"},
                     new Antwort() {Bezeichnung = "Antworttext3 zu Frage 13"}
                 },
-                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmoeglichkeiten"),
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
         }
