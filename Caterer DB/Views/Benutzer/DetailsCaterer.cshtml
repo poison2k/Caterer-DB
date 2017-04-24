@@ -429,3 +429,72 @@
     </div>
 
 </div>*@
+        <div class="row">
+            <div id="RegSeite" class="col-md-6 col-md-offset-3 text-center">
+                <h1>Detailansicht Fragebogen</h1>
+            </div>
+        </div>
+        <br />
+
+
+        @*-------------------Tab des Fragebogens-----------------------------*@
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <div class="well well-lg">
+                    @for (int i = 0; i < Model.Fragen.Count; i++)
+                    {
+                        <hr />
+                        <h2>@Html.DisplayFor(m => m.Fragen[i].Name)</h2>
+                        <hr />
+                        <br />
+
+
+                        for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
+                        {
+                            <br />
+                            <h4>@Model.Fragen[i].Questions[j].Text </h4>
+                            if (Model.Fragen[i].Questions[j].GegebeneAntwort == -1)
+                            {
+                                <p>keine Angabe</p>
+                            }
+                            else if (Model.Fragen[i].Questions[j].IstMultiSelect)
+                            {
+                                for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                {
+                                    if (Model.Fragen[i].Questions[j].Antworten[k].IsChecked)
+                                    {
+                                        <p>@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                {
+                                    if (Model.Fragen[i].Questions[j].Antworten[k].AntwortId == Model.Fragen[i].Questions[j].GegebeneAntwort)
+                                    {
+                                        <p>@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</p>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <ul class="list-unstyled list-inline ">
+                    <li>
+                        <a class="btn btn-default" id="btnEdit" href="@Url.Action("EditCaterer", "Benutzer", new {id = Model.BenutzerId})">
+                            Bearbeiten
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-default" id="btnZurück" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                    </li>                
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

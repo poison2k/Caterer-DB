@@ -3,6 +3,7 @@ using Caterer_DB.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Caterer_DB.Models.ViewModelServices
@@ -122,5 +123,16 @@ namespace Caterer_DB.Models.ViewModelServices
 
             return new SelectList(selectListItems, "Value", "Text");
         }
+
+
+        public List<AjaxAntwort> WandleAntworteninAjaxAntworten(List<Antwort> antworten)
+        {
+            return antworten.Select(antwort => new AjaxAntwort
+            {
+                AntwortId = antwort.AntwortId,
+                Antworttext = antwort.Bezeichnung
+            }).ToList();
+        }
+
     }
 }

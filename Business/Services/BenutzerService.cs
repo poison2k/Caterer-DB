@@ -87,19 +87,43 @@ namespace Business.Services
             return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung);
         }
 
-        public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung, int umkreis, string plz, string name)
+        public List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung, int umkreis, string plz, string name, List<int> antwortIds)
         {
             var benutzerGruppen = new List<string>() { "Caterer" };
+            List<Benutzer> caterer;
             if (plz != "" && plz != null)
             {
 
-                return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GoogleService.FindeLocationByPlz(plz), name);
+                caterer =  BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GoogleService.FindeLocationByPlz(plz), name);
 
             }
             else {
 
-                return BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, null, name);
+                caterer =  BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, null, name);
             }
+
+            
+            if (antwortIds.Count != 0) {
+                List<Benutzer> listUser = new List<Benutzer>();         
+                foreach (Benutzer user in caterer) {
+                    bool antwortEnthalten = false;
+                    foreach (int id in antwortIds) {
+                        if (user.AntwortIDs.Contains(id)){
+                            antwortEnthalten = true;
+                        } 
+
+                    }
+                    if (!antwortEnthalten) {
+                        listUser.Add(user);
+                    }
+                }
+                foreach (Benutzer user in listUser) {
+                    caterer.Remove(user);
+                }
+            }
+
+
+            return caterer;
         }
 
         public void AddBenutzer(Benutzer benutzer)

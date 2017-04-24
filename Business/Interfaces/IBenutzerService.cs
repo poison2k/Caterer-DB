@@ -15,7 +15,7 @@ namespace Business.Interfaces
 
         List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung);
 
-        List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung, int umkreis, string plz, string name);
+        List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung, int umkreis, string plz, string name, List<int> antwortIds);
 
         List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis);
 

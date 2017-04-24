@@ -50,8 +50,9 @@ namespace Caterer_DB.Controllers
         {
             var fullFilterViewModel = new FullFilterCatererViewModel();
             fullFilterViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterViewModel);
+            fullFilterViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterViewModel, FrageService.FindAlleFragen());
             fullFilterViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
-                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, -1, "", "")
+                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, -1, "", "", new List<int>())
                 , BenutzerService.GetCatererCount()
                 , aktuelleSeite
                 , seitenGrösse);
@@ -65,6 +66,18 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, FormCollection formCollection)
         {
+            List<string> values = new List<string>();
+            List<int> antwortIds = new List<int>();
+
+            foreach (var key in formCollection.Keys)
+            {
+                if(key.ToString().Contains("antworten"))
+                values.Add(key.ToString()); 
+            }
+
+            foreach (string key in values) {
+                antwortIds.Add(Convert.ToInt32(formCollection[key]));
+            }
 
             if (Request.Form["btnVergleich"] != null)
             {
@@ -74,11 +87,12 @@ namespace Caterer_DB.Controllers
                 {
                     if (caterer.selected)
                     {
-                        listIds += caterer.BenutzerId +",";
+                        listIds += caterer.BenutzerId + ",";
                         count++;
                     }
                 }
-                if (count > 0 && count < 4) {
+                if (count > 0 && count < 4)
+                {
                     return RedirectToAction("VergleichCaterer", "Benutzer", new { ids = listIds });
                 }
             }
@@ -122,14 +136,15 @@ namespace Caterer_DB.Controllers
             ViewBag.Sortierrung = Sortierrung;
 
 
-            var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name);
-            var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name).Count;
+            var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
+            var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
             fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                 resultList
                 , resultcount
                 , aktuelleSeite
                 , seitenGrösse);
             fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
+            fullFilterCatererViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterCatererViewModel, FrageService.FindAlleFragen());
             return View(fullFilterCatererViewModel);
         }
 
@@ -450,8 +465,12 @@ namespace Caterer_DB.Controllers
         {
 
             List<int> listIds = new List<int>();
-            var stringlist = ids.Split(',');
-            
+            string[] stringlist = new string[0];
+            if (ids != "" && ids != null)
+            {
+                stringlist = ids.Split(',');
+            }
+
 
             foreach (string caterer in stringlist)
             {
@@ -460,9 +479,9 @@ namespace Caterer_DB.Controllers
                     listIds.Add(Convert.ToInt32(caterer));
                 }
             }
-           
-                var vergleichCatererViewModel = BenutzerViewModelService.Map_ListBenutzer_VergleichCatererViewModel(BenutzerService.FindeCatererNachIds(listIds), FrageService.FindAlleFragenNachKategorieninEigenenListen());
-               
+
+            var vergleichCatererViewModel = BenutzerViewModelService.Map_ListBenutzer_VergleichCatererViewModel(BenutzerService.FindeCatererNachIds(listIds), FrageService.FindAlleFragenNachKategorieninEigenenListen());
+
 
 
             return View(vergleichCatererViewModel);

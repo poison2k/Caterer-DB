@@ -108,4 +108,13 @@ namespace Caterer_DB.Models
         [DisplayName(@"Mehrfachantworten")]
         public bool IstMultiSelect { get; set; }
     }
+
+
+    public class AjaxAntwort
+    {
+        public int AntwortId { get; set; }
+
+        public string Antworttext { get; set; }
+
+    }
 }

@@ -58,6 +58,8 @@ namespace Caterer_DB.Interfaces
 
         FullFilterCatererViewModel AddListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel);
 
+        FullFilterCatererViewModel AddFragenListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel, List<Frage> fragen);
+
         RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel);
 
         MyDataBenutzerViewModel AddListsToMyDataViewModel(MyDataBenutzerViewModel myDataBenutzerViewModel);

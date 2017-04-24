@@ -400,6 +400,7 @@ namespace Caterer_DB.Models
 
         public ListViewModel<IndexCatererViewModel> ResultListCaterer { get; set; }
 
+        public IEnumerable<System.Web.Mvc.SelectListItem> Fragen { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
 
     }

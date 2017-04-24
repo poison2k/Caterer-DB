@@ -259,5 +259,22 @@ namespace Caterer_DB.Controllers
             FrageService.RemoveFrage(Convert.ToInt32(id));
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult AjaxLadeAntwortenZuFrage(FormCollection formCollection, int frageId = 0)
+        {
+            JsonResult returnJson = null;
+
+            if (frageId == 0)
+            {
+                returnJson = Json(new List<AjaxAntwort>(), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                returnJson = Json(FrageViewModelService.WandleAntworteninAjaxAntworten(FrageService.SearchFrageById(frageId).Antworten), JsonRequestBehavior.AllowGet);
+            }
+
+            return returnJson;
+        }
     }
 }
