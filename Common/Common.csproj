@@ -85,6 +85,7 @@
     <Compile Include="Interfaces\IGoogleService.cs" />
     <Compile Include="Interfaces\IMailService.cs" />
     <Compile Include="Interfaces\IMd5Hash.cs" />
+    <Compile Include="Interfaces\TestDocx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DocumentService.cs" />
     <Compile Include="Resources\EMailBetreff.Designer.cs">
@@ -102,8 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Links.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\DocXDocumentGenerator.cs" />
-    <Compile Include="Services\DocXElementBearbeiter.cs" />
+    <Compile Include="Services\OpenXmlUtils.cs" />
     <Compile Include="Services\GoogleService.cs" />
     <Compile Include="Services\MailModel.cs" />
     <Compile Include="Services\MailService.cs" />
