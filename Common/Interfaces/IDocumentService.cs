@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Common.Interfaces
 {
     public interface IDocumentService
     {
-        void writeWordDocument(string filepath, List<string> text);
+        void writeWordDocument(string filepath, Benutzer benutzer);
     }
 }
