@@ -22,7 +22,7 @@ namespace Common.Services
 
             run.AppendChild(new Text(text));
 
-            wordDocument.SaveAs("C:\\Download\\ExportTest.docx");
+            //wordDocument.SaveAs("C:\\Download\\ExportTest.docx");
             wordDocument.Close();
 
             //WebClient webClient = new WebClient();
