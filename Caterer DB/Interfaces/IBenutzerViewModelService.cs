@@ -80,6 +80,8 @@ namespace Caterer_DB.Interfaces
 
         CreateCatererViewModel CreateNewCreateCatererViewModel();
 
+        Benutzer Map_DetailsCatererViewModel_Benutzer(DetailsCatererViewModel detailsCatererViewModel);
+
         VergleichCatererViewModel Map_ListBenutzer_VergleichCatererViewModel(List<Benutzer> caterer, List<List<Frage>> fragenListen);
     }
 }

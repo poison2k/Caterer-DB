@@ -53,5 +53,7 @@ namespace Business.Interfaces
         void RemoveCaterer(int benutzerId);
 
         void EditCaterer(Benutzer benutzer);
+
+        void ExportCaterer(Benutzer benutzer, string standort);
     }
 }
