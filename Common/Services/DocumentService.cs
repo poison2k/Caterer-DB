@@ -60,13 +60,13 @@ namespace Common.Services
 
                     for (int i = 0; i < aktuelleFrage.Antworten.Count; i++)
                     {
-                        if (benutzer._AntwortIDs.Contains(aktuelleFrage.Antworten[i].AntwortId.ToString()))
+                        foreach (int antwort in benutzer.AntwortIDs)
                         {
-                            verketteteAntworten = verketteteAntworten + Convert.ToString(i + 1) + ". " + aktuelleFrage.Antworten[i].Bezeichnung + Environment.NewLine;
+                            if (antwort == aktuelleFrage.Antworten[i].AntwortId)
+                            {
+                                verketteteAntworten = verketteteAntworten + Convert.ToString(i + 1) + ". " + aktuelleFrage.Antworten[i].Bezeichnung + Environment.NewLine;
+                            }
                         }
-
-
-
                     }
 
 
