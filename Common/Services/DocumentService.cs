@@ -1,4 +1,5 @@
 ﻿using Common.Interfaces;
+using DataAccess.Interfaces;
 using DataAccess.Model;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
@@ -6,49 +7,38 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Path = System.IO.Path;
 
 namespace Common.Services
 {
     public class DocumentService : IDocumentService
     {
-        public void writeWordDocument(string filepath, List<string> benutzerDaten)
+        public IAntwortRepository AntwortRepository { get; set; }
+        public IFrageRepository FrageRepository { get; set; }
+        public IKategorieRepository KategorieRepository { get; set; }
+        public IFragebogenRepository FragebogenRepository { get; set; }
+
+        public DocumentService(IAntwortRepository antwortRepository, IFrageRepository frageRepository, IKategorieRepository kategorieRepository, IFragebogenRepository fragebogenRepository)
         {
-            WordprocessingDocument wordDocument = WordprocessingDocument.Open(filepath,true);
-            wordDocument.MainDocumentPart.Document.RemoveAllChildren();
-            Body body = wordDocument.MainDocumentPart.Document.AppendChild(new Body());          
-            Paragraph paragraph = body.AppendChild(new Paragraph());
-            Run run = paragraph.AppendChild(new Run());
-
-            foreach (var item in benutzerDaten)
-            {
-                run.AppendChild(new Text(item));
-            }
-            
-            
-            wordDocument.Close();
-
-            //WebClient webClient = new WebClient();
-            //webClient.DownloadFile(filepath, @"c:\\Download\\downloadedFile.docx");
+            AntwortRepository = antwortRepository;
+            FrageRepository = frageRepository;
+            KategorieRepository = kategorieRepository;
+            FragebogenRepository = fragebogenRepository;
         }
-
-       
-        
 
         public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
         {
             {
                 WordprocessingDocument openXmlDocument = WordprocessingDocument.Open(memoryStream, true);
 
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "uebernehmenderNachname", benutzer.Nachname);
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "uebernehmenderVorname", benutzer.Vorname);
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "uebernehmenderApperatNr", benutzer.Telefon);
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "uebernehmenderDienststelle", benutzer.Firmenname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Nachname", benutzer.Nachname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Vorname", benutzer.Vorname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Telefon", benutzer.Telefon);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Firma", benutzer.Firmenname);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "bemerkung", benutzer.Sonstiges);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "aktuellesDatum", DateTime.Now.ToString("d"));
 
-                var tableRow = (TableRow)OpenXmlUtils.SucheTabellenReiheMitContentControl(openXmlDocument, "materialGeraeteart");
-                Table table = OpenXmlUtils.SucheTabelleMitContentControl(openXmlDocument, "materialGeraeteart");
+                var tableRow = (TableRow)OpenXmlUtils.SucheTabellenReiheMitContentControl(openXmlDocument, "Kategorie");
+                Table table = OpenXmlUtils.SucheTabelleMitContentControl(openXmlDocument, "Kategorie");
 
                 var neueTabellenZeile = new TableRow();
                 OpenXmlElement neueTabelle = new Table();
@@ -59,9 +49,29 @@ namespace Common.Services
                 int counter = 0;
                 foreach (int antwortId in benutzer.AntwortIDs)
                 {
+                    Frage aktuelleFrage = FrageRepository.SearchFrageByAntwortId(antwortId);
+                    string verketteteAntworten = "";
+
                     counter++;
                     neueTabellenZeile = (TableRow)tableRow.CloneNode(true);
-                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "materialGeraeteart", antwortId.ToString());
+
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Kategorie", KategorieRepository.SearchKategorieIdById(aktuelleFrage.Kategorie.KategorieId).Bezeichnung);
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Frage", aktuelleFrage.Bezeichnung);
+
+                    for (int i = 0; i < aktuelleFrage.Antworten.Count; i++)
+                    {
+                        if (benutzer._AntwortIDs.Contains(aktuelleFrage.Antworten[i].AntwortId.ToString()))
+                        {
+                            verketteteAntworten = verketteteAntworten + Convert.ToString(i + 1) + ". " + aktuelleFrage.Antworten[i].Bezeichnung + Environment.NewLine;
+                        }
+
+
+
+                    }
+
+
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Antworten", verketteteAntworten);
+
 
                     if (counter < 17)
                         tableRow.InsertBeforeSelf(neueTabellenZeile);

@@ -1,5 +1,4 @@
 ﻿using DataAccess.Model;
-using OpenXmlPowerTools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,8 +10,6 @@ namespace Common.Interfaces
 {
     public interface IDocumentService
     {
-        void writeWordDocument(string filepath, List<string> text);
-
         void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream);
     }
 }
