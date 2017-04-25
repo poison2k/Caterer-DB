@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using GoogleMaps.LocationServices;
 using System.Data.Entity.Spatial;
 using System.IO;
+using System.Linq;
 
 namespace Business.Services
 {
@@ -112,14 +113,12 @@ namespace Business.Services
                 foreach (Benutzer user in caterer)
                 {
                     bool antwortEnthalten = false;
-                    foreach (int id in antwortIds)
-                    {
-                        if (user.AntwortIDs.Contains(id))
-                        {
-                            antwortEnthalten = true;
-                        }
 
+                    if (antwortIds.Intersect(user.AntwortIDs).Count() == antwortIds.Count())
+                    {
+                        antwortEnthalten = true;
                     }
+
                     if (!antwortEnthalten)
                     {
                         listUser.Add(user);

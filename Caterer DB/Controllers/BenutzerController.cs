@@ -58,7 +58,7 @@ namespace Caterer_DB.Controllers
             if (fullFilterCatererViewModel.FrageAntwortModel == null)
             {
                 fullFilterCatererViewModel.FrageAntwortModel = new List<FrageAntwortModel>();
-                fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count ,AntwortId = 0, FrageId = 0 });
+                fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count, AntwortId = 0, FrageId = 0 });
             }
 
             fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
@@ -78,38 +78,8 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, FormCollection formCollection)
         {
-            List<int> antwortIds = new List<int>();
 
-            foreach (FrageAntwortModel frageAntwort in fullFilterCatererViewModel.FrageAntwortModel) {
-                antwortIds.Add(frageAntwort.AntwortId);
-            }
-
-
-            if (Request.Form["btnAddFilter"] != null)
-            {
-                if (fullFilterCatererViewModel.FrageAntwortModel == null)
-                {
-                    fullFilterCatererViewModel.FrageAntwortModel = new List<FrageAntwortModel>();
-                }
-
-                fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count + 1, AntwortId = 0 , FrageId = 0 });
-
-            }
-            else if (Request.Form["btnDeleteFilter"] != null)
-            {
-                for (int i = 0; i < Request.Form.Count; i++)
-                {
-                    if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteFilter")
-                    {
-                        ModelState.Clear();
-                        fullFilterCatererViewModel.FrageAntwortModel.RemoveAt(i / 2 - 5);
-                        
-                    }
-                }
-            }
-
-
-
+            // Weiterleitung falls Vergleich gewünscht ist 
             if (Request.Form["btnVergleich"] != null)
             {
                 string listIds = "";
@@ -127,6 +97,40 @@ namespace Caterer_DB.Controllers
                     return RedirectToAction("VergleichCaterer", "Benutzer", new { ids = listIds });
                 }
             }
+
+            List<int> antwortIds = new List<int>();
+
+            //Model State korriegieren wenn keine PLZ gewählt ist damit kein Fehler ausgegeben wird
+            if (fullFilterCatererViewModel.PLZ == null) {
+                ModelState.Remove("Umkreis");
+            }
+
+            //Neuen FragenFilter hinzufügen oder entfernen
+            if (Request.Form["btnAddFilter"] != null)
+            {
+                if (fullFilterCatererViewModel.FrageAntwortModel == null)
+                {
+                    fullFilterCatererViewModel.FrageAntwortModel = new List<FrageAntwortModel>();
+                }
+
+                fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count + 1, AntwortId = 0, FrageId = 0 });
+
+            }
+            else if (Request.Form["btnDeleteFilter"] != null)
+            {
+                        fullFilterCatererViewModel.FrageAntwortModel.RemoveAt(fullFilterCatererViewModel.FrageAntwortModel.Count -1);
+            }
+
+            //aktuell Gewählte Antworten in Liste Speichern
+            foreach (FrageAntwortModel frageAntwort in fullFilterCatererViewModel.FrageAntwortModel)
+            {
+                if (frageAntwort.AntwortId != 0)
+                {
+                    antwortIds.Add(frageAntwort.AntwortId);
+                }
+            }
+
+            //Sortierung ermitteln 
             string Sortierrung = "Firmenname";
             int aktuelleSeite = 1;
             var seitenGrösse = 10;
@@ -163,10 +167,9 @@ namespace Caterer_DB.Controllers
                 Sortierrung = "Postleitzahl_desc";
             }
 
-
             ViewBag.Sortierrung = Sortierrung;
 
-
+            // Caterer abrufen mit allen Filtern    
             var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
             var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
             fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
@@ -540,6 +543,6 @@ namespace Caterer_DB.Controllers
             return View(vergleichCatererViewModel);
         }
 
-     
+
     }
 }
