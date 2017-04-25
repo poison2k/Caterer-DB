@@ -74,10 +74,21 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-2 text-right">
-                                <button id="btnAddFilter" name="btnAddFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-plus"></i></button>
-                                <button id="btnDeleteFilter" name="btnDeleteFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
-                            </div>
+                            @if (Model.FrageAntwortModel.Count - 1 == i)
+                            {
+                                <div class="col-md-2 text-right">
+                                    <button id="btnAddFilter" name="btnAddFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-plus"></i></button>
+                                    @if (Model.FrageAntwortModel.Count  == 1)
+                                    {
+                                        <button id="btnDeleteFilter" name="btnDeleteFilter" class="btn btn-default" style="margin-top: 27px;" type="submit" disabled><i class="glyphicon glyphicon-trash" ></i></button>
+                                    }
+                                    else
+                                    {
+                                        <button id="btnDeleteFilter" name="btnDeleteFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
+                                    }
+                                </div>
+                            }
+                           
                         </div>
                     }
                     <br />
@@ -187,7 +198,7 @@
                                 {
                                     @Html.HiddenFor(modelItem => Model.ResultListCaterer.Entitäten[i].BenutzerId)
                                     <tr>
-                                        <td>@Html.CheckBoxFor(modelItem => Model.ResultListCaterer.Entitäten[i].selected)</td>
+                                        <td>@Html.CheckBoxFor(modelItem => Model.ResultListCaterer.Entitäten[i].selected, new {id = "Checkbox"+i , onchange="pruefeCheckboxen()"  })</td>
                                         <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Firmenname)</td>
                                         <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Telefon)</td>
                                         <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Postleitzahl)</td>
@@ -224,74 +235,11 @@
 
 @section Scripts {
 
-    <script>
-        function ladeAntworten(i) {
-            var p1 = "#Antworten" + i;
-            var p2 = "#Fragen" + i + " option:selected";
-            $(p1).empty();
-            var frageId = $(p2).val();
-
-            if (frageId != "") {
-                var sourceString = "/Frage/AjaxLadeAntwortenZuFrage?frageId=" + frageId;
-                $.ajax({
-                    type: 'POST',
-                    url: sourceString,
-                    cache: false,
-                    data: $('#CatererForm').serialize(),
-                    dataType: 'json',
-                    success: function (json) {
-                        ajaxGeraete = json;
-                        $.each(json, function (index) {
-                            $(p1).append($('<option>').text(json[index].Antworttext).attr('value', json[index].AntwortId)
-                        );
-                            $(p1).prop("disabled", false);
-                        });
-                    },
-                });
-            }
-        }
-
-
-        function ladeAntwortenInitial(i, FrageId , AntwortId ) {
-            var p1 = "#Antworten" + i;
-            var p2 = "#Fragen" + i+ " option:selected";
-            $(p1).empty();
-            var frageId = $(p2).val();
-
-            if (frageId != "") {
-                var sourceString = "/Frage/AjaxLadeAntwortenZuFrage?frageId=" + FrageId;
-                $.ajax({
-                    type: 'POST',
-                    url: sourceString,
-                    cache: false,
-                    data: $('#CatererForm').serialize(),
-                    dataType: 'json',
-                    success: function (json) {
-                        ajaxGeraete = json;
-                        $.each(json, function (index) {
-                            $(p1).append($('<option>').text(json[index].Antworttext).attr('value', json[index].AntwortId)
-                        );
-                            $(p1).prop("disabled", false);
-                        });
-                    },
-                })
-                ;
-            }
-
-            $( document ).ajaxComplete(function(){
-
-                $(p1).val(AntwortId);
-            });
-
-        };
-
-
-
-
-    </script>
+    
     @for (int i = 0; i < Model.FrageAntwortModel.Count; i++)
     {
         <script>
+            pruefeCheckboxen();
             ladeAntwortenInitial(@i, @Model.FrageAntwortModel[i].FrageId, @Model.FrageAntwortModel[i].AntwortId)
         </script>
     }
