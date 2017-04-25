@@ -384,6 +384,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\DocxVorlagen\CatererUebersicht.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattBraunschweig.docx" />
     <None Include="Properties\PublishProfiles\FTP.pubxml" />
     <None Include="Properties\PublishProfiles\Lokal.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />

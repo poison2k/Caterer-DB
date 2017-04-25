@@ -34,7 +34,13 @@ namespace Common.Services
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Vorname", benutzer.Vorname);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Telefon", benutzer.Telefon);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Firma", benutzer.Firmenname);
-                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "bemerkung", benutzer.Sonstiges);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Fax", benutzer.Fax);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Straße", benutzer.Straße);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Postleitzahl", benutzer.Postleitzahl);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Ort", benutzer.Ort);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Anrede", benutzer.Anrede);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Internetadresse", benutzer.Internetadresse);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Bemerkung", benutzer.Sonstiges);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "aktuellesDatum", DateTime.Now.ToString("d"));
 
                 var tableRow = (TableRow)OpenXmlUtils.SucheTabellenReiheMitContentControl(openXmlDocument, "Kategorie");
@@ -60,17 +66,17 @@ namespace Common.Services
 
                     for (int i = 0; i < aktuelleFrage.Antworten.Count; i++)
                     {
-                        if (benutzer._AntwortIDs.Contains(aktuelleFrage.Antworten[i].AntwortId.ToString()))
+                        foreach (int antwort in benutzer.AntwortIDs)
                         {
-                            verketteteAntworten = verketteteAntworten + Convert.ToString(i + 1) + ". " + aktuelleFrage.Antworten[i].Bezeichnung + Environment.NewLine;
+                            if (antwort == aktuelleFrage.Antworten[i].AntwortId)
+                            {
+                                verketteteAntworten = verketteteAntworten + Convert.ToString(i + 1) + ". " + aktuelleFrage.Antworten[i].Bezeichnung + Environment.NewLine;
+                            }
                         }
-
-
-
                     }
 
 
-                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Antworten", verketteteAntworten);
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Antwort", verketteteAntworten);
 
 
                     if (counter < 17)

@@ -467,7 +467,7 @@ namespace Caterer_DB.Controllers
             }
             else if (Request.Form["braunschweig"] != null)
             {
-                dateiName = "CatererUebersicht.docx";
+                dateiName = "InformationsblattBraunschweig.docx";
             }
             else if (Request.Form["osnabrueck"] != null)
             {
