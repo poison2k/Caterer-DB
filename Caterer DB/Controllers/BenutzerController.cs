@@ -429,19 +429,40 @@ namespace Caterer_DB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DetailsCaterer(DetailsCatererViewModel detailsCatererViewModel)
         {
-            string dateiName = "CatererUebersicht.docx";
+            string dateiName = "";
 
             if (Request.Form["lueneburg"] != null)
             {
-                dateiName = "CatererUebersicht.docx";
+                if (detailsCatererViewModel.WeitergabeVonDaten)
+                {
+                    dateiName = "InformationsblattLüneburg.docx";
+                }else
+                {
+                    dateiName = "InformationsblattLüneburgWasserzeichen.docx";
+                }
+                
             }
             else if (Request.Form["braunschweig"] != null)
             {
-                dateiName = "InformationsblattBraunschweig.docx";
+                if (detailsCatererViewModel.WeitergabeVonDaten)
+                {
+                    dateiName = "InformationsblattBraunschweig.docx";
+                }
+                else
+                {
+                    dateiName = "InformationsblattBraunschweigWasserzeichen.docx";
+                }
             }
             else if (Request.Form["osnabrueck"] != null)
             {
-                dateiName = "CatererUebersicht.docx";
+                if (detailsCatererViewModel.WeitergabeVonDaten)
+                {
+                    dateiName = "InformationsblattOsnabrück.docx";
+                }
+                else
+                {
+                    dateiName = "InformationsblattOsnabrückWasserzeichen.docx";
+                }
             }
 
             string quellDatei = "/Content/DocxVorlagen/" + dateiName;
