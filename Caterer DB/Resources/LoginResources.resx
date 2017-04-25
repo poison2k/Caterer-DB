@@ -150,6 +150,19 @@
   <data name="PasswortVergessen" xml:space="preserve">
     <value>Passwort vergessen?</value>
   </data>
+  <data name="StartseiteText" xml:space="preserve">
+    <value>Mit der Datenbank möchten wir Caterer und Schulen zusammenbringen und eine flächendeckende Versorgung der Schulen mit einer guten Schulverpflegung unterstützen. 
+Daher freuen wir uns besonders, wenn Sie als Caterer für die Schulverpflegung Ihr Angebot darstellen, aktualisieren und bereit sind, dass wir Ihre Daten im Bedarfsfall an Schulen oder auch Schulträger weiterleiten dürfen. Ob Warmverpflegung oder Cook&amp;Chill, ob deutschlandweite oder regionale kleine Lieferkreise, für kleine und große Schüleranzahlen – anhand der integrierten Suchfunktion können die Mitarbeiterinnen der Vernetzungsstelle Schulverpflegung einen passenden Caterer ermitteln. 
+Aber auch wenn Sie nicht möchten, dass wir Ihre Daten für Beratungszwecke weitergeben, ist eine Registrierung für Sie natürlich möglich. Schauen Sie sich dazu gerne unsere AGB´s und Datenschutzbestimmung an. 
+Registrieren können sich alle Anbieter von Schulverpflegung, die Ihr Essen entweder den Schulen anliefern oder aber eine Mensa vor Ort betreiben und dieses Angebot weiteren Schulen unterbreiten möchten. Alle Verpflegungssysteme sind möglich. 
+Die Registrierung und Nutzung der Datenbank ist für Sie kostenlos.
+Zugriff und Einsicht auf und in Ihre Daten haben lediglich Sie selbst und die Mitarbeiterinnen der Vernetzungsstelle Schulverpflegung Niedersachsen. Die Verwaltung Ihrer Daten ist für Sie zu jedem Zeitpunkt transparent und Sie werden stets über Veränderungen Ihrer Daten informiert. Natürlich stehen wir Ihnen gerne für Fragen zu der Caterer-Datenbank und der Registrierung unter unseren Kontaktdaten zur Verfügung. 
+Wir bedanken uns für Ihr Vertrauen und Interesse am Gelingen der Schulverpflegung in Niedersachsen. 
+Das Team der Vernetzungsstelle Schulverpflegung Niedersachsen</value>
+  </data>
+  <data name="StartseiteTextÜberschrift" xml:space="preserve">
+    <value>Herzlich Willkommen auf der Seite der Caterer-Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsen</value>
+  </data>
   <data name="UnbekannterBeschreibung" xml:space="preserve">
     <value>E-Mail oder Passwort falsch</value>
   </data>
