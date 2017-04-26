@@ -4,6 +4,8 @@ using DataAccess.Model;
 using System;
 using System.Net;
 using System.Net.Mail;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Common.Services
 {
@@ -33,6 +35,21 @@ namespace Common.Services
             mailModel.Betreff = EMailBetreff.NutzerÄnderung;
             mailModel.Empfaenger = mail;
             mailModel.Inhalt = EMailTexte.NutzerÄnderung + EMailTexte.Abschluss;
+            SendMail(mailModel);
+        }
+
+        public void SendInfoMailEditCatererToEmployee(Config config, Benutzer dbBenutzer, List<Benutzer> list)
+        {
+            string mail = "";
+            foreach (Benutzer benutzer in list)
+            {
+                mail = mail + benutzer.Mail + ",";
+            }
+            mail = mail.Remove(mail.Length - 1, 1);
+            var mailModel = ConfigureMail(config);
+            mailModel.Betreff = EMailBetreff.CatererÄnderung;
+            mailModel.Empfaenger = mail;
+            mailModel.Inhalt = EMailTexte.MitarbeiterCatererEdit + dbBenutzer.Firmenname + EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
@@ -75,7 +92,7 @@ namespace Common.Services
         private MailModel ConfigureMail(Config config)
         {
             var mailModel = new MailModel();
-          
+
             mailModel.SMTPSeverName = config.SmtpServer;
             mailModel.Port = config.SmtpPort;
             mailModel.Absender = config.UserNameForSMTPServer;
@@ -83,7 +100,7 @@ namespace Common.Services
             mailModel.UserName = config.UserNameForSMTPServer;
 
 
-           
+
 
 
             return mailModel;
@@ -91,25 +108,27 @@ namespace Common.Services
 
         private void SendMail(MailModel mailModel)
         {
-
-#if DEBUG
-        try
+            new Task(() =>
             {
-                MailMessage mail = new MailMessage(mailModel.Absender, mailModel.Empfaenger);
-                mail.Subject = mailModel.Betreff;
-                mail.Body = mailModel.Inhalt;
+#if DEBUG
 
-                SmtpClient smtpClient = new SmtpClient();
-                smtpClient.Port = mailModel.Port;
-                smtpClient.EnableSsl = true;
-                smtpClient.Host = mailModel.SMTPSeverName;
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                try
+                {
+                    MailMessage mail = new MailMessage(mailModel.Absender, mailModel.Empfaenger);
+                    mail.Subject = mailModel.Betreff;
+                    mail.Body = mailModel.Inhalt;
 
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = new NetworkCredential(mailModel.UserName, mailModel.Passwort);
+                    SmtpClient smtpClient = new SmtpClient();
+                    smtpClient.Port = mailModel.Port;
+                    smtpClient.EnableSsl = true;
+                    smtpClient.Host = mailModel.SMTPSeverName;
+                    smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                smtpClient.Send(mail);
-            }
+                    smtpClient.UseDefaultCredentials = false;
+                    smtpClient.Credentials = new NetworkCredential(mailModel.UserName, mailModel.Passwort);
+
+                    smtpClient.Send(mail);
+                }
 
 #else
              try
@@ -123,10 +142,15 @@ namespace Common.Services
                 smtpClient.Send(mail);
             }
 #endif
-            catch (Exception)
-            {
-                throw new ArgumentException("Fehler beim Senden von EMail");
-            }
+                catch (Exception)
+                {
+                    throw new ArgumentException("Fehler beim Senden von EMail");
+                }
+
+
+            }).Start();
         }
+
+
     }
 }

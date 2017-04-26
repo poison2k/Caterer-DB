@@ -200,4 +200,14 @@ Bitte nehmen Sie sich ein paar Minuten Zeit und aktualisieren Sie Ihre Antworten
 
 </value>
   </data>
+  <data name="MitarbeiterCatererEdit" xml:space="preserve">
+    <value>Sehr geehrter Mitarbeiter, 
+
+ein Caterer hat seine Stammdaten bearbeitet. 
+
+Caterer: 
+
+
+</value>
+  </data>
 </root>

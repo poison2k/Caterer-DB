@@ -112,16 +112,16 @@ namespace DataAccess.Repositories
         public int GetMitarbeiterCount()
         {
             //Abfrage optimieren nur benötigte Daten abrufen
-            var mitarbeiter = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Mitarbeiter").Single();
-            var administratoren = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Administrator").Single();
-            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren)).Count();
+            var mitarbeiter = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Mitarbeiter");
+            var administratoren = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Administrator");
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).Count(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren));
         }
 
         public int GetCatererCount()
         {
             //Abfrage optimieren nur benötigte Daten abrufen
-            var caterer = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Caterer").Single();
-            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(caterer)).Count();
+            var caterer = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Caterer");
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).Count(x => x.BenutzerGruppen.Contains(caterer));
         }
 
         public void AddUser(Benutzer benutzer)

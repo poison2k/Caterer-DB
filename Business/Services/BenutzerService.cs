@@ -144,7 +144,7 @@ namespace Business.Services
             benutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung(gruppe) };
 
             benutzer.PasswortZeitstempel = DateTime.Now;
-            benutzer.LetzteÄnderung = DateTime.Now;
+            benutzer.LetzteÄnderung = new DateTime(1900,1,1);
             if (gruppe == "Caterer")
             {
                 benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
@@ -154,7 +154,7 @@ namespace Business.Services
             benutzer = BenutzerRepository.SearchUserByEMail(benutzer.Mail);
             benutzer.PasswordVerificationCode = MD5Hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname + benutzer.Passwort);
             benutzer.PasswortZeitstempel = DateTime.Now;
-            benutzer.LetzteÄnderung = DateTime.Now;
+            benutzer.LetzteÄnderung = new DateTime(1900, 1, 1);
 
             BenutzerRepository.EditUser(benutzer);
         }
@@ -224,8 +224,20 @@ namespace Business.Services
             if (editedBenutzer.BenutzerGruppen.FindAll(x=>x.Bezeichnung == "Caterer").Count > 0  )
             {
                 dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
+
+                var config = ConfigService.GetConfig();
+                TimeSpan ts = DateTime.Now - dbBenutzer.LetzteÄnderung;
+                if (ts.Hours > config.ZeitInStundendÄnderungsverfolgung)
+                {
+                    if (config.AenderungsVerfolgungCatererAktiviert) {
+                        MailService.SendInfoMailEditCatererToEmployee(config, dbBenutzer, BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(1, 10000000, new List<string>() { "Mitarbeiter", "Administrator" },"BenutzerId"));
+                    }
+                    dbBenutzer.LetzteÄnderung = DateTime.Now;
+                }
+
             }
-            dbBenutzer.LetzteÄnderung = DateTime.Now;
+          
+
             BenutzerRepository.EditUser(dbBenutzer);
         }
 

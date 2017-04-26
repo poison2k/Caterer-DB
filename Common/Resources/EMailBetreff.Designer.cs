@@ -61,6 +61,15 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ein Caterer hat seine Stammdaten bearbeitet..
+        /// </summary>
+        internal static string CatererÄnderung {
+            get {
+                return ResourceManager.GetString("CatererÄnderung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Willkommen bei der Caterer Datenbank .
         /// </summary>
         internal static string Kontoangelegt {

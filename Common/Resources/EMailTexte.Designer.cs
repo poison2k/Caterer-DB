@@ -149,6 +149,22 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sehr geehrter Mitarbeiter, 
+        ///
+        ///ein Caterer hat seine Stammdaten bearbeitet. 
+        ///
+        ///Caterer: 
+        ///
+        ///
+        ///.
+        /// </summary>
+        internal static string MitarbeiterCatererEdit {
+            get {
+                return ResourceManager.GetString("MitarbeiterCatererEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sehr geehrter Nutzer,
         ///
         ///in der Caterer Datenbank wurden neue Fragen in Ihrem Fragebogen veröffentlicht. 

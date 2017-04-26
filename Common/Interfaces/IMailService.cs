@@ -1,4 +1,5 @@
-﻿using DataAccess.Model;
+﻿using System.Collections.Generic;
+using DataAccess.Model;
 
 namespace Common.Interfaces
 {
@@ -17,5 +18,6 @@ namespace Common.Interfaces
         void SendEditCatererMail(Config config, string mail);
 
         void SendReleasedQuestionCatererMail(Config config, string mail);
+        void SendInfoMailEditCatererToEmployee(Config config, Benutzer dbBenutzer, List<Benutzer> list);
     }
 }
