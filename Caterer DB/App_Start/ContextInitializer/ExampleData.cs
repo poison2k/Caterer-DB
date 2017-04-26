@@ -69,7 +69,10 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 UserNameForSMTPServer = "Hoersaal10@gmail.com",
                 PasswortForSMTPServer = "HS10idgHSe!",
                 SmtpPort = 25,
-                SmtpServer = "smtp.gmail.com"
+                SmtpServer = "smtp.gmail.com",
+                ZeitInStundendÄnderungsverfolgung = 8,
+                AenderungsVerfolgungCatererAktiviert = true
+
             });
             db.SaveChanges();
         }

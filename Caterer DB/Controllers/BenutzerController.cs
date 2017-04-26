@@ -103,6 +103,7 @@ namespace Caterer_DB.Controllers
             //Model State korriegieren wenn keine PLZ gewählt ist damit kein Fehler ausgegeben wird
             if (fullFilterCatererViewModel.PLZ == null) {
                 ModelState.Remove("Umkreis");
+                ModelState.Remove("PLZ");
             }
 
             //Neuen FragenFilter hinzufügen oder entfernen
@@ -166,19 +167,41 @@ namespace Caterer_DB.Controllers
             {
                 Sortierrung = "Postleitzahl_desc";
             }
-
             ViewBag.Sortierrung = Sortierrung;
 
+
+            List<Benutzer> resultList = new List<Benutzer>();
+            int resultcount = 0;
+            
+
+            //Falls fehlerhafte eingaben existieren
+            if (!ModelState.IsValid)
+            {
+                resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), null, fullFilterCatererViewModel.Name, antwortIds);
+                resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), null, fullFilterCatererViewModel.Name, antwortIds).Count;
+                fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
+                    resultList
+                    , resultcount
+                    , aktuelleSeite
+                    , seitenGrösse);
+
+                fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
+                fullFilterCatererViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterCatererViewModel, FrageService.FindAlleFragen());
+
+                return View(fullFilterCatererViewModel);
+            }
             // Caterer abrufen mit allen Filtern    
-            var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
-            var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
+            resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
+            resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
             fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                 resultList
                 , resultcount
                 , aktuelleSeite
                 , seitenGrösse);
+           
             fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
             fullFilterCatererViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterCatererViewModel, FrageService.FindAlleFragen());
+          
             return View(fullFilterCatererViewModel);
         }
 

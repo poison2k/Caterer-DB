@@ -16,5 +16,7 @@ namespace DataAccess.Model
         public int SmtpPort { get; set; }
 
         public bool AenderungsVerfolgungCatererAktiviert { get; set; }
+
+        public int ZeitInStundendÄnderungsverfolgung { get; set; }
     }
 }

@@ -98,7 +98,6 @@
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Frage.cs" />
     <Compile Include="Model\Fragebogen.cs" />
-    <Compile Include="Model\GegebeneAntworten.cs" />
     <Compile Include="Model\Recht.cs" />
     <Compile Include="Model\RechteGruppe.cs" />
     <Compile Include="Model\Kategorie.cs" />

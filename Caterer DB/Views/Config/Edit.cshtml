@@ -63,6 +63,13 @@
                         @Html.ValidationMessageFor(model => model.AenderungsVerfolgungCatererAktiviert, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.ZeitInStundendÄnderungsverfolgung, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.ZeitInStundendÄnderungsverfolgung, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ZeitInStundendÄnderungsverfolgung, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="form-group col-md-12 text-center">

@@ -101,6 +101,7 @@ namespace Caterer_DB.Models
 
         [Required]
         [DisplayName(@"Telefon")]
+        [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
         [DisplayName(@"Fax")]
@@ -111,6 +112,7 @@ namespace Caterer_DB.Models
         public string Straße { get; set; }
 
         [Required]
+        [RegularExpression("^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$", ErrorMessage = "Bitte PLZ Format beachten 01000 - 99999")]
         public string Postleitzahl { get; set; }
 
         [Required]
@@ -153,6 +155,7 @@ namespace Caterer_DB.Models
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon (optional)")]
+        [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
         [Required]
@@ -183,6 +186,7 @@ namespace Caterer_DB.Models
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon (optional)")]
+        [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
         [Required]
@@ -214,6 +218,7 @@ namespace Caterer_DB.Models
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon (optional)")]
+        [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
     }
@@ -255,6 +260,7 @@ namespace Caterer_DB.Models
 
         [Required]
         [DisplayName(@"Telefon")]
+        [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
         [DisplayName(@"Fax")]
@@ -265,6 +271,7 @@ namespace Caterer_DB.Models
         public string Straße { get; set; }
 
         [Required]
+        [RegularExpression("^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$", ErrorMessage = "Bitte PLZ Format beachten 01000 - 99999")]
         public string Postleitzahl { get; set; }
 
         [Required]
@@ -339,6 +346,7 @@ namespace Caterer_DB.Models
 
         public string Straße { get; set; }
 
+
         public string Postleitzahl { get; set; }
 
         public string Ort { get; set; }
@@ -397,6 +405,8 @@ namespace Caterer_DB.Models
 
         public string Name { get; set; }
 
+        [Required]
+        [RegularExpression("^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$", ErrorMessage = "Bitte PLZ Format beachten 01000 - 99999")]
         public string PLZ { get; set; }
 
         public int Umkreis { get; set; }
@@ -455,6 +465,7 @@ namespace Caterer_DB.Models
 
         [Required]
         [DisplayName(@"Telefon")]
+        [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
         [DisplayName(@"Fax")]
@@ -465,6 +476,7 @@ namespace Caterer_DB.Models
         public string Straße { get; set; }
 
         [Required]
+        [RegularExpression("^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$", ErrorMessage = "Bitte PLZ Format beachten 01000 - 99999")]
         public string Postleitzahl { get; set; }
 
         [Required]
