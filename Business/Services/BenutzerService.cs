@@ -260,7 +260,15 @@ namespace Business.Services
             var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
             MailService.SendEditCatererMail(ConfigService.GetConfig(), dbBenutzer.Mail);
             Mapper.Map(editedBenutzer, dbBenutzer);
-            dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
+            try
+            {
+                dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
+            }
+            catch
+            {
+                throw new ArgumentException("Ungültige Adresse");
+            }
+          
             BenutzerRepository.EditUser(dbBenutzer);
         }
 
