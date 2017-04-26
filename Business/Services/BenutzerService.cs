@@ -144,6 +144,7 @@ namespace Business.Services
             benutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung(gruppe) };
 
             benutzer.PasswortZeitstempel = DateTime.Now;
+            benutzer.LetzteÄnderung = DateTime.Now;
             if (gruppe == "Caterer")
             {
                 benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
@@ -153,6 +154,7 @@ namespace Business.Services
             benutzer = BenutzerRepository.SearchUserByEMail(benutzer.Mail);
             benutzer.PasswordVerificationCode = MD5Hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname + benutzer.Passwort);
             benutzer.PasswortZeitstempel = DateTime.Now;
+            benutzer.LetzteÄnderung = DateTime.Now;
 
             BenutzerRepository.EditUser(benutzer);
         }
@@ -187,7 +189,7 @@ namespace Business.Services
             MailService.SendForgottenPasswordMail(ConfigService.GetConfig(), benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
-        public void EditBenutzer(Benutzer editedBenutzer, bool istAdmin)
+        public void AdminEditMitarbeiterData(Benutzer editedBenutzer, bool istAdmin)
         {
             var dbBenutzer = BenutzerRepository.SearchUserById(editedBenutzer.BenutzerId);
             var rolleVorhanden = false;
@@ -219,7 +221,11 @@ namespace Business.Services
             editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
             editedBenutzer.IstEmailVerifiziert = dbBenutzer.IstEmailVerifiziert;
             Mapper.Map(editedBenutzer, dbBenutzer);
-            dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
+            if (editedBenutzer.BenutzerGruppen.FindAll(x=>x.Bezeichnung == "Caterer").Count > 0  )
+            {
+                dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
+            }
+            dbBenutzer.LetzteÄnderung = DateTime.Now;
             BenutzerRepository.EditUser(dbBenutzer);
         }
 

@@ -31,7 +31,7 @@ namespace Business.Interfaces
 
         void RegisterBenutzer(Benutzer benutzer);
 
-        void EditBenutzer(Benutzer benutzer, bool istAdmin);
+        void AdminEditMitarbeiterData(Benutzer benutzer, bool istAdmin);
 
         void EditBenutzer(Benutzer benutzer);
 

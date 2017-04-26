@@ -53,6 +53,17 @@
                         @Html.ValidationMessageFor(model => model.SmtpPort, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                <br />
+                <h4><i class="glyphicon glyphicon-envelope "></i> Sonstige Konfiguration</h4>
+                <br />
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(model => model.AenderungsVerfolgungCatererAktiviert, htmlAttributes: new { @class = "control-label" })
+                        @Html.CheckBoxFor(model => model.AenderungsVerfolgungCatererAktiviert , new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AenderungsVerfolgungCatererAktiviert, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="form-group col-md-12 text-center">
                         <div class="form-group">

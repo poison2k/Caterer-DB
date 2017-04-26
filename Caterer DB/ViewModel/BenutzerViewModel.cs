@@ -277,6 +277,8 @@ namespace Caterer_DB.Models
 
         public DateTime PasswortZeitstempel { get; set; }
 
+        public DateTime LetzteÄnderung { get; set; }
+
         public bool IstEmailVerifiziert { get; set; }
 
         public bool WeitergabeVonDaten { get; set; }
@@ -529,6 +531,8 @@ namespace Caterer_DB.Models
         public int Lieferumkreis { get; set; }
 
         public DateTime PasswortZeitstempel { get; set; }
+
+        public DateTime LetzteÄnderung { get; set; }
 
         public bool IstEmailVerifiziert { get; set; }
 
