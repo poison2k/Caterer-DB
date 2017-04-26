@@ -5,6 +5,7 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
 using System.Web.Mvc;
+using Business.Interfaces;
 
 namespace Caterer_DB.Tests.Controllers
 {
@@ -14,6 +15,8 @@ namespace Caterer_DB.Tests.Controllers
         private Fixture Fixture { get; set; }
 
         private IBenutzerViewModelService MockBenutzerViewModelService { get; set; }
+
+        private IFrageService MockFrageService { get; set; }
 
         [OneTimeSetUp]
         public void TestInit()
@@ -29,8 +32,9 @@ namespace Caterer_DB.Tests.Controllers
             //Arrange
 
             MockBenutzerViewModelService = new Mock<IBenutzerViewModelService>().Object;
+            MockFrageService = new Mock<IFrageService>().Object;
 
-            var controller = new HomeController(MockBenutzerViewModelService);
+            var controller = new HomeController(MockBenutzerViewModelService, MockFrageService);
             FakeHttpContext.SetFakeContext(controller, true);
             //Act
             ViewResult result = controller.Index() as ViewResult;
@@ -44,8 +48,8 @@ namespace Caterer_DB.Tests.Controllers
         {
             //Arrange
             MockBenutzerViewModelService = new Mock<IBenutzerViewModelService>().Object;
-
-            var controller = new HomeController(MockBenutzerViewModelService);
+            MockFrageService = new Mock<IFrageService>().Object;
+            var controller = new HomeController(MockBenutzerViewModelService, MockFrageService);
 
             //Act
             ViewResult result = controller.Contact() as ViewResult;
@@ -59,8 +63,8 @@ namespace Caterer_DB.Tests.Controllers
         {
             //Arrange
             MockBenutzerViewModelService = new Mock<IBenutzerViewModelService>().Object;
-
-            var controller = new HomeController(MockBenutzerViewModelService);
+            MockFrageService = new Mock<IFrageService>().Object;
+            var controller = new HomeController(MockBenutzerViewModelService, MockFrageService);
 
             //Act
             ViewResult result = controller.Datenschutz() as ViewResult;
@@ -74,8 +78,8 @@ namespace Caterer_DB.Tests.Controllers
         {
             //Arrange
             MockBenutzerViewModelService = new Mock<IBenutzerViewModelService>().Object;
-
-            var controller = new HomeController(MockBenutzerViewModelService);
+            MockFrageService = new Mock<IFrageService>().Object;
+            var controller = new HomeController(MockBenutzerViewModelService, MockFrageService);
 
             //Act
             ViewResult result = controller.AGB() as ViewResult;
@@ -89,8 +93,8 @@ namespace Caterer_DB.Tests.Controllers
         {
             //Arrange
             MockBenutzerViewModelService = new Mock<IBenutzerViewModelService>().Object;
-
-            var controller = new HomeController(MockBenutzerViewModelService);
+            MockFrageService = new Mock<IFrageService>().Object;
+            var controller = new HomeController(MockBenutzerViewModelService, MockFrageService);
 
             //Act
             ViewResult result = controller.Contact() as ViewResult;

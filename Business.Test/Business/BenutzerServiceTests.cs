@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using Business.Interfaces;
 using Business.Services;
 using Common.Interfaces;
@@ -7,10 +9,8 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace BusinessBenutzerServiceTest
+namespace Business.Test.Business
 {
     [TestFixture]
     public class BusinessBenutzerServiceTest
@@ -18,7 +18,12 @@ namespace BusinessBenutzerServiceTest
         private IBenutzerRepository MockBenutzerRepository { get; set; }
         private IBenutzerGruppeService MockBenutzerGruppeService { get; set; }
         private IMailService MockMailService { get; set; }
-        private IMd5Hash MockMD5Hash { get; set; }
+        private IDocumentService MockDocumentService { get; set; }
+        private IMd5Hash MockMd5Hash { get; set; }
+
+        private IGoogleService MockGoogleService { get; set; }
+
+        private IConfigService MockConfigService { get; set; }
         private IMapper MockMapper { get; set; }
         private Fixture Fixture { get; set; }
         private BenutzerService BenutzerService { get; set; }
@@ -57,15 +62,24 @@ namespace BusinessBenutzerServiceTest
 
             var mockMd5Hash = new Mock<IMd5Hash>();
             mockMd5Hash.Setup(s => s.CalculateMD5Hash(It.IsAny<string>())).Returns("TestHash");
-            MockMD5Hash = mockMd5Hash.Object;
+            MockMd5Hash = mockMd5Hash.Object;
+
+            var mockDocumentService = new Mock<IDocumentService>();
+            MockDocumentService = mockDocumentService.Object;
+
+            var mockConfigService = new Mock<IConfigService>();
+            MockConfigService = mockConfigService.Object;
+
+            var mockGoogleService = new Mock<IGoogleService>();
+            MockGoogleService = mockGoogleService.Object;
 
             var mockMailService = new Mock<IMailService>();
-            mockMailService.Setup(x => x.SendForgottenPasswordMail(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
-            mockMailService.Setup(x => x.SendNewMitarbeiterMail(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
-            mockMailService.Setup(x => x.SendRegisterMail(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
+            mockMailService.Setup(x => x.SendForgottenPasswordMail( It.IsAny<Config>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
+            mockMailService.Setup(x => x.SendNewMitarbeiterMail(It.IsAny<Config>(),It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
+            mockMailService.Setup(x => x.SendRegisterMail(It.IsAny<Config>(),It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
             MockMailService = mockMailService.Object;
 
-            BenutzerService = new BenutzerService(MockBenutzerRepository, MockMailService, MockBenutzerGruppeService, MockMD5Hash);
+            BenutzerService = new BenutzerService(MockBenutzerRepository, MockMailService, MockBenutzerGruppeService, MockMd5Hash,MockDocumentService, MockConfigService, MockGoogleService);
         }
 
         [Test]
@@ -139,7 +153,7 @@ namespace BusinessBenutzerServiceTest
             //Assert
             var mockBenutzerRepository = new Mock<IBenutzerRepository>();
             mockBenutzerRepository.Setup(x => x.SearchUserByEMail(It.IsAny<string>())).Returns(((Benutzer)null));
-            var benutzerService = new BenutzerService(mockBenutzerRepository.Object, MockMailService, MockBenutzerGruppeService, MockMD5Hash);
+            var benutzerService = new BenutzerService(mockBenutzerRepository.Object, MockMailService, MockBenutzerGruppeService, MockMd5Hash, MockDocumentService, MockConfigService, MockGoogleService);
 
             //Act
             var result = benutzerService.CheckEmailForRegistration("test@test.de");

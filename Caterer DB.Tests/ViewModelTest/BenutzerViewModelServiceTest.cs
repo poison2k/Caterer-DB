@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using Business.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
@@ -36,6 +37,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         {
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
+            var fragen = Fixture.Build<List<List<Frage>>>().Create();
             var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
@@ -44,7 +46,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
-            var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzer);
+            var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzer, fragen);
 
             //Assert
 
@@ -56,6 +58,8 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         {
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
+            var fragen = Fixture.Build<List<List<Frage>>>().Create();
+
             benutzer = null;
             var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
             anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
@@ -67,7 +71,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
-            var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzer);
+            var result = benutzerViewModelService.GeneriereAnmeldenBenutzerViewModel(benutzer, fragen);
 
             //Assert
 
@@ -200,6 +204,7 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
         {
             //Assert
             var benutzer = Fixture.Build<Benutzer>().Create();
+            var fragen = Fixture.Build<List<List<Frage>>>().Create();
             var myDataBenutzerViewModel = Fixture.Build<MyDataBenutzerViewModel>().Create();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<MyDataBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(myDataBenutzerViewModel);
@@ -208,7 +213,8 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
             //Act
-            var result = benutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(benutzer);
+           
+            var result = benutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(benutzer, fragen);
 
             //Assert
 
