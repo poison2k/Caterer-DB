@@ -48,40 +48,40 @@ namespace Common.Services
                 var leerZeile = new Paragraph();
                 int counter = 0;
                 Frage letzteFrage = null;
-                string verketteteAntworten = "";
                 neueTabellenZeile = (TableRow)tableRow.CloneNode(true);
+
 
                 foreach (int antwortId in benutzer.AntwortIDs)
                 {
-                    Frage aktuelleFrage = FrageRepository.SearchFrageByAntwortId(antwortId);
                     counter++;
+                    Frage aktuelleFrage = FrageRepository.SearchFrageByAntwortId(antwortId);                    
+                    string verketteteAntworten = "";
+                    List<Antwort> tmpAntworten = new List<Antwort> (aktuelleFrage.Antworten);
 
-                    if (letzteFrage != aktuelleFrage)
+                    if (letzteFrage == aktuelleFrage)
                     {
-                        verketteteAntworten = "";
-
+                        continue;
                     }
+
+                    for (int i = 0; i < aktuelleFrage.Antworten.Count; i++)
+                    {
+                        if (!benutzer.AntwortIDs.Contains(aktuelleFrage.Antworten[i].AntwortId))
+                        {
+                            tmpAntworten.Remove(aktuelleFrage.Antworten[i]);
+                        }
+                    }
+
+                    aktuelleFrage.Antworten = tmpAntworten;
 
                     neueTabellenZeile = (TableRow)tableRow.CloneNode(true);
 
                     for (int i = 0; i < aktuelleFrage.Antworten.Count; i++)
                     {
-
-                        if (antwortId == aktuelleFrage.Antworten[i].AntwortId)
+                        if (verketteteAntworten != "")
                         {
-                            verketteteAntworten = verketteteAntworten + aktuelleFrage.Antworten[i].Bezeichnung + Environment.NewLine;
-                            break;
+                            verketteteAntworten = verketteteAntworten + ", ";
                         }
-
-                    }
-
-                    Antwort letzteAntwort = aktuelleFrage.Antworten[aktuelleFrage.Antworten.Count-1];
-
-                    if (aktuelleFrage.IstMultiSelect && letzteFrage != aktuelleFrage)
-                    {
-                        letzteFrage = aktuelleFrage;
-                        continue;
-
+                        verketteteAntworten = verketteteAntworten + aktuelleFrage.Antworten[i].Bezeichnung;
                     }
 
                     OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Frage", aktuelleFrage.Bezeichnung);
