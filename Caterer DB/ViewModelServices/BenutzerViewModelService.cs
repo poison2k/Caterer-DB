@@ -5,6 +5,7 @@ using Common.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -37,6 +38,7 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, CreateCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, MeineDatenBenutzerViewModel>().ReverseMap();
+                
             });
 
             Mapper = config.CreateMapper();
@@ -189,11 +191,84 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Benutzer>(myDataBenutzerViewModel);
         }
 
-        public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer)
+         public List<int> Map_MyDataBenutzerViewModel_BenutzerResultSet(MyDataBenutzerViewModel myDataBenutzerViewModel)
+        {
+            var antwortIDs = new List<int>();
+            foreach (FragenNachThemengebiet fragenNachThemengebiet in myDataBenutzerViewModel.Fragen)
+            {
+                foreach (FragenViewModel frage in fragenNachThemengebiet.Questions)
+                {
+                    foreach (Antwort antwort in frage.Antworten)
+                    {
+                        if (antwort.AntwortId == frage.GegebeneAntwort || antwort.IsChecked)
+                        {
+                            antwortIDs.Add(antwort.AntwortId);
+                        }
+                    }
+                }
+            }
+
+            return antwortIDs;
+        }
+        public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen)
         {
             var myDataBenutzerViewModel = Mapper.Map<MyDataBenutzerViewModel>(benutzer);
 
             myDataBenutzerViewModel = AddListsToMyDataViewModel(myDataBenutzerViewModel);
+
+            var nutzerAntworten = benutzer.AntwortIDs;
+
+            myDataBenutzerViewModel.Fragen = new List<FragenNachThemengebiet>();
+
+            foreach (List<Frage> fragen in fragenListen)
+            {
+                List<FragenViewModel> fragenViewModel = new List<FragenViewModel>();
+                foreach (Frage frage in fragen)
+                {
+                    int antwortResultId = -1;
+                    foreach (int antwortId in nutzerAntworten)
+                    {
+                        if (frage.IstMultiSelect != true)
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwortResultId = antwort.AntwortId;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwort.IsChecked = true;
+                                    antwortResultId--;
+                                }
+                            }
+                        }
+                    }
+                                        
+                    fragenViewModel.Add(new FragenViewModel()
+                    {
+                        Antworten = frage.Antworten,
+                        ID = frage.FrageId,
+                        Text = frage.Bezeichnung,
+                        GegebeneAntwort = antwortResultId,
+                        IstMultiSelect = frage.IstMultiSelect
+                    });
+                }
+
+                FragenNachThemengebiet fragenNachThemengebiet = new FragenNachThemengebiet()
+                {
+                    Questions = fragenViewModel,
+                    Name = fragen[0].Kategorie.Bezeichnung,
+                    ID = 1
+                };
+                myDataBenutzerViewModel.Fragen.Add(fragenNachThemengebiet);
+            }
             return myDataBenutzerViewModel;
         }
 
@@ -249,9 +324,82 @@ namespace Caterer_DB.Models.ViewModelServices
             return detailsBenutzerViewModel;
         }
 
-        public DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer)
+        public DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer, List<List<Frage>> fragenListen)
         {
-            return Mapper.Map<DetailsCatererViewModel>(benutzer);
+            var detailsCatererViewModel = Mapper.Map<DetailsCatererViewModel>(benutzer);
+
+            var nutzerAntworten = benutzer.AntwortIDs;
+
+            detailsCatererViewModel.Fragen = new List<FragenNachThemengebiet>();
+
+            foreach (List<Frage> fragen in fragenListen)
+            {
+                List<FragenViewModel> fragenViewModel = new List<FragenViewModel>();
+                foreach (Frage frage in fragen)
+                {
+                    int antwortResultId = -1;
+                    foreach (int antwortId in nutzerAntworten)
+                    {
+                        if (frage.IstMultiSelect != true)
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwortResultId = antwort.AntwortId;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Antwort antwort in frage.Antworten)
+                            {
+                                if (antwort.AntwortId == antwortId)
+                                {
+                                    antwort.IsChecked = true;
+                                    antwortResultId--;
+                                }
+                            }
+                        }
+                    }
+
+                    fragenViewModel.Add(new FragenViewModel()
+                    {
+                        Antworten = frage.Antworten,
+                        ID = frage.FrageId,
+                        Text = frage.Bezeichnung,
+                        GegebeneAntwort = antwortResultId,
+                        IstMultiSelect = frage.IstMultiSelect
+                    });
+                }
+
+                FragenNachThemengebiet fragenNachThemengebiet = new FragenNachThemengebiet()
+                {
+                    Questions = fragenViewModel,
+                    Name = fragen[0].Kategorie.Bezeichnung,
+                    ID = 1
+                };
+                detailsCatererViewModel.Fragen.Add(fragenNachThemengebiet);
+            }
+            return detailsCatererViewModel;
+        }
+
+        public Benutzer Map_DetailsCatererViewModel_Benutzer(DetailsCatererViewModel detailsCatererViewModel)
+        {
+            return Mapper.Map<Benutzer>(detailsCatererViewModel);
+        }
+
+        public VergleichCatererViewModel Map_ListBenutzer_VergleichCatererViewModel(List<Benutzer> caterer, List<List<Frage>> fragenListen) {
+
+            var vergleichCatererViewModel = new VergleichCatererViewModel();
+            vergleichCatererViewModel.caterer = new List<DetailsCatererViewModel>();
+            vergleichCatererViewModel.Fragen = fragenListen;
+            foreach (Benutzer benutzer in caterer)
+            {
+                vergleichCatererViewModel.caterer.Add(Map_Benutzer_DetailsCatererViewModel(benutzer, fragenListen));
+            }
+
+            return vergleichCatererViewModel;
         }
 
         public CreateMitarbeiterViewModel CreateNewCreateMitarbeiterViewModel()
@@ -285,6 +433,7 @@ namespace Caterer_DB.Models.ViewModelServices
             //ToDo in Hash in Business Layer verschieben
             benutzer.Passwort = Crypto.HashPassword(registerBenutzerViewModel.Passwort);
             benutzer.EMailVerificationCode = MD5hash.CalculateMD5Hash(benutzer.BenutzerId + benutzer.Mail + benutzer.Nachname + benutzer.Vorname);
+            benutzer.IstEmailVerifiziert = false;
             return benutzer;
         }
 
@@ -312,6 +461,17 @@ namespace Caterer_DB.Models.ViewModelServices
                 listViewModel.Entitäten.Add(GeneriereIndexCatererViewModel(benutzer));
 
             return listViewModel;
+        }
+
+        public FullFilterCatererViewModel GeneriereFullFilterCatererViewModel(List<Benutzer> benutzerListe, int gesamtAnzahlDatensätze, int aktuelleSeite = 1, int seitenGröße = 10)
+        {
+            var fullFilterCatererViewModel = new FullFilterCatererViewModel();
+            fullFilterCatererViewModel.ResultListCaterer = new ListViewModel<IndexCatererViewModel>(gesamtAnzahlDatensätze, aktuelleSeite, seitenGröße);
+            fullFilterCatererViewModel = AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
+
+            foreach (var benutzer in benutzerListe)
+                fullFilterCatererViewModel.ResultListCaterer.Entitäten.Add(GeneriereIndexCatererViewModel(benutzer));
+            return fullFilterCatererViewModel;
         }
 
         public IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer)
@@ -390,6 +550,34 @@ namespace Caterer_DB.Models.ViewModelServices
             return myDataBenutzerViewModel;
         }
 
+        public FullFilterCatererViewModel AddListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel)
+        {
+
+            fullFilterCatererViewModel.Lieferumkreise = CreateLieferumkreisSelectList();
+
+            return fullFilterCatererViewModel;
+        }
+
+        public FullFilterCatererViewModel AddFragenListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel, List<Frage> fragen)
+        {
+          
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Bitte wählen...", Value = String.Empty });
+            items.AddRange(fragen.ConvertAll(a =>
+            {
+                return new SelectListItem()
+                {
+                    Text = a.Bezeichnung,
+                    Value = Convert.ToString(a.FrageId)
+                };
+            }));
+
+            fullFilterCatererViewModel.Fragen = items;
+
+
+            return fullFilterCatererViewModel;
+        }
+
         private SelectList CreateAnredenSelectList()
         {
             return new SelectList(new List<SelectListItem>
@@ -414,12 +602,19 @@ namespace Caterer_DB.Models.ViewModelServices
             return new SelectList(new List<SelectListItem>
                             {
                                 new SelectListItem { Text = "Bitte wählen...", Value = String.Empty},
-                                new SelectListItem { Text = "Bis 10 km", Value = "Bis 10 km" },
-                                new SelectListItem { Text = "Bis 20 km", Value = "Bis 20 km" },
-                                new SelectListItem { Text = "Bis 30 km", Value = "Bis 30 km" },
-                                new SelectListItem { Text = "Bis 40 km", Value = "Bis 40 km" },
-                                new SelectListItem { Text = "Bis 50 km", Value = "Bis 50 km" },
-                                new SelectListItem { Text = "100 km +", Value = "100 km +" },
+                                new SelectListItem { Text = "Bis  5 km", Value = "5" },
+                                new SelectListItem { Text = "Bis 10 km", Value = "10" },
+                                new SelectListItem { Text = "Bis 15 km", Value = "15" },
+                                new SelectListItem { Text = "Bis 20 km", Value = "20" },
+                                new SelectListItem { Text = "Bis 25 km", Value = "25" },
+                                new SelectListItem { Text = "Bis 30 km", Value = "30" },
+                                new SelectListItem { Text = "Bis 40 km", Value = "40" },
+                                new SelectListItem { Text = "Bis 50 km", Value = "50" },
+                                new SelectListItem { Text = "Bis 60 km", Value = "60" },
+                                new SelectListItem { Text = "Bis 70 km", Value = "70" },
+                                new SelectListItem { Text = "Bis 80 km", Value = "80" },
+                                new SelectListItem { Text = "Bis 90 km", Value = "90" },
+                                new SelectListItem { Text = "100 km +", Value = "100" },
                             }, "Value", "Text");
         }
 
@@ -432,5 +627,6 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Caterer", Value = "Caterer" },
                             }, "Value", "Text");
         }
+
     }
 }

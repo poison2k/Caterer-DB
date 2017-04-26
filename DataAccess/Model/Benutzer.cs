@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
 
 namespace DataAccess.Model
 {
@@ -15,7 +16,7 @@ namespace DataAccess.Model
 
         public string Internetadresse { get; set; }
 
-        public string Lieferumkreis { get; set; }
+        public int Lieferumkreis { get; set; }
 
         public string Organisationsform { get; set; }
 
@@ -61,6 +62,10 @@ namespace DataAccess.Model
         //Fragebogen
         public string _AntwortIDs { get; set; }
 
+        //GeoInfoDaten
+        public DbGeography Koordinaten { get; set; }
+
+
         [NotMapped]
         public virtual List<int> AntwortIDs
         {
@@ -97,6 +102,43 @@ namespace DataAccess.Model
                     }
                 }
             }
+
+
+        }
+
+        public List<string> ConvertBenutzerZuStringList()
+        {
+            List<string> daten = new List<string>();
+
+            daten.Add(this.Anrede);
+            daten.Add(this.Vorname);
+            daten.Add(this.Nachname);
+            daten.Add(this.FunktionAnsprechpartner);
+            daten.Add(this.Mail);
+            daten.Add(this.Firmenname);
+            daten.Add(this.Telefon);
+            daten.Add(this.Straße);
+            daten.Add(this.Postleitzahl);
+            daten.Add(this.Ort);
+
+            return daten;
+
+        }
+
+
+        public override string ToString()
+        {
+            return "Anrede:" + this.Anrede +
+                    "Vorname:" + this.Vorname +
+                    "Nachname:" + this.Nachname +
+                    "Funktion:" + this.FunktionAnsprechpartner +
+                    "Mail:" + this.Mail +
+                    "Firma:" + this.Firmenname +
+                    "Telefon:" + this.Telefon +
+                    "Straße:" + this.Straße +
+                    "PLZ:" + this.Postleitzahl +
+                    "Ort:" + this.Ort;
+
         }
     }
 }

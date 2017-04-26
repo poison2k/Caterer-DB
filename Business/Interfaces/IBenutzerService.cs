@@ -15,8 +15,11 @@ namespace Business.Interfaces
 
         List<Benutzer> FindAllMitarbeiterWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung);
 
-        List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung);
+        List<Benutzer> FindAllCatererWithPaging(int aktuelleSeite, int seitenGroesse, string sortierrung, int umkreis, string plz, string name, List<int> antwortIds);
 
+        List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis);
+
+        List<Benutzer> FindeCatererNachIds(List<int> ids);
         void AddBenutzer(Benutzer benutzer);
 
         void AddMitarbeiter(Benutzer benutzer, string gruppe);
@@ -50,5 +53,7 @@ namespace Business.Interfaces
         void RemoveCaterer(int benutzerId);
 
         void EditCaterer(Benutzer benutzer);
+
+        void ExportCaterer(Benutzer benutzer, string standort);
     }
 }

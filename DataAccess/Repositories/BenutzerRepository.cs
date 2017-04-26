@@ -3,6 +3,7 @@ using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Spatial;
 using System.Linq;
 
 namespace DataAccess.Repositories
@@ -14,6 +15,13 @@ namespace DataAccess.Repositories
         public BenutzerRepository(ICatererContext db)
         {
             Db = db;
+        }
+
+        public List<Benutzer> FindeCatererNachUmkreis(DbGeography geoDaten, int umkreis)
+        {
+            var query = Db.Benutzer.Where(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).ToList();
+
+            return query.ToList();
         }
 
         public Benutzer SearchUserById(int id)
@@ -56,26 +64,39 @@ namespace DataAccess.Repositories
             return Db.Benutzer.ToList();
         }
 
-        public List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy)
+        public List<Benutzer> SearchUser(List<int> ids)
         {
-            var mitarbeiterQuery = Db.Benutzer.Include(x => x.BenutzerGruppen);
-            int count = 0;
-            foreach (string benutzerGruppe in BenutzerGruppen)
+            return Db.Benutzer.Where(x => ids.Contains(x.BenutzerId)).ToList();
+        }
+
+        public List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy, int umkreis = -1, DbGeography geoDaten = null, string name = "")
+        {
+            var query = Db.Benutzer.Include(x => x.BenutzerGruppen);
+           
+            if (BenutzerGruppen.Count > 1)
             {
-                if (count == 0)
-                {
-                    mitarbeiterQuery = mitarbeiterQuery.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()));
-                    count++;
-                }
-                else
-                {
-                    mitarbeiterQuery = mitarbeiterQuery.Union((Db.Benutzer.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == benutzerGruppe).FirstOrDefault()))));
-                }
+                query = query.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Administrator").FirstOrDefault()) || y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Mitarbeiter").FirstOrDefault()));
+            }
+            else 
+            {
+                query = query.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Caterer").FirstOrDefault()));
             }
 
-            mitarbeiterQuery = SortFilter(mitarbeiterQuery, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
 
-            return mitarbeiterQuery.ToList();
+            if (name != "" && name != null)
+            {
+                query = query.Where(y => y.Firmenname.Contains(name));
+            }
+
+            if (name != "" && umkreis != 100 && umkreis != 0 && umkreis != -1 && geoDaten != null)
+            {
+                query = query.Where(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000).OrderBy(x => x.Koordinaten.Distance(geoDaten) <= umkreis * 1000);
+                query.Where(x => x.Lieferumkreis <= umkreis);
+            }
+
+            query = SortFilter(query, orderBy).Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse);
+
+            return query.ToList();
         }
 
         public List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse)
@@ -105,6 +126,7 @@ namespace DataAccess.Repositories
 
         public void AddUser(Benutzer benutzer)
         {
+            
             benutzer.PasswortZeitstempel = DateTime.Now;
             Db.Benutzer.Add(benutzer);
             Db.SaveChanges();

@@ -15,7 +15,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Eigene_Daten)).Click();
@@ -132,7 +132,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Eigene_Daten)).Click();
@@ -210,7 +210,7 @@ namespace SeleniumTests
             //Daten ändern über Logout abbrechen
             TestTools.Daten_In_Textbox_Eingeben("Test", ObjektIDs_NutzerDaten.Firmanname, driver);
             TestTools.Nutzer_Ausloggen(driver);
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Eigene_Daten)).Click();
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Firmanname, driver));
@@ -224,7 +224,7 @@ namespace SeleniumTests
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -236,7 +236,7 @@ namespace SeleniumTests
             TestTools.AGBFußzeile(driver);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -248,7 +248,7 @@ namespace SeleniumTests
             TestTools.DatenschutzFußzeile(driver);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -260,7 +260,7 @@ namespace SeleniumTests
             TestTools.KontaktFußzeile(driver);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -272,7 +272,7 @@ namespace SeleniumTests
             TestTools.ImpressumFußzeile(driver);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -284,7 +284,7 @@ namespace SeleniumTests
             TestTools.AGBDropdownLogin(driver);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -296,7 +296,7 @@ namespace SeleniumTests
             TestTools.DatenschutzDropdownLogin(driver);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -308,7 +308,7 @@ namespace SeleniumTests
             TestTools.KontaktDropdownLogin(driver);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -320,7 +320,7 @@ namespace SeleniumTests
             TestTools.ImpressumDropdownLogin(driver);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();
@@ -333,12 +333,12 @@ namespace SeleniumTests
             Assert.AreEqual(Hinweise.Startseite, driver.Title);
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name1, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer1, LoginDaten.PW1, driver);
 
             //Änderung durchführen
             TestTools.Nutzer_Ausloggen(driver);
 
-            TestTools.User_Login_Durchführen(LoginDaten.Name2, LoginDaten.PW1, driver);
+            TestTools.User_Login_Durchführen(LoginDaten.Caterer2, LoginDaten.PW1, driver);
 
             TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
             driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Login_PW_Ändern)).Click();

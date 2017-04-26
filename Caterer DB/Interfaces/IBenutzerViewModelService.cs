@@ -28,11 +28,13 @@ namespace Caterer_DB.Interfaces
 
         Benutzer Map_MeineDatenBenutzerViewModel_Benutzer(MeineDatenBenutzerViewModel meineDatenBenutzerViewModel);
 
+        List<int> Map_MyDataBenutzerViewModel_BenutzerResultSet(MyDataBenutzerViewModel myDataBenutzerViewModel);
+
         IndexBenutzerViewModel GeneriereIndexBenutzerViewModel(Benutzer benutzer);
 
         EditBenutzerViewModel Map_Benutzer_EditBenutzerViewModel(Benutzer benutzer);
 
-        MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer);
+        MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen);
 
         DetailsBenutzerViewModel Map_Benutzer_DetailsBenutzerViewModel(Benutzer benutzer);
 
@@ -40,7 +42,7 @@ namespace Caterer_DB.Interfaces
 
         RegisterBenutzerViewModel CreateNewRegisterBenutzerViewModel();
 
-        DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer);
+        DetailsCatererViewModel Map_Benutzer_DetailsCatererViewModel(Benutzer benutzer, List<List<Frage>> fragenListen);
 
         MeineDatenBenutzerViewModel Map_Benutzer_MeineDatenBenutzerViewModel(Benutzer benutzer);
 
@@ -53,6 +55,10 @@ namespace Caterer_DB.Interfaces
         ForgottenPasswordCreateNewPasswordViewModel Map_Benutzer_ForgottenPasswordCreateNewPasswordViewModel(Benutzer benutzer);
 
         ForgottenPasswordCreateNewPasswordViewModel Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(int id);
+
+        FullFilterCatererViewModel AddListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel);
+
+        FullFilterCatererViewModel AddFragenListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel, List<Frage> fragen);
 
         RegisterBenutzerViewModel AddListsToRegisterViewModel(RegisterBenutzerViewModel registerBenutzerViewModel);
 
@@ -73,5 +79,9 @@ namespace Caterer_DB.Interfaces
         IndexCatererViewModel GeneriereIndexCatererViewModel(Benutzer benutzer);
 
         CreateCatererViewModel CreateNewCreateCatererViewModel();
+
+        Benutzer Map_DetailsCatererViewModel_Benutzer(DetailsCatererViewModel detailsCatererViewModel);
+
+        VergleichCatererViewModel Map_ListBenutzer_VergleichCatererViewModel(List<Benutzer> caterer, List<List<Frage>> fragenListen);
     }
 }

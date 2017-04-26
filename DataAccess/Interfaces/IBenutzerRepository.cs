@@ -1,10 +1,13 @@
 ﻿using DataAccess.Model;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 
 namespace DataAccess.Interfaces
 {
     public interface IBenutzerRepository
     {
+        List<Benutzer> FindeCatererNachUmkreis(DbGeography geoDaten, int umkreis);
+        
         void AddUser(Benutzer benutzer);
 
         void EditUser(Benutzer benutzer);
@@ -29,8 +32,9 @@ namespace DataAccess.Interfaces
 
         List<Benutzer> SearchAllCatererWithPaging(int aktuelleSeite, int seitenGroesse);
 
-        List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy = "");
+        List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy = "" , int umkreis = -1, DbGeography geoDaten = null, string name = "");
 
+        List<Benutzer> SearchUser(List<int> ids);
         int GetMitarbeiterCount();
 
         int GetCatererCount();

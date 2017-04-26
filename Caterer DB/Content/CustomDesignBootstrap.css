@@ -158,6 +158,13 @@ h6,
     border-color: rgba(160,200,140,1);
 }
 
+.well-lg-transparent{
+    padding: 24px;
+    border-radius: 6px;
+   background-color: transparent;
+    border-color: transparent;
+}
+
 .well-sm {
     background-color: rgba(255, 255, 255, 0.80);
     border-color: rgb(255, 255, 255);
@@ -243,12 +250,24 @@ ul {
     border-bottom: 4px solid;
 }
 
- .sidebar {
-      top: 160px;
+.sidebar {
+      top: 220px;
       position: fixed;
   }
+ 
+.tabbar {
+      top: 170px;
+     
+      z-index: 99;
+  }
+.innertab {
+    z-index: 100;
+    font-size: 20px;
+}
 
-/* PageList Hintergrundfarbe Überschriften --> Noch in Arbeit <--*/
+
+
+/* PageList Hintergrundfarbe Überschriften*/
 .panel-default > .panel-heading {
     background-color: rgba(46,109,164,1);
 }
@@ -267,17 +286,28 @@ th {
 
 .well-lg-weiss {
     background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255,255,255,1);
+    border-color: rgba(255,255,255,1);    
 }
 
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover
 {
   background-color: rgba(77,147,208,1);
+  text-decoration: none;
+    /*box-shadow: 20px 5px rgba(77,147,208,0.5);*/
+    /*border-radius: 15px 5px 15px 5px;*/
 }
 
 .nav-pills > li > a:hover {
-   background-color: rgba(102,204,204,0.2);
+    background-color: rgba(102,204,204,0.2);
+   text-decoration: none;
+   box-shadow: 0 8px -30px 0 rgba(0,0,0,1);
+}
+
+.linie {
+  border-top: 2px solid rgba(150,150,150,1);
+    background-color: rgba(150,150,150,1);
+    
 }
 
     /*Nicht löschen Sebastian...Das das ist ein Hilfsraster für die Schachteln*/
@@ -288,3 +318,72 @@ th {
 .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1{
     background-color: rgba(206, 0, 0, 0.5)
 }*/
+
+    .nav-tabs > li > a {
+  margin-right: 0;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 0px 20px 0 0;
+}
+    /*Tabs*/
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #fff;
+  background-color: rgba(77,147,208,0.5);
+  /*background-image:linear-gradient(180deg, rgba(77,147,208,1), rgba(77,147,208,0.5));*/ 
+  border: 1px solid transparent;
+  
+}
+
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 0 0 5px 5px;
+  background-color: rgba(248,248,248,1);
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+background-color: rgba(248,248,248,1);
+}
+.nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #ddd;
+    border-radius:  0 0 5px 5px;
+  }
+
+
+
+ /*Exportfunktion Dropdown*/
+.link-button {
+  background: none;
+  border: none;
+  color: #337ab7;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+}
+.link-button:focus {
+  color: #23527c;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+button, input, optgroup, select, textarea {
+    background-color:transparent;
+    color: #777;
+    border:none;
+    text-align:center;
+    margin-left:10px;
+}
+
+button:hover, input:hover, optgroup:hover, select:hover, textarea:hover  {
+    background-color:rgba(102,204,204,0.2);
+    color: rgba(35,31,32,1);
+    margin-left:10px;
+}

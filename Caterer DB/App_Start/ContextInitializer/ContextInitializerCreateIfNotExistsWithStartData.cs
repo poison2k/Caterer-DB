@@ -7,7 +7,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
     {
         protected override void Seed(CatererContext context)
         {
-            StartData.CreateStartData(context);
+            ExampleData.CreateExampleData(context);
             context.SaveChanges();
         }
     }

@@ -4,8 +4,11 @@ using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web.UI.WebControls;
 
 namespace Caterer_DB.Controllers
 {
@@ -16,13 +19,16 @@ namespace Caterer_DB.Controllers
 
         private IBenutzerService BenutzerService { get; set; }
 
+        private IFrageService FrageService { get; set; }
+
         public ILoginService LoginService { get; set; }
 
-        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService, ILoginService loginService)
+        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService, ILoginService loginService, IFrageService frageService)
         {
             LoginService = loginService;
             BenutzerService = benutzerService;
             BenutzerViewModelService = benutzerViewModelService;
+            FrageService = frageService;
         }
 
         // GET: Benutzer
@@ -42,13 +48,104 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
         {
-            ViewBag.Sortierrung = Sortierrung;
-
-            return View(BenutzerViewModelService.GeneriereListViewModelCaterer(
-                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung)
+            var fullFilterViewModel = new FullFilterCatererViewModel();
+            fullFilterViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterViewModel);
+            fullFilterViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterViewModel, FrageService.FindAlleFragen());
+            fullFilterViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
+                 BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, -1, "", "", new List<int>())
                 , BenutzerService.GetCatererCount()
                 , aktuelleSeite
-                , seitenGrösse));
+                , seitenGrösse);
+            ViewBag.Sortierrung = Sortierrung;
+
+            return View(fullFilterViewModel);
+        }
+
+        // GET: Benutzer
+        [HttpPost]
+        [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
+        public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, FormCollection formCollection)
+        {
+            List<string> values = new List<string>();
+            List<int> antwortIds = new List<int>();
+
+            foreach (var key in formCollection.Keys)
+            {
+                if(key.ToString().Contains("antworten"))
+                values.Add(key.ToString()); 
+            }
+
+            foreach (string key in values) {
+                antwortIds.Add(Convert.ToInt32(formCollection[key]));
+            }
+
+            if (Request.Form["btnVergleich"] != null)
+            {
+                string listIds = "";
+                var count = 0;
+                foreach (IndexCatererViewModel caterer in fullFilterCatererViewModel.ResultListCaterer.Entitäten)
+                {
+                    if (caterer.selected)
+                    {
+                        listIds += caterer.BenutzerId + ",";
+                        count++;
+                    }
+                }
+                if (count > 0 && count < 4)
+                {
+                    return RedirectToAction("VergleichCaterer", "Benutzer", new { ids = listIds });
+                }
+            }
+            string Sortierrung = "Firmenname";
+            int aktuelleSeite = 1;
+            var seitenGrösse = 10;
+            if (Request.Form["Telefon"] != null)
+            {
+                Sortierrung = "Telefon";
+            }
+            else if (Request.Form["Telefon_desc"] != null)
+            {
+                Sortierrung = "Telefon_desc";
+            }
+            else if (Request.Form["Firmenname"] != null)
+            {
+                Sortierrung = "Firmenname";
+            }
+            else if (Request.Form["Firmenname_desc"] != null)
+            {
+                Sortierrung = "Firmenname_desc";
+            }
+            else if (Request.Form["Ort"] != null)
+            {
+                Sortierrung = "Ort";
+            }
+            else if (Request.Form["Ort_desc"] != null)
+            {
+                Sortierrung = "Ort_desc";
+            }
+            else if (Request.Form["Postleitzahl"] != null)
+            {
+                Sortierrung = "Postleitzahl";
+            }
+            else if (Request.Form["Postleitzahl_desc"] != null)
+            {
+                Sortierrung = "Postleitzahl_desc";
+            }
+
+
+            ViewBag.Sortierrung = Sortierrung;
+
+
+            var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
+            var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
+            fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
+                resultList
+                , resultcount
+                , aktuelleSeite
+                , seitenGrösse);
+            fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
+            fullFilterCatererViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterCatererViewModel, FrageService.FindAlleFragen());
+            return View(fullFilterCatererViewModel);
         }
 
         // GET: Benutzer/Details/5
@@ -80,7 +177,7 @@ namespace Caterer_DB.Controllers
             }
 
             DetailsCatererViewModel detailsCatererViewModel =
-                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
 
             if (detailsCatererViewModel == null)
             {
@@ -245,7 +342,7 @@ namespace Caterer_DB.Controllers
             }
 
             MyDataBenutzerViewModel myDataBenutzerViewModel =
-                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
 
             if (myDataBenutzerViewModel == null)
             {
@@ -264,7 +361,7 @@ namespace Caterer_DB.Controllers
             }
 
             MyDataBenutzerViewModel myDataBenutzerViewModel =
-                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));
+                BenutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
 
             if (myDataBenutzerViewModel == null)
             {
@@ -307,7 +404,11 @@ namespace Caterer_DB.Controllers
                 if (Request.Form["btnSave"] != null)
                 {
                     BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
-                    //TempData["isSaved"] = true;
+                    List<int> antwortIDs = BenutzerViewModelService.Map_MyDataBenutzerViewModel_BenutzerResultSet(myDataBenutzerViewModel);
+                    var benutzer = BenutzerService.SearchUserById(myDataBenutzerViewModel.BenutzerId);
+                    benutzer.AntwortIDs = antwortIDs;
+                    BenutzerService.EditBenutzer(benutzer);
+                    return RedirectToAction("DetailsCaterer", new RouteValueDictionary(new { controller = "Benutzer", action = "DetailsCaterer", Id = benutzer.BenutzerId }));
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
@@ -317,6 +418,36 @@ namespace Caterer_DB.Controllers
                 return RedirectToAction("IndexCaterer", "Benutzer");
             }
             return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
+        }
+
+        // POST: Benutzer/DetailsCaterer
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DetailsCaterer(DetailsCatererViewModel detailsCatererViewModel)
+        {
+            if (Request.Form["lueneburg"] != null)
+            {
+                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Lueneburg");
+            }
+            else if (Request.Form["braunschweig"] != null)
+            {
+                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Braunschweig");
+            }
+            else if (Request.Form["osnabrueck"] != null)
+            {
+                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Osnabrueck");
+            }
+
+
+            detailsCatererViewModel =
+                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(detailsCatererViewModel.BenutzerId)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
+
+            if (detailsCatererViewModel == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(detailsCatererViewModel);
         }
 
         // GET: Benutzer/Delete/5
@@ -346,6 +477,35 @@ namespace Caterer_DB.Controllers
             BenutzerService.RemoveBenutzer(Convert.ToInt32(id));
 
             return RedirectToAction("Index");
+        }
+
+
+        // GET: Benutzer/Delete/5
+
+        public ActionResult VergleichCaterer(string ids)
+        {
+
+            List<int> listIds = new List<int>();
+            string[] stringlist = new string[0];
+            if (ids != "" && ids != null)
+            {
+                stringlist = ids.Split(',');
+            }
+
+
+            foreach (string caterer in stringlist)
+            {
+                if (caterer != "")
+                {
+                    listIds.Add(Convert.ToInt32(caterer));
+                }
+            }
+
+            var vergleichCatererViewModel = BenutzerViewModelService.Map_ListBenutzer_VergleichCatererViewModel(BenutzerService.FindeCatererNachIds(listIds), FrageService.FindAlleFragenNachKategorieninEigenenListen());
+
+
+
+            return View(vergleichCatererViewModel);
         }
     }
 }
