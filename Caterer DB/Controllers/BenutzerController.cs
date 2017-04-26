@@ -465,7 +465,7 @@ namespace Caterer_DB.Controllers
                     var benutzer = BenutzerService.SearchUserById(myDataBenutzerViewModel.BenutzerId);
                     benutzer.AntwortIDs = antwortIDs;
                     BenutzerService.EditBenutzer(benutzer);
-                    return RedirectToAction("DetailsCaterer", new RouteValueDictionary(new { controller = "Benutzer", action = "DetailsCaterer", Id = benutzer.BenutzerId }));
+                   
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
