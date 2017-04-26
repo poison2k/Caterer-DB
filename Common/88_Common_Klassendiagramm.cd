@@ -3,13 +3,13 @@
   <Class Name="Common.Services.EMailBetreff" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAQAAABEgAAAwAAAAACAAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAQAAABEgAAAwAAAAACAAAAAAAAAIQ=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Common.Services.EMailTexte" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAQAAABQBAABEAAAARAAAAAKAAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAAAIAAAQAAABQBAABEAAAARAAAAAKAAAAAAAAAIQ=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Common.Services.Links" Collapsed="true">
@@ -28,7 +28,7 @@
   <Class Name="Common.Services.MailService" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAEAEIQAAAAAAAIAAEAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <HashCode>AQAAEAEIQAAAAAAAIAAEAAAAAAAAAAAAACAAAAAQAAA=</HashCode>
       <FileName>Services\MailService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -44,7 +44,7 @@
   <Interface Name="Common.Interfaces.IMailService" Collapsed="true">
     <Position X="0.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAIQAAAAAAAIAAEAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <HashCode>AQAAAAAIQAAAAAAAIAAEAAAAAAAAAAAAACAAAAAQAAA=</HashCode>
       <FileName>Interfaces\IMailService.cs</FileName>
     </TypeIdentifier>
   </Interface>

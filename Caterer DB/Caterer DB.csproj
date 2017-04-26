@@ -166,10 +166,6 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Moq, Version=4.6.38.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.6.38-alpha\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
@@ -385,6 +381,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\DocxVorlagen\CatererUebersicht.docx" />
     <Content Include="Content\DocxVorlagen\InformationsblattBraunschweig.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattBraunschweigWasserzeichen.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattLüneburg.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattLüneburgWasserzeichen.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattOsnabrück.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattOsnabrückWasserzeichen.docx" />
     <None Include="Properties\PublishProfiles\FTP.pubxml" />
     <None Include="Properties\PublishProfiles\Lokal.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -409,19 +410,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

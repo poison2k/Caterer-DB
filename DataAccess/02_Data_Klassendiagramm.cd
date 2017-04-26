@@ -114,7 +114,7 @@
   <Class Name="DataAccess.Repositories.FrageRepository" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAABAAAEAIAAAAAAEAAAAAAAGAgAAAAAAA=</HashCode>
+      <HashCode>ABABAAAACCAABAAAEAIAAAAAAEQAABAgAGAgAAAAAAA=</HashCode>
       <FileName>Repositories\FrageRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -196,7 +196,7 @@
   <Interface Name="DataAccess.Interfaces.IFrageRepository" Collapsed="true">
     <Position X="2.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAABAAAAAIAAAAAAEAAAAAAAGAgAAAAAAA=</HashCode>
+      <HashCode>AAABAAAACCAABAAAAAIAAAAAAEQAABAgAGAgAAAAAAA=</HashCode>
       <FileName>Interfaces\IFrageRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
