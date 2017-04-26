@@ -436,8 +436,17 @@ namespace Caterer_DB.Controllers
             {
                 if (Request.Form["btnSave"] != null)
                 {
-                    BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
-                    TempData["isSaved"] = true;
+                    try
+                    {
+                        BenutzerService.EditBenutzer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
+                        TempData["isSaved"] = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", ex.Message);
+                        return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
+                    }
+                 
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
@@ -460,12 +469,20 @@ namespace Caterer_DB.Controllers
             {
                 if (Request.Form["btnSave"] != null)
                 {
-                    BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
-                    List<int> antwortIDs = BenutzerViewModelService.Map_MyDataBenutzerViewModel_BenutzerResultSet(myDataBenutzerViewModel);
-                    var benutzer = BenutzerService.SearchUserById(myDataBenutzerViewModel.BenutzerId);
-                    benutzer.AntwortIDs = antwortIDs;
-                    BenutzerService.EditBenutzer(benutzer);
                    
+                    try
+                    {
+                        BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
+                        List<int> antwortIDs = BenutzerViewModelService.Map_MyDataBenutzerViewModel_BenutzerResultSet(myDataBenutzerViewModel);
+                        var benutzer = BenutzerService.SearchUserById(myDataBenutzerViewModel.BenutzerId);
+                        benutzer.AntwortIDs = antwortIDs;
+                        BenutzerService.EditBenutzer(benutzer);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", ex.Message);
+                        return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
+                    }
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {

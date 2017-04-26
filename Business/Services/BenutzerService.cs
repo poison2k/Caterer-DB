@@ -5,8 +5,6 @@ using DataAccess.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
-using GoogleMaps.LocationServices;
-using System.Data.Entity.Spatial;
 using System.IO;
 using System.Linq;
 
@@ -147,7 +145,15 @@ namespace Business.Services
             benutzer.LetzteÄnderung = new DateTime(1900,1,1);
             if (gruppe == "Caterer")
             {
-                benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
+                try
+                {
+                    benutzer.Koordinaten =
+                        GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
+                }
+                catch 
+                {
+                    throw new ArgumentException("Ungültige Adresse");
+                }
             }
             BenutzerRepository.AddUser(benutzer);
 
@@ -175,7 +181,15 @@ namespace Business.Services
 
         public void RegisterBenutzer(Benutzer benutzer)
         {
-            benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
+            try
+            {
+                benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
+            }
+            catch
+            {
+                throw new ArgumentException("Ungültige Adresse");
+            }
+            
             AddBenutzer(benutzer, "Caterer");
             MailService.SendRegisterMail(ConfigService.GetConfig(), benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }

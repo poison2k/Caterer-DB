@@ -114,14 +114,14 @@ namespace DataAccess.Repositories
             //Abfrage optimieren nur benötigte Daten abrufen
             var mitarbeiter = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Mitarbeiter");
             var administratoren = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Administrator");
-            return Db.Benutzer.Include(y => y.BenutzerGruppen).Count(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren));
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren)).Count();
         }
 
         public int GetCatererCount()
         {
             //Abfrage optimieren nur benötigte Daten abrufen
             var caterer = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Caterer");
-            return Db.Benutzer.Include(y => y.BenutzerGruppen).Count(x => x.BenutzerGruppen.Contains(caterer));
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(caterer)).Count();
         }
 
         public void AddUser(Benutzer benutzer)
