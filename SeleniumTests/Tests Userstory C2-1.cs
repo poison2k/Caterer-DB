@@ -106,15 +106,15 @@ namespace SeleniumTests
             Assert.AreEqual(NutzerDaten.NutzerDaten_Ansprechpartner, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Ansprechpartner, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Telefon, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Telefon, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Telefon, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Fax, driver));
-            Assert.AreEqual("Bis 10 km", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Lieferumkreis, driver));
+            Assert.AreEqual("5", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Lieferumkreis, driver));
 
             TestTools.Selenium_Wartet_Eine_Sekunde(driver);
 
             //Daten wieder auf Ursprung zurück setzen
             TestTools.Daten_In_Textbox_Eingeben("AllYouCanEat GmbH", ObjektIDs_NutzerDaten.Firmanname, driver);
-            TestTools.Daten_In_Textbox_Eingeben("Holzweg 1", ObjektIDs_NutzerDaten.Straße_Nr, driver);
-            TestTools.Daten_In_Textbox_Eingeben("87654", ObjektIDs_NutzerDaten.PLZ, driver);
-            TestTools.Daten_In_Textbox_Eingeben("Woodway", ObjektIDs_NutzerDaten.Ort, driver);
+            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Straße_Nr, ObjektIDs_NutzerDaten.Straße_Nr, driver);
+            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_PLZ, ObjektIDs_NutzerDaten.PLZ, driver);
+            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Ort, ObjektIDs_NutzerDaten.Ort, driver);
             TestTools.Daten_In_Textbox_Eingeben("Max", ObjektIDs_NutzerDaten.Vorname, driver);
             TestTools.Daten_In_Textbox_Eingeben("Mustermann", ObjektIDs_NutzerDaten.Nachname, driver);
             TestTools.Daten_In_Textbox_Eingeben("Chef", ObjektIDs_NutzerDaten.Ansprechpartner, driver);

@@ -88,7 +88,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Detailansicht Caterer ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Detailansicht AllYouCanEat GmbH ähnelt.
         /// </summary>
         internal static string Caterer_Details_Seite {
             get {

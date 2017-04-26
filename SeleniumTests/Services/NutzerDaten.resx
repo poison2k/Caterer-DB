@@ -122,6 +122,7 @@
   </data>
   <data name="Dummy_Firmenname" xml:space="preserve">
     <value>AllYouCanEat GmbH</value>
+    <comment>AllYouCanEat GmbH</comment>
   </data>
   <data name="NutzerDaten_Anrede_Frau" xml:space="preserve">
     <value>2</value>
@@ -154,13 +155,13 @@
     <value>1</value>
   </data>
   <data name="NutzerDaten_Ort" xml:space="preserve">
-    <value>Testen</value>
+    <value>Faßberg</value>
   </data>
   <data name="NutzerDaten_PLZ" xml:space="preserve">
-    <value>12345</value>
+    <value>29328</value>
   </data>
   <data name="NutzerDaten_Straße_Nr" xml:space="preserve">
-    <value>Teststraße 0</value>
+    <value>Fliegerhorst 1</value>
   </data>
   <data name="NutzerDaten_Telefon" xml:space="preserve">
     <value>09876/54321</value>
