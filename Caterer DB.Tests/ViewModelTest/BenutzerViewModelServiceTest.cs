@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Business.Interfaces;
 using Caterer_DB.Models;
@@ -8,9 +9,8 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using System.Linq;
 
-namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
+namespace Caterer_DB.Tests.ViewModelTest
 {
     [TestFixture]
     public class BenutzerViewModelTest
@@ -272,9 +272,9 @@ namespace Caterer_DB.Tests.BenutzerViewModelServiceTest
             MockMapper = mockMapper.Object;
             var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
-            var mockMD5Hash = new Mock<IMd5Hash>();
-            mockMD5Hash.Setup(x => x.CalculateMD5Hash(It.IsAny<string>())).Returns("");
-            MockMD5hash = mockMD5Hash.Object;
+            var mockMd5Hash = new Mock<IMd5Hash>();
+            mockMd5Hash.Setup(x => x.CalculateMD5Hash(It.IsAny<string>())).Returns("");
+            MockMD5hash = mockMd5Hash.Object;
 
             //Act
             var result = benutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(Fixture.Build<RegisterBenutzerViewModel>().Create());

@@ -1,13 +1,13 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
 using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using System.Linq;
 
-namespace Caterer_DB.Tests.Benutzergruppentest
+namespace Caterer_DB.Tests.ViewModelTest
 {
     [TestFixture]
     public class BenutzerGruppenViewModelTest
