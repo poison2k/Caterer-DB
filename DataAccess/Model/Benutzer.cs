@@ -51,6 +51,8 @@ namespace DataAccess.Model
 
         public DateTime PasswortZeitstempel { get; set; }
 
+        public DateTime LetzteÄnderung { get; set; }
+
         public bool IstEmailVerifiziert { get; set; }
 
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }

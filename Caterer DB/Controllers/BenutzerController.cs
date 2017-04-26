@@ -313,7 +313,7 @@ namespace Caterer_DB.Controllers
             {
                 if (Request.Form["btnSave"] != null)
                 {
-                    BenutzerService.EditBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel), Convert.ToBoolean(editBenutzerViewModel.IstAdmin));
+                    BenutzerService.AdminEditMitarbeiterData(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel), Convert.ToBoolean(editBenutzerViewModel.IstAdmin));
                     return RedirectToAction("Index");
                 }
                 else if (Request.Form["btnModalDelete"] != null)

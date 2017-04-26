@@ -35,7 +35,7 @@
   <Class Name="Business.Services.FrageService" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAgAAQAAgAEAAAAAAACAgBAAAAAA=</HashCode>
+      <HashCode>AAABAAAADCAAAAAAAgAAQAAgAEAAAgAgQCAgBIAAAAA=</HashCode>
       <FileName>Services\FrageService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -95,7 +95,7 @@
   <Interface Name="Business.Interfaces.IFrageService" Collapsed="true">
     <Position X="2.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAgAAAAAgAEAAAAAAACAgAAAAAAA=</HashCode>
+      <HashCode>AAABAAAACCAAAAAAAgAAAAAgAEAAAAAgQCAgAIAAAAA=</HashCode>
       <FileName>Interfaces\IFrageService.cs</FileName>
     </TypeIdentifier>
   </Interface>

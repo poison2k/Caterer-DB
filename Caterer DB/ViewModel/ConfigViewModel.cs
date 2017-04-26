@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Caterer_DB.Models
 {
@@ -18,5 +19,8 @@ namespace Caterer_DB.Models
 
         [Required]
         public int SmtpPort { get; set; }
+
+        [DisplayName(@"Änderungsverfolgung für Änderungen der Caterer")]
+        public bool AenderungsVerfolgungCatererAktiviert { get;set;}
     }
 }

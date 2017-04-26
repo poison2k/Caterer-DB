@@ -126,8 +126,8 @@ namespace DataAccess.Repositories
 
         public void AddUser(Benutzer benutzer)
         {
-            
             benutzer.PasswortZeitstempel = DateTime.Now;
+            benutzer.LetzteÄnderung = DateTime.Now;
             Db.Benutzer.Add(benutzer);
             Db.SaveChanges();
         }
