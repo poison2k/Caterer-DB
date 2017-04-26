@@ -44,7 +44,6 @@ namespace SeleniumTests
             TestTools_Userstory_M4_6.Caterer_Bearbeiten_Anzeigen(driver);
 
             //Pürfen ob Daten übernommen wurden
-            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
             Assert.AreEqual(NutzerDaten.NutzerDaten_Firmenname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Firmanname, driver));
             Assert.AreEqual("Mensaverein", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Organisationsform, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Straße_Nr, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Straße_Nr, driver));
@@ -57,7 +56,7 @@ namespace SeleniumTests
             Assert.AreEqual(NutzerDaten.NutzerDaten_Telefon, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Telefon, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Telefon, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Fax, driver));
             Assert.AreEqual(NutzerDaten.NutzerDaten_Internetadresse, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Internet, driver));
-            Assert.AreEqual("Bis 10 km", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Lieferumkreis, driver));
+            Assert.AreEqual("5", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Lieferumkreis, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }

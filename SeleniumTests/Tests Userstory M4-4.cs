@@ -272,7 +272,7 @@ namespace SeleniumTests
         }
 
         [Test]
-        public void FragenBearbeiten6()
+        public void XFragenBearbeiten6()
         //T_M4-4_F06_B_001
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);

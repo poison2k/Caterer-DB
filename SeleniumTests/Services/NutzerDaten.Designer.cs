@@ -169,7 +169,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Testen ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Faßberg ähnelt.
         /// </summary>
         internal static string NutzerDaten_Ort {
             get {
@@ -178,7 +178,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 12345 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 29328 ähnelt.
         /// </summary>
         internal static string NutzerDaten_PLZ {
             get {
@@ -187,7 +187,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Teststraße 0 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fliegerhorst 1 ähnelt.
         /// </summary>
         internal static string NutzerDaten_Straße_Nr {
             get {

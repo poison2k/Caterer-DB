@@ -178,7 +178,8 @@
     <value>Caterer bearbeiten</value>
   </data>
   <data name="Caterer_Details_Seite" xml:space="preserve">
-    <value>Detailansicht Caterer</value>
+    <value>Detailansicht AllYouCanEat GmbH</value>
+    <comment>Detailansicht Caterer</comment>
   </data>
   <data name="Caterer_Hinzufügen_Seite" xml:space="preserve">
     <value>Caterer hinzufügen</value>
