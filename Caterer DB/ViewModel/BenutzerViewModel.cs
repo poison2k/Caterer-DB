@@ -380,7 +380,8 @@ namespace Caterer_DB.Models
         public bool selected { get; set; }
     }
 
-    public class VergleichCatererViewModel {
+    public class VergleichCatererViewModel
+    {
 
         public List<List<Frage>> Fragen { get; set; }
         public List<DetailsCatererViewModel> caterer { get; set; }
@@ -403,7 +404,20 @@ namespace Caterer_DB.Models
         public IEnumerable<System.Web.Mvc.SelectListItem> Fragen { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
 
+        public List<FrageAntwortModel> FrageAntwortModel { get; set; }
+
     }
+
+    public class FrageAntwortModel
+    {
+        [Key]
+        public int FrageAntwortId { get; set; }
+        public int FrageId { get; set; }
+        public int AntwortId { get; set; }
+
+    }
+
+
 
     public class CreateCatererViewModel
     {

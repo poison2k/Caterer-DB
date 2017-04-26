@@ -3,15 +3,22 @@
 @{
     ViewBag.Title = "Edit";
 }
-
-<h2>Einstellungen</h2>
+<br />
+<br />
+<br />
+<div class="row">
+    <div id="Einstellungen" class="col-md-6 col-md-offset-3 text-center">
+        <h1>Einstellungen</h1>
+    </div>
+</div>
+<br />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-offset-3">
             <div class="well well-lg">
                 <h4><i class="glyphicon glyphicon-envelope "></i> E-Mail Konfiguration</h4>
                 <br />
@@ -47,7 +54,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12 text-center">
                         <div class="form-group">
                             <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success">
                                 <i class="glyphicon glyphicon-save"></i> Speichern

@@ -28,5 +28,7 @@ namespace DataAccess.Interfaces
         int GetFrageNeuCount();
 
         int GetFrageVeröffentlichtCount();
+
+        Frage SearchFrageByAntwortId(int antwortID);
     }
 }

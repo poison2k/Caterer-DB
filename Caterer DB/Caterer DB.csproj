@@ -379,6 +379,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\DocxVorlagen\CatererUebersicht.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattBraunschweig.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattBraunschweigWasserzeichen.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattLüneburg.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattLüneburgWasserzeichen.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattOsnabrück.docx" />
+    <Content Include="Content\DocxVorlagen\InformationsblattOsnabrückWasserzeichen.docx" />
     <None Include="Properties\PublishProfiles\FTP.pubxml" />
     <None Include="Properties\PublishProfiles\Lokal.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -387,6 +394,7 @@
     <Content Include="GoogleMaps.LocationServices.readme.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CustomJS.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />

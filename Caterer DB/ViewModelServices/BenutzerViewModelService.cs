@@ -562,7 +562,7 @@ namespace Caterer_DB.Models.ViewModelServices
         {
           
             List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "Bitte wählen...", Value = String.Empty });
+            items.Add(new SelectListItem { Text = "Bitte wählen...", Value = "0" });
             items.AddRange(fragen.ConvertAll(a =>
             {
                 return new SelectListItem()

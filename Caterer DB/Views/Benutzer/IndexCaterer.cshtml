@@ -6,7 +6,7 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm( new { id= "CatererForm" }))
+@using (Html.BeginForm(new { id = "CatererForm" }))
 {
     @Html.HiddenFor(model => model.FilterId)
     @Html.HiddenFor(model => model.ResultListCaterer.ListViewId)
@@ -52,25 +52,45 @@
                     </div>
                     <br />
                     <br />
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Fragen, htmlAttributes: new { @class = "control-label " })
-                                @Html.DropDownList("Fragen", Model.Fragen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid", onchange = "ladeAntworten()" })
-                                @Html.ValidationMessageFor(model => model.Fragen, "", new { @class = "text-danger" })
+                    @for (int i = 0; i < Model.FrageAntwortModel.Count; i++)
+                    {
+
+                        @Html.HiddenFor(model => model.FrageAntwortModel[i].FrageAntwortId)
+
+                        var test = "FrageAntwortModel[" + i + "].FrageId";
+                        var test2 = "FrageAntwortModel[" + i + "].AntwortId";
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Fragen, htmlAttributes: new { @class = "control-label " })
+                                    @Html.DropDownList(test, Model.Fragen, new { id = "Fragen" + i, @class = "form-control prefilled ng-untouched ng-pristine ng-valid", onchange = "ladeAntworten(" + i + ")" })
+                                    @Html.ValidationMessageFor(model => model.Fragen, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Antwort wählen</label>
-                                <select id="Antworten" name="antworten" class="form-control"  disabled=""></select>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Antwort wählen</label>
+                                    @Html.DropDownList(test2, new List<SelectListItem>(), new { id = "Antworten" + i, @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+
+                                </div>
                             </div>
+                            @if (Model.FrageAntwortModel.Count - 1 == i)
+                            {
+                                <div class="col-md-2 text-right">
+                                    <button id="btnAddFilter" name="btnAddFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-plus"></i></button>
+                                    @if (Model.FrageAntwortModel.Count == 1)
+                                    {
+                                        <button id="btnDeleteFilter" name="btnDeleteFilter" class="btn btn-default" style="margin-top: 27px;" type="submit" disabled><i class="glyphicon glyphicon-trash"></i></button>
+                                    }
+                                    else
+                                    {
+                                        <button id="btnDeleteFilter" name="btnDeleteFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
+                                    }
+                                </div>
+                            }
+
                         </div>
-                        <div class="col-md-2 text-right">
-                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-plus"></i></a>
-                            <a class="btn btn-default" style="margin-top: 27px;"><i class="glyphicon glyphicon-trash"></i></a>
-                        </div>
-                    </div>
+                    }
                     <br />
                     <div class="row">
                         <div class="col-md-3">
@@ -86,18 +106,19 @@
         <br />
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
-                    <ul class="list-unstyled list-inline col-md-12" style="margin-left: -5px;">
-                        <li>
-                            <a id="btnMarkierungenErstellen" href="@Url.Action("CreateCaterer", "Benutzer")" na name="btnErstellen" type="submit" class="btn btn-success">
-                                <i class="glyphicon glyphicon-plus"></i> Neuer Caterer
-                            </a>
-                        </li>
-                        <li>
-                            <button type="submit" class="btn btn-default btn-block" name="btnVergleich" id="btnVergleich"> <i class="glyphicon glyphicon-list"></i> Caterer vergleichen</button>
-                        </li>
-                    </ul>
+                <div class="col-md-3">
+                    <a id="btnMarkierungenErstellen" href="@Url.Action("CreateCaterer", "Benutzer")" name="btnErstellen" type="submit" class="btn btn-default btn-block">
+                        <i class="glyphicon glyphicon-plus"></i> Neuer Caterer
+                    </a>
                 </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-default btn-block" name="btnVergleich" id="btnVergleich"> <i class="glyphicon glyphicon-list"></i> Caterer vergleichen</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <div style="margin-top: 15px"></div>
                 <div class="row" id="BenutzerIndexPartial">
                     <div class="col-md-12">
@@ -106,7 +127,7 @@
                             <table class="table table-striped">
                                 <tr>
                                     <th>
-                                        
+
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Firmenname")
@@ -178,7 +199,7 @@
                                 {
                                     @Html.HiddenFor(modelItem => Model.ResultListCaterer.Entitäten[i].BenutzerId)
                                     <tr>
-                                        <td>@Html.CheckBoxFor(modelItem => Model.ResultListCaterer.Entitäten[i].selected)</td>
+                                        <td>@Html.CheckBoxFor(modelItem => Model.ResultListCaterer.Entitäten[i].selected, new { id = "Checkbox" + i, onchange = "pruefeCheckboxen()" })</td>
                                         <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Firmenname)</td>
                                         <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Telefon)</td>
                                         <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Postleitzahl)</td>
@@ -194,16 +215,16 @@
                         </div>
 
                         @if (Model.ResultListCaterer.TotalItemCount > Model.ResultListCaterer.PageSize)
-                        {
-                            var seitenAnzahl = Model.ResultListCaterer.TotalItemCount / Model.ResultListCaterer.PageSize;
-                            if (Model.ResultListCaterer.TotalItemCount % Model.ResultListCaterer.PageSize > 0)
-                            {
-                                seitenAnzahl++;
-                            }
-                            <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
-                            <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
-                                @Html.PagedListPager(Model.ResultListCaterer, aktuelleSeite => Url.Action("IndexCaterer", new { aktuelleSeite, Model.ResultListCaterer, Sortierrung = ViewBag.Sortierrung }))
-                            </div>
+                {
+                    var seitenAnzahl = Model.ResultListCaterer.TotalItemCount / Model.ResultListCaterer.PageSize;
+                    if (Model.ResultListCaterer.TotalItemCount % Model.ResultListCaterer.PageSize > 0)
+                    {
+                        seitenAnzahl++;
+                    }
+                    <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
+                    <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
+                        @Html.PagedListPager(Model.ResultListCaterer, aktuelleSeite => Url.Action("IndexCaterer", new { aktuelleSeite, Model.ResultListCaterer, Sortierrung = ViewBag.Sortierrung }))
+                    </div>
                         }
                     </div>
                 </div>
@@ -214,29 +235,14 @@
 }
 
 @section Scripts {
-    <script>
-        function ladeAntworten() {
-            $('#Antworten').empty();
-            var frageId = $("#Fragen option:selected").val();
 
-            if (frageId != "") {
-                var sourceString = "/Frage/AjaxLadeAntwortenZuFrage?frageId=" + frageId;
-                $.ajax({
-                    type: 'POST',
-                    url: sourceString,
-                    cache: false,
-                    data: $('#CatererForm').serialize(),
-                    dataType: 'json',
-                    success: function(json) {
-                        ajaxGeraete = json;
-                        $.each(json, function(index) {
-                            $('#Antworten').append($('<option>').text(json[index].Antworttext).attr('value', json[index].AntwortId)
-                        );
-                            $("#Antworten").prop("disabled", false);
-                        });
-                    },
-                });
-            }
-        }
-    </script>
+
+    @for (int i = 0; i < Model.FrageAntwortModel.Count; i++)
+    {
+        <script>
+            pruefeCheckboxen();
+            ladeAntwortenInitial(@i, @Model.FrageAntwortModel[i].FrageId, @Model.FrageAntwortModel[i].AntwortId)
+        </script>
+    }
+
 }

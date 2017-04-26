@@ -9,7 +9,7 @@ namespace DataAccess.Repositories
     {
         protected ICatererContext Db { get; }
 
-        protected FragebogenRepository(ICatererContext db)
+        public FragebogenRepository(ICatererContext db)
         {
             Db = db;
         }

@@ -3,12 +3,17 @@ using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.UI.WebControls;
+using System.Xml;
 
 namespace Caterer_DB.Controllers
 {
@@ -48,17 +53,24 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(string suche, int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Firmenname")
         {
-            var fullFilterViewModel = new FullFilterCatererViewModel();
-            fullFilterViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterViewModel);
-            fullFilterViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterViewModel, FrageService.FindAlleFragen());
-            fullFilterViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
+            var fullFilterCatererViewModel = new FullFilterCatererViewModel();
+
+            if (fullFilterCatererViewModel.FrageAntwortModel == null)
+            {
+                fullFilterCatererViewModel.FrageAntwortModel = new List<FrageAntwortModel>();
+                fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count, AntwortId = 0, FrageId = 0 });
+            }
+
+            fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
+            fullFilterCatererViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterCatererViewModel, FrageService.FindAlleFragen());
+            fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                  BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, -1, "", "", new List<int>())
                 , BenutzerService.GetCatererCount()
                 , aktuelleSeite
                 , seitenGrösse);
             ViewBag.Sortierrung = Sortierrung;
 
-            return View(fullFilterViewModel);
+            return View(fullFilterCatererViewModel);
         }
 
         // GET: Benutzer
@@ -66,19 +78,8 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, FormCollection formCollection)
         {
-            List<string> values = new List<string>();
-            List<int> antwortIds = new List<int>();
 
-            foreach (var key in formCollection.Keys)
-            {
-                if(key.ToString().Contains("antworten"))
-                values.Add(key.ToString()); 
-            }
-
-            foreach (string key in values) {
-                antwortIds.Add(Convert.ToInt32(formCollection[key]));
-            }
-
+            // Weiterleitung falls Vergleich gewünscht ist 
             if (Request.Form["btnVergleich"] != null)
             {
                 string listIds = "";
@@ -96,6 +97,40 @@ namespace Caterer_DB.Controllers
                     return RedirectToAction("VergleichCaterer", "Benutzer", new { ids = listIds });
                 }
             }
+
+            List<int> antwortIds = new List<int>();
+
+            //Model State korriegieren wenn keine PLZ gewählt ist damit kein Fehler ausgegeben wird
+            if (fullFilterCatererViewModel.PLZ == null) {
+                ModelState.Remove("Umkreis");
+            }
+
+            //Neuen FragenFilter hinzufügen oder entfernen
+            if (Request.Form["btnAddFilter"] != null)
+            {
+                if (fullFilterCatererViewModel.FrageAntwortModel == null)
+                {
+                    fullFilterCatererViewModel.FrageAntwortModel = new List<FrageAntwortModel>();
+                }
+
+                fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count + 1, AntwortId = 0, FrageId = 0 });
+
+            }
+            else if (Request.Form["btnDeleteFilter"] != null)
+            {
+                        fullFilterCatererViewModel.FrageAntwortModel.RemoveAt(fullFilterCatererViewModel.FrageAntwortModel.Count -1);
+            }
+
+            //aktuell Gewählte Antworten in Liste Speichern
+            foreach (FrageAntwortModel frageAntwort in fullFilterCatererViewModel.FrageAntwortModel)
+            {
+                if (frageAntwort.AntwortId != 0)
+                {
+                    antwortIds.Add(frageAntwort.AntwortId);
+                }
+            }
+
+            //Sortierung ermitteln 
             string Sortierrung = "Firmenname";
             int aktuelleSeite = 1;
             var seitenGrösse = 10;
@@ -132,10 +167,9 @@ namespace Caterer_DB.Controllers
                 Sortierrung = "Postleitzahl_desc";
             }
 
-
             ViewBag.Sortierrung = Sortierrung;
 
-
+            // Caterer abrufen mit allen Filtern    
             var resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
             var resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
             fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
@@ -425,29 +459,51 @@ namespace Caterer_DB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DetailsCaterer(DetailsCatererViewModel detailsCatererViewModel)
         {
+            string dateiName = "";
+
             if (Request.Form["lueneburg"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Lueneburg");
+                if (detailsCatererViewModel.WeitergabeVonDaten)
+                {
+                    dateiName = "InformationsblattLüneburg.docx";
+                }else
+                {
+                    dateiName = "InformationsblattLüneburgWasserzeichen.docx";
+                }
+                
             }
             else if (Request.Form["braunschweig"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Braunschweig");
+                if (detailsCatererViewModel.WeitergabeVonDaten)
+                {
+                    dateiName = "InformationsblattBraunschweig.docx";
+                }
+                else
+                {
+                    dateiName = "InformationsblattBraunschweigWasserzeichen.docx";
+                }
             }
             else if (Request.Form["osnabrueck"] != null)
             {
-                BenutzerService.ExportCaterer(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), "Osnabrueck");
+                if (detailsCatererViewModel.WeitergabeVonDaten)
+                {
+                    dateiName = "InformationsblattOsnabrück.docx";
+                }
+                else
+                {
+                    dateiName = "InformationsblattOsnabrückWasserzeichen.docx";
+                }
             }
 
+            string quellDatei = "/Content/DocxVorlagen/" + dateiName;
+            string zielDatei = dateiName;
 
-            detailsCatererViewModel =
-                BenutzerViewModelService.Map_Benutzer_DetailsCatererViewModel(BenutzerService.SearchUserById(Convert.ToInt32(detailsCatererViewModel.BenutzerId)), FrageService.FindAlleFragenNachKategorieninEigenenListen());
+            byte[] dateiArray = System.IO.File.ReadAllBytes(HostingEnvironment.MapPath(quellDatei));
+            var memoryStream = new MemoryStream(dateiArray, true);
+            BenutzerService.DokumentDrucken(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), memoryStream);
 
-            if (detailsCatererViewModel == null)
-            {
-                return HttpNotFound();
-            }
+            return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.wordprocessingml.document", zielDatei);
 
-            return View(detailsCatererViewModel);
         }
 
         // GET: Benutzer/Delete/5
@@ -507,5 +563,7 @@ namespace Caterer_DB.Controllers
 
             return View(vergleichCatererViewModel);
         }
+
+
     }
 }

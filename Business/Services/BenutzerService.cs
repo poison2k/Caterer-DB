@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using GoogleMaps.LocationServices;
 using System.Data.Entity.Spatial;
+using System.IO;
+using System.Linq;
 
 namespace Business.Services
 {
@@ -24,11 +26,11 @@ namespace Business.Services
 
         private IMapper Mapper { get; set; }
 
-        private IConfigService ConfigService {get; set;}
+        private IConfigService ConfigService { get; set; }
 
         private IGoogleService GoogleService { get; set; }
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService,IConfigService configService, IGoogleService googleService)
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService, IConfigService configService, IGoogleService googleService)
         {
             BenutzerRepository = benutzerRepository;
             BenutzerGruppeService = benutzerGruppeService;
@@ -60,8 +62,9 @@ namespace Business.Services
             return BenutzerRepository.SearchUser(ids);
         }
 
-        public List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis) {
-            
+        public List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis)
+        {
+
             var GeoDaten = GoogleService.FindeLocationByPlz(plz);
             return BenutzerRepository.FindeCatererNachUmkreis(GeoDaten, umkreis);
         }
@@ -94,30 +97,35 @@ namespace Business.Services
             if (plz != "" && plz != null)
             {
 
-                caterer =  BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GoogleService.FindeLocationByPlz(plz), name);
+                caterer = BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GoogleService.FindeLocationByPlz(plz), name);
 
             }
-            else {
+            else
+            {
 
-                caterer =  BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, null, name);
+                caterer = BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, null, name);
             }
 
-            
-            if (antwortIds.Count != 0) {
-                List<Benutzer> listUser = new List<Benutzer>();         
-                foreach (Benutzer user in caterer) {
+
+            if (antwortIds.Count != 0)
+            {
+                List<Benutzer> listUser = new List<Benutzer>();
+                foreach (Benutzer user in caterer)
+                {
                     bool antwortEnthalten = false;
-                    foreach (int id in antwortIds) {
-                        if (user.AntwortIDs.Contains(id)){
-                            antwortEnthalten = true;
-                        } 
 
+                    if (antwortIds.Intersect(user.AntwortIDs).Count() == antwortIds.Count())
+                    {
+                        antwortEnthalten = true;
                     }
-                    if (!antwortEnthalten) {
+
+                    if (!antwortEnthalten)
+                    {
                         listUser.Add(user);
                     }
                 }
-                foreach (Benutzer user in listUser) {
+                foreach (Benutzer user in listUser)
+                {
                     caterer.Remove(user);
                 }
             }
@@ -134,9 +142,10 @@ namespace Business.Services
         public void AddBenutzer(Benutzer benutzer, string gruppe)
         {
             benutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung(gruppe) };
-           
+
             benutzer.PasswortZeitstempel = DateTime.Now;
-            if (gruppe == "Caterer") {
+            if (gruppe == "Caterer")
+            {
                 benutzer.Koordinaten = GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
             }
             BenutzerRepository.AddUser(benutzer);
@@ -151,7 +160,7 @@ namespace Business.Services
         public void AddMitarbeiter(Benutzer benutzer, string gruppe)
         {
             AddBenutzer(benutzer, gruppe);
-           
+
             MailService.SendNewMitarbeiterMail(ConfigService.GetConfig(), benutzer.PasswordVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
 
@@ -295,20 +304,13 @@ namespace Business.Services
             return BenutzerRepository.GetCatererCount();
         }
 
-        public void ExportCaterer(Benutzer benutzer, string standort)
+        public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
         {
-            if (standort == "Lueneburg")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Lueneburg.docx", benutzer.ConvertBenutzerZuStringList());
 
-            }else if (standort == "Braunschweig")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Braunschweig.docx", benutzer.ConvertBenutzerZuStringList());
-            }
-            else if (standort == "Osnabrueck")
-            {
-                DocumentService.writeWordDocument("C:\\Download\\Osnabrueck.docx", benutzer.ConvertBenutzerZuStringList());
-            }
+            DocumentService.DokumentDrucken(benutzer, memoryStream);
+
+
+
         }
     }
 }

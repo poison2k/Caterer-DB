@@ -1,30 +1,113 @@
 ﻿using Common.Interfaces;
+using DataAccess.Interfaces;
+using DataAccess.Model;
+using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Common.Services
 {
     public class DocumentService : IDocumentService
     {
-        public void writeWordDocument(string filepath, List<string> benutzerDaten)
+        public IFrageRepository FrageRepository { get; set; }
+
+        public DocumentService(IFrageRepository frageRepository)
         {
-            WordprocessingDocument wordDocument = WordprocessingDocument.Open(filepath,true);
-            wordDocument.MainDocumentPart.Document.RemoveAllChildren();
-            Body body = wordDocument.MainDocumentPart.Document.AppendChild(new Body());          
-            Paragraph paragraph = body.AppendChild(new Paragraph());
-            Run run = paragraph.AppendChild(new Run());
+            FrageRepository = frageRepository;
+        }
 
-            foreach (var item in benutzerDaten)
+        public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
+        {
             {
-                run.AppendChild(new Text(item));
-            }
-            
-            
-            wordDocument.Close();
+                WordprocessingDocument openXmlDocument = WordprocessingDocument.Open(memoryStream, true);
 
-            //WebClient webClient = new WebClient();
-            //webClient.DownloadFile(filepath, @"c:\\Download\\downloadedFile.docx");
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Nachname", benutzer.Nachname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Vorname", benutzer.Vorname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Telefon", benutzer.Telefon);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Firma", benutzer.Firmenname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "FirmaAnschrift", benutzer.Firmenname);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Fax", benutzer.Fax);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Straße", benutzer.Straße);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Postleitzahl", benutzer.Postleitzahl);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "OrtAnschrift", benutzer.Ort);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Anrede", benutzer.Anrede);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Internetadresse", benutzer.Internetadresse);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Bemerkung", benutzer.Sonstiges);
+
+                var tableRow = (TableRow)OpenXmlUtils.SucheTabellenReiheMitContentControl(openXmlDocument, "Frage");
+                Table table = OpenXmlUtils.SucheTabelleMitContentControl(openXmlDocument, "Frage");
+
+                var neueTabellenZeile = new TableRow();
+                OpenXmlElement neueTabelle = new Table();
+
+                Paragraph seitenumbruch = OpenXmlUtils.ErstelleSeitenumbruch();
+
+                var leerZeile = new Paragraph();
+                int counter = 0;
+                Frage letzteFrage = null;
+                string verketteteAntworten = "";
+                neueTabellenZeile = (TableRow)tableRow.CloneNode(true);
+
+                foreach (int antwortId in benutzer.AntwortIDs)
+                {
+                    Frage aktuelleFrage = FrageRepository.SearchFrageByAntwortId(antwortId);
+                    counter++;
+
+                    if (letzteFrage != aktuelleFrage)
+                    {
+                        verketteteAntworten = "";
+
+                    }
+
+                    neueTabellenZeile = (TableRow)tableRow.CloneNode(true);
+
+                    for (int i = 0; i < aktuelleFrage.Antworten.Count; i++)
+                    {
+
+                        if (antwortId == aktuelleFrage.Antworten[i].AntwortId)
+                        {
+                            verketteteAntworten = verketteteAntworten + aktuelleFrage.Antworten[i].Bezeichnung + Environment.NewLine;
+                            break;
+                        }
+
+                    }
+
+                    Antwort letzteAntwort = aktuelleFrage.Antworten[aktuelleFrage.Antworten.Count-1];
+
+                    if (aktuelleFrage.IstMultiSelect && letzteFrage != aktuelleFrage)
+                    {
+                        letzteFrage = aktuelleFrage;
+                        continue;
+
+                    }
+
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Frage", aktuelleFrage.Bezeichnung);
+                    OpenXmlUtils.ErsetzeContentControl(neueTabellenZeile, "Antwort", verketteteAntworten);
+
+                    if (counter < 17)
+                        tableRow.InsertBeforeSelf(neueTabellenZeile);
+                    else if (counter == 17)
+                    {
+                        OpenXmlElement aktuellesElement = table.InsertAfterSelf(seitenumbruch);
+                        neueTabelle = aktuellesElement.InsertAfterSelf(table.CloneNode(true));
+                        neueTabelle.LastChild.Remove();
+                        neueTabelle.LastChild.InsertAfterSelf(neueTabellenZeile);
+                    }
+                    else
+                        neueTabelle.LastChild.InsertAfterSelf(neueTabellenZeile);
+
+
+
+                    letzteFrage = aktuelleFrage;
+                }
+
+                tableRow.Remove();
+
+                openXmlDocument.MainDocumentPart.Document.Save();
+            }
         }
     }
 }

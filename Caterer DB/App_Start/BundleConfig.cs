@@ -20,7 +20,8 @@ namespace Caterer_DB
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/CustomJS.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -28,6 +29,8 @@ namespace Caterer_DB
                       "~/Content/CustomDesignBootstrap.css",
                       "~/Content/FunkyButton.css"
                       ));
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
