@@ -237,7 +237,14 @@ namespace Business.Services
             Mapper.Map(editedBenutzer, dbBenutzer);
             if (editedBenutzer.BenutzerGruppen.FindAll(x=>x.Bezeichnung == "Caterer").Count > 0  )
             {
-                dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
+                try
+                {
+                    dbBenutzer.Koordinaten = GoogleService.FindeLocationByAdress(dbBenutzer.Postleitzahl, dbBenutzer.Straße, dbBenutzer.Ort);
+                }
+                catch
+                {
+                    throw new ArgumentException("Ungültige Adresse");
+                }
 
                 var config = ConfigService.GetConfig();
                 TimeSpan ts = DateTime.Now - dbBenutzer.LetzteÄnderung;

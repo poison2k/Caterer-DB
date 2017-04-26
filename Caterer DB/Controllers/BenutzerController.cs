@@ -296,7 +296,16 @@ namespace Caterer_DB.Controllers
             {
                 if (BenutzerService.CheckEmailForRegistration(createCatererViewModel.Mail))
                 {
-                    BenutzerService.AddCaterer(BenutzerViewModelService.Map_CreateCatererViewModel_Benutzer(createCatererViewModel), BenutzerGruppenResource.Caterer);
+                    try
+                    {
+                        BenutzerService.AddCaterer(BenutzerViewModelService.Map_CreateCatererViewModel_Benutzer(createCatererViewModel), BenutzerGruppenResource.Caterer);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", ex.Message);
+                        return View(BenutzerViewModelService.AddListsToCreateCatererViewModel(createCatererViewModel));
+                    }
+                   
                 }
                 else
                 {
