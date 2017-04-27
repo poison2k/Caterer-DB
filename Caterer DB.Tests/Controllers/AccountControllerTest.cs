@@ -1,14 +1,15 @@
-﻿using Business.Interfaces;
-using Caterer_DB.Controllers;
+﻿using Caterer_DB.Controllers;
 using Caterer_DB.Interfaces;
-using Caterer_DB.Models;
-using Caterer_DB.Services;
-using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
 using System.Web.Mvc;
+using Business.Interfaces;
+using Caterer_DB.Models;
+using Caterer_DB.Services;
+using DataAccess.Model;
+
 
 namespace Caterer_DB.Tests.Controllers
 {
@@ -16,11 +17,12 @@ namespace Caterer_DB.Tests.Controllers
     public class AccountControllerTest
     {
         private Fixture Fixture { get; set; }
+        private AccountController AccountController { get; set; }
+
 
         private IBenutzerViewModelService MockBenutzerViewModelService { get; set; }
         private ILoginService MockLoginService { get; set; }
         private IBenutzerService MockBenutzerService { get; set; }
-        private AccountController AccountController { get; set; }
 
         [OneTimeSetUp]
         public void TestInit()
@@ -31,20 +33,20 @@ namespace Caterer_DB.Tests.Controllers
 
             //Arrange
             var mockBenutzerService = new Mock<IBenutzerService>();
-            mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(Fixture.Build<Benutzer>().Create());
+            mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(new Benutzer());
             mockBenutzerService.Setup(x => x.VerifyRegistration(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             mockBenutzerService.Setup(x => x.VerifyPasswordChange(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             mockBenutzerService.Setup(x => x.CheckEmailForRegistration(It.IsAny<string>())).Returns(true);
-            mockBenutzerService.Setup(x => x.RegisterBenutzer(Fixture.Build<Benutzer>().Create()));
-            mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(Fixture.Build<Benutzer>().With(x => x.IstEmailVerifiziert, true).Create());
+            mockBenutzerService.Setup(x => x.RegisterBenutzer(new Benutzer()));
+            mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(new Benutzer() { IstEmailVerifiziert = true });
             MockBenutzerService = mockBenutzerService.Object;
 
             var mockBenutzerViewModelService = new Mock<IBenutzerViewModelService>();
-            mockBenutzerViewModelService.Setup(x => x.CreateNewRegisterBenutzerViewModel()).Returns(Fixture.Build<RegisterBenutzerViewModel>().Create());
-            mockBenutzerViewModelService.Setup(x => x.Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(It.IsAny<int>())).Returns(Fixture.Build<ForgottenPasswordCreateNewPasswordViewModel>().Create());
-            mockBenutzerViewModelService.Setup(x => x.Map_ForgottenPasswordCreateNewPasswordViewModel_Benutzer(It.IsAny<ForgottenPasswordCreateNewPasswordViewModel>())).Returns(Fixture.Build<Benutzer>().Create());
-            mockBenutzerViewModelService.Setup(x => x.Map_RegisterBenutzerViewModel_Benutzer(It.IsAny<RegisterBenutzerViewModel>())).Returns(Fixture.Build<Benutzer>().Create());
-            mockBenutzerViewModelService.Setup(x => x.AddListsToRegisterViewModel(It.IsAny<RegisterBenutzerViewModel>())).Returns(Fixture.Build<RegisterBenutzerViewModel>().Create());
+            mockBenutzerViewModelService.Setup(x => x.CreateNewRegisterBenutzerViewModel()).Returns(new RegisterBenutzerViewModel());
+            mockBenutzerViewModelService.Setup(x => x.Get_ForgottenPasswordCreateNewPasswordViewModel_ByBenutzerId(It.IsAny<int>())).Returns(new ForgottenPasswordCreateNewPasswordViewModel());
+            mockBenutzerViewModelService.Setup(x => x.Map_ForgottenPasswordCreateNewPasswordViewModel_Benutzer(It.IsAny<ForgottenPasswordCreateNewPasswordViewModel>())).Returns(new Benutzer());
+            mockBenutzerViewModelService.Setup(x => x.Map_RegisterBenutzerViewModel_Benutzer(It.IsAny<RegisterBenutzerViewModel>())).Returns(new Benutzer());
+            mockBenutzerViewModelService.Setup(x => x.AddListsToRegisterViewModel(It.IsAny<RegisterBenutzerViewModel>())).Returns(new RegisterBenutzerViewModel());
             MockBenutzerViewModelService = mockBenutzerViewModelService.Object;
 
             var mockLoginService = new Mock<ILoginService>();

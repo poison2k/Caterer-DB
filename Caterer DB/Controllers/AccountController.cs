@@ -22,10 +22,6 @@ namespace Caterer_DB.Controllers
             BenutzerViewModelService = benutzerViewModelService;
         }
 
-        public AccountController()
-        {
-        }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]

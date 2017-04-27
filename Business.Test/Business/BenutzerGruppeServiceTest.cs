@@ -6,11 +6,13 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using Ploeh.AutoFixture.AutoMoq;
 
 namespace Business.Test.Business
 {
     public class BenutzerGruppeServiceTest
     {
+     
         [TestFixture]
         public class RechteGruppeServiceTests
         {
@@ -25,8 +27,10 @@ namespace Business.Test.Business
                 Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
                 Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
+                var tets = Fixture.Create<string>();
+                var test = Fixture.Build<Benutzer>().Without(e => e.Koordinaten).Create();
                 var benutzerGruppeList = new List<BenutzerGruppe>();
-                Fixture.AddManyTo(benutzerGruppeList);
+               // Fixture.Build<BenutzerGruppe>().Without(e=> e.Benutzer).Create().AddManyTo(benutzerGruppeList);
                 Fixture.RepeatCount = 10;
                 Fixture.AddManyTo(benutzerGruppeList);
 
@@ -38,6 +42,7 @@ namespace Business.Test.Business
 
                 BenutzerGruppeService = new BenutzerGruppeService(MockBenutzerGruppeRepository);
             }
+        
 
             [Test]
             public void FindAllGroups_Test()

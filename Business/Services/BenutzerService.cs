@@ -248,7 +248,7 @@ namespace Business.Services
 
                 var config = ConfigService.GetConfig();
                 TimeSpan ts = DateTime.Now - dbBenutzer.LetzteÄnderung;
-                if (ts.Hours > config.ZeitInStundendÄnderungsverfolgung)
+                if (ts.TotalHours >= config.ZeitInStundendÄnderungsverfolgung)
                 {
                     if (config.AenderungsVerfolgungCatererAktiviert) {
                         MailService.SendInfoMailEditCatererToEmployee(config, dbBenutzer, BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(1, 10000000, new List<string>() { "Mitarbeiter", "Administrator" },"BenutzerId"));
