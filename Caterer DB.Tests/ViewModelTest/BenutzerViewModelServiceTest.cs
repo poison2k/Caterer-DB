@@ -9,6 +9,7 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using MockData;
 
 namespace Caterer_DB.Tests.ViewModelTest
 {
@@ -36,9 +37,9 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void IsNotNull_AnmeldenBenutzerViewModel_Benutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var fragen = Fixture.Build<List<List<Frage>>>().Create();
-            var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinAdministrator();
+            var fragen = new List<List<Frage>>();
+            var anmeldenBenutzerViewModel = MockAccountViewModels.EinAnmeldenBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
             MockMapper = mockMapper.Object;
@@ -57,11 +58,11 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void IsNull_AnmeldenBenutzerViewModel_Benutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var fragen = Fixture.Build<List<List<Frage>>>().Create();
+            var benutzer = MockBenutzerModel.EinAdministrator();
+            var fragen = new List<List<Frage>>();
 
             benutzer = null;
-            var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
+            var anmeldenBenutzerViewModel = MockAccountViewModels.EinAnmeldenBenutzerViewModel();
             anmeldenBenutzerViewModel = new AnmeldenBenutzerViewModel();
             anmeldenBenutzerViewModel.AnmeldenModel = new LoginModel();
             var mockMapper = new Mock<IMapper>();
@@ -82,12 +83,12 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void IsNotNull_AnmeldenBenutzerViewModel_ID_Test()
         {
             //Assert
-            var anmeldenBenutzerViewModel = Fixture.Build<AnmeldenBenutzerViewModel>().Create();
+            var anmeldenBenutzerViewModel = MockAccountViewModels.EinAnmeldenBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<AnmeldenBenutzerViewModel>(It.IsAny<AnmeldenBenutzerViewModel>())).Returns(anmeldenBenutzerViewModel);
             MockMapper = mockMapper.Object;
             var mockBenutzerService = new Mock<IBenutzerService>();
-            mockBenutzerService.Setup(s => s.SearchUserById(It.IsAny<int>())).Returns(Fixture.Build<Benutzer>().Create());
+            mockBenutzerService.Setup(s => s.SearchUserById(It.IsAny<int>())).Returns(MockBenutzerModel.EinMitarbeiter);
             MockBenutzerService = mockBenutzerService.Object;
             var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 
@@ -103,8 +104,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_CreateMitarbeiterViewModel_Benutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var createMitarbeiterViewModel = Fixture.Build<CreateMitarbeiterViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var createMitarbeiterViewModel = new CreateMitarbeiterViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<CreateMitarbeiterViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
@@ -123,8 +124,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_EditBenutzerViewModel_Benutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var editBenutzerViewModel = Fixture.Build<EditBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var editBenutzerViewModel = new EditBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<EditBenutzerViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
@@ -143,8 +144,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_MyDataBenutzerViewModel_Benutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var myDataBenutzerViewModel = Fixture.Build<MyDataBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var myDataBenutzerViewModel = new MyDataBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<MyDataBenutzerViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
@@ -163,8 +164,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_DeleteBenutzerViewModel_Benutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var deleteBenutzerViewModel = Fixture.Build<DeleteBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var deleteBenutzerViewModel = new DeleteBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<DeleteBenutzerViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
@@ -183,8 +184,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_BenutzerViewModel_EditBenutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var editBenutzerViewModel = Fixture.Build<EditBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var editBenutzerViewModel = new EditBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<EditBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(editBenutzerViewModel);
             MockMapper = mockMapper.Object;
@@ -203,9 +204,9 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_BenutzerViewModel_MyDataBenutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var fragen = Fixture.Build<List<List<Frage>>>().Create();
-            var myDataBenutzerViewModel = Fixture.Build<MyDataBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var fragen = new List<List<Frage>>();
+            var myDataBenutzerViewModel = new MyDataBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<MyDataBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(myDataBenutzerViewModel);
             MockMapper = mockMapper.Object;
@@ -225,8 +226,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_BenutzerViewModel_DetailsBenutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var detailsBenutzerViewModel = Fixture.Build<DetailsBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var detailsBenutzerViewModel = new DetailsBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<DetailsBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(detailsBenutzerViewModel);
             MockMapper = mockMapper.Object;
@@ -245,8 +246,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_BenutzerViewModel_DeleteBenutzer_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var deleteBenutzerViewModel = Fixture.Build<DeleteBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var deleteBenutzerViewModel = new DeleteBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<DeleteBenutzerViewModel>(It.IsAny<Benutzer>())).Returns(deleteBenutzerViewModel);
             MockMapper = mockMapper.Object;
@@ -261,35 +262,14 @@ namespace Caterer_DB.Tests.ViewModelTest
             Assert.AreEqual(deleteBenutzerViewModel.GetType(), result.GetType());
         }
 
-        [Test]
-        public void Map_RegisterBenutzerViewModel_Benutzer_Test()
-        {
-            //Assert
-            var registerBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
-
-            var mockMapper = new Mock<IMapper>();
-            mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<RegisterBenutzerViewModel>())).Returns(Fixture.Build<Benutzer>().Create());
-            MockMapper = mockMapper.Object;
-            var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
-
-            var mockMd5Hash = new Mock<IMd5Hash>();
-            mockMd5Hash.Setup(x => x.CalculateMD5Hash(It.IsAny<string>())).Returns("");
-            MockMD5hash = mockMd5Hash.Object;
-
-            //Act
-            var result = benutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(Fixture.Build<RegisterBenutzerViewModel>().Create());
-
-            //Assert
-
-            Assert.IsNotNull(result.Nachname, result.Nachname);
-        }
+      
 
         [Test]
         public void CreateNewRegisterBenutzerViewModel_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var createNewRegisterBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var createNewRegisterBenutzerViewModel = new RegisterBenutzerViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<Benutzer>(It.IsAny<RegisterBenutzerViewModel>())).Returns(benutzer);
             MockMapper = mockMapper.Object;
@@ -308,8 +288,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void AddListsToRegisterViewModel_Test()
         {
             //Assert
-            var benutzer = Fixture.Build<Benutzer>().Create();
-            var registerBenutzerViewModel = Fixture.Build<RegisterBenutzerViewModel>().Create();
+            var benutzer = MockBenutzerModel.EinMitarbeiter();
+            var registerBenutzerViewModel = new RegisterBenutzerViewModel();
 
             var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash);
 

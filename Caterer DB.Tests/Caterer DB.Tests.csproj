@@ -95,10 +95,6 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -202,7 +198,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ViewModelTest\BenutzerGruppenViewModelTest.cs" />
     <Compile Include="Controllers\AccountControllerTest.cs" />
     <Compile Include="FakeHttpContext.cs" />
@@ -216,19 +211,6 @@
   <ItemGroup>
     <Content Include="App.config">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +232,10 @@
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{E0CE96CF-2177-4EE1-8FBD-0FF9315DD6CD}</Project>
       <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MockData\MockData.csproj">
+      <Project>{a2b03604-7c67-4324-b53f-7ec8f036642f}</Project>
+      <Name>MockData</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

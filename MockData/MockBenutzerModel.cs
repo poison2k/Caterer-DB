@@ -12,12 +12,13 @@ namespace MockData
     public static class MockBenutzerModel
     {
 
-        public static  Benutzer EinCaterer()
+        public static Benutzer EinCaterer()
         {
             return new Benutzer
             {
-                Mail = "citygrilluelzen@test.de",
-                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                BenutzerId = 1,
+                Mail = "test@test.de",
+                Passwort = "TestHash",
                 Nachname = "Panzer",
                 Vorname = "Paul",
                 IstEmailVerifiziert = true,
@@ -32,16 +33,77 @@ namespace MockData
                 Ort = "Uelzen",
                 Anrede = "Herr",
                 FunktionAnsprechpartner = "Geschäftsführer",
-                EMailVerificationCode = "-",
+                EMailVerificationCode = "TestHash",
+                PasswordVerificationCode = "TestHash",
                 _AntwortIDs = "4, 5, 9, 11, 18, 23, 25, 28",
                 PasswortZeitstempel = System.DateTime.Now,
                 LetzteÄnderung = System.DateTime.Now,
                 Koordinaten = DbGeography.FromText("Point( 10.555055 52.966940 )"),
-                BenutzerGruppen = new List<BenutzerGruppe>() 
+                BenutzerGruppen = new List<BenutzerGruppe>() { MockBenutzerGruppeModel.CatererBenutzerGruppe() }
             };
         }
 
 
+        public static Benutzer EinMitarbeiter()
+        {
+            return new Benutzer
+            {
+                BenutzerId = 2,
+                Mail = "mitarbeiter@test.de",
+                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Nachname = "Musterfrau",
+                Vorname = "Maxim",
+                IstEmailVerifiziert = true,
+                PasswortZeitstempel = System.DateTime.Now,
+                LetzteÄnderung = System.DateTime.Now,
+                BenutzerGruppen = new List<BenutzerGruppe>() { MockBenutzerGruppeModel.MitarbeiterBenutzerGruppe() }
+            };
+        }
+
+        public static Benutzer EinNichtVerifizierterBenutzer()
+        {
+            return new Benutzer
+            {
+                BenutzerId = 2,
+                Mail = "mitarbeiter@test.de",
+                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Nachname = "Musterfrau",
+                Vorname = "Maxim",
+                IstEmailVerifiziert = false,
+                PasswortZeitstempel = System.DateTime.Now,
+                LetzteÄnderung = System.DateTime.Now,
+                BenutzerGruppen = new List<BenutzerGruppe>() { MockBenutzerGruppeModel.MitarbeiterBenutzerGruppe() }
+            };
+        }
+
+        public static Benutzer EinAdministrator()
+        {
+            return new Benutzer
+            {
+                BenutzerId = 3,
+                Mail = "admin@test.de",
+                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Nachname = "Müller",
+                Vorname = "Alex",
+                IstEmailVerifiziert = true,
+                Anrede = "Herr",
+                PasswortZeitstempel = System.DateTime.Now,
+                LetzteÄnderung = System.DateTime.Now,
+                BenutzerGruppen = new List<BenutzerGruppe>() { MockBenutzerGruppeModel.AdminBenutzerGruppe() }
+            };
+        }
+
+
+        public static List<Benutzer> CatererListe()
+        {
+            return new List<Benutzer>() { EinCaterer(), EinCaterer(), EinCaterer()};
+        }
+
+
+        public static List<Benutzer> MitarbeiterListe()
+        {
+            return new List<Benutzer>() { EinMitarbeiter(), EinAdministrator(), EinMitarbeiter() };
+        }
     }
 
 }

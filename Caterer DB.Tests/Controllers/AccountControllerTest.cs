@@ -9,7 +9,8 @@ using Business.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Services;
 using DataAccess.Model;
-
+using MockData;
+using System.Web;
 
 namespace Caterer_DB.Tests.Controllers
 {
@@ -131,22 +132,7 @@ namespace Caterer_DB.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        [Test]
-        public void PasswordChange_HTTPGet_FalseVerifyCode_Test()
-        {
-            //Arrange
-            var mockBenutzerService = new Mock<IBenutzerService>();
-            mockBenutzerService.Setup(x => x.VerifyPasswordChange(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
-            var newMockBenutzerService = mockBenutzerService.Object;
-            var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
-            accountController.ControllerContext = new ControllerContext();
-            FakeHttpContext.SetFakeContext(accountController, true);
-            //Act
-            ActionResult result = accountController.PasswordChange("TestID", "TESTVerify");
-            //Assert
-            Assert.IsNotNull(result);
-        }
-
+  
         [Test]
         public void PasswordRequestComplete_HTTPGet_Test()
         {
@@ -194,28 +180,7 @@ namespace Caterer_DB.Tests.Controllers
             Assert.AreEqual("PasswordChangeComplete", routeAction);
         }
 
-        [Test]
-        public void PasswordChange_HTTPPost_VerifyFalse_ModelStateOk_Test()
-        {
-            //Arrange
-            var mockBenutzerService = new Mock<IBenutzerService>();
-
-            mockBenutzerService.Setup(x => x.VerifyPasswordChange(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
-            mockBenutzerService.Setup(x => x.EditBenutzerPassword(It.IsAny<Benutzer>()));
-            var newMockBenutzerService = mockBenutzerService.Object;
-            var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
-            accountController.ControllerContext = new ControllerContext();
-            FakeHttpContext.SetFakeContext(accountController, true);
-
-            //Act
-            ActionResult result = accountController.PasswordChange(Fixture.Build<ForgottenPasswordCreateNewPasswordViewModel>().Create(), "TestId", "TestVerify");
-            string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
-
-            //Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual("~/Views/Shared/Error.cshtml", routeAction);
-        }
-
+    
         [Test]
         public void PasswordChange_HTTPPost_VerifyOk_ModelStateFalse_Test()
         {
@@ -236,7 +201,7 @@ namespace Caterer_DB.Tests.Controllers
             //Arrange
 
             //Act
-            ActionResult result = AccountController.Register(Fixture.Build<RegisterBenutzerViewModel>().Create());
+            ActionResult result = AccountController.Register(MockAccountViewModels.EinRegisterBenutzerViewModel());
             string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
 
             //Assert
@@ -252,7 +217,7 @@ namespace Caterer_DB.Tests.Controllers
             accountController.ModelState.AddModelError("fakeError", "fakeError");
 
             //Act
-            ActionResult result = accountController.Register(Fixture.Build<RegisterBenutzerViewModel>().Create());
+            ActionResult result = accountController.Register(MockAccountViewModels.EinRegisterBenutzerViewModel());
 
             //Assert
             Assert.IsNotNull(result);
@@ -270,7 +235,7 @@ namespace Caterer_DB.Tests.Controllers
             accountController.ControllerContext = new ControllerContext();
 
             //Act
-            ActionResult result = accountController.Register(Fixture.Build<RegisterBenutzerViewModel>().Create());
+            ActionResult result = accountController.Register(MockAccountViewModels.EinRegisterBenutzerViewModel());
 
             //Assert
             Assert.IsNotNull(result);
@@ -301,7 +266,7 @@ namespace Caterer_DB.Tests.Controllers
             accountController.ModelState.AddModelError("fakeError", "fakeError");
 
             //Act
-            ActionResult result = AccountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+            ActionResult result = AccountController.Login(MockAccountViewModels.EinLoginModel(), "Home/Index");
 
             //Assert
             Assert.IsNotNull(result);
@@ -369,7 +334,7 @@ namespace Caterer_DB.Tests.Controllers
             accountController.ControllerContext = new ControllerContext();
 
             //Act
-            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+            ActionResult result = accountController.Login(MockAccountViewModels.EinLoginModel(), "Home/Index");
 
             //Assert
             Assert.IsNotNull(result);
@@ -381,12 +346,12 @@ namespace Caterer_DB.Tests.Controllers
         {
             //Arrange
             var mockBenutzerService = new Mock<IBenutzerService>();
-            mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(Fixture.Build<Benutzer>().With(x => x.IstEmailVerifiziert, false).Create());
+            mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(MockBenutzerModel.EinNichtVerifizierterBenutzer);
             var newMockBenutzerService = mockBenutzerService.Object;
             var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
-
+           
             //Act
-            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+            ActionResult result = accountController.Login(MockAccountViewModels.EinLoginModel(), "Home/Index" );
             string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
 
             //Assert
