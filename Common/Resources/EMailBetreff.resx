@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CatererÄnderung" xml:space="preserve">
-    <value>Ein Caterer hat seine Stammdaten bearbeitet.</value>
+    <value>Ein Caterer hat seine Stammdaten bearbeitet</value>
   </data>
   <data name="Kontoangelegt" xml:space="preserve">
     <value>Willkommen bei der Caterer Datenbank </value>
