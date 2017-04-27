@@ -201,13 +201,10 @@ Bitte nehmen Sie sich ein paar Minuten Zeit und aktualisieren Sie Ihre Antworten
 </value>
   </data>
   <data name="MitarbeiterCatererEdit" xml:space="preserve">
-    <value>Sehr geehrter Mitarbeiter, 
+    <value>Sehr geehrte Mitarbeiter, 
 
-ein Caterer hat seine Stammdaten bearbeitet. 
+der unten aufgeführte Caterer hat seine Daten bearbeitet. 
 
-Caterer: 
-
-
-</value>
+Caterer: </value>
   </data>
 </root>
