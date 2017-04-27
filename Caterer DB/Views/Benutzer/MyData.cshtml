@@ -18,7 +18,7 @@
 {
     @Html.AntiForgeryToken()
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
     @Html.HiddenFor(model => model.BenutzerId)
     @Html.HiddenFor(model => model.Mail)
     @Html.HiddenFor(model => model.PasswortZeitstempel)
