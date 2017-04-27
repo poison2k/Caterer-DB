@@ -6,6 +6,7 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using MockData;
 
 namespace Business.Test.Business
 {
@@ -23,14 +24,9 @@ namespace Business.Test.Business
             Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var rechteListe = new List<Recht>();
-            Fixture.AddManyTo(rechteListe);
-            Fixture.RepeatCount = 10;
-            Fixture.AddManyTo(rechteListe);
-
             var mockRechtRepository = new Mock<IRechtRepository>();
-            mockRechtRepository.Setup(x => x.SearchRight()).Returns(rechteListe);
-            mockRechtRepository.Setup(x => x.SearchRightById(It.IsAny<int>())).Returns(Fixture.Build<Recht>().With(x => x.RechtId, 1).Create());
+            mockRechtRepository.Setup(x => x.SearchRight()).Returns(MockRechtModel.ListeVonRechten);
+            mockRechtRepository.Setup(x => x.SearchRightById(It.IsAny<int>())).Returns(MockRechtModel.EinRecht);
             MockRechtRepository = mockRechtRepository.Object;
 
             RechtService = new RechtService(MockRechtRepository);

@@ -7,6 +7,7 @@ using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoMoq;
+using MockData;
 
 namespace Business.Test.Business
 {
@@ -27,17 +28,10 @@ namespace Business.Test.Business
                 Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
                 Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-                var tets = Fixture.Create<string>();
-                var test = Fixture.Build<Benutzer>().Without(e => e.Koordinaten).Create();
-                var benutzerGruppeList = new List<BenutzerGruppe>();
-               // Fixture.Build<BenutzerGruppe>().Without(e=> e.Benutzer).Create().AddManyTo(benutzerGruppeList);
-                Fixture.RepeatCount = 10;
-                Fixture.AddManyTo(benutzerGruppeList);
-
                 var mockBenutzerGruppeRepository = new Mock<IBenutzerGruppeRepository>();
-                mockBenutzerGruppeRepository.Setup(x => x.SearchGroup()).Returns(benutzerGruppeList);
-                mockBenutzerGruppeRepository.Setup(x => x.SearchGroupById(It.IsAny<int>())).Returns(Fixture.Build<BenutzerGruppe>().With(x => x.NutzerGruppeID, 1).Create());
-                mockBenutzerGruppeRepository.Setup(x => x.SearchGroupByBezeichnung(It.IsAny<string>())).Returns(Fixture.Build<BenutzerGruppe>().With(x => x.Bezeichnung, "TestBezeichnung").Create());
+                mockBenutzerGruppeRepository.Setup(x => x.SearchGroup()).Returns(MockBenutzerGruppeModel.ListeBenutzerGruppe);
+                mockBenutzerGruppeRepository.Setup(x => x.SearchGroupById(It.IsAny<int>())).Returns(MockBenutzerGruppeModel.AdminBenutzerGruppe);
+                mockBenutzerGruppeRepository.Setup(x => x.SearchGroupByBezeichnung(It.IsAny<string>())).Returns(MockBenutzerGruppeModel.AdminBenutzerGruppe);
                 MockBenutzerGruppeRepository = mockBenutzerGruppeRepository.Object;
 
                 BenutzerGruppeService = new BenutzerGruppeService(MockBenutzerGruppeRepository);
@@ -75,10 +69,10 @@ namespace Business.Test.Business
                 //Arrange
 
                 //Act
-                var result = BenutzerGruppeService.SearchGroupByBezeichnung("TestBezeichnung");
+                var result = BenutzerGruppeService.SearchGroupByBezeichnung("Administrator");
 
                 Assert.IsNotNull(result);
-                Assert.AreEqual("TestBezeichnung", result.Bezeichnung);
+                Assert.AreEqual("Administrator", result.Bezeichnung);
             }
         }
     }

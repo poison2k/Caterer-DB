@@ -6,6 +6,7 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using MockData;
 
 namespace Caterer_DB.Tests.ViewModelTest
 {
@@ -27,8 +28,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_CreateRechtViewModel_Recht_Test()
         {
             //Assert
-            var recht = Fixture.Build<Recht>().Create();
-            var createRechtViewModel = Fixture.Build<CreateRechtViewModel>().Create();
+            var recht = MockRechtModel.EinRecht();
+            var createRechtViewModel = new CreateRechtViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<Recht>(It.IsAny<CreateRechtViewModel>())).Returns(recht);
             MockMapper = mockMapper.Object;
@@ -47,8 +48,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_EditRechtViewModel_Recht_Test()
         {
             //Assert
-            var recht = Fixture.Build<Recht>().Create();
-            var editRechtViewModel = Fixture.Build<EditRechtViewModel>().Create();
+            var recht = MockRechtModel.EinRecht();
+            var editRechtViewModel = new EditRechtViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<Recht>(It.IsAny<EditRechtViewModel>())).Returns(recht);
             MockMapper = mockMapper.Object;
@@ -67,8 +68,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_DeleteRechtViewModel_Recht_Test()
         {
             //Assert
-            var recht = Fixture.Build<Recht>().Create();
-            var deleteRechtViewModel = Fixture.Build<DeleteRechtViewModel>().Create();
+            var recht = MockRechtModel.EinRecht();
+            var deleteRechtViewModel = new DeleteRechtViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<Recht>(It.IsAny<DeleteRechtViewModel>())).Returns(recht);
             MockMapper = mockMapper.Object;
@@ -87,8 +88,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_RechteViewModel_EditRecht_Test()
         {
             //Assert
-            var recht = Fixture.Build<Recht>().Create();
-            var editRechtViewModel = Fixture.Build<EditRechtViewModel>().Create();
+            var recht = MockRechtModel.EinRecht();
+            var editRechtViewModel = new EditRechtViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<EditRechtViewModel>(It.IsAny<Recht>())).Returns(editRechtViewModel);
             MockMapper = mockMapper.Object;
@@ -107,8 +108,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_RechtViewModel_DetailsRecht_Test()
         {
             //Assert
-            var recht = Fixture.Build<Recht>().Create();
-            var detailsRechtViewModel = Fixture.Build<DetailsRechtViewModel>().Create();
+            var recht = MockRechtModel.EinRecht();
+            var detailsRechtViewModel = new DetailsRechtViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<DetailsRechtViewModel>(It.IsAny<Recht>())).Returns(detailsRechtViewModel);
             MockMapper = mockMapper.Object;
@@ -127,8 +128,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_RechtViewModel_DeleteRecht_Test()
         {
             //Assert
-            var recht = Fixture.Build<Recht>().Create();
-            var deleteRechtViewModel = Fixture.Build<DeleteRechtViewModel>().Create();
+            var recht = MockRechtModel.EinRecht();
+            var deleteRechtViewModel = new DeleteRechtViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<DeleteRechtViewModel>(It.IsAny<Recht>())).Returns(deleteRechtViewModel);
             MockMapper = mockMapper.Object;

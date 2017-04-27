@@ -9,6 +9,9 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using MockData;
+using System.Data.Entity.Spatial;
+using System;
 
 namespace Business.Test.Business
 {
@@ -31,21 +34,21 @@ namespace Business.Test.Business
         [OneTimeSetUp]
         public void TestInit()
         {
+            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
+
             Fixture = new Fixture();
             Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var benutzerList = new List<Benutzer>();
-            Fixture.AddManyTo(benutzerList);
-            Fixture.RepeatCount = 10;
-            Fixture.AddManyTo(benutzerList);
+           
 
             var mockBenutzerRepository = new Mock<IBenutzerRepository>();
-            mockBenutzerRepository.Setup(x => x.SearchUser()).Returns(benutzerList);
-            mockBenutzerRepository.Setup(x => x.SearchAllCatererWithPaging(It.IsAny<int>(), It.IsAny<int>())).Returns(benutzerList);
-            mockBenutzerRepository.Setup(x => x.SearchUserById(It.IsAny<int>())).Returns(Fixture.Build<Benutzer>().With(x => x.BenutzerId, 1).With(x => x.EMailVerificationCode, "TestHash").With(x => x.PasswordVerificationCode, "TestHash").Create());
-            mockBenutzerRepository.Setup(x => x.SearchUserByIdNoTracking(It.IsAny<int>())).Returns(Fixture.Build<Benutzer>().With(x => x.BenutzerId, 1).Create());
-            mockBenutzerRepository.Setup(x => x.SearchUserByEMail(It.IsAny<string>())).Returns(Fixture.Build<Benutzer>().With(x => x.Mail, "test@test.de").Create());
+            mockBenutzerRepository.Setup(x => x.SearchUser()).Returns(MockBenutzerModel.CatererListe);
+            mockBenutzerRepository.Setup(x => x.SearchAllUserByUserGroupWithPagingOrderByCategory(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<List<string>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DbGeography>(),It.IsAny<string>())).Returns(MockBenutzerModel.CatererListe());
+            mockBenutzerRepository.Setup(x => x.SearchAllCatererWithPaging(It.IsAny<int>(), It.IsAny<int>())).Returns(MockBenutzerModel.CatererListe());
+            mockBenutzerRepository.Setup(x => x.SearchUserById(It.IsAny<int>())).Returns(MockBenutzerModel.EinCaterer());
+            mockBenutzerRepository.Setup(x => x.SearchUserByIdNoTracking(It.IsAny<int>())).Returns(MockBenutzerModel.EinCaterer());
+            mockBenutzerRepository.Setup(x => x.SearchUserByEMail(It.IsAny<string>())).Returns(MockBenutzerModel.EinCaterer());
             mockBenutzerRepository.Setup(x => x.GetMitarbeiterCount()).Returns(10);
             mockBenutzerRepository.Setup(x => x.AddUser(It.IsAny<Benutzer>()));
             mockBenutzerRepository.Setup(x => x.EditUser(It.IsAny<Benutzer>()));
@@ -53,7 +56,7 @@ namespace Business.Test.Business
             MockBenutzerRepository = mockBenutzerRepository.Object;
 
             var mockBenutzerGruppeService = new Mock<IBenutzerGruppeService>();
-            mockBenutzerGruppeService.Setup(x => x.SearchGroupByBezeichnung(It.IsAny<string>())).Returns(Fixture.Build<BenutzerGruppe>().With(x => x.Bezeichnung, "TestBezeichnung").Create());
+            mockBenutzerGruppeService.Setup(x => x.SearchGroupByBezeichnung(It.IsAny<string>())).Returns(MockBenutzerGruppeModel.AdminBenutzerGruppe());
             MockBenutzerGruppeService = mockBenutzerGruppeService.Object;
 
             var mockMapper = new Mock<IMapper>();

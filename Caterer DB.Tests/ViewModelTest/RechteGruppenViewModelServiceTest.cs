@@ -6,6 +6,7 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using MockData;
 
 namespace Caterer_DB.Tests.ViewModelTest
 {
@@ -27,8 +28,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_CreateRechterGruppeViewModel_RechteGruppe_Test()
         {
             //Assert
-            var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
-            var createRechteGruppeViewModel = Fixture.Build<CreateRechteGruppeViewModel>().Create();
+            var rechteGruppe = MockRechteGruppeModel.AdminRechteGruppe();
+            var createRechteGruppeViewModel = new CreateRechteGruppeViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<RechteGruppe>(It.IsAny<CreateRechteGruppeViewModel>())).Returns(rechteGruppe);
             MockMapper = mockMapper.Object;
@@ -47,8 +48,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_EditRechteGruppeViewModel_RechteGruppe_Test()
         {
             //Assert
-            var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
-            var editRechteGruppeViewModel = Fixture.Build<EditRechteGruppeViewModel>().Create();
+            var rechteGruppe = MockRechteGruppeModel.AdminRechteGruppe();
+            var editRechteGruppeViewModel = new EditRechteGruppeViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<RechteGruppe>(It.IsAny<EditRechteGruppeViewModel>())).Returns(rechteGruppe);
             MockMapper = mockMapper.Object;
@@ -67,8 +68,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_DeleteRechteGruppeViewModel_RechteGruppe_Test()
         {
             //Assert
-            var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
-            var deleteRechteGruppeViewModel = Fixture.Build<DeleteRechteGruppeViewModel>().Create();
+            var rechteGruppe = MockRechteGruppeModel.AdminRechteGruppe();
+            var deleteRechteGruppeViewModel = new DeleteRechteGruppeViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<RechteGruppe>(It.IsAny<DeleteRechteGruppeViewModel>())).Returns(rechteGruppe);
             MockMapper = mockMapper.Object;
@@ -87,8 +88,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_RechteGruppeViewModel_EditRechteGruppe_Test()
         {
             //Assert
-            var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
-            var editRechteGruppeViewModel = Fixture.Build<EditRechteGruppeViewModel>().Create();
+            var rechteGruppe = MockRechteGruppeModel.AdminRechteGruppe();
+            var editRechteGruppeViewModel = new EditRechteGruppeViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<EditRechteGruppeViewModel>(It.IsAny<RechteGruppe>())).Returns(editRechteGruppeViewModel);
             MockMapper = mockMapper.Object;
@@ -107,8 +108,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_RechteGruppeViewModel_DetailsRechteGruppe_Test()
         {
             //Assert
-            var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
-            var detailsRechteGruppeViewModel = Fixture.Build<DetailsRechteGruppeViewModel>().Create();
+            var rechteGruppe = MockRechteGruppeModel.AdminRechteGruppe();
+            var detailsRechteGruppeViewModel = new DetailsRechteGruppeViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<DetailsRechteGruppeViewModel>(It.IsAny<RechteGruppe>())).Returns(detailsRechteGruppeViewModel);
             MockMapper = mockMapper.Object;
@@ -127,8 +128,8 @@ namespace Caterer_DB.Tests.ViewModelTest
         public void Map_RechteGruppeViewModel_DeleteRechteGruppe_Test()
         {
             //Assert
-            var rechteGruppe = Fixture.Build<RechteGruppe>().Create();
-            var deleteRechteGruppeViewModel = Fixture.Build<DeleteRechteGruppeViewModel>().Create();
+            var rechteGruppe = MockRechteGruppeModel.AdminRechteGruppe();
+            var deleteRechteGruppeViewModel = new DeleteRechteGruppeViewModel();
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(m => m.Map<DeleteRechteGruppeViewModel>(It.IsAny<RechteGruppe>())).Returns(deleteRechteGruppeViewModel);
             MockMapper = mockMapper.Object;

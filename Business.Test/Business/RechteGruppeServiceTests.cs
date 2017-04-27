@@ -6,6 +6,7 @@ using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using MockData;
 
 namespace Business.Test.Business
 {
@@ -30,7 +31,7 @@ namespace Business.Test.Business
 
             var mockBenutzerRepository = new Mock<IRechteGruppeRepository>();
             mockBenutzerRepository.Setup(x => x.SearchRightGroup()).Returns(rechteGruppeList);
-            mockBenutzerRepository.Setup(x => x.SearchRightGroupById(It.IsAny<int>())).Returns(Fixture.Build<RechteGruppe>().With(x => x.RechteVerwaltungsGruppeId, 1).Create());
+            mockBenutzerRepository.Setup(x => x.SearchRightGroupById(It.IsAny<int>())).Returns(MockRechteGruppeModel.AdminRechteGruppe());
             MockRechteGruppeRepository = mockBenutzerRepository.Object;
 
             RechteGruppeService = new RechteGruppeService(MockRechteGruppeRepository);
