@@ -1,4 +1,5 @@
-﻿using DataAccess.Model;
+﻿using Caterer_DB.Services;
+using DataAccess.Model;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -10,14 +11,14 @@ namespace Caterer_DB.Models
         [Key]
         public int FrageId { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Frage")]
         public string Bezeichnung { get; set; }
 
         [DisplayName(@"Anzahl Antworten")]
         public List<Antwort> Antworten { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Kategorie")]
         public Kategorie Kategorie { get; set; }
 
@@ -30,13 +31,13 @@ namespace Caterer_DB.Models
         [Key]
         public int FrageId { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Frage")]
         public string Bezeichnung { get; set; }
 
         public List<Antwort> Antworten { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Kategorie")]
         public string KategorieName { get; set; }
 
@@ -54,12 +55,12 @@ namespace Caterer_DB.Models
         public int FrageId { get; set; }
 
         [DisplayName(@"Frage")]
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public List<Antwort> Antworten { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Kategorie")]
         public string KategorieName { get; set; }
 
@@ -78,7 +79,7 @@ namespace Caterer_DB.Models
         [Key]
         public int FrageId { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Frage")]
         public string Bezeichnung { get; set; }
 
@@ -96,7 +97,7 @@ namespace Caterer_DB.Models
         [Key]
         public int FrageId { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Frage")]
         public string Bezeichnung { get; set; }
 

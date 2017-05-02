@@ -243,7 +243,7 @@ namespace SeleniumTests
             TestTools.User_Login_Durchführen(LoginDaten.Mitarbeiter, LoginDaten.PW1, driver);
 
             //Variante AGB Fußzeile
-            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/EditCaterer/1");
+            driver.Navigate().GoToUrl("http://caterer-schulverpflegung-niedersachsen.de/Benutzer/EditCaterer/1");
             Assert.AreEqual(Hinweise.Caterer_Bearbeiten_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_CatererManagement.Caterer_Bearbeiten_Seite, driver));
 
             TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Firmenname, ObjektIDs_NutzerDaten.Firmanname, driver);

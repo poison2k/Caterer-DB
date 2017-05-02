@@ -41,4 +41,13 @@ namespace Caterer_DB.Services
             return (int)value >= _minValue;
         }
     }
+
+    public class MyRequired : RequiredAttribute
+    {
+        public MyRequired()
+        {
+            this.ErrorMessage = "Das Feld \"{0}\" ist erforderlich.";
+        }
+    }
+
 }

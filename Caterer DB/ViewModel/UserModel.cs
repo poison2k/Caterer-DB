@@ -1,4 +1,5 @@
 ﻿using Caterer_DB.Interfaces;
+using Caterer_DB.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,7 +20,7 @@ namespace Caterer_DB.Models
 
         public int BenutzerId { get; set; }
 
-        [Required]
+        [MyRequired]
         [Display(Name = "E-Mail")]
         [EmailAddress]
         public string Email { get; set; }
@@ -28,7 +29,7 @@ namespace Caterer_DB.Models
 
         public string Nachname { get; set; }
 
-        [Required]
+        [MyRequired]
         [DataType(DataType.Password)]
         [Display(Name = "Passwort")]
         public string Passwort { get; set; }
@@ -106,11 +107,11 @@ namespace Caterer_DB.Models
 
     public class LoginModel
     {
-        [Required]
+        [MyRequired]
         [Display(Name = "E-Mail")]
         public string Email { get; set; }
 
-        [Required]
+        [MyRequired]
         [DataType(DataType.Password)]
         [Display(Name = "Passwort")]
         public string Passwort { get; set; }

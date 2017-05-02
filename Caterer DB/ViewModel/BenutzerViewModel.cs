@@ -26,7 +26,7 @@ namespace Caterer_DB.Models
 
     public class ForgottenPasswordRequestViewModel
     {
-        [Required]
+        [MyRequired]
         [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
@@ -37,18 +37,18 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
 
-        [Required]
+        [MyRequired]
         [StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Passwort")]
         public string Passwort { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Passwort Wiederholung")]
         [DataType(DataType.Password)]
         [Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
@@ -57,18 +57,18 @@ namespace Caterer_DB.Models
 
     public class RegisterBenutzerViewModel
     {
-        [Required]
+        [MyRequired]
         [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
 
-        [Required]
+        [MyRequired]
         [StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Passwort")]
         public string Passwort { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Passwort Wiederholung")]
         [DataType(DataType.Password)]
         [Compare("Passwort", ErrorMessage = "Die Passwörter stimmen nicht überein")]
@@ -80,26 +80,26 @@ namespace Caterer_DB.Models
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Firmenname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Organisationsform { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Funktion des Ansprechpartners")]
         public string FunktionAnsprechpartner { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Telefon")]
         [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
@@ -107,27 +107,27 @@ namespace Caterer_DB.Models
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Straße und Hausnummer")]
         public string Straße { get; set; }
 
-        [Required]
+        [MyRequired]
         [RegularExpression("^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$", ErrorMessage = "Bitte PLZ Format beachten 01000 - 99999")]
         public string Postleitzahl { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Ort { get; set; }
 
         public string Internetadresse { get; set; }
 
-        [Required]
+        [MyRequired]
         public int Lieferumkreis { get; set; }
 
-        [Required]
+        [MyRequired]
         [MustBeTrue(ErrorMessage = "Sie müssen die AGBs akzeptieren")]
         public bool AGBs { get; set; }
 
-        [Required]
+        [MyRequired]
         [MustBeTrue(ErrorMessage = "Datenschutzbestimmungen müssen zugestimmt werden")]
         public bool Datenschutz { get; set; }
 
@@ -142,23 +142,23 @@ namespace Caterer_DB.Models
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
         [Key]
         public int BenutzerId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon (optional)")]
         [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
@@ -172,24 +172,24 @@ namespace Caterer_DB.Models
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
         [Key]
-        [Required]
+        [MyRequired]
         public int BenutzerId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon (optional)")]
         [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
-        [Required]
+        [MyRequired]
         [EmailAddress]
         public string Mail { get; set; }
 
@@ -204,17 +204,17 @@ namespace Caterer_DB.Models
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> JaNein { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
         [Key]
-        [Required]
+        [MyRequired]
         public int BenutzerId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon (optional)")]
@@ -234,31 +234,31 @@ namespace Caterer_DB.Models
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Firmenname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Organisationsform { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Funktion des Ansprechpartners")]
         public string FunktionAnsprechpartner { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Telefon")]
         [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
@@ -266,20 +266,20 @@ namespace Caterer_DB.Models
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Straße und Hausnummer")]
         public string Straße { get; set; }
 
-        [Required]
+        [MyRequired]
         [RegularExpression("^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$", ErrorMessage = "Bitte PLZ Format beachten 01000 - 99999")]
         public string Postleitzahl { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Ort { get; set; }
 
         public string Internetadresse { get; set; }
 
-        [Required]
+        [MyRequired]
         public int Lieferumkreis { get; set; }
 
         public DateTime PasswortZeitstempel { get; set; }
@@ -303,19 +303,19 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-        [Required]
+        [MyRequired]
         [EmailAddress]
         public string Mail { get; set; }
 
@@ -328,19 +328,19 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
-        [Required]
+        [MyRequired]
         [EmailAddress]
         public string Mail { get; set; }
 
@@ -356,7 +356,7 @@ namespace Caterer_DB.Models
 
     public class AnmeldenBenutzerViewModel
     {
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
         public string Vorname { get; set; }
@@ -405,7 +405,7 @@ namespace Caterer_DB.Models
 
         public string Name { get; set; }
 
-        [Required]
+        [MyRequired]
         [RegularExpression("^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$", ErrorMessage = "Bitte PLZ Format beachten 01000 - 99999")]
         public string PLZ { get; set; }
 
@@ -433,7 +433,7 @@ namespace Caterer_DB.Models
 
     public class CreateCatererViewModel
     {
-        [Required]
+        [MyRequired]
         [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
@@ -444,26 +444,26 @@ namespace Caterer_DB.Models
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Firmenname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Organisationsform { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Funktion des Ansprechpartners")]
         public string FunktionAnsprechpartner { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Telefon")]
         [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
@@ -471,20 +471,20 @@ namespace Caterer_DB.Models
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Straße und Hausnummer")]
         public string Straße { get; set; }
 
-        [Required]
+        [MyRequired]
         [RegularExpression("^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$", ErrorMessage = "Bitte PLZ Format beachten 01000 - 99999")]
         public string Postleitzahl { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Ort { get; set; }
 
         public string Internetadresse { get; set; }
 
-        [Required]
+        [MyRequired]
         public int Lieferumkreis { get; set; }
 
         [DisplayName(@"Bemerkungen")]
@@ -496,50 +496,50 @@ namespace Caterer_DB.Models
         [Key]
         public int BenutzerId { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"E-Mail")]
         [EmailAddress]
         public string Mail { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Anrede { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Vorname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Nachname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Firmenname { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Organisationsform { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Funktion")]
         public string FunktionAnsprechpartner { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Telefon")]
         public string Telefon { get; set; }
 
         [DisplayName(@"Fax")]
         public string Fax { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Straße")]
         public string Straße { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Postleitzahl { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Ort { get; set; }
 
         public string Internetadresse { get; set; }
 
-        [Required]
+        [MyRequired]
         public int Lieferumkreis { get; set; }
 
         public DateTime PasswortZeitstempel { get; set; }

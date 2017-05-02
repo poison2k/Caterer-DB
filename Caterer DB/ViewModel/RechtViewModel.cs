@@ -1,4 +1,5 @@
-﻿using DataAccess.Model;
+﻿using Caterer_DB.Services;
+using DataAccess.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,7 +10,7 @@ namespace Caterer_DB.Models
         [Key]
         public int RechtId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public string Beschreibung { get; set; }
@@ -24,7 +25,7 @@ namespace Caterer_DB.Models
         [Key]
         public int RechtId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public string Beschreibung { get; set; }
@@ -39,7 +40,7 @@ namespace Caterer_DB.Models
         [Key]
         public int RechtId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public string Beschreibung { get; set; }
@@ -54,7 +55,7 @@ namespace Caterer_DB.Models
         [Key]
         public int RechtId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public string Beschreibung { get; set; }
