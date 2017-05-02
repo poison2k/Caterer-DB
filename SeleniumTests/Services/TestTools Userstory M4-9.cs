@@ -39,7 +39,7 @@ namespace SeleniumTests.Services
         public static void Kategorie_Bearbeiten_Seite(IWebDriver driver)
         {
 
-            driver.Navigate().GoToUrl("http://localhost:60003/Kategorie/Edit/3");
+            driver.Navigate().GoToUrl("http://caterer-schulverpflegung-niedersachsen.de/Kategorie/Edit/3");
             Assert.AreEqual(Hinweise.Fragen_Kategorie_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Kategorie_Bearbeiten_Seite, driver));
 
         }
@@ -47,7 +47,7 @@ namespace SeleniumTests.Services
         public static void Kategorie_Bearbeiten_Seite_Auf_Keine_Kategorieänderung_Prüfen_Und_Ändern(IWebDriver driver)
         {
 
-            driver.Navigate().GoToUrl("http://localhost:60003/Kategorie/Edit/3");
+            driver.Navigate().GoToUrl("http://caterer-schulverpflegung-niedersachsen.de/Kategorie/Edit/3");
             Assert.AreEqual(Hinweise.Fragen_Kategorie_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Kategorie_Bearbeiten_Seite, driver));
             Assert.AreEqual(ObjektIDs_FragebogenManagement.Kategorie_Dummykategorie, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Kategorie_Formulieren_Textbox, driver));
             TestTools.Daten_In_Textbox_Eingeben("", ObjektIDs_FragebogenManagement.Kategorie_Formulieren_Textbox, driver);
