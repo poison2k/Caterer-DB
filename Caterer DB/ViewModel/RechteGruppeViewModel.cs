@@ -1,4 +1,5 @@
-﻿using DataAccess.Model;
+﻿using Caterer_DB.Services;
+using DataAccess.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,7 +10,7 @@ namespace Caterer_DB.Models
         [Key]
         public int RechteVerwaltungsGruppeId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public bool Löschbar { get; set; }
@@ -22,7 +23,7 @@ namespace Caterer_DB.Models
         [Key]
         public int RechteVerwaltungsGruppeId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public bool Löschbar { get; set; }
@@ -35,7 +36,7 @@ namespace Caterer_DB.Models
         [Key]
         public int RechteVerwaltungsGruppeId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public bool Löschbar { get; set; }
@@ -48,7 +49,7 @@ namespace Caterer_DB.Models
         [Key]
         public int RechteVerwaltungsGruppeId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public bool Löschbar { get; set; }

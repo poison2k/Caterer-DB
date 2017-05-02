@@ -9,26 +9,26 @@ namespace Caterer_DB.Models
         [Key]
         public int ConfigId { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Benutzername für SMTP - Server")]
         public string UserNameForSMTPServer { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Passwort für SMTP - Server")]
         public string PasswortForSMTPServer { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"SMTP - Server")]
         public string SmtpServer { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"SMTP - Port")]
         public int SmtpPort { get; set; }
 
         [DisplayName(@"Änderungsverfolgung für Änderungen der Caterer")]
         public bool AenderungsVerfolgungCatererAktiviert { get;set;}
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Zeit bis zur nächsten Änderungsmeldung (1h-24h)")]
         [MinValue(1, ErrorMessage = "Mindestens 1 Stunde")]
         [MaxValue(24, ErrorMessage = "Maximal 24 Stunden")]

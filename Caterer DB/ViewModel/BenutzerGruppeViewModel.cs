@@ -1,4 +1,5 @@
-﻿using DataAccess.Model;
+﻿using Caterer_DB.Services;
+using DataAccess.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,10 +10,10 @@ namespace Caterer_DB.Models
         [Key]
         public int NutzerGruppeID { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
-        [Required]
+        [MyRequired]
         public bool Löschbar { get; set; }
 
         public bool IstGelöscht { get; set; }
@@ -27,10 +28,10 @@ namespace Caterer_DB.Models
         [Key]
         public int NutzerGruppeID { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
-        [Required]
+        [MyRequired]
         public bool Löschbar { get; set; }
 
         public bool IstGelöscht { get; set; }
@@ -45,10 +46,10 @@ namespace Caterer_DB.Models
         [Key]
         public int NutzerGruppeID { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
-        [Required]
+        [MyRequired]
         public bool Löschbar { get; set; }
 
         public bool IstGelöscht { get; set; }
@@ -63,10 +64,10 @@ namespace Caterer_DB.Models
         [Key]
         public int NutzerGruppeID { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
-        [Required]
+        [MyRequired]
         public bool Löschbar { get; set; }
 
         public bool IstGelöscht { get; set; }
