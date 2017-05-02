@@ -25,10 +25,10 @@ namespace DataAccess.Repositories
             var fragen = new List<List<Frage>>();
             foreach (Kategorie kategorie in kategorien)
             {
-                var fragenFürKategorie = Db.Frage.Include(y => y.Kategorie).Where(x => x.IstVeröffentlicht == true).Where(x => x.Kategorie.Bezeichnung == kategorie.Bezeichnung).ToList();
+                var fragenFürKategorie = Db.Frage.Include(y => y.Kategorie).AsNoTracking().Where(x => x.IstVeröffentlicht == true).Where(x => x.Kategorie.Bezeichnung == kategorie.Bezeichnung).ToList();
                 if (fragenFürKategorie.Count != 0)
                 {
-                    fragen.Add(Db.Frage.Include(y => y.Kategorie).Where(x => x.IstVeröffentlicht == true).Where(x => x.Kategorie.Bezeichnung == kategorie.Bezeichnung).ToList());
+                    fragen.Add(Db.Frage.Include(y => y.Kategorie).AsNoTracking().Where(x => x.IstVeröffentlicht == true).Where(x => x.Kategorie.Bezeichnung == kategorie.Bezeichnung).ToList());
                 }
             }
 

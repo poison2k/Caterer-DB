@@ -17,10 +17,13 @@ namespace Caterer_DB.Models.ViewModelServices
         private IMd5Hash MD5hash { get; set; }
         private IBenutzerService BenutzerService { get; set; }
 
-        public BenutzerViewModelService(IBenutzerService benutzerService, IMd5Hash md5Hash)
+        private IFrageService FrageService { get; set; }
+
+        public BenutzerViewModelService(IBenutzerService benutzerService, IMd5Hash md5Hash, IFrageService frageService)
         {
             MD5hash = md5Hash;
             BenutzerService = benutzerService;
+            FrageService = frageService;
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsVirtual;
@@ -393,10 +396,10 @@ namespace Caterer_DB.Models.ViewModelServices
 
             var vergleichCatererViewModel = new VergleichCatererViewModel();
             vergleichCatererViewModel.caterer = new List<DetailsCatererViewModel>();
-            vergleichCatererViewModel.Fragen = fragenListen;
+            vergleichCatererViewModel.Fragen = FrageService.FindAlleFragenNachKategorieninEigenenListen();
             foreach (Benutzer benutzer in caterer)
             {
-                vergleichCatererViewModel.caterer.Add(Map_Benutzer_DetailsCatererViewModel(benutzer, fragenListen));
+                vergleichCatererViewModel.caterer.Add(Map_Benutzer_DetailsCatererViewModel(benutzer, FrageService.FindAlleFragenNachKategorieninEigenenListen()));
             }
 
             return vergleichCatererViewModel;
