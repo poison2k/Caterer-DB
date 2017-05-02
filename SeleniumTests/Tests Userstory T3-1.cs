@@ -322,7 +322,7 @@ namespace SeleniumTests
             //Mitarbeiter löschen über Details Seite
             //TestTools_Userstory_T3_1.Details_Von_Mitarbeiter_Anzeigen(driver);
 
-            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/Details/10");
+            driver.Navigate().GoToUrl("http://caterer-schulverpflegung-niedersachsen.de/Benutzer/Details/10");
             Assert.AreEqual(Hinweise.Mitarbeiter_Details, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Details, driver));
 
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Daten_Bearbeiten, driver);

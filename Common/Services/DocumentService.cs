@@ -46,17 +46,17 @@ namespace Common.Services
                 Paragraph seitenumbruch = OpenXmlUtils.ErstelleSeitenumbruch();
 
                 var leerZeile = new Paragraph();
-                int counter = 0;
+                int counter = 1;
                 Frage letzteFrage = null;
                 neueTabellenZeile = (TableRow)tableRow.CloneNode(true);
 
 
                 foreach (int antwortId in benutzer.AntwortIDs)
                 {
-                    counter++;
-                    Frage aktuelleFrage = FrageRepository.SearchFrageByAntwortId(antwortId);                    
+                    
+                    Frage aktuelleFrage = FrageRepository.SearchFrageByAntwortId(antwortId);
                     string verketteteAntworten = "";
-                    List<Antwort> tmpAntworten = new List<Antwort> (aktuelleFrage.Antworten);
+                    List<Antwort> tmpAntworten = new List<Antwort>(aktuelleFrage.Antworten);
 
                     if (letzteFrage == aktuelleFrage)
                     {
@@ -97,10 +97,10 @@ namespace Common.Services
                         neueTabelle.LastChild.InsertAfterSelf(neueTabellenZeile);
                     }
                     else
+                    {
                         neueTabelle.LastChild.InsertAfterSelf(neueTabellenZeile);
-
-
-
+                    }
+                    counter++;
                     letzteFrage = aktuelleFrage;
                 }
 

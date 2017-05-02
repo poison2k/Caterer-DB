@@ -14,19 +14,19 @@ namespace SeleniumTests.Services
 
         public static void Caterer_Bearbeiten_Anzeigen(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/EditCaterer/35");
+            driver.Navigate().GoToUrl("http://caterer-schulverpflegung-niedersachsen.de/Benutzer/EditCaterer/35");
             Assert.AreEqual(Hinweise.Caterer_Bearbeiten_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_CatererManagement.Caterer_Bearbeiten_Seite, driver));
         }
 
         public static void Details_Von_Caterer_Anzeigen(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/DetailsCaterer/1");
+            driver.Navigate().GoToUrl("http://caterer-schulverpflegung-niedersachsen.de/Benutzer/DetailsCaterer/1");
             Assert.AreEqual(Hinweise.Caterer_Details_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_CatererManagement.Caterer_Details_Seite, driver));
         }
 
         public static void Caterer_Bearbeiten_Seite_Firmanamen_Prüfen_Und_Ändern(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("http://localhost:60003/Benutzer/EditCaterer/1");
+            driver.Navigate().GoToUrl("http://caterer-schulverpflegung-niedersachsen.de/Benutzer/EditCaterer/1");
             Assert.AreEqual(Hinweise.Caterer_Bearbeiten_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_CatererManagement.Caterer_Bearbeiten_Seite, driver));
 
             Assert.AreEqual("AllYouCanEat GmbH", TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Firmanname, driver));

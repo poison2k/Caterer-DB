@@ -20,8 +20,8 @@ namespace SeleniumTests
         public void OneTimeSetUp()
         {
             driver = new ChromeDriver();
-            baseURL = "http://localhost:60003/";
-            PWRequestURL = "http://localhost:60003/Account/PasswordRequest";
+            baseURL = "http://caterer-schulverpflegung-niedersachsen.de";
+            PWRequestURL = "http://caterer-schulverpflegung-niedersachsen.de/Account/PasswordRequest";
             verificationErrors = new StringBuilder();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }
@@ -56,16 +56,3 @@ namespace SeleniumTests
         }
     }
 }
-
-//using NUnit.Framework;
-//using OpenQA.Selenium;
-//using OpenQA.Selenium.Support.UI;
-//using SeleniumTests.Services;
-//using System;
-
-//namespace SeleniumTests
-//{
-//    [TestFixture]
-//    [Category("Userstory_C2_1")]
-//    public class Userstory_U1_4 : TestInitialize
-//    {
