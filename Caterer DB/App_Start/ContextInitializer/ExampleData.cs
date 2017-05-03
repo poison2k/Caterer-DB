@@ -87,7 +87,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 SmtpPort = 587,
                 SmtpServer = "smtp.1und1.de",
                 ZeitInStundendÄnderungsverfolgung = 8,
-                AenderungsVerfolgungCatererAktiviert = false
+                AenderungsVerfolgungCatererAktiviert = false,
                 URLWebseite = "https://caterer-schulverpflegung-niedersachsen.de/"
             });
             db.SaveChanges();

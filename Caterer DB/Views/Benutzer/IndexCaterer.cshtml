@@ -198,8 +198,10 @@
 
                                 @for (int i = 0; i < Model.ResultListCaterer.Entitäten.Count; i++)
                                 {
-                                    @Html.HiddenFor(modelItem => Model.ResultListCaterer.Entitäten[i].BenutzerId)
-                                    <tr>
+
+
+                                    <tr><td>
+                                         <input data-val="true" data-val-number="Das Feld &quot;BenutzerId&quot; muss eine Zahl sein." data-val-required="Das Feld &quot;BenutzerId&quot; ist erforderlich." id="ResultListCaterer_Entit_ten_@(i)__BenutzerId" name="ResultListCaterer.Entitäten[@(i)].BenutzerId" value="@Model.ResultListCaterer.Entitäten[i].BenutzerId" type="hidden"></td>
                                         <td>@Html.CheckBoxFor(modelItem => Model.ResultListCaterer.Entitäten[i].selected, new { id = "Checkbox" + i, onchange = "pruefeCheckboxen()" })</td>
                                         <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Firmenname)</td>
                                         <td>@Html.DisplayFor(modelItem => Model.ResultListCaterer.Entitäten[i].Telefon)</td>
