@@ -61,7 +61,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:60003/Account/PasswordChange?verify=.
+        ///   Looks up a localized string similar to /Account/PasswordChange?verify=.
         /// </summary>
         internal static string ForgottenPassword {
             get {
@@ -70,7 +70,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:60003/home/contact.
+        ///   Looks up a localized string similar to /home/contact.
         /// </summary>
         internal static string Kontakt {
             get {
@@ -79,7 +79,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:60003/Account/PasswordChange?verify=.
+        ///   Looks up a localized string similar to /Account/PasswordChange?verify=.
         /// </summary>
         internal static string NewCaterer {
             get {
@@ -88,7 +88,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:60003/Account/PasswordChange?verify=.
+        ///   Looks up a localized string similar to /Account/PasswordChange?verify=.
         /// </summary>
         internal static string NewMitarbeiter {
             get {
@@ -97,7 +97,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:60003/Account/RegisterComplete?verify=.
+        ///   Looks up a localized string similar to /Account/RegisterComplete?verify=.
         /// </summary>
         internal static string Register {
             get {

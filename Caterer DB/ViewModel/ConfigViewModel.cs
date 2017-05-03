@@ -10,6 +10,10 @@ namespace Caterer_DB.Models
         public int ConfigId { get; set; }
 
         [MyRequired]
+        [DisplayName(@"Webseiten URL")]
+        public string URLWebseite { get; set; }
+
+        [MyRequired]
         [DisplayName(@"Benutzername für SMTP - Server")]
         public string UserNameForSMTPServer { get; set; }
 

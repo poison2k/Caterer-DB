@@ -7,6 +7,8 @@ namespace DataAccess.Model
         [Key]
         public int ConfigId { get; set; }
 
+        public string URLWebseite { get; set; }
+
         public string UserNameForSMTPServer { get; set; }
 
         public string PasswortForSMTPServer { get; set; }

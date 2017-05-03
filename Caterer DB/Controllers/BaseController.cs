@@ -5,6 +5,11 @@ using System.Web.Mvc;
 
 namespace Caterer_DB.Controllers
 {
+#if DEBUG
+
+#else
+     [RequireHttps]
+#endif
     public class BaseController : Controller
     {
         [Dependency]

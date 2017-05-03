@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ForgottenPassword" xml:space="preserve">
-    <value>http://localhost:60003/Account/PasswordChange?verify=</value>
+    <value>/Account/PasswordChange?verify=</value>
   </data>
   <data name="Kontakt" xml:space="preserve">
-    <value>http://localhost:60003/home/contact</value>
+    <value>/home/contact</value>
   </data>
   <data name="NewCaterer" xml:space="preserve">
-    <value>http://localhost:60003/Account/PasswordChange?verify=</value>
+    <value>/Account/PasswordChange?verify=</value>
   </data>
   <data name="NewMitarbeiter" xml:space="preserve">
-    <value>http://localhost:60003/Account/PasswordChange?verify=</value>
+    <value>/Account/PasswordChange?verify=</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>http://localhost:60003/Account/RegisterComplete?verify=</value>
+    <value>/Account/RegisterComplete?verify=</value>
   </data>
 </root>

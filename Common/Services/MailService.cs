@@ -67,7 +67,7 @@ namespace Common.Services
             var mailModel = ConfigureMail(config);
             mailModel.Betreff = EMailBetreff.Kontoangelegt;
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = EMailTexte.Mitarbeiterangelegt + Links.NewMitarbeiter + passwordVerificationCode + "&id=" + id + EMailTexte.Abschluss;
+            mailModel.Inhalt = EMailTexte.Mitarbeiterangelegt + config.URLWebseite + Links.NewMitarbeiter + passwordVerificationCode + "&id=" + id + EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
@@ -76,7 +76,7 @@ namespace Common.Services
             var mailModel = ConfigureMail(config);
             mailModel.Betreff = EMailBetreff.Kontoangelegt;
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = EMailTexte.Catererangelegt + Links.NewCaterer + passwordVerificationCode + "&id=" + id + EMailTexte.Abschluss;
+            mailModel.Inhalt = EMailTexte.Catererangelegt + config.URLWebseite + Links.NewCaterer + passwordVerificationCode + "&id=" + id + EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
@@ -85,7 +85,7 @@ namespace Common.Services
             var mailModel = ConfigureMail(config);
             mailModel.Betreff = EMailBetreff.Kontoangelegt;
             mailModel.Empfaenger = email;
-            mailModel.Inhalt = EMailTexte.CatererRegistrierung1 + Links.Register + verify + "&id=" + id + EMailTexte.CatererRegistrierung2 + EMailTexte.Abschluss + EMailTexte.Anregung + Links.Kontakt;
+            mailModel.Inhalt = EMailTexte.CatererRegistrierung1 + config.URLWebseite +Links.Register + verify + "&id=" + id + EMailTexte.CatererRegistrierung2 + EMailTexte.Abschluss + EMailTexte.Anregung + config.URLWebseite + Links.Kontakt;
             SendMail(mailModel);
         }
 
