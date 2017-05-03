@@ -39,13 +39,13 @@ namespace Caterer_DB.Models
 
         [MyRequired]
         [DisplayName(@"E-Mail")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         [MyRequired]
-        [StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Passwort")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$", ErrorMessage = "Das Passwort entspricht nicht den Richtlinien.")]
         public string Passwort { get; set; }
 
         [MyRequired]
@@ -59,13 +59,13 @@ namespace Caterer_DB.Models
     {
         [MyRequired]
         [DisplayName(@"E-Mail")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         [MyRequired]
-        [StringLength(100, ErrorMessage = "Das {0} muss mindestens {2} Zeichen lang sein.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Passwort")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$", ErrorMessage = "Das Passwort entspricht nicht den Richtlinien.")]
         public string Passwort { get; set; }
 
         [MyRequired]
@@ -160,7 +160,7 @@ namespace Caterer_DB.Models
 
         [MyRequired]
         [DisplayName(@"E-Mail")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         [DisplayName(@"Administrationsberechtigungen")]
@@ -190,7 +190,8 @@ namespace Caterer_DB.Models
         public string Telefon { get; set; }
 
         [MyRequired]
-        [EmailAddress]
+        [DisplayName(@"E-Mail")]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         public virtual List<BenutzerGruppe> BenutzerGruppen { get; set; }
@@ -236,7 +237,7 @@ namespace Caterer_DB.Models
 
         [MyRequired]
         [DisplayName(@"E-Mail")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         [MyRequired]
@@ -316,7 +317,8 @@ namespace Caterer_DB.Models
         public string Telefon { get; set; }
 
         [MyRequired]
-        [EmailAddress]
+        [DisplayName(@"E-Mail")]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         [DisplayName(@"Administrator")]
@@ -341,7 +343,8 @@ namespace Caterer_DB.Models
         public string Telefon { get; set; }
 
         [MyRequired]
-        [EmailAddress]
+        [DisplayName(@"E-Mail")]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         public string Straße { get; set; }
@@ -435,7 +438,7 @@ namespace Caterer_DB.Models
     {
         [MyRequired]
         [DisplayName(@"E-Mail")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> Anreden { get; set; }
@@ -498,7 +501,7 @@ namespace Caterer_DB.Models
 
         [MyRequired]
         [DisplayName(@"E-Mail")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
 
         [MyRequired]

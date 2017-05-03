@@ -2,6 +2,7 @@
 using Caterer_DB.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Principal;
 
@@ -21,8 +22,8 @@ namespace Caterer_DB.Models
         public int BenutzerId { get; set; }
 
         [MyRequired]
-        [Display(Name = "E-Mail")]
-        [EmailAddress]
+        [DisplayName(@"E-Mail")]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Email { get; set; }
 
         public string Vorname { get; set; }
@@ -108,7 +109,8 @@ namespace Caterer_DB.Models
     public class LoginModel
     {
         [MyRequired]
-        [Display(Name = "E-Mail")]
+        [DisplayName(@"E-Mail")]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Email { get; set; }
 
         [MyRequired]
