@@ -338,6 +338,7 @@ namespace Business.Services
             var benutzer = BenutzerRepository.SearchUserById(tempBenutzer.BenutzerId);
             benutzer.Passwort = tempBenutzer.Passwort;
             benutzer.PasswordVerificationCode = "";
+            benutzer.IstEmailVerifiziert = true;
             BenutzerRepository.EditUser(benutzer);
         }
 

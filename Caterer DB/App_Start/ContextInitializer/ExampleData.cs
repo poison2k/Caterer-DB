@@ -62,6 +62,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             db.SaveChanges();
         }
 
+#if DEBUG
         private static void CreateConfig(CatererContext db)
         {
             Config config = db.Config.Add(new Config
@@ -76,6 +77,23 @@ namespace Caterer_DB.App_Start.ContextInitializer
             });
             db.SaveChanges();
         }
+#else
+        private static void CreateConfig(CatererContext db)
+        {
+            Config config = db.Config.Add(new Config
+            {
+                UserNameForSMTPServer = "info@caterer-schulverpflegung-niedersachsen.de",
+                PasswortForSMTPServer = "Start#22",
+                SmtpPort = 587,
+                SmtpServer = "smtp.1und1.de",
+                ZeitInStundendÄnderungsverfolgung = 8,
+                AenderungsVerfolgungCatererAktiviert = false
+
+            });
+            db.SaveChanges();
+        }
+
+#endif
 
         private static void CreateRechteGruppenData(CatererContext db)
         {
