@@ -114,6 +114,9 @@ namespace Caterer_DB.Controllers
                 if (Request.Form["btnModalDelete"] != null)
                 {
                     KategorieService.RemoveKategorie(editKategorieViewModel.KategorieId);
+                } else if(Request.Form["btnAenderungenSpeichern"] != null){
+                    KategorieService.EditKategorie(KategorieViewModelService.Map_EditKategorieViewModel_Kategorie(editKategorieViewModel));
+                    return RedirectToAction("Edit", new { id= editKategorieViewModel.KategorieId  });
                 }
                 else
                 {

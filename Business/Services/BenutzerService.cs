@@ -225,6 +225,7 @@ namespace Business.Services
             editedBenutzer.BenutzerGruppen = dbBenutzer.BenutzerGruppen;
             editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
             Mapper.Map(editedBenutzer, dbBenutzer);
+            dbBenutzer.LetzteÄnderung = DateTime.Now;
             BenutzerRepository.EditUser(dbBenutzer);
         }
 
@@ -235,7 +236,7 @@ namespace Business.Services
             editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
             editedBenutzer.IstEmailVerifiziert = dbBenutzer.IstEmailVerifiziert;
             Mapper.Map(editedBenutzer, dbBenutzer);
-            if (editedBenutzer.BenutzerGruppen.FindAll(x=>x.Bezeichnung == "Caterer").Count > 0  )
+            if (editedBenutzer.BenutzerGruppen.FindAll(x => x.Bezeichnung == "Caterer").Count > 0)
             {
                 try
                 {
@@ -250,12 +251,16 @@ namespace Business.Services
                 TimeSpan ts = DateTime.Now - dbBenutzer.LetzteÄnderung;
                 if (ts.TotalHours >= config.ZeitInStundendÄnderungsverfolgung)
                 {
-                    if (config.AenderungsVerfolgungCatererAktiviert) {
-                        MailService.SendInfoMailEditCatererToEmployee(config, dbBenutzer, BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(1, 10000000, new List<string>() { "Mitarbeiter", "Administrator" },"BenutzerId"));
+                    if (config.AenderungsVerfolgungCatererAktiviert)
+                    {
+                        MailService.SendInfoMailEditCatererToEmployee(config, dbBenutzer, BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(1, 10000000, new List<string>() { "Mitarbeiter", "Administrator" }, "BenutzerId"));
                     }
                     dbBenutzer.LetzteÄnderung = DateTime.Now;
                 }
 
+            }
+            else {
+                dbBenutzer.LetzteÄnderung = DateTime.Now;
             }
           
 
