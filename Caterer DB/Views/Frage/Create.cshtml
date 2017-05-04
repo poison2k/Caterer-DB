@@ -57,8 +57,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 text-center">
-                        <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default" formnovalidate />
+                    <div class="col-md-4 col-md-offset-4">
+                        <input type="submit" value="Antwort hinzufügen" name="btnAddAnswer" class="btn btn-default btn-block" formnovalidate />
                     </div>
                 </div>
                 <br />
@@ -92,6 +92,22 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+            <button type="submit" id="btnSpeichern" name="btnCreateQuestion" value="Frage anlegen" class="btn btn-default btn-block">
+                <i class="glyphicon glyphicon-ok"></i> Frage anlegen
+            </button>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-default btn-block" id="btnZurück" href="@Url.Action("Index", "Frage")"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+        </div>
+    </div>
+
+
+
+
+
+
+    @*<div class="row">
         <div class="col-md-5 col-md-offset-2">
             <ul class="list-unstyled list-inline " style="margin-left: 5px;">
                 <li>
@@ -104,7 +120,16 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </div>*@
+
+
+
+
+
+
+
+
+
 
 }
 

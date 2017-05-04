@@ -15,56 +15,51 @@
 <div style="margin-top: 15px"></div>
 <div class="container">
     <div class="row">
+        <div class="col-md-2">
+            <a id="btnFrageErstellen" href="@Url.Action("Create", "Kategorie")" na name="btnErstellen" type="submit" class="btn btn-success btn-block">
+                <i class="glyphicon glyphicon-plus"></i> Neue Kategorie
+            </a>
+        </div>
+    </div>
+    <div style="margin-top: 15px"></div>
+    <div class="row" id="BenutzerIndexPartial">
         <div class="col-md-12">
-            <div class="row">
-                <ul class="list-unstyled list-inline col-md-12" style="margin-left: -5px;">
-                    <li>
-                        <a id="btnFrageErstellen" href="@Url.Action("Create", "Kategorie")" na name="btnErstellen" type="submit" class="btn btn-success">
-                            <i class="glyphicon glyphicon-plus"></i> Neue Kategorie
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div style="margin-top: 15px"></div>
-            <div class="row" id="BenutzerIndexPartial">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading"></div>
-                        <table class="table table-striped ">
-                            <tr>
-                                <th>
-                                    Kategorie
-                                </th>
-                                <th>
-                                    Anzahl Fragen
-                                </th>
-                            </tr>
-                            @foreach (var item in Model)
+            <div class="panel panel-default">
+                <div class="panel-heading"></div>
+                <table class="table table-striped ">
+                    <tr>
+                        <th>
+                            Kategorie
+                        </th>
+                        <th>
+                            Anzahl Fragen
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
 
-                            {
-
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Bezeichnung)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Fragen.Count)
-                                    </td>
-                                    <td align="right">
-                                        <a class="btn btn-default" href="@Url.Action("Details", "Kategorie", new {id = item.KategorieId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
-                                    </td>
-                                    <td align="left">
-                                        <a class="btn btn-default" href="@Url.Action("Edit", "Kategorie", new { id = item.KategorieId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
-                                    </td>
-                                </tr>
-
-                            }
-                        </table>
-                    </div>
-                </div>
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bezeichnung)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fragen.Count)
+                            </td>
+                            <td align="right">
+                                <a class="btn btn-default" href="@Url.Action("Details", "Kategorie", new {id = item.KategorieId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
+                            </td>
+                            <td align="left">
+                                <a class="btn btn-default" href="@Url.Action("Edit", "Kategorie", new { id = item.KategorieId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </table>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 <br />
 <br />

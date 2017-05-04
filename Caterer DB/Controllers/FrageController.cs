@@ -133,15 +133,17 @@ namespace Caterer_DB.Controllers
             }
             else if (Request.Form["btnDeleteAnswer"] != null)
             {
-                for (int i = 0; i < Request.Form.Count; i++)
-                {
-                    if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
+           
+                    for (int i = 0; i < Request.Form.Count; i++)
                     {
-                        ModelState.Clear();
-                        createFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
-                        return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
+                        if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
+                        {
+                            ModelState.Clear();
+                            createFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
+                            return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
+                        }
                     }
-                }
+                
             }
             if (ModelState.IsValid)
             {
@@ -154,7 +156,11 @@ namespace Caterer_DB.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            if(createFrageViewModel.Antworten == null)
+            {
+                createFrageViewModel.Antworten = new List<Antwort>();
+            }
+          
             return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
         }
 

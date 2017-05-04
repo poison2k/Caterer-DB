@@ -17,7 +17,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-   
+
 
     <div class="row">
         <div class="col-md-4"></div>
@@ -190,17 +190,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-4">
-                            <ul class="list-unstyled list-inline " style="margin-left: -5px;">
-                                <li>
-                                    <button type="submit" id="btnSpeichern" name="btnSpeichern" value="Anlegen" class="btn btn-success">
-                                        <i class="text-center"></i> Caterer anlegen
-                                    </button>
-                                </li>
-                                <li>
-                                    <a class="btn btn-default" href="/Benutzer/IndexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-                                </li>
-                            </ul>
+                        <div class="col-md-2">
+                            <button type="submit" id="btnSpeichern" name="btnSpeichern" value="Anlegen" class="btn btn-success btn-block">
+                                <i class="text-center"></i> Caterer anlegen
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-default btn-block" href="/Benutzer/IndexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                         </div>
                     </div>
                 </div>

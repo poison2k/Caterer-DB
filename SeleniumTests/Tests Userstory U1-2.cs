@@ -81,16 +81,5 @@ namespace SeleniumTests
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
 
-        [Test]
-        public void LoginTest_OhneEmail()
-        //T_U1-2_ALF_B_08
-        {
-            TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
-
-            TestTools.User_Login_Durchführen("", LoginDaten.PW1, driver);
-            Assert.AreEqual(Fehlermeldung.Email_Erforderlich, TestTools.Label_Text_Zurückgeben("Email-error", driver));
-
-            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-        }
     }
 }

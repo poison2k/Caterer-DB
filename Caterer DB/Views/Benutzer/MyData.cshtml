@@ -223,31 +223,20 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4">
-                    <ul class="list-unstyled list-inline " style="margin-left: -5px;">
-                        <li>
-                            <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success">
-                                <i class="glyphicon glyphicon-ok"></i> Speichern
-                            </button>
-                        </li>
-                        @*Button "Zurück", rechts neben "Registrieren"*@
-                        <li>
-                            <a class="btn btn-default" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-                        </li>
-                    </ul>
+                <div class="col-md-2">
+                    <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success btn-block">
+                        <i class="glyphicon glyphicon-ok"></i> Speichern
+                    </button>
                 </div>
-                <div class="col-md-6">
+                        @*Button "Zurück", rechts neben "Registrieren"*@
+                <div class="col-md-2">
+                    <a class="btn btn-default btn-block" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                 </div>
                 <div class="col-md-2">
-                    <ul class="list-unstyled list-inline " style="margin-right: 0px;">
-
-                        <li>
-                            <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
-                                <i class="glyphicon glyphicon-trash"></i> Konto löschen
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+                    <button id="LöschenButton" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#deleteModal">
+                        <i class="glyphicon glyphicon-trash"></i> Konto löschen
+                    </button>
+                </div>                
             </div>
         </div>
     </div>

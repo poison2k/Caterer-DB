@@ -20,8 +20,8 @@ namespace SeleniumTests
         public void OneTimeSetUp()
         {
             driver = new ChromeDriver();
-            baseURL = "http://caterer-schulverpflegung-niedersachsen.de";
-            PWRequestURL = "http://caterer-schulverpflegung-niedersachsen.de/Account/PasswordRequest";
+            baseURL = "https://caterer-schulverpflegung-niedersachsen.de/";
+            PWRequestURL = "https://caterer-schulverpflegung-niedersachsen.de/Account/PasswordRequest/";
             verificationErrors = new StringBuilder();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }

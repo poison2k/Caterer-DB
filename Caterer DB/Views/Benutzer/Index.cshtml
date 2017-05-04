@@ -21,13 +21,20 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <ul class="list-unstyled list-inline col-md-12" style="margin-left: -5px;">
-                        <li>
-                            <a id="btnMarkierungenErstellen" href="@Url.Action("Create", "Benutzer")" na name="btnErstellen" type="submit" class="btn btn-success">
+                    <div class="col-md-2">
+                            <a id="btnMarkierungenErstellen" href="@Url.Action("Create", "Benutzer")" na name="btnErstellen" type="submit" class="btn btn-success btn-block">
                                 <i class="glyphicon glyphicon-plus"></i> Neuer Mitarbeiter
                             </a>
-                        </li>
-                    </ul>
+                   </div>
+
+
+                    @*<ul class="list-unstyled list-inline col-md-12" style="margin-left: -5px;">
+                            <li>
+                                <a id="btnMarkierungenErstellen" href="@Url.Action("Create", "Benutzer")" na name="btnErstellen" type="submit" class="btn btn-success btn-block">
+                                    <i class="glyphicon glyphicon-plus"></i> Neuer Mitarbeiter
+                                </a>
+                            </li>
+                        </ul>*@
                 </div>
                 <div style="margin-top: 15px"></div>
                 <div class="row" id="BenutzerIndexPartial">
@@ -44,7 +51,7 @@
                                         }
                                         else if (ViewBag.Sortierrung == "Anrede_desc")
                                         {
-                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Anrede"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Anrede ) <b class="caret caret-reversed"></b> </a>
+                                            <a href="@Url.Action("Index", "Benutzer", new { Sortierrung  = "Anrede"})"> @Html.DisplayNameFor(model => model.FirstOrDefault().Anrede) <b class="caret caret-reversed"></b> </a>
                                         }
                                         else
                                         {
@@ -118,7 +125,8 @@
                                         <td>@Html.DisplayFor(modelItem => item.Nachname)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Vorname)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
-                                        <td>@if (item.IstAdmin) {<div><i class="glyphicon glyphicon-ok"></i></div> } </td>
+                                        <td>@if (item.IstAdmin)
+                                        {<div><i class="glyphicon glyphicon-ok"></i></div> } </td>
 
                                         <td align="center">
                                             <a class="btn btn-default" href="@Url.Action("Details", "Benutzer", new {id = item.BenutzerId})" title="Details"><i class="glyphicon glyphicon-search"></i></a>
@@ -138,7 +146,7 @@
                             }
                             <input id="seitenAnzahl" type="hidden" value="@seitenAnzahl" />
                             <div controller="/Benutzer/GetListPartial/" target="BenutzerIndexPartial">
-                                @Html.PagedListPager(Model, aktuelleSeite => Url.Action("Index", new { aktuelleSeite, Model.PageSize,Sortierrung = ViewBag.Sortierrung }))
+                                @Html.PagedListPager(Model, aktuelleSeite => Url.Action("Index", new { aktuelleSeite, Model.PageSize, Sortierrung = ViewBag.Sortierrung }))
                             </div>
                         }
                     </div>

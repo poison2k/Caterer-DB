@@ -28,7 +28,7 @@ namespace Caterer_DB.Models
     {
         [MyRequired]
         [DisplayName(@"E-Mail")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
     }
 
@@ -198,6 +198,8 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Administrationsberechtigungen")]
         public string IstAdmin { get; set; }
+
+        public int AdminCount { get; set; }
     }
 
     public class MeineDatenBenutzerViewModel
@@ -221,6 +223,8 @@ namespace Caterer_DB.Models
         [DisplayName(@"Telefon (optional)")]
         [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
+
+        public int AdminCount { get; set; }
 
     }
 
