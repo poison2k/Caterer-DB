@@ -28,7 +28,7 @@ namespace Caterer_DB.Models
     {
         [MyRequired]
         [DisplayName(@"E-Mail")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Das Feld E-Mail enthält keine gültige E-Mail-Adresse.")]
         public string Mail { get; set; }
     }
 
