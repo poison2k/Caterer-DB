@@ -89,7 +89,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group ">
                                         @Html.LabelFor(model => model.IstAdmin, htmlAttributes: new { @class = "control-label " })
-                                        @Html.DropDownList("IstAdmin", Model.JaNein, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                                        @if (Model.AdminCount>1)
+                                        {
+                                            @Html.DropDownList("IstAdmin", Model.JaNein, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                                        }
+                                        else {@Html.DropDownList("IstAdmin", Model.JaNein, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid", disabled="disabled" })
+                                        }
+
                                         @Html.ValidationMessageFor(model => model.IstAdmin, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
