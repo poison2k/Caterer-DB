@@ -102,7 +102,7 @@
                 <ul class="list-unstyled list-inline text-right">
 
                     <li>
-                        @if (Model.AdminCount > 1)
+                        @if (Model.AdminCount != 1)
                         {
                             <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
                                 <i class="glyphicon glyphicon-trash"></i> Konto löschen
