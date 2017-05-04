@@ -350,6 +350,10 @@ namespace Caterer_DB.Controllers
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
+                    if (editBenutzerViewModel.BenutzerId == User.BenutzerId)
+                    {
+                        LoginService.Abmelden();
+                    }
                     BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel).BenutzerId);
                     return RedirectToAction("Index");
                 }
@@ -514,10 +518,10 @@ namespace Caterer_DB.Controllers
             {
                 if (detailsCatererViewModel.WeitergabeVonDaten)
                 {
-                    dateiName = "InformationsblattLüneburg.docx";
+                    dateiName = "InformationsblattLueneburg.docx";
                 }else
                 {
-                    dateiName = "InformationsblattLüneburgWasserzeichen.docx";
+                    dateiName = "InformationsblattLueneburgWasserzeichen.docx";
                 }
                 
             }
@@ -536,11 +540,11 @@ namespace Caterer_DB.Controllers
             {
                 if (detailsCatererViewModel.WeitergabeVonDaten)
                 {
-                    dateiName = "InformationsblattOsnabrück.docx";
+                    dateiName = "InformationsblattOsnabrueck.docx";
                 }
                 else
                 {
-                    dateiName = "InformationsblattOsnabrückWasserzeichen.docx";
+                    dateiName = "InformationsblattOsnabrueckWasserzeichen.docx";
                 }
             }
 
