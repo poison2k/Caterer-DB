@@ -359,10 +359,10 @@
     <Content Include="Content\Images\Arnold.JPG" />
     <Content Include="Content\Images\banner.png" />
     <Content Include="Content\Images\error.jpg" />
-    <Content Include="Content\Images\Foto Albrecht_schwarz-weiß.jpg" />
-    <Content Include="Content\Images\Foto Kompe_schwarz-weiß.JPG" />
-    <Content Include="Content\Images\Foto Reif_schwarz-weiß.jpg" />
-    <Content Include="Content\Images\Foto Ullrich_schwar-weiß.jpg" />
+    <Content Include="Content\Images\Foto_Albrecht_schwarz-weiss.jpg" />
+    <Content Include="Content\Images\Foto_Kompe_schwarz-weiss.JPG" />
+    <Content Include="Content\Images\Foto_Reif_schwarz-weiss.jpg" />
+    <Content Include="Content\Images\Foto_Ullrich_schwar-weiss.jpg" />
     <Content Include="Content\Images\Hg100_1024.png" />
     <Content Include="Content\Images\Hg30_1024.png" />
     <Content Include="Content\Images\Hg50_kleiner.png" />
