@@ -56,5 +56,7 @@ namespace Business.Interfaces
         void EditCaterer(Benutzer benutzer);
         
         void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream);
+
+        int GetAdminCount();
     }
 }

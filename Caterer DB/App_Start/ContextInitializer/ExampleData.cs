@@ -29,6 +29,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 new Recht() { Bezeichnung = RechteResource.TestBlock3, Beschreibung = "Zeigt Block 3 an " },
                 new Recht() { Bezeichnung = RechteResource.EditConfig, Beschreibung = "Einstellungen können bearbeitet werden" },
 
+                new Recht() { Bezeichnung = RechteResource.GlimpseUsing, Beschreibung = "Glimpsekann genutzt werden" },
+
                 new Recht() { Bezeichnung = RechteResource.CreateMitarbeiter, Beschreibung = "Mitarbeiter können angelegt werden" },
                 new Recht() { Bezeichnung = RechteResource.IndexMitarbeiter, Beschreibung = "Anzeige aller Mitarbeiter" },
                 new Recht() { Bezeichnung = RechteResource.EditMitarbeiter, Beschreibung = "Bearbeiten aller Mitarbeiter" },
@@ -175,15 +177,15 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Organisationsform = "Caterer",
                 Telefon = "01234 - 56789",
                 Fax = "01234 - 99999",
-                Straße = "Holzweg 1",
-                Postleitzahl = "87654",
-                Ort = "Woodway",
+                Straße = "Große Horststraße 1",
+                Postleitzahl = "29328",
+                Ort = "Faßberg",
                 Anrede = "Herr",
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
                 LetzteÄnderung = new System.DateTime(1900,1,1),
-                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
+                Koordinaten = DbGeography.FromText("Point( 10.177968 52.903617 )"),
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
             });
 
@@ -203,8 +205,8 @@ namespace Caterer_DB.App_Start.ContextInitializer
             {
                 Mail = "admin@test.de",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
-                Nachname = "Müller",
-                Vorname = "Alex",
+                Nachname = "Mustermann",
+                Vorname = "Max",
                 IstEmailVerifiziert = true,
                 Anrede = "Herr",
                 PasswortZeitstempel = System.DateTime.Now,
@@ -237,9 +239,9 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Organisationsform = "Vorhanden",
                 Telefon = "01234 - 56789",
                 Fax = "01234 - 99999",
-                Straße = "Holzweg 1",
-                Postleitzahl = "87654",
-                Ort = "Woodway",
+                Straße = "Große Horststraße 1",
+                Postleitzahl = "29328",
+                Ort = "Faßberg",
                 Anrede = "Herr",
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
@@ -291,15 +293,15 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     Organisationsform = "Caterer",
                     Telefon = "01234 - 56789",
                     Fax = "01234 - 99999",
-                    Straße = "Holzweg 1",
-                    Postleitzahl = "87654",
-                    Ort = "Woodway",
+                    Straße = "Fliegerhorst",
+                    Postleitzahl = "26328",
+                    Ort = "Faßberg",
                     Anrede = "Herr",
                     FunktionAnsprechpartner = "Chef",
                     EMailVerificationCode = "",
                     PasswortZeitstempel = System.DateTime.Now,
                     LetzteÄnderung = new System.DateTime(1900, 1, 1),
-                    Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
+                    Koordinaten = DbGeography.FromText("Point( 10.177968 52.903617 )"),
                     BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
                 });
 

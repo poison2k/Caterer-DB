@@ -48,5 +48,7 @@
         public const string EditKategorie = "EditKategorie";
         public const string CreateKategorie = "CreateKategorie";
         public const string DeleteKategorie = "DeleteKategorie";
+
+        public const string GlimpseUsing = "GlimpseUsing";
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DataAccess.Services;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,10 +11,10 @@ namespace DataAccess.Model
         [Key]
         public int NutzerGruppeID { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
-        [Required]
+        [MyRequired]
         public bool Löschbar { get; set; }
 
         public bool IstGelöscht { get; set; }

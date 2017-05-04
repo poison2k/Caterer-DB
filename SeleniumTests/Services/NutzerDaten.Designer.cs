@@ -61,7 +61,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Sebastian ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Vorname0 ähnelt.
         /// </summary>
         internal static string Dummy_Daten_Vorname {
             get {

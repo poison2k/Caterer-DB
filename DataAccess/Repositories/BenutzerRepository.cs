@@ -117,6 +117,13 @@ namespace DataAccess.Repositories
             return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren)).Count();
         }
 
+        public int GetAdminCount()
+        {
+            //Abfrage optimieren nur benötigte Daten abrufen
+            var administratoren = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Administrator");
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(administratoren)).Count();
+        }
+
         public int GetCatererCount()
         {
             //Abfrage optimieren nur benötigte Daten abrufen
