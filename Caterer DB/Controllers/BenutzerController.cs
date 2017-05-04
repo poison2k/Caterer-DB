@@ -350,6 +350,10 @@ namespace Caterer_DB.Controllers
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
+                    if (editBenutzerViewModel.BenutzerId == User.BenutzerId)
+                    {
+                        LoginService.Abmelden();
+                    }
                     BenutzerService.RemoveBenutzer(BenutzerViewModelService.Map_EditBenutzerViewModel_Benutzer(editBenutzerViewModel).BenutzerId);
                     return RedirectToAction("Index");
                 }
