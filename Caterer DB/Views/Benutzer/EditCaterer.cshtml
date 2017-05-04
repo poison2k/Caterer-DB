@@ -53,224 +53,244 @@
 
 
 
-        @*<div class="tabbar">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
-                    <li role="presentation"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
-                </ul>
-            </div>*@
+    @*<div class="tabbar">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
+                <li role="presentation"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
+            </ul>
+        </div>*@
 
 
 
 
         <!-- Tab panes -->
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in active" id="stammdaten">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="stammdaten">
 
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4 text-center">
-                        <h3>@Html.ValidationSummary(true, "", new { @class = "text-danger", id = "VallidationSummary" })</h3>
-                    </div>
-                    <div class="col-md-4"></div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 text-center">
+                    <h3>@Html.ValidationSummary(true, "", new { @class = "text-danger", id = "VallidationSummary" })</h3>
                 </div>
-                <div class="row">
-                    <div id="CatererBearbeitenSeite" class="col-md-6 col-md-offset-3 text-center">
-                        <h1>Caterer bearbeiten</h1>
-                    </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div id="CatererBearbeitenSeite" class="col-md-6 col-md-offset-3 text-center">
+                    <h1>Caterer bearbeiten</h1>
                 </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="well well-lg">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="well well-lg">
 
-                                    <h4><i class="glyphicon glyphicon-list "></i> Firma</h4>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Firmenname, htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.Firmenname, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Firmenname, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Organisationsform, htmlAttributes: new { @class = "control-label" })
-                                                @Html.DropDownList("Organisationsform", Model.Organisationsformen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
-                                                @Html.ValidationMessageFor(model => model.Organisationsform, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Straße, htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.Straße, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Straße, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-
-                                                @Html.LabelFor(model => model.Postleitzahl, htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.Postleitzahl, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Postleitzahl, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Ort, htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.Ort, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Ort, "", new { @class = "text-danger" })
-                                            </div>
+                                <h4><i class="glyphicon glyphicon-list "></i> Firma</h4>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Firmenname, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.Firmenname, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Firmenname, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="well well-lg">
-                                    <h4><i class="glyphicon glyphicon-user "></i> Ansprechpartner</h4>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-
-                                                @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label " })
-                                                @Html.DropDownList("Anrede", Model.Anreden, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
-                                                @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })
-                                            </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Organisationsform, htmlAttributes: new { @class = "control-label" })
+                                            @Html.DropDownList("Organisationsform", Model.Organisationsformen, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                                            @Html.ValidationMessageFor(model => model.Organisationsform, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-
-                                                @Html.LabelFor(model => model.Vorname, htmlAttributes: new { @class = "control-label " })
-                                                @Html.EditorFor(model => model.Vorname, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Vorname, "", new { @class = "text-danger" })
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Straße, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.Straße, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Straße, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
 
-                                                @Html.LabelFor(model => model.Nachname, htmlAttributes: new { @class = "control-label " })
-                                                @Html.EditorFor(model => model.Nachname, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Nachname, "", new { @class = "text-danger" })
-                                            </div>
+                                            @Html.LabelFor(model => model.Postleitzahl, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.Postleitzahl, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Postleitzahl, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-
-                                                @Html.LabelFor(model => model.FunktionAnsprechpartner, htmlAttributes: new { @class = "control-label " })
-                                                @Html.EditorFor(model => model.FunktionAnsprechpartner, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.FunktionAnsprechpartner, "", new { @class = "text-danger" })
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Ort, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.Ort, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Ort, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="well well-lg">
-                                    <h4><i class="glyphicon glyphicon-earphone"></i> Erreichbarkeit</h4>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label " })
-                                                @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label " }) (optional)
-                                                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " }) (optional)
-                                                @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
-                                                @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br />
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                            <div class="well well-lg">
+                                <h4><i class="glyphicon glyphicon-user "></i> Ansprechpartner</h4>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
 
-                            <div class="col-md-6">
-                                <div class="well well-lg">
-                                    <h4><i class="glyphicon glyphicon-road"></i> Sonstiges</h4>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })
-                                                @Html.DropDownList("Lieferumkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
-                                                @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
-                                            </div>
+                                            @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label " })
+                                            @Html.DropDownList("Anrede", Model.Anreden, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                                            @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Sonstiges, htmlAttributes: new { @class = "control-label " })
-                                                @Html.TextAreaFor(model => model.Sonstiges, new { rows = 6, columns = 40, @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.Sonstiges, "", new { @class = "text-danger" })
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(model => model.Vorname, htmlAttributes: new { @class = "control-label " })
+                                            @Html.EditorFor(model => model.Vorname, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Vorname, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(model => model.Nachname, htmlAttributes: new { @class = "control-label " })
+                                            @Html.EditorFor(model => model.Nachname, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Nachname, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(model => model.FunktionAnsprechpartner, htmlAttributes: new { @class = "control-label " })
+                                            @Html.EditorFor(model => model.FunktionAnsprechpartner, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.FunktionAnsprechpartner, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="well well-lg">
-                                    <h4><i class="glyphicon glyphicon-lock"></i> Datenschutz</h4>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    @Html.CheckBoxFor(model => model.WeitergabeVonDaten, new { @checked = "checked" })
-                                                </span>
-                                            </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="well well-lg">
+                                <h4><i class="glyphicon glyphicon-earphone"></i> Erreichbarkeit</h4>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label " })
+                                            @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
                                         </div>
-                                        <div class="col-md-7">
-                                            <p>"Meine Daten dürfen bei Beratungsfragen von der Vernetzungsstelle Niedersachsen weitergegeben werden."</p>
-                                            @Html.ValidationMessageFor(model => model.WeitergabeVonDaten, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label " }) (optional)
+                                            @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
                                         </div>
-                                        <div class="col-md-3"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " }) (optional)
+                                            @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
+                                            @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="well well-lg">
+                                <h4><i class="glyphicon glyphicon-road"></i> Sonstiges</h4>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Lieferumkreis, htmlAttributes: new { @class = "control-label " })
+                                            @Html.DropDownList("Lieferumkreis", Model.Lieferumkreise, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
+                                            @Html.ValidationMessageFor(model => model.Lieferumkreis, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Sonstiges, htmlAttributes: new { @class = "control-label " })
+                                            @Html.TextAreaFor(model => model.Sonstiges, new { rows = 6, columns = 40, @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Sonstiges, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="well well-lg">
+                                <h4><i class="glyphicon glyphicon-lock"></i> Datenschutz</h4>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                @Html.CheckBoxFor(model => model.WeitergabeVonDaten, new { @checked = "checked" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p>"Meine Daten dürfen bei Beratungsfragen von der Vernetzungsstelle Niedersachsen weitergegeben werden."</p>
+                                        @Html.ValidationMessageFor(model => model.WeitergabeVonDaten, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success btn-block">
+                                <i class="glyphicon glyphicon-ok"></i> Speichern
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-default btn-block" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+                        </div>
+                        <div class="col-md-2">
+                            <button id="LöschenButton" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#deleteModal">
+                                <i class="glyphicon glyphicon-trash"></i> Konto löschen
+                            </button>
+                        </div>
+                    </div>
 
-                        <div class="row">
+
+
+
+
+
+                    @*<div class="row">
                             <div class="col-md-12">
                                 <ul class="list-unstyled list-inline " style="margin-left: -5px;">
                                     <li>
@@ -287,139 +307,139 @@
                                         </button>
                                     </li>
                                 </ul>
-                            </div>                                                   
-                        </div>
-                    </div>
+                            </div>
+                        </div>*@
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" id="deleteModal" role="dialog">
-                    <div class="modal-dialog modal-sm">
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal" role="dialog">
+                <div class="modal-dialog modal-sm">
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button id="LöschenCancel" type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 id="LöschenBest" class="modal-title">Löschen bestätigen</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Wollen Sie den Caterer löschen?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-success" id="btnModalDelete" name="btnModalDelete" value="Delete">Ja</button>
-                                <button type="submit" class="btn btn-success" data-dismiss="modal" id="btnModalCancel" name="btnModalCancel" value="Cancel">Nein</button>
-                            </div>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button id="LöschenCancel" type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 id="LöschenBest" class="modal-title">Löschen bestätigen</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Wollen Sie den Caterer löschen?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success" id="btnModalDelete" name="btnModalDelete" value="Delete">Ja</button>
+                            <button type="submit" class="btn btn-success" data-dismiss="modal" id="btnModalCancel" name="btnModalCancel" value="Cancel">Nein</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
-            <div role="tabpanel" class="tab-pane fade" id="fragebogen">
+        <div role="tabpanel" class="tab-pane fade" id="fragebogen">
 
-                <div class="row">
-                    <nav class="sidebar hidden-xs hidden-sm" id="myScrollspy">
-                        <ul class="nav nav-pills nav-stacked" id="Fragebogen">
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            @for (int i = 0; i < Model.Fragen.Count; i++)
-                            {
-
-                                <li><a id="@Model.Fragen[i].Name@i" href="#@Model.Fragen[i].Name">@Model.Fragen[i].Name</a></li>
-                            }
-                        </ul>
+            <div class="row">
+                <nav class="sidebar hidden-xs hidden-sm" id="myScrollspy">
+                    <ul class="nav nav-pills nav-stacked" id="Fragebogen">
                         <br />
-                        <hr />
-                        <button type="submit" id="btnSpeichernFragen1" name="btnSave" value="Speichern" class="btn btn-default btn-block">
-                            <i class="glyphicon glyphicon-ok"></i> Speichern
-                        </button>
                         <br />
-                        <a class="btn btn-default btn-block" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-
-                    </nav>
-                    <div class="col-md-9 col-md-offset-2">
                         <br />
-                        <div class="row">
-                            <div id="Fragebogen" class="col-md-6 col-md-offset-3 text-center">
-                                <h1>Fragebogen</h1>
-                                <br />
-                            </div>
-                        </div>
-
+                        <br />
+                        <br />
                         @for (int i = 0; i < Model.Fragen.Count; i++)
                         {
-                            <div class="well-lg col-md-12 col-md-offset-0" style="z-index:@(Model.Fragen.Count -i) ">
-                                @Html.HiddenFor(m => m.Fragen[i].ID)
-                                <div id="@Model.Fragen[i].Name" style="padding-top: 210px; margin-top: -210px; ">
-                                    @Html.HiddenFor(m => m.Fragen[i].Name)
-                                    <h3> @Html.DisplayFor(m => m.Fragen[i].Name) </h3>
-                                    <hr />
-                                    @for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
-                                    {
-                                        <div class="row">
-                                            <div class="col-lg-12 col-lg-offset-0">
-                                                <div class="well well-lg-weiss">
-                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].ID)
-                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].IstMultiSelect)
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <label class="control-label col-md-11 text-left">
-                                                                @Html.DisplayFor(m => m.Fragen[i].Questions[j].Text)
-                                                            </label>
+
+                            <li><a id="@Model.Fragen[i].Name@i" href="#@Model.Fragen[i].Name">@Model.Fragen[i].Name</a></li>
+                        }
+                    </ul>
+                    <br />
+                    <hr />
+                    <button type="submit" id="btnSpeichernFragen1" name="btnSave" value="Speichern" class="btn btn-default btn-block">
+                        <i class="glyphicon glyphicon-ok"></i> Speichern
+                    </button>
+                    <br />
+                    <a class="btn btn-default btn-block" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+
+                </nav>
+                <div class="col-md-9 col-md-offset-2">
+                    <br />
+                    <div class="row">
+                        <div id="Fragebogen" class="col-md-6 col-md-offset-3 text-center">
+                            <h1>Fragebogen</h1>
+                            <br />
+                        </div>
+                    </div>
+
+                    @for (int i = 0; i < Model.Fragen.Count; i++)
+                    {
+                        <div class="well-lg col-md-12 col-md-offset-0" style="z-index:@(Model.Fragen.Count -i) ">
+                            @Html.HiddenFor(m => m.Fragen[i].ID)
+                            <div id="@Model.Fragen[i].Name" style="padding-top: 210px; margin-top: -210px; ">
+                                @Html.HiddenFor(m => m.Fragen[i].Name)
+                                <h3> @Html.DisplayFor(m => m.Fragen[i].Name) </h3>
+                                <hr />
+                                @for (int j = 0; j < Model.Fragen[i].Questions.Count; j++)
+                                {
+                                    <div class="row">
+                                        <div class="col-lg-12 col-lg-offset-0">
+                                            <div class="well well-lg-weiss">
+                                                @Html.HiddenFor(m => m.Fragen[i].Questions[j].ID)
+                                                @Html.HiddenFor(m => m.Fragen[i].Questions[j].IstMultiSelect)
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label class="control-label col-md-11 text-left">
+                                                            @Html.DisplayFor(m => m.Fragen[i].Questions[j].Text)
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                @if (!Model.Fragen[i].Questions[j].IstMultiSelect)
+                                                {
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="funkyradio">
+                                                                @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                                                {
+                                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
+                                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
+                                                                    <div class="funkyradio-primary">
+                                                                        @Html.RadioButtonFor(m => m.Fragen[i].Questions[j].GegebeneAntwort, Model.Fragen[i].Questions[j].Antworten[k].AntwortId, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
+                                                                        <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
+                                                                    </div>
+                                                                }
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    @if (!Model.Fragen[i].Questions[j].IstMultiSelect)
-                                                    {
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="funkyradio">
-                                                                    @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
-                                                                    {
-                                                                        @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
-                                                                        @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
-                                                                        <div class="funkyradio-primary">
-                                                                            @Html.RadioButtonFor(m => m.Fragen[i].Questions[j].GegebeneAntwort, Model.Fragen[i].Questions[j].Antworten[k].AntwortId, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
-                                                                            <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
-                                                                        </div>
-                                                                    }
-                                                                </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <p>(Mehrfachauswahl möglich)</p>
+                                                            <div class="funkyradio">
+                                                                @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
+                                                                {
+                                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
+                                                                    @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
+                                                                    <div class="funkyradio-primary">
+                                                                        @Html.CheckBoxFor(m => m.Fragen[i].Questions[j].Antworten[k].IsChecked, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
+                                                                        <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
+                                                                    </div>
+                                                                }
                                                             </div>
                                                         </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <p>(Mehrfachauswahl möglich)</p>
-                                                                <div class="funkyradio">
-                                                                    @for (int k = 0; k < Model.Fragen[i].Questions[j].Antworten.Count; k++)
-                                                                    {
-                                                                        @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].AntwortId)
-                                                                        @Html.HiddenFor(m => m.Fragen[i].Questions[j].Antworten[k].Bezeichnung)
-                                                                        <div class="funkyradio-primary">
-                                                                            @Html.CheckBoxFor(m => m.Fragen[i].Questions[j].Antworten[k].IsChecked, new { id = Model.Fragen[i].Questions[j].Antworten[k].AntwortId })
-                                                                            <label for="@Model.Fragen[i].Questions[j].Antworten[k].AntwortId">@Model.Fragen[i].Questions[j].Antworten[k].Bezeichnung</label>
-                                                                        </div>
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    }
-                                                </div>
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
-                                        @Html.ValidationMessageFor(m => m.Fragen[i].Questions[j].GegebeneAntwort)
-                                    }
-                                </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.Fragen[i].Questions[j].GegebeneAntwort)
+                                }
                             </div>
-                            <div class="col-md-12 col-md-offset-0" style="background-color:transparent">
-                                <br />
-                            </div>
+                        </div>
+                        <div class="col-md-12 col-md-offset-0" style="background-color:transparent">
+                            <br />
+                        </div>
 
-                        }
-                        @*<div class="row">
+                    }
+                    @*<div class="row">
                             <div class="col-md-12 col-md-offset-0">
                                 <ul class="list-unstyled list-inline " style="margin-left: -5px;">
                                     <li>
@@ -434,10 +454,10 @@
                             </div>
                         </div>*@
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 }
 
 @section Scripts {
