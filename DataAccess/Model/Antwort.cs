@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using DataAccess.Services;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.Model
@@ -8,7 +9,7 @@ namespace DataAccess.Model
         [Key]
         public int AntwortId { get; set; }
 
-        [Required]
+        [MyRequired]
         [DisplayName(@"Antwort")]
         public string Bezeichnung { get; set; }
 

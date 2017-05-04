@@ -112,10 +112,9 @@
     <Compile Include="Repositories\RechteGruppeRepository.cs" />
     <Compile Include="Repositories\RechtRepository.cs" />
     <Compile Include="Repositories\KategorieRepository.cs" />
+    <Compile Include="Services\ValidationService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="02_Data_Klassendiagramm.cd" />
     <None Include="App.config" />
