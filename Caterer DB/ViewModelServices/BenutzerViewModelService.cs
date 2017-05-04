@@ -296,6 +296,8 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             var editBenutzerViewModel = Mapper.Map<EditBenutzerViewModel>(benutzer);
             editBenutzerViewModel.IstAdmin = "false";
+            editBenutzerViewModel.AdminCount = BenutzerService.GetAdminCount();
+
             foreach (BenutzerGruppe benutzergruppe in benutzer.BenutzerGruppen)
             {
                 if (benutzergruppe.Bezeichnung == "Administrator")

@@ -198,6 +198,8 @@ namespace Caterer_DB.Models
 
         [DisplayName(@"Administrationsberechtigungen")]
         public string IstAdmin { get; set; }
+
+        public int AdminCount { get; set; }
     }
 
     public class MeineDatenBenutzerViewModel
