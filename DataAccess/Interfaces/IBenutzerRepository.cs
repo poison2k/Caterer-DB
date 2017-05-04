@@ -38,5 +38,7 @@ namespace DataAccess.Interfaces
         int GetMitarbeiterCount();
 
         int GetCatererCount();
+
+        int GetAdminCount();
     }
 }

@@ -26,6 +26,7 @@ namespace SeleniumTests
 
             //Neuen Namen eingeben
             TestTools_Userstory_T3_1.Mitarbeiter_Vorname_Ändern(driver);
+            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Telefon, ObjektIDs_NutzerDaten.Telefon, driver);
             TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
             Assert.AreEqual(Hinweise.Mitarbeiter_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Seite, driver));
 
@@ -287,51 +288,6 @@ namespace SeleniumTests
 
             TestTools_Userstory_T3_1.Bearbeiten_Von_Mitarbeiter_Anzeigen(driver);
             Assert.AreEqual(NutzerDaten.Dummy_Daten_Vorname, TestTools.Textbox_Text_Zurückgeben(ObjektIDs_NutzerDaten.Vorname, driver));
-
-            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-        }
-
-        [Test]
-        public void MitarbeiterBearbeiten6()
-        //T_T3-1_F07_B_001
-        {
-            TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
-
-            //Als Admin anmelden
-            TestTools.User_Login_Durchführen(LoginDaten.Admin, LoginDaten.AdminPW, driver);
-
-            //Liste der Mitarbeiter aufrufen
-            TestTools_Userstory_T3_1.Liste_Aller_Mitarbeiter_Anzeigen(driver);
-
-            //Mitarbeiter Details aufrufen
-            TestTools_Userstory_T3_1.Details_Von_Mitarbeiter_Anzeigen(driver);
-
-            //Zurückgehen zur Mitarbeiter Übersicht
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Zurück_Button, driver);
-            Assert.AreEqual(Hinweise.Mitarbeiter_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Seite, driver));
-
-            //Mitarbeiter bearbeiten über Details Seite
-            TestTools_Userstory_T3_1.Details_Von_Mitarbeiter_Anzeigen(driver);
-            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Daten_Bearbeiten, driver);
-            Assert.AreEqual(Hinweise.Mitarbeiter_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Bearbeiten, driver));
-
-            //Zurückgehen zur Details des Mitarbeiter
-            TestTools.Element_Klicken(ObjektIDs_Allgemein.Zurück_Button, driver);
-            Assert.AreEqual(Hinweise.Mitarbeiter_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Seite, driver));
-
-            //Mitarbeiter löschen über Details Seite
-            //TestTools_Userstory_T3_1.Details_Von_Mitarbeiter_Anzeigen(driver);
-
-            driver.Navigate().GoToUrl("http://caterer-schulverpflegung-niedersachsen.de/Benutzer/Details/10");
-            Assert.AreEqual(Hinweise.Mitarbeiter_Details, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Details, driver));
-
-            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Daten_Bearbeiten, driver);
-            Assert.AreEqual(Hinweise.Mitarbeiter_Bearbeiten, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Bearbeiten, driver));
-            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
-            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Löschen_Seite, driver));
-            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Ja, driver);
-            Assert.AreEqual(Hinweise.Mitarbeiter_Seite, TestTools.Label_Text_Zurückgeben(ObjektIDs_DatenManagement.Mitarbeiter_Seite, driver));
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
@@ -672,80 +628,5 @@ namespace SeleniumTests
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
 
-        [Test]
-        public void MitarbeiterBearbeiten10()
-        //T_T3-1_F012_B_001
-        {
-            TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
-
-            //Als Admin anmelden
-            TestTools.User_Login_Durchführen(LoginDaten.Admin, LoginDaten.AdminPW, driver);
-
-            //Mitarbeiter Hinzufügen über Dropdown aufrufen
-            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Konfiguration_Login, driver);
-            TestTools.Element_Klicken(ObjektIDs_Dropdown.DropdownMAHinzufügen, driver);
-            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Mitarbeiter_Anlegen_Button, driver);
-
-            //Fehlermeldungen überprüfen
-            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Anrede, driver));
-            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Vorname, driver));
-            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Nachname, driver));
-            Assert.AreEqual(Fehlermeldung.Email_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Email, driver));
-
-            //Alle Felder Befüllen
-            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Vorname, ObjektIDs_NutzerDaten.Vorname, driver);
-            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Nachname, ObjektIDs_NutzerDaten.Nachname, driver);
-            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Email, ObjektIDs_Allgemein.EMail_Feld, driver);
-            new SelectElement(driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede))).SelectByIndex(1);
-
-            //Prüfen ob alle Fehlermeldungen verschwunden sind
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Anrede, driver));
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Vorname, driver));
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Nachname, driver));
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Email, driver));
-
-            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-        }
-
-        [Test]
-        public void MitarbeiterBearbeiten11()
-        //T_T3-1_F013_B_001
-        {
-            TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
-
-            //Als Admin anmelden
-            TestTools.User_Login_Durchführen(LoginDaten.Admin, LoginDaten.AdminPW, driver);
-
-            //Bearbeiten von Mitarbeiter über Liste aller Mitarbeiter aufrufen
-            TestTools_Userstory_T3_1.Liste_Aller_Mitarbeiter_Anzeigen(driver);
-            TestTools_Userstory_T3_1.Bearbeiten_Von_Mitarbeiter_Anzeigen(driver);
-
-            //Alle Felder Leeren
-            TestTools.Daten_In_Textbox_Eingeben("", ObjektIDs_NutzerDaten.Vorname, driver);
-            TestTools.Daten_In_Textbox_Eingeben("", ObjektIDs_NutzerDaten.Nachname, driver);
-            new SelectElement(driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede))).SelectByIndex(0);
-
-            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Speichern, driver);
-            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-
-            //Fehlermeldungen überprüfen
-            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Fehlermeldung.Anrede_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Anrede, driver));
-            Assert.AreEqual(Fehlermeldung.Vorname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Vorname, driver));
-            Assert.AreEqual(Fehlermeldung.Nachname_Erforderlich, TestTools.Label_Text_Zurückgeben(ObjektIDs_Fehlermeldungen.Nachname, driver));
-
-            //Alle Felder Befüllen
-            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Vorname, ObjektIDs_NutzerDaten.Vorname, driver);
-            TestTools.Daten_In_Textbox_Eingeben(NutzerDaten.NutzerDaten_Nachname, ObjektIDs_NutzerDaten.Nachname, driver);
-            new SelectElement(driver.FindElement(By.Id(ObjektIDs_NutzerDaten.Anrede))).SelectByIndex(1);
-
-            //Prüfen ob alle Fehlermeldungen verschwunden sind
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Anrede, driver));
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Vorname, driver));
-            Assert.AreEqual(false, TestTools.Fehlermeldung_Sichtbarkeitsprüfung(ObjektIDs_Fehlermeldungen.Nachname, driver));
-
-            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-        }
     }
 }

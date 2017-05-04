@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-4"></div>
     </div>
-        <br />
+    <br />
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="row">
@@ -118,9 +118,18 @@
                 <ul class="list-unstyled list-inline text-right">
 
                     <li>
-                        <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
-                            <i class="glyphicon glyphicon-trash"></i> Konto löschen
-                        </button>
+                        @if (Model.AdminCount > 1)
+                        {
+                            <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
+                                <i class="glyphicon glyphicon-trash"></i> Konto löschen
+                            </button>
+                        }
+                        else
+                        {
+                            <button id="LöschenButton" type="button" class="btn btn-info disabled" data-toggle="modal" data-target="#">
+                                <i class="glyphicon glyphicon-trash"></i> Konto löschen
+                            </button>
+                        }
                     </li>
                 </ul>
             </div>
