@@ -16,7 +16,7 @@ namespace Common.Services
             var mailModel = ConfigureMail(config);
             mailModel.Betreff = EMailBetreff.Passwortvergessen;
             mailModel.Empfaenger = mail;
-            mailModel.Inhalt = EMailTexte.PWvergessen + Links.ForgottenPassword + passwordVerificationCode + "&id=" + id + EMailTexte.Abschluss;
+            mailModel.Inhalt = EMailTexte.PWvergessen + config.URLWebseite + Links.ForgottenPassword + passwordVerificationCode + "&id=" + id + EMailTexte.Abschluss;
             SendMail(mailModel);
         }
 
