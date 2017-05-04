@@ -309,6 +309,7 @@ namespace Caterer_DB.Models.ViewModelServices
         public MeineDatenBenutzerViewModel Map_Benutzer_MeineDatenBenutzerViewModel(Benutzer benutzer)
         {
             var meineDatenBenutzerViewModel = Mapper.Map<MeineDatenBenutzerViewModel>(benutzer);
+            meineDatenBenutzerViewModel.AdminCount = BenutzerService.GetAdminCount();
 
             return AddListsToMeineDatenViewModel(meineDatenBenutzerViewModel);
         }

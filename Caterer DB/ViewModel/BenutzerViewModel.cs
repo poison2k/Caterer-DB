@@ -222,6 +222,8 @@ namespace Caterer_DB.Models
         [RegularExpression("(?:\\+\\d+)?\\s*(?:\\(\\d+\\)\\s*(?:[/–-]\\s*)?)?\\d+(?:\\s*(?:[\\s/–-]\\s*)?\\d+)*", ErrorMessage = "Bitte Telefon Format beachten")]
         public string Telefon { get; set; }
 
+        public int AdminCount { get; set; }
+
     }
 
     public class MyDataBenutzerViewModel

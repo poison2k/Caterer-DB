@@ -347,6 +347,11 @@ namespace Business.Services
             return BenutzerRepository.GetMitarbeiterCount();
         }
 
+        public int GetAdminCount()
+        {
+            return BenutzerRepository.GetAdminCount();
+        }
+
         public int GetCatererCount()
         {
             return BenutzerRepository.GetCatererCount();
