@@ -85,7 +85,46 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
+            <div class="col-md-2 col-md-offset-3">
+                <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-default btn-block">
+                    <i class="glyphicon glyphicon-ok"></i> Speichern
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-default btn-block" href="/Home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+            </div>
+            <div class="col-md-2">
+                @if (Model.AdminCount > 1)
+                {
+                    <button id="LöschenButton" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#deleteModal">
+                        <i class="glyphicon glyphicon-trash"></i> Konto löschen
+                    </button>
+                }
+                else
+                {
+                    <button id="LöschenButton" type="button" class="btn btn-info btn-block disabled" data-toggle="modal" data-target="#">
+                        <i class="glyphicon glyphicon-trash"></i> Konto löschen
+                    </button>
+                }
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        @*<div class="row">
             <div class="col-md-8 col-md-offset-3">
                 <ul class="list-unstyled list-inline " style="margin-left: -5px;">
                     <li>
@@ -96,19 +135,6 @@
                     <li>
                         <a class="btn btn-default" href="/Home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                     </li>
-                    <li>
-                        <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
-                            <i class="glyphicon glyphicon-trash"></i> Konto löschen
-                        </button>
-                    </li>
-                </ul>
-            </div>
-
-
-
-
-            @*<div class="col-md-2 col-md-offset-4">
-                <ul class="list-unstyled list-inline text-right">
                     <li>
                         @if (Model.AdminCount > 1)
                         {
@@ -122,11 +148,10 @@
                                 <i class="glyphicon glyphicon-trash"></i> Konto löschen
                             </button>
                         }
-
                     </li>
                 </ul>
-            </div>*@
-        </div>
+            </div>            
+        </div>*@
     </div>
      <!-- Modal -->
     <div class="modal fade" id="deleteModal" role="dialog">
