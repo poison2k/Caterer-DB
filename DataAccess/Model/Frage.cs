@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DataAccess.Services;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.Model
@@ -8,7 +9,7 @@ namespace DataAccess.Model
         [Key]
         public int FrageId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public virtual List<Antwort> Antworten { get; set; }

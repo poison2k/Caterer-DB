@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataAccess.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.Model
 {
@@ -7,7 +8,7 @@ namespace DataAccess.Model
         [Key]
         public int KategorieId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
     }
 }

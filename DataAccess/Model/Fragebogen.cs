@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataAccess.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.Model
 {
@@ -7,10 +8,10 @@ namespace DataAccess.Model
         [Key]
         public int FragebogenId { get; set; }
 
-        [Required]
+        [MyRequired]
         public Benutzer Benutzer { get; set; }
 
-        [Required]
+        [MyRequired]
         public Antwort Antwort { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DataAccess.Services;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +11,7 @@ namespace DataAccess.Model
         [Key]
         public int RechtId { get; set; }
 
-        [Required]
+        [MyRequired]
         public string Bezeichnung { get; set; }
 
         public string Beschreibung { get; set; }

@@ -37,12 +37,12 @@
                                 </th>
                                 <th>
                                     Anzahl Fragen
-                                </th>
+                                </th> 
+                                <th></th>                             
                             </tr>
                             @foreach (var item in Model)
 
                             {
-
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Bezeichnung)
@@ -55,9 +55,8 @@
                                     </td>
                                     <td align="left">
                                         <a class="btn btn-default" href="@Url.Action("Edit", "Kategorie", new { id = item.KategorieId})" title="Bearbeiten"><i class="glyphicon glyphicon-pencil"></i></a>
-                                    </td>
+                                    </td>                                   
                                 </tr>
-
                             }
                         </table>
                     </div>

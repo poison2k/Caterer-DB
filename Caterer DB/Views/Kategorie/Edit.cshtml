@@ -103,7 +103,7 @@
                 }
             </div>
             <div class="row">
-                <div class="col-md-6 ">
+                <div class="col-md-12 ">
                     <ul class="list-unstyled list-inline " style="margin-left: -5px;">
                         <li>
                             <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-default">
@@ -113,10 +113,6 @@
                         <li>
                             <a class="btn btn-default" id="btnZurück" href="/Kategorie/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                         </li>
-                    </ul>
-                </div>
-                <div class="col-md-6 text-right">
-                    <ul class="list-unstyled list-inline text-right">
                         @if (Model.Fragen.Count == 0)
                         {
                             <li>
@@ -133,8 +129,9 @@
                                 </button>
                             </li>
                         }
+
                     </ul>
-                </div>
+                </div>              
             </div>
         </div>
     </div>
