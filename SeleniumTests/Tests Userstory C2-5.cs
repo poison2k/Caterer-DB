@@ -52,28 +52,5 @@ namespace SeleniumTests
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
 
-        [Test]
-        public void DatenLöschen3()
-        //T_C2-5_F04_B_001
-        {
-            TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
-
-            TestTools.User_Login_Durchführen(LoginDaten.Caterer2, LoginDaten.PW2, driver);
-
-            TestTools.Element_Klicken(ObjektIDs_Dropdown.Dropdown_Login, driver);
-            driver.FindElement(By.LinkText(ObjektIDs_Dropdown.Dropdown_Eigene_Daten)).Click();
-
-            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Button, driver);
-            TestTools.Selenium_Wartet_Eine_Sekunde(driver);
-            Assert.AreEqual(Hinweise.Löschen_Bestätigen, TestTools.Label_Text_Zurückgeben("LöschenBest", driver));
-
-            TestTools.Element_Klicken(ObjektIDs_DatenManagement.Löschen_Ja, driver);
-            Assert.AreEqual(Hinweise.Account_Gelöscht, TestTools.Label_Text_Zurückgeben("Gelöscht", driver));
-
-            TestTools.User_Login_Durchführen(LoginDaten.Caterer2, LoginDaten.PW2, driver);
-            Assert.AreEqual(Fehlermeldung.LoginSeite_Email_PW_Fehler, TestTools.Label_Text_Zurückgeben("error2", driver));
-
-            TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
-        }
     }
 }
