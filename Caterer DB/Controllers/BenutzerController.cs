@@ -518,10 +518,10 @@ namespace Caterer_DB.Controllers
             {
                 if (detailsCatererViewModel.WeitergabeVonDaten)
                 {
-                    dateiName = "InformationsblattLüneburg.docx";
+                    dateiName = "InformationsblattLueneburg.docx";
                 }else
                 {
-                    dateiName = "InformationsblattLüneburgWasserzeichen.docx";
+                    dateiName = "InformationsblattLueneburgWasserzeichen.docx";
                 }
                 
             }
@@ -540,11 +540,11 @@ namespace Caterer_DB.Controllers
             {
                 if (detailsCatererViewModel.WeitergabeVonDaten)
                 {
-                    dateiName = "InformationsblattOsnabrück.docx";
+                    dateiName = "InformationsblattOsnabrueck.docx";
                 }
                 else
                 {
-                    dateiName = "InformationsblattOsnabrückWasserzeichen.docx";
+                    dateiName = "InformationsblattOsnabrueckWasserzeichen.docx";
                 }
             }
 
