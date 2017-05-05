@@ -10,6 +10,7 @@ namespace Caterer_DB.Controllers
 #else
      [RequireHttps]
 #endif
+    [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
     public class BaseController : Controller
     {
         [Dependency]
