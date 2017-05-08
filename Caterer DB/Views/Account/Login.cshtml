@@ -4,63 +4,62 @@
 @{
     ViewBag.Title = "Log in";
 }
-
+<br />
+<br />
+<br />
+<div class="row">
+    <div id="LoginPage" class="col-md-12 text-center">
+        <h1>Login</h1>
+    </div>
+</div>
+<br />
 <br />
 <br />
 <br />
 <div class="row">
     <div class="col-md-offset-2 col-md-8">
-
-        <div class="row">
-            <div id="LoginPage" class="col-md-offset-4 col-md-4 text-center">
-                <h1>Login</h1>
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
+
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-3">                      
-                            <div class="input-group input-group">
-                                <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-user "></i></span>
-                                <div class="icon-addon addon">
-                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-Mail" })
-                                </div>
+                    <div class="col-md-7 col-md-offset-2">
+                        <div class="input-group input-group">
+                            <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-user "></i></span>
+                            <div class="icon-addon addon">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-Mail" })
                             </div>
-                            <div class="text-center">
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>                       
+                        </div>
+                        <div class="text-center">
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
                 <br />
-                   
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">                          
-                                <div class="input-group input-group">
-                                    <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-lock"></i></span>
-                                    <div class="icon-addon addon-sm">
-                                        @Html.PasswordFor(m => m.Passwort, new { @class = "form-control", placeholder = "Passwort" })
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    @Html.ValidationMessageFor(m => m.Passwort, "", new { @class = "text-danger", id = "error1" })
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger", id = "error2" })
-                                </div>                         
+
+                <div class="row">
+                    <div class="col-md-7 col-md-offset-2">
+                        <div class="input-group input-group">
+                            <span class="input-group-addon"><i style="font-size:25px;" class="glyphicon glyphicon-lock"></i></span>
+                            <div class="icon-addon addon-sm">
+                                @Html.PasswordFor(m => m.Passwort, new { @class = "form-control", placeholder = "Passwort" })
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            @Html.ValidationMessageFor(m => m.Passwort, "", new { @class = "text-danger", id = "error1" })
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger", id = "error2" })
                         </div>
                     </div>
-                   
-                    <br />
-                    <br />
-                    <div class="row">
-                        <div class="col-md-5"></div>
-                        <div type="button" class="col-md-2 text-center"><input type="submit" value="Anmelden" class="btn btn-success btn-block" /></div>
-                        <div class="col-md-5"></div>
-                    </div>
+                </div>
+
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div type="button" class="col-md-4 text-center"><input type="submit" value="Anmelden" class="btn btn-success btn-block" /></div>
+                    <div class="col-md-4"></div>
+                </div>
             }
         </section>
 

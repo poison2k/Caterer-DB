@@ -57,12 +57,10 @@
 
 <br />
 <div class="row">
-
-    <div class="col-md-offset-1 col-md-10">
-        <div class="well well-sm">
-            @if (Request.IsAuthenticated)
+    @if (Request.IsAuthenticated)
             {
-
+        <div class="col-md-offset-1 col-md-10">
+            <div class="well well-sm">
                 <div class="row text-center">
                     <div class="col-md-offset-1 col-md-10" id="Willkommen">
                         <h2>Willkommen @Model.Vorname @Model.Nachname</h2>
@@ -71,7 +69,7 @@
                 {
                             <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
                         }
-                        
+
                         else if (User.HatDasRecht(RechteResource.TestBlock2))
                         {
                             <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
@@ -84,18 +82,17 @@
                         }
                     </div>
                 </div>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-            }
-            <br />
+            </div>
+        </div>
+        <div style="height:400px"></div>
+    }
+    <br />
 
-           
-            @if (!Request.IsAuthenticated)
-            {
 
+    @if (!Request.IsAuthenticated)
+    {
+        <div class="col-md-offset-1 col-md-10">
+            <div class="well well-sm">
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-10 text-center">
@@ -112,7 +109,7 @@
                 </div>
                 <br />
                 <br />
-               
+
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4 text-center">
@@ -128,14 +125,13 @@
                     </div>
                     <div class="col-md-4"></div>
                 </div>
-            }
-            <br />
+            </div>
         </div>
+        <br />
+        <br />
+        <br />
+    }
+                <br />
+    <br />
+    <br />
     </div>
-</div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />

@@ -513,10 +513,11 @@ namespace Caterer_DB.Controllers
         public ActionResult DetailsCaterer(DetailsCatererViewModel detailsCatererViewModel)
         {
             string dateiName = "";
+            bool istWeitergabeErlaubt = BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId).WeitergabeVonDaten;
 
             if (Request.Form["lueneburg"] != null)
             {
-                if (detailsCatererViewModel.WeitergabeVonDaten)
+                if (istWeitergabeErlaubt) 
                 {
                     dateiName = "InformationsblattLueneburg.docx";
                 }else
@@ -527,7 +528,7 @@ namespace Caterer_DB.Controllers
             }
             else if (Request.Form["braunschweig"] != null)
             {
-                if (detailsCatererViewModel.WeitergabeVonDaten)
+                if (istWeitergabeErlaubt)
                 {
                     dateiName = "InformationsblattBraunschweig.docx";
                 }
@@ -538,7 +539,7 @@ namespace Caterer_DB.Controllers
             }
             else if (Request.Form["osnabrueck"] != null)
             {
-                if (detailsCatererViewModel.WeitergabeVonDaten)
+                if (istWeitergabeErlaubt)
                 {
                     dateiName = "InformationsblattOsnabrueck.docx";
                 }
