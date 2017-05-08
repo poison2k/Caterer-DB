@@ -89,7 +89,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group ">
                                         @Html.LabelFor(model => model.IstAdmin, htmlAttributes: new { @class = "control-label " })
-                                        @if (Model.AdminCount>1)
+                                        @if (Model.AdminCount > 1 || Model.IstAdmin == "false")
                                         {
                                             @Html.DropDownList("IstAdmin", Model.JaNein, new { @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
                                         }
@@ -117,7 +117,7 @@
                 <a class="btn btn-default btn-block" id="btnZurück" href="/Benutzer/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
             </div>
             <div class="col-md-2">
-                @if (Model.AdminCount > 1)
+                @if (Model.AdminCount > 1 || Model.IstAdmin == "false")
                 {
                     <button id="LöschenButton" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#deleteModal">
                         <i class="glyphicon glyphicon-trash"></i> Konto löschen
