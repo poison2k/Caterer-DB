@@ -109,7 +109,7 @@ namespace Common.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sehr geehrter Nutzer, 
         ///
-        ///Sie haben ein Benutzerkonto bei der Caterer Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsenangelegt. Eine gute Entscheidung! Nur so können Sie bei der Empfehlung von Verpflegungsanbietern für Schulen berücksichtigt werden.
+        ///Sie haben ein Benutzerkonto bei der Caterer Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsen angelegt. Eine gute Entscheidung! Nur so können Sie bei der Empfehlung von Verpflegungsanbietern für Schulen berücksichtigt werden.
         ///
         ///Damit Sie Ihr Konto nutzen können, fehlt nur noch ein Schritt:
         ///Bestätigen Sie Ihre E-Mail Adresse. 
