@@ -16,6 +16,7 @@
     @Html.HiddenFor(model => model.PasswortZeitstempel)
     @Html.HiddenFor(model => model.LetzteÄnderung)
     @Html.HiddenFor(model => model.IstEmailVerifiziert)
+    @Html.HiddenFor(model => model.WeitergabeVonDaten);
 
      <!-- Nav tabs -->
     @*<div class="tabbar">
@@ -214,7 +215,7 @@
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " }) (optional)
                                             @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
-                                            @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
+                                            @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -247,28 +248,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="well well-lg">
-                                <h4><i class="glyphicon glyphicon-lock"></i> Datenschutz</h4>
-                                <br />
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                @Html.CheckBoxFor(model => model.WeitergabeVonDaten, new { @checked = "checked" })
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <p>"Meine Daten dürfen bei Beratungsfragen von der Vernetzungsstelle Niedersachsen weitergegeben werden."</p>
-                                        @Html.ValidationMessageFor(model => model.WeitergabeVonDaten, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-md-3"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                
                     <div class="row">
                         <div class="col-md-3">
                             <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success btn-block">
@@ -287,28 +267,6 @@
 
 
 
-
-
-
-                    @*<div class="row">
-                            <div class="col-md-12">
-                                <ul class="list-unstyled list-inline " style="margin-left: -5px;">
-                                    <li>
-                                        <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success">
-                                            <i class="glyphicon glyphicon-ok"></i> Speichern
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <a class="btn btn-default" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-                                    </li>
-                                    <li>
-                                        <button id="LöschenButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#deleteModal">
-                                            <i class="glyphicon glyphicon-trash"></i> Konto löschen
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>*@
                 </div>
             </div>
             <!-- Modal -->
