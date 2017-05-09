@@ -43,9 +43,9 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Passwort, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Passwort, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Passwort, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Passwort, htmlAttributes: new { @class = "control-label"})
+                                    @Html.EditorFor(model => model.Passwort, new { htmlAttributes = new { @class = "form-control"} })<span id="hilfeText" class="help-block text-center"><h8>min 8 Zeichen (1 Sonderzeichen,1 Groß-und Kleinbuchstabe und 1 Zahl)</h8></span>
+                                    @Html.ValidationMessageFor(model => model.Passwort, "", new { @class = "text-danger"})
                                 </div>
                             </div>
 
