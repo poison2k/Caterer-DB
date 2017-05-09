@@ -150,7 +150,7 @@ namespace Caterer_DB.Controllers
                 if (Request.Form["btnCreateQuestion"] != null)
                 {
                     var frage = FrageViewModelService.Map_CreateFrageViewModel_Frage(createFrageViewModel);
-                    frage.Kategorie = KategorienService.SearchKategorieByName(createFrageViewModel.KategorieName);
+                    frage.Kategorie = KategorienService.SearchKategorieById(createFrageViewModel.KategorieId);
                     FrageService.AddFrage(frage);
                 }
 
@@ -219,14 +219,14 @@ namespace Caterer_DB.Controllers
                 if (Request.Form["btnVeroeffentlichen"] != null)
                 {
                     var frage = FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel);
-                    frage.Kategorie = KategorienService.SearchKategorieByName(editFrageViewModel.KategorieName);
+                    frage.Kategorie = KategorienService.SearchKategorieById(editFrageViewModel.KategorieId);
                     frage.IstVeröffentlicht = true;
                     FrageService.EditFrage(frage);
                 }
                 else if (Request.Form["btnSave"] != null)
                 {
                     var frage = FrageViewModelService.Map_EditFrageViewModel_Frage(editFrageViewModel);
-                    frage.Kategorie = KategorienService.SearchKategorieByName(editFrageViewModel.KategorieName);
+                    frage.Kategorie = KategorienService.SearchKategorieById(editFrageViewModel.KategorieId);
                     FrageService.EditFrage(frage);
                 }
                 else if (Request.Form["btnModalDelete"] != null)

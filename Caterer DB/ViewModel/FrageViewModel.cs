@@ -37,9 +37,11 @@ namespace Caterer_DB.Models
 
         public List<Antwort> Antworten { get; set; }
 
-        [MyRequired]
+       
         [DisplayName(@"Kategorie")]
         public string KategorieName { get; set; }
+        [MyRequired]
+        public int KategorieId { get; set; }
 
         [DisplayName(@"Mehrfachantworten")]
         public bool IstMultiSelect { get; set; }
@@ -60,9 +62,12 @@ namespace Caterer_DB.Models
 
         public List<Antwort> Antworten { get; set; }
 
-        [MyRequired]
+      
         [DisplayName(@"Kategorie")]
         public string KategorieName { get; set; }
+
+        [MyRequired]
+        public int KategorieId { get; set; }
 
         [DisplayName(@"Mehrfachantworten")]
         public bool IstMultiSelect { get; set; }
