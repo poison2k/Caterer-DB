@@ -66,6 +66,7 @@ namespace Caterer_DB.Models.ViewModelServices
         {
             var editFrageViewModel = Mapper.Map<EditFrageViewModel>(Frage);
             editFrageViewModel.KategorieName = Frage.Kategorie.Bezeichnung;
+            editFrageViewModel.KategorieId = Frage.Kategorie.KategorieId;
             return AddListsToEditFrageViewModel(editFrageViewModel, kategorien);
         }
 
@@ -114,11 +115,11 @@ namespace Caterer_DB.Models.ViewModelServices
         private SelectList CreateKategorienSelectList(List<Kategorie> kategorien)
         {
             var selectListItems = new List<SelectListItem>();
-            selectListItems.Add(new SelectListItem { Text = "Bitte wählen...", Value = String.Empty });
+            selectListItems.Add(new SelectListItem { Text = "Bitte wählen...", Value = "0" });
 
             foreach (Kategorie kategorie in kategorien)
             {
-                selectListItems.Add(new SelectListItem { Text = kategorie.Bezeichnung, Value = kategorie.Bezeichnung });
+                selectListItems.Add(new SelectListItem { Text = kategorie.Bezeichnung, Value = kategorie.KategorieId.ToString() });
             }
 
             return new SelectList(selectListItems, "Value", "Text");

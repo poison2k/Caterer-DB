@@ -235,6 +235,7 @@ namespace Business.Services
             editedBenutzer.BenutzerGruppen = dbBenutzer.BenutzerGruppen;
             editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
             editedBenutzer.IstEmailVerifiziert = dbBenutzer.IstEmailVerifiziert;
+            editedBenutzer.LetzteÄnderung = dbBenutzer.LetzteÄnderung;
             Mapper.Map(editedBenutzer, dbBenutzer);
             if (editedBenutzer.BenutzerGruppen.FindAll(x => x.Bezeichnung == "Caterer").Count > 0)
             {
