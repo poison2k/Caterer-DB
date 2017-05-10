@@ -125,7 +125,7 @@ namespace SeleniumTests
 
         [Test]
         public void Kategorien4()
-        //T_M4-9_F01_B_001
+        //T_M4-9_F04_B_001
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
@@ -149,7 +149,7 @@ namespace SeleniumTests
 
         [Test]
         public void Kategorien5()
-        //T_M4-9_F01_B_001
+        //T_M4-9_F05_B_001
         {
             TestTools.TestStart_Angemeldete_User_Ausloggen(driver);
 
