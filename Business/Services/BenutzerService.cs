@@ -224,6 +224,7 @@ namespace Business.Services
             }
             editedBenutzer.BenutzerGruppen = dbBenutzer.BenutzerGruppen;
             editedBenutzer.PasswortZeitstempel = dbBenutzer.PasswortZeitstempel;
+            editedBenutzer.IstEmailVerifiziert = dbBenutzer.IstEmailVerifiziert;
             Mapper.Map(editedBenutzer, dbBenutzer);
             dbBenutzer.LetzteÄnderung = DateTime.Now;
             BenutzerRepository.EditUser(dbBenutzer);
