@@ -42,21 +42,28 @@
                             </div>
 
                             <div class="col-md-4">
-                                <div class="form-group">
+                                <div class="form-group" title="min 8 Zeichen (1 Sonderzeichen,1 Groß-und Kleinbuchstabe und 1 Zahl)">
                                     @Html.LabelFor(model => model.Passwort, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Passwort, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Passwort, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.Passwort, new { htmlAttributes = new { @class = "form-control"} })
+                                    @Html.ValidationMessageFor(model => model.Passwort, "", new { @class = "text-danger"})
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.PasswortVerification, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.PasswortVerification, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.PasswortVerification, "", new { @class = "text-danger" })
+                           
+
+
+
+
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PasswortVerification, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.PasswortVerification, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PasswortVerification, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
