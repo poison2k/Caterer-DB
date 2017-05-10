@@ -85,7 +85,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             Config config = db.Config.Add(new Config
             {
                 UserNameForSMTPServer = "info@caterer-schulverpflegung-niedersachsen.de",
-                PasswortForSMTPServer = "Start#22",
+                PasswortForSMTPServer = "Start#22!2",
                 SmtpPort = 587,
                 SmtpServer = "smtp.1und1.de",
                 ZeitInStundendÄnderungsverfolgung = 8,
