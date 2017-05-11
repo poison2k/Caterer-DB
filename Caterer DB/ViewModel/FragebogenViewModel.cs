@@ -1,5 +1,6 @@
 ﻿using DataAccess.Model;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Caterer_DB.Models
 {
@@ -8,6 +9,8 @@ namespace Caterer_DB.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public List<FragenNachThemengebiet> Fragen { get; set; }
+        [DisplayName(@"Bemerkungen")]
+        public string Sonstiges { get; set; }
     }
 
     public class FragenViewModel
