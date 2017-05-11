@@ -831,6 +831,18 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
                 IstVeröffentlicht = true
             });
+
+            db.Frage.Add(new Frage()
+            {
+                Bezeichnung = "Fragetext Test Sonstiges",
+                Antworten = new List<Antwort>() {
+                    new Antwort() {Bezeichnung = "Antworttext1 zu Frage Sonstiges"},
+                    new Antwort() {Bezeichnung = "Antworttext2 zu Frage Sonstiges"},
+                    new Antwort() {Bezeichnung = "Sonstiges (Bitte ergänzen Sie am Ende im Feld Sonstiges)"}
+                },
+                Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Wahlmöglichkeiten"),
+                IstVeröffentlicht = true
+            });
         }
     }
 }

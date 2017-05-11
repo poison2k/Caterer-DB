@@ -18,13 +18,13 @@
 {
     @Html.AntiForgeryToken()
 
-    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
     @Html.HiddenFor(model => model.BenutzerId)
     @Html.HiddenFor(model => model.Mail)
     @Html.HiddenFor(model => model.PasswortZeitstempel)
     @Html.HiddenFor(model => model.IstEmailVerifiziert)
     @Html.HiddenFor(model => model.LetzteÄnderung)
     @Html.HiddenFor(model => model._AntwortIDs)
+    @Html.HiddenFor(model => model.Sonstiges)
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4 text-center">
@@ -166,7 +166,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Internetadresse, htmlAttributes: new { @class = "control-label " }) (optional)
                                     @Html.EditorFor(model => model.Internetadresse, new { htmlAttributes = new { @class = "form-control" } })
-                                    @*@Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })*@
+                                    @Html.ValidationMessageFor(model => model.Internetadresse, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -190,9 +190,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" style="word-wrap:break-word">
-                                    @Html.LabelFor(model => model.Sonstiges, htmlAttributes: new { @class = "control-label " })
-                                    @Html.TextAreaFor(model => model.Sonstiges, new { rows = 6, columns = 40, @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Sonstiges, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Bemerkung, htmlAttributes: new { @class = "control-label " })
+                                    @Html.TextAreaFor(model => model.Bemerkung, new { rows = 6, columns = 40, @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Bemerkung, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -228,7 +228,6 @@
                         <i class="glyphicon glyphicon-ok"></i> Speichern
                     </button>
                 </div>
-                        @*Button "Zurück", rechts neben "Registrieren"*@
                 <div class="col-md-2">
                     <a class="btn btn-default btn-block" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
                 </div>

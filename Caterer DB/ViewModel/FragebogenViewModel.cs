@@ -8,6 +8,8 @@ namespace Caterer_DB.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public List<FragenNachThemengebiet> Fragen { get; set; }
+
+        public string Sonstiges { get; set; }
     }
 
     public class FragenViewModel

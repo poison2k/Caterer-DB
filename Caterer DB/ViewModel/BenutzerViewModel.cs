@@ -134,6 +134,8 @@ namespace Caterer_DB.Models
         public bool WeitergabeVonDaten { get; set; }
 
         [DisplayName(@"Bemerkungen")]
+        public string Bemerkung { get; set; }
+
         public string Sonstiges { get; set; }
     }
 
@@ -296,6 +298,8 @@ namespace Caterer_DB.Models
         public bool WeitergabeVonDaten { get; set; }
 
         [DisplayName(@"Bemerkungen")]
+        public string Bemerkung { get; set; }
+
         public string Sonstiges { get; set; }
 
         public List<FragenNachThemengebiet> Fragen { get; set; }
@@ -495,6 +499,8 @@ namespace Caterer_DB.Models
         public int Lieferumkreis { get; set; }
 
         [DisplayName(@"Bemerkungen")]
+        public string Bemerkung { get; set; }
+
         public string Sonstiges { get; set; }
     }
 
@@ -558,6 +564,8 @@ namespace Caterer_DB.Models
         public bool WeitergabeVonDaten { get; set; }
 
         [DisplayName(@"Bemerkungen")]
+        public string Bemerkung { get; set; }
+
         public string Sonstiges { get; set; }
 
         public List<FragenNachThemengebiet> Fragen { get; set; }

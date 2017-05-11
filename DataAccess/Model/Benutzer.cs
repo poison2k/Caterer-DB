@@ -61,11 +61,15 @@ namespace DataAccess.Model
 
         public string Sonstiges { get; set; }
 
+        public string Bemerkung { get; set; }
+
         //Fragebogen
         public string _AntwortIDs { get; set; }
 
         //GeoInfoDaten
         public DbGeography Koordinaten { get; set; }
+
+     
 
 
         [NotMapped]

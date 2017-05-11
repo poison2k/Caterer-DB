@@ -45,6 +45,7 @@ namespace MockData
                 PasswortVerification = "test",
                 Postleitzahl = "10111",
                 Sonstiges = "",
+                Bemerkung = "",
                 Straße = "",
                 Telefon = "",
                 Vorname = "test",
