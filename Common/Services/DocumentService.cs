@@ -36,6 +36,7 @@ namespace Common.Services
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Anrede", benutzer.Anrede);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Internetadresse", benutzer.Internetadresse);
                 OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Bemerkung", benutzer.Bemerkung);
+                OpenXmlUtils.ErsetzeContentControl(openXmlDocument, "Sonstiges", benutzer.Sonstiges);
 
                 var tableRow = (TableRow)OpenXmlUtils.SucheTabellenReiheMitContentControl(openXmlDocument, "Frage");
                 Table table = OpenXmlUtils.SucheTabelleMitContentControl(openXmlDocument, "Frage");
