@@ -4,7 +4,6 @@
     ViewBag.Title = "Startseite";
 }
 
-@*Hintergrundbild ohne Verblassen auf Startseite*@
 <body class="mybg-Startseite">
 </body>
 <br />
@@ -70,23 +69,6 @@
                             <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
                             <br/>
 
-                            @*Tragen Sie nachfolgend die Überschrift der Administrator-Willkommensseite ein (optional) *@
-                            @*<h4>Hier steht die Überschrift</h4>*@
-                            @*<br />*@
-
-                            @*Tragen Sie nachfolgend den Fließtext der Administrator-Willkommensseite ein (optional) *@
-                            @*<span>
-                            //Tragen Sie hier den Fließtext ein. 
-                            </span>*@
-                                @*<br />*@
-                                @*<br/>*@
-                            @*Tragen Sie nachfolgend eine weitere Überschrift auf der Administrator-Willkommensseite ein (optional) *@
-                            @*<h5>Hier steht eine Überschrift</h5>*@
-                            @*<span>
-                                Tragen Sie hier den Fließtext ein.
-                                <br />
-                                Tragen Sie hier den Fließtext ein.
-                            </span>*@
                   }
 
                         else if (User.HatDasRecht(RechteResource.TestBlock2))
@@ -94,47 +76,11 @@
                             <h4 class="text-danger">Ich bin Mitglied der Gruppe Mitarbeiter</h4>
                             <br />
 
-                            @*Tragen Sie nachfolgend die Überschrift der Mitarbeiter-Willkommensseite ein (optional) *@
-                            @*<h4>Hier steht die Überschrift</h4>*@
-                            @*<br />*@
-
-                            @*Tragen Sie nachfolgend den Fließtext der Mitarbeiter-Willkommensseite ein (optional) *@
-                            @*<span>
-                                //Tragen Sie hier den Fließtext ein.
-                                </span>*@
-                            @*<br />*@
-                            @*<br/>*@
-                            @*Tragen Sie nachfolgend eine weitere Überschrift auf der Mitarbeiter-Willkommensseite ein (optional) *@
-                            @*<h5>Hier steht eine Überschrift</h5>*@
-                            @*<span>
-                                    Tragen Sie hier den Fließtext ein.
-                                    <br />
-                                    Tragen Sie hier den Fließtext ein.
-                                </span>*@
-
                         }
                         @if (User.HatDieRolle(BenutzerGruppenResource.Caterer) && Model.OffeneFragen != 0)
                         {
                             <h4 class="text-danger"> Ihr Fragebogen enthält @Model.OffeneFragen offene Fragen.</h4>
                             <br />
-
-                            @*Tragen Sie nachfolgend die Überschrift der Caterer-Willkommensseite ein (optional) *@
-                            @*<h4>Hier steht die Überschrift</h4>*@
-                            @*<br />*@
-
-                            @*Tragen Sie nachfolgend den Fließtext der Caterer-Willkommensseite ein (optional) *@
-                            @*<span>
-                                Tragen Sie hier den Fließtext ein.
-                                </span>*@
-                            @*<br />*@
-                            @*<br/>*@
-                            @*Tragen Sie nachfolgend eine weitere Überschrift auf der Caterer-Willkommensseite ein (optional) *@
-                            @*<h5>Hier steht eine Überschrift</h5>*@
-                            @*<span>
-                                    Tragen Sie hier den Fließtext ein.
-                                    <br />
-                                    Tragen Sie hier den Fließtext ein.
-                              </span>*@
 
                         }
                     </div>
@@ -155,9 +101,9 @@
                     <div class="col-md-10 text-center">    
 
                         <h3>
-                        @*Tragen Sie nachfolgend die Überschrift der Startseite ein*@
                         Herzlich Willkommen auf der Seite der Caterer-Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsen 
                         <br /> 
+                            <br /> 
                         </h3>
 
                     </div>
@@ -165,25 +111,23 @@
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
-                    <div class="col-md-10 text-justify">    
+                    <div class="col-md-10 text-center">    
                         <span style="color:black">
 
-                            @*Tragen Sie nachfolgend den Fließtext der Startseite ein*@
                             Mit der Datenbank möchten wir Caterer und Schulen zusammenbringen und eine flächendeckende Versorgung der 
                             Schulen mit einer guten Schulverpflegung unterstützen. Daher freuen wir uns besonders, wenn Sie als Caterer für die 
                             Schulverpflegung Ihr Angebot darstellen, aktualisieren und bereit sind, dass wir Ihre Daten im Bedarfsfall an Schulen oder 
-                            auch Schulträger weiterleiten dürfen. Ob Warmverpflegung oder Cook&Chill, ob deutschlandweite oder regionale 
-                            kleine Lieferkreise, für kleine und große Schüleranzahlen – anhand der integrierten Suchfunktion können die Mitarbeiterinnen 
-                            der Vernetzungsstelle Schulverpflegung einen passenden Caterer ermitteln. Aber auch wenn Sie nicht möchten, 
-                            dass wir Ihre Daten für Beratungszwecke weitergeben, ist eine Registrierung für Sie natürlich möglich. 
-                            Schauen Sie sich dazu gerne unsere AGB´s und Datenschutzbestimmung an. Registrieren können sich alle Anbieter von Schulverpflegung, 
-                            die Ihr Essen entweder den Schulen anliefern oder aber eine Mensa vor Ort betreiben und dieses Angebot weiteren Schulen unterbreiten möchten. 
-                            Alle Verpflegungssysteme sind möglich. Die Registrierung und Nutzung der Datenbank ist für Sie kostenlos.
-                            Zugriff und Einsicht auf und in Ihre Daten haben lediglich Sie selbst und die Mitarbeiterinnen der Vernetzungsstelle Schulverpflegung Niedersachsen. 
-                            Die Verwaltung Ihrer Daten ist für Sie zu jedem Zeitpunkt transparent und Sie werden stets über Veränderungen Ihrer Daten informiert. 
-                            Natürlich stehen wir Ihnen gerne für Fragen zu der Caterer-Datenbank und der Registrierung unter unseren Kontaktdaten zur Verfügung.
-                            Wir bedanken uns für Ihr Vertrauen und Interesse am Gelingen der Schulverpflegung in Niedersachsen.
-                            Das Team der Vernetzungsstelle Schulverpflegung Niedersachsen
+                            auch Schulträger weiterleiten dürfen. <br/>
+                            <br/>
+                            Registrieren können sich alle Anbieter von Schulverpflegung, die Ihr Essen entweder den Schulen anliefern oder eine Mensa vor Ort betreiben
+                             und dieses Angebot weiteren Schulen unterbreiten möchten. Alle Verpflegungssysteme sind möglich. Die Registrierung und Nutzung der Datenbank ist für Sie kostenlos. 
+                            Die Verwaltung Ihrer Daten ist für Sie zu jedem Zeitpunkt transparent. 
+                            Zugriff auf Ihre Daten haben lediglich die Mitarbeiterinnen der Vernetzungsstelle Schulverpflegung. Näheres dazu finden Sie in den Datenschutzbestimmungen und AGB´s.<br/>
+                            <br/>
+                            Wir bedanken uns für Ihr Vertrauen und Interesse am Gelingen der Schulverpflegung in Niedersachsen. 
+                            Für Fragen zu der Caterer-Datenbank und der Registrierung stehen wir Ihnen unter unseren Kontaktdaten gerne zur Verfügung.<br/>
+                            <br/>
+                            <b>Das Team der Vernetzungsstelle Schulverpflegung Niedersachsen</b>
 
                         </span>
                     </div>
