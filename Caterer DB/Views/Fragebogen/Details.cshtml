@@ -6,38 +6,38 @@
 }
 @using (Html.BeginForm())
             {
-<div class="row">
-    <nav class="sidebar hidden-xs hidden-sm" id="myScrollspy">
-        <ul class="nav nav-pills nav-stacked" id="Fragebogen">
-            <br />
-            <br />
-            <br />
-            <br />
-            @for (int i = 0; i < Model.Fragen.Count; i++)
-            {
-                <li>
-                    <a href="#@Model.Fragen[i].Name">@Model.Fragen[i].Name</a>
-                </li>
-            }
-            <br />  
-            <hr />        
-        </ul>      
+    <div class="row">
+        <nav class="sidebar hidden-xs hidden-sm" id="myScrollspy">
+            <ul class="nav nav-pills nav-stacked" id="Fragebogen">
+                <br />
+                <br />
+                <br />
+                <br />
+                @for (int i = 0; i < Model.Fragen.Count; i++)
+                {
+                    <li>
+                        <a href="#@Model.Fragen[i].Name">@Model.Fragen[i].Name</a>
+                    </li>
+                }
+                <br />
+                <hr />
+            </ul>
             <button type="submit" id="btnSpeichernFragen1" name="btnSave" value="Speichern" class="btn btn-default btn-block">
                 <i class="glyphicon glyphicon-ok"></i> Speichern
-            </button>       
-        <br />      
-            <a class="btn btn-default btn-block" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>      
-    </nav>
-    <div class="col-md-9 col-md-offset-2">
-        <br />
-        <br />
-        <div class="row">
-            <div id="Fragebogen" class="col-md-6 col-md-offset-3 text-center">
-                <h1>Fragebogen</h1>
-                <br />
+            </button>
+            <br />
+            <a class="btn btn-default btn-block" href="/home/index"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
+        </nav>
+        <div class="col-md-9 col-md-offset-2">
+            <br />
+            <br />
+            <div class="row">
+                <div id="Fragebogen" class="col-md-6 col-md-offset-3 text-center">
+                    <h1>Fragebogen</h1>
+                    <br />
+                </div>
             </div>
-        </div>
-        
+
             @Html.AntiForgeryToken()
             @Html.HiddenFor(m => m.Id)
             @for (int i = 0; i < Model.Fragen.Count; i++)
@@ -109,7 +109,6 @@
                 <div class="col-md-12 col-md-offset-0" style="background-color:transparent">
                     <br />
                 </div>
-
             }
             <div class="row">
                 <div class="col-md-12 col-md-offset-0">
