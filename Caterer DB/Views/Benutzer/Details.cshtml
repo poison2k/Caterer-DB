@@ -20,7 +20,6 @@
                 <div class="well well-lg">
                     <div>
                         <dl class="dl-horizontal text-center">
-
                             <dt>
                                 @Html.DisplayNameFor(model => model.Anrede)
                             </dt>
@@ -28,7 +27,8 @@
                             <dd>
                                 @Html.DisplayFor(model => model.Anrede)
                             </dd>
-                            <br />
+                        </dl>                        
+                        <dl class="dl-horizontal text-center">
                             <dt>
                                 @Html.DisplayNameFor(model => model.Vorname)
                             </dt>
@@ -36,7 +36,8 @@
                             <dd>
                                 @Html.DisplayFor(model => model.Vorname)
                             </dd>
-                            <br />
+                        </dl>
+                        <dl class="dl-horizontal text-center">
                             <dt>
                                 @Html.DisplayNameFor(model => model.Nachname)
                             </dt>
@@ -44,7 +45,8 @@
                             <dd>
                                 @Html.DisplayFor(model => model.Nachname)
                             </dd>
-                            </br>
+                        </dl>
+                        <dl class="dl-horizontal text-center">
                             <dt>
                                 @Html.DisplayNameFor(model => model.Telefon)
                             </dt>
@@ -52,7 +54,8 @@
                             <dd>
                                 @Html.DisplayFor(model => model.Telefon)
                             </dd>
-                            </br>
+                        </dl>
+                        <dl class="dl-horizontal text-center">
                             <dt>
                                 @Html.DisplayNameFor(model => model.Mail)
                             </dt>
@@ -60,18 +63,19 @@
                             <dd>
                                 @Html.DisplayFor(model => model.Mail)
                             </dd>
-                            <br />
+                        </dl>
+                        <dl class="dl-horizontal text-center">
                             <dt>
                                 @Html.DisplayNameFor(model => model.IstAdmin)
                             </dt>
 
                             <dd>
-                               @if (Convert.ToBoolean(Model.IstAdmin))
-                               {<div><i class="glyphicon glyphicon-ok"></i></div> }
-                               else
-                               {
-                                <div><i class="glyphicon glyphicon-remove"></i></div>
-                               }
+                                @if (Convert.ToBoolean(Model.IstAdmin))
+                                {<div><i class="glyphicon glyphicon-ok"></i></div> }
+                                else
+                                {
+                                    <div><i class="glyphicon glyphicon-remove"></i></div>
+                                }
                             </dd>
                         </dl>
                     </div>

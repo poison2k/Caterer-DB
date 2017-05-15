@@ -43,16 +43,18 @@
                 <div class="col-md-12">
                     <div class="well well-lg">
                         <div>
-                            <dl class="text-center">
-                                @for (int i = 0; i< Model.Antworten.Count; i++)
+                            
+                                @for (int i = 0; i < Model.Antworten.Count; i++)
                                 {
-                                    @Html.HiddenFor(x => x.Antworten[i].AntwortId)
-                                    <dd>
-                                        @Html.DisplayFor(x => x.Antworten[i].Bezeichnung)
-                                    </dd>
-                                    <hr />
+                                    <dl class="text-center">
+                                        @Html.HiddenFor(x => x.Antworten[i].AntwortId)
+                                        <dd>
+                                            @Html.DisplayFor(x => x.Antworten[i].Bezeichnung)
+                                        </dd>
+                                    </dl>
+                                <hr />
                                 }
-                            </dl>
+                            
                         </div>
                     </div>
                 </div>
