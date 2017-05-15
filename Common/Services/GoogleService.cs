@@ -8,21 +8,21 @@ namespace Common.Services
     {
         public DbGeography FindeLocationByPlz(string plz)
         {
-            var Adresse = new AddressData()
+            var adresse = new AddressData()
             {
                 Country = "Deutschland",
                 Zip = plz,
             };
 
             var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(Adresse);
+            var point = locationService.GetLatLongFromAddress(adresse);
             var GeoDaten = DbGeography.FromText("Point(" + point.Longitude.ToString().Replace(',', '.') + " " + point.Latitude.ToString().Replace(',', '.') + " )");
             return GeoDaten;
         }
 
         public DbGeography FindeLocationByAdress(string plz, string street, string ort)
         {
-            var Adresse = new AddressData()
+            var adresse = new AddressData()
             {
                 Address = street,
                 Country = "Deutschland",
@@ -31,7 +31,7 @@ namespace Common.Services
             };
 
             var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(Adresse);
+            var point = locationService.GetLatLongFromAddress(adresse);
             var GeoDaten = DbGeography.FromText("Point(" + point.Longitude.ToString().Replace(',', '.') + " " + point.Latitude.ToString().Replace(',', '.') + " )");
             return GeoDaten;
         }

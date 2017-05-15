@@ -10,6 +10,7 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Collections.Generic;
 using System.Linq;
+using Caterer_DB.ViewModel;
 
 namespace Caterer_DB.Tests.ViewModelTest
 {

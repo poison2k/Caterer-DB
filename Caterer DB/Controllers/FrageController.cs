@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Caterer_DB.MVCServices;
+using Caterer_DB.ViewModel;
 
 namespace Caterer_DB.Controllers
 {

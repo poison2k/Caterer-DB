@@ -1,10 +1,10 @@
-﻿using Common.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Common.Model;
 using Common.Services;
 
-namespace Caterer_DB.Models
+namespace Caterer_DB.ViewModel
 {
     public class IndexFrageViewModel
     {

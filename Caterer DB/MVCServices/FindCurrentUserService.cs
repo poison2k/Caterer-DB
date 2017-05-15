@@ -1,6 +1,6 @@
 ﻿using System.Web;
 using Caterer_DB.Interfaces;
-using Caterer_DB.Models;
+using Caterer_DB.ViewModel;
 
 namespace Caterer_DB.MVCServices
 {
