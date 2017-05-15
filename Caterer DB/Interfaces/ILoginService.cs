@@ -12,10 +12,10 @@ namespace Caterer_DB.Interfaces
 
         ILoginRepository LoginRepository { get; }
 
-        List<string> ladeRechte(int benutzerId);
+        List<string> LadeRechte(int benutzerId);
 
-        List<string> ladeRollen(int benutzerId);
+        List<string> LadeRollen(int benutzerId);
 
-        List<int> ladeNutzergruppenIds(int benutzerId);
+        List<int> LadeNutzergruppenIds(int benutzerId);
     }
 }

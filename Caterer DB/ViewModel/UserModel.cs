@@ -14,9 +14,9 @@ namespace Caterer_DB.Models
         {
             BenutzerId = benutzerId;
             Identity = new GenericIdentity(kurzname);
-            Rechte = anmeldeService.ladeRechte(BenutzerId);
-            Rollen = anmeldeService.ladeRollen(BenutzerId);
-            NutzergruppenIds = anmeldeService.ladeNutzergruppenIds(BenutzerId);
+            Rechte = anmeldeService.LadeRechte(BenutzerId);
+            Rollen = anmeldeService.LadeRollen(BenutzerId);
+            NutzergruppenIds = anmeldeService.LadeNutzergruppenIds(BenutzerId);
         }
 
         public int BenutzerId { get; set; }

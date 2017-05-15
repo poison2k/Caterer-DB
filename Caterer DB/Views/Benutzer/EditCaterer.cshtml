@@ -1,5 +1,5 @@
 ﻿@model Caterer_DB.Models.MyDataBenutzerViewModel
-@using Caterer_DB.Resources
+
 @{
     ViewBag.Title = "MyData";
 }
@@ -16,21 +16,6 @@
     @Html.HiddenFor(model => model.IstEmailVerifiziert)
     @Html.HiddenFor(model => model.WeitergabeVonDaten);
 
-     <!-- Nav tabs -->
-    @*<div class="tabbar">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <div class="nav-tabs" style="padding-left:400px; border-bottom:0">
-                        <button role="presentation" class="active" href="#stammdaten" aria-controls="home" data-toggle="tab">Caterer Daten</button>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="nav-tabs" style="border-bottom:0">
-                        <button role="presentation" href="#fragebogen" aria-controls="profile" data-toggle="tab">Fragebogen</button>
-                    </div>
-                </div>
-            </div>
-        </div>*@
 
     <div class="row">
         <div class="col-md-12">
@@ -42,13 +27,6 @@
             </div>
         </div>
     </div>
-
-    @*<div class="tabbar">
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
-                <li role="presentation"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
-            </ul>
-        </div>*@
 
         <!-- Tab panes -->
     <div class="tab-content">

@@ -130,51 +130,51 @@ namespace Caterer_DB.Controllers
             }
 
             //Sortierung ermitteln
-            string Sortierrung = "Firmenname";
+            string sortierrung = "Firmenname";
             int aktuelleSeite = 1;
             var seitenGrösse = 10;
             if (Request.Form["Telefon"] != null)
             {
-                Sortierrung = "Telefon";
+                sortierrung = "Telefon";
             }
             else if (Request.Form["Telefon_desc"] != null)
             {
-                Sortierrung = "Telefon_desc";
+                sortierrung = "Telefon_desc";
             }
             else if (Request.Form["Firmenname"] != null)
             {
-                Sortierrung = "Firmenname";
+                sortierrung = "Firmenname";
             }
             else if (Request.Form["Firmenname_desc"] != null)
             {
-                Sortierrung = "Firmenname_desc";
+                sortierrung = "Firmenname_desc";
             }
             else if (Request.Form["Ort"] != null)
             {
-                Sortierrung = "Ort";
+                sortierrung = "Ort";
             }
             else if (Request.Form["Ort_desc"] != null)
             {
-                Sortierrung = "Ort_desc";
+                sortierrung = "Ort_desc";
             }
             else if (Request.Form["Postleitzahl"] != null)
             {
-                Sortierrung = "Postleitzahl";
+                sortierrung = "Postleitzahl";
             }
             else if (Request.Form["Postleitzahl_desc"] != null)
             {
-                Sortierrung = "Postleitzahl_desc";
+                sortierrung = "Postleitzahl_desc";
             }
-            ViewBag.Sortierrung = Sortierrung;
+            ViewBag.Sortierrung = sortierrung;
 
-            List<Benutzer> resultList = new List<Benutzer>();
+            List<Benutzer> resultList;
             int resultcount = 0;
 
             //Falls fehlerhafte eingaben existieren
             if (!ModelState.IsValid)
             {
-                resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), null, fullFilterCatererViewModel.Name, antwortIds);
-                resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), null, fullFilterCatererViewModel.Name, antwortIds).Count;
+                resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), null, fullFilterCatererViewModel.Name, antwortIds);
+                resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), null, fullFilterCatererViewModel.Name, antwortIds).Count;
                 fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                     resultList
                     , resultcount
@@ -187,8 +187,8 @@ namespace Caterer_DB.Controllers
                 return View(fullFilterCatererViewModel);
             }
             // Caterer abrufen mit allen Filtern
-            resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
-            resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
+            resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
+            resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
             fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
                 resultList
                 , resultcount
@@ -363,7 +363,7 @@ namespace Caterer_DB.Controllers
         {
             if (id == null || id != User.BenutzerId)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("ZugriffVerweigert", "Error");
             }
 
             MeineDatenBenutzerViewModel meineDatenBenutzerViewModel = BenutzerViewModelService.Map_Benutzer_MeineDatenBenutzerViewModel(BenutzerService.SearchUserById(Convert.ToInt32(id)));

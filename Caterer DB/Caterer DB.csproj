@@ -465,7 +465,6 @@
     <Content Include="Views\Account\RegisterComplete.cshtml" />
     <Content Include="Views\Account\RegisterMailVerificationNotComplete.cshtml" />
     <Content Include="Views\Frage\Create.cshtml" />
-    <Content Include="Views\Frage\Delete.cshtml" />
     <Content Include="Views\Frage\Details.cshtml" />
     <Content Include="Views\Frage\Edit.cshtml" />
     <Content Include="Views\Frage\Index.cshtml" />
@@ -484,7 +483,6 @@
     <Content Include="Views\Benutzer\EditCaterer.cshtml" />
     <Content Include="Views\Benutzer\DetailsCaterer.cshtml" />
     <Content Include="Views\Benutzer\MeineDaten.cshtml" />
-    <Content Include="Views\Frage\Bearbeiten.cshtml" />
     <Content Include="Views\Fragebogen\Details.cshtml" />
     <Content Include="Views\Frage\IndexVeroeffentlicht.cshtml" />
     <Content Include="Views\Frage\DetailsVeroeffentlicht.cshtml" />

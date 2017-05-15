@@ -16,13 +16,13 @@ namespace Caterer_DB.Interfaces
 
         CreateFrageViewModel CreateCreateFrageViewModel(List<Kategorie> kategorien);
 
-        EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage, List<Kategorie> kategorien);
+        EditFrageViewModel Map_Frage_EditFrageViewModel(Frage frage, List<Kategorie> kategorien);
 
-        DetailsFrageViewModel Map_Frage_DetailsFrageViewModel(Frage Frage);
+        DetailsFrageViewModel Map_Frage_DetailsFrageViewModel(Frage frage);
 
         Frage Map_DeleteFrageViewModel_Frage(DeleteFrageViewModel deleteFrageViewModel);
 
-        DeleteFrageViewModel Map_Frage_DeleteFrageViewModel(Frage Frage);
+        DeleteFrageViewModel Map_Frage_DeleteFrageViewModel(Frage frage);
 
         CreateFrageViewModel AddListsToCreateFrageViewModel(CreateFrageViewModel createFrageViewModel, List<Kategorie> kategorien);
 

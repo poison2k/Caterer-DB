@@ -61,17 +61,17 @@ namespace Caterer_DB.Models.ViewModelServices
             return AddListsToCreateFrageViewModel(createFrageViewModel, kategorien);
         }
 
-        public EditFrageViewModel Map_Frage_EditFrageViewModel(Frage Frage, List<Kategorie> kategorien)
+        public EditFrageViewModel Map_Frage_EditFrageViewModel(Frage frage, List<Kategorie> kategorien)
         {
-            var editFrageViewModel = Mapper.Map<EditFrageViewModel>(Frage);
-            editFrageViewModel.KategorieName = Frage.Kategorie.Bezeichnung;
-            editFrageViewModel.KategorieId = Frage.Kategorie.KategorieId;
+            var editFrageViewModel = Mapper.Map<EditFrageViewModel>(frage);
+            editFrageViewModel.KategorieName = frage.Kategorie.Bezeichnung;
+            editFrageViewModel.KategorieId = frage.Kategorie.KategorieId;
             return AddListsToEditFrageViewModel(editFrageViewModel, kategorien);
         }
 
-        public DetailsFrageViewModel Map_Frage_DetailsFrageViewModel(Frage Frage)
+        public DetailsFrageViewModel Map_Frage_DetailsFrageViewModel(Frage frage)
         {
-            return Mapper.Map<DetailsFrageViewModel>(Frage);
+            return Mapper.Map<DetailsFrageViewModel>(frage);
         }
 
         public Frage Map_DeleteFrageViewModel_Frage(DeleteFrageViewModel deleteFrageViewModel)
@@ -79,9 +79,9 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Frage>(deleteFrageViewModel);
         }
 
-        public DeleteFrageViewModel Map_Frage_DeleteFrageViewModel(Frage Frage)
+        public DeleteFrageViewModel Map_Frage_DeleteFrageViewModel(Frage frage)
         {
-            return Mapper.Map<DeleteFrageViewModel>(Frage);
+            return Mapper.Map<DeleteFrageViewModel>(frage);
         }
 
         public CreateFrageViewModel AddListsToCreateFrageViewModel(CreateFrageViewModel createFrageViewModel, List<Kategorie> kategorien)

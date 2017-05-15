@@ -150,7 +150,7 @@ namespace Caterer_DB.Controllers
                     return View();
                 }
             }
-            return RedirectToAction("~/Views/Shared/Error.cshtml");
+            return View("~/Views/Shared/Error.cshtml");
         }
 
         // POST: Benutzer/Register

@@ -30,12 +30,12 @@ namespace Caterer_DB.Controllers
 
         // GET: Frages
         [CustomAuthorize(Rights = RechteResource.IndexFrage)]
-        public ActionResult Index(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Bezeichnung")
+        public ActionResult Index(int aktuelleSeite = 1, int seitenGrösse = 10, string sortierrung = "Bezeichnung")
         {
-            ViewBag.Sortierrung = Sortierrung;
+            ViewBag.Sortierrung = sortierrung;
 
             return View(FrageViewModelService.GeneriereListViewModel(
-                FrageService.FindAllFrageWithPagingNeu(aktuelleSeite, seitenGrösse, Sortierrung)
+                FrageService.FindAllFrageWithPagingNeu(aktuelleSeite, seitenGrösse, sortierrung)
                , FrageService.GetFrageNeuCount()
                , aktuelleSeite
                , seitenGrösse));
@@ -43,12 +43,12 @@ namespace Caterer_DB.Controllers
 
         // GET: Frages
         [CustomAuthorize(Rights = RechteResource.IndexFrage)]
-        public ActionResult IndexVeroeffentlicht(int aktuelleSeite = 1, int seitenGrösse = 10, string Sortierrung = "Bezeichnung")
+        public ActionResult IndexVeroeffentlicht(int aktuelleSeite = 1, int seitenGrösse = 10, string sortierrung = "Bezeichnung")
         {
-            ViewBag.Sortierrung = Sortierrung;
+            ViewBag.Sortierrung = sortierrung;
 
             return View(FrageViewModelService.GeneriereListViewModel(
-                FrageService.FindAllFrageWithPagingVeröffentlicht(aktuelleSeite, seitenGrösse, Sortierrung)
+                FrageService.FindAllFrageWithPagingVeröffentlicht(aktuelleSeite, seitenGrösse, sortierrung)
                , FrageService.GetFrageVeröffentlichtCount()
                , aktuelleSeite
                , seitenGrösse));
@@ -63,14 +63,14 @@ namespace Caterer_DB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            DetailsFrageViewModel FrageViewModel =
+            DetailsFrageViewModel frageViewModel =
                 FrageViewModelService.Map_Frage_DetailsFrageViewModel(FrageService.SearchFrageById(Convert.ToInt32(id)));
 
-            if (FrageViewModel == null)
+            if (frageViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(FrageViewModel);
+            return View(frageViewModel);
         }
 
         // GET: Frages/DetailsVeroeffentlicht/5
@@ -82,14 +82,14 @@ namespace Caterer_DB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            DetailsFrageViewModel FrageViewModel =
+            DetailsFrageViewModel frageViewModel =
                 FrageViewModelService.Map_Frage_DetailsFrageViewModel(FrageService.SearchFrageById(Convert.ToInt32(id)));
 
-            if (FrageViewModel == null)
+            if (frageViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(FrageViewModel);
+            return View(frageViewModel);
         }
 
         // Post: Frages/DetailsVeroeffentlicht/5
@@ -99,10 +99,7 @@ namespace Caterer_DB.Controllers
         {
             FrageService.RemoveFrage(detailsFrageViewModel.FrageId);
 
-            if (detailsFrageViewModel == null)
-            {
-                return HttpNotFound();
-            }
+        
             return RedirectToAction("IndexVeroeffentlicht");
         }
 
@@ -200,7 +197,7 @@ namespace Caterer_DB.Controllers
 
                 return View(FrageViewModelService.AddListsToEditFrageViewModel(editFrageViewModel, KategorienService.FindAlleKategorien()));
             }
-            else if (Request.Form["btnDeleteAnswer"] != null)
+            if (Request.Form["btnDeleteAnswer"] != null)
             {
                 for (int i = 0; i < Request.Form.Count; i++)
                 {

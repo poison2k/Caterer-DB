@@ -97,7 +97,7 @@ namespace Caterer_DB.MVCServices
             }
         }
 
-        public List<string> ladeRechte(int benutzerId)
+        public List<string> LadeRechte(int benutzerId)
         {
             var rechteGruppen = LoginRepository
                 .GruppenFürBenutzer(benutzerId)
@@ -112,7 +112,7 @@ namespace Caterer_DB.MVCServices
             return rechteBezeichnungen;
         }
 
-        public List<string> ladeRollen(int benutzerId)
+        public List<string> LadeRollen(int benutzerId)
         {
             var benutzerGruppen = LoginRepository
                 .GruppenFürBenutzer(benutzerId)
@@ -126,7 +126,7 @@ namespace Caterer_DB.MVCServices
             return gruppenBezeichnungen;
         }
 
-        public List<int> ladeNutzergruppenIds(int benutzerId)
+        public List<int> LadeNutzergruppenIds(int benutzerId)
         {
             return LoginRepository
                 .GruppenFürBenutzer(benutzerId)
@@ -155,8 +155,7 @@ namespace Caterer_DB.MVCServices
             {
                 string authorizedUsers = ConfigurationManager.AppSettings[UsersConfigKey];
                 string authorizedRoles = ConfigurationManager.AppSettings[RolesConfigKey];
-                string authorizedRights = ConfigurationManager.AppSettings[RightsConfigKey];
-
+          
                 Users = String.IsNullOrEmpty(Users) ? authorizedUsers : Users;
                 Roles = String.IsNullOrEmpty(Roles) ? authorizedRoles : Roles;
                 Rights = String.IsNullOrEmpty(Rights) ? authorizedRoles : Rights;

@@ -24,7 +24,7 @@ namespace Caterer_DB.Controllers
         [HttpPost]
         public ActionResult Index(GoogleViewModel googleModel)
         {
-            var Adresse = new AddressData()
+            var adresse = new AddressData()
             {
                 Country = googleModel.Land,
                 Zip = googleModel.PLZ,
@@ -33,7 +33,7 @@ namespace Caterer_DB.Controllers
             };
 
             var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(Adresse);
+            var point = locationService.GetLatLongFromAddress(adresse);
 
             googleModel.Längengrad = point.Longitude.ToString();
             googleModel.Breitengrad = point.Latitude.ToString();
