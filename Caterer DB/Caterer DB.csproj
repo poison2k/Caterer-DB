@@ -295,7 +295,6 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FragebogenController.cs" />
     <Compile Include="Controllers\FrageController.cs" />
-    <Compile Include="Controllers\GoogleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategorieController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -487,7 +486,6 @@
     <Content Include="Views\Frage\IndexVeroeffentlicht.cshtml" />
     <Content Include="Views\Frage\DetailsVeroeffentlicht.cshtml" />
     <Content Include="Views\Error\ZugriffVerweigert.cshtml" />
-    <Content Include="Views\Google\Index.cshtml" />
     <Content Include="Views\Benutzer\VergleichCaterer.cshtml" />
   </ItemGroup>
   <ItemGroup>

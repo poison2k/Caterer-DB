@@ -1,7 +1,7 @@
-﻿using DataAccess.Context;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using DataAccess.Context;
 
-namespace Caterer_DB.App_Start.ContextInitializer
+namespace Caterer_DB.ContextInitializer
 {
     public class ContextInitializerCreateAlwaysWithExampleData : CreateDatabaseIfNotExists<CatererContext>
     {

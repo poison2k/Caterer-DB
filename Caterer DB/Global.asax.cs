@@ -1,5 +1,4 @@
-﻿using Caterer_DB.App_Start.ContextInitializer;
-using Caterer_DB.Models;
+﻿using Caterer_DB.Models;
 using DataAccess.Context;
 using DataAccess.Repositories;
 using log4net.Config;
@@ -14,6 +13,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
+using Caterer_DB.ContextInitializer;
 using Caterer_DB.MVCServices;
 using Caterer_DB.ViewModel;
 

@@ -26,6 +26,7 @@
         public const string DetailsCaterer = "DetailsCaterer";
         public const string DeleteCaterer = "DeleteCaterer";
         public const string MenueCaterer = "MenueCaterer";
+        public const string VergleichCaterer = "VergleichCaterer";
 
         //Rechte für FragenVerwaltung
         public const string CreateFrage = "CreateFrage";

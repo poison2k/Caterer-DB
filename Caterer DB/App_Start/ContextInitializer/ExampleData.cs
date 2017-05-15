@@ -1,11 +1,11 @@
-﻿using Common.Model;
-using Common.Resources;
-using DataAccess.Context;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Spatial;
 using System.Linq;
+using Common.Model;
+using Common.Resources;
+using DataAccess.Context;
 
-namespace Caterer_DB.App_Start.ContextInitializer
+namespace Caterer_DB.ContextInitializer
 {
     public class ExampleData
     {
@@ -52,6 +52,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 new Recht() { Bezeichnung = RechteResource.DeleteCaterer, Beschreibung = "Caterer können gelöscht werden" },
                 new Recht() { Bezeichnung = RechteResource.DetailsCaterer, Beschreibung = "Caterer Details können gesehen werden" },
                 new Recht() { Bezeichnung = RechteResource.MenueCaterer, Beschreibung = "Menü zur Bearbeitung und Anzeige von Caterern wird angezeigt" },
+                new Recht() { Bezeichnung = RechteResource.VergleichCaterer, Beschreibung = "Mitarbeiter kann Caterer Vergleichen" },
 
                 new Recht() { Bezeichnung = RechteResource.MeineDatenMitarbeiter, Beschreibung = "Mitarbeiter kann seine Daten bearbeiten" },
 
@@ -101,20 +102,20 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
         private static void CreateRechteGruppenData(CatererContext db)
         {
-            RechteGruppe AdminRechte = db.RechteGruppe.Add(new RechteGruppe
+            db.RechteGruppe.Add(new RechteGruppe
             {
                 Bezeichnung = "AdminRechte",
                 Rechte = db.Recht.ToList()
             });
 
-            RechteGruppe CatererRechte = db.RechteGruppe.Add(new RechteGruppe
+            db.RechteGruppe.Add(new RechteGruppe
             {
                 Bezeichnung = "CatererRechte",
                 Rechte = new List<Recht>() { db.Recht.Single(x => x.Bezeichnung == RechteResource.TestBlock3),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.EditFrageBogen)}
             });
 
-            RechteGruppe MitarbeiterRechte = db.RechteGruppe.Add(new RechteGruppe
+            db.RechteGruppe.Add(new RechteGruppe
             {
                 Bezeichnung = "MitarbeiterRechte",
                 Rechte = new List<Recht>() { db.Recht.Single(x => x.Bezeichnung == RechteResource.TestBlock2),
@@ -135,6 +136,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.DeleteKategorie),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.CreateKategorie),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.DetailsKategorie),
+                                             db.Recht.Single(x => x.Bezeichnung == RechteResource.VergleichCaterer),
                                              db.Recht.Single(x => x.Bezeichnung == RechteResource.EditKategorie)}
             });
 
@@ -143,19 +145,19 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
         private static void CreateBenutzerGruppenData(CatererContext db)
         {
-            BenutzerGruppe Admin = db.BenutzerGruppe.Add(new BenutzerGruppe
+            db.BenutzerGruppe.Add(new BenutzerGruppe
             {
                 Bezeichnung = BenutzerGruppenResource.Administrator,
                 RechteGruppe = db.RechteGruppe.Single(x => x.Bezeichnung == "AdminRechte")
             });
 
-            BenutzerGruppe Mitarbeiter = db.BenutzerGruppe.Add(new BenutzerGruppe
+            db.BenutzerGruppe.Add(new BenutzerGruppe
             {
                 Bezeichnung = BenutzerGruppenResource.Mitarbeiter,
                 RechteGruppe = db.RechteGruppe.Single(x => x.Bezeichnung == "MitarbeiterRechte")
             });
 
-            BenutzerGruppe Caterer = db.BenutzerGruppe.Add(new BenutzerGruppe
+            db.BenutzerGruppe.Add(new BenutzerGruppe
             {
                 Bezeichnung = BenutzerGruppenResource.Caterer,
                 RechteGruppe = db.RechteGruppe.Single(x => x.Bezeichnung == "CatererRechte")
@@ -166,7 +168,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
 
         private static void CreateUserData(CatererContext db)
         {
-            Benutzer caterer = db.Benutzer.Add(new Benutzer
+            db.Benutzer.Add(new Benutzer
             {
                 Mail = "caterer@test.de",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
@@ -191,7 +193,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
             });
 
-            Benutzer mitarbeiter = db.Benutzer.Add(new Benutzer
+            db.Benutzer.Add(new Benutzer
             {
                 Mail = "mitarbeiter@test.de",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
@@ -203,7 +205,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Mitarbeiter) }
             });
 
-            Benutzer admin = db.Benutzer.Add(new Benutzer
+            db.Benutzer.Add(new Benutzer
             {
                 Mail = "admin@test.de",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
@@ -216,7 +218,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
             });
 
-            Benutzer admin2 = db.Benutzer.Add(new Benutzer
+            db.Benutzer.Add(new Benutzer
             {
                 Mail = "admin2@test.de",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
@@ -228,7 +230,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
             });
 
-            Benutzer testuser = db.Benutzer.Add(new Benutzer
+            db.Benutzer.Add(new Benutzer
             {
                 Mail = "poison2k@gmail.com",
                 Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",

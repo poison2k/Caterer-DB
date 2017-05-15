@@ -583,7 +583,7 @@ namespace Caterer_DB.Controllers
         }
 
         // GET: Benutzer/Delete/5
-
+        [CustomAuthorize(Rights = RechteResource.VergleichCaterer)]
         public ActionResult VergleichCaterer(string ids)
         {
             List<int> listIds = new List<int>();

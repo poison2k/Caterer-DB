@@ -102,32 +102,28 @@ namespace DataAccess.Repositories
         {
             //ToDo BenutzerGruppen als Parameter übergeben
             //Abfrage optimieren nur benötigte Daten abrufen
-            var benutzerGruppe = Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Caterer").Single();
+           
             return Db.Benutzer.Include(y => y.BenutzerGruppen)
-                .ToList().Where(x => x.BenutzerGruppen.Contains(benutzerGruppe))
+                .ToList().Where(x => x.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(y => y.Bezeichnung == "Caterer").FirstOrDefault()))
                 .Skip((aktuelleSeite - 1) * seitenGroesse).Take(seitenGroesse).ToList();
         }
 
         public int GetMitarbeiterCount()
         {
             //Abfrage optimieren nur benötigte Daten abrufen
-            var mitarbeiter = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Mitarbeiter");
-            var administratoren = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Administrator");
-            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(mitarbeiter) || x.BenutzerGruppen.Contains(administratoren)).Count();
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(Db.BenutzerGruppe.FirstOrDefault(y => y.Bezeichnung == "Mitarbeiter")) || x.BenutzerGruppen.Contains(Db.BenutzerGruppe.FirstOrDefault(y => y.Bezeichnung == "Administrator"))).Count();
         }
 
         public int GetAdminCount()
         {
             //Abfrage optimieren nur benötigte Daten abrufen
-            var administratoren = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Administrator");
-            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(administratoren)).Count();
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(Db.BenutzerGruppe.FirstOrDefault(y => y.Bezeichnung == "Administrator"))).Count();
         }
 
         public int GetCatererCount()
         {
             //Abfrage optimieren nur benötigte Daten abrufen
-            var caterer = Db.BenutzerGruppe.Single(y => y.Bezeichnung == "Caterer");
-            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(caterer)).Count();
+            return Db.Benutzer.Include(y => y.BenutzerGruppen).ToList().Where(x => x.BenutzerGruppen.Contains(Db.BenutzerGruppe.FirstOrDefault(y => y.Bezeichnung == "Caterer"))).Count();
         }
 
         public void AddUser(Benutzer benutzer)
