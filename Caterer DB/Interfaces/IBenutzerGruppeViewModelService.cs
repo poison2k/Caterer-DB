@@ -1,4 +1,5 @@
-﻿using Common.Model;
+﻿using Caterer_DB.ViewModel;
+using Common.Model;
 
 namespace Caterer_DB.Models.Interfaces
 {

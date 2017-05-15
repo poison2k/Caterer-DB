@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Caterer_DB.Models.Interfaces;
+using Caterer_DB.ViewModel;
 using Common.Model;
 
 namespace Caterer_DB.Models.ViewModelServices

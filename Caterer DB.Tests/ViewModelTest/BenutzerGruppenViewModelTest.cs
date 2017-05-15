@@ -7,6 +7,7 @@ using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
+using Caterer_DB.ViewModel;
 
 namespace Caterer_DB.Tests.ViewModelTest
 {

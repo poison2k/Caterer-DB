@@ -15,6 +15,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using Caterer_DB.MVCServices;
+using Caterer_DB.ViewModel;
 
 namespace Caterer_DB
 {

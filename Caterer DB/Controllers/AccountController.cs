@@ -4,6 +4,7 @@ using Caterer_DB.Models;
 using System;
 using System.Web.Mvc;
 using Caterer_DB.MVCServices;
+using Caterer_DB.ViewModel;
 using Common.Resources;
 
 namespace Caterer_DB.Controllers

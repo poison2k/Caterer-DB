@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using Caterer_DB.ViewModel;
 
 namespace Caterer_DB.Models.ViewModelServices
 {

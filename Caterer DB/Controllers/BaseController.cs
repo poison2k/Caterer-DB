@@ -2,6 +2,7 @@
 using Caterer_DB.Models;
 using Microsoft.Practices.Unity;
 using System.Web.Mvc;
+using Caterer_DB.ViewModel;
 
 namespace Caterer_DB.Controllers
 {

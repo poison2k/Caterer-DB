@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Caterer_DB.Interfaces;
-using Caterer_DB.Models;
+using Caterer_DB.ViewModel;
 using Common.Model;
 using DataAccess.Interfaces;
 using Newtonsoft.Json;

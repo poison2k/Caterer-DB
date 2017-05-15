@@ -1,10 +1,10 @@
-﻿using PagedList;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using PagedList;
 
-namespace Caterer_DB.Models
+namespace Caterer_DB.ViewModel
 {
     public class ListViewModel<T> : IPagedList<T>
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Caterer_DB.Models
+namespace Caterer_DB.ViewModel
 {
     public class CreateMailViewModel
     {
