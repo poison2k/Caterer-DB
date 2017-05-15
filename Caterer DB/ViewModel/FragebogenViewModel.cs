@@ -1,6 +1,6 @@
-﻿using DataAccess.Model;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
+using Common.Model;
+
 
 namespace Caterer_DB.Models
 {

@@ -2,7 +2,7 @@
 using AutoMapper;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
-using DataAccess.Model;
+using Common.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;

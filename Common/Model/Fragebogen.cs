@@ -1,7 +1,7 @@
-﻿using DataAccess.Services;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Common.Services;
 
-namespace DataAccess.Model
+namespace Common.Model
 {
     public class Fragebogen
     {

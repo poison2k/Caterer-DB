@@ -1,6 +1,6 @@
 ﻿using Business.Interfaces;
+using Common.Model;
 using DataAccess.Interfaces;
-using DataAccess.Model;
 
 namespace Business.Services
 {

@@ -1,6 +1,6 @@
-﻿using DataAccess.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Spatial;
+using Common.Model;
 
 namespace DataAccess.Interfaces
 {

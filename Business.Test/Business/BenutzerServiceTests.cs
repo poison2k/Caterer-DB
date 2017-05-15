@@ -5,13 +5,13 @@ using Business.Interfaces;
 using Business.Services;
 using Common.Interfaces;
 using DataAccess.Interfaces;
-using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using MockData;
 using System.Data.Entity.Spatial;
 using System;
+using Common.Model;
 
 namespace Business.Test.Business
 {
@@ -21,7 +21,7 @@ namespace Business.Test.Business
         private IBenutzerRepository MockBenutzerRepository { get; set; }
         private IBenutzerGruppeService MockBenutzerGruppeService { get; set; }
         private IMailService MockMailService { get; set; }
-        private IDocumentService MockDocumentService { get; set; }
+        private IDocxService MockDocumentService { get; set; }
         private IMd5Hash MockMd5Hash { get; set; }
 
         private IGoogleService MockGoogleService { get; set; }
@@ -67,7 +67,7 @@ namespace Business.Test.Business
             mockMd5Hash.Setup(s => s.CalculateMD5Hash(It.IsAny<string>())).Returns("TestHash");
             MockMd5Hash = mockMd5Hash.Object;
 
-            var mockDocumentService = new Mock<IDocumentService>();
+            var mockDocumentService = new Mock<IDocxService>();
             MockDocumentService = mockDocumentService.Object;
 
             var mockConfigService = new Mock<IConfigService>();

@@ -1,7 +1,7 @@
 ﻿using Caterer_DB.Services;
-using DataAccess.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Common.Model;
 
 namespace Caterer_DB.Models
 {

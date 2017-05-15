@@ -8,9 +8,8 @@ using System.Web.Mvc;
 using Business.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Services;
-using DataAccess.Model;
 using MockData;
-using System.Web;
+using Common.Model;
 
 namespace Caterer_DB.Tests.Controllers
 {

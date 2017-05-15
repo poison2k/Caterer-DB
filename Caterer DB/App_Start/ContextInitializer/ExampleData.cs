@@ -1,9 +1,9 @@
 ﻿using Caterer_DB.Resources;
 using DataAccess.Context;
-using DataAccess.Model;
 using System.Collections.Generic;
 using System.Data.Entity.Spatial;
 using System.Linq;
+using Common.Model;
 
 namespace Caterer_DB.App_Start.ContextInitializer
 {

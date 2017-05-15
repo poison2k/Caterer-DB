@@ -1,7 +1,7 @@
 ﻿using Business.Interfaces;
 using DataAccess.Interfaces;
-using DataAccess.Model;
 using System.Collections.Generic;
+using Common.Model;
 
 namespace Business.Services
 {

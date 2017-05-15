@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using DataAccess.Model;
+using Common.Model;
+
 
 namespace Common.Interfaces
 {

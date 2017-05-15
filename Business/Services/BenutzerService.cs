@@ -2,11 +2,11 @@
 using Business.Interfaces;
 using Common.Interfaces;
 using DataAccess.Interfaces;
-using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Common.Model;
 
 namespace Business.Services
 {
@@ -18,7 +18,7 @@ namespace Business.Services
 
         public IMailService MailService { get; set; }
 
-        public IDocumentService DocumentService { get; set; }
+        public IDocxService DocumentService { get; set; }
 
         public IMd5Hash MD5Hash { get; set; }
 
@@ -28,7 +28,7 @@ namespace Business.Services
 
         private IGoogleService GoogleService { get; set; }
 
-        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocumentService documentService, IConfigService configService, IGoogleService googleService)
+        public BenutzerService(IBenutzerRepository benutzerRepository, IMailService mailService, IBenutzerGruppeService benutzerGruppeService, IMd5Hash md5Hash, IDocxService documentService, IConfigService configService, IGoogleService googleService)
         {
             BenutzerRepository = benutzerRepository;
             BenutzerGruppeService = benutzerGruppeService;
@@ -364,13 +364,6 @@ namespace Business.Services
             return BenutzerRepository.GetCatererCount();
         }
 
-        public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
-        {
-
-            DocumentService.DokumentDrucken(benutzer, memoryStream);
-
-
-
-        }
+     
     }
 }

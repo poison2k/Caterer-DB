@@ -1,25 +1,18 @@
 ﻿using Common.Interfaces;
-using DataAccess.Interfaces;
-using DataAccess.Model;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Common.Model;
 
 namespace Common.Services
 {
-    public class DocumentService : IDocumentService
+    public class DocxService : IDocxService
     {
-        public IFrageRepository FrageRepository { get; set; }
-
-        public DocumentService(IFrageRepository frageRepository)
-        {
-            FrageRepository = frageRepository;
-        }
-
-        public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
+       
+        public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream, List<Frage> fragen)
         {
             {
                 WordprocessingDocument openXmlDocument = WordprocessingDocument.Open(memoryStream, true);
@@ -46,16 +39,13 @@ namespace Common.Services
 
                 Paragraph seitenumbruch = OpenXmlUtils.ErstelleSeitenumbruch();
 
-                var leerZeile = new Paragraph();
                 int counter = 1;
                 Frage letzteFrage = null;
-                neueTabellenZeile = (TableRow)tableRow.CloneNode(true);
-
 
                 foreach (int antwortId in benutzer.AntwortIDs)
                 {
                     
-                    Frage aktuelleFrage = FrageRepository.SearchFrageByAntwortId(antwortId);
+                    Frage aktuelleFrage = searchFrageByAntwortId(fragen, antwortId);
                     string verketteteAntworten = "";
                     List<Antwort> tmpAntworten = new List<Antwort>(aktuelleFrage.Antworten);
 
@@ -109,6 +99,11 @@ namespace Common.Services
 
                 openXmlDocument.MainDocumentPart.Document.Save();
             }
+        }
+
+        private Frage searchFrageByAntwortId(List<Frage> fragen, int id)
+        {
+            return (from frage in fragen from antwort in frage.Antworten where antwort.AntwortId == id select frage).FirstOrDefault();
         }
     }
 }

@@ -3,17 +3,14 @@ using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
 using Caterer_DB.Services;
-using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.UI.WebControls;
-using System.Xml;
+using Business.Services;
+using Common.Model;
 
 namespace Caterer_DB.Controllers
 {
@@ -28,12 +25,15 @@ namespace Caterer_DB.Controllers
 
         public ILoginService LoginService { get; set; }
 
-        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService, ILoginService loginService, IFrageService frageService)
+        public IDokumentService DokumentService { get; set; }
+
+        public BenutzerController(IBenutzerService benutzerService, IBenutzerViewModelService benutzerViewModelService, ILoginService loginService, IFrageService frageService, IDokumentService dokumentService)
         {
             LoginService = loginService;
             BenutzerService = benutzerService;
             BenutzerViewModelService = benutzerViewModelService;
             FrageService = frageService;
+            DokumentService = dokumentService;
         }
 
         // GET: Benutzer
@@ -554,7 +554,7 @@ namespace Caterer_DB.Controllers
 
             byte[] dateiArray = System.IO.File.ReadAllBytes(HostingEnvironment.MapPath(quellDatei));
             var memoryStream = new MemoryStream(dateiArray, true);
-            BenutzerService.DokumentDrucken(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), memoryStream);
+            DokumentService.DokumentDrucken(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), memoryStream);
 
             return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.wordprocessingml.document", zielDatei);
 

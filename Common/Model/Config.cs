@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DataAccess.Model
+namespace Common.Model
 {
     public class Config
     {

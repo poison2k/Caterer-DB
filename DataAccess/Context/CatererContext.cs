@@ -1,8 +1,8 @@
 ﻿using DataAccess.Interfaces;
-using DataAccess.Model;
 using EntityFramework.DynamicFilters;
 using System.Configuration;
 using System.Data.Entity;
+using Common.Model;
 
 namespace DataAccess.Context
 {

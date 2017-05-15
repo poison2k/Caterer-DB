@@ -80,14 +80,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IDocumentService.cs" />
+    <Compile Include="Interfaces\IDocxService.cs" />
     <Compile Include="Interfaces\IDocxGenerator.cs" />
     <Compile Include="Interfaces\IGoogleService.cs" />
     <Compile Include="Interfaces\IMailService.cs" />
     <Compile Include="Interfaces\IMd5Hash.cs" />
     <Compile Include="Interfaces\TestDocx.cs" />
+    <Compile Include="Model\Antwort.cs" />
+    <Compile Include="Model\Benutzer.cs" />
+    <Compile Include="Model\BenutzerGruppe.cs" />
+    <Compile Include="Model\Config.cs" />
+    <Compile Include="Model\Frage.cs" />
+    <Compile Include="Model\Fragebogen.cs" />
+    <Compile Include="Model\Kategorie.cs" />
+    <Compile Include="Model\Recht.cs" />
+    <Compile Include="Model\RechteGruppe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DocumentService.cs" />
+    <Compile Include="Services\DocxService.cs" />
     <Compile Include="Resources\EMailBetreff.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +117,7 @@
     <Compile Include="Services\MailModel.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\MD5Hash.cs" />
+    <Compile Include="Services\ValidationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\EMailBetreff.resx">
@@ -128,12 +138,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{E0CE96CF-2177-4EE1-8FBD-0FF9315DD6CD}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

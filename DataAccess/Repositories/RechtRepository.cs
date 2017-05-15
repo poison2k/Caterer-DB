@@ -1,8 +1,7 @@
 ﻿using DataAccess.Interfaces;
-using DataAccess.Model;
 using System.Collections.Generic;
 using System.Linq;
-
+using  Common.Model;
 namespace DataAccess.Repositories
 {
     public class RechtRepository : IRechtRepository

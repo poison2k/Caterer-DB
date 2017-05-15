@@ -2,7 +2,6 @@
 using System.Linq;
 using Business.Services;
 using DataAccess.Interfaces;
-using DataAccess.Model;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;

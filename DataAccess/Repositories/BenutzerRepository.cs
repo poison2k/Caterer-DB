@@ -1,10 +1,10 @@
 ﻿using DataAccess.Interfaces;
-using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using System.Linq;
+using Common.Model;
 
 namespace DataAccess.Repositories
 {

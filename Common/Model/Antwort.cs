@@ -1,8 +1,9 @@
-﻿using DataAccess.Services;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Common.Services;
 
-namespace DataAccess.Model
+
+namespace Common.Model
 {
     public class Antwort
     {

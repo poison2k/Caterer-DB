@@ -1,7 +1,6 @@
 ﻿using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using DataAccess.Interfaces;
-using DataAccess.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,6 +11,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using Common.Model;
 
 namespace Caterer_DB.Services
 {

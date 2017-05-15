@@ -1,6 +1,6 @@
-﻿using DataAccess.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using Common.Model;
 
 namespace Business.Interfaces
 {
@@ -55,8 +55,6 @@ namespace Business.Interfaces
 
         void EditCaterer(Benutzer benutzer);
         
-        void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream);
-
         int GetAdminCount();
     }
 }

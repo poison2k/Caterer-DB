@@ -86,9 +86,11 @@ namespace Caterer_DB.App_Start
             container.RegisterType<IFragebogenRepository, FragebogenRepository>();
 
             container.RegisterType<IMailService, MailService>();
-            container.RegisterType<IDocumentService, DocumentService>();
+            container.RegisterType<IDocxService, DocxService>();
             container.RegisterType<IMd5Hash, MD5Hash>();
             container.RegisterType<IGoogleService, GoogleService>();
+            container.RegisterType<IDokumentService, DokumentService>();
+            container.RegisterType<IDocxService, DocxService>();
         }
     }
 }

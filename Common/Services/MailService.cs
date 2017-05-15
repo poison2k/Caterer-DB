@@ -1,11 +1,11 @@
 ﻿using Common.Interfaces;
 using Common.Resources;
-using DataAccess.Model;
 using System;
 using System.Net;
 using System.Net.Mail;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Common.Model;
 
 namespace Common.Services
 {

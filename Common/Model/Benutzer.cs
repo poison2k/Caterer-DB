@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 
-namespace DataAccess.Model
+namespace Common.Model
 {
     public class Benutzer
     {
@@ -98,7 +98,7 @@ namespace DataAccess.Model
                 _AntwortIDs = "";
                 for (int i = 0; i < ids.Count; i++)
                 {
-                    if (!(i == ids.Count - 1))
+                    if (i != ids.Count - 1)
                     {
                         _AntwortIDs = _AntwortIDs + ids[i] + ",";
                     }

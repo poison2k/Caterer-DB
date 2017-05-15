@@ -1,5 +1,5 @@
 ﻿using Caterer_DB.Models;
-using DataAccess.Model;
+using Common.Model;
 
 namespace Caterer_DB.Interfaces
 {
