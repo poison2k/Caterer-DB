@@ -562,7 +562,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 {
                     db.Benutzer.Add(new Benutzer
                     {
-                        Mail = "mensavereinbraunschweig@test,de",
+                        Mail = "mensavereinbraunschweig@test.de",
                         Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
                         Nachname = "Lieberknecht",
                         Vorname = "Torsten",
