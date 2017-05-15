@@ -2,7 +2,7 @@
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 
-namespace Caterer_DB
+namespace Caterer_DB.MVCServices
 {
     public class FindCurrentUserService : IFindCurrentUserService
     {

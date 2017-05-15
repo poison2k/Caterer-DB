@@ -9,6 +9,7 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
 using System.Web.Mvc;
+using Caterer_DB.MVCServices;
 
 namespace Caterer_DB.Tests.Controllers
 {
@@ -168,7 +169,7 @@ namespace Caterer_DB.Tests.Controllers
             //Arrange
 
             //Act
-            ActionResult result = AccountController.PasswordChange(Fixture.Build<ForgottenPasswordCreateNewPasswordViewModel>().Create(), "TestId", "TestVerify");
+            ActionResult result = AccountController.PasswordChange(MockAccountViewModels.EinForgottenPasswordCreateNewPasswordViewModel(), "TestId", "TestVerify");
             string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
 
             //Assert
@@ -278,7 +279,7 @@ namespace Caterer_DB.Tests.Controllers
             accountController.ControllerContext = new ControllerContext();
 
             //Act
-            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+            ActionResult result = accountController.Login(MockAccountViewModels.EinLoginModel(), "Home/Index");
 
             //Assert
             Assert.IsNotNull(result);
@@ -295,7 +296,7 @@ namespace Caterer_DB.Tests.Controllers
             accountController.ControllerContext = new ControllerContext();
 
             //Act
-            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+            ActionResult result = accountController.Login(MockAccountViewModels.EinLoginModel(), "Home/Index");
 
             //Assert
             Assert.IsNotNull(result);
@@ -312,7 +313,7 @@ namespace Caterer_DB.Tests.Controllers
             accountController.ControllerContext = new ControllerContext();
 
             //Act
-            ActionResult result = accountController.Login(Fixture.Build<LoginModel>().Create(), "Home/Index");
+            ActionResult result = accountController.Login(MockAccountViewModels.EinLoginModel(), "Home/Index");
 
             //Assert
             Assert.IsNotNull(result);

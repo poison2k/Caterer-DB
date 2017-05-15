@@ -13,7 +13,7 @@ using Common.Model;
 using DataAccess.Interfaces;
 using Newtonsoft.Json;
 
-namespace Caterer_DB
+namespace Caterer_DB.MVCServices
 {
     public class LoginService : ILoginService
     {

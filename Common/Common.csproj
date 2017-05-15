@@ -97,10 +97,10 @@
     <Compile Include="Model\RechteGruppe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\BenutzerGruppenResource.cs" />
-    <Compile Include="Resources\LoginResources1.Designer.cs">
-      <DependentUpon>LoginResources.resx</DependentUpon>
+    <Compile Include="Resources\LoginResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>LoginResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\RechteResource.cs" />
     <Compile Include="Services\DocxService.cs" />
@@ -141,7 +141,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\LoginResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoginResources1.Designer.cs</LastGenOutput>
+      <LastGenOutput>LoginResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

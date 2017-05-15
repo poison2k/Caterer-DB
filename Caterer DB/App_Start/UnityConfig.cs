@@ -10,6 +10,7 @@ using DataAccess.Interfaces;
 using DataAccess.Repositories;
 using Microsoft.Practices.Unity;
 using System;
+using Caterer_DB.MVCServices;
 
 namespace Caterer_DB.App_Start
 {

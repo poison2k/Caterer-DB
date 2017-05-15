@@ -1,4 +1,4 @@
-﻿namespace Caterer_DB
+﻿namespace Caterer_DB.MVCServices
 {
     public enum LoginSuccessLevel
     {

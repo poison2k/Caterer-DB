@@ -1,9 +1,10 @@
 ﻿using Business.Interfaces;
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
-using Caterer_DB.Resources;
 using System;
 using System.Web.Mvc;
+using Caterer_DB.MVCServices;
+using Common.Resources;
 
 namespace Caterer_DB.Controllers
 {
