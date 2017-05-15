@@ -2,15 +2,14 @@
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
-using Caterer_DB.Services;
+using Common.Model;
+using Common.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using Business.Services;
-using Common.Model;
 
 namespace Caterer_DB.Controllers
 {
@@ -78,8 +77,7 @@ namespace Caterer_DB.Controllers
         [CustomAuthorize(Rights = RechteResource.IndexCaterer)]
         public ActionResult IndexCaterer(FullFilterCatererViewModel fullFilterCatererViewModel, FormCollection formCollection)
         {
-
-            // Weiterleitung falls Vergleich gewünscht ist 
+            // Weiterleitung falls Vergleich gewünscht ist
             if (Request.Form["btnVergleich"] != null)
             {
                 string listIds = "";
@@ -101,7 +99,8 @@ namespace Caterer_DB.Controllers
             List<int> antwortIds = new List<int>();
 
             //Model State korriegieren wenn keine PLZ gewählt ist damit kein Fehler ausgegeben wird
-            if (fullFilterCatererViewModel.PLZ == null) {
+            if (fullFilterCatererViewModel.PLZ == null)
+            {
                 ModelState.Remove("Umkreis");
                 ModelState.Remove("PLZ");
             }
@@ -115,11 +114,10 @@ namespace Caterer_DB.Controllers
                 }
 
                 fullFilterCatererViewModel.FrageAntwortModel.Add(new FrageAntwortModel() { FrageAntwortId = fullFilterCatererViewModel.FrageAntwortModel.Count + 1, AntwortId = 0, FrageId = 0 });
-
             }
             else if (Request.Form["btnDeleteFilter"] != null)
             {
-                        fullFilterCatererViewModel.FrageAntwortModel.RemoveAt(fullFilterCatererViewModel.FrageAntwortModel.Count -1);
+                fullFilterCatererViewModel.FrageAntwortModel.RemoveAt(fullFilterCatererViewModel.FrageAntwortModel.Count - 1);
             }
 
             //aktuell Gewählte Antworten in Liste Speichern
@@ -131,7 +129,7 @@ namespace Caterer_DB.Controllers
                 }
             }
 
-            //Sortierung ermitteln 
+            //Sortierung ermitteln
             string Sortierrung = "Firmenname";
             int aktuelleSeite = 1;
             var seitenGrösse = 10;
@@ -169,10 +167,8 @@ namespace Caterer_DB.Controllers
             }
             ViewBag.Sortierrung = Sortierrung;
 
-
             List<Benutzer> resultList = new List<Benutzer>();
             int resultcount = 0;
-            
 
             //Falls fehlerhafte eingaben existieren
             if (!ModelState.IsValid)
@@ -190,7 +186,7 @@ namespace Caterer_DB.Controllers
 
                 return View(fullFilterCatererViewModel);
             }
-            // Caterer abrufen mit allen Filtern    
+            // Caterer abrufen mit allen Filtern
             resultList = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, seitenGrösse, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds);
             resultcount = BenutzerService.FindAllCatererWithPaging(aktuelleSeite, 1000000, Sortierrung, Convert.ToInt32(fullFilterCatererViewModel.Umkreis), fullFilterCatererViewModel.PLZ, fullFilterCatererViewModel.Name, antwortIds).Count;
             fullFilterCatererViewModel.ResultListCaterer = BenutzerViewModelService.GeneriereListViewModelCaterer(
@@ -198,10 +194,10 @@ namespace Caterer_DB.Controllers
                 , resultcount
                 , aktuelleSeite
                 , seitenGrösse);
-           
+
             fullFilterCatererViewModel = BenutzerViewModelService.AddListsToFullFilterCatererViewModel(fullFilterCatererViewModel);
             fullFilterCatererViewModel = BenutzerViewModelService.AddFragenListsToFullFilterCatererViewModel(fullFilterCatererViewModel, FrageService.FindAlleFragen());
-          
+
             return View(fullFilterCatererViewModel);
         }
 
@@ -305,7 +301,6 @@ namespace Caterer_DB.Controllers
                         ModelState.AddModelError("", ex.Message);
                         return View(BenutzerViewModelService.AddListsToCreateCatererViewModel(createCatererViewModel));
                     }
-                   
                 }
                 else
                 {
@@ -459,7 +454,6 @@ namespace Caterer_DB.Controllers
                         ModelState.AddModelError("", ex.Message);
                         return View(BenutzerViewModelService.AddListsToMyDataViewModel(myDataBenutzerViewModel));
                     }
-                 
                 }
                 else if (Request.Form["btnModalDelete"] != null)
                 {
@@ -482,7 +476,6 @@ namespace Caterer_DB.Controllers
             {
                 if (Request.Form["btnSave"] != null)
                 {
-                   
                     try
                     {
                         BenutzerService.EditCaterer(BenutzerViewModelService.Map_MyDataBenutzerViewModel_Benutzer(myDataBenutzerViewModel));
@@ -517,14 +510,14 @@ namespace Caterer_DB.Controllers
 
             if (Request.Form["lueneburg"] != null)
             {
-                if (istWeitergabeErlaubt) 
+                if (istWeitergabeErlaubt)
                 {
                     dateiName = "InformationsblattLueneburg.docx";
-                }else
+                }
+                else
                 {
                     dateiName = "InformationsblattLueneburgWasserzeichen.docx";
                 }
-                
             }
             else if (Request.Form["braunschweig"] != null)
             {
@@ -557,7 +550,6 @@ namespace Caterer_DB.Controllers
             DokumentService.DokumentDrucken(BenutzerService.SearchUserById(detailsCatererViewModel.BenutzerId), memoryStream);
 
             return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.wordprocessingml.document", zielDatei);
-
         }
 
         // GET: Benutzer/Delete/5
@@ -589,19 +581,16 @@ namespace Caterer_DB.Controllers
             return RedirectToAction("Index");
         }
 
-
         // GET: Benutzer/Delete/5
 
         public ActionResult VergleichCaterer(string ids)
         {
-
             List<int> listIds = new List<int>();
             string[] stringlist = new string[0];
             if (ids != "" && ids != null)
             {
                 stringlist = ids.Split(',');
             }
-
 
             foreach (string caterer in stringlist)
             {
@@ -613,11 +602,7 @@ namespace Caterer_DB.Controllers
 
             var vergleichCatererViewModel = BenutzerViewModelService.Map_ListBenutzer_VergleichCatererViewModel(BenutzerService.FindeCatererNachIds(listIds), FrageService.FindAlleFragenNachKategorieninEigenenListen());
 
-
-
             return View(vergleichCatererViewModel);
         }
-
-
     }
 }

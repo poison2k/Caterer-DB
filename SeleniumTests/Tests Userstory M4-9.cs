@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Services;
-
 
 namespace SeleniumTests
 {
@@ -10,7 +8,6 @@ namespace SeleniumTests
     [Category("Userstory_M4_9")]
     public class Userstory_M4_9 : TestInitialize
     {
-
         [Test]
         public void Kategorien1()
         //T_M4-9_F01_B_001
@@ -23,14 +20,14 @@ namespace SeleniumTests
             //Kategorie Übersicht aufrufen
             TestTools_Userstory_M4_9.Fragebogen_Kategorie_Aufrufen(driver);
 
-            TestTools.Element_Klicken(ObjektIDs_FragebogenManagement.Kategorie_Neu_Button,driver);
-            Assert.AreEqual(Hinweise.Fragen_Kategorie_Hinzufügen,TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Kategorie_hinzufügen_Seite,driver));
+            TestTools.Element_Klicken(ObjektIDs_FragebogenManagement.Kategorie_Neu_Button, driver);
+            Assert.AreEqual(Hinweise.Fragen_Kategorie_Hinzufügen, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Kategorie_hinzufügen_Seite, driver));
 
             //Kategorie Hinzufügen aufrufen
             TestTools_Userstory_M4_9.Fragebogen_Kategorie_Hinzufügen(driver);
 
             //Neue Kategorie erstellen
-            TestTools.Daten_In_Textbox_Eingeben("Lecker",ObjektIDs_FragebogenManagement.Kategorie_Formulieren_Textbox,driver);
+            TestTools.Daten_In_Textbox_Eingeben("Lecker", ObjektIDs_FragebogenManagement.Kategorie_Formulieren_Textbox, driver);
             TestTools.Element_Klicken(ObjektIDs_FragebogenManagement.Kategorie_Anlegen_Button, driver);
             Assert.AreEqual(Hinweise.Fragen_Kategorie_Übersicht, TestTools.Label_Text_Zurückgeben(ObjektIDs_FragebogenManagement.Kategorie_Übersicht_Seite, driver));
 
@@ -136,7 +133,7 @@ namespace SeleniumTests
             TestTools_Userstory_M4_9.Kategorie_Bearbeiten_Seite(driver);
 
             //Kategorie umbenennen
-            TestTools.Daten_In_Textbox_Eingeben("",ObjektIDs_FragebogenManagement.Kategorie_Formulieren_Textbox,driver);
+            TestTools.Daten_In_Textbox_Eingeben("", ObjektIDs_FragebogenManagement.Kategorie_Formulieren_Textbox, driver);
             TestTools.Daten_In_Textbox_Eingeben(ObjektIDs_FragebogenManagement.Kategorie_Dummykategorie, ObjektIDs_FragebogenManagement.Kategorie_Formulieren_Textbox, driver);
             TestTools.Element_Klicken(ObjektIDs_Allgemein.Speichern, driver);
 
@@ -237,7 +234,5 @@ namespace SeleniumTests
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
-
-
     }
 }

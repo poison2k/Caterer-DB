@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Common.Model;
+using System.Collections.Generic;
 using System.IO;
-using Common.Model;
 
 namespace Common.Interfaces
 {

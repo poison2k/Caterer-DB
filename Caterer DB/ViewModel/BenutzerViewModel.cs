@@ -1,9 +1,9 @@
-﻿using Caterer_DB.Services;
+﻿using Common.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Common.Model;
+using Common.Services;
 
 namespace Caterer_DB.Models
 {
@@ -227,7 +227,6 @@ namespace Caterer_DB.Models
         public string Telefon { get; set; }
 
         public int AdminCount { get; set; }
-
     }
 
     public class MyDataBenutzerViewModel
@@ -357,7 +356,6 @@ namespace Caterer_DB.Models
 
         public string Straße { get; set; }
 
-
         public string Postleitzahl { get; set; }
 
         public string Ort { get; set; }
@@ -403,10 +401,8 @@ namespace Caterer_DB.Models
 
     public class VergleichCatererViewModel
     {
-
         public List<List<Frage>> Fragen { get; set; }
         public List<DetailsCatererViewModel> caterer { get; set; }
-
     }
 
     public class FullFilterCatererViewModel
@@ -428,19 +424,16 @@ namespace Caterer_DB.Models
         public IEnumerable<System.Web.Mvc.SelectListItem> Lieferumkreise { get; set; }
 
         public List<FrageAntwortModel> FrageAntwortModel { get; set; }
-
     }
 
     public class FrageAntwortModel
     {
         [Key]
         public int FrageAntwortId { get; set; }
+
         public int FrageId { get; set; }
         public int AntwortId { get; set; }
-
     }
-
-
 
     public class CreateCatererViewModel
     {
@@ -569,7 +562,5 @@ namespace Caterer_DB.Models
         public string Sonstiges { get; set; }
 
         public List<FragenNachThemengebiet> Fragen { get; set; }
-
-
     }
 }

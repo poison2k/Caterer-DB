@@ -1,10 +1,9 @@
-﻿
+﻿using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace Common.Services
 {
@@ -91,7 +90,6 @@ namespace Common.Services
                 ErsetzeDurchParagraph(contentControl, text);
         }
 
-
         public static Paragraph ErstelleSeitenumbruch()
         {
             var paragraph = new Paragraph();
@@ -104,7 +102,6 @@ namespace Common.Services
             paragraph.Append(run);
             return paragraph;
         }
-
 
         private static void ErsetzeDurchParagraph(OpenXmlElement contentControl, string neuerText)
         {
@@ -186,9 +183,5 @@ namespace Common.Services
                 foreach (var cc in doc.MainDocumentPart.EndnotesPart.ContentControls())
                     yield return cc;
         }
-
     }
-
-
-
 }

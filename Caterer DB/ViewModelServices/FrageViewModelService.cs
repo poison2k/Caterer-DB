@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using Caterer_DB.Interfaces;
+using Common.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Common.Model;
-
 
 namespace Caterer_DB.Models.ViewModelServices
 {
@@ -125,7 +124,6 @@ namespace Caterer_DB.Models.ViewModelServices
             return new SelectList(selectListItems, "Value", "Text");
         }
 
-
         public List<AjaxAntwort> WandleAntworteninAjaxAntworten(List<Antwort> antworten)
         {
             return antworten.Select(antwort => new AjaxAntwort
@@ -134,6 +132,5 @@ namespace Caterer_DB.Models.ViewModelServices
                 Antworttext = antwort.Bezeichnung
             }).ToList();
         }
-
     }
 }

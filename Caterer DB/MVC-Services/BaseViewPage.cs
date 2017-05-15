@@ -1,7 +1,7 @@
-﻿using Caterer_DB.Models;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Caterer_DB.Models;
 
-namespace Caterer_DB.Services
+namespace Caterer_DB
 {
     public abstract class BaseViewPage : WebViewPage
     {

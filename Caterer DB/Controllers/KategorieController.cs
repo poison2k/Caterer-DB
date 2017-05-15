@@ -1,8 +1,7 @@
 ﻿using Business.Interfaces;
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
-using Caterer_DB.Resources;
-using Caterer_DB.Services;
+using Common.Resources;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -114,9 +113,11 @@ namespace Caterer_DB.Controllers
                 if (Request.Form["btnModalDelete"] != null)
                 {
                     KategorieService.RemoveKategorie(editKategorieViewModel.KategorieId);
-                } else if(Request.Form["btnAenderungenSpeichern"] != null){
+                }
+                else if (Request.Form["btnAenderungenSpeichern"] != null)
+                {
                     KategorieService.EditKategorie(KategorieViewModelService.Map_EditKategorieViewModel_Kategorie(editKategorieViewModel));
-                    return RedirectToAction("Edit", new { id= editKategorieViewModel.KategorieId  });
+                    return RedirectToAction("Edit", new { id = editKategorieViewModel.KategorieId });
                 }
                 else
                 {

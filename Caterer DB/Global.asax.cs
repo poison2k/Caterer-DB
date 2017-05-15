@@ -1,6 +1,5 @@
 ﻿using Caterer_DB.App_Start.ContextInitializer;
 using Caterer_DB.Models;
-using Caterer_DB.Services;
 using DataAccess.Context;
 using DataAccess.Repositories;
 using log4net.Config;
@@ -31,7 +30,7 @@ namespace Caterer_DB
 
             Database.SetInitializer(new ContextInitializerCreateIfNotExistsWithStartData());
 #endif
-            
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -39,8 +38,6 @@ namespace Caterer_DB
             Utilities.LoadNativeAssemblies(Server.MapPath("~/bin"));
             XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
             AreaRegistration.RegisterAllAreas();
-
-          
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)

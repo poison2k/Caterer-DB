@@ -1,18 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Business.Services;
+﻿using Business.Services;
 using DataAccess.Interfaces;
+using MockData;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.AutoMoq;
-using MockData;
+using System.Linq;
 
 namespace Business.Test.Business
 {
     public class BenutzerGruppeServiceTest
     {
-     
         [TestFixture]
         public class RechteGruppeServiceTests
         {
@@ -35,7 +32,6 @@ namespace Business.Test.Business
 
                 BenutzerGruppeService = new BenutzerGruppeService(MockBenutzerGruppeRepository);
             }
-        
 
             [Test]
             public void FindAllGroups_Test()

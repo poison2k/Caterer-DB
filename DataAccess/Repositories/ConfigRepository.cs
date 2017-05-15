@@ -1,6 +1,6 @@
-﻿using DataAccess.Interfaces;
+﻿using Common.Model;
+using DataAccess.Interfaces;
 using System.Linq;
-using Common.Model;
 
 namespace DataAccess.Repositories
 {

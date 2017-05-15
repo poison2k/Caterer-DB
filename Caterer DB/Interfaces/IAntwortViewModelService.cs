@@ -1,7 +1,6 @@
 ﻿using Caterer_DB.Models;
 using Common.Model;
 
-
 namespace Caterer_DB.Interfaces
 {
     public interface IAntwortViewModelService

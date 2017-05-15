@@ -1,11 +1,11 @@
-﻿using Caterer_DB.Controllers;
+﻿using Business.Interfaces;
+using Caterer_DB.Controllers;
 using Caterer_DB.Interfaces;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
 using System.Web.Mvc;
-using Business.Interfaces;
 
 namespace Caterer_DB.Tests.Controllers
 {

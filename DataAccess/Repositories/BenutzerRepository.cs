@@ -1,10 +1,10 @@
-﻿using DataAccess.Interfaces;
+﻿using Common.Model;
+using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using System.Linq;
-using Common.Model;
 
 namespace DataAccess.Repositories
 {
@@ -72,16 +72,15 @@ namespace DataAccess.Repositories
         public List<Benutzer> SearchAllUserByUserGroupWithPagingOrderByCategory(int aktuelleSeite, int seitenGroesse, List<string> BenutzerGruppen, string orderBy, int umkreis = -1, DbGeography geoDaten = null, string name = "")
         {
             var query = Db.Benutzer.Include(x => x.BenutzerGruppen);
-           
+
             if (BenutzerGruppen.Count > 1)
             {
                 query = query.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Administrator").FirstOrDefault()) || y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Mitarbeiter").FirstOrDefault()));
             }
-            else 
+            else
             {
                 query = query.Where(y => y.BenutzerGruppen.Contains(Db.BenutzerGruppe.Where(x => x.Bezeichnung == "Caterer").FirstOrDefault()));
             }
-
 
             if (name != "" && name != null)
             {

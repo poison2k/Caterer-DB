@@ -1,17 +1,16 @@
 ﻿using Common.Interfaces;
+using Common.Model;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Common.Model;
 
 namespace Common.Services
 {
     public class DocxService : IDocxService
     {
-       
         public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream, List<Frage> fragen)
         {
             {
@@ -44,7 +43,6 @@ namespace Common.Services
 
                 foreach (int antwortId in benutzer.AntwortIDs)
                 {
-                    
                     Frage aktuelleFrage = searchFrageByAntwortId(fragen, antwortId);
                     string verketteteAntworten = "";
                     List<Antwort> tmpAntworten = new List<Antwort>(aktuelleFrage.Antworten);

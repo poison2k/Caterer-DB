@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using Common.Model;
-
+﻿using Common.Model;
+using System.Collections.Generic;
 
 namespace Common.Interfaces
 {
@@ -19,6 +18,7 @@ namespace Common.Interfaces
         void SendEditCatererMail(Config config, string mail);
 
         void SendReleasedQuestionCatererMail(Config config, string mail);
+
         void SendInfoMailEditCatererToEmployee(Config config, Benutzer dbBenutzer, List<Benutzer> list);
     }
 }

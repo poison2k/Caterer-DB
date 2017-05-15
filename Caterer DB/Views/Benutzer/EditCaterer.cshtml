@@ -4,8 +4,6 @@
     ViewBag.Title = "MyData";
 }
 
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -34,7 +32,6 @@
             </div>
         </div>*@
 
-
     <div class="row">
         <div class="col-md-12">
             <div class="tabbar ">
@@ -46,23 +43,12 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
     @*<div class="tabbar">
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#stammdaten" aria-controls="home" role="tab" data-toggle="tab">Stammdaten</a></li>
                 <li role="presentation"><a href="#fragebogen" aria-controls="profile" role="tab" data-toggle="tab">Fragebogen</a></li>
             </ul>
         </div>*@
-
-
-
 
         <!-- Tab panes -->
     <div class="tab-content">
@@ -248,7 +234,7 @@
                             </div>
                         </div>
                     </div>
-                
+
                     <div class="row">
                         <div class="col-md-3">
                             <button type="submit" id="btnSpeichern" name="btnSave" value="Speichern" class="btn btn-success btn-block">
@@ -264,9 +250,6 @@
                             </button>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
             <!-- Modal -->
@@ -291,7 +274,6 @@
             </div>
         </div>
 
-
         <div role="tabpanel" class="tab-pane fade" id="fragebogen">
 
             <div class="row">
@@ -315,7 +297,6 @@
                     </button>
                     <br />
                     <a class="btn btn-default btn-block" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-
                 </nav>
                 <div class="col-md-9 col-md-offset-2">
                     <br />
@@ -397,19 +378,17 @@
                         </div>
 
                     }
-                   
 
-                 
                     <div class="row">
                         <div class="col-md-12 col-md-offset-0">
                             <div class="well well-lg">
-                             
+
                                 <h2>Sonstiges</h2>
                                 <hr />
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                           
+
                                             @Html.TextAreaFor(model => model.Sonstiges, new { rows = 6, columns = 40, @class = "form-control" })
                                             @Html.ValidationMessageFor(model => model.Sonstiges, "", new { @class = "text-danger" })
                                         </div>
@@ -426,10 +405,8 @@
                         </div>
                         <div class="col-md-3">
                             <a class="btn btn-default btn-block" href="/Benutzer/indexCaterer"><i class="glyphicon glyphicon-backward"></i> Zurück</a>
-
                         </div>
                         </div>
-
                 </div>
             </div>
         </div>
@@ -444,16 +421,12 @@
         var name = Model.Fragen[i].Name + i;
         <script>
 
-
             $("#@name").click(function () {
                 $('html, body').animate({
                     scrollTop: $("#@Model.Fragen[i].Name").offset().top
                 }, 200);
             });
-
         </script>
     }
-
-
 
 }

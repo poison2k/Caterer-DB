@@ -271,7 +271,7 @@ namespace SeleniumTests
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
 
-       [Test]
+        [Test]
         public void FragenBearbeiten8()
         //T_M4-4_F08_B_001
         {
@@ -359,6 +359,5 @@ namespace SeleniumTests
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
-
-      }
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Caterer_DB.Interfaces;
-using System.Collections.Generic;
 using Common.Model;
+using System.Collections.Generic;
 
 namespace Caterer_DB.Models.ViewModelServices
 {

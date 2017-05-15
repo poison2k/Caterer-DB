@@ -1,9 +1,9 @@
-﻿using Caterer_DB.Resources;
+﻿using Common.Model;
+using Common.Resources;
 using DataAccess.Context;
 using System.Collections.Generic;
 using System.Data.Entity.Spatial;
 using System.Linq;
-using Common.Model;
 
 namespace Caterer_DB.App_Start.ContextInitializer
 {
@@ -65,6 +65,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
         }
 
 #if DEBUG
+
         private static void CreateConfig(CatererContext db)
         {
             Config config = db.Config.Add(new Config
@@ -79,6 +80,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
             });
             db.SaveChanges();
         }
+
 #else
         private static void CreateConfig(CatererContext db)
         {
@@ -184,7 +186,7 @@ namespace Caterer_DB.App_Start.ContextInitializer
                 FunktionAnsprechpartner = "Chef",
                 EMailVerificationCode = "",
                 PasswortZeitstempel = System.DateTime.Now,
-                LetzteÄnderung = new System.DateTime(1900,1,1),
+                LetzteÄnderung = new System.DateTime(1900, 1, 1),
                 Koordinaten = DbGeography.FromText("Point( 10.177968 52.903617 )"),
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Caterer) }
             });
@@ -685,7 +687,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Cook & Serve"},
                     new Antwort() {Bezeichnung = "Cook & Hold"},
                     new Antwort() {Bezeichnung = "Cook & Chill"},
-
                 },
                 IstVeröffentlicht = true,
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Allgemeines"),
@@ -712,7 +713,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "Zwischenverpflegung am Nachmittag"},
                     new Antwort() {Bezeichnung = "Automatenverpflegung"},
                     new Antwort() {Bezeichnung = "Getränkeservice"}
-
                 },
                 IstVeröffentlicht = true,
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Speiseplan"),
@@ -743,7 +743,6 @@ namespace Caterer_DB.App_Start.ContextInitializer
                     new Antwort() {Bezeichnung = "IFS oder BRC"},
                     new Antwort() {Bezeichnung = "EU Öko-VO"},
                     new Antwort() {Bezeichnung = "Technische Universität Dortmund"}
-
                 },
                 IstVeröffentlicht = true,
                 Kategorie = db.Kategorie.Single(x => x.Bezeichnung == "Speiseplan"),

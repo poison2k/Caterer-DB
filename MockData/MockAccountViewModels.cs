@@ -14,15 +14,19 @@ namespace MockData
             };
         }
 
-        public static ForgottenPasswordCreateNewPasswordViewModel EinForgottenPasswordCreateNewPasswordViewModel() {
-            return new ForgottenPasswordCreateNewPasswordViewModel() {
+        public static ForgottenPasswordCreateNewPasswordViewModel EinForgottenPasswordCreateNewPasswordViewModel()
+        {
+            return new ForgottenPasswordCreateNewPasswordViewModel()
+            {
                 BenutzerId = 1,
                 Mail = "test@test.de",
                 Passwort = "test",
-                PasswortVerification = "test" };
+                PasswortVerification = "test"
+            };
         }
 
-        public static RegisterBenutzerViewModel EinRegisterBenutzerViewModel() {
+        public static RegisterBenutzerViewModel EinRegisterBenutzerViewModel()
+        {
             return new RegisterBenutzerViewModel()
             {
                 AGBs = true,
@@ -47,11 +51,10 @@ namespace MockData
                 Vorname = "test",
                 WeitergabeVonDaten = true
             };
-
         }
 
-        public static AnmeldenBenutzerViewModel EinAnmeldenBenutzerViewModel() {
-
+        public static AnmeldenBenutzerViewModel EinAnmeldenBenutzerViewModel()
+        {
             return new AnmeldenBenutzerViewModel()
             {
                 AnmeldenModel = EinLoginModel(),

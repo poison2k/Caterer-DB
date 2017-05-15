@@ -12,20 +12,16 @@ namespace MockData
                 Bezeichnung = "AdminRechte",
                 Rechte = MockRechtModel.ListeVonRechten()
             };
-
-
         }
 
         public static RechteGruppe CatererRechteGruppe()
         {
-
             return new RechteGruppe
             {
                 RechteVerwaltungsGruppeId = 2,
                 Bezeichnung = "CatererRechte",
                 Rechte = MockRechtModel.ListeVonRechten()
             };
-
         }
 
         public static RechteGruppe MitarbeiterRechteGruppe()
@@ -36,8 +32,6 @@ namespace MockData
                 Bezeichnung = "MitarbeiterRechte",
                 Rechte = MockRechtModel.ListeVonRechten()
             };
-
         }
-
     }
 }

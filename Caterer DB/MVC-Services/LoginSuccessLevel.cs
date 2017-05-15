@@ -1,4 +1,4 @@
-﻿namespace Caterer_DB.Services
+﻿namespace Caterer_DB
 {
     public enum LoginSuccessLevel
     {

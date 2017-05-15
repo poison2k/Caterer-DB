@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using Common.Model;
+﻿using Common.Model;
+using System.Collections.Generic;
 
 namespace Business.Interfaces
 {
@@ -21,6 +20,7 @@ namespace Business.Interfaces
         List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis);
 
         List<Benutzer> FindeCatererNachIds(List<int> ids);
+
         void AddBenutzer(Benutzer benutzer);
 
         void AddMitarbeiter(Benutzer benutzer, string gruppe);
@@ -54,7 +54,7 @@ namespace Business.Interfaces
         void RemoveCaterer(int benutzerId);
 
         void EditCaterer(Benutzer benutzer);
-        
+
         int GetAdminCount();
     }
 }

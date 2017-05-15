@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Business.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
 using Common.Interfaces;
 using Common.Model;
+using MockData;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using MockData;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Caterer_DB.Tests.ViewModelTest
 {
@@ -217,7 +217,7 @@ namespace Caterer_DB.Tests.ViewModelTest
             var benutzerViewModelService = new BenutzerViewModelService(MockBenutzerService, MockMD5hash, MockFrageService);
 
             //Act
-           
+
             var result = benutzerViewModelService.Map_Benutzer_MyDataBenutzerViewModel(benutzer, fragen);
 
             //Assert
@@ -264,8 +264,6 @@ namespace Caterer_DB.Tests.ViewModelTest
 
             Assert.AreEqual(deleteBenutzerViewModel.GetType(), result.GetType());
         }
-
-      
 
         [Test]
         public void CreateNewRegisterBenutzerViewModel_Test()

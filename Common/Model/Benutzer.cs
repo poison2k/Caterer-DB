@@ -69,9 +69,6 @@ namespace Common.Model
         //GeoInfoDaten
         public DbGeography Koordinaten { get; set; }
 
-     
-
-
         [NotMapped]
         public virtual List<int> AntwortIDs
         {
@@ -108,8 +105,6 @@ namespace Common.Model
                     }
                 }
             }
-
-
         }
     }
 }

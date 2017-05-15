@@ -1,8 +1,8 @@
-﻿using DataAccess.Interfaces;
+﻿using Common.Model;
+using DataAccess.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Common.Model;
 
 namespace DataAccess.Repositories
 {
@@ -42,7 +42,7 @@ namespace DataAccess.Repositories
 
         public Frage SearchFrageByAntwortId(int antwortID)
         {
-            return Db.Frage.Include(x => x.Kategorie).Where(x => x.Antworten.Contains(Db.Antwort.Where(y=> y.AntwortId == antwortID).FirstOrDefault())).SingleOrDefault();
+            return Db.Frage.Include(x => x.Kategorie).Where(x => x.Antworten.Contains(Db.Antwort.Where(y => y.AntwortId == antwortID).FirstOrDefault())).SingleOrDefault();
         }
 
         public void AddFrage(Frage frage)

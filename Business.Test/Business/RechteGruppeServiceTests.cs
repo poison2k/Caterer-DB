@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Business.Services;
+﻿using Business.Services;
 using Common.Model;
 using DataAccess.Interfaces;
+using MockData;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using MockData;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Business.Test.Business
 {

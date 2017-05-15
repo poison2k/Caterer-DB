@@ -7,12 +7,11 @@ namespace Caterer_DB
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-        #if DEBUG
+#if DEBUG
 
-        #else
+#else
             filters.Add(new RequireHttpsAttribute());
-        #endif
-
+#endif
         }
     }
 }

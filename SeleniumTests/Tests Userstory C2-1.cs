@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Services;
 
 namespace SeleniumTests
@@ -9,7 +8,6 @@ namespace SeleniumTests
     [Category("Userstory_C2_1")]
     public class Userstory_C2_1 : TestInitialize
     {
-
         [Test]
         public void PersDatenÄndern2()
         //T_C2-1_F02_B_001
@@ -101,7 +99,5 @@ namespace SeleniumTests
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
-
-       
     }
 }

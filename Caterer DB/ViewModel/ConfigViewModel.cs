@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Caterer_DB.Services;
+using Common.Services;
 
 namespace Caterer_DB.Models
 {
@@ -30,7 +30,7 @@ namespace Caterer_DB.Models
         public int SmtpPort { get; set; }
 
         [DisplayName(@"Änderungsverfolgung für Änderungen der Caterer")]
-        public bool AenderungsVerfolgungCatererAktiviert { get;set;}
+        public bool AenderungsVerfolgungCatererAktiviert { get; set; }
 
         [MyRequired]
         [DisplayName(@"Zeit bis zur nächsten Änderungsmeldung (1h-24h)")]

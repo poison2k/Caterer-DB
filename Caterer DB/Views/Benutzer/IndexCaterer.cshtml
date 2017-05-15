@@ -72,12 +72,11 @@
                                 <div class="form-group">
                                     <label class="control-label">Antwort wählen</label>
                                     @Html.DropDownList(test2, new List<SelectListItem>(), new { id = "Antworten" + i, @class = "form-control prefilled ng-untouched ng-pristine ng-valid" })
-
                                 </div>
                             </div>
                             @if (Model.FrageAntwortModel.Count - 1 == i)
                             {
-                                <div class="col-md-2 text-right">                                   
+                                <div class="col-md-2 text-right">
                                     <button id="btnAddFilter" name="btnAddFilter" class="btn btn-default" style="margin-top: 27px;" type="submit"><i class="glyphicon glyphicon-plus"></i></button>
                                     @if (Model.FrageAntwortModel.Count == 1)
                                     {
@@ -89,7 +88,6 @@
                                     }
                                 </div>
                             }
-
                         </div>
                     }
                     <br />
@@ -128,10 +126,8 @@
                             <table class="table table-striped">
                                 <tr>
                                     <th>
-
                                     </th>
                                     <th>
-
                                     </th>
                                     <th>
                                         @if (ViewBag.Sortierrung == "Firmenname")
@@ -202,7 +198,6 @@
                                 @for (int i = 0; i < Model.ResultListCaterer.Entitäten.Count; i++)
                                 {
 
-
                                     <tr><td>
                                          <input data-val="true" data-val-number="Das Feld &quot;BenutzerId&quot; muss eine Zahl sein." data-val-required="Das Feld &quot;BenutzerId&quot; ist erforderlich." id="ResultListCaterer_Entit_ten_@(i)__BenutzerId" name="ResultListCaterer.Entitäten[@(i)].BenutzerId" value="@Model.ResultListCaterer.Entitäten[i].BenutzerId" type="hidden"></td>
                                         <td>@Html.CheckBoxFor(modelItem => Model.ResultListCaterer.Entitäten[i].selected, new { id = "Checkbox" + i, onchange = "pruefeCheckboxen()" })</td>
@@ -242,22 +237,18 @@
 
 @section Scripts {
 
-
     @for (int i = 0; i < Model.FrageAntwortModel.Count; i++)
     {
         <script>
             pruefeCheckboxen();
             ladeAntwortenInitial(@i, @Model.FrageAntwortModel[i].FrageId, @Model.FrageAntwortModel[i].AntwortId);
-           
+
             $(window).keydown(function (event) {
                 if (event.keyCode == 13) {
                     event.preventDefault();
                     $("#Submitbutton").click();
                 }
             });
-
-
-
         </script>
     }
 

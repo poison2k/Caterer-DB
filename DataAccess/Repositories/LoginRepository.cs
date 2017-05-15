@@ -1,8 +1,8 @@
-﻿using DataAccess.Interfaces;
+﻿using Common.Model;
+using DataAccess.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Common.Model;
 
 namespace DataAccess.Repositories
 {

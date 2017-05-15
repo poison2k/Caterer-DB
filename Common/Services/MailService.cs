@@ -1,11 +1,11 @@
 ﻿using Common.Interfaces;
+using Common.Model;
 using Common.Resources;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Common.Model;
 
 namespace Common.Services
 {
@@ -85,7 +85,7 @@ namespace Common.Services
             var mailModel = ConfigureMail(config);
             mailModel.Betreff = EMailBetreff.Kontoangelegt;
             mailModel.Empfaenger = email;
-            mailModel.Inhalt = EMailTexte.CatererRegistrierung1 + config.URLWebseite +Links.Register + verify + "&id=" + id + EMailTexte.CatererRegistrierung2 + EMailTexte.Abschluss + EMailTexte.Anregung + config.URLWebseite + Links.Kontakt;
+            mailModel.Inhalt = EMailTexte.CatererRegistrierung1 + config.URLWebseite + Links.Register + verify + "&id=" + id + EMailTexte.CatererRegistrierung2 + EMailTexte.Abschluss + EMailTexte.Anregung + config.URLWebseite + Links.Kontakt;
             SendMail(mailModel);
         }
 
@@ -98,10 +98,6 @@ namespace Common.Services
             mailModel.Absender = config.UserNameForSMTPServer;
             mailModel.Passwort = config.PasswortForSMTPServer;
             mailModel.UserName = config.UserNameForSMTPServer;
-
-
-
-
 
             return mailModel;
         }
@@ -146,11 +142,7 @@ namespace Common.Services
                 {
                     throw new ArgumentException("Fehler beim Senden von EMail");
                 }
-
-
             }).Start();
         }
-
-
     }
 }

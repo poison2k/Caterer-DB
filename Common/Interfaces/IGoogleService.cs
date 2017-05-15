@@ -1,6 +1,4 @@
-﻿
-
-using System.Data.Entity.Spatial;
+﻿using System.Data.Entity.Spatial;
 
 namespace Common.Interfaces
 {
@@ -8,8 +6,6 @@ namespace Common.Interfaces
     {
         DbGeography FindeLocationByPlz(string plz);
 
-
         DbGeography FindeLocationByAdress(string plz, string street, string ort);
-
     }
 }

@@ -16,7 +16,8 @@ namespace Caterer_DB.Controllers
 
         public IBenutzerService BenutzerService { get; set; }
 
-        public GoogleController(IBenutzerService benutzerService) {
+        public GoogleController(IBenutzerService benutzerService)
+        {
             BenutzerService = benutzerService;
         }
 
@@ -29,7 +30,6 @@ namespace Caterer_DB.Controllers
                 Zip = googleModel.PLZ,
                 City = googleModel.Ort,
                 Address = googleModel.Street,
-                
             };
 
             var locationService = new GoogleLocationService();
@@ -39,7 +39,7 @@ namespace Caterer_DB.Controllers
             googleModel.Breitengrad = point.Latitude.ToString();
 
             var test = BenutzerService.FindeCatererNachUmkreis(googleModel.PLZ, 100);
-            
+
             return View(googleModel);
         }
     }

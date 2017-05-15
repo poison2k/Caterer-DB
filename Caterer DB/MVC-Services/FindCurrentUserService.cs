@@ -1,8 +1,8 @@
-﻿using Caterer_DB.Interfaces;
+﻿using System.Web;
+using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
-using System.Web;
 
-namespace Caterer_DB.Services
+namespace Caterer_DB
 {
     public class FindCurrentUserService : IFindCurrentUserService
     {

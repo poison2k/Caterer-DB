@@ -51,6 +51,5 @@ namespace SeleniumTests
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
-
     }
 }

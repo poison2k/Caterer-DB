@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Common.Model;
+using System.Collections.Generic;
 using System.Data.Entity.Spatial;
-using Common.Model;
 
 namespace MockData
 {
     public static class MockBenutzerModel
     {
-
         public static Benutzer EinCaterer()
         {
             return new Benutzer
@@ -37,7 +36,6 @@ namespace MockData
                 BenutzerGruppen = new List<BenutzerGruppe>() { MockBenutzerGruppeModel.CatererBenutzerGruppe() }
             };
         }
-
 
         public static Benutzer EinMitarbeiter()
         {
@@ -88,18 +86,14 @@ namespace MockData
             };
         }
 
-
         public static List<Benutzer> CatererListe()
         {
-            return new List<Benutzer>() { EinCaterer(), EinCaterer(), EinCaterer()};
+            return new List<Benutzer>() { EinCaterer(), EinCaterer(), EinCaterer() };
         }
-
 
         public static List<Benutzer> MitarbeiterListe()
         {
             return new List<Benutzer>() { EinMitarbeiter(), EinAdministrator(), EinMitarbeiter() };
         }
     }
-
 }
-

@@ -337,18 +337,10 @@
     <Compile Include="ViewModelServices\RechtViewModelService.cs" />
     <Compile Include="ViewModelServices\KategorieViewModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\LoginResources1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LoginResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\BenutzerGruppenResource.cs" />
-    <Compile Include="Resources\RechteResource.cs" />
-    <Compile Include="Services\BaseViewPage.cs" />
-    <Compile Include="Services\FindCurrentUserService.cs" />
-    <Compile Include="Services\LoginService.cs" />
-    <Compile Include="Services\LoginSuccessLevel.cs" />
-    <Compile Include="Services\ValidationService.cs" />
+    <Compile Include="MVC-Services\BaseViewPage.cs" />
+    <Compile Include="MVC-Services\FindCurrentUserService.cs" />
+    <Compile Include="MVC-Services\LoginService.cs" />
+    <Compile Include="MVC-Services\LoginSuccessLevel.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -522,12 +514,6 @@
       <Project>{E0CE96CF-2177-4EE1-8FBD-0FF9315DD6CD}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\LoginResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoginResources1.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,6 +1,4 @@
-﻿
-using Common.Model;
-
+﻿using Common.Model;
 
 namespace Common.Interfaces
 {
@@ -8,15 +6,12 @@ namespace Common.Interfaces
     {
         public string TemplateDateiPfad { get; set; }
 
-
-
         private Benutzer _Benutzer;
+
         public TestDocX(Benutzer benutzer, string templateDateiPfad)
         {
             _Benutzer = benutzer;
             TemplateDateiPfad = templateDateiPfad;
         }
-
-    
     }
 }

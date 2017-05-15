@@ -25,7 +25,6 @@
     }
 }
 
-
 function ladeAntwortenInitial(i, FrageId, AntwortIds) {
     var p1 = "#Antworten" + i;
     var p2 = "#Fragen" + i;
@@ -54,8 +53,6 @@ function ladeAntwortenInitial(i, FrageId, AntwortIds) {
         $(p2).val(0);
         $(p1).attr("disabled", "disabled");
     }
-
-
 };
 
 function pruefeCheckboxen() {
@@ -81,11 +78,5 @@ function pruefeCheckboxen() {
                 $(p1).removeAttr("disabled");
             }
         }
-
     }
-
 }
-
-
-   
-    

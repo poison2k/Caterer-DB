@@ -1,15 +1,14 @@
-﻿using Caterer_DB.Controllers;
+﻿using Business.Interfaces;
+using Caterer_DB.Controllers;
 using Caterer_DB.Interfaces;
+using Caterer_DB.Models;
+using Common.Model;
+using MockData;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using System.Linq;
 using System.Web.Mvc;
-using Business.Interfaces;
-using Caterer_DB.Models;
-using Caterer_DB.Services;
-using MockData;
-using Common.Model;
 
 namespace Caterer_DB.Tests.Controllers
 {
@@ -18,7 +17,6 @@ namespace Caterer_DB.Tests.Controllers
     {
         private Fixture Fixture { get; set; }
         private AccountController AccountController { get; set; }
-
 
         private IBenutzerViewModelService MockBenutzerViewModelService { get; set; }
         private ILoginService MockLoginService { get; set; }
@@ -131,7 +129,6 @@ namespace Caterer_DB.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-  
         [Test]
         public void PasswordRequestComplete_HTTPGet_Test()
         {
@@ -179,7 +176,6 @@ namespace Caterer_DB.Tests.Controllers
             Assert.AreEqual("PasswordChangeComplete", routeAction);
         }
 
-    
         [Test]
         public void PasswordChange_HTTPPost_VerifyOk_ModelStateFalse_Test()
         {
@@ -348,9 +344,9 @@ namespace Caterer_DB.Tests.Controllers
             mockBenutzerService.Setup(x => x.SearchUserByEmail(It.IsAny<string>())).Returns(MockBenutzerModel.EinNichtVerifizierterBenutzer);
             var newMockBenutzerService = mockBenutzerService.Object;
             var accountController = new AccountController(MockLoginService, newMockBenutzerService, MockBenutzerViewModelService);
-           
+
             //Act
-            ActionResult result = accountController.Login(MockAccountViewModels.EinLoginModel(), "Home/Index" );
+            ActionResult result = accountController.Login(MockAccountViewModels.EinLoginModel(), "Home/Index");
             string routeAction = ((RedirectToRouteResult)result).RouteValues["Action"].ToString();
 
             //Assert

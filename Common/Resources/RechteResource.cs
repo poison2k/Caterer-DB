@@ -1,4 +1,4 @@
-﻿namespace Caterer_DB.Resources
+﻿namespace Common.Resources
 {
     public sealed class RechteResource
     {

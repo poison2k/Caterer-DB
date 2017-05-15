@@ -1,5 +1,5 @@
 ﻿@model Caterer_DB.Models.AnmeldenBenutzerViewModel
-@using Caterer_DB.Resources
+@using Common.Resources
 @{
     ViewBag.Title = "Startseite";
 }
@@ -67,9 +67,9 @@
                         @if (User.HatDasRecht(RechteResource.TestBlock1))
                 {
                             <h4 class="text-danger">Ich bin Mitglied der Gruppe Administratoren</h4>
-                            <br/>
+                            <br />
 
-                  }
+                        }
 
                         else if (User.HatDasRecht(RechteResource.TestBlock2))
                         {
@@ -91,44 +91,41 @@
     }
     <br />
 
-
     @if (!Request.IsAuthenticated)
     {
         <div class="col-md-offset-1 col-md-10">
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-md-1"></div>
-                    <div class="col-md-10 text-center">    
+                    <div class="col-md-10 text-center">
 
                         <h3>
-                        Herzlich Willkommen auf der Seite der Caterer-Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsen 
-                        <br /> 
-                            <br /> 
+                            Herzlich Willkommen auf der Seite der Caterer-Datenbank der Vernetzungsstelle Schulverpflegung Niedersachsen
+                            <br />
+                            <br />
                         </h3>
-
                     </div>
                     <div class="col-md-1"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
-                    <div class="col-md-10 text-center">    
+                    <div class="col-md-10 text-center">
                         <span style="color:black">
 
-                            Mit der Datenbank möchten wir Caterer und Schulen zusammenbringen und eine flächendeckende Versorgung der 
-                            Schulen mit einer guten Schulverpflegung unterstützen. Daher freuen wir uns besonders, wenn Sie als Caterer für die 
-                            Schulverpflegung Ihr Angebot darstellen, aktualisieren und bereit sind, dass wir Ihre Daten im Bedarfsfall an Schulen oder 
-                            auch Schulträger weiterleiten dürfen. <br/>
-                            <br/>
+                            Mit der Datenbank möchten wir Caterer und Schulen zusammenbringen und eine flächendeckende Versorgung der
+                            Schulen mit einer guten Schulverpflegung unterstützen. Daher freuen wir uns besonders, wenn Sie als Caterer für die
+                            Schulverpflegung Ihr Angebot darstellen, aktualisieren und bereit sind, dass wir Ihre Daten im Bedarfsfall an Schulen oder
+                            auch Schulträger weiterleiten dürfen. <br />
+                            <br />
                             Registrieren können sich alle Anbieter von Schulverpflegung, die Ihr Essen entweder den Schulen anliefern oder eine Mensa vor Ort betreiben
-                             und dieses Angebot weiteren Schulen unterbreiten möchten. Alle Verpflegungssysteme sind möglich. Die Registrierung und Nutzung der Datenbank ist für Sie kostenlos. 
-                            Die Verwaltung Ihrer Daten ist für Sie zu jedem Zeitpunkt transparent. 
-                            Zugriff auf Ihre Daten haben lediglich die Mitarbeiterinnen der Vernetzungsstelle Schulverpflegung. Näheres dazu finden Sie in den Datenschutzbestimmungen und AGB´s.<br/>
-                            <br/>
-                            Wir bedanken uns für Ihr Vertrauen und Interesse am Gelingen der Schulverpflegung in Niedersachsen. 
-                            Für Fragen zu der Caterer-Datenbank und der Registrierung stehen wir Ihnen unter unseren Kontaktdaten gerne zur Verfügung.<br/>
-                            <br/>
+                            und dieses Angebot weiteren Schulen unterbreiten möchten. Alle Verpflegungssysteme sind möglich. Die Registrierung und Nutzung der Datenbank ist für Sie kostenlos.
+                            Die Verwaltung Ihrer Daten ist für Sie zu jedem Zeitpunkt transparent.
+                            Zugriff auf Ihre Daten haben lediglich die Mitarbeiterinnen der Vernetzungsstelle Schulverpflegung. Näheres dazu finden Sie in den Datenschutzbestimmungen und AGB´s.<br />
+                            <br />
+                            Wir bedanken uns für Ihr Vertrauen und Interesse am Gelingen der Schulverpflegung in Niedersachsen.
+                            Für Fragen zu der Caterer-Datenbank und der Registrierung stehen wir Ihnen unter unseren Kontaktdaten gerne zur Verfügung.<br />
+                            <br />
                             <b>Das Team der Vernetzungsstelle Schulverpflegung Niedersachsen</b>
-
                         </span>
                     </div>
                     <div class="col-md-1"></div>
@@ -157,7 +154,7 @@
         <br />
         <br />
     }
-                <br />
     <br />
     <br />
-    </div>
+    <br />
+</div>

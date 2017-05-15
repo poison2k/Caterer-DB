@@ -20,7 +20,7 @@ namespace Common.Services
             return GeoDaten;
         }
 
-        public DbGeography FindeLocationByAdress(string plz,string street, string ort)
+        public DbGeography FindeLocationByAdress(string plz, string street, string ort)
         {
             var Adresse = new AddressData()
             {
@@ -37,4 +37,3 @@ namespace Common.Services
         }
     }
 }
-

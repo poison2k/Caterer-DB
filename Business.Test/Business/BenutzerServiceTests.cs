@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Business.Interfaces;
 using Business.Services;
 using Common.Interfaces;
+using Common.Model;
 using DataAccess.Interfaces;
+using MockData;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using MockData;
-using System.Data.Entity.Spatial;
 using System;
-using Common.Model;
+using System.Collections.Generic;
+using System.Data.Entity.Spatial;
+using System.Linq;
 
 namespace Business.Test.Business
 {
@@ -40,11 +40,9 @@ namespace Business.Test.Business
             Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-           
-
             var mockBenutzerRepository = new Mock<IBenutzerRepository>();
             mockBenutzerRepository.Setup(x => x.SearchUser()).Returns(MockBenutzerModel.CatererListe);
-            mockBenutzerRepository.Setup(x => x.SearchAllUserByUserGroupWithPagingOrderByCategory(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<List<string>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DbGeography>(),It.IsAny<string>())).Returns(MockBenutzerModel.CatererListe());
+            mockBenutzerRepository.Setup(x => x.SearchAllUserByUserGroupWithPagingOrderByCategory(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<List<string>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DbGeography>(), It.IsAny<string>())).Returns(MockBenutzerModel.CatererListe());
             mockBenutzerRepository.Setup(x => x.SearchAllCatererWithPaging(It.IsAny<int>(), It.IsAny<int>())).Returns(MockBenutzerModel.CatererListe());
             mockBenutzerRepository.Setup(x => x.SearchUserById(It.IsAny<int>())).Returns(MockBenutzerModel.EinCaterer());
             mockBenutzerRepository.Setup(x => x.SearchUserByIdNoTracking(It.IsAny<int>())).Returns(MockBenutzerModel.EinCaterer());
@@ -77,12 +75,12 @@ namespace Business.Test.Business
             MockGoogleService = mockGoogleService.Object;
 
             var mockMailService = new Mock<IMailService>();
-            mockMailService.Setup(x => x.SendForgottenPasswordMail( It.IsAny<Config>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
-            mockMailService.Setup(x => x.SendNewMitarbeiterMail(It.IsAny<Config>(),It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
-            mockMailService.Setup(x => x.SendRegisterMail(It.IsAny<Config>(),It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
+            mockMailService.Setup(x => x.SendForgottenPasswordMail(It.IsAny<Config>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
+            mockMailService.Setup(x => x.SendNewMitarbeiterMail(It.IsAny<Config>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
+            mockMailService.Setup(x => x.SendRegisterMail(It.IsAny<Config>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
             MockMailService = mockMailService.Object;
 
-            BenutzerService = new BenutzerService(MockBenutzerRepository, MockMailService, MockBenutzerGruppeService, MockMd5Hash,MockDocumentService, MockConfigService, MockGoogleService);
+            BenutzerService = new BenutzerService(MockBenutzerRepository, MockMailService, MockBenutzerGruppeService, MockMd5Hash, MockDocumentService, MockConfigService, MockGoogleService);
         }
 
         [Test]

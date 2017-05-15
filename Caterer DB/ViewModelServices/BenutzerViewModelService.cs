@@ -2,11 +2,11 @@
 using Business.Interfaces;
 using Caterer_DB.Interfaces;
 using Common.Interfaces;
+using Common.Model;
 using System;
 using System.Collections.Generic;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using Common.Model;
 
 namespace Caterer_DB.Models.ViewModelServices
 {
@@ -40,7 +40,6 @@ namespace Caterer_DB.Models.ViewModelServices
                 cfg.CreateMap<Benutzer, CreateCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, DetailsCatererViewModel>().ReverseMap();
                 cfg.CreateMap<Benutzer, MeineDatenBenutzerViewModel>().ReverseMap();
-                
             });
 
             Mapper = config.CreateMapper();
@@ -67,7 +66,6 @@ namespace Caterer_DB.Models.ViewModelServices
                     {
                         if (frage.IstMultiSelect != true)
                         {
-
                             foreach (Antwort antwort in frage.Antworten)
                             {
                                 if (antwort.AntwortId == antwortId)
@@ -121,7 +119,6 @@ namespace Caterer_DB.Models.ViewModelServices
                         {
                             if (frage.IstMultiSelect != true)
                             {
-
                                 foreach (Antwort antwort in frage.Antworten)
                                 {
                                     if (antwort.AntwortId == antwortId)
@@ -147,7 +144,6 @@ namespace Caterer_DB.Models.ViewModelServices
                         }
                         fragencounter++;
                     }
-                  
                 }
                 anmeldenBenutzerViewModel.OffeneFragen = fragencounter - beantworteteCounter;
             }
@@ -193,7 +189,7 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Benutzer>(myDataBenutzerViewModel);
         }
 
-         public List<int> Map_MyDataBenutzerViewModel_BenutzerResultSet(MyDataBenutzerViewModel myDataBenutzerViewModel)
+        public List<int> Map_MyDataBenutzerViewModel_BenutzerResultSet(MyDataBenutzerViewModel myDataBenutzerViewModel)
         {
             var antwortIDs = new List<int>();
             foreach (FragenNachThemengebiet fragenNachThemengebiet in myDataBenutzerViewModel.Fragen)
@@ -212,6 +208,7 @@ namespace Caterer_DB.Models.ViewModelServices
 
             return antwortIDs;
         }
+
         public MyDataBenutzerViewModel Map_Benutzer_MyDataBenutzerViewModel(Benutzer benutzer, List<List<Frage>> fragenListen)
         {
             var myDataBenutzerViewModel = Mapper.Map<MyDataBenutzerViewModel>(benutzer);
@@ -252,7 +249,7 @@ namespace Caterer_DB.Models.ViewModelServices
                             }
                         }
                     }
-                                        
+
                     fragenViewModel.Add(new FragenViewModel()
                     {
                         Antworten = frage.Antworten,
@@ -394,8 +391,8 @@ namespace Caterer_DB.Models.ViewModelServices
             return Mapper.Map<Benutzer>(detailsCatererViewModel);
         }
 
-        public VergleichCatererViewModel Map_ListBenutzer_VergleichCatererViewModel(List<Benutzer> caterer, List<List<Frage>> fragenListen) {
-
+        public VergleichCatererViewModel Map_ListBenutzer_VergleichCatererViewModel(List<Benutzer> caterer, List<List<Frage>> fragenListen)
+        {
             var vergleichCatererViewModel = new VergleichCatererViewModel();
             vergleichCatererViewModel.caterer = new List<DetailsCatererViewModel>();
             vergleichCatererViewModel.Fragen = FrageService.FindAlleFragenNachKategorieninEigenenListen();
@@ -557,7 +554,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public FullFilterCatererViewModel AddListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel)
         {
-
             fullFilterCatererViewModel.Lieferumkreise = CreateLieferumkreisSelectList();
 
             return fullFilterCatererViewModel;
@@ -565,7 +561,6 @@ namespace Caterer_DB.Models.ViewModelServices
 
         public FullFilterCatererViewModel AddFragenListsToFullFilterCatererViewModel(FullFilterCatererViewModel fullFilterCatererViewModel, List<Frage> fragen)
         {
-          
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "Bitte wählen...", Value = "0" });
             items.AddRange(fragen.ConvertAll(a =>
@@ -578,7 +573,6 @@ namespace Caterer_DB.Models.ViewModelServices
             }));
 
             fullFilterCatererViewModel.Fragen = items;
-
 
             return fullFilterCatererViewModel;
         }
@@ -632,6 +626,5 @@ namespace Caterer_DB.Models.ViewModelServices
                                 new SelectListItem { Text = "Caterer", Value = "Caterer" },
                             }, "Value", "Text");
         }
-
     }
 }

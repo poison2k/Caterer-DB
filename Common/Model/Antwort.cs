@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
+﻿using Common.Services;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Common.Services;
-
 
 namespace Common.Model
 {

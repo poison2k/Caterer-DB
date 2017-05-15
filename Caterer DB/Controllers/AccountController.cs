@@ -2,7 +2,6 @@
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
 using Caterer_DB.Resources;
-using Caterer_DB.Services;
 using System;
 using System.Web.Mvc;
 
@@ -167,12 +166,11 @@ namespace Caterer_DB.Controllers
                     {
                         BenutzerService.RegisterBenutzer(BenutzerViewModelService.Map_RegisterBenutzerViewModel_Benutzer(registerBenutzerViewModel));
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         ModelState.AddModelError("", ex.Message);
                         return View(BenutzerViewModelService.AddListsToRegisterViewModel(registerBenutzerViewModel));
                     }
-                    
                 }
                 else
                 {

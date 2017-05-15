@@ -1,8 +1,8 @@
-﻿using Caterer_DB.Services;
+﻿using Common.Model;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Common.Model;
+using Common.Services;
 
 namespace Caterer_DB.Models
 {
@@ -37,9 +37,9 @@ namespace Caterer_DB.Models
 
         public List<Antwort> Antworten { get; set; }
 
-       
         [DisplayName(@"Kategorie")]
         public string KategorieName { get; set; }
+
         [MyRequired]
         public int KategorieId { get; set; }
 
@@ -62,7 +62,6 @@ namespace Caterer_DB.Models
 
         public List<Antwort> Antworten { get; set; }
 
-      
         [DisplayName(@"Kategorie")]
         public string KategorieName { get; set; }
 
@@ -115,12 +114,10 @@ namespace Caterer_DB.Models
         public bool IstMultiSelect { get; set; }
     }
 
-
     public class AjaxAntwort
     {
         public int AntwortId { get; set; }
 
         public string Antworttext { get; set; }
-
     }
 }

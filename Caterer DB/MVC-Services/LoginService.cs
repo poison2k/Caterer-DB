@@ -1,8 +1,4 @@
-﻿using Caterer_DB.Interfaces;
-using Caterer_DB.Models;
-using DataAccess.Interfaces;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -11,9 +7,13 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using Caterer_DB.Interfaces;
+using Caterer_DB.Models;
 using Common.Model;
+using DataAccess.Interfaces;
+using Newtonsoft.Json;
 
-namespace Caterer_DB.Services
+namespace Caterer_DB
 {
     public class LoginService : ILoginService
     {

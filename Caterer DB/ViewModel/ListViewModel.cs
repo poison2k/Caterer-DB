@@ -8,8 +8,6 @@ namespace Caterer_DB.Models
 {
     public class ListViewModel<T> : IPagedList<T>
     {
-
-
         public ListViewModel()
         {
             ListViewId = 1;

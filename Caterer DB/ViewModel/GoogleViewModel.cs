@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Caterer_DB.ViewModel
+﻿namespace Caterer_DB.ViewModel
 {
     public class GoogleViewModel
     {
@@ -13,7 +8,5 @@ namespace Caterer_DB.ViewModel
         public string Street { get; set; }
         public string Längengrad { get; set; }
         public string Breitengrad { get; set; }
-
-       
     }
 }

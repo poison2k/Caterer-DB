@@ -1,6 +1,6 @@
-﻿using Caterer_DB.Resources;
+﻿using Common.Model;
+using Common.Resources;
 using System.Collections.Generic;
-using Common.Model;
 
 namespace MockData
 {
@@ -9,7 +9,8 @@ namespace MockData
         public static BenutzerGruppe AdminBenutzerGruppe()
         {
             return new BenutzerGruppe
-            {   NutzerGruppeID = 1,
+            {
+                NutzerGruppeID = 1,
                 Bezeichnung = BenutzerGruppenResource.Administrator,
                 RechteGruppe = MockRechteGruppeModel.AdminRechteGruppe()
             };
@@ -25,7 +26,6 @@ namespace MockData
             };
         }
 
-
         public static BenutzerGruppe CatererBenutzerGruppe()
         {
             return new BenutzerGruppe
@@ -36,12 +36,9 @@ namespace MockData
             };
         }
 
-
         public static List<BenutzerGruppe> ListeBenutzerGruppe()
         {
             return new List<BenutzerGruppe>() { AdminBenutzerGruppe(), MitarbeiterBenutzerGruppe(), CatererBenutzerGruppe() };
         }
     }
 }
-
-

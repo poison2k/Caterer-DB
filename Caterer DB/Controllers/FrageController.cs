@@ -1,14 +1,13 @@
 ﻿using Business.Interfaces;
 using Caterer_DB.Interfaces;
 using Caterer_DB.Models;
-using Caterer_DB.Resources;
-using Caterer_DB.Services;
+using Common.Model;
+using Common.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Common.Model;
 
 namespace Caterer_DB.Controllers
 {
@@ -133,17 +132,15 @@ namespace Caterer_DB.Controllers
             }
             else if (Request.Form["btnDeleteAnswer"] != null)
             {
-           
-                    for (int i = 0; i < Request.Form.Count; i++)
+                for (int i = 0; i < Request.Form.Count; i++)
+                {
+                    if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
                     {
-                        if (Request.Form.AllKeys.ElementAt(i) == "btnDeleteAnswer")
-                        {
-                            ModelState.Clear();
-                            createFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
-                            return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
-                        }
+                        ModelState.Clear();
+                        createFrageViewModel.Antworten.RemoveAt(i / 2 - 3);
+                        return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
                     }
-                
+                }
             }
             if (ModelState.IsValid)
             {
@@ -156,11 +153,11 @@ namespace Caterer_DB.Controllers
 
                 return RedirectToAction("Index");
             }
-            if(createFrageViewModel.Antworten == null)
+            if (createFrageViewModel.Antworten == null)
             {
                 createFrageViewModel.Antworten = new List<Antwort>();
             }
-          
+
             return View(FrageViewModelService.AddListsToCreateFrageViewModel(createFrageViewModel, KategorienService.FindAlleKategorien()));
         }
 

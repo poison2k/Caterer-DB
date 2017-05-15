@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using Business.Interfaces;
 using Common.Interfaces;
+using Common.Model;
 using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Common.Model;
 
 namespace Business.Services
 {
@@ -62,10 +61,10 @@ namespace Business.Services
 
         public List<Benutzer> FindeCatererNachUmkreis(string plz, int umkreis)
         {
-
             var GeoDaten = GoogleService.FindeLocationByPlz(plz);
             return BenutzerRepository.FindeCatererNachUmkreis(GeoDaten, umkreis);
         }
+
         public Benutzer SearchUserByIdNoTracking(int id)
         {
             return BenutzerRepository.SearchUserByIdNoTracking(id);
@@ -94,16 +93,12 @@ namespace Business.Services
             List<Benutzer> caterer;
             if (plz != "" && plz != null)
             {
-
                 caterer = BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, GoogleService.FindeLocationByPlz(plz), name);
-
             }
             else
             {
-
                 caterer = BenutzerRepository.SearchAllUserByUserGroupWithPagingOrderByCategory(aktuelleSeite, seitenGroesse, benutzerGruppen, sortierrung, umkreis, null, name);
             }
-
 
             if (antwortIds.Count != 0)
             {
@@ -128,7 +123,6 @@ namespace Business.Services
                 }
             }
 
-
             return caterer;
         }
 
@@ -142,7 +136,7 @@ namespace Business.Services
             benutzer.BenutzerGruppen = new List<BenutzerGruppe>() { BenutzerGruppeService.SearchGroupByBezeichnung(gruppe) };
 
             benutzer.PasswortZeitstempel = DateTime.Now;
-            benutzer.LetzteÄnderung = new DateTime(1900,1,1);
+            benutzer.LetzteÄnderung = new DateTime(1900, 1, 1);
             if (gruppe == "Caterer")
             {
                 try
@@ -150,7 +144,7 @@ namespace Business.Services
                     benutzer.Koordinaten =
                         GoogleService.FindeLocationByAdress(benutzer.Postleitzahl, benutzer.Straße, benutzer.Ort);
                 }
-                catch 
+                catch
                 {
                     throw new ArgumentException("Ungültige Adresse");
                 }
@@ -189,7 +183,7 @@ namespace Business.Services
             {
                 throw new ArgumentException("Ungültige Adresse");
             }
-            
+
             AddBenutzer(benutzer, "Caterer");
             MailService.SendRegisterMail(ConfigService.GetConfig(), benutzer.EMailVerificationCode, benutzer.Mail, benutzer.BenutzerId.ToString());
         }
@@ -259,12 +253,11 @@ namespace Business.Services
                     }
                     dbBenutzer.LetzteÄnderung = DateTime.Now;
                 }
-
             }
-            else {
+            else
+            {
                 dbBenutzer.LetzteÄnderung = DateTime.Now;
             }
-          
 
             BenutzerRepository.EditUser(dbBenutzer);
         }
@@ -282,7 +275,7 @@ namespace Business.Services
             {
                 throw new ArgumentException("Ungültige Adresse");
             }
-          
+
             BenutzerRepository.EditUser(dbBenutzer);
         }
 
@@ -363,7 +356,5 @@ namespace Business.Services
         {
             return BenutzerRepository.GetCatererCount();
         }
-
-     
     }
 }

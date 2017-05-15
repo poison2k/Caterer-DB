@@ -1,12 +1,12 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
 using Common.Model;
+using MockData;
 using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using MockData;
+using System.Linq;
 
 namespace Caterer_DB.Tests.ViewModelTest
 {

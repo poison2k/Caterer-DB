@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Common.Model;
+﻿using Common.Model;
+using System.Collections.Generic;
 
 namespace Business.Interfaces
 {

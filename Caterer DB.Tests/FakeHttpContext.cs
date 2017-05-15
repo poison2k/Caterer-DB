@@ -1,6 +1,4 @@
 ﻿using Moq;
-using System;
-using System.IO;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
@@ -13,11 +11,8 @@ namespace Caterer_DB.Tests
         public static void SetFakeContext(this Controller controller, bool login)
         {
             var httpContext = MakeFakeContext(login);
-          
 
             controller.ControllerContext = new ControllerContext(httpContext, new RouteData(), controller);
-           
-
         }
 
         private static HttpContextBase MakeFakeContext(bool login)
@@ -38,8 +33,6 @@ namespace Caterer_DB.Tests
             identity.Setup(i => i.IsAuthenticated).Returns(true);
             identity.Setup(i => i.Name).Returns("admin");
             context.Setup(c => c.User).Returns(user.Object);
-
-
 
             return context.Object;
         }

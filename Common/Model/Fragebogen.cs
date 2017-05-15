@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Common.Services;
+﻿using Common.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace Common.Model
 {

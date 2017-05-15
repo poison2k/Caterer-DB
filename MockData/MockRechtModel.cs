@@ -1,6 +1,6 @@
-﻿using Caterer_DB.Resources;
+﻿using Common.Model;
+using Common.Resources;
 using System.Collections.Generic;
-using Common.Model;
 
 namespace MockData
 {
@@ -40,8 +40,8 @@ namespace MockData
                 new Recht() { RechtId = 27,Bezeichnung = RechteResource.CreateKategorie, Beschreibung = "Mitarbeiter kann Kategorien anlegen"  },
                 new Recht() { RechtId = 28,Bezeichnung = RechteResource.DeleteKategorie, Beschreibung = "Mitarbeiter kann Kategorien löschen"  }
             };
-
         }
+
         public static Recht EinRecht()
         {
             return new Recht() { RechtId = 1, Bezeichnung = "TestRecht", Beschreibung = "Testrecht" };

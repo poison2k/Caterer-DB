@@ -6,7 +6,7 @@ namespace Caterer_DB.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(IBenutzerViewModelService benutzerViewModelService, IFrageService frageService )
+        public HomeController(IBenutzerViewModelService benutzerViewModelService, IFrageService frageService)
         {
             BenutzerViewModelService = benutzerViewModelService;
             FragenService = frageService;

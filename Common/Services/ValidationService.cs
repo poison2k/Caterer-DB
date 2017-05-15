@@ -49,7 +49,4 @@ namespace Common.Services
             this.ErrorMessage = "Das Feld \"{0}\" ist erforderlich.";
         }
     }
-
-   
-
 }

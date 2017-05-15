@@ -1,6 +1,5 @@
 ﻿using Common.Model;
 
-
 namespace Caterer_DB.Models.Interfaces
 {
     public interface IBenutzerGruppeViewModelService

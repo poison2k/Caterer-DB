@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Services;
 
 namespace SeleniumTests
@@ -627,6 +626,5 @@ namespace SeleniumTests
 
             TestTools.TestEnde_Angemeldete_User_Ausloggen_Oder_Startseite_Aufrufen(driver);
         }
-
     }
 }

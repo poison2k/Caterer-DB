@@ -1,8 +1,7 @@
 ﻿using Caterer_DB.Models;
 using Caterer_DB.Models.ViewModelServices;
-using System.Collections.Generic;
 using Common.Model;
-
+using System.Collections.Generic;
 
 namespace Caterer_DB.Interfaces
 {

@@ -1,7 +1,7 @@
-﻿using System.IO;
-using Business.Interfaces;
+﻿using Business.Interfaces;
 using Common.Interfaces;
 using Common.Model;
+using System.IO;
 
 namespace Business.Services
 {
@@ -19,7 +19,6 @@ namespace Business.Services
 
         public void DokumentDrucken(Benutzer benutzer, MemoryStream memoryStream)
         {
-
             DocumentService.DokumentDrucken(benutzer, memoryStream, FrageService.FindAlleFragen());
         }
     }

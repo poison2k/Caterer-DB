@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Common.Services;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Common.Services;
 
 namespace Common.Model
 {

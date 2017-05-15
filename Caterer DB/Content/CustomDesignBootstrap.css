@@ -262,18 +262,16 @@ ul {
       top: 220px;
       position: fixed;
   }
- 
+
 .tabbar {
       top: 170px;
-     
+
       z-index: 99;
   }
 .innertab {
     z-index: 100;
     font-size: 20px;
 }
-
-
 
 /* PageList Hintergrundfarbe Überschriften*/
 .panel-default > .panel-heading {
@@ -294,7 +292,7 @@ th {
 
 .well-lg-weiss {
     background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255,255,255,1);    
+    border-color: rgba(255,255,255,1);
 }
 
 .nav-pills > li.active > a,
@@ -315,7 +313,6 @@ th {
 .linie {
   border-top: 2px solid rgba(150,150,150,1);
     background-color: rgba(150,150,150,1);
-    
 }
 
     /*Nicht löschen Sebastian...Das das ist ein Hilfsraster für die Schachteln*/
@@ -339,9 +336,8 @@ th {
 .nav-tabs > li.active > a:focus {
   color: #fff;
   background-color: rgba(77,147,208,0.5);
-  /*background-image:linear-gradient(180deg, rgba(77,147,208,1), rgba(77,147,208,0.5));*/ 
+  /*background-image:linear-gradient(180deg, rgba(77,147,208,1), rgba(77,147,208,0.5));*/
   border: 1px solid transparent;
-  
 }
 
 .nav-tabs > li > a {
@@ -361,8 +357,6 @@ background-color: rgba(248,248,248,1);
     border-radius:  0 0 5px 5px;
   }
 
-
-
  /*Exportfunktion Dropdown*/
 .link-button {
   background: none;
@@ -376,10 +370,6 @@ background-color: rgba(248,248,248,1);
   color: #23527c;
   text-decoration: underline;
 }
-
-
-
-
 
 /*-------------------Exportdropdown----------------------------*/
 .kaibutton {
