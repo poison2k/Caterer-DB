@@ -46,7 +46,7 @@ namespace Caterer_DB.ViewModel
         [MyRequired]
         [DataType(DataType.Password)]
         [Display(Name = "Passwort")]
-        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$", ErrorMessage = "Das Passwort entspricht nicht den Richtlinien.")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,20}$", ErrorMessage = "Das Passwort entspricht nicht den Richtlinien.")]
         public string Passwort { get; set; }
 
         [MyRequired]
@@ -66,7 +66,7 @@ namespace Caterer_DB.ViewModel
         [MyRequired]
         [DataType(DataType.Password)]
         [Display(Name = "Passwort")]
-        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$", ErrorMessage = "Das Passwort entspricht nicht den Richtlinien.")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,20}$", ErrorMessage = "Das Passwort entspricht nicht den Richtlinien.")]
         public string Passwort { get; set; }
 
         [MyRequired]

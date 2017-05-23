@@ -152,7 +152,7 @@ namespace Caterer_DB.ContextInitializer
            db.Benutzer.Add(new Benutzer
             {
                 Mail = "Superadmin@caterer-schulverpflegung-niedersachsen.de",
-                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
+                Passwort = "AH8g+3XwpJpvLRG+oezcBQVHAWOnndkfSYkDObsNQsgxPAwUQ6sMJuiitmVJTFldUQ==",
                 Nachname = "Chuck",
                 Vorname = "Norris",
                 FunktionAnsprechpartner = "Superadmin",
