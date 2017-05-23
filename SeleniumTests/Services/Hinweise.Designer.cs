@@ -331,7 +331,7 @@ namespace SeleniumTests.Services {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Startseite - My ASP.NET Application ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Startseite - Caterer Datenbank Niedersachsen ähnelt.
         /// </summary>
         internal static string Startseite {
             get {
