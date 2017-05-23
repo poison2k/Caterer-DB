@@ -230,31 +230,6 @@ namespace Caterer_DB.ContextInitializer
                 BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
             });
 
-            db.Benutzer.Add(new Benutzer
-            {
-                Mail = "poison2k@gmail.com",
-                Passwort = "AF6WTsIXVQnb+mfScpc2kSFMkFby3q4JBwEjmEV2zjGiiKLp1HSO/d+Yxnjx5ief3A==",
-                Nachname = "Bünck",
-                Vorname = "Sebastian",
-                IstEmailVerifiziert = true,
-                Firmenname = "AllYouCanEat GmbH",
-                Internetadresse = "www.AYCE.de",
-                Lieferumkreis = 50,
-                Organisationsform = "Vorhanden",
-                Telefon = "01234 - 56789",
-                Fax = "01234 - 99999",
-                Straße = "Große Horststraße 1",
-                Postleitzahl = "29328",
-                Ort = "Faßberg",
-                Anrede = "Herr",
-                FunktionAnsprechpartner = "Chef",
-                EMailVerificationCode = "",
-                PasswortZeitstempel = System.DateTime.Now,
-                LetzteÄnderung = new System.DateTime(1900, 1, 1),
-                Koordinaten = DbGeography.FromText("Point( 6.442804 51.180457 )"),
-                BenutzerGruppen = new List<BenutzerGruppe>() { db.BenutzerGruppe.Single(x => x.Bezeichnung == BenutzerGruppenResource.Administrator) }
-            });
-
             for (int i = 0; i < 20; i++)
             {
                 db.Benutzer.Add(new Benutzer
